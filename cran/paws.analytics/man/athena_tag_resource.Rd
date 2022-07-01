@@ -32,9 +32,7 @@ numbers representable in UTF-8, and the following characters: + - = . _
 per resource. If you specify more than one tag, separate them by commas.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceARN = "string",
   Tags = list(
     list(
@@ -43,7 +41,7 @@ per resource. If you specify more than one tag, separate them by commas.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

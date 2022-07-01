@@ -10,27 +10,23 @@ alexaforbusiness_get_gateway_group(GatewayGroupArn)
 \item{GatewayGroupArn}{[required] The ARN of the gateway group to get.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayGroup = list(
     Arn = "string",
     Name = "string",
     Description = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the details of a gateway group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_gateway_group(
+\preformatted{svc$get_gateway_group(
   GatewayGroupArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -30,15 +30,13 @@ identity becomes inaccessible.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$unlink_developer_identity(
+\preformatted{svc$unlink_developer_identity(
   IdentityId = "string",
   IdentityPoolId = "string",
   DeveloperProviderName = "string",
   DeveloperUserIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

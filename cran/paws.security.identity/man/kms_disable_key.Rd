@@ -46,12 +46,10 @@ a different AWS account.
 \strong{Related operations}: \code{\link[=kms_enable_key]{enable_key}}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_key(
+\preformatted{svc$disable_key(
   KeyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

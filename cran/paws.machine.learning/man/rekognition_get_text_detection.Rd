@@ -21,9 +21,7 @@ response. You can use this pagination token to retrieve the next set of
 text.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
   StatusMessage = "string",
   VideoMetadata = list(
@@ -63,7 +61,7 @@ A list with the following syntax:
   NextToken = "string",
   TextModelVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the text detection results of a Amazon Rekognition Video analysis
@@ -101,14 +99,12 @@ from the previous call to
 \code{\link[=rekognition_get_text_detection]{get_text_detection}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_text_detection(
+\preformatted{svc$get_text_detection(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

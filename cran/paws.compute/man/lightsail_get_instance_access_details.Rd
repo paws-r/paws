@@ -13,9 +13,7 @@ lightsail_get_instance_access_details(instanceName, protocol)
 \item{protocol}{The protocol to use to connect to your instance. Defaults to \code{ssh}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   accessDetails = list(
     certKey = "string",
     expiresAt = as.POSIXct(
@@ -50,7 +48,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns temporary SSH keys you can use to connect to a specific virtual
@@ -61,13 +59,11 @@ control via resource tags applied to the resource identified by
 \verb{instance name}. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_instance_access_details(
+\preformatted{svc$get_instance_access_details(
   instanceName = "string",
   protocol = "ssh"|"rdp"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

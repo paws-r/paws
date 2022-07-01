@@ -21,9 +21,7 @@ operation. For more information, see the \href{https://docs.aws.amazon.com/ses/l
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_template(
+\preformatted{svc$create_template(
   Template = list(
     TemplateName = "string",
     SubjectPart = "string",
@@ -31,7 +29,7 @@ You can execute this operation no more than once per second.
     HtmlPart = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

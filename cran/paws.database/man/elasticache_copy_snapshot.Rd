@@ -28,9 +28,7 @@ in the \emph{Amazon ElastiCache User Guide}.}
 \item{KmsKeyId}{The ID of the KMS key used to encrypt the target snapshot.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Snapshot = list(
     SnapshotName = "string",
     ReplicationGroupId = "string",
@@ -89,7 +87,7 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Makes a copy of an existing snapshot.
@@ -157,15 +155,13 @@ in the ElastiCache User Guide.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_snapshot(
+\preformatted{svc$copy_snapshot(
   SourceSnapshotName = "string",
   TargetSnapshotName = "string",
   TargetBucket = "string",
   KmsKeyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

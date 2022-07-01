@@ -15,9 +15,7 @@ gamelift_create_player_session(GameSessionId, PlayerId, PlayerData)
 not use this data, so it can be formatted as needed for use in the game.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PlayerSession = list(
     PlayerSessionId = "string",
     PlayerId = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
     PlayerData = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Reserves an open player slot in an active game session. Before a player
@@ -68,14 +66,12 @@ returned. Player sessions cannot be updated.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_player_session(
+\preformatted{svc$create_player_session(
   GameSessionId = "string",
   PlayerId = "string",
   PlayerData = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

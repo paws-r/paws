@@ -10,9 +10,7 @@ servicediscovery_get_namespace(Id)
 \item{Id}{[required] The ID of the namespace that you want to get information about.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Namespace = list(
     Id = "string",
     Arn = "string",
@@ -34,18 +32,16 @@ A list with the following syntax:
     CreatorRequestId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a namespace.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_namespace(
+\preformatted{svc$get_namespace(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

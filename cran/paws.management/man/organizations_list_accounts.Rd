@@ -25,9 +25,7 @@ maximum even when there are more results available. You should check
 results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Accounts = list(
     list(
       Id = "string",
@@ -43,7 +41,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all the accounts in the organization. To request only the accounts
@@ -62,13 +60,11 @@ account or by a member account that is a delegated administrator for an
 AWS service.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_accounts(
+\preformatted{svc$list_accounts(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

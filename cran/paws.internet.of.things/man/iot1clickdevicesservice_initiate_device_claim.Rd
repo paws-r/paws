@@ -10,12 +10,10 @@ iot1clickdevicesservice_initiate_device_claim(DeviceId)
 \item{DeviceId}{[required] The unique identifier of the device.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   State = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Given a device ID, initiates a claim request for the associated device.
@@ -25,12 +23,10 @@ device event, and finalizing the claim. For a device of type button, a
 device event can be published by simply clicking the device.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$initiate_device_claim(
+\preformatted{svc$initiate_device_claim(
   DeviceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

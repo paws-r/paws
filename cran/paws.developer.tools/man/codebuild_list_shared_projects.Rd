@@ -34,30 +34,26 @@ this operation with each subsequent next token that is returned, until
 no more next tokens are returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   nextToken = "string",
   projects = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of projects that are shared with other AWS accounts or
 users.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_shared_projects(
+\preformatted{svc$list_shared_projects(
   sortBy = "ARN"|"MODIFIED_TIME",
   sortOrder = "ASCENDING"|"DESCENDING",
   maxResults = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

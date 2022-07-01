@@ -25,12 +25,10 @@ database and tables that are automatically created for your
 \code{OfflineStore} are not deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_feature_group(
+\preformatted{svc$delete_feature_group(
   FeatureGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

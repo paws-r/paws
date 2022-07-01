@@ -10,9 +10,7 @@ applicationinsights_describe_observation(ObservationId)
 \item{ObservationId}{[required] The ID of the observation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Observation = list(
     Id = "string",
     StartTime = as.POSIXct(
@@ -67,18 +65,16 @@ A list with the following syntax:
     XRayNodeType = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes an anomaly or error with the application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_observation(
+\preformatted{svc$describe_observation(
   ObservationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -21,9 +21,7 @@ results.}
 \item{Limit}{The maximum number of results to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Archives = list(
     list(
       ArchiveName = "string",
@@ -40,7 +38,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists your archives. You can either list all the archives or you can
@@ -48,16 +46,14 @@ provide a prefix to match to the archive names. Filter parameters are
 exclusive.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_archives(
+\preformatted{svc$list_archives(
   NamePrefix = "string",
   EventSourceArn = "string",
   State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
   NextToken = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

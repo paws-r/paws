@@ -20,9 +20,7 @@ previous call.)}
 \item{PageSize}{The maximum number of results to return with this call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TargetGroups = list(
     list(
       TargetGroupArn = "string",
@@ -51,7 +49,7 @@ A list with the following syntax:
   ),
   NextMarker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified target groups or all of your target groups. By
@@ -61,9 +59,7 @@ balancer, the names of one or more target groups, or the ARNs of one or
 more target groups.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_target_groups(
+\preformatted{svc$describe_target_groups(
   LoadBalancerArn = "string",
   TargetGroupArns = list(
     "string"
@@ -74,7 +70,7 @@ more target groups.
   Marker = "string",
   PageSize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -36,9 +36,7 @@ of the template.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EmailTemplateResponse = list(
     Arn = "string",
     CreationDate = "string",
@@ -57,20 +55,18 @@ A list with the following syntax:
     Version = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the content and settings of a message template for messages
 that are sent through the email channel.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_email_template(
+\preformatted{svc$get_email_template(
   TemplateName = "string",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

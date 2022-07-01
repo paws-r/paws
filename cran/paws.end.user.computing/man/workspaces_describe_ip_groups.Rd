@@ -15,9 +15,7 @@ provide this token to receive the next set of results.}
 \item{MaxResults}{The maximum number of items to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Result = list(
     list(
       groupId = "string",
@@ -33,22 +31,20 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your IP access control groups.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_ip_groups(
+\preformatted{svc$describe_ip_groups(
   GroupIds = list(
     "string"
   ),
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

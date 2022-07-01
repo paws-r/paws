@@ -37,12 +37,10 @@ information, see \href{https://docs.aws.amazon.com/config/latest/developerguide/
 pack while deploying a conformance pack.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OrganizationConformancePackArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deploys conformance packs across member accounts in an AWS Organization.
@@ -76,9 +74,7 @@ You can create 6 conformance packs with 25 AWS Config rules in each pack
 and 3 delegated administrator per organization.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_organization_conformance_pack(
+\preformatted{svc$put_organization_conformance_pack(
   OrganizationConformancePackName = "string",
   TemplateS3Uri = "string",
   TemplateBody = "string",
@@ -94,7 +90,7 @@ and 3 delegated administrator per organization.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

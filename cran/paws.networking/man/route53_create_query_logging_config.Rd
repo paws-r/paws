@@ -23,9 +23,7 @@ API action, the
 command, or the applicable command in one of the AWS SDKs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   QueryLoggingConfig = list(
     Id = "string",
     HostedZoneId = "string",
@@ -33,7 +31,7 @@ A list with the following syntax:
   ),
   Location = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a configuration for DNS query logging. After you create a query
@@ -151,13 +149,11 @@ delete the query logging configuration. For more information, see
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_query_logging_config(
+\preformatted{svc$create_query_logging_config(
   HostedZoneId = "string",
   CloudWatchLogsLogGroupArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

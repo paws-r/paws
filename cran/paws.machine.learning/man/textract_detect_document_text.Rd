@@ -15,9 +15,7 @@ If you're using an AWS SDK to call Amazon Textract, you might not need
 to base64-encode image bytes that are passed using the \code{Bytes} field.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DocumentMetadata = list(
     Pages = 123
   ),
@@ -63,7 +61,7 @@ A list with the following syntax:
   ),
   DetectDocumentTextModelVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Detects text in the input document. Amazon Textract can detect lines of
@@ -85,9 +83,7 @@ operation. To analyze documents asynchronously, use
 For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html}{Document Text Detection}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_document_text(
+\preformatted{svc$detect_document_text(
   Document = list(
     Bytes = raw,
     S3Object = list(
@@ -97,7 +93,7 @@ For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/h
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

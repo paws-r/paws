@@ -10,24 +10,20 @@ elasticbeanstalk_check_dns_availability(CNAMEPrefix)
 \item{CNAMEPrefix}{[required] The prefix used when this CNAME is reserved.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Available = TRUE|FALSE,
   FullyQualifiedCNAME = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Checks if the specified CNAME is available.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$check_dns_availability(
+\preformatted{svc$check_dns_availability(
   CNAMEPrefix = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

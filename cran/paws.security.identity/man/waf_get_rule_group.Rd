@@ -12,16 +12,14 @@ is returned by \code{\link[=waf_create_rule_group]{create_rule_group}} and by
 \code{\link[=waf_list_rule_groups]{list_rule_groups}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RuleGroup = list(
     RuleGroupId = "string",
     Name = "string",
     MetricName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -40,12 +38,10 @@ To view the rules in a rule group, use
 \code{\link[=waf_list_activated_rules_in_rule_group]{list_activated_rules_in_rule_group}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_rule_group(
+\preformatted{svc$get_rule_group(
   RuleGroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

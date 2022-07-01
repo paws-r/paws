@@ -30,12 +30,10 @@ values of \code{STOP_FAILED} can indicate an error condition.
 No response is returned from this call.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_server(
+\preformatted{svc$stop_server(
   ServerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

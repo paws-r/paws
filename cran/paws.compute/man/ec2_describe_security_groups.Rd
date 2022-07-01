@@ -89,9 +89,7 @@ the remaining results, make another request with the returned
 parameter is not specified, then all results are returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SecurityGroups = list(
     list(
       Description = "string",
@@ -181,7 +179,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified security groups or all of your security groups.
@@ -192,9 +190,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide} and \href{https://docs.aws
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_security_groups(
+\preformatted{svc$describe_security_groups(
   Filters = list(
     list(
       Name = "string",
@@ -213,7 +209,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

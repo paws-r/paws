@@ -19,13 +19,11 @@ Deletes the IPSet specified by the \code{ipSetId}. IPSets are called trusted
 IP lists in the console user interface.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_ip_set(
+\preformatted{svc$delete_ip_set(
   DetectorId = "string",
   IpSetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

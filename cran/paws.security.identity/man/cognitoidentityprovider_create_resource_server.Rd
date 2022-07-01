@@ -20,9 +20,7 @@ be an HTTPS endpoint where the resource server is located. For example,
 \code{description}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourceServer = list(
     UserPoolId = "string",
     Identifier = "string",
@@ -35,15 +33,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new OAuth2.0 resource server and defines custom scopes in it.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_resource_server(
+\preformatted{svc$create_resource_server(
   UserPoolId = "string",
   Identifier = "string",
   Name = "string",
@@ -54,7 +50,7 @@ Creates a new OAuth2.0 resource server and defines custom scopes in it.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

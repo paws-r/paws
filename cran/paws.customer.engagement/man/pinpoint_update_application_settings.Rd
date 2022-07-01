@@ -14,9 +14,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{WriteApplicationSettingsRequest}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationSettingsResource = list(
     ApplicationId = "string",
     CampaignHook = list(
@@ -37,15 +35,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the settings for an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_application_settings(
+\preformatted{svc$update_application_settings(
   ApplicationId = "string",
   WriteApplicationSettingsRequest = list(
     CampaignHook = list(
@@ -67,7 +63,7 @@ Updates the settings for an application.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

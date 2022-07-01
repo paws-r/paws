@@ -12,9 +12,7 @@ neptune_start_db_cluster(DBClusterIdentifier)
 parameter is stored as a lowercase string.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBCluster = list(
     AllocatedStorage = 123,
     AvailabilityZones = list(
@@ -90,19 +88,17 @@ A list with the following syntax:
     DeletionProtection = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts an Amazon Neptune DB cluster that was stopped using the AWS
 console, the AWS CLI stop-db-cluster command, or the StopDBCluster API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_db_cluster(
+\preformatted{svc$start_db_cluster(
   DBClusterIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -22,12 +22,10 @@ back when calling
 to confirm that you own or have access to the endpoint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$confirm_topic_rule_destination(
+\preformatted{svc$confirm_topic_rule_destination(
   confirmationToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

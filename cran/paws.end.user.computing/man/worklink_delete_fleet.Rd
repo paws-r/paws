@@ -17,12 +17,10 @@ Deletes a fleet. Prevents users from accessing previously associated
 websites.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_fleet(
+\preformatted{svc$delete_fleet(
   FleetArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

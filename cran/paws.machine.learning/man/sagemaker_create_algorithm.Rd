@@ -54,21 +54,17 @@ resources in different ways, for example, by purpose, owner, or
 environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AlgorithmArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create a machine learning algorithm that you can use in Amazon SageMaker
 and list in the AWS Marketplace.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_algorithm(
+\preformatted{svc$create_algorithm(
   AlgorithmName = "string",
   AlgorithmDescription = "string",
   TrainingSpecification = list(
@@ -249,7 +245,7 @@ and list in the AWS Marketplace.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

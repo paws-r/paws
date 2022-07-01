@@ -21,14 +21,12 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GroupName = "string",
   PolicyName = "string",
   PolicyDocument = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the specified inline policy document that is embedded in the
@@ -50,13 +48,11 @@ For more information about policies, see \href{https://docs.aws.amazon.com/IAM/l
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_group_policy(
+\preformatted{svc$get_group_policy(
   GroupName = "string",
   PolicyName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

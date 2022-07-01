@@ -16,9 +16,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TransitGatewayRouteTable = list(
     TransitGatewayRouteTableId = "string",
     TransitGatewayId = "string",
@@ -36,7 +34,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified transit gateway route table. You must disassociate
@@ -44,13 +42,11 @@ the route table from any transit gateway route tables before you can
 delete it.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_transit_gateway_route_table(
+\preformatted{svc$delete_transit_gateway_route_table(
   TransitGatewayRouteTableId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

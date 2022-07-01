@@ -27,9 +27,7 @@ This operation requires permission for the
 \code{elasticfilesystem:CreateTags} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_tags(
+\preformatted{svc$create_tags(
   FileSystemId = "string",
   Tags = list(
     list(
@@ -38,7 +36,7 @@ This operation requires permission for the
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -57,9 +57,7 @@ possible. However, a small delay might occur.
 For more information about VPC security group limits, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html}{Amazon VPC Limits}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$authorize_security_group_egress(
+\preformatted{svc$authorize_security_group_egress(
   DryRun = TRUE|FALSE,
   GroupId = "string",
   IpPermissions = list(
@@ -105,7 +103,7 @@ For more information about VPC security group limits, see \href{https://docs.aws
   SourceSecurityGroupName = "string",
   SourceSecurityGroupOwnerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

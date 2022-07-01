@@ -17,9 +17,7 @@ Cognito. This is the ID of the pool to modify.}
 \item{CognitoStreams}{Options to apply to this identity pool for Amazon Cognito streams.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IdentityPoolId = "string",
   PushSync = list(
     ApplicationArns = list(
@@ -33,7 +31,7 @@ A list with the following syntax:
     StreamingStatus = "ENABLED"|"DISABLED"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sets the necessary configuration for push sync.
@@ -43,9 +41,7 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_identity_pool_configuration(
+\preformatted{svc$set_identity_pool_configuration(
   IdentityPoolId = "string",
   PushSync = list(
     ApplicationArns = list(
@@ -59,7 +55,7 @@ Identity.
     StreamingStatus = "ENABLED"|"DISABLED"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

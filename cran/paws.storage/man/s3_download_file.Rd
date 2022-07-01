@@ -98,14 +98,12 @@ This is a wrapper function for \code{\link[=s3_get_object]{get_object}} that wil
 write the downloaded object to the file location specified.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$download_file(
+\preformatted{svc$download_file(
   Bucket = "string",
   Key = "string",
   Filename = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

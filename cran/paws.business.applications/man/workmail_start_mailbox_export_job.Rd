@@ -29,12 +29,10 @@ Service (AWS KMS) key that encrypts the exported mailbox content.}
 \item{S3Prefix}{[required] The S3 bucket prefix.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a mailbox export job to export MIME-format email messages and
@@ -43,9 +41,7 @@ Storage Service (Amazon S3) bucket. For more information, see \href{https://docs
 in the \emph{Amazon WorkMail Administrator Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_mailbox_export_job(
+\preformatted{svc$start_mailbox_export_job(
   ClientToken = "string",
   OrganizationId = "string",
   EntityId = "string",
@@ -55,7 +51,7 @@ in the \emph{Amazon WorkMail Administrator Guide}.
   S3BucketName = "string",
   S3Prefix = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

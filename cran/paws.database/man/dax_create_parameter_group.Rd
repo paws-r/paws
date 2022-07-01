@@ -13,28 +13,24 @@ replication group.}
 \item{Description}{A description of the parameter group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ParameterGroup = list(
     ParameterGroupName = "string",
     Description = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new parameter group. A parameter group is a collection of
 parameters that you apply to all of the nodes in a DAX cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_parameter_group(
+\preformatted{svc$create_parameter_group(
   ParameterGroupName = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,12 +11,10 @@ ssm_terminate_session(SessionId)
 \item{SessionId}{[required] The ID of the session to terminate.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SessionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Permanently ends a session and closes the data connection between the
@@ -24,12 +22,10 @@ Session Manager client and SSM Agent on the instance. A terminated
 session cannot be resumed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$terminate_session(
+\preformatted{svc$terminate_session(
   SessionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

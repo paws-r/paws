@@ -17,15 +17,13 @@ iot_list_policy_principals(policyName, marker, pageSize, ascendingOrder)
 ascending creation order.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   principals = list(
     "string"
   ),
   nextMarker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the principals associated with the specified policy.
@@ -34,15 +32,13 @@ Lists the principals associated with the specified policy.
 \code{\link[=iot_list_targets_for_policy]{list_targets_for_policy}} instead.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_policy_principals(
+\preformatted{svc$list_policy_principals(
   policyName = "string",
   marker = "string",
   pageSize = 123,
   ascendingOrder = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -21,9 +21,7 @@ Sets tags (key and value pairs) to the assessment template that is
 specified by the ARN of the assessment template.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_tags_for_resource(
+\preformatted{svc$set_tags_for_resource(
   resourceArn = "string",
   tags = list(
     list(
@@ -32,7 +30,7 @@ specified by the ARN of the assessment template.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

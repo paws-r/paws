@@ -18,9 +18,7 @@ policy is applied.}
 \item{AutoScalingPolicy}{[required] Specifies the definition of the automatic scaling policy.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClusterId = "string",
   InstanceGroupId = "string",
   AutoScalingPolicy = list(
@@ -70,7 +68,7 @@ A list with the following syntax:
   ),
   ClusterArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates or updates an automatic scaling policy for a core instance group
@@ -79,9 +77,7 @@ policy defines how an instance group dynamically adds and terminates EC2
 instances in response to the value of a CloudWatch metric.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_auto_scaling_policy(
+\preformatted{svc$put_auto_scaling_policy(
   ClusterId = "string",
   InstanceGroupId = "string",
   AutoScalingPolicy = list(
@@ -123,7 +119,7 @@ instances in response to the value of a CloudWatch metric.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

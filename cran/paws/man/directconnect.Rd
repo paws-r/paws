@@ -28,9 +28,7 @@ Regions can only be accessed through locations associated with those
 Regions.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- directconnect(
+\preformatted{svc <- directconnect(
   config = list(
     credentials = list(
       creds = list(
@@ -44,7 +42,7 @@ Regions.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

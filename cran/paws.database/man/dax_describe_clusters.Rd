@@ -23,9 +23,7 @@ the response includes only results beyond the token, up to the value
 specified by \code{MaxResults}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Clusters = list(
     list(
@@ -84,7 +82,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about all provisioned DAX clusters if no cluster
@@ -106,16 +104,14 @@ If nodes are currently being removed from the DAX cluster, no endpoint
 information for the removed nodes is displayed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_clusters(
+\preformatted{svc$describe_clusters(
   ClusterNames = list(
     "string"
   ),
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -22,13 +22,11 @@ The static route allows traffic to be routed from the virtual private
 gateway to the VPN customer gateway.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vpn_connection_route(
+\preformatted{svc$delete_vpn_connection_route(
   DestinationCidrBlock = "string",
   VpnConnectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

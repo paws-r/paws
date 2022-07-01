@@ -15,9 +15,7 @@ position of the configuration set in the configuration set list.}
 \item{MaxItems}{The number of configuration sets to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConfigurationSets = list(
     list(
       Name = "string"
@@ -25,7 +23,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides a list of the configuration sets associated with your Amazon
@@ -42,13 +40,11 @@ operation again, passing the \code{NextToken} parameter and the value of the
 NextToken element to retrieve additional results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_configuration_sets(
+\preformatted{svc$list_configuration_sets(
   NextToken = "string",
   MaxItems = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

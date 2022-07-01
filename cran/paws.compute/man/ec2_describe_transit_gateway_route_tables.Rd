@@ -37,9 +37,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TransitGatewayRouteTables = list(
     list(
       TransitGatewayRouteTableId = "string",
@@ -60,7 +58,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more transit gateway route tables. By default, all
@@ -68,9 +66,7 @@ transit gateway route tables are described. Alternatively, you can
 filter the results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_transit_gateway_route_tables(
+\preformatted{svc$describe_transit_gateway_route_tables(
   TransitGatewayRouteTableIds = list(
     "string"
   ),
@@ -86,7 +82,7 @@ filter the results.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

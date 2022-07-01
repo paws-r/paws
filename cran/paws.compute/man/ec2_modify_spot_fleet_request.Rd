@@ -25,12 +25,10 @@ Fleet request, then omit this parameter.}
 \item{OnDemandTargetCapacity}{The number of On-Demand Instances in the fleet.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the specified Spot Fleet request.
@@ -68,9 +66,7 @@ If you are finished with your Spot Fleet for now, but will use it again
 later, you can set the target capacity to 0.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_spot_fleet_request(
+\preformatted{svc$modify_spot_fleet_request(
   ExcessCapacityTerminationPolicy = "noTermination"|"default",
   LaunchTemplateConfigs = list(
     list(
@@ -95,7 +91,7 @@ later, you can set the target capacity to 0.
   TargetCapacity = 123,
   OnDemandTargetCapacity = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -33,9 +33,7 @@ Sets permissions for a user, group, or resource. This replaces any
 pre-existing permissions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_mailbox_permissions(
+\preformatted{svc$put_mailbox_permissions(
   OrganizationId = "string",
   EntityId = "string",
   GranteeId = "string",
@@ -43,7 +41,7 @@ pre-existing permissions.
     "FULL_ACCESS"|"SEND_AS"|"SEND_ON_BEHALF"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

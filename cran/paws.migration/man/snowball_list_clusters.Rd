@@ -14,9 +14,7 @@ list of \code{ClusterListEntry} objects, you have the option of specifying
 \code{NextToken} as the starting point for your returned list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClusterListEntries = list(
     list(
       ClusterId = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns an array of \code{ClusterListEntry} objects of the specified length.
@@ -37,13 +35,11 @@ Each \code{ClusterListEntry} object contains a cluster's state, a cluster's
 ID, and other important status information.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_clusters(
+\preformatted{svc$list_clusters(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

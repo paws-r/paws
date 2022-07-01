@@ -14,12 +14,10 @@ storagegateway_cancel_archival(GatewayARN, TapeARN)
 archiving for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TapeARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Cancels archiving of a virtual tape to the virtual tape shelf (VTS)
@@ -27,13 +25,11 @@ after the archiving process is initiated. This operation is only
 supported in the tape gateway type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_archival(
+\preformatted{svc$cancel_archival(
   GatewayARN = "string",
   TapeARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

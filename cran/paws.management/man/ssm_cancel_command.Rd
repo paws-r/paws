@@ -22,15 +22,13 @@ guarantee that the command will be terminated and the underlying process
 stopped.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_command(
+\preformatted{svc$cancel_command(
   CommandId = "string",
   InstanceIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

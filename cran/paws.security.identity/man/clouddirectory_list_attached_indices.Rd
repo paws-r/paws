@@ -19,9 +19,7 @@ clouddirectory_list_attached_indices(DirectoryArn, TargetReference,
 \item{ConsistencyLevel}{The consistency level to use for this operation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IndexAttachments = list(
     list(
       IndexedAttributes = list(
@@ -47,15 +45,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists indices attached to the specified object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_attached_indices(
+\preformatted{svc$list_attached_indices(
   DirectoryArn = "string",
   TargetReference = list(
     Selector = "string"
@@ -64,7 +60,7 @@ Lists indices attached to the specified object.
   MaxResults = 123,
   ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

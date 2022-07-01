@@ -12,9 +12,7 @@ iot_list_provisioning_templates(maxResults, nextToken)
 \item{nextToken}{A token to retrieve the next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   templates = list(
     list(
       templateArn = "string",
@@ -31,19 +29,17 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the fleet provisioning templates in your AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_provisioning_templates(
+\preformatted{svc$list_provisioning_templates(
   maxResults = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

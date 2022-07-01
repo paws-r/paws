@@ -39,9 +39,7 @@ jobs whose name contains the specified string.}
 \item{StatusEquals}{A filter that retrieves only labeling jobs with a specific status.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LabelingJobSummaryList = list(
     list(
       LabelingJobName = "string",
@@ -87,15 +85,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of labeling jobs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_labeling_jobs(
+\preformatted{svc$list_labeling_jobs(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),
@@ -115,7 +111,7 @@ Gets a list of labeling jobs.
   SortOrder = "Ascending"|"Descending",
   StatusEquals = "Initializing"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

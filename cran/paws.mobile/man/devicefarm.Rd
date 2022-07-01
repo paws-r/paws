@@ -33,9 +33,7 @@ information, see the \href{https://docs.aws.amazon.com/devicefarm/latest/develop
 }
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- devicefarm(
+\preformatted{svc <- devicefarm(
   config = list(
     credentials = list(
       creds = list(
@@ -49,7 +47,7 @@ information, see the \href{https://docs.aws.amazon.com/devicefarm/latest/develop
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

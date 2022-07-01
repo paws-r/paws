@@ -221,9 +221,7 @@ For more information on expression attribute values, see \href{https://docs.aws.
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attributes = list(
     list(
       S = "string",
@@ -303,7 +301,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Edits an existing item's attributes, or adds a new item to the table if
@@ -317,9 +315,7 @@ You can also return the item's attribute values in the same
 parameter.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_item(
+\preformatted{svc$update_item(
   TableName = "string",
   Key = list(
     list(
@@ -458,7 +454,7 @@ parameter.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

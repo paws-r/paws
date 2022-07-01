@@ -25,9 +25,7 @@ parameter to get the next set of results.}
 about.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Summaries = list(
     list(
       StackSetName = "string",
@@ -47,21 +45,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns summary information about stack sets that are associated with
 the user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_stack_sets(
+\preformatted{svc$list_stack_sets(
   NextToken = "string",
   MaxResults = 123,
   Status = "ACTIVE"|"DELETED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

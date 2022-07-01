@@ -116,16 +116,14 @@ For more information, see \href{https://docs.aws.amazon.com/kms/latest/developer
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CiphertextBlob = raw,
   SourceKeyId = "string",
   KeyId = "string",
   SourceEncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256",
   DestinationEncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Decrypts ciphertext and then reencrypts it entirely within AWS KMS. You
@@ -217,9 +215,7 @@ create a CMK programmatically or when you use the
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$re_encrypt(
+\preformatted{svc$re_encrypt(
   CiphertextBlob = raw,
   SourceEncryptionContext = list(
     "string"
@@ -235,7 +231,7 @@ create a CMK programmatically or when you use the
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

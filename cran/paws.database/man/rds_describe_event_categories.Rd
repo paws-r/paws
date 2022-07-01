@@ -16,9 +16,7 @@ Valid values: \code{db-instance} | \code{db-cluster} | \code{db-parameter-group}
 \item{Filters}{This parameter isn't currently supported.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventCategoriesMapList = list(
     list(
       SourceType = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Displays a list of categories for all event source types, or, if
@@ -38,9 +36,7 @@ categories and source types in
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_categories(
+\preformatted{svc$describe_event_categories(
   SourceType = "string",
   Filters = list(
     list(
@@ -51,7 +47,7 @@ in the \emph{Amazon RDS User Guide.}
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

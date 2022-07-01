@@ -40,9 +40,7 @@ An empty list.
 Updates the settings of a data set.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_dataset(
+\preformatted{svc$update_dataset(
   datasetName = "string",
   actions = list(
     list(
@@ -130,7 +128,7 @@ Updates the settings of a data set.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

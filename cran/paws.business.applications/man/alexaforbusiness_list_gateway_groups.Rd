@@ -14,9 +14,7 @@ summaries.}
 50.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayGroups = list(
     list(
       Arn = "string",
@@ -26,20 +24,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list of gateway group summaries. Use GetGatewayGroup to
 retrieve details of a specific gateway group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_gateway_groups(
+\preformatted{svc$list_gateway_groups(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

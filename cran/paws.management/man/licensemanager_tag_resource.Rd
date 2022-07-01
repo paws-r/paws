@@ -18,9 +18,7 @@ An empty list.
 Adds the specified tags to the specified license configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(
@@ -29,7 +27,7 @@ Adds the specified tags to the specified license configuration.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

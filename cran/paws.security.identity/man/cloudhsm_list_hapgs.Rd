@@ -12,15 +12,13 @@ cloudhsm_list_hapgs(NextToken)
 call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HapgList = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -38,12 +36,10 @@ response contains a token that you pass in the next call to
 \code{\link[=cloudhsm_list_hapgs]{list_hapgs}} to retrieve the next set of items.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_hapgs(
+\preformatted{svc$list_hapgs(
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

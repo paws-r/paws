@@ -12,9 +12,7 @@ StartRxNormInferenceJob operation returns this identifier in its
 response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ComprehendMedicalAsyncJobProperties = list(
     JobId = "string",
     JobName = "string",
@@ -44,19 +42,17 @@ A list with the following syntax:
     ModelVersion = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the properties associated with an InferRxNorm job. Use this
 operation to get the status of an inference job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_rx_norm_inference_job(
+\preformatted{svc$describe_rx_norm_inference_job(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

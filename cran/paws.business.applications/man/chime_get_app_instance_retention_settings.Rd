@@ -10,9 +10,7 @@ chime_get_app_instance_retention_settings(AppInstanceArn)
 \item{AppInstanceArn}{[required] The ARN of the app instance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AppInstanceRetentionSettings = list(
     ChannelRetentionSettings = list(
       RetentionDays = 123
@@ -22,18 +20,16 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the retention settings for an app instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_app_instance_retention_settings(
+\preformatted{svc$get_app_instance_retention_settings(
   AppInstanceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

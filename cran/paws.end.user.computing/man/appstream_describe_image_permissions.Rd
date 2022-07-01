@@ -21,9 +21,7 @@ is shared.}
 this operation. If this value is null, it retrieves the first page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Name = "string",
   SharedImagePermissionsList = list(
     list(
@@ -36,16 +34,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list that describes the permissions for shared AWS account
 IDs on a private image that you own.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_image_permissions(
+\preformatted{svc$describe_image_permissions(
   Name = "string",
   MaxResults = 123,
   SharedAwsAccountIds = list(
@@ -53,7 +49,7 @@ IDs on a private image that you own.
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

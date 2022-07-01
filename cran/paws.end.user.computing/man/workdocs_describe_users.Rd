@@ -32,9 +32,7 @@ previous call.)}
 the user storage quota and utilization information.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Users = list(
     list(
       Id = "string",
@@ -67,7 +65,7 @@ A list with the following syntax:
   TotalNumberOfUsers = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified users. You can describe all users or filter the
@@ -78,9 +76,7 @@ users. If there are more results, the response includes a marker that
 you can use to request the next set of results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_users(
+\preformatted{svc$describe_users(
   AuthenticationToken = "string",
   OrganizationId = "string",
   UserIds = "string",
@@ -92,7 +88,7 @@ you can use to request the next set of results.
   Limit = 123,
   Fields = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

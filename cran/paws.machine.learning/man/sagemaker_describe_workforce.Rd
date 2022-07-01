@@ -14,9 +14,7 @@ sagemaker_describe_workforce(WorkforceName)
 created and cannot be modified.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Workforce = list(
     WorkforceName = "string",
     WorkforceArn = "string",
@@ -47,7 +45,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists private workforce information, including workforce name, Amazon
@@ -59,12 +57,10 @@ access tasks.
 This operation applies only to private workforces.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_workforce(
+\preformatted{svc$describe_workforce(
   WorkforceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

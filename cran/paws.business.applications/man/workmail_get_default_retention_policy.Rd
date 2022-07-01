@@ -10,9 +10,7 @@ workmail_get_default_retention_policy(OrganizationId)
 \item{OrganizationId}{[required] The organization ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Id = "string",
   Name = "string",
   Description = "string",
@@ -24,19 +22,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the default retention policy details for the specified
 organization.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_default_retention_policy(
+\preformatted{svc$get_default_retention_policy(
   OrganizationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

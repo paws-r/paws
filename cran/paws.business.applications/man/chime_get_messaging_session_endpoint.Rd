@@ -7,23 +7,19 @@
 chime_get_messaging_session_endpoint()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Endpoint = list(
     Url = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The endpoint for the messaging session.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_messaging_session_endpoint()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_messaging_session_endpoint()
+}
 }
 
 \keyword{internal}

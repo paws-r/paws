@@ -18,15 +18,13 @@ for.}
 \item{StreamName}{The name of the stream that you want to list tags for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of tags associated with the specified stream.
@@ -35,14 +33,12 @@ In the request, you must specify either the \code{StreamName} or the
 \code{StreamARN}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_stream(
+\preformatted{svc$list_tags_for_stream(
   NextToken = "string",
   StreamARN = "string",
   StreamName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

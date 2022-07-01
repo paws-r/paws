@@ -19,9 +19,7 @@ need to be unique.}
 the alias.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Alias = list(
     AliasId = "string",
     Name = "string",
@@ -40,7 +38,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates properties for an alias. To update properties, specify the alias
@@ -57,9 +55,7 @@ successful, the updated alias record is returned.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_alias(
+\preformatted{svc$update_alias(
   AliasId = "string",
   Name = "string",
   Description = "string",
@@ -69,7 +65,7 @@ successful, the updated alias record is returned.
     Message = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

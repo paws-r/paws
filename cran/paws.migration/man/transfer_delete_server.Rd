@@ -18,12 +18,10 @@ Deletes the file transfer protocol-enabled server that you specify.
 No response returns from this operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_server(
+\preformatted{svc$delete_server(
   ServerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

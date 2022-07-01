@@ -25,13 +25,11 @@ and used for the update. The default is \code{true}.
 Valid Values: \code{true} | \code{false}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FileShareARN = "string",
   NotificationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Refreshes the cache for the specified file share. This operation finds
@@ -66,16 +64,14 @@ For more information, see \href{https://docs.aws.amazon.com/storagegateway/index
 in the \emph{AWS Storage Gateway User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$refresh_cache(
+\preformatted{svc$refresh_cache(
   FileShareARN = "string",
   FolderList = list(
     "string"
   ),
   Recursive = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

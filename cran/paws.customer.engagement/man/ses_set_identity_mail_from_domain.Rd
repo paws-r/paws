@@ -45,14 +45,12 @@ update an SPF record. For more information, see the \href{https://docs.aws.amazo
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_identity_mail_from_domain(
+\preformatted{svc$set_identity_mail_from_domain(
   Identity = "string",
   MailFromDomain = "string",
   BehaviorOnMXFailure = "UseDefaultValue"|"RejectMessage"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

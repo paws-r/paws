@@ -10,23 +10,19 @@ glue_delete_workflow(Name)
 \item{Name}{[required] Name of the workflow to be deleted.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a workflow.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_workflow(
+\preformatted{svc$delete_workflow(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,9 +23,7 @@ classic resize process. If you don't provide this parameter or set the
 value to \code{false}, the resize type is elastic.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Cluster = list(
     ClusterIdentifier = "string",
     NodeType = "string",
@@ -182,7 +180,7 @@ A list with the following syntax:
     ClusterNamespaceArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes the size of the cluster. You can change the cluster's type, or
@@ -210,16 +208,14 @@ cluster.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$resize_cluster(
+\preformatted{svc$resize_cluster(
   ClusterIdentifier = "string",
   ClusterType = "string",
   NodeType = "string",
   NumberOfNodes = 123,
   Classic = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

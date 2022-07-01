@@ -13,27 +13,23 @@ must be greater than 10 else it wont be honored.}
 \item{NextToken}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ElasticsearchVersions = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List all supported Elasticsearch versions
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_elasticsearch_versions(
+\preformatted{svc$list_elasticsearch_versions(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

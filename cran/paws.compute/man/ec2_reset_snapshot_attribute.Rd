@@ -27,14 +27,12 @@ For more information about modifying snapshot permissions, see \href{https://doc
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_snapshot_attribute(
+\preformatted{svc$reset_snapshot_attribute(
   Attribute = "productCodes"|"createVolumePermission",
   SnapshotId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

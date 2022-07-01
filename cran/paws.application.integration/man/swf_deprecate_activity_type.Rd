@@ -50,16 +50,14 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deprecate_activity_type(
+\preformatted{svc$deprecate_activity_type(
   domain = "string",
   activityType = list(
     name = "string",
     version = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

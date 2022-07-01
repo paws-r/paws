@@ -10,9 +10,7 @@ personalize_describe_schema(schemaArn)
 \item{schemaArn}{[required] The Amazon Resource Name (ARN) of the schema to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   schema = list(
     name = "string",
     schemaArn = "string",
@@ -25,19 +23,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a schema. For more information on schemas, see
 \code{\link[=personalize_create_schema]{create_schema}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_schema(
+\preformatted{svc$describe_schema(
   schemaArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,12 +19,10 @@ CloudWatch Logs. These access logs are not saved and are not
 retrievable.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_access_logging(
+\preformatted{svc$stop_access_logging(
   ContainerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

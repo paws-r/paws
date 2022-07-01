@@ -25,9 +25,7 @@ items is more than the value specified in \code{MaxResults}, then a
 pagination.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HumanTaskUiSummaries = list(
     list(
       HumanTaskUiName = "string",
@@ -39,16 +37,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the human task user interfaces in your
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_human_task_uis(
+\preformatted{svc$list_human_task_uis(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),
@@ -59,7 +55,7 @@ account.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

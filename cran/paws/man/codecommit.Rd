@@ -267,9 +267,7 @@ data to the trigger target.
 For information about how to use AWS CodeCommit, see the \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{AWS CodeCommit User Guide}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- codecommit(
+\preformatted{svc <- codecommit(
   config = list(
     credentials = list(
       creds = list(
@@ -283,7 +281,7 @@ For information about how to use AWS CodeCommit, see the \href{https://docs.aws.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

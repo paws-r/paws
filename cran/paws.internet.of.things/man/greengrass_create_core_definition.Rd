@@ -17,9 +17,7 @@ greengrass_create_core_definition(AmznClientToken, InitialVersion, Name,
 \item{tags}{Tag(s) to add to the new resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
   LatestVersionArn = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a core definition. You may provide the initial version of the
@@ -36,9 +34,7 @@ core definition now or use ''CreateCoreDefinitionVersion'' at a later
 time. Greengrass groups must each contain exactly one Greengrass core.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_core_definition(
+\preformatted{svc$create_core_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     Cores = list(
@@ -55,7 +51,7 @@ time. Greengrass groups must each contain exactly one Greengrass core.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

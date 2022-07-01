@@ -119,9 +119,7 @@ parameter is not used, the operation returns up to 50 results and a
 \item{NextToken}{The token for the next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ScalingPolicies = list(
     list(
       PolicyARN = "string",
@@ -178,7 +176,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the Application Auto Scaling scaling policies for the
@@ -192,9 +190,7 @@ and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/applicat
 in the \emph{Application Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_scaling_policies(
+\preformatted{svc$describe_scaling_policies(
   PolicyNames = list(
     "string"
   ),
@@ -204,7 +200,7 @@ in the \emph{Application Auto Scaling User Guide}.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

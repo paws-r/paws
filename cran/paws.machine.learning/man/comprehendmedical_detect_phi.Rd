@@ -14,9 +14,7 @@ PHI entities. Each string must contain fewer than 20,000 bytes of
 characters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Entities = list(
     list(
       Id = 123,
@@ -56,7 +54,7 @@ A list with the following syntax:
   PaginationToken = "string",
   ModelVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Inspects the clinical text for protected health information (PHI)
@@ -65,12 +63,10 @@ for each entity. Amazon Comprehend Medical only detects entities in
 English language texts.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_phi(
+\preformatted{svc$detect_phi(
   Text = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

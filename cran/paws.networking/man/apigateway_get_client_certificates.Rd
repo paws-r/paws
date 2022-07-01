@@ -13,9 +13,7 @@ apigateway_get_client_certificates(position, limit)
 and the maximum value is 500.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   position = "string",
   items = list(
     list(
@@ -34,19 +32,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a collection of ClientCertificate resources.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_client_certificates(
+\preformatted{svc$get_client_certificates(
   position = "string",
   limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -81,9 +81,7 @@ tags per role, then the entire request fails and the role is not
 created.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Role = list(
     Path = "string",
     RoleName = "string",
@@ -113,7 +111,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new role for your AWS account. For more information about
@@ -123,9 +121,7 @@ more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/ref
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_role(
+\preformatted{svc$create_role(
   Path = "string",
   RoleName = "string",
   AssumeRolePolicyDocument = "string",
@@ -139,7 +135,7 @@ in the \emph{IAM User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

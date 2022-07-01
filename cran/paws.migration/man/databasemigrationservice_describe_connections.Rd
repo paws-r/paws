@@ -27,9 +27,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   Connections = list(
     list(
@@ -42,7 +40,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the status of the connections that have been made between the
@@ -50,9 +48,7 @@ replication instance and an endpoint. Connections are created when you
 test an endpoint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_connections(
+\preformatted{svc$describe_connections(
   Filters = list(
     list(
       Name = "string",
@@ -64,7 +60,7 @@ test an endpoint.
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

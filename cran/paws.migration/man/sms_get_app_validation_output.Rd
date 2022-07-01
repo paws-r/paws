@@ -10,9 +10,7 @@ sms_get_app_validation_output(appId)
 \item{appId}{[required] The ID of the application.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   validationOutputList = list(
     list(
       validationId = "string",
@@ -51,18 +49,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves output from validating an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_app_validation_output(
+\preformatted{svc$get_app_validation_output(
   appId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

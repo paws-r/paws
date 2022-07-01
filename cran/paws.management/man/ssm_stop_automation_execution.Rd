@@ -19,13 +19,11 @@ An empty list.
 Stop an Automation that is currently running.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_automation_execution(
+\preformatted{svc$stop_automation_execution(
   AutomationExecutionId = "string",
   Type = "Complete"|"Cancel"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

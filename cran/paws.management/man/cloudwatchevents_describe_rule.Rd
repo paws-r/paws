@@ -13,9 +13,7 @@ cloudwatchevents_describe_rule(Name, EventBusName)
 this, the default event bus is used.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Name = "string",
   Arn = "string",
   EventPattern = "string",
@@ -27,7 +25,7 @@ A list with the following syntax:
   EventBusName = "string",
   CreatedBy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified rule.
@@ -37,13 +35,11 @@ associated with a rule, use
 \code{\link[=cloudwatchevents_list_targets_by_rule]{list_targets_by_rule}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_rule(
+\preformatted{svc$describe_rule(
   Name = "string",
   EventBusName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

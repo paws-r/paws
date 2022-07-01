@@ -21,12 +21,10 @@ properties can be deleted.}
 SageMaker to perform tasks on your behalf.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ImageArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the properties of a SageMaker image. To change the image's tags,
@@ -34,9 +32,7 @@ use the \code{\link[=sagemaker_add_tags]{add_tags}} and
 \code{\link[=sagemaker_delete_tags]{delete_tags}} APIs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_image(
+\preformatted{svc$update_image(
   DeleteProperties = list(
     "string"
   ),
@@ -45,7 +41,7 @@ use the \code{\link[=sagemaker_add_tags]{add_tags}} and
   ImageName = "string",
   RoleArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

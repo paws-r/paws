@@ -12,9 +12,7 @@ inspector_describe_assessment_targets(assessmentTargetArns)
 describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   assessmentTargets = list(
     list(
       arn = "string",
@@ -35,21 +33,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the assessment targets that are specified by the ARNs of the
 assessment targets.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_assessment_targets(
+\preformatted{svc$describe_assessment_targets(
   assessmentTargetArns = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

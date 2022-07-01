@@ -25,13 +25,11 @@ Deletes the specified constraint.
 A delegated admin is authorized to invoke this command.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_constraint(
+\preformatted{svc$delete_constraint(
   AcceptLanguage = "string",
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

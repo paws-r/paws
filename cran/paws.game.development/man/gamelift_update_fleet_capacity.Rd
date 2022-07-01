@@ -20,12 +20,10 @@ set is 0.}
 set is 1.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FleetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates capacity settings for a fleet. Use this operation to specify the
@@ -72,15 +70,13 @@ desired instance count is higher than the instance type's limit, the
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_fleet_capacity(
+\preformatted{svc$update_fleet_capacity(
   FleetId = "string",
   DesiredInstances = 123,
   MinSize = 123,
   MaxSize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

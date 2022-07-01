@@ -35,12 +35,10 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   KmsKeyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes the default customer master key (CMK) for EBS encryption by
@@ -60,13 +58,11 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_ebs_default_kms_key_id(
+\preformatted{svc$modify_ebs_default_kms_key_id(
   KmsKeyId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

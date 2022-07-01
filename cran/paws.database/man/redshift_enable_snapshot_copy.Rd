@@ -37,9 +37,7 @@ value is -1, the manual snapshot is retained indefinitely.
 The value must be either -1 or an integer between 1 and 3,653.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Cluster = list(
     ClusterIdentifier = "string",
     NodeType = "string",
@@ -196,23 +194,21 @@ A list with the following syntax:
     ClusterNamespaceArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables the automatic copy of snapshots from one region to another
 region for a specified cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_snapshot_copy(
+\preformatted{svc$enable_snapshot_copy(
   ClusterIdentifier = "string",
   DestinationRegion = "string",
   RetentionPeriod = 123,
   SnapshotCopyGrantName = "string",
   ManualSnapshotRetentionPeriod = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

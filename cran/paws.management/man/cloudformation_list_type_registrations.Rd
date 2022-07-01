@@ -39,23 +39,19 @@ there are no remaining results, the previous response object's
 \code{NextToken} parameter is set to \code{null}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RegistrationTokenList = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of registration tokens for the specified type(s).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_type_registrations(
+\preformatted{svc$list_type_registrations(
   Type = "RESOURCE"|"MODULE",
   TypeName = "string",
   TypeArn = "string",
@@ -63,7 +59,7 @@ Returns a list of registration tokens for the specified type(s).
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

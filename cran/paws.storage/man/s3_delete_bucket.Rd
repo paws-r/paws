@@ -28,13 +28,11 @@ can be deleted.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bucket(
+\preformatted{svc$delete_bucket(
   Bucket = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

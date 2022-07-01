@@ -14,9 +14,7 @@ directoryservice_list_tags_for_resource(ResourceId, NextToken, Limit)
 \item{Limit}{Reserved for future use.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -25,20 +23,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all tags on a directory.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceId = "string",
   NextToken = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

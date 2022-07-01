@@ -14,9 +14,7 @@ the AWS account that the analysis is in.}
 of the analysis.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Analysis = list(
     AnalysisId = "string",
     Arn = "string",
@@ -48,19 +46,17 @@ A list with the following syntax:
   Status = 123,
   RequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides a summary of the metadata for an analysis.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_analysis(
+\preformatted{svc$describe_analysis(
   AwsAccountId = "string",
   AnalysisId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

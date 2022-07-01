@@ -36,15 +36,13 @@ push notification services, such as GCM (Firebase Cloud Messaging) and
 APNS. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_endpoint_attributes(
+\preformatted{svc$set_endpoint_attributes(
   EndpointArn = "string",
   Attributes = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

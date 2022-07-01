@@ -11,9 +11,7 @@ resourcegroups_get_group_configuration(Group)
 \item{Group}{The name or the ARN of the resource group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GroupConfiguration = list(
     Configuration = list(
       list(
@@ -45,7 +43,7 @@ A list with the following syntax:
     FailureReason = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the service configuration associated with the specified resource
@@ -59,12 +57,10 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_group_configuration(
+\preformatted{svc$get_group_configuration(
   Group = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

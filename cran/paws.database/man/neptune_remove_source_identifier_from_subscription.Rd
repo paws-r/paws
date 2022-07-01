@@ -17,9 +17,7 @@ source identifier from.}
 group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventSubscription = list(
     CustomerAwsId = "string",
     CustSubscriptionId = "string",
@@ -37,20 +35,18 @@ A list with the following syntax:
     EventSubscriptionArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes a source identifier from an existing event notification
 subscription.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_source_identifier_from_subscription(
+\preformatted{svc$remove_source_identifier_from_subscription(
   SubscriptionName = "string",
   SourceIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

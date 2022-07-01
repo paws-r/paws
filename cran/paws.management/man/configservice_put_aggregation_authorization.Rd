@@ -16,9 +16,7 @@ configservice_put_aggregation_authorization(AuthorizedAccountId,
 \item{Tags}{An array of tag object.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AggregationAuthorization = list(
     AggregationAuthorizationArn = "string",
     AuthorizedAccountId = "string",
@@ -28,16 +26,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Authorizes the aggregator account and region to collect data from the
 source account and region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_aggregation_authorization(
+\preformatted{svc$put_aggregation_authorization(
   AuthorizedAccountId = "string",
   AuthorizedAwsRegion = "string",
   Tags = list(
@@ -47,7 +43,7 @@ source account and region.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

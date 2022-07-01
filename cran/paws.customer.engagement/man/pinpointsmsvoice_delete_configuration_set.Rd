@@ -16,12 +16,10 @@ An empty list.
 Deletes an existing configuration set.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_configuration_set(
+\preformatted{svc$delete_configuration_set(
   ConfigurationSetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

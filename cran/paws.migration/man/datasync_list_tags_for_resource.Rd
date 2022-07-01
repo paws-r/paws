@@ -15,9 +15,7 @@ datasync_list_tags_for_resource(ResourceArn, MaxResults, NextToken)
 list of locations.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -26,20 +24,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns all the tags associated with a specified resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

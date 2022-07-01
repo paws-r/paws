@@ -10,9 +10,7 @@ apigatewayv2_get_domain_name(DomainName)
 \item{DomainName}{[required] The domain name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApiMappingSelectionExpression = "string",
   DomainName = "string",
   DomainNameConfigurations = list(
@@ -41,18 +39,16 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a domain name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_domain_name(
+\preformatted{svc$get_domain_name(
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

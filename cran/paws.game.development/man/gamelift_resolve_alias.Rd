@@ -11,13 +11,11 @@ gamelift_resolve_alias(AliasId)
 for. You can use either the alias ID or ARN value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FleetId = "string",
   FleetArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the fleet ID that an alias is currently pointing to.
@@ -31,12 +29,10 @@ Retrieves the fleet ID that an alias is currently pointing to.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$resolve_alias(
+\preformatted{svc$resolve_alias(
   AliasId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

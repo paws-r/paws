@@ -18,12 +18,10 @@ Initiates the discovery of any smart home appliances associated with the
 room.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_smart_home_appliance_discovery(
+\preformatted{svc$start_smart_home_appliance_discovery(
   RoomArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

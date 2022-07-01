@@ -13,27 +13,23 @@ appstream_create_image_builder_streaming_url(Name, Validity)
 value between 1 and 604800 seconds. The default is 3600 seconds.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StreamingURL = "string",
   Expires = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a URL to start an image builder streaming session.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_image_builder_streaming_url(
+\preformatted{svc$create_image_builder_streaming_url(
   Name = "string",
   Validity = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -29,9 +29,7 @@ operation.}
 \item{InputProcessingConfiguration}{[required] The InputProcessingConfiguration to add to the application.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationARN = "string",
   ApplicationVersionId = 123,
   InputId = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds an InputProcessingConfiguration to a SQL-based Kinesis Data
@@ -51,9 +49,7 @@ input stream before the application's SQL code executes. Currently, the
 only input processor available is \href{https://docs.aws.amazon.com/lambda/}{AWS Lambda}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_application_input_processing_configuration(
+\preformatted{svc$add_application_input_processing_configuration(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   InputId = "string",
@@ -63,7 +59,7 @@ only input processor available is \href{https://docs.aws.amazon.com/lambda/}{AWS
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ chime_update_room_membership(AccountId, RoomId, MemberId, Role)
 \item{Role}{The role of the member.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RoomMembership = list(
     RoomId = "string",
     Member = list(
@@ -36,7 +34,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates room membership details, such as the member role, for a room in
@@ -45,15 +43,13 @@ the member is a chat room administrator or a general chat room member.
 The member role can be updated only for user IDs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_room_membership(
+\preformatted{svc$update_room_membership(
   AccountId = "string",
   RoomId = "string",
   MemberId = "string",
   Role = "Administrator"|"Member"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

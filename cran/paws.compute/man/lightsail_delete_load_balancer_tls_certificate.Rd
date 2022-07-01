@@ -20,9 +20,7 @@ primary SSL/TLS certificate is in use by an instance attached to the
 load balancer.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -47,7 +45,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an SSL/TLS certificate associated with a Lightsail load
@@ -60,14 +58,12 @@ the resource identified by \verb{load balancer name}. For more information,
 see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_load_balancer_tls_certificate(
+\preformatted{svc$delete_load_balancer_tls_certificate(
   loadBalancerName = "string",
   certificateName = "string",
   force = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

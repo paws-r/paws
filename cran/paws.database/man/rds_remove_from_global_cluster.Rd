@@ -16,9 +16,7 @@ cluster.}
 from the Aurora global database cluster.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GlobalCluster = list(
     GlobalClusterIdentifier = "string",
     GlobalClusterResourceId = "string",
@@ -41,7 +39,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Detaches an Aurora secondary cluster from an Aurora global database
@@ -52,13 +50,11 @@ cluster in a different region.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_from_global_cluster(
+\preformatted{svc$remove_from_global_cluster(
   GlobalClusterIdentifier = "string",
   DbClusterIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

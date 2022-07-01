@@ -23,12 +23,10 @@ cannot be called on the shadow trails (replicated trails in other
 regions) of a trail that is enabled in all regions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_logging(
+\preformatted{svc$start_logging(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

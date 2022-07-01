@@ -13,29 +13,25 @@ efs_put_backup_policy(FileSystemId, BackupPolicy)
 \code{\link[=efs_put_backup_policy]{put_backup_policy}} request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BackupPolicy = list(
     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the file system's backup policy. Use this action to start or
 stop automatic backups of the file system.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_backup_policy(
+\preformatted{svc$put_backup_policy(
   FileSystemId = "string",
   BackupPolicy = list(
     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

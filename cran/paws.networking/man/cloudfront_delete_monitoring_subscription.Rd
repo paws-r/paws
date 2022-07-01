@@ -18,12 +18,10 @@ Disables additional CloudWatch metrics for the specified CloudFront
 distribution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_monitoring_subscription(
+\preformatted{svc$delete_monitoring_subscription(
   DistributionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

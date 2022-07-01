@@ -10,9 +10,7 @@ cloudfront_get_streaming_distribution_config(Id)
 \item{Id}{[required] The streaming distribution's ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StreamingDistributionConfig = list(
     CallerReference = "string",
     S3Origin = list(
@@ -43,18 +41,16 @@ A list with the following syntax:
   ),
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Get the configuration information about a streaming distribution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_streaming_distribution_config(
+\preformatted{svc$get_streaming_distribution_config(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

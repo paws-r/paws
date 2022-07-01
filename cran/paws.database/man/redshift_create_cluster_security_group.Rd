@@ -26,9 +26,7 @@ Example: \code{examplesecuritygroup}}
 \item{Tags}{A list of tag instances.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClusterSecurityGroup = list(
     ClusterSecurityGroupName = "string",
     Description = "string",
@@ -65,7 +63,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Amazon Redshift security group. You use security groups to
@@ -75,9 +73,7 @@ For information about managing security groups, go to \href{https://docs.aws.ama
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cluster_security_group(
+\preformatted{svc$create_cluster_security_group(
   ClusterSecurityGroupName = "string",
   Description = "string",
   Tags = list(
@@ -87,7 +83,7 @@ in the \emph{Amazon Redshift Cluster Management Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

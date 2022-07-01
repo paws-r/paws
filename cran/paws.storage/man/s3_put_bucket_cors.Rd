@@ -74,9 +74,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_cors(
+\preformatted{svc$put_bucket_cors(
   Bucket = "string",
   CORSConfiguration = list(
     CORSRules = list(
@@ -100,7 +98,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
   ContentMD5 = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

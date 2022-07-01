@@ -22,15 +22,13 @@ An empty list.
 Used to stop and delete an app.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_app(
+\preformatted{svc$delete_app(
   DomainId = "string",
   UserProfileName = "string",
   AppType = "JupyterServer"|"KernelGateway"|"TensorBoard",
   AppName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

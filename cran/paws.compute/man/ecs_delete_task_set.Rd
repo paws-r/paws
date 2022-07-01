@@ -20,9 +20,7 @@ delete.}
 scaled down to zero.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   taskSet = list(
     id = "string",
     taskSetArn = "string",
@@ -93,7 +91,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a specified task set within a service. This is used when a
@@ -102,15 +100,13 @@ information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developergui
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_task_set(
+\preformatted{svc$delete_task_set(
   cluster = "string",
   service = "string",
   taskSet = "string",
   force = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

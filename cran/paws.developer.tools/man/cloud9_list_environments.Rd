@@ -17,27 +17,23 @@ token that is returned, until no more next tokens are returned.}
 \item{maxResults}{The maximum number of environments to get identifiers for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   nextToken = "string",
   environmentIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of AWS Cloud9 development environment identifiers.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_environments(
+\preformatted{svc$list_environments(
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

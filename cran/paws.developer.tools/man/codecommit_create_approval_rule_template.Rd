@@ -53,9 +53,7 @@ description that explains what this template does and when it might be
 appropriate to associate it with repositories.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   approvalRuleTemplate = list(
     approvalRuleTemplateId = "string",
     approvalRuleTemplateName = "string",
@@ -71,7 +69,7 @@ A list with the following syntax:
     lastModifiedUser = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a template for approval rules that can then be associated with
@@ -82,14 +80,12 @@ the conditions of the template. For more information, see
 \code{\link[=codecommit_associate_approval_rule_template_with_repository]{associate_approval_rule_template_with_repository}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_approval_rule_template(
+\preformatted{svc$create_approval_rule_template(
   approvalRuleTemplateName = "string",
   approvalRuleTemplateContent = "string",
   approvalRuleTemplateDescription = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

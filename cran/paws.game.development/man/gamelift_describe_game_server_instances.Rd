@@ -26,9 +26,7 @@ operation. To start at the beginning of the result set, do not specify a
 value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GameServerInstances = list(
     list(
       GameServerGroupName = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -80,9 +78,7 @@ refresh your cache no more than once every 10 seconds.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_game_server_instances(
+\preformatted{svc$describe_game_server_instances(
   GameServerGroupName = "string",
   InstanceIds = list(
     "string"
@@ -90,7 +86,7 @@ refresh your cache no more than once every 10 seconds.
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

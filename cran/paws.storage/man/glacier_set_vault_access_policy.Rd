@@ -31,16 +31,14 @@ KB in size. For more information about vault access policies, see
 \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html}{Amazon Glacier Access Control with Vault Access Policies}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_vault_access_policy(
+\preformatted{svc$set_vault_access_policy(
   accountId = "string",
   vaultName = "string",
   policy = list(
     Policy = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

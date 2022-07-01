@@ -23,9 +23,7 @@ can describe the container instance but will be unable to update the
 container instance state.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   containerInstances = list(
     list(
       containerInstanceArn = "string",
@@ -107,7 +105,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the status of an Amazon ECS container instance.
@@ -167,16 +165,14 @@ instance to \code{ACTIVE} status and once it has reached that status the
 Amazon ECS scheduler can begin scheduling tasks on the instance again.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_container_instances_state(
+\preformatted{svc$update_container_instances_state(
   cluster = "string",
   containerInstances = list(
     "string"
   ),
   status = "ACTIVE"|"DRAINING"|"REGISTERING"|"DEREGISTERING"|"REGISTRATION_FAILED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

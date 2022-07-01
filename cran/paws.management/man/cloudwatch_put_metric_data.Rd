@@ -73,9 +73,7 @@ multiplied by \code{SampleCount}.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_metric_data(
+\preformatted{svc$put_metric_data(
   Namespace = "string",
   MetricData = list(
     list(
@@ -107,7 +105,7 @@ multiplied by \code{SampleCount}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

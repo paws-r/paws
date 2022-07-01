@@ -10,9 +10,7 @@ workspaces_stop_workspaces(StopWorkspaceRequests)
 \item{StopWorkspaceRequests}{[required] The WorkSpaces to stop. You can specify up to 25 WorkSpaces.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FailedRequests = list(
     list(
       WorkspaceId = "string",
@@ -21,7 +19,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops the specified WorkSpaces.
@@ -30,16 +28,14 @@ You cannot stop a WorkSpace unless it has a running mode of \code{AutoStop}
 and a state of \code{AVAILABLE}, \code{IMPAIRED}, \code{UNHEALTHY}, or \code{ERROR}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_workspaces(
+\preformatted{svc$stop_workspaces(
   StopWorkspaceRequests = list(
     list(
       WorkspaceId = "string"
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

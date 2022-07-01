@@ -28,16 +28,14 @@ An empty list.
 Adds a thing to a thing group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_thing_to_thing_group(
+\preformatted{svc$add_thing_to_thing_group(
   thingGroupName = "string",
   thingGroupArn = "string",
   thingName = "string",
   thingArn = "string",
   overrideDynamicGroups = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,9 +15,7 @@ value and it matches the latest revision ID, a new version will be
 created.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   arn = "string",
   name = "string",
   version = "string",
@@ -38,19 +36,17 @@ A list with the following syntax:
   ),
   revisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a version of a robot application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_robot_application_version(
+\preformatted{svc$create_robot_application_version(
   application = "string",
   currentRevisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

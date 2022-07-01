@@ -17,9 +17,7 @@ do not specify tags, the service copies tags from the source backup to
 the destination backup.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DestinationBackup = list(
     CreateTimestamp = as.POSIXct(
       "2015-01-01"
@@ -29,15 +27,13 @@ A list with the following syntax:
     SourceCluster = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Copy an AWS CloudHSM cluster backup to a different region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_backup_to_region(
+\preformatted{svc$copy_backup_to_region(
   DestinationRegion = "string",
   BackupId = "string",
   TagList = list(
@@ -47,7 +43,7 @@ Copy an AWS CloudHSM cluster backup to a different region.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

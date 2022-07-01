@@ -29,9 +29,7 @@ must be in the same account.}
 \item{Subscribers}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccountId = "string",
   BudgetName = "string",
   OldAction = list(
@@ -127,15 +125,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a budget action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_budget_action(
+\preformatted{svc$update_budget_action(
   AccountId = "string",
   BudgetName = "string",
   ActionId = "string",
@@ -180,7 +176,7 @@ Updates a budget action.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

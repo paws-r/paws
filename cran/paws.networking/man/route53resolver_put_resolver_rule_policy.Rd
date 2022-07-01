@@ -29,12 +29,10 @@ that you want to share with another account. Specify the same ARN that
 you specified in \code{Arn}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReturnValue = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Specifies an AWS rule that you want to share with another account, the
@@ -42,13 +40,11 @@ account that you want to share the rule with, and the operations that
 you want the account to be able to perform on the rule.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_resolver_rule_policy(
+\preformatted{svc$put_resolver_rule_policy(
   Arn = "string",
   ResolverRulePolicy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

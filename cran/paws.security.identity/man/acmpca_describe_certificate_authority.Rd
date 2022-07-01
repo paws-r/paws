@@ -15,9 +15,7 @@ This must be of the form:
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CertificateAuthority = list(
     Arn = "string",
     OwnerAccount = "string",
@@ -122,7 +120,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists information about your private certificate authority (CA) or one
@@ -148,12 +146,10 @@ CA's restoration period is also included in this action's output.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_certificate_authority(
+\preformatted{svc$describe_certificate_authority(
   CertificateAuthorityArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

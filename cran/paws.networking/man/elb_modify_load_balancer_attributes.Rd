@@ -13,9 +13,7 @@ elb_modify_load_balancer_attributes(LoadBalancerName,
 \item{LoadBalancerAttributes}{[required] The attributes for the load balancer.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LoadBalancerName = "string",
   LoadBalancerAttributes = list(
     CrossZoneLoadBalancing = list(
@@ -42,7 +40,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the attributes of the specified load balancer.
@@ -63,9 +61,7 @@ Guide}:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_load_balancer_attributes(
+\preformatted{svc$modify_load_balancer_attributes(
   LoadBalancerName = "string",
   LoadBalancerAttributes = list(
     CrossZoneLoadBalancing = list(
@@ -92,7 +88,7 @@ Guide}:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

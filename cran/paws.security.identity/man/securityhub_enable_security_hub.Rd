@@ -52,15 +52,13 @@ To learn more, see \href{https://docs.aws.amazon.com/securityhub/latest/userguid
 in the \emph{AWS Security Hub User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_security_hub(
+\preformatted{svc$enable_security_hub(
   Tags = list(
     "string"
   ),
   EnableDefaultStandards = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

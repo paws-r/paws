@@ -29,9 +29,7 @@ register their products with Alexa for Business, and manage them as
 shared devices in their organization.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- alexaforbusiness(
+\preformatted{svc <- alexaforbusiness(
   config = list(
     credentials = list(
       creds = list(
@@ -45,7 +43,7 @@ shared devices in their organization.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

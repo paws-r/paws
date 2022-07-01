@@ -17,9 +17,7 @@ clouddirectory_list_facet_attributes(SchemaArn, Name, NextToken,
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attributes = list(
     list(
       Name = "string",
@@ -53,21 +51,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves attributes attached to the facet.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_facet_attributes(
+\preformatted{svc$list_facet_attributes(
   SchemaArn = "string",
   Name = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

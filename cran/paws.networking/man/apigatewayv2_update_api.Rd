@@ -61,9 +61,7 @@ remove it from an API. Supported only for HTTP APIs.}
 \item{Version}{A version identifier for the API.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApiEndpoint = "string",
   ApiGatewayManaged = TRUE|FALSE,
   ApiId = "string",
@@ -104,15 +102,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an Api resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_api(
+\preformatted{svc$update_api(
   ApiId = "string",
   ApiKeySelectionExpression = "string",
   CorsConfiguration = list(
@@ -141,7 +137,7 @@ Updates an Api resource.
   Target = "string",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

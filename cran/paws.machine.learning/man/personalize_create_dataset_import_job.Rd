@@ -19,12 +19,10 @@ personalize_create_dataset_import_job(jobName, datasetArn, dataSource,
 data source.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   datasetImportJobArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a job that imports training data from your data source (an
@@ -60,9 +58,7 @@ before training a model using the dataset.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_dataset_import_job(
+\preformatted{svc$create_dataset_import_job(
   jobName = "string",
   datasetArn = "string",
   dataSource = list(
@@ -70,7 +66,7 @@ before training a model using the dataset.
   ),
   roleArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

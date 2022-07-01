@@ -28,9 +28,7 @@ Creates or updates the launch configuration for the specified
 application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_app_launch_configuration(
+\preformatted{svc$put_app_launch_configuration(
   appId = "string",
   roleName = "string",
   autoLaunch = TRUE|FALSE,
@@ -80,7 +78,7 @@ application.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

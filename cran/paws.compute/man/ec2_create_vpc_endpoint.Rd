@@ -60,9 +60,7 @@ Default: \code{true}}
 \item{TagSpecifications}{The tags to associate with the endpoint.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VpcEndpoint = list(
     VpcEndpointId = "string",
     VpcEndpointType = "Interface"|"Gateway"|"GatewayLoadBalancer",
@@ -110,7 +108,7 @@ A list with the following syntax:
   ),
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a VPC endpoint for a specified service. An endpoint enables you
@@ -139,9 +137,7 @@ Use
 to get a list of supported services.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vpc_endpoint(
+\preformatted{svc$create_vpc_endpoint(
   DryRun = TRUE|FALSE,
   VpcEndpointType = "Interface"|"Gateway"|"GatewayLoadBalancer",
   VpcId = "string",
@@ -170,7 +166,7 @@ to get a list of supported services.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

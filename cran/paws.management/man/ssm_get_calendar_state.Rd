@@ -17,14 +17,12 @@ information, in \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO 8601}
 format. If you do not add \code{AtTime}, the current time is assumed.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   State = "OPEN"|"CLOSED",
   AtTime = "string",
   NextTransitionTime = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the state of the AWS Systems Manager Change Calendar at an
@@ -44,15 +42,13 @@ For more information about Systems Manager Change Calendar, see \href{https://do
 in the \emph{AWS Systems Manager User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_calendar_state(
+\preformatted{svc$get_calendar_state(
   CalendarNames = list(
     "string"
   ),
   AtTime = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

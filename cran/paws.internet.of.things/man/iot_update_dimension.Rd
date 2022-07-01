@@ -15,9 +15,7 @@ the type and value to make it easy to remember what it does.}
 topic (for example, "admin/#").}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   name = "string",
   arn = "string",
   type = "TOPIC_FILTER",
@@ -31,22 +29,20 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the definition for a dimension. You cannot change the type of a
 dimension after it is created (you can delete it and recreate it).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_dimension(
+\preformatted{svc$update_dimension(
   name = "string",
   stringValues = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

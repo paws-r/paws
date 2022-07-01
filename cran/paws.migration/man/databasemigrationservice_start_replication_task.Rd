@@ -48,9 +48,7 @@ Commit time example: --cdc-stop-position “commit_time:
 2018-02-09T12:12:12 “}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationTask = list(
     ReplicationTaskIdentifier = "string",
     SourceEndpointArn = "string",
@@ -99,7 +97,7 @@ A list with the following syntax:
     TargetReplicationInstanceArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts the replication task.
@@ -108,9 +106,7 @@ For more information about AWS DMS tasks, see \href{https://docs.aws.amazon.com/
 in the \emph{AWS Database Migration Service User Guide.}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_replication_task(
+\preformatted{svc$start_replication_task(
   ReplicationTaskArn = "string",
   StartReplicationTaskType = "start-replication"|"resume-processing"|"reload-target",
   CdcStartTime = as.POSIXct(
@@ -119,7 +115,7 @@ in the \emph{AWS Database Migration Service User Guide.}
   CdcStartPosition = "string",
   CdcStopPosition = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

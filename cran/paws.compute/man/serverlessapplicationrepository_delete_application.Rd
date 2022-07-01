@@ -16,12 +16,10 @@ An empty list.
 Deletes the specified application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application(
+\preformatted{svc$delete_application(
   ApplicationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

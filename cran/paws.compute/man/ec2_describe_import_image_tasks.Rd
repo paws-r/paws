@@ -24,9 +24,7 @@ values: \code{active}, \code{completed}, \code{deleting}, or \code{deleted}.}
 \item{NextToken}{A token that indicates the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ImportImageTasks = list(
     list(
       Architecture = "string",
@@ -73,16 +71,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Displays details about an import virtual machine or import snapshot
 tasks that are already created.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_import_image_tasks(
+\preformatted{svc$describe_import_image_tasks(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(
@@ -98,7 +94,7 @@ tasks that are already created.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

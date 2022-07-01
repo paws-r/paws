@@ -21,9 +21,7 @@ Represents the failure of a job as returned to the pipeline by a job
 worker. Used for custom actions only.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_job_failure_result(
+\preformatted{svc$put_job_failure_result(
   jobId = "string",
   failureDetails = list(
     type = "JobFailed"|"ConfigurationError"|"PermissionError"|"RevisionOutOfSync"|"RevisionUnavailable"|"SystemUnavailable",
@@ -31,7 +29,7 @@ worker. Used for custom actions only.
     externalExecutionId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,9 +10,7 @@ transcribeservice_get_transcription_job(TranscriptionJobName)
 \item{TranscriptionJobName}{[required] The name of the job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TranscriptionJob = list(
     TranscriptionJobName = "string",
     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
@@ -64,7 +62,7 @@ A list with the following syntax:
     IdentifiedLanguageScore = 123.0
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a transcription job. To see the status of the
@@ -75,12 +73,10 @@ content redaction, the redacted transcript appears in
 \code{RedactedTranscriptFileUri}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_transcription_job(
+\preformatted{svc$get_transcription_job(
   TranscriptionJobName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

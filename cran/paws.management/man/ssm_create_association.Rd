@@ -118,9 +118,7 @@ want to run the association. Use this action to create an association in
 multiple Regions and multiple accounts.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AssociationDescription = list(
     Name = "string",
     InstanceId = "string",
@@ -197,7 +195,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 A State Manager association defines the state that you want to maintain
@@ -215,9 +213,7 @@ is not running, then the association might instruct State Manager to
 start the service.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_association(
+\preformatted{svc$create_association(
   Name = "string",
   DocumentVersion = "string",
   InstanceId = "string",
@@ -263,7 +259,7 @@ start the service.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -48,13 +48,11 @@ a different AWS account.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_key_description(
+\preformatted{svc$update_key_description(
   KeyId = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

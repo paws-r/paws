@@ -34,20 +34,16 @@ to select which checks are enabled.)}
 \item{tags}{Metadata that can be used to manage the scheduled audit.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   scheduledAuditArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a scheduled audit that is run at a specified time interval.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_scheduled_audit(
+\preformatted{svc$create_scheduled_audit(
   frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
   dayOfMonth = "string",
   dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
@@ -62,7 +58,7 @@ Creates a scheduled audit that is run at a specified time interval.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

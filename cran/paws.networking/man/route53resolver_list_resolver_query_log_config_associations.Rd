@@ -87,9 +87,7 @@ request and specify the \code{NextToken} parameter, you must use the same
 value for \code{SortOrder}, if any, as in the previous request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   TotalCount = 123,
   TotalFilteredCount = 123,
@@ -105,16 +103,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists information about associations between Amazon VPCs and query
 logging configurations.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resolver_query_log_config_associations(
+\preformatted{svc$list_resolver_query_log_config_associations(
   MaxResults = 123,
   NextToken = "string",
   Filters = list(
@@ -128,7 +124,7 @@ logging configurations.
   SortBy = "string",
   SortOrder = "ASCENDING"|"DESCENDING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

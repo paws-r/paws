@@ -14,9 +14,7 @@ iotanalytics_list_datastores(nextToken, maxResults)
 The default value is 100.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   datastoreSummaries = list(
     list(
       datastoreName = "string",
@@ -43,19 +41,17 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list of data stores.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_datastores(
+\preformatted{svc$list_datastores(
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

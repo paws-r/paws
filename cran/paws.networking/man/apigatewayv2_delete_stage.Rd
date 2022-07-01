@@ -19,13 +19,11 @@ An empty list.
 Deletes a Stage.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_stage(
+\preformatted{svc$delete_stage(
   ApiId = "string",
   StageName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

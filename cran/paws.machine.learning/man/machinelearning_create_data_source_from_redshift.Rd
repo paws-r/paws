@@ -56,12 +56,10 @@ be set to \code{true} if the \code{DataSource} needs to be used for \code{MLMode
 training.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DataSourceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a \code{DataSource} from a database hosted on an Amazon Redshift
@@ -111,9 +109,7 @@ settings that you want to change and make sure that all required fields
 have the appropriate values.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_data_source_from_redshift(
+\preformatted{svc$create_data_source_from_redshift(
   DataSourceId = "string",
   DataSourceName = "string",
   DataSpec = list(
@@ -134,7 +130,7 @@ have the appropriate values.
   RoleARN = "string",
   ComputeStatistics = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

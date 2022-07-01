@@ -62,9 +62,7 @@ state it was in before a custom permissions profile was applied. This
 parameter defaults to NULL and it doesn't accept any other value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   User = list(
     Arn = "string",
     UserName = "string",
@@ -78,15 +76,13 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an Amazon QuickSight user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user(
+\preformatted{svc$update_user(
   UserName = "string",
   AwsAccountId = "string",
   Namespace = "string",
@@ -95,7 +91,7 @@ Updates an Amazon QuickSight user.
   CustomPermissionsName = "string",
   UnapplyCustomPermissions = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

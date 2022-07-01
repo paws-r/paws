@@ -24,9 +24,7 @@ mutually exclusive with \code{FileSystemId}.}
 points for that file system; mutually exclusive with \code{AccessPointId}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccessPoints = list(
     list(
       ClientToken = "string",
@@ -61,7 +59,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the description of a specific Amazon EFS access point if the
@@ -74,15 +72,13 @@ This operation requires permissions for the
 \code{elasticfilesystem:DescribeAccessPoints} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_access_points(
+\preformatted{svc$describe_access_points(
   MaxResults = 123,
   NextToken = "string",
   AccessPointId = "string",
   FileSystemId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CreateVolumePermissions = list(
     list(
       Group = "all",
@@ -34,7 +32,7 @@ A list with the following syntax:
   ),
   SnapshotId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified attribute of the specified snapshot. You can
@@ -44,14 +42,12 @@ For more information about EBS snapshots, see \href{https://docs.aws.amazon.com/
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_snapshot_attribute(
+\preformatted{svc$describe_snapshot_attribute(
   Attribute = "productCodes"|"createVolumePermission",
   SnapshotId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -12,26 +12,22 @@ mediatailor_list_tags_for_resource(ResourceArn)
 get this from the response to any playback configuration request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of the tags assigned to the specified playback
 configuration resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

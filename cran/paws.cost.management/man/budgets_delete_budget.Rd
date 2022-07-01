@@ -22,13 +22,11 @@ Deleting a budget also deletes the notifications and subscribers that
 are associated with that budget.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_budget(
+\preformatted{svc$delete_budget(
   AccountId = "string",
   BudgetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

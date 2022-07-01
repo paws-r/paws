@@ -16,9 +16,7 @@ cloudfront_update_streaming_distribution(StreamingDistributionConfig,
 streaming distribution's configuration. For example: \code{E2QWRUHAPOMQZL}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StreamingDistribution = list(
     Id = "string",
     ARN = "string",
@@ -73,15 +71,13 @@ A list with the following syntax:
   ),
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Update a streaming distribution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_streaming_distribution(
+\preformatted{svc$update_streaming_distribution(
   StreamingDistributionConfig = list(
     CallerReference = "string",
     S3Origin = list(
@@ -113,7 +109,7 @@ Update a streaming distribution.
   Id = "string",
   IfMatch = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

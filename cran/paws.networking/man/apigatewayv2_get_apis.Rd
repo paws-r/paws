@@ -13,9 +13,7 @@ apigatewayv2_get_apis(MaxResults, NextToken)
 element of the collection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Items = list(
     list(
       ApiEndpoint = "string",
@@ -61,19 +59,17 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a collection of Api resources.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_apis(
+\preformatted{svc$get_apis(
   MaxResults = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ kafka_describe_cluster(ClusterArn)
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClusterInfo = list(
     ActiveOperationArn = "string",
     BrokerNodeGroupInfo = list(
@@ -104,19 +102,17 @@ A list with the following syntax:
     ZookeeperConnectStringTls = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a description of the MSK cluster whose Amazon Resource Name
 (ARN) is specified in the request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cluster(
+\preformatted{svc$describe_cluster(
   ClusterArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -39,12 +39,10 @@ settings.}
 unique per resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AutoMLJobArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an Autopilot job.
@@ -55,9 +53,7 @@ Find the best performing model after you run an Autopilot job by calling
 For information about how to use Autopilot, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html}{Automate Model Development with Amazon SageMaker Autopilot}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_auto_ml_job(
+\preformatted{svc$create_auto_ml_job(
   AutoMLJobName = "string",
   InputDataConfig = list(
     list(
@@ -107,7 +103,7 @@ For information about how to use Autopilot, see \href{https://docs.aws.amazon.co
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

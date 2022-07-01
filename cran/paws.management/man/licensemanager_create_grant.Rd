@@ -22,23 +22,19 @@ idempotency of the request.}
 \item{AllowedOperations}{[required] Allowed operations for the grant.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GrantArn = "string",
   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a grant for the specified license. A grant shares the use of
 license entitlements with specific AWS accounts.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_grant(
+\preformatted{svc$create_grant(
   ClientToken = "string",
   GrantName = "string",
   LicenseArn = "string",
@@ -50,7 +46,7 @@ license entitlements with specific AWS accounts.
     "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

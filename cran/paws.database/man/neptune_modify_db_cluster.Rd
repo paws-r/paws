@@ -125,9 +125,7 @@ enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBCluster = list(
     AllocatedStorage = 123,
     AvailabilityZones = list(
@@ -203,7 +201,7 @@ A list with the following syntax:
     DeletionProtection = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modify a setting for a DB cluster. You can change one or more database
@@ -211,9 +209,7 @@ configuration parameters by specifying these parameters and the new
 values in the request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_cluster(
+\preformatted{svc$modify_db_cluster(
   DBClusterIdentifier = "string",
   NewDBClusterIdentifier = "string",
   ApplyImmediately = TRUE|FALSE,
@@ -239,7 +235,7 @@ values in the request.
   EngineVersion = "string",
   DeletionProtection = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

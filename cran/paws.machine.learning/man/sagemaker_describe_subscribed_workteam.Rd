@@ -10,9 +10,7 @@ sagemaker_describe_subscribed_workteam(WorkteamArn)
 \item{WorkteamArn}{[required] The Amazon Resource Name (ARN) of the subscribed work team to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SubscribedWorkteam = list(
     WorkteamArn = "string",
     MarketplaceTitle = "string",
@@ -21,19 +19,17 @@ A list with the following syntax:
     ListingId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a work team provided by a vendor. It returns
 details about the subscription with a vendor in the AWS Marketplace.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_subscribed_workteam(
+\preformatted{svc$describe_subscribed_workteam(
   WorkteamArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

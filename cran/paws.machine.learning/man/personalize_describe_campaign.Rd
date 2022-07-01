@@ -10,9 +10,7 @@ personalize_describe_campaign(campaignArn)
 \item{campaignArn}{[required] The Amazon Resource Name (ARN) of the campaign.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   campaign = list(
     name = "string",
     campaignArn = "string",
@@ -50,7 +48,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the given campaign, including its status.
@@ -68,12 +66,10 @@ For more information on campaigns, see
 \code{\link[=personalize_create_campaign]{create_campaign}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_campaign(
+\preformatted{svc$describe_campaign(
   campaignArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

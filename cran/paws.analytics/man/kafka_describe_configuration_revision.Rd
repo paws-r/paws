@@ -13,9 +13,7 @@ configuration and all of its revisions.}
 \item{Revision}{[required] A string that uniquely identifies a revision of an MSK configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   CreationTime = as.POSIXct(
     "2015-01-01"
@@ -24,19 +22,17 @@ A list with the following syntax:
   Revision = 123,
   ServerProperties = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a description of this revision of the configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_configuration_revision(
+\preformatted{svc$describe_configuration_revision(
   Arn = "string",
   Revision = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

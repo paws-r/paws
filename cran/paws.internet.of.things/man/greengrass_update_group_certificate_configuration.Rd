@@ -14,26 +14,22 @@ milliseconds.}
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CertificateAuthorityExpiryInMilliseconds = "string",
   CertificateExpiryInMilliseconds = "string",
   GroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the Certificate expiry time for a group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_group_certificate_configuration(
+\preformatted{svc$update_group_certificate_configuration(
   CertificateExpiryInMilliseconds = "string",
   GroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

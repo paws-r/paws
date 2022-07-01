@@ -12,9 +12,7 @@ storagegateway_describe_nfs_file_shares(FileShareARNList)
 be described.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NFSFileShareInfoList = list(
     list(
       NFSFileShareDefaults = list(
@@ -55,21 +53,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a description for one or more Network File System (NFS) file shares
 from a file gateway. This operation is only supported for file gateways.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_nfs_file_shares(
+\preformatted{svc$describe_nfs_file_shares(
   FileShareARNList = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

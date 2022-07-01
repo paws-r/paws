@@ -37,9 +37,7 @@ have alphanumeric and underscore characters, and the values must match
 resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccessLogSettings = list(
     DestinationArn = "string",
     Format = "string"
@@ -80,15 +78,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Stage for an API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_stage(
+\preformatted{svc$create_stage(
   AccessLogSettings = list(
     DestinationArn = "string",
     Format = "string"
@@ -122,7 +118,7 @@ Creates a Stage for an API.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

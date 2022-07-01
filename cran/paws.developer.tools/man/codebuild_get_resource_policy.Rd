@@ -10,23 +10,19 @@ codebuild_get_resource_policy(resourceArn)
 \item{resourceArn}{[required] The ARN of the resource that is associated with the resource policy.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   policy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a resource policy that is identified by its resource ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resource_policy(
+\preformatted{svc$get_resource_policy(
   resourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

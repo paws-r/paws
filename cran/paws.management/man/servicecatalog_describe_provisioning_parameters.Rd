@@ -37,9 +37,7 @@ provide the name or ID, but not both.}
 \item{PathName}{The name of the path. You must provide the name or ID, but not both.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProvisioningArtifactParameters = list(
     list(
       ParameterKey = "string",
@@ -95,7 +93,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the configuration required to provision the
@@ -111,9 +109,7 @@ Tags[\emph{N}]:\emph{Value}". Tag the provisioned product with the value
 \code{sc-tagoption-conflict-portfolioId-productId}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_provisioning_parameters(
+\preformatted{svc$describe_provisioning_parameters(
   AcceptLanguage = "string",
   ProductId = "string",
   ProductName = "string",
@@ -122,7 +118,7 @@ Tags[\emph{N}]:\emph{Value}". Tag the provisioned product with the value
   PathId = "string",
   PathName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

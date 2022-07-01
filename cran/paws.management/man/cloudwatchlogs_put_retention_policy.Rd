@@ -20,13 +20,11 @@ you to configure the number of days for which to retain log events in
 the specified log group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_retention_policy(
+\preformatted{svc$put_retention_policy(
   logGroupName = "string",
   retentionInDays = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

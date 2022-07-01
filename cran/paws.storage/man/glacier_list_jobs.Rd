@@ -33,9 +33,7 @@ request.}
 \item{completed}{The state of the jobs to return. You can specify \code{true} or \code{false}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobList = list(
     list(
       JobId = "string",
@@ -121,7 +119,7 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation lists jobs for a vault, including jobs that are
@@ -162,9 +160,7 @@ For more information about using this operation, see the documentation
 for the underlying REST API \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html}{List Jobs}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_jobs(
+\preformatted{svc$list_jobs(
   accountId = "string",
   vaultName = "string",
   limit = "string",
@@ -172,7 +168,7 @@ for the underlying REST API \href{https://docs.aws.amazon.com/amazonglacier/late
   statuscode = "string",
   completed = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

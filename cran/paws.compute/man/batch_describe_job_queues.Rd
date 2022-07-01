@@ -34,9 +34,7 @@ retrieve the next items in a list and not for other programmatic
 purposes.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   jobQueues = list(
     list(
       jobQueueName = "string",
@@ -58,22 +56,20 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your job queues.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_job_queues(
+\preformatted{svc$describe_job_queues(
   jobQueues = list(
     "string"
   ),
   maxResults = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

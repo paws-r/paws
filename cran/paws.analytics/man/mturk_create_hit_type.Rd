@@ -44,12 +44,10 @@ Additionally, other actions can be restricted using the \code{ActionsGuarded}
 field on each \code{QualificationRequirement} structure.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HITTypeId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=mturk_create_hit_type]{create_hit_type}} operation creates a new
@@ -59,9 +57,7 @@ values that match an existing HIT type, the HIT type ID of the existing
 type will be returned.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_hit_type(
+\preformatted{svc$create_hit_type(
   AutoApprovalDelayInSeconds = 123,
   AssignmentDurationInSeconds = 123,
   Reward = "string",
@@ -86,7 +82,7 @@ type will be returned.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

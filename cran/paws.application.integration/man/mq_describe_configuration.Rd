@@ -10,9 +10,7 @@ mq_describe_configuration(ConfigurationId)
 \item{ConfigurationId}{[required] The unique ID that Amazon MQ generates for the configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   AuthenticationStrategy = "SIMPLE"|"LDAP",
   Created = as.POSIXct(
@@ -34,18 +32,16 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the specified configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_configuration(
+\preformatted{svc$describe_configuration(
   ConfigurationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -27,9 +27,7 @@ can't be more than 30 days old.}
 \item{NextToken}{Pagination token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InsightSummaries = list(
     list(
       InsightId = "string",
@@ -83,16 +81,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the summaries of all insights in the specified group matching
 the provided filter values.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_insight_summaries(
+\preformatted{svc$get_insight_summaries(
   States = list(
     "ACTIVE"|"CLOSED"
   ),
@@ -107,7 +103,7 @@ the provided filter values.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

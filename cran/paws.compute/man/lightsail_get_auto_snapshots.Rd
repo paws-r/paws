@@ -11,9 +11,7 @@ lightsail_get_auto_snapshots(resourceName)
 snapshot information.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   resourceName = "string",
   resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
   autoSnapshots = list(
@@ -32,19 +30,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the available automatic snapshots for an instance or disk. For
 more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_auto_snapshots(
+\preformatted{svc$get_auto_snapshots(
   resourceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

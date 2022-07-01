@@ -23,23 +23,19 @@ of an object is reflected in a subsequent read operation of that same
 object.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AttachedPolicyIds = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns policies attached to an object in pagination fashion.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_object_policies(
+\preformatted{svc$list_object_policies(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"
@@ -48,7 +44,7 @@ Returns policies attached to an object in pagination fashion.
   MaxResults = 123,
   ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

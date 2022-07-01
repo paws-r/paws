@@ -17,9 +17,7 @@ non-null NextToken value. If provided, returns results for the next
 page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PackageDetailsList = list(
     list(
       PackageID = "string",
@@ -42,16 +40,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes all packages available to Amazon ES. Includes options for
 filtering, limiting the number of results, and pagination.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_packages(
+\preformatted{svc$describe_packages(
   Filters = list(
     list(
       Name = "PackageID"|"PackageName"|"PackageStatus",
@@ -63,7 +59,7 @@ filtering, limiting the number of results, and pagination.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,9 +10,7 @@ devicefarm_get_run(arn)
 \item{arn}{[required] The run's ARN.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   run = list(
     arn = "string",
     name = "string",
@@ -108,18 +106,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a run.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_run(
+\preformatted{svc$get_run(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

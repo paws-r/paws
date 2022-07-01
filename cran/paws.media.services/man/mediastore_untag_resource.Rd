@@ -23,15 +23,13 @@ Removes tags from the specified container. You can specify one or more
 tags to remove.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resource(
+\preformatted{svc$untag_resource(
   Resource = "string",
   TagKeys = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

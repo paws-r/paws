@@ -27,26 +27,22 @@ authorization code to transfer the domain, the code that you got from
 the current registrar for the domain.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Transferability = list(
     Transferable = "TRANSFERABLE"|"UNTRANSFERABLE"|"DONT_KNOW"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Checks whether a domain name can be transferred to Amazon Route 53.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$check_domain_transferability(
+\preformatted{svc$check_domain_transferability(
   DomainName = "string",
   AuthCode = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

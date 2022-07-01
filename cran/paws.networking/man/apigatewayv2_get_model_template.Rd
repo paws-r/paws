@@ -12,24 +12,20 @@ apigatewayv2_get_model_template(ApiId, ModelId)
 \item{ModelId}{[required] The model ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Value = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a model template.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_model_template(
+\preformatted{svc$get_model_template(
   ApiId = "string",
   ModelId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

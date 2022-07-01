@@ -42,9 +42,7 @@ If the SQL statement is not part of a transaction, don't set this
 parameter.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   updateResults = list(
     list(
       generatedFields = list(
@@ -77,7 +75,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Runs a batch SQL statement over an array of data.
@@ -92,9 +90,7 @@ If a call isn't part of a transaction because it doesn't include the
 committed automatically.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_execute_statement(
+\preformatted{svc$batch_execute_statement(
   database = "string",
   parameterSets = list(
     list(
@@ -135,7 +131,7 @@ committed automatically.
   sql = "string",
   transactionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

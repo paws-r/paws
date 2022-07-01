@@ -26,9 +26,7 @@ results exist than the specified MaxResults value, a token is included
 in the response so that the remaining results can be retrieved.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Contacts = list(
     list(
       ContactArn = "string",
@@ -53,16 +51,14 @@ A list with the following syntax:
   NextToken = "string",
   TotalCount = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Searches contacts and lists the ones that meet a set of filter and sort
 criteria.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_contacts(
+\preformatted{svc$search_contacts(
   Filters = list(
     list(
       Key = "string",
@@ -80,7 +76,7 @@ criteria.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -27,9 +27,7 @@ If you do not provide a name or ID, or you provide both name and ID, an
 \code{InvalidParametersException} will occur.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProvisionedProductDetail = list(
     Name = "string",
     Arn = "string",
@@ -54,20 +52,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the specified provisioned product.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_provisioned_product(
+\preformatted{svc$describe_provisioned_product(
   AcceptLanguage = "string",
   Id = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -21,13 +21,11 @@ Stops an in-progress operation on a stack set and its associated stack
 instances.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_stack_set_operation(
+\preformatted{svc$stop_stack_set_operation(
   StackSetName = "string",
   OperationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

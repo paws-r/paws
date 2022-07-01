@@ -27,13 +27,11 @@ Deletes a report group. Before you delete a report group, you must
 delete its reports.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_report_group(
+\preformatted{svc$delete_report_group(
   arn = "string",
   deleteReports = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

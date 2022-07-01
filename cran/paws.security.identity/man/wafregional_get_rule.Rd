@@ -12,9 +12,7 @@ wafregional_get_rule(RuleId)
 \code{\link[=wafregional_list_rules]{list_rules}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Rule = list(
     RuleId = "string",
     Name = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -44,12 +42,10 @@ Returns the Rule that is specified by the \code{RuleId} that you included in
 the \code{\link[=wafregional_get_rule]{get_rule}} request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_rule(
+\preformatted{svc$get_rule(
   RuleId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

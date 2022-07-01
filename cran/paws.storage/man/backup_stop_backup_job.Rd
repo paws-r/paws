@@ -16,12 +16,10 @@ An empty list.
 Attempts to cancel a job to create a one-time backup of a resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_backup_job(
+\preformatted{svc$stop_backup_job(
   BackupJobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -8,23 +8,19 @@ License (BYOL) for the specified account}
 workspaces_describe_account()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DedicatedTenancySupport = "ENABLED"|"DISABLED",
   DedicatedTenancyManagementCidrRange = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list that describes the configuration of Bring Your Own
 License (BYOL) for the specified account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_account()
-}\if{html}{\out{</div>}}
+\preformatted{svc$describe_account()
+}
 }
 
 \keyword{internal}

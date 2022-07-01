@@ -19,12 +19,10 @@ trackers, see
 \code{\link[=personalize_create_event_tracker]{create_event_tracker}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_event_tracker(
+\preformatted{svc$delete_event_tracker(
   eventTrackerArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

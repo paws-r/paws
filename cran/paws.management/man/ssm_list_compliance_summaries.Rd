@@ -19,9 +19,7 @@ specify null or 50. The call also returns a token that you can specify
 in a subsequent call to get the next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ComplianceSummaryItems = list(
     list(
       ComplianceType = "string",
@@ -51,7 +49,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a summary count of compliant and non-compliant resources for a
@@ -60,9 +58,7 @@ associations, patches, or custom compliance types according to the
 filter criteria that you specify.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_compliance_summaries(
+\preformatted{svc$list_compliance_summaries(
   Filters = list(
     list(
       Key = "string",
@@ -75,7 +71,7 @@ filter criteria that you specify.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

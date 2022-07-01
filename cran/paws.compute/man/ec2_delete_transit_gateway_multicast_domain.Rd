@@ -16,9 +16,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TransitGatewayMulticastDomain = list(
     TransitGatewayMulticastDomainId = "string",
     TransitGatewayId = "string",
@@ -41,19 +39,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified transit gateway multicast domain.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_transit_gateway_multicast_domain(
+\preformatted{svc$delete_transit_gateway_multicast_domain(
   TransitGatewayMulticastDomainId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

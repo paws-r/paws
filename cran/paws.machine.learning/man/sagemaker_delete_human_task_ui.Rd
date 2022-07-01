@@ -24,12 +24,10 @@ appears when you call
 \code{\link[=sagemaker_list_human_task_uis]{list_human_task_uis}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_human_task_ui(
+\preformatted{svc$delete_human_task_ui(
   HumanTaskUiName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

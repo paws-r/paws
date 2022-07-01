@@ -12,12 +12,10 @@ was previously returned in the
 \code{\link[=waf_get_change_token]{get_change_token}} response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChangeTokenStatus = "PROVISIONED"|"PENDING"|"INSYNC"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -42,12 +40,10 @@ request to all AWS WAF servers.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_change_token_status(
+\preformatted{svc$get_change_token_status(
   ChangeToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

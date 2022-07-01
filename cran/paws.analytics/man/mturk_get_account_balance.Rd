@@ -8,23 +8,19 @@ Amazon Mechanical Turk account}
 mturk_get_account_balance()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AvailableBalance = "string",
   OnHoldBalance = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=mturk_get_account_balance]{get_account_balance}} operation
 retrieves the amount of money in your Amazon Mechanical Turk account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_account_balance()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_account_balance()
+}
 }
 
 \keyword{internal}

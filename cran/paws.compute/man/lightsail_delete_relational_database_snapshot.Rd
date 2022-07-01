@@ -11,9 +11,7 @@ lightsail_delete_relational_database_snapshot(
 \item{relationalDatabaseSnapshotName}{[required] The name of the database snapshot that you are deleting.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a database snapshot in Amazon Lightsail.
@@ -49,12 +47,10 @@ relationalDatabaseName. For more information, see the Lightsail Dev
 Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_relational_database_snapshot(
+\preformatted{svc$delete_relational_database_snapshot(
   relationalDatabaseSnapshotName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

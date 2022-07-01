@@ -92,12 +92,10 @@ a JSON object, typically consisting of key-value pairs in which the keys
 correspond to replacement tags in the email template.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MessageId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Composes an email message using an email template and immediately queues
@@ -144,9 +142,7 @@ information, see \href{https://docs.aws.amazon.com/ses/latest/dg/send-personaliz
 in the \emph{Amazon Simple Email Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_templated_email(
+\preformatted{svc$send_templated_email(
   Source = "string",
   Destination = list(
     ToAddresses = list(
@@ -176,7 +172,7 @@ in the \emph{Amazon Simple Email Service Developer Guide}.
   TemplateArn = "string",
   TemplateData = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

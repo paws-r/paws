@@ -40,13 +40,11 @@ Related actions include:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bucket_lifecycle(
+\preformatted{svc$delete_bucket_lifecycle(
   Bucket = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

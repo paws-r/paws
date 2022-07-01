@@ -27,9 +27,7 @@ executions are returned.}
 \item{nextToken}{The token for the next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   actionsExecutions = list(
     list(
       taskId = "string",
@@ -49,16 +47,14 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists mitigation actions executions for a Device Defender ML Detect
 Security Profile.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_detect_mitigation_actions_executions(
+\preformatted{svc$list_detect_mitigation_actions_executions(
   taskId = "string",
   violationId = "string",
   thingName = "string",
@@ -71,7 +67,7 @@ Security Profile.
   maxResults = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

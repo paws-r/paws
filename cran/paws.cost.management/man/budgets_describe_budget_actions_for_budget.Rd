@@ -17,9 +17,7 @@ budgets_describe_budget_actions_for_budget(AccountId, BudgetName,
 \item{NextToken}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Actions = list(
     list(
       ActionId = "string",
@@ -70,21 +68,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes all of the budget actions for a budget.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_budget_actions_for_budget(
+\preformatted{svc$describe_budget_actions_for_budget(
   AccountId = "string",
   BudgetName = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,9 +10,7 @@ pinpoint_phone_number_validate(NumberValidateRequest)
 \item{NumberValidateRequest}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NumberValidateResponse = list(
     Carrier = "string",
     City = "string",
@@ -30,21 +28,19 @@ A list with the following syntax:
     ZipCode = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about a phone number.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$phone_number_validate(
+\preformatted{svc$phone_number_validate(
   NumberValidateRequest = list(
     IsoCountryCode = "string",
     PhoneNumber = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -58,9 +58,7 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Vpcs = list(
     list(
       CidrBlock = "string",
@@ -102,15 +100,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your VPCs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vpcs(
+\preformatted{svc$describe_vpcs(
   Filters = list(
     list(
       Name = "string",
@@ -126,7 +122,7 @@ Describes one or more of your VPCs.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

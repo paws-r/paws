@@ -62,14 +62,12 @@ representable in UTF-8 format, and the following special characters: + -
 the maximum length for a tag's value is 256.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VolumeARN = "string",
   VolumeSizeInBytes = 123,
   TargetARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a volume on a specified gateway. This operation is only
@@ -87,9 +85,7 @@ Name (ARN), its size, and the iSCSI target ARN that initiators can use
 to connect to the volume target.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_storedi_scsi_volume(
+\preformatted{svc$create_storedi_scsi_volume(
   GatewayARN = "string",
   DiskId = "string",
   SnapshotId = "string",
@@ -105,7 +101,7 @@ to connect to the volume target.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

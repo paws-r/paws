@@ -21,9 +21,7 @@ results.}
 name contains the specified string.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   VocabularyFilters = list(
     list(
@@ -35,20 +33,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about vocabulary filters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_vocabulary_filters(
+\preformatted{svc$list_vocabulary_filters(
   NextToken = "string",
   MaxResults = 123,
   NameContains = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

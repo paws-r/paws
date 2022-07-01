@@ -54,12 +54,10 @@ MB. Fragments are removed from the buffer when either limit is reached.}
 key-value pair (the value is optional).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StreamARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Kinesis video stream.
@@ -76,9 +74,7 @@ For information about how the service works, see \href{https://docs.aws.amazon.c
 You must have permissions for the \code{KinesisVideo:CreateStream} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_stream(
+\preformatted{svc$create_stream(
   DeviceName = "string",
   StreamName = "string",
   MediaType = "string",
@@ -88,7 +84,7 @@ You must have permissions for the \code{KinesisVideo:CreateStream} action.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

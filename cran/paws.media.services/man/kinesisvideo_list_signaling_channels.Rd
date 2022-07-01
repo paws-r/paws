@@ -20,9 +20,7 @@ next request.}
 \item{ChannelNameCondition}{Optional: Returns only the channels that satisfy a specific condition.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelInfoList = list(
     list(
       ChannelName = "string",
@@ -40,7 +38,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns an array of \code{ChannelInfo} objects. Each object describes a
@@ -48,9 +46,7 @@ signaling channel. To retrieve only those channels that satisfy a
 specific condition, you can specify a \code{ChannelNameCondition}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_signaling_channels(
+\preformatted{svc$list_signaling_channels(
   MaxResults = 123,
   NextToken = "string",
   ChannelNameCondition = list(
@@ -58,7 +54,7 @@ specific condition, you can specify a \code{ChannelNameCondition}.
     ComparisonValue = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

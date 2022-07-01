@@ -18,12 +18,10 @@ must first delete any bundles that are associated with the image and
 unshare the image if it is shared with other accounts.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_workspace_image(
+\preformatted{svc$delete_workspace_image(
   ImageId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

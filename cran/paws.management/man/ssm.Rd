@@ -39,9 +39,7 @@ instances, see the \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/
 information about how to use a Query API, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html}{Making API requests}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- ssm(
+\preformatted{svc <- ssm(
   config = list(
     credentials = list(
       creds = list(
@@ -55,7 +53,7 @@ information about how to use a Query API, see \href{https://docs.aws.amazon.com/
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

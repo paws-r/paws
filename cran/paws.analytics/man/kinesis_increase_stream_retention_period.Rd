@@ -33,13 +33,11 @@ has been called. For example, if a stream's retention period is set to
 hours remains inaccessible to consumer applications.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$increase_stream_retention_period(
+\preformatted{svc$increase_stream_retention_period(
   StreamName = "string",
   RetentionPeriodHours = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,12 +16,10 @@ An empty list.
 Removes a device from Alexa For Business.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_device(
+\preformatted{svc$delete_device(
   DeviceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

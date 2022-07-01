@@ -19,9 +19,7 @@ An empty list.
 Put external evaluation
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_external_evaluation(
+\preformatted{svc$put_external_evaluation(
   ConfigRuleName = "string",
   ExternalEvaluation = list(
     ComplianceResourceType = "string",
@@ -33,7 +31,7 @@ Put external evaluation
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

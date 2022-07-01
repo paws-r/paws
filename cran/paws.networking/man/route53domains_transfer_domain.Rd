@@ -77,12 +77,10 @@ technical contact.
 Default: \code{true}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OperationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Transfers a domain from another registrar to Amazon Route 53. When the
@@ -124,9 +122,7 @@ transfer doesn't complete successfully, the domain registrant will be
 notified by email.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$transfer_domain(
+\preformatted{svc$transfer_domain(
   DomainName = "string",
   IdnLangCode = "string",
   DurationInYears = 123,
@@ -207,7 +203,7 @@ notified by email.
   PrivacyProtectRegistrantContact = TRUE|FALSE,
   PrivacyProtectTechContact = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

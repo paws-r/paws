@@ -20,15 +20,13 @@ An empty list.
 Disassociates one or more configuration items from an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_configuration_items_from_application(
+\preformatted{svc$disassociate_configuration_items_from_application(
   applicationConfigurationId = "string",
   configurationIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

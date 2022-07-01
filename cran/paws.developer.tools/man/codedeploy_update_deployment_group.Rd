@@ -68,9 +68,7 @@ service name pair using the format \verb{<clustername>:<servicename>}.}
 includes only on-premises instances identified by all the tag groups.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   hooksNotCleanedUp = list(
     list(
       name = "string",
@@ -78,15 +76,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes information about a deployment group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_deployment_group(
+\preformatted{svc$update_deployment_group(
   applicationName = "string",
   currentDeploymentGroupName = "string",
   newDeploymentGroupName = "string",
@@ -210,7 +206,7 @@ Changes information about a deployment group.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

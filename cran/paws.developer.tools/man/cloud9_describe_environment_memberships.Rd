@@ -36,9 +36,7 @@ token that is returned, until no more next tokens are returned.}
 \item{maxResults}{The maximum number of environment members to get information about.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   memberships = list(
     list(
       permissions = "owner"|"read-write"|"read-only",
@@ -52,16 +50,14 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about environment members for an AWS Cloud9 development
 environment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_environment_memberships(
+\preformatted{svc$describe_environment_memberships(
   userArn = "string",
   environmentId = "string",
   permissions = list(
@@ -70,7 +66,7 @@ environment.
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

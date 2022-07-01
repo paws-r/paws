@@ -19,9 +19,7 @@ all tasks on a specific source location, you can use
 \verb{LocationType S3} and \verb{Operator Equals}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Locations = list(
     list(
       LocationArn = "string",
@@ -30,7 +28,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of source and destination locations.
@@ -41,9 +39,7 @@ contains a token that you can specify in your next request to fetch the
 next page of locations.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_locations(
+\preformatted{svc$list_locations(
   MaxResults = 123,
   NextToken = "string",
   Filters = list(
@@ -56,7 +52,7 @@ next page of locations.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

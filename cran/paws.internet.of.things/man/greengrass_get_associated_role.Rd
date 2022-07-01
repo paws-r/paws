@@ -10,24 +10,20 @@ greengrass_get_associated_role(GroupId)
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AssociatedAt = "string",
   RoleArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the role associated with a particular group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_associated_role(
+\preformatted{svc$get_associated_role(
   GroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

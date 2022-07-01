@@ -23,9 +23,7 @@ directconnect_create_direct_connect_gateway_association_proposal(
 gateway.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   directConnectGatewayAssociationProposal = list(
     proposalId = "string",
     directConnectGatewayId = "string",
@@ -49,7 +47,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a proposal to associate the specified virtual private gateway or
@@ -59,9 +57,7 @@ You can associate a Direct Connect gateway and virtual private gateway
 or transit gateway that is owned by any AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_direct_connect_gateway_association_proposal(
+\preformatted{svc$create_direct_connect_gateway_association_proposal(
   directConnectGatewayId = "string",
   directConnectGatewayOwnerAccount = "string",
   gatewayId = "string",
@@ -76,7 +72,7 @@ or transit gateway that is owned by any AWS account.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ get the next page of the list, set this field’s value to the value of
 \code{NextMarker} from the current page’s response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RealtimeLogConfigs = list(
     MaxItems = 123,
     Items = list(
@@ -46,7 +44,7 @@ A list with the following syntax:
     NextMarker = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of real-time log configurations.
@@ -59,13 +57,11 @@ get the next page of items, send a subsequent request that specifies the
 the subsequent request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_realtime_log_configs(
+\preformatted{svc$list_realtime_log_configs(
   MaxItems = "string",
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

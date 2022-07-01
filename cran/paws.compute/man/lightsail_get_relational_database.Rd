@@ -10,9 +10,7 @@ lightsail_get_relational_database(relationalDatabaseName)
 \item{relationalDatabaseName}{[required] The name of the database that you are looking up.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   relationalDatabase = list(
     name = "string",
     arn = "string",
@@ -73,18 +71,16 @@ A list with the following syntax:
     caCertificateIdentifier = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a specific database in Amazon Lightsail.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_relational_database(
+\preformatted{svc$get_relational_database(
   relationalDatabaseName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

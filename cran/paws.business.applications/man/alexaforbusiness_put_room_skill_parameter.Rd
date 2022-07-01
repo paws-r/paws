@@ -23,9 +23,7 @@ Updates room skill parameter details by room, skill, and parameter key
 ID. Not all skills have a room skill parameter.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_room_skill_parameter(
+\preformatted{svc$put_room_skill_parameter(
   RoomArn = "string",
   SkillId = "string",
   RoomSkillParameter = list(
@@ -33,7 +31,7 @@ ID. Not all skills have a room skill parameter.
     ParameterValue = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

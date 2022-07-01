@@ -16,9 +16,7 @@ administrator credentials to access the API.}
 \item{IncludeCustomMetadata}{Set this to \code{TRUE} to include custom metadata in the response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Metadata = list(
     Id = "string",
     CreatorId = "string",
@@ -65,20 +63,18 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves details of a document.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_document(
+\preformatted{svc$get_document(
   AuthenticationToken = "string",
   DocumentId = "string",
   IncludeCustomMetadata = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

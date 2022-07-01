@@ -14,12 +14,10 @@ FileUploadAnswer.}
 the QuestionForm of the HIT.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FileUploadURL = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=mturk_get_file_upload_url]{get_file_upload_url}} operation
@@ -36,13 +34,11 @@ recommend that Requesters who want to create HITs asking Workers to
 upload files to use Amazon S3.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_file_upload_url(
+\preformatted{svc$get_file_upload_url(
   AssignmentId = "string",
   QuestionIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

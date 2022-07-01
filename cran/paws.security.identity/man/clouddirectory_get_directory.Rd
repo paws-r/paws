@@ -10,9 +10,7 @@ clouddirectory_get_directory(DirectoryArn)
 \item{DirectoryArn}{[required] The ARN of the directory.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Directory = list(
     Name = "string",
     DirectoryArn = "string",
@@ -22,18 +20,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves metadata about a directory.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_directory(
+\preformatted{svc$get_directory(
   DirectoryArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

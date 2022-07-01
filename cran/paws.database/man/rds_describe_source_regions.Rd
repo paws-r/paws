@@ -33,9 +33,7 @@ the marker, up to the value specified by \code{MaxRecords}.}
 \item{Filters}{This parameter isn't currently supported.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   SourceRegions = list(
     list(
@@ -46,7 +44,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of the source AWS Regions where the current AWS Region
@@ -54,9 +52,7 @@ can create a read replica, copy a DB snapshot from, or replicate
 automated backups from. This API action supports pagination.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_source_regions(
+\preformatted{svc$describe_source_regions(
   RegionName = "string",
   MaxRecords = 123,
   Marker = "string",
@@ -69,7 +65,7 @@ automated backups from. This API action supports pagination.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

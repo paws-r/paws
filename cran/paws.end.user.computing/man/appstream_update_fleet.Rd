@@ -131,9 +131,7 @@ standard desktop that is provided by the operating system displays.
 The default value is \code{APP}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Fleet = list(
     Arn = "string",
     Name = "string",
@@ -179,7 +177,7 @@ A list with the following syntax:
     StreamView = "APP"|"DESKTOP"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified fleet.
@@ -192,9 +190,7 @@ attributes. If the fleet is in the \code{STARTING} or \code{STOPPING} state, you
 can't update it.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_fleet(
+\preformatted{svc$update_fleet(
   ImageName = "string",
   ImageArn = "string",
   Name = "string",
@@ -227,7 +223,7 @@ can't update it.
   IamRoleArn = "string",
   StreamView = "APP"|"DESKTOP"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

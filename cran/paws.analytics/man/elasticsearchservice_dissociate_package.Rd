@@ -14,9 +14,7 @@ this value.}
 \item{DomainName}{[required] Name of the domain that you want to associate the package with.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainPackageDetails = list(
     PackageID = "string",
     PackageName = "string",
@@ -34,19 +32,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Dissociates a package from the Amazon ES domain.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$dissociate_package(
+\preformatted{svc$dissociate_package(
   PackageID = "string",
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

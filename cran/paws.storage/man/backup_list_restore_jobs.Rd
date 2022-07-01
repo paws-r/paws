@@ -26,9 +26,7 @@ associated with the specified account ID.}
 \item{ByStatus}{Returns only restore jobs associated with the specified job status.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RestoreJobs = list(
     list(
       AccountId = "string",
@@ -52,16 +50,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of jobs that AWS Backup initiated to restore a saved
 resource, including metadata about the recovery process.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_restore_jobs(
+\preformatted{svc$list_restore_jobs(
   NextToken = "string",
   MaxResults = 123,
   ByAccountId = "string",
@@ -73,7 +69,7 @@ resource, including metadata about the recovery process.
   ),
   ByStatus = "PENDING"|"RUNNING"|"COMPLETED"|"ABORTED"|"FAILED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

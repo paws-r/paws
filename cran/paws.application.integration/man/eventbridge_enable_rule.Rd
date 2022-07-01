@@ -24,13 +24,11 @@ matching to a newly enabled rule. Allow a short period of time for
 changes to take effect.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_rule(
+\preformatted{svc$enable_rule(
   Name = "string",
   EventBusName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

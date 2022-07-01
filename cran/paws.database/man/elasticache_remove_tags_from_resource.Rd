@@ -18,9 +18,7 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TagList = list(
     list(
       Key = "string",
@@ -28,22 +26,20 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes the tags identified by the \code{TagKeys} list from the named
 resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags_from_resource(
+\preformatted{svc$remove_tags_from_resource(
   ResourceName = "string",
   TagKeys = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -25,9 +25,7 @@ The instance fleet configuration is available only in Amazon EMR
 versions 4.8.0 and later, excluding 5.0.x versions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_instance_fleet(
+\preformatted{svc$modify_instance_fleet(
   ClusterId = "string",
   InstanceFleet = list(
     InstanceFleetId = "string",
@@ -35,7 +33,7 @@ versions 4.8.0 and later, excluding 5.0.x versions.
     TargetSpotCapacity = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

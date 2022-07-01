@@ -26,9 +26,7 @@ EFS file system.}
 (String).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   FileSystems = list(
     list(
@@ -65,7 +63,7 @@ A list with the following syntax:
   ),
   NextMarker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the description of a specific Amazon EFS file system if either
@@ -98,15 +96,13 @@ This operation requires permissions for the
 \code{elasticfilesystem:DescribeFileSystems} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_file_systems(
+\preformatted{svc$describe_file_systems(
   MaxItems = 123,
   Marker = "string",
   CreationToken = "string",
   FileSystemId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -24,12 +24,10 @@ To get the key ID and key ARN for a CMK, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   KeyRotationEnabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a Boolean value that indicates whether \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material}
@@ -67,12 +65,10 @@ parameter.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_key_rotation_status(
+\preformatted{svc$get_key_rotation_status(
   KeyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

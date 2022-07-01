@@ -15,9 +15,7 @@ running. Use either the GameServerGroup name or ARN value.}
 be retrieved.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GameServer = list(
     GameServerGroupName = "string",
     GameServerGroupArn = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -66,13 +64,11 @@ successful, the requested game server object is returned.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_game_server(
+\preformatted{svc$describe_game_server(
   GameServerGroupName = "string",
   GameServerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

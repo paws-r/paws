@@ -65,9 +65,7 @@ request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   DBClusterBacktracks = list(
     list(
@@ -86,7 +84,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about backtracks for a DB cluster.
@@ -97,9 +95,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora MySQL DB clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_cluster_backtracks(
+\preformatted{svc$describe_db_cluster_backtracks(
   DBClusterIdentifier = "string",
   BacktrackIdentifier = "string",
   Filters = list(
@@ -113,7 +109,7 @@ This action only applies to Aurora MySQL DB clusters.
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

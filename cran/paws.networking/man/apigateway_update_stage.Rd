@@ -15,9 +15,7 @@ apigateway_update_stage(restApiId, stageName, patchOperations)
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   deploymentId = "string",
   clientCertificateId = "string",
   stageName = "string",
@@ -67,15 +65,13 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes information about a Stage resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_stage(
+\preformatted{svc$update_stage(
   restApiId = "string",
   stageName = "string",
   patchOperations = list(
@@ -87,7 +83,7 @@ Changes information about a Stage resource.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

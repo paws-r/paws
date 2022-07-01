@@ -39,9 +39,7 @@ version number will be \code{3}, and so on.}
 \item{digest}{[required] The digest of the container image to be registered.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   containerImage = list(
     image = "string",
     digest = "string",
@@ -50,7 +48,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Registers a container image to your Amazon Lightsail container service.
@@ -62,14 +60,12 @@ container images on your Amazon Lightsail container services in the
 \emph{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_container_image(
+\preformatted{svc$register_container_image(
   serviceName = "string",
   label = "string",
   digest = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

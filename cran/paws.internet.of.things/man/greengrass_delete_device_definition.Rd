@@ -16,12 +16,10 @@ An empty list.
 Deletes a device definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_device_definition(
+\preformatted{svc$delete_device_definition(
   DeviceDefinitionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

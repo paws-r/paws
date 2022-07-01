@@ -125,9 +125,7 @@ For more information on expression attribute values, see \href{https://docs.aws.
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attributes = list(
     list(
       S = "string",
@@ -207,7 +205,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a single item in a table by primary key. You can perform a
@@ -227,9 +225,7 @@ conditions are met. If those conditions are met, DynamoDB performs the
 delete. Otherwise, the item is not deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_item(
+\preformatted{svc$delete_item(
   TableName = "string",
   Key = list(
     list(
@@ -340,7 +336,7 @@ delete. Otherwise, the item is not deleted.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

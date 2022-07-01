@@ -19,13 +19,11 @@ An empty list.
 Delete an origin access identity.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cloud_front_origin_access_identity(
+\preformatted{svc$delete_cloud_front_origin_access_identity(
   Id = "string",
   IfMatch = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

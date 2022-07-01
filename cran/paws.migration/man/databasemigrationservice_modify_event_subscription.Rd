@@ -27,9 +27,7 @@ action to see a list of event categories.}
 \item{Enabled}{A Boolean value; set to \strong{true} to activate the subscription.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventSubscription = list(
     CustomerAwsId = "string",
     CustSubscriptionId = "string",
@@ -46,15 +44,13 @@ A list with the following syntax:
     Enabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies an existing AWS DMS event notification subscription.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_event_subscription(
+\preformatted{svc$modify_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",
@@ -63,7 +59,7 @@ Modifies an existing AWS DMS event notification subscription.
   ),
   Enabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

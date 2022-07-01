@@ -10,14 +10,12 @@ storagegateway_describe_bandwidth_rate_limit(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string",
   AverageUploadRateLimitInBitsPerSec = 123,
   AverageDownloadRateLimitInBitsPerSec = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the bandwidth rate limits of a gateway. By default, these limits
@@ -32,12 +30,10 @@ which gateway to describe, use the Amazon Resource Name (ARN) of the
 gateway in your request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_bandwidth_rate_limit(
+\preformatted{svc$describe_bandwidth_rate_limit(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

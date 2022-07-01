@@ -15,9 +15,7 @@ autoscaling_terminate_instance_in_auto_scaling_group(InstanceId,
 the Auto Scaling group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Activity = list(
     ActivityId = "string",
     AutoScalingGroupName = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
     Details = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Terminates the specified instance and optionally adjusts the desired
@@ -59,13 +57,11 @@ terminate instances in other zones. For more information, see
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$terminate_instance_in_auto_scaling_group(
+\preformatted{svc$terminate_instance_in_auto_scaling_group(
   InstanceId = "string",
   ShouldDecrementDesiredCapacity = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

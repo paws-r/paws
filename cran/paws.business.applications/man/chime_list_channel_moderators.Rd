@@ -15,9 +15,7 @@ chime_list_channel_moderators(ChannelArn, MaxResults, NextToken)
 are returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelArn = "string",
   NextToken = "string",
   ChannelModerators = list(
@@ -29,20 +27,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all the moderators for a channel.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_channel_moderators(
+\preformatted{svc$list_channel_moderators(
   ChannelArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

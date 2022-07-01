@@ -19,9 +19,7 @@ identifier.}
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
   httpMethod = "string",
   uri = "string",
@@ -58,15 +56,13 @@ A list with the following syntax:
     insecureSkipVerification = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Represents an update integration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_integration(
+\preformatted{svc$update_integration(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",
@@ -79,7 +75,7 @@ Represents an update integration.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

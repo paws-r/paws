@@ -24,15 +24,13 @@ For an overview on tagging an Amazon RDS resource, see \href{https://docs.aws.am
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags_from_resource(
+\preformatted{svc$remove_tags_from_resource(
   ResourceName = "string",
   TagKeys = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

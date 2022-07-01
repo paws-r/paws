@@ -88,9 +88,7 @@ deployment, and to get details about Amazon ECS service deployments.
 }
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- codedeploy(
+\preformatted{svc <- codedeploy(
   config = list(
     credentials = list(
       creds = list(
@@ -104,7 +102,7 @@ deployment, and to get details about Amazon ECS service deployments.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

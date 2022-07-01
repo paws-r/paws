@@ -18,9 +18,7 @@ returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourceComplianceSummaryItems = list(
     list(
       ComplianceType = "string",
@@ -61,7 +59,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a resource-level summary count. The summary includes information
@@ -69,9 +67,7 @@ about compliant and non-compliant statuses and detailed compliance-item
 severity counts, according to the filter criteria you specify.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resource_compliance_summaries(
+\preformatted{svc$list_resource_compliance_summaries(
   Filters = list(
     list(
       Key = "string",
@@ -84,7 +80,7 @@ severity counts, according to the filter criteria you specify.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

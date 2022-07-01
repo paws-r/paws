@@ -10,9 +10,7 @@ iot_describe_stream(streamId)
 \item{streamId}{[required] The stream ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   streamInfo = list(
     streamId = "string",
     streamArn = "string",
@@ -37,18 +35,16 @@ A list with the following syntax:
     roleArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a stream.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stream(
+\preformatted{svc$describe_stream(
   streamId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,12 +16,10 @@ An empty list.
 Removes the specified algorithm from your account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_algorithm(
+\preformatted{svc$delete_algorithm(
   AlgorithmName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

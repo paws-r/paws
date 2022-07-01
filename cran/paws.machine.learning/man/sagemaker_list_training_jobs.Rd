@@ -38,9 +38,7 @@ jobs whose name contains the specified string.}
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrainingJobSummaries = list(
     list(
       TrainingJobName = "string",
@@ -59,15 +57,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists training jobs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_training_jobs(
+\preformatted{svc$list_training_jobs(
   NextToken = "string",
   MaxResults = 123,
   CreationTimeAfter = as.POSIXct(
@@ -87,7 +83,7 @@ Lists training jobs.
   SortBy = "Name"|"CreationTime"|"Status",
   SortOrder = "Ascending"|"Descending"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

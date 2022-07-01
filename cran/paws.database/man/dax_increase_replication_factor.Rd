@@ -18,9 +18,7 @@ Zones. Use this parameter if you want to distribute the nodes across
 multiple AZs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Cluster = list(
     ClusterName = "string",
     Description = "string",
@@ -76,22 +74,20 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds one or more nodes to a DAX cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$increase_replication_factor(
+\preformatted{svc$increase_replication_factor(
   ClusterName = "string",
   NewReplicationFactor = 123,
   AvailabilityZones = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

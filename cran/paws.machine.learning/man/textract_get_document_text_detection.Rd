@@ -24,9 +24,7 @@ response. You can use this pagination token to retrieve the next set of
 blocks.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DocumentMetadata = list(
     Pages = 123
   ),
@@ -83,7 +81,7 @@ A list with the following syntax:
   StatusMessage = "string",
   DetectDocumentTextModelVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the results for an Amazon Textract asynchronous operation that
@@ -126,14 +124,12 @@ that's returned from the previous call to
 For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html}{Document Text Detection}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_document_text_detection(
+\preformatted{svc$get_document_text_detection(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

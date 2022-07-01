@@ -45,9 +45,7 @@ value.}
 \item{NextToken}{The token for the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FlowLogs = list(
     list(
       CreationTime = as.POSIXct(
@@ -75,7 +73,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more flow logs. To view the information in your flow
@@ -83,9 +81,7 @@ logs (the log streams for the network interfaces), you must use the
 CloudWatch Logs console or the CloudWatch Logs API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_flow_logs(
+\preformatted{svc$describe_flow_logs(
   DryRun = TRUE|FALSE,
   Filter = list(
     list(
@@ -101,7 +97,7 @@ CloudWatch Logs console or the CloudWatch Logs API.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

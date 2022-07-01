@@ -8,26 +8,22 @@ objects defined in the AWS account}
 iam_list_open_id_connect_providers()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OpenIDConnectProviderList = list(
     list(
       Arn = "string"
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists information about the IAM OpenID Connect (OIDC) provider resource
 objects defined in the AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_open_id_connect_providers()
-}\if{html}{\out{</div>}}
+\preformatted{svc$list_open_id_connect_providers()
+}
 }
 
 \keyword{internal}

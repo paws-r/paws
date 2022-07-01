@@ -14,9 +14,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{JourneyId}{[required] The unique identifier for the journey.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JourneyResponse = list(
     Activities = list(
       list(
@@ -396,20 +394,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about the status, configuration, and other
 settings for a journey.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_journey(
+\preformatted{svc$get_journey(
   ApplicationId = "string",
   JourneyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

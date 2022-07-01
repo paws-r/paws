@@ -44,15 +44,13 @@ only registered version of that type, in which case the type itself is
 deregistered as well.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_type(
+\preformatted{svc$deregister_type(
   Arn = "string",
   Type = "RESOURCE"|"MODULE",
   TypeName = "string",
   VersionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -18,14 +18,12 @@ Updates the current global settings for the AWS Account. Use the
 determine the current settings.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_global_settings(
+\preformatted{svc$update_global_settings(
   GlobalSettings = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

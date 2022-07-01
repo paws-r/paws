@@ -34,9 +34,7 @@ and 200. If this parameter is not used, then
 200 results and a \code{nextToken} value if applicable.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   deploymentJobs = list(
     list(
       arn = "string",
@@ -76,16 +74,14 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of deployment jobs for a fleet. You can optionally
 provide filters to retrieve specific deployment jobs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_deployment_jobs(
+\preformatted{svc$list_deployment_jobs(
   filters = list(
     list(
       name = "string",
@@ -97,7 +93,7 @@ provide filters to retrieve specific deployment jobs.
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

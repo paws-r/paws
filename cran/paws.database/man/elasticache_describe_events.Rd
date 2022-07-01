@@ -41,9 +41,7 @@ specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   Events = list(
     list(
@@ -56,7 +54,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns events related to clusters, cache security groups, and cache
@@ -68,9 +66,7 @@ By default, only the events occurring within the last hour are returned;
 however, you can retrieve up to 14 days' worth of events if necessary.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_events(
+\preformatted{svc$describe_events(
   SourceIdentifier = "string",
   SourceType = "cache-cluster"|"cache-parameter-group"|"cache-security-group"|"cache-subnet-group"|"replication-group"|"user"|"user-group",
   StartTime = as.POSIXct(
@@ -83,7 +79,7 @@ however, you can retrieve up to 14 days' worth of events if necessary.
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,9 +15,7 @@ chime_put_voice_connector_emergency_calling_configuration(
 \item{EmergencyCallingConfiguration}{[required] The emergency calling configuration details.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EmergencyCallingConfiguration = list(
     DNIS = list(
       list(
@@ -28,7 +26,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Puts emergency calling configuration details to the specified Amazon
@@ -37,9 +35,7 @@ countries. Origination and termination settings must be enabled for the
 Amazon Chime Voice Connector before emergency calling can be configured.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_voice_connector_emergency_calling_configuration(
+\preformatted{svc$put_voice_connector_emergency_calling_configuration(
   VoiceConnectorId = "string",
   EmergencyCallingConfiguration = list(
     DNIS = list(
@@ -51,7 +47,7 @@ Amazon Chime Voice Connector before emergency calling can be configured.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

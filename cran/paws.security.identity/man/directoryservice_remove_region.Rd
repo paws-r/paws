@@ -21,12 +21,10 @@ operation. Instead, use the
 \code{\link[=directoryservice_delete_directory]{delete_directory}} API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_region(
+\preformatted{svc$remove_region(
   DirectoryId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

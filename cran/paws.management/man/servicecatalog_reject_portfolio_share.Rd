@@ -37,14 +37,12 @@ An empty list.
 Rejects an offer to share the specified portfolio.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reject_portfolio_share(
+\preformatted{svc$reject_portfolio_share(
   AcceptLanguage = "string",
   PortfolioId = "string",
   PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

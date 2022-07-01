@@ -32,9 +32,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NetworkInsightsPath = list(
     NetworkInsightsPathId = "string",
     NetworkInsightsPathArn = "string",
@@ -55,7 +53,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a path to analyze for reachability.
@@ -65,9 +63,7 @@ reachability between two resources in your virtual private cloud (VPC).
 For more information, see \href{https://docs.aws.amazon.com/vpc/latest/reachability/}{What is Reachability Analyzer}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_network_insights_path(
+\preformatted{svc$create_network_insights_path(
   SourceIp = "string",
   DestinationIp = "string",
   Source = "string",
@@ -88,7 +84,7 @@ For more information, see \href{https://docs.aws.amazon.com/vpc/latest/reachabil
   DryRun = TRUE|FALSE,
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

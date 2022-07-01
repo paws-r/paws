@@ -29,15 +29,13 @@ the sourceCode parameter.}
 \item{tags}{The tags created for the project.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   arn = "string",
   clientRequestToken = "string",
   projectTemplateId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a project, including project resources. This action creates a
@@ -46,9 +44,7 @@ and a toolchain template file can be included with the project request.
 If these are not provided, an empty project is created.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_project(
+\preformatted{svc$create_project(
   name = "string",
   id = "string",
   description = "string",
@@ -93,7 +89,7 @@ If these are not provided, an empty project is created.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,9 +15,7 @@ chime_list_channel_bans(ChannelArn, MaxResults, NextToken)
 returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelArn = "string",
   NextToken = "string",
   ChannelBans = list(
@@ -29,20 +27,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all the users banned from a particular channel.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_channel_bans(
+\preformatted{svc$list_channel_bans(
   ChannelArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

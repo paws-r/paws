@@ -18,13 +18,11 @@ An empty list.
 Deletes a simulation application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_simulation_application(
+\preformatted{svc$delete_simulation_application(
   application = "string",
   applicationVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

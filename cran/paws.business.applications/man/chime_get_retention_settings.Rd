@@ -11,9 +11,7 @@ chime_get_retention_settings(AccountId)
 \item{AccountId}{[required] The Amazon Chime account ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RetentionSettings = list(
     RoomRetentionSettings = list(
       RetentionDays = 123
@@ -26,7 +24,7 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the retention settings for the specified Amazon Chime Enterprise
@@ -34,12 +32,10 @@ account. For more information about retention settings, see \href{https://docs.a
 in the \emph{Amazon Chime Administration Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_retention_settings(
+\preformatted{svc$get_retention_settings(
   AccountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

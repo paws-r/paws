@@ -13,9 +13,7 @@ inspector_describe_findings(findingArns, locale)
 recommendation, and the short description that identifies the finding.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   findings = list(
     list(
       arn = "string",
@@ -104,21 +102,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the findings that are specified by the ARNs of the findings.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_findings(
+\preformatted{svc$describe_findings(
   findingArns = list(
     "string"
   ),
   locale = "EN_US"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

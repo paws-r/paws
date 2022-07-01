@@ -73,9 +73,7 @@ Results are sorted by \code{FilterVariable}.}
 \item{Limit}{The maximum number of \code{DataSource} to include in the result.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Results = list(
     list(
       DataSourceId = "string",
@@ -125,16 +123,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of \code{DataSource} that match the search criteria in the
 request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_data_sources(
+\preformatted{svc$describe_data_sources(
   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"DataLocationS3"|"IAMUser",
   EQ = "string",
   GT = "string",
@@ -147,7 +143,7 @@ request.
   NextToken = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

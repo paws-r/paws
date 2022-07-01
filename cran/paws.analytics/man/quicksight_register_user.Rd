@@ -82,9 +82,7 @@ subscriptions that use SAML 2.0-Based Federation for Single Sign-On
 (SSO).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   User = list(
     Arn = "string",
     UserName = "string",
@@ -99,7 +97,7 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an Amazon QuickSight user, whose identity is associated with the
@@ -107,9 +105,7 @@ AWS Identity and Access Management (IAM) identity or role specified in
 the request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_user(
+\preformatted{svc$register_user(
   IdentityType = "IAM"|"QUICKSIGHT",
   Email = "string",
   UserRole = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
@@ -120,7 +116,7 @@ the request.
   UserName = "string",
   CustomPermissionsName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

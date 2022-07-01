@@ -39,9 +39,7 @@ based on tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_tags(
+\preformatted{svc$create_tags(
   DryRun = TRUE|FALSE,
   Resources = list(
     "string"
@@ -53,7 +51,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

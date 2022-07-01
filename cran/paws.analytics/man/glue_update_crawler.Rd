@@ -54,9 +54,7 @@ Updates a crawler. If a crawler is running, you must stop it using
 \code{\link[=glue_stop_crawler]{stop_crawler}} before updating it.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_crawler(
+\preformatted{svc$update_crawler(
   Name = "string",
   Role = "string",
   DatabaseName = "string",
@@ -121,7 +119,7 @@ Updates a crawler. If a crawler is running, you must stop it using
   Configuration = "string",
   CrawlerSecurityConfiguration = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

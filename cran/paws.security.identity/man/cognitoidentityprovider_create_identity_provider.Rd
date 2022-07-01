@@ -68,9 +68,7 @@ pool attributes.}
 \item{IdpIdentifiers}{A list of identity provider identifiers.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IdentityProvider = list(
     UserPoolId = "string",
     ProviderName = "string",
@@ -92,15 +90,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an identity provider for a user pool.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_identity_provider(
+\preformatted{svc$create_identity_provider(
   UserPoolId = "string",
   ProviderName = "string",
   ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
@@ -114,7 +110,7 @@ Creates an identity provider for a user pool.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

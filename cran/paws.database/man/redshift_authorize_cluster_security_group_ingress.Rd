@@ -22,9 +22,7 @@ acceptable value.
 Example: \code{111122223333}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClusterSecurityGroup = list(
     ClusterSecurityGroupName = "string",
     Description = "string",
@@ -61,7 +59,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds an inbound (ingress) rule to an Amazon Redshift security group.
@@ -86,15 +84,13 @@ groups, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-wit
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$authorize_cluster_security_group_ingress(
+\preformatted{svc$authorize_cluster_security_group_ingress(
   ClusterSecurityGroupName = "string",
   CIDRIP = "string",
   EC2SecurityGroupName = "string",
   EC2SecurityGroupOwnerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

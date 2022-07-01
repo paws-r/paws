@@ -21,13 +21,11 @@ An empty list.
 Deletes the billing group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_billing_group(
+\preformatted{svc$delete_billing_group(
   billingGroupName = "string",
   expectedVersion = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

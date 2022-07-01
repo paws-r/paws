@@ -30,9 +30,7 @@ next set of actions.}
 value is 10.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ActionSummaries = list(
     list(
       ActionArn = "string",
@@ -54,15 +52,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the actions in your account and their properties.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_actions(
+\preformatted{svc$list_actions(
   SourceUri = "string",
   ActionType = "string",
   CreatedAfter = as.POSIXct(
@@ -76,7 +72,7 @@ Lists the actions in your account and their properties.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -63,9 +63,7 @@ about granting IAM users required permissions for Application Auto
 Scaling actions, see the \href{https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html}{Application Auto Scaling User Guide}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- applicationautoscaling(
+\preformatted{svc <- applicationautoscaling(
   config = list(
     credentials = list(
       creds = list(
@@ -79,7 +77,7 @@ Scaling actions, see the \href{https://docs.aws.amazon.com/autoscaling/applicati
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

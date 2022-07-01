@@ -37,29 +37,25 @@ items in the list, keep calling this operation with each subsequent next
 token that is returned, until no more next tokens are returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   nextToken = "string",
   projects = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of build project names, with each build project name
 representing a single build project.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_projects(
+\preformatted{svc$list_projects(
   sortBy = "NAME"|"CREATED_TIME"|"LAST_MODIFIED_TIME",
   sortOrder = "ASCENDING"|"DESCENDING",
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

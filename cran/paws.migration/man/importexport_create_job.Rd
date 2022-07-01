@@ -20,9 +20,7 @@ importexport_create_job(JobType, Manifest, ManifestAddendum,
 \item{APIVersion}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobId = "string",
   JobType = "Import"|"Export",
   Signature = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation initiates the process of scheduling an upload or download
@@ -46,16 +44,14 @@ identify your storage device, and the address where you should ship your
 storage device.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_job(
+\preformatted{svc$create_job(
   JobType = "Import"|"Export",
   Manifest = "string",
   ManifestAddendum = "string",
   ValidateOnly = TRUE|FALSE,
   APIVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

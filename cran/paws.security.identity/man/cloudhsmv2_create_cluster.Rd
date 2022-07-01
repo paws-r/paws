@@ -29,9 +29,7 @@ they must meet the following criteria:
 \item{TagList}{Tags to apply to the CloudHSM cluster during creation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Cluster = list(
     BackupPolicy = "DEFAULT",
     BackupRetentionPolicy = list(
@@ -79,15 +77,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new AWS CloudHSM cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cluster(
+\preformatted{svc$create_cluster(
   BackupRetentionPolicy = list(
     Type = "DAYS",
     Value = "string"
@@ -104,7 +100,7 @@ Creates a new AWS CloudHSM cluster.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

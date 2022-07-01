@@ -38,14 +38,12 @@ can use this operation to manage AWS account root user credentials even
 if the AWS account has no associated users.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_signing_certificate(
+\preformatted{svc$update_signing_certificate(
   UserName = "string",
   CertificateId = "string",
   Status = "Active"|"Inactive"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -20,9 +20,7 @@ cloudwatchevents_create_archive(ArchiveName, EventSourceArn,
 0, events are retained indefinitely}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ArchiveArn = "string",
   State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
   StateReason = "string",
@@ -30,7 +28,7 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an archive of events with the specified settings. When you
@@ -41,16 +39,14 @@ archive, all events are sent to the archive except replayed events.
 Replayed events are not sent to an archive.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_archive(
+\preformatted{svc$create_archive(
   ArchiveName = "string",
   EventSourceArn = "string",
   Description = "string",
   EventPattern = "string",
   RetentionDays = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

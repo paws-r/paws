@@ -11,9 +11,7 @@ sfn_list_tags_for_resource(resourceArn)
 activity.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   tags = list(
     list(
       key = "string",
@@ -21,7 +19,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List tags for a given resource.
@@ -30,12 +28,10 @@ Tags may only contain Unicode letters, digits, white space, or these
 symbols: \verb{_ . : / = + - @}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   resourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

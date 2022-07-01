@@ -108,9 +108,7 @@ remove, and view tags, respectively. The maximum tag limit may be lower
 than stated. See the AWS General Reference for actual tagging limits.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GameServerGroup = list(
     GameServerGroupName = "string",
     GameServerGroupArn = "string",
@@ -137,7 +135,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -195,9 +193,7 @@ optimize for availability and cost.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_game_server_group(
+\preformatted{svc$create_game_server_group(
   GameServerGroupName = "string",
   RoleArn = "string",
   MinSize = 123,
@@ -231,7 +227,7 @@ optimize for availability and cost.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

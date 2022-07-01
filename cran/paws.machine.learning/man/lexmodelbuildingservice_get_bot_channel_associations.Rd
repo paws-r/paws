@@ -27,9 +27,7 @@ returned if any part of its name matches the substring. For example,
 associations, use a hyphen ("-") as the \code{nameContains} parameter.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   botChannelAssociations = list(
     list(
       name = "string",
@@ -49,7 +47,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of all of the channels associated with the specified bot.
@@ -60,16 +58,14 @@ operation requires permissions for the \code{lex:GetBotChannelAssociations}
 action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bot_channel_associations(
+\preformatted{svc$get_bot_channel_associations(
   botName = "string",
   botAlias = "string",
   nextToken = "string",
   maxResults = 123,
   nameContains = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

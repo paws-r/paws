@@ -13,9 +13,7 @@ wafregional_get_regex_pattern_set(RegexPatternSetId)
 by \code{\link[=wafregional_list_regex_pattern_sets]{list_regex_pattern_sets}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RegexPatternSet = list(
     RegexPatternSetId = "string",
     Name = "string",
@@ -24,7 +22,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -39,12 +37,10 @@ regional and global use.
 Returns the RegexPatternSet specified by \code{RegexPatternSetId}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_regex_pattern_set(
+\preformatted{svc$get_regex_pattern_set(
   RegexPatternSetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

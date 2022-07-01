@@ -14,9 +14,7 @@ route53_update_hosted_zone_comment(Id, Comment)
 element, if any.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HostedZone = list(
     Id = "string",
     Name = "string",
@@ -32,19 +30,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the comment for a specified hosted zone.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_hosted_zone_comment(
+\preformatted{svc$update_hosted_zone_comment(
   Id = "string",
   Comment = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

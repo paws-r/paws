@@ -10,12 +10,10 @@ codecommit_delete_repository(repositoryName)
 \item{repositoryName}{[required] The name of the repository to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   repositoryId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a repository. If a specified repository was already deleted, a
@@ -26,12 +24,10 @@ After a repository is deleted, all future push calls to the deleted
 repository fail.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_repository(
+\preformatted{svc$delete_repository(
   repositoryName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

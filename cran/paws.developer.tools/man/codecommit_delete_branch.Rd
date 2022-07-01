@@ -13,28 +13,24 @@ codecommit_delete_branch(repositoryName, branchName)
 \item{branchName}{[required] The name of the branch to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   deletedBranch = list(
     branchName = "string",
     commitId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a branch from a repository, unless that branch is the default
 branch for the repository.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_branch(
+\preformatted{svc$delete_branch(
   repositoryName = "string",
   branchName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

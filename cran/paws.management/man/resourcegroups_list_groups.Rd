@@ -41,9 +41,7 @@ provided by a previous call's \code{NextToken} response to indicate where the
 output should continue from.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GroupIdentifiers = list(
     list(
       GroupName = "string",
@@ -59,7 +57,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of existing resource groups in your account.
@@ -72,9 +70,7 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_groups(
+\preformatted{svc$list_groups(
   Filters = list(
     list(
       Name = "resource-type"|"configuration-type",
@@ -86,7 +82,7 @@ To run this command, you must have the following permissions:
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

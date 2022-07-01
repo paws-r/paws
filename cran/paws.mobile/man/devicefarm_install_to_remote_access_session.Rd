@@ -14,9 +14,7 @@ you are requesting information.}
 \item{appArn}{[required] The ARN of the app about which you are requesting information.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   appUpload = list(
     arn = "string",
     name = "string",
@@ -32,7 +30,7 @@ A list with the following syntax:
     category = "CURATED"|"PRIVATE"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Installs an application to the device in a remote access session. For
@@ -40,13 +38,11 @@ Android applications, the file must be in .apk format. For iOS
 applications, the file must be in .ipa format.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$install_to_remote_access_session(
+\preformatted{svc$install_to_remote_access_session(
   remoteAccessSessionArn = "string",
   appArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -79,9 +79,7 @@ list of contexts for the session. If you specify an empty list, all
 contexts for the session are cleared.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   contentType = "string",
   intentName = "string",
   slots = "string",
@@ -94,7 +92,7 @@ A list with the following syntax:
   sessionId = "string",
   activeContexts = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new session or modifies an existing session with an Amazon Lex
@@ -104,9 +102,7 @@ the bot.
 For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/how-session-api.html}{Managing Sessions}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_session(
+\preformatted{svc$put_session(
   botName = "string",
   botAlias = "string",
   userId = "string",
@@ -151,7 +147,7 @@ For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/how-se
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

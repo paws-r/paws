@@ -23,9 +23,7 @@ subsequent request. Set it to the value of \code{nextToken} from the response
 that you just received.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   platforms = list(
     list(
       platformId = "string",
@@ -59,7 +57,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all signing platforms available in code signing that match the
@@ -72,16 +70,14 @@ parameter and with new values that code signing returns in the
 \code{nextToken} parameter until all of your signing jobs have been returned.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_signing_platforms(
+\preformatted{svc$list_signing_platforms(
   category = "string",
   partner = "string",
   target = "string",
   maxResults = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

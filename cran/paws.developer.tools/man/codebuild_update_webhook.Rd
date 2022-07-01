@@ -28,9 +28,7 @@ one \code{EVENT} \code{WebhookFilter}.}
 \item{buildType}{Specifies the type of build this webhook will trigger.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   webhook = list(
     url = "string",
     payloadUrl = "string",
@@ -51,7 +49,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the webhook associated with an AWS CodeBuild build project.
@@ -59,9 +57,7 @@ Updates the webhook associated with an AWS CodeBuild build project.
 If you use Bitbucket for your repository, \code{rotateSecret} is ignored.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_webhook(
+\preformatted{svc$update_webhook(
   projectName = "string",
   branchFilter = "string",
   rotateSecret = TRUE|FALSE,
@@ -76,7 +72,7 @@ If you use Bitbucket for your repository, \code{rotateSecret} is ignored.
   ),
   buildType = "BUILD"|"BUILD_BATCH"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

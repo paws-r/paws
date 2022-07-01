@@ -22,9 +22,7 @@ Farm to test.}
 configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   vpceConfiguration = list(
     arn = "string",
     vpceConfigurationName = "string",
@@ -33,22 +31,20 @@ A list with the following syntax:
     vpceConfigurationDescription = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a configuration record in Device Farm for your Amazon Virtual
 Private Cloud (VPC) endpoint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vpce_configuration(
+\preformatted{svc$create_vpce_configuration(
   vpceConfigurationName = "string",
   vpceServiceName = "string",
   serviceDnsName = "string",
   vpceConfigurationDescription = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

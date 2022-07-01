@@ -12,9 +12,7 @@ greengrass_get_deployment_status(DeploymentId, GroupId)
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DeploymentStatus = "string",
   DeploymentType = "NewDeployment"|"Redeployment"|"ResetDeployment"|"ForceResetDeployment",
   ErrorDetails = list(
@@ -26,19 +24,17 @@ A list with the following syntax:
   ErrorMessage = "string",
   UpdatedAt = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the status of a deployment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_deployment_status(
+\preformatted{svc$get_deployment_status(
   DeploymentId = "string",
   GroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -35,13 +35,11 @@ about policies, refer to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_group_policy(
+\preformatted{svc$delete_group_policy(
   GroupName = "string",
   PolicyName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

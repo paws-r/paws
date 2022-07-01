@@ -14,9 +14,7 @@ apigateway_create_resource(restApiId, parentId, pathPart)
 \item{pathPart}{[required] The last path segment for this resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   parentId = "string",
   pathPart = "string",
@@ -89,20 +87,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Resource resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_resource(
+\preformatted{svc$create_resource(
   restApiId = "string",
   parentId = "string",
   pathPart = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

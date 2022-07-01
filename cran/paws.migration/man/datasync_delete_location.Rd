@@ -16,12 +16,10 @@ An empty list.
 Deletes the configuration of a location used by AWS DataSync.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_location(
+\preformatted{svc$delete_location(
   LocationArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

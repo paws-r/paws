@@ -23,16 +23,14 @@ Adds the specified list of labels to the given resource (a document or
 folder)
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_labels(
+\preformatted{svc$create_labels(
   ResourceId = "string",
   Labels = list(
     "string"
   ),
   AuthenticationToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

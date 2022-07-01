@@ -24,16 +24,14 @@ encoding of
 The value must be URL encoded.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Bucket = "string",
   PublicAccessBlockEnabled = TRUE|FALSE,
   CreationDate = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets an Amazon S3 on Outposts bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
@@ -68,13 +66,11 @@ section.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bucket(
+\preformatted{svc$get_bucket(
   AccountId = "string",
   Bucket = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

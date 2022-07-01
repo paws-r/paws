@@ -17,9 +17,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Constraint: Maximum of 1000 flow log IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Unsuccessful = list(
     list(
       Error = list(
@@ -30,21 +28,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes one or more flow logs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_flow_logs(
+\preformatted{svc$delete_flow_logs(
   DryRun = TRUE|FALSE,
   FlowLogIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

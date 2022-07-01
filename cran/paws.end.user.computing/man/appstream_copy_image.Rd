@@ -20,12 +20,10 @@ is required, even if you are copying an image within the same region.}
 destination.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DestinationImageName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Copies the image within the same region or to a new region within the
@@ -33,15 +31,13 @@ same AWS account. Note that any tags you added to the image will not be
 copied.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_image(
+\preformatted{svc$copy_image(
   SourceImageName = "string",
   DestinationImageName = "string",
   DestinationRegion = "string",
   DestinationImageDescription = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

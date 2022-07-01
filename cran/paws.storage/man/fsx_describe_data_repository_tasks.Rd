@@ -23,9 +23,7 @@ specific lifecycle state.}
 \item{NextToken}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DataRepositoryTasks = list(
     list(
       TaskId = "string",
@@ -72,7 +70,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the description of specific Amazon FSx for Lustre data
@@ -91,9 +89,7 @@ request parameter set to the value of \code{NextToken} from the last
 response.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_data_repository_tasks(
+\preformatted{svc$describe_data_repository_tasks(
   TaskIds = list(
     "string"
   ),
@@ -108,7 +104,7 @@ response.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

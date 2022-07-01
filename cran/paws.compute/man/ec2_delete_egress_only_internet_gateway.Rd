@@ -16,24 +16,20 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{EgressOnlyInternetGatewayId}{[required] The ID of the egress-only internet gateway.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReturnCode = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an egress-only internet gateway.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_egress_only_internet_gateway(
+\preformatted{svc$delete_egress_only_internet_gateway(
   DryRun = TRUE|FALSE,
   EgressOnlyInternetGatewayId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

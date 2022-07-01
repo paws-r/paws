@@ -37,9 +37,7 @@ For information about using tags for cost allocation, see \href{https://docs.aws
 in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$change_tags_for_resource(
+\preformatted{svc$change_tags_for_resource(
   ResourceType = "healthcheck"|"hostedzone",
   ResourceId = "string",
   AddTags = list(
@@ -52,7 +50,7 @@ in the \emph{AWS Billing and Cost Management User Guide}.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

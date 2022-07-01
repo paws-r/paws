@@ -51,9 +51,7 @@ list the consumers for.
 You can't specify this parameter if you specify the NextToken parameter.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Consumers = list(
     list(
       ConsumerName = "string",
@@ -66,7 +64,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the consumers registered to receive data from a stream using
@@ -75,9 +73,7 @@ enhanced fan-out, and provides information about each consumer.
 This operation has a limit of 5 transactions per second per stream.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_stream_consumers(
+\preformatted{svc$list_stream_consumers(
   StreamARN = "string",
   NextToken = "string",
   MaxResults = 123,
@@ -85,7 +81,7 @@ This operation has a limit of 5 transactions per second per stream.
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

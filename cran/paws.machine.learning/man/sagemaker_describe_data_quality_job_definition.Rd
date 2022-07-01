@@ -10,9 +10,7 @@ sagemaker_describe_data_quality_job_definition(JobDefinitionName)
 \item{JobDefinitionName}{[required] The name of the data quality monitoring job definition to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobDefinitionArn = "string",
   JobDefinitionName = "string",
   CreationTime = as.POSIXct(
@@ -92,18 +90,16 @@ A list with the following syntax:
     MaxRuntimeInSeconds = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the details of a data quality monitoring job definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_data_quality_job_definition(
+\preformatted{svc$describe_data_quality_job_definition(
   JobDefinitionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

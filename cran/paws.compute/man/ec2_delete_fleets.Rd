@@ -25,9 +25,7 @@ For \code{instant} fleets, you cannot specify \code{NoTerminateInstances}. A
 deleted \code{instant} fleet with running instances is not supported.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SuccessfulFleetDeletions = list(
     list(
       CurrentFleetState = "submitted"|"active"|"deleted"|"failed"|"deleted_running"|"deleted_terminating"|"modifying",
@@ -45,7 +43,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified EC2 Fleet.
@@ -76,16 +74,14 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_fleets(
+\preformatted{svc$delete_fleets(
   DryRun = TRUE|FALSE,
   FleetIds = list(
     "string"
   ),
   TerminateInstances = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

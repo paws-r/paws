@@ -24,9 +24,7 @@ This value is stored as a lowercase string.}
 \item{Tags}{The tags to be assigned to the cluster parameter group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBClusterParameterGroup = list(
     DBClusterParameterGroupName = "string",
     DBParameterGroupFamily = "string",
@@ -34,7 +32,7 @@ A list with the following syntax:
     DBClusterParameterGroupArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new cluster parameter group.
@@ -55,9 +53,7 @@ effect, you must then reboot the instances in the cluster without
 failover. For more information, see \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/}{Modifying Amazon DocumentDB Cluster Parameter Groups}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_cluster_parameter_group(
+\preformatted{svc$create_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string",
   DBParameterGroupFamily = "string",
   Description = "string",
@@ -68,7 +64,7 @@ failover. For more information, see \href{https://docs.aws.amazon.com/documentdb
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -84,9 +84,7 @@ in AWS Organizations.}
 \item{TagsList}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Name = "string",
   S3BucketName = "string",
   S3KeyPrefix = "string",
@@ -101,16 +99,14 @@ A list with the following syntax:
   KmsKeyId = "string",
   IsOrganizationTrail = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a trail that specifies the settings for delivery of log data to
 an Amazon S3 bucket.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_trail(
+\preformatted{svc$create_trail(
   Name = "string",
   S3BucketName = "string",
   S3KeyPrefix = "string",
@@ -129,7 +125,7 @@ an Amazon S3 bucket.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

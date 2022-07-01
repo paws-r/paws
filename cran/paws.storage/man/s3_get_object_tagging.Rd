@@ -36,9 +36,7 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VersionId = "string",
   TagSet = list(
     list(
@@ -47,7 +45,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the tag-set of an object. You send the GET request against the
@@ -72,15 +70,13 @@ The following operation is related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_object_tagging(
+\preformatted{svc$get_object_tagging(
   Bucket = "string",
   Key = "string",
   VersionId = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

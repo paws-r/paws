@@ -22,9 +22,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClientVpnEndpointId = "string",
   Username = "string",
   ConnectionStatuses = list(
@@ -41,7 +39,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Terminates active Client VPN endpoint connections. This action can be
@@ -49,15 +47,13 @@ used to terminate a specific client connection, or up to five
 connections established by a specific user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$terminate_client_vpn_connections(
+\preformatted{svc$terminate_client_vpn_connections(
   ClientVpnEndpointId = "string",
   ConnectionId = "string",
   Username = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

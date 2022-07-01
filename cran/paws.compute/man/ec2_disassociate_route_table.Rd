@@ -27,13 +27,11 @@ table. For more information about route tables, see \href{https://docs.aws.amazo
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_route_table(
+\preformatted{svc$disassociate_route_table(
   AssociationId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

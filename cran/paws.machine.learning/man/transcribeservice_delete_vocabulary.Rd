@@ -16,12 +16,10 @@ An empty list.
 Deletes a vocabulary from Amazon Transcribe.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vocabulary(
+\preformatted{svc$delete_vocabulary(
   VocabularyName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

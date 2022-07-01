@@ -10,9 +10,7 @@ cloudfront_create_origin_request_policy(OriginRequestPolicyConfig)
 \item{OriginRequestPolicyConfig}{[required] An origin request policy configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OriginRequestPolicy = list(
     Id = "string",
     LastModifiedTime = as.POSIXct(
@@ -53,7 +51,7 @@ A list with the following syntax:
   Location = "string",
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an origin request policy.
@@ -82,9 +80,7 @@ For more information about origin request policies, see \href{https://docs.aws.a
 in the \emph{Amazon CloudFront Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_origin_request_policy(
+\preformatted{svc$create_origin_request_policy(
   OriginRequestPolicyConfig = list(
     Comment = "string",
     Name = "string",
@@ -117,7 +113,7 @@ in the \emph{Amazon CloudFront Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ using the returned token in \code{NextToken}.}
 \item{ResourceName}{Filter migration tasks by discovered resource name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   MigrationTaskSummaryList = list(
     list(
@@ -34,7 +32,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all, or filtered by resource name, migration tasks associated with
@@ -47,14 +45,12 @@ discovered resource.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_migration_tasks(
+\preformatted{svc$list_migration_tasks(
   NextToken = "string",
   MaxResults = 123,
   ResourceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

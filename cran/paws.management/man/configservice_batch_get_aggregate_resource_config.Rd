@@ -14,9 +14,7 @@ configservice_batch_get_aggregate_resource_config(
 \item{ResourceIdentifiers}{[required] A list of aggregate ResourceIdentifiers objects.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BaseConfigurationItems = list(
     list(
       version = "string",
@@ -51,7 +49,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the current configuration items for resources that are present
@@ -65,9 +63,7 @@ unprocessed resources, the operation returns an empty
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_aggregate_resource_config(
+\preformatted{svc$batch_get_aggregate_resource_config(
   ConfigurationAggregatorName = "string",
   ResourceIdentifiers = list(
     list(
@@ -79,7 +75,7 @@ unprocessed resources, the operation returns an empty
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

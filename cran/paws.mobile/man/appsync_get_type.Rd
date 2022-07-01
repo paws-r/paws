@@ -14,9 +14,7 @@ appsync_get_type(apiId, typeName, format)
 \item{format}{[required] The type format: SDL or JSON.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   type = list(
     name = "string",
     description = "string",
@@ -25,20 +23,18 @@ A list with the following syntax:
     format = "SDL"|"JSON"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a \code{Type} object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_type(
+\preformatted{svc$get_type(
   apiId = "string",
   typeName = "string",
   format = "SDL"|"JSON"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -18,12 +18,10 @@ activated, your matching event bus will start receiving events from the
 event source.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$activate_event_source(
+\preformatted{svc$activate_event_source(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

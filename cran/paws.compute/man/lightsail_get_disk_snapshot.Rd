@@ -10,9 +10,7 @@ lightsail_get_disk_snapshot(diskSnapshotName)
 \item{diskSnapshotName}{[required] The name of the disk snapshot (e.g., \code{my-disk-snapshot}).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   diskSnapshot = list(
     name = "string",
     arn = "string",
@@ -41,18 +39,16 @@ A list with the following syntax:
     isFromAutoSnapshot = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a specific block storage disk snapshot.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_disk_snapshot(
+\preformatted{svc$get_disk_snapshot(
   diskSnapshotName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

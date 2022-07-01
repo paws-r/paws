@@ -22,12 +22,10 @@ For more information about DNS query logs, see
 \code{\link[=route53_create_query_logging_config]{create_query_logging_config}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_query_logging_config(
+\preformatted{svc$delete_query_logging_config(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

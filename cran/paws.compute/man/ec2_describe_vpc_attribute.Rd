@@ -17,9 +17,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VpcId = "string",
   EnableDnsHostnames = list(
     Value = TRUE|FALSE
@@ -28,21 +26,19 @@ A list with the following syntax:
     Value = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified attribute of the specified VPC. You can specify
 only one attribute at a time.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vpc_attribute(
+\preformatted{svc$describe_vpc_attribute(
   Attribute = "enableDnsSupport"|"enableDnsHostnames",
   VpcId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

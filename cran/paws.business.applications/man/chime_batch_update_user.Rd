@@ -13,9 +13,7 @@ chime_batch_update_user(AccountId, UpdateUserRequestItems)
 \item{UpdateUserRequestItems}{[required] The request containing the user IDs and details to update.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserErrors = list(
     list(
       UserId = "string",
@@ -24,7 +22,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates user details within the UpdateUserRequestItem object for up to
@@ -32,9 +30,7 @@ Updates user details within the UpdateUserRequestItem object for up to
 \code{LicenseType} updates are supported for this action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_update_user(
+\preformatted{svc$batch_update_user(
   AccountId = "string",
   UpdateUserRequestItems = list(
     list(
@@ -48,7 +44,7 @@ Updates user details within the UpdateUserRequestItem object for up to
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

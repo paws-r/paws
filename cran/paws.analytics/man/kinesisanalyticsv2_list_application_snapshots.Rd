@@ -18,9 +18,7 @@ the value of the previous call's \code{NextToken} response to indicate where
 the output should continue from.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SnapshotSummaries = list(
     list(
       SnapshotName = "string",
@@ -33,20 +31,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists information about the current application snapshots.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_application_snapshots(
+\preformatted{svc$list_application_snapshots(
   ApplicationName = "string",
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

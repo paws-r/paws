@@ -19,15 +19,13 @@ An empty list.
 Removes one or more tags from the specified resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceARN = "string",
   TagKeys = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

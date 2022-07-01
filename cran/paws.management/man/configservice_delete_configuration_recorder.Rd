@@ -30,12 +30,10 @@ action, but you will not be able to access this information in the AWS
 Config console until you create a new configuration recorder.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_configuration_recorder(
+\preformatted{svc$delete_configuration_recorder(
   ConfigurationRecorderName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

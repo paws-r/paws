@@ -22,14 +22,12 @@ An empty list.
 Deletes permissions granted to a member (user or group).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_mailbox_permissions(
+\preformatted{svc$delete_mailbox_permissions(
   OrganizationId = "string",
   EntityId = "string",
   GranteeId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,9 +16,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{WriteCampaignRequest}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CampaignResponse = list(
     AdditionalTreatments = list(
       list(
@@ -359,15 +357,13 @@ A list with the following syntax:
     Version = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the configuration and other settings for a campaign.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_campaign(
+\preformatted{svc$update_campaign(
   ApplicationId = "string",
   CampaignId = "string",
   WriteCampaignRequest = list(
@@ -694,7 +690,7 @@ Updates the configuration and other settings for a campaign.
     TreatmentName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

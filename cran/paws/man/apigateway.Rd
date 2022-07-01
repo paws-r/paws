@@ -23,9 +23,7 @@ Lambda, Amazon EC2, or other publicly addressable web services that are
 hosted outside of AWS.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- apigateway(
+\preformatted{svc <- apigateway(
   config = list(
     credentials = list(
       creds = list(
@@ -39,7 +37,7 @@ hosted outside of AWS.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

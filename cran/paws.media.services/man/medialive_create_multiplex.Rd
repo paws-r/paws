@@ -21,9 +21,7 @@ resources.}
 \item{Tags}{A collection of key-value pairs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Multiplex = list(
     Arn = "string",
     AvailabilityZones = list(
@@ -52,15 +50,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create a new multiplex.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_multiplex(
+\preformatted{svc$create_multiplex(
   AvailabilityZones = list(
     "string"
   ),
@@ -76,7 +72,7 @@ Create a new multiplex.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -31,9 +31,7 @@ zero or more placements that adhere to the placement template defined in
 the project.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_project(
+\preformatted{svc$create_project(
   projectName = "string",
   description = "string",
   placementTemplate = list(
@@ -53,7 +51,7 @@ the project.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

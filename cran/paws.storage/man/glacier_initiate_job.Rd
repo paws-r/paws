@@ -19,14 +19,12 @@ account ID, do not include any hyphens ('-') in the ID.}
 \item{jobParameters}{Provides options for specifying job information.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   location = "string",
   jobId = "string",
   jobOutputPath = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation initiates a job of the specified type, which can be a
@@ -35,9 +33,7 @@ information about using this operation, see the documentation for the
 underlying REST API \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html}{Initiate a Job}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$initiate_job(
+\preformatted{svc$initiate_job(
   accountId = "string",
   vaultName = "string",
   jobParameters = list(
@@ -110,7 +106,7 @@ underlying REST API \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/a
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -10,9 +10,7 @@ neptune_promote_read_replica_db_cluster(DBClusterIdentifier)
 \item{DBClusterIdentifier}{[required] Not supported.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBCluster = list(
     AllocatedStorage = 123,
     AvailabilityZones = list(
@@ -88,18 +86,16 @@ A list with the following syntax:
     DeletionProtection = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Not supported.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$promote_read_replica_db_cluster(
+\preformatted{svc$promote_read_replica_db_cluster(
   DBClusterIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

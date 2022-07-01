@@ -110,9 +110,7 @@ specify publicly routable IP addresses.
 \item{Tags}{The tags to assign to the target group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TargetGroups = list(
     list(
       TargetGroupArn = "string",
@@ -140,7 +138,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a target group.
@@ -157,9 +155,7 @@ time. If you attempt to create multiple target groups with the same
 settings, each call succeeds.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_target_group(
+\preformatted{svc$create_target_group(
   Name = "string",
   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
   ProtocolVersion = "string",
@@ -185,7 +181,7 @@ settings, each call succeeds.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

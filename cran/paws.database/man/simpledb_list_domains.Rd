@@ -15,15 +15,13 @@ simpledb_list_domains(MaxNumberOfDomains, NextToken)
 domain names.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainNames = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=simpledb_list_domains]{list_domains}} operation lists all domains
@@ -35,13 +33,11 @@ more than \code{MaxNumberOfDomains} domains. Calling
 more domain names with each successive operation call.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_domains(
+\preformatted{svc$list_domains(
   MaxNumberOfDomains = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

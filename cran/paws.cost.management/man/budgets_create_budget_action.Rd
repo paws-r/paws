@@ -31,22 +31,18 @@ must be in the same account.}
 \item{Subscribers}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccountId = "string",
   BudgetName = "string",
   ActionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a budget action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_budget_action(
+\preformatted{svc$create_budget_action(
   AccountId = "string",
   BudgetName = "string",
   NotificationType = "ACTUAL"|"FORECASTED",
@@ -91,7 +87,7 @@ Creates a budget action.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -13,25 +13,21 @@ details are being requested.}
 \item{UserId}{[required] The identifier for the user whose mailbox details are being requested.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MailboxQuota = 123,
   MailboxSize = 123.0
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Requests a user's mailbox details for a specified organization and user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_mailbox_details(
+\preformatted{svc$get_mailbox_details(
   OrganizationId = "string",
   UserId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -14,9 +14,7 @@ firehose_put_record_batch(DeliveryStreamName, Records)
 \item{Records}{[required] One or more records.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FailedPutCount = 123,
   Encrypted = TRUE|FALSE,
   RequestResponses = list(
@@ -27,7 +25,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Writes multiple data records into a delivery stream in a single call,
@@ -100,9 +98,7 @@ your records. Instead, concatenate the raw data, then perform base64
 encoding.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_record_batch(
+\preformatted{svc$put_record_batch(
   DeliveryStreamName = "string",
   Records = list(
     list(
@@ -110,7 +106,7 @@ encoding.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

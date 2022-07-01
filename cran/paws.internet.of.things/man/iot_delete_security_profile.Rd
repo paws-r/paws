@@ -21,13 +21,11 @@ An empty list.
 Deletes a Device Defender security profile.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_security_profile(
+\preformatted{svc$delete_security_profile(
   securityProfileName = "string",
   expectedVersion = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

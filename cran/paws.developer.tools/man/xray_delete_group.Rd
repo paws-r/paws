@@ -18,13 +18,11 @@ An empty list.
 Deletes a group resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_group(
+\preformatted{svc$delete_group(
   GroupName = "string",
   GroupARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

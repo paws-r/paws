@@ -40,9 +40,7 @@ Constraints:
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBCluster = list(
     AllocatedStorage = 123,
     AvailabilityZones = list(
@@ -118,7 +116,7 @@ A list with the following syntax:
     DeletionProtection = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The DeleteDBCluster action deletes a previously provisioned DB cluster.
@@ -131,14 +129,12 @@ enabled. To delete it, you must first set its \code{DeletionProtection} field
 to \code{False}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_db_cluster(
+\preformatted{svc$delete_db_cluster(
   DBClusterIdentifier = "string",
   SkipFinalSnapshot = TRUE|FALSE,
   FinalDBSnapshotIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

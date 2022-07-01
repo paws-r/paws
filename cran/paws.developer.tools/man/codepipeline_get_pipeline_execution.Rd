@@ -15,9 +15,7 @@ codepipeline_get_pipeline_execution(pipelineName, pipelineExecutionId)
 details.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pipelineExecution = list(
     pipelineName = "string",
     pipelineVersion = 123,
@@ -38,7 +36,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about an execution of a pipeline, including details
@@ -46,13 +44,11 @@ about artifacts, the pipeline execution ID, and the name, version, and
 status of the pipeline.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_pipeline_execution(
+\preformatted{svc$get_pipeline_execution(
   pipelineName = "string",
   pipelineExecutionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -12,9 +12,7 @@ dynamodb_update_global_table(GlobalTableName, ReplicaUpdates)
 \item{ReplicaUpdates}{[required] A list of Regions that should be added or removed from the global table.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GlobalTableDescription = list(
     ReplicationGroup = list(
       list(
@@ -47,7 +45,7 @@ A list with the following syntax:
     GlobalTableName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds or removes replicas in the specified global table. The global table
@@ -72,9 +70,7 @@ maximum write capacity units.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_global_table(
+\preformatted{svc$update_global_table(
   GlobalTableName = "string",
   ReplicaUpdates = list(
     list(
@@ -87,7 +83,7 @@ maximum write capacity units.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

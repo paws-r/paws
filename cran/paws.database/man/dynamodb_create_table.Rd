@@ -169,9 +169,7 @@ the item are written to the stream.
 \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html}{Tagging for DynamoDB}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TableDescription = list(
     AttributeDefinitions = list(
       list(
@@ -319,7 +317,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=dynamodb_create_table]{create_table}} operation adds a new table
@@ -344,9 +342,7 @@ You can use the \code{\link[=dynamodb_describe_table]{describe_table}} action to
 check the table status.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_table(
+\preformatted{svc$create_table(
   AttributeDefinitions = list(
     list(
       AttributeName = "string",
@@ -419,7 +415,7 @@ check the table status.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

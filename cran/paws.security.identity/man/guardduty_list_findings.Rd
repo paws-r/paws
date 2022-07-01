@@ -83,23 +83,19 @@ subsequent calls to the action, fill nextToken in the request with the
 value of NextToken from the previous response to continue listing data.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FindingIds = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists Amazon GuardDuty findings for the specified detector ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_findings(
+\preformatted{svc$list_findings(
   DetectorId = "string",
   FindingCriteria = list(
     Criterion = list(
@@ -134,7 +130,7 @@ Lists Amazon GuardDuty findings for the specified detector ID.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

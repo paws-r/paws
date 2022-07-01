@@ -20,13 +20,11 @@ Deletes the specified proxy session from the specified Amazon Chime
 Voice Connector.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_proxy_session(
+\preformatted{svc$delete_proxy_session(
   VoiceConnectorId = "string",
   ProxySessionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

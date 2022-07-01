@@ -17,9 +17,7 @@ lexmodelbuildingservice_get_export(name, version, resourceType,
 \item{exportType}{[required] The format of the exported data.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   name = "string",
   version = "string",
   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
@@ -28,21 +26,19 @@ A list with the following syntax:
   failureReason = "string",
   url = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Exports the contents of a Amazon Lex resource in a specified format.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_export(
+\preformatted{svc$get_export(
   name = "string",
   version = "string",
   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
   exportType = "ALEXA_SKILLS_KIT"|"LEX"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

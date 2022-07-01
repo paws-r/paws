@@ -37,9 +37,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{NextToken}{The token for the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NetworkInsightsAnalyses = list(
     list(
       NetworkInsightsAnalysisId = "string",
@@ -455,15 +453,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your network insights analyses.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_network_insights_analyses(
+\preformatted{svc$describe_network_insights_analyses(
   NetworkInsightsAnalysisIds = list(
     "string"
   ),
@@ -486,7 +482,7 @@ Describes one or more of your network insights analyses.
   DryRun = TRUE|FALSE,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

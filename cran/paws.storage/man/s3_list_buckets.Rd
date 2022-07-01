@@ -8,9 +8,7 @@ request}
 s3_list_buckets()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Buckets = list(
     list(
       Name = "string",
@@ -24,7 +22,7 @@ A list with the following syntax:
     ID = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of all buckets owned by the authenticated sender of the

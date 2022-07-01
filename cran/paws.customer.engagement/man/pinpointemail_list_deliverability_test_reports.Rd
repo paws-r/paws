@@ -23,9 +23,7 @@ The value you specify has to be at least 0, and can be no more than
 1000.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DeliverabilityTestReports = list(
     list(
       ReportId = "string",
@@ -40,7 +38,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Show a list of the predictive inbox placement tests that you've
@@ -50,13 +48,11 @@ tests that are complete, you can use the
 operation to view the results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_deliverability_test_reports(
+\preformatted{svc$list_deliverability_test_reports(
   NextToken = "string",
   PageSize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

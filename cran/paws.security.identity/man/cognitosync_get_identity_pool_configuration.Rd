@@ -12,9 +12,7 @@ us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. This is the ID of the pool for which to return a configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IdentityPoolId = "string",
   PushSync = list(
     ApplicationArns = list(
@@ -28,7 +26,7 @@ A list with the following syntax:
     StreamingStatus = "ENABLED"|"DISABLED"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the configuration settings of an identity pool.
@@ -38,12 +36,10 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_identity_pool_configuration(
+\preformatted{svc$get_identity_pool_configuration(
   IdentityPoolId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

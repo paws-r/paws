@@ -30,9 +30,7 @@ This API action only supports a resource data sync that was created with
 a SyncFromSource \code{SyncType}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_resource_data_sync(
+\preformatted{svc$update_resource_data_sync(
   SyncName = "string",
   SyncType = "string",
   SyncSource = list(
@@ -51,7 +49,7 @@ a SyncFromSource \code{SyncType}.
     IncludeFutureRegions = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

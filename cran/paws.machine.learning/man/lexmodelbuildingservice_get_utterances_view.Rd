@@ -18,9 +18,7 @@ returned. The limit is 5 versions per request.}
 To return utterances that were not recognized, use \code{Missed}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   botName = "string",
   utterances = list(
     list(
@@ -41,7 +39,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Use the
@@ -76,16 +74,14 @@ This operation requires permissions for the \code{lex:GetUtterancesView}
 action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_utterances_view(
+\preformatted{svc$get_utterances_view(
   botName = "string",
   botVersions = list(
     "string"
   ),
   statusType = "Detected"|"Missed"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

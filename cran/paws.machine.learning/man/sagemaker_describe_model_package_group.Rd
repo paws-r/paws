@@ -10,9 +10,7 @@ sagemaker_describe_model_package_group(ModelPackageGroupName)
 \item{ModelPackageGroupName}{[required] The name of the model group to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ModelPackageGroupName = "string",
   ModelPackageGroupArn = "string",
   ModelPackageGroupDescription = "string",
@@ -26,18 +24,16 @@ A list with the following syntax:
   ),
   ModelPackageGroupStatus = "Pending"|"InProgress"|"Completed"|"Failed"|"Deleting"|"DeleteFailed"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a description for the specified model group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_model_package_group(
+\preformatted{svc$describe_model_package_group(
   ModelPackageGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

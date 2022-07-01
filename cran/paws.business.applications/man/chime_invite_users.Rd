@@ -15,9 +15,7 @@ chime_invite_users(AccountId, UserEmailList, UserType)
 \item{UserType}{The user type.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Invites = list(
     list(
       InviteId = "string",
@@ -27,7 +25,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sends email to a maximum of 50 users, inviting them to the specified
@@ -35,16 +33,14 @@ Amazon Chime \code{Team} account. Only \code{Team} account types are currently
 supported for this action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$invite_users(
+\preformatted{svc$invite_users(
   AccountId = "string",
   UserEmailList = list(
     "string"
   ),
   UserType = "PrivateUser"|"SharedDevice"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

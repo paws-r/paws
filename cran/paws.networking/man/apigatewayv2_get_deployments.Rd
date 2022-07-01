@@ -15,9 +15,7 @@ apigatewayv2_get_deployments(ApiId, MaxResults, NextToken)
 element of the collection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Items = list(
     list(
       AutoDeployed = TRUE|FALSE,
@@ -32,20 +30,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the Deployments for an API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_deployments(
+\preformatted{svc$get_deployments(
   ApiId = "string",
   MaxResults = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

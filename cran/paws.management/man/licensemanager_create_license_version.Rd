@@ -39,22 +39,18 @@ idempotency of the request.}
 \item{SourceVersion}{Current version of the license.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LicenseArn = "string",
   Version = "string",
   Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new version of the specified license.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_license_version(
+\preformatted{svc$create_license_version(
   LicenseArn = "string",
   LicenseName = "string",
   ProductName = "string",
@@ -97,7 +93,7 @@ Creates a new version of the specified license.
   ClientToken = "string",
   SourceVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

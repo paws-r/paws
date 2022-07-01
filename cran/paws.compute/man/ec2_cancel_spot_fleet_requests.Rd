@@ -19,9 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 is canceled successfully.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SuccessfulFleetRequests = list(
     list(
       CurrentSpotFleetRequestState = "submitted"|"active"|"cancelled"|"failed"|"cancelled_running"|"cancelled_terminating"|"modifying",
@@ -39,7 +37,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Cancels the specified Spot Fleet requests.
@@ -53,16 +51,14 @@ instances continue to run until they are interrupted or you terminate
 them manually.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_spot_fleet_requests(
+\preformatted{svc$cancel_spot_fleet_requests(
   DryRun = TRUE|FALSE,
   SpotFleetRequestIds = list(
     "string"
   ),
   TerminateInstances = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

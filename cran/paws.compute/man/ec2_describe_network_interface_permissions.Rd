@@ -30,9 +30,7 @@ value. If this parameter is not specified, up to 50 results are returned
 by default.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NetworkInterfacePermissions = list(
     list(
       NetworkInterfacePermissionId = "string",
@@ -48,15 +46,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the permissions for your network interfaces.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_network_interface_permissions(
+\preformatted{svc$describe_network_interface_permissions(
   NetworkInterfacePermissionIds = list(
     "string"
   ),
@@ -71,7 +67,7 @@ Describes the permissions for your network interfaces.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

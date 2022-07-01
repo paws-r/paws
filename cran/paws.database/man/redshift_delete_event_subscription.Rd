@@ -17,12 +17,10 @@ An empty list.
 Deletes an Amazon Redshift event notification subscription.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_event_subscription(
+\preformatted{svc$delete_event_subscription(
   SubscriptionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

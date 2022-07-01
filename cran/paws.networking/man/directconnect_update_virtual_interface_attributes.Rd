@@ -15,9 +15,7 @@ directconnect_update_virtual_interface_attributes(virtualInterfaceId,
 1500 and 9001. The default value is 1500.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ownerAccount = "string",
   virtualInterfaceId = "string",
   location = "string",
@@ -64,7 +62,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified attributes of the specified virtual private
@@ -81,13 +79,11 @@ whether your virtual q interface supports jumbo frames, call
 \code{\link[=directconnect_describe_virtual_interfaces]{describe_virtual_interfaces}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_virtual_interface_attributes(
+\preformatted{svc$update_virtual_interface_attributes(
   virtualInterfaceId = "string",
   mtu = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

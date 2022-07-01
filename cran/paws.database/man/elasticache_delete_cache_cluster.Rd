@@ -16,9 +16,7 @@ name that identifies the snapshot. ElastiCache creates the snapshot, and
 then deletes the cluster immediately afterward.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CacheCluster = list(
     CacheClusterId = "string",
     ConfigurationEndpoint = list(
@@ -100,7 +98,7 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a previously provisioned cluster.
@@ -120,13 +118,11 @@ This operation is not valid for:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cache_cluster(
+\preformatted{svc$delete_cache_cluster(
   CacheClusterId = "string",
   FinalSnapshotIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

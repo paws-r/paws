@@ -14,9 +14,7 @@ operation, which can be used to return the next set of items in the
 list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   uniqueProblems = list(
     list(
       list(
@@ -98,7 +96,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about unique problems, such as exceptions or crashes.
@@ -111,13 +109,11 @@ consistently raises an exception
 single entry instead of many individual entries for that exception.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_unique_problems(
+\preformatted{svc$list_unique_problems(
   arn = "string",
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

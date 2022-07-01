@@ -10,9 +10,7 @@ cloudsearch_describe_scaling_parameters(DomainName)
 \item{DomainName}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ScalingParameters = list(
     Options = list(
       DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge"|"search.small"|"search.medium"|"search.large"|"search.xlarge"|"search.2xlarge",
@@ -32,7 +30,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the scaling parameters configured for a domain. A domain's scaling
@@ -43,12 +41,10 @@ target="_blank">Configuring Scaling Options</a> in the \emph{Amazon
 CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_scaling_parameters(
+\preformatted{svc$describe_scaling_parameters(
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

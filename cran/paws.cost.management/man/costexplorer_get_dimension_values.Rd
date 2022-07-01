@@ -138,9 +138,7 @@ when the response from a previous call has more results than the maximum
 page size.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DimensionValues = list(
     list(
       Value = "string",
@@ -153,7 +151,7 @@ A list with the following syntax:
   TotalSize = 123,
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves all available filter values for a specified filter over a
@@ -161,9 +159,7 @@ period of time. You can search the dimension values for an arbitrary
 string.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_dimension_values(
+\preformatted{svc$get_dimension_values(
   SearchString = "string",
   TimePeriod = list(
     Start = "string",
@@ -216,7 +212,7 @@ string.
   MaxResults = 123,
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

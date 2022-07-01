@@ -33,13 +33,11 @@ version. To get these values, you can use
 \code{\link[=cloudfront_get_cache_policy]{get_cache_policy}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cache_policy(
+\preformatted{svc$delete_cache_policy(
   Id = "string",
   IfMatch = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,27 +23,23 @@ else the call would succeed. This parameter is optional and defaults to
 false.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UpgradedSchemaArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Upgrades a published schema under a new minor version revision using the
 current contents of \code{DevelopmentSchemaArn}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$upgrade_published_schema(
+\preformatted{svc$upgrade_published_schema(
   DevelopmentSchemaArn = "string",
   PublishedSchemaArn = "string",
   MinorVersion = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

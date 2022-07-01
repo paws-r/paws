@@ -40,9 +40,7 @@ Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
 resource after it's created.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   distribution = list(
     name = "string",
     arn = "string",
@@ -134,7 +132,7 @@ A list with the following syntax:
     errorDetails = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an Amazon Lightsail content delivery network (CDN) distribution.
@@ -145,9 +143,7 @@ Lightsail instance. For more information, see Content delivery networks
 in Amazon Lightsail.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_distribution(
+\preformatted{svc$create_distribution(
   distributionName = "string",
   origin = list(
     name = "string",
@@ -196,7 +192,7 @@ in Amazon Lightsail.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -18,13 +18,11 @@ An empty list.
 Flushes a stage's cache.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$flush_stage_cache(
+\preformatted{svc$flush_stage_cache(
   restApiId = "string",
   stageName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

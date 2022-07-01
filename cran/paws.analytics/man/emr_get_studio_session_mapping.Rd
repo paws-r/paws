@@ -29,9 +29,7 @@ in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} o
 \item{IdentityType}{[required] Specifies whether the identity to fetch is a user or a group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SessionMapping = list(
     StudioId = "string",
     IdentityId = "string",
@@ -46,7 +44,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
@@ -56,15 +54,13 @@ Fetches mapping details for the specified Amazon EMR Studio and identity
 (user or group).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_studio_session_mapping(
+\preformatted{svc$get_studio_session_mapping(
   StudioId = "string",
   IdentityId = "string",
   IdentityName = "string",
   IdentityType = "USER"|"GROUP"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

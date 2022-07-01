@@ -14,27 +14,23 @@ tags from.}
 tag is composed of a key-value pair.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourceARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes one or more tags from the specified resource. This operation is
 supported in storage gateways of all types.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags_from_resource(
+\preformatted{svc$remove_tags_from_resource(
   ResourceARN = "string",
   TagKeys = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

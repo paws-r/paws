@@ -19,9 +19,7 @@ rds_register_db_proxy_targets(DBProxyName, TargetGroupName,
 \item{DBClusterIdentifiers}{One or more DB cluster identifiers.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBProxyTargets = list(
     list(
       TargetArn = "string",
@@ -38,16 +36,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Associate one or more \code{DBProxyTarget} data structures with a
 \code{DBProxyTargetGroup}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_db_proxy_targets(
+\preformatted{svc$register_db_proxy_targets(
   DBProxyName = "string",
   TargetGroupName = "string",
   DBInstanceIdentifiers = list(
@@ -57,7 +53,7 @@ Associate one or more \code{DBProxyTarget} data structures with a
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

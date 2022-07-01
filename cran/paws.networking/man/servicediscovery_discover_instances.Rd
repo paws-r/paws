@@ -33,9 +33,7 @@ filters specified in the \code{QueryParameters} parameter are returned.}
 \item{HealthStatus}{The health status of the instances that you want to discover.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Instances = list(
     list(
       InstanceId = "string",
@@ -48,7 +46,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Discovers registered instances for a specified namespace and service.
@@ -57,9 +55,7 @@ to discover instances for any type of namespace. For public and private
 DNS namespaces, you can also use DNS queries to discover instances.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$discover_instances(
+\preformatted{svc$discover_instances(
   NamespaceName = "string",
   ServiceName = "string",
   MaxResults = 123,
@@ -71,7 +67,7 @@ DNS namespaces, you can also use DNS queries to discover instances.
   ),
   HealthStatus = "HEALTHY"|"UNHEALTHY"|"ALL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

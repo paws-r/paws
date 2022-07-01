@@ -13,24 +13,20 @@ sagemaker_update_trial(TrialName, DisplayName)
 If \code{DisplayName} isn't specified, \code{TrialName} is displayed.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrialArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the display name of a trial.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_trial(
+\preformatted{svc$update_trial(
   TrialName = "string",
   DisplayName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

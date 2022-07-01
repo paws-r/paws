@@ -11,26 +11,22 @@ lightsail_get_relational_database_log_streams(relationalDatabaseName)
 \item{relationalDatabaseName}{[required] The name of your database for which to get log streams.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   logStreams = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of available log streams for a specific database in
 Amazon Lightsail.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_relational_database_log_streams(
+\preformatted{svc$get_relational_database_log_streams(
   relationalDatabaseName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

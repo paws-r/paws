@@ -17,9 +17,7 @@ greengrass_create_logger_definition(AmznClientToken, InitialVersion,
 \item{tags}{Tag(s) to add to the new resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
   LatestVersionArn = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a logger definition. You may provide the initial version of the
@@ -36,9 +34,7 @@ logger definition now or use ''CreateLoggerDefinitionVersion'' at a
 later time.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_logger_definition(
+\preformatted{svc$create_logger_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     Loggers = list(
@@ -56,7 +52,7 @@ later time.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

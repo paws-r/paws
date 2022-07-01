@@ -58,9 +58,7 @@ that explicitly grants permissions. For more information on user
 permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_app(
+\preformatted{svc$update_app(
   AppId = "string",
   Name = "string",
   Description = "string",
@@ -100,7 +98,7 @@ permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/ops
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

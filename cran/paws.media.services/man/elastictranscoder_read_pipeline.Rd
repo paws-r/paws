@@ -10,9 +10,7 @@ elastictranscoder_read_pipeline(Id)
 \item{Id}{[required] The identifier of the pipeline to read.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Pipeline = list(
     Id = "string",
     Arn = "string",
@@ -62,18 +60,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The ReadPipeline operation gets detailed information about a pipeline.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$read_pipeline(
+\preformatted{svc$read_pipeline(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ route53resolver_delete_resolver_query_log_config(
 \item{ResolverQueryLogConfigId}{[required] The ID of the query logging configuration that you want to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResolverQueryLogConfig = list(
     Id = "string",
     OwnerId = "string",
@@ -27,7 +25,7 @@ A list with the following syntax:
     CreationTime = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a query logging configuration. When you delete a configuration,
@@ -49,12 +47,10 @@ sharing the configuration, those VPCs are automatically disassociated
 from the configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resolver_query_log_config(
+\preformatted{svc$delete_resolver_query_log_config(
   ResolverQueryLogConfigId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

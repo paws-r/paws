@@ -18,9 +18,7 @@ application.}
 \item{currentRevisionId}{The revision id for the robot application.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   arn = "string",
   name = "string",
   version = "string",
@@ -41,15 +39,13 @@ A list with the following syntax:
   ),
   revisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a robot application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_robot_application(
+\preformatted{svc$update_robot_application(
   application = "string",
   sources = list(
     list(
@@ -64,7 +60,7 @@ Updates a robot application.
   ),
   currentRevisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

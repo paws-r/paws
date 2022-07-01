@@ -22,9 +22,7 @@ When you specify a filter, only intents with their \code{checkpointLabel}
 field set to that string are returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   recentIntentSummaryView = list(
     list(
       intentName = "string",
@@ -66,21 +64,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns session information for a specified bot, alias, and user ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_session(
+\preformatted{svc$get_session(
   botName = "string",
   botAlias = "string",
   userId = "string",
   checkpointLabelFilter = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

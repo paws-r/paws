@@ -15,24 +15,20 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{FpgaImageId}{[required] The ID of the AFI.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified Amazon FPGA Image (AFI).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_fpga_image(
+\preformatted{svc$delete_fpga_image(
   DryRun = TRUE|FALSE,
   FpgaImageId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

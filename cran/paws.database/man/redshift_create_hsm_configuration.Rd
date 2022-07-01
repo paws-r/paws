@@ -30,9 +30,7 @@ server.pem.}
 \item{Tags}{A list of tag instances.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HsmConfiguration = list(
     HsmConfigurationIdentifier = "string",
     Description = "string",
@@ -46,7 +44,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an HSM configuration that contains the information required by
@@ -60,9 +58,7 @@ HSM client certificate. For more information, go to \href{https://docs.aws.amazo
 Amazon Redshift Cluster Management Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_hsm_configuration(
+\preformatted{svc$create_hsm_configuration(
   HsmConfigurationIdentifier = "string",
   Description = "string",
   HsmIpAddress = "string",
@@ -76,7 +72,7 @@ Amazon Redshift Cluster Management Guide.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

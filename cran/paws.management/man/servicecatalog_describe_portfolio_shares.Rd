@@ -32,9 +32,7 @@ results, use null.}
 \item{PageSize}{The maximum number of items to return with this call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextPageToken = "string",
   PortfolioShareDetails = list(
     list(
@@ -45,7 +43,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a summary of each of the portfolio shares that were created for
@@ -58,15 +56,13 @@ imported the share, and whether TagOptions are included with the share.
 The \code{PortfolioId} and \code{Type} parameters are both required.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_portfolio_shares(
+\preformatted{svc$describe_portfolio_shares(
   PortfolioId = "string",
   Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ORGANIZATION_MEMBER_ACCOUNT",
   PageToken = "string",
   PageSize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -27,13 +27,11 @@ detach all policies. Next, use the
 certificate to the INACTIVE status.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_certificate(
+\preformatted{svc$delete_certificate(
   certificateId = "string",
   forceDelete = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

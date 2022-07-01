@@ -33,9 +33,7 @@ An empty list.
 Applies tags to an existing AWS X-Ray group or sampling rule.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceARN = "string",
   Tags = list(
     list(
@@ -44,7 +42,7 @@ Applies tags to an existing AWS X-Ray group or sampling rule.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

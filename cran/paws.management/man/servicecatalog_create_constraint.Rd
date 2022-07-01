@@ -102,9 +102,7 @@ requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConstraintDetail = list(
     ConstraintId = "string",
     Type = "string",
@@ -116,7 +114,7 @@ A list with the following syntax:
   ConstraintParameters = "string",
   Status = "AVAILABLE"|"CREATING"|"FAILED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a constraint.
@@ -124,9 +122,7 @@ Creates a constraint.
 A delegated admin is authorized to invoke this command.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_constraint(
+\preformatted{svc$create_constraint(
   AcceptLanguage = "string",
   PortfolioId = "string",
   ProductId = "string",
@@ -135,7 +131,7 @@ A delegated admin is authorized to invoke this command.
   Description = "string",
   IdempotencyToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

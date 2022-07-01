@@ -13,9 +13,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{EndpointId}{[required] The unique identifier for the endpoint.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EndpointResponse = list(
     Address = "string",
     ApplicationId = "string",
@@ -63,19 +61,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an endpoint from an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_endpoint(
+\preformatted{svc$delete_endpoint(
   ApplicationId = "string",
   EndpointId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

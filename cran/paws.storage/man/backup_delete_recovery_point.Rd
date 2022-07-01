@@ -23,13 +23,11 @@ An empty list.
 Deletes the recovery point specified by a recovery point ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_recovery_point(
+\preformatted{svc$delete_recovery_point(
   BackupVaultName = "string",
   RecoveryPointArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

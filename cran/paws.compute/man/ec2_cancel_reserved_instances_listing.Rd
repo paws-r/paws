@@ -11,9 +11,7 @@ ec2_cancel_reserved_instances_listing(ReservedInstancesListingId)
 \item{ReservedInstancesListingId}{[required] The ID of the Reserved Instance listing.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReservedInstancesListings = list(
     list(
       ClientToken = "string",
@@ -50,7 +48,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Cancels the specified Reserved Instance listing in the Reserved Instance
@@ -60,12 +58,10 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_reserved_instances_listing(
+\preformatted{svc$cancel_reserved_instances_listing(
   ReservedInstancesListingId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

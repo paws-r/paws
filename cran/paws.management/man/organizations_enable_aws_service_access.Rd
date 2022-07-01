@@ -38,12 +38,10 @@ This operation can be called only from the organization's management
 account and only if the organization has \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{enabled all features}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_aws_service_access(
+\preformatted{svc$enable_aws_service_access(
   ServicePrincipal = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -45,9 +45,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TagSpecifications}{The tags to assign to the Elastic IP address.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PublicIp = "string",
   AllocationId = "string",
   PublicIpv4Pool = "string",
@@ -57,7 +55,7 @@ A list with the following syntax:
   CustomerOwnedIpv4Pool = "string",
   CarrierIp = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Allocates an Elastic IP address to your AWS account. After you allocate
@@ -90,9 +88,7 @@ a telecommunication carrier, to a network interface which resides in a
 subnet in a Wavelength Zone (for example an EC2 instance).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$allocate_address(
+\preformatted{svc$allocate_address(
   Domain = "vpc"|"standard",
   Address = "string",
   PublicIpv4Pool = "string",
@@ -111,7 +107,7 @@ subnet in a Wavelength Zone (for example an EC2 instance).
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -10,12 +10,10 @@ rekognition_delete_collection(CollectionId)
 \item{CollectionId}{[required] ID of the collection to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StatusCode = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified collection. Note that this operation removes all
@@ -26,12 +24,10 @@ This operation requires permissions to perform the
 \code{rekognition:DeleteCollection} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_collection(
+\preformatted{svc$delete_collection(
   CollectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

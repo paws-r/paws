@@ -22,13 +22,11 @@ Deletes the specified network interface. You must detach the network
 interface before you can delete it.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_network_interface(
+\preformatted{svc$delete_network_interface(
   DryRun = TRUE|FALSE,
   NetworkInterfaceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

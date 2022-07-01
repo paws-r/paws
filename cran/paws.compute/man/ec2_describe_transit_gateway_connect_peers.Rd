@@ -30,9 +30,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TransitGatewayConnectPeers = list(
     list(
       TransitGatewayAttachmentId = "string",
@@ -68,15 +66,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more Connect peers.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_transit_gateway_connect_peers(
+\preformatted{svc$describe_transit_gateway_connect_peers(
   TransitGatewayConnectPeerIds = list(
     "string"
   ),
@@ -92,7 +88,7 @@ Describes one or more Connect peers.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,9 +19,7 @@ console. You can't use
 for a calculated health check.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HealthCheckObservations = list(
     list(
       Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1",
@@ -35,18 +33,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the reason that a specified health check failed most recently.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_health_check_last_failure_reason(
+\preformatted{svc$get_health_check_last_failure_reason(
   HealthCheckId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

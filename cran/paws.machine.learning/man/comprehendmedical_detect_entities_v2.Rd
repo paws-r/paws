@@ -14,9 +14,7 @@ entities. Each string must contain fewer than 20,000 bytes of
 characters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Entities = list(
     list(
       Id = 123,
@@ -78,7 +76,7 @@ A list with the following syntax:
   PaginationToken = "string",
   ModelVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Inspects the clinical text for a variety of medical entities and returns
@@ -100,12 +98,10 @@ operation returns the \code{Acuity} and \code{Direction} entities as attributes
 instead of types.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_entities_v2(
+\preformatted{svc$detect_entities_v2(
   Text = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

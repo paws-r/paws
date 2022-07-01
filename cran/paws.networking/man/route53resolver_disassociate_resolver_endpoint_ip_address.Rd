@@ -14,9 +14,7 @@ address from.}
 \item{IpAddress}{[required] The IPv4 address that you want to remove from a Resolver endpoint.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResolverEndpoint = list(
     Id = "string",
     CreatorRequestId = "string",
@@ -34,7 +32,7 @@ A list with the following syntax:
     ModificationTime = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes IP addresses from an inbound or an outbound Resolver endpoint.
@@ -46,9 +44,7 @@ To add an IP address to an endpoint, see
 \code{\link[=route53resolver_associate_resolver_endpoint_ip_address]{associate_resolver_endpoint_ip_address}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_resolver_endpoint_ip_address(
+\preformatted{svc$disassociate_resolver_endpoint_ip_address(
   ResolverEndpointId = "string",
   IpAddress = list(
     IpId = "string",
@@ -56,7 +52,7 @@ To add an IP address to an endpoint, see
     Ip = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,12 +19,10 @@ to subscribers. This action is idempotent, so deleting a topic that does
 not exist does not result in an error.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_topic(
+\preformatted{svc$delete_topic(
   TopicArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

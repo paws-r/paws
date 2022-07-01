@@ -36,14 +36,12 @@ contains its name and ARN.
 This operation has a limit of five transactions per second per stream.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_stream_consumer(
+\preformatted{svc$deregister_stream_consumer(
   StreamARN = "string",
   ConsumerName = "string",
   ConsumerARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

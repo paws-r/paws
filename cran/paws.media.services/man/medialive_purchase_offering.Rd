@@ -24,9 +24,7 @@ from now. If no value is given, the default is now.}
 \item{Tags}{A collection of key-value pairs}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Reservation = list(
     Arn = "string",
     Count = 123,
@@ -59,15 +57,13 @@ A list with the following syntax:
     UsagePrice = 123.0
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Purchase an offering and create a reservation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$purchase_offering(
+\preformatted{svc$purchase_offering(
   Count = 123,
   Name = "string",
   OfferingId = "string",
@@ -77,7 +73,7 @@ Purchase an offering and create a reservation.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

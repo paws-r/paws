@@ -14,9 +14,7 @@ its name or by using its Amazon Resource Name (ARN). Examples:
 \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NotificationAttributes = list(
     list(
       BounceTopic = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Given a list of verified identities (email addresses and/or domains),
@@ -42,14 +40,12 @@ For more information about using notifications with Amazon SES, see the
 \href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_identity_notification_attributes(
+\preformatted{svc$get_identity_notification_attributes(
   Identities = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

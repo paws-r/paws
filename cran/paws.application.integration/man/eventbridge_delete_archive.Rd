@@ -16,12 +16,10 @@ An empty list.
 Deletes the specified archive.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_archive(
+\preformatted{svc$delete_archive(
   ArchiveName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

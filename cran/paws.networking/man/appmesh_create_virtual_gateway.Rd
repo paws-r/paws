@@ -30,9 +30,7 @@ length of 256 characters.}
 \item{virtualGatewayName}{[required] The name to use for the virtual gateway.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   virtualGateway = list(
     meshName = "string",
     metadata = list(
@@ -126,7 +124,7 @@ A list with the following syntax:
     virtualGatewayName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a virtual gateway.
@@ -141,9 +139,7 @@ deployed by itself.
 For more information about virtual gateways, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_gateways.html}{Virtual gateways}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_virtual_gateway(
+\preformatted{svc$create_virtual_gateway(
   clientToken = "string",
   meshName = "string",
   meshOwner = "string",
@@ -227,7 +223,7 @@ For more information about virtual gateways, see \href{https://docs.aws.amazon.c
   ),
   virtualGatewayName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

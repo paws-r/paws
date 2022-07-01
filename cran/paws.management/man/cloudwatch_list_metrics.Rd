@@ -30,9 +30,7 @@ metrics with last published data as much as 40 minutes more than the
 specified time interval.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Metrics = list(
     list(
       Namespace = "string",
@@ -47,7 +45,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List the specified metrics. You can use the returned metrics with
@@ -70,9 +68,7 @@ weeks. To retrieve those metrics, use
 \code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_metrics(
+\preformatted{svc$list_metrics(
   Namespace = "string",
   MetricName = "string",
   Dimensions = list(
@@ -84,7 +80,7 @@ weeks. To retrieve those metrics, use
   NextToken = "string",
   RecentlyActive = "PT3H"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

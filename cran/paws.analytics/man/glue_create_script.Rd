@@ -14,21 +14,17 @@ glue_create_script(DagNodes, DagEdges, Language)
 \item{Language}{The programming language of the resulting code from the DAG.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PythonScript = "string",
   ScalaCode = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Transforms a directed acyclic graph (DAG) into code.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_script(
+\preformatted{svc$create_script(
   DagNodes = list(
     list(
       Id = "string",
@@ -52,7 +48,7 @@ Transforms a directed acyclic graph (DAG) into code.
   ),
   Language = "PYTHON"|"SCALA"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -33,13 +33,11 @@ devices, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credent
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deactivate_mfa_device(
+\preformatted{svc$deactivate_mfa_device(
   UserName = "string",
   SerialNumber = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

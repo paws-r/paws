@@ -21,14 +21,12 @@ policies that are attached to the identity, you can use
 \code{\link[=ses_list_identity_policies]{list_identity_policies}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Policies = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the requested sending authorization policies for the given
@@ -46,15 +44,13 @@ using sending authorization, see the \href{https://docs.aws.amazon.com/ses/lates
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_identity_policies(
+\preformatted{svc$get_identity_policies(
   Identity = "string",
   PolicyNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

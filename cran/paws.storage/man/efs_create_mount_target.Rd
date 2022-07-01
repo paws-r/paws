@@ -18,9 +18,7 @@ efs_create_mount_target(FileSystemId, SubnetId, IpAddress,
 be for the same VPC as subnet specified.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OwnerId = "string",
   MountTargetId = "string",
   FileSystemId = "string",
@@ -32,7 +30,7 @@ A list with the following syntax:
   AvailabilityZoneName = "string",
   VpcId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a mount target for a file system. You can then mount the file
@@ -139,9 +137,7 @@ actions:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_mount_target(
+\preformatted{svc$create_mount_target(
   FileSystemId = "string",
   SubnetId = "string",
   IpAddress = "string",
@@ -149,7 +145,7 @@ actions:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

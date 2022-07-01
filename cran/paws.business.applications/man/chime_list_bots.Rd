@@ -16,9 +16,7 @@ chime_list_bots(AccountId, MaxResults, NextToken)
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Bots = list(
     list(
       BotId = "string",
@@ -38,21 +36,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the bots associated with the administrator's Amazon Chime
 Enterprise account ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_bots(
+\preformatted{svc$list_bots(
   AccountId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

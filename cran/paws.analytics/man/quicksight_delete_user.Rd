@@ -17,13 +17,11 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the Amazon QuickSight user that is associated with the identity
@@ -31,14 +29,12 @@ of the AWS Identity and Access Management (IAM) user or role that's
 making the call. The IAM user isn't deleted as a result of this call.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user(
+\preformatted{svc$delete_user(
   UserName = "string",
   AwsAccountId = "string",
   Namespace = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

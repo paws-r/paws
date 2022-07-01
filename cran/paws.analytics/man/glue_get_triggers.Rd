@@ -16,9 +16,7 @@ returned.}
 \item{MaxResults}{The maximum size of the response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Triggers = list(
     list(
       Name = "string",
@@ -58,20 +56,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets all the triggers associated with a job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_triggers(
+\preformatted{svc$get_triggers(
   NextToken = "string",
   DependentJobName = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

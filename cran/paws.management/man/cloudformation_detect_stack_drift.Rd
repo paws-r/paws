@@ -14,12 +14,10 @@ cloudformation_detect_stack_drift(StackName, LogicalResourceIds)
 \item{LogicalResourceIds}{The logical names of any resources you want to use as filters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StackDriftDetectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Detects whether a stack's actual configuration differs, or has
@@ -55,15 +53,13 @@ drift on any nested stacks belonging to that stack. Perform
 the nested stack itself.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_stack_drift(
+\preformatted{svc$detect_stack_drift(
   StackName = "string",
   LogicalResourceIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

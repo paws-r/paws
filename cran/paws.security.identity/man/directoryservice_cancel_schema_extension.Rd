@@ -22,13 +22,11 @@ be canceled during any of the following states; \code{Initializing},
 \code{CreatingSnapshot}, and \code{UpdatingSchema}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_schema_extension(
+\preformatted{svc$cancel_schema_extension(
   DirectoryId = "string",
   SchemaExtensionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

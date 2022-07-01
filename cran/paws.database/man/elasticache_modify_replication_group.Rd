@@ -163,9 +163,7 @@ longer can access thereplication group.}
 \item{RemoveUserGroups}{Removes the user groups that can access this replication group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationGroup = list(
     ReplicationGroupId = "string",
     Description = "string",
@@ -250,7 +248,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the settings for a replication group.
@@ -264,9 +262,7 @@ in the ElastiCache API Reference
 This operation is valid for Redis only.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_replication_group(
+\preformatted{svc$modify_replication_group(
   ReplicationGroupId = "string",
   ReplicationGroupDescription = "string",
   PrimaryClusterId = "string",
@@ -300,7 +296,7 @@ This operation is valid for Redis only.
   ),
   RemoveUserGroups = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -22,15 +22,13 @@ Assigns a set of key-value pairs to a recovery point, backup plan, or
 backup vault identified by an Amazon Resource Name (ARN).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

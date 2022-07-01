@@ -32,9 +32,7 @@ option value.}
 Constraint: You can remove only \code{UserDefined} configuration options.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SolutionStackName = "string",
   PlatformArn = "string",
   ApplicationName = "string",
@@ -57,7 +55,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified configuration template to have the specified
@@ -73,9 +71,7 @@ Related Topics
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_configuration_template(
+\preformatted{svc$update_configuration_template(
   ApplicationName = "string",
   TemplateName = "string",
   Description = "string",
@@ -95,7 +91,7 @@ Related Topics
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -74,9 +74,7 @@ To add tags to an existing SSM document, use the
 \code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DocumentDescription = list(
     Sha1 = "string",
     Hash = "string",
@@ -140,7 +138,7 @@ A list with the following syntax:
     ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Systems Manager (SSM) document. An SSM document defines the
@@ -150,9 +148,7 @@ supported schemas, features, and syntax, see \href{https://docs.aws.amazon.com/s
 in the \emph{AWS Systems Manager User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_document(
+\preformatted{svc$create_document(
   Content = "string",
   Requires = list(
     list(
@@ -181,7 +177,7 @@ in the \emph{AWS Systems Manager User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

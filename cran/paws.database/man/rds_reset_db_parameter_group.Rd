@@ -46,12 +46,10 @@ and changes are applied when DB instance reboots.
 Valid Values (for Apply method): \code{pending-reboot}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBParameterGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the parameters of a DB parameter group to the engine/system
@@ -64,9 +62,7 @@ to \code{pending-reboot} to take effect on the next DB instance restart or
 \code{\link[=rds_reboot_db_instance]{reboot_db_instance}} request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_db_parameter_group(
+\preformatted{svc$reset_db_parameter_group(
   DBParameterGroupName = "string",
   ResetAllParameters = TRUE|FALSE,
   Parameters = list(
@@ -87,7 +83,7 @@ to \code{pending-reboot} to take effect on the next DB instance restart or
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

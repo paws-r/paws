@@ -11,9 +11,7 @@ ecs_delete_capacity_provider(capacityProvider)
 provider to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   capacityProvider = list(
     capacityProviderArn = "string",
     name = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified capacity provider.
@@ -64,12 +62,10 @@ from a cluster, you can either use
 or delete the cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_capacity_provider(
+\preformatted{svc$delete_capacity_provider(
   capacityProvider = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

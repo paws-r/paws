@@ -13,9 +13,7 @@ chime_create_voice_connector_group(Name, VoiceConnectorItems)
 \item{VoiceConnectorItems}{The Amazon Chime Voice Connectors to route inbound calls to.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VoiceConnectorGroup = list(
     VoiceConnectorGroupId = "string",
     Name = "string",
@@ -33,7 +31,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an Amazon Chime Voice Connector group under the administrator's
@@ -46,9 +44,7 @@ in your group. This creates a fault tolerant mechanism for fallback in
 case of availability events.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_voice_connector_group(
+\preformatted{svc$create_voice_connector_group(
   Name = "string",
   VoiceConnectorItems = list(
     list(
@@ -57,7 +53,7 @@ case of availability events.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

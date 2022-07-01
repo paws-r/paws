@@ -23,9 +23,7 @@ Deletes the association between configuration items and one or more
 tags. This API accepts a list of multiple configuration items.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_tags(
+\preformatted{svc$delete_tags(
   configurationIds = list(
     "string"
   ),
@@ -36,7 +34,7 @@ tags. This API accepts a list of multiple configuration items.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

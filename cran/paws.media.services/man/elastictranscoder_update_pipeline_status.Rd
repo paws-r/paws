@@ -17,9 +17,7 @@ elastictranscoder_update_pipeline_status(Id, Status)
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Pipeline = list(
     Id = "string",
     Arn = "string",
@@ -63,7 +61,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The UpdatePipelineStatus operation pauses or reactivates a pipeline, so
@@ -77,13 +75,11 @@ to cancel, and to send a \code{\link[=elastictranscoder_cancel_job]{cancel_job}}
 request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_pipeline_status(
+\preformatted{svc$update_pipeline_status(
   Id = "string",
   Status = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

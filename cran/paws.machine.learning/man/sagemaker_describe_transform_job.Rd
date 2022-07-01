@@ -10,9 +10,7 @@ sagemaker_describe_transform_job(TransformJobName)
 \item{TransformJobName}{[required] The name of the transform job that you want to view details of.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TransformJobName = "string",
   TransformJobArn = "string",
   TransformJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
@@ -72,18 +70,16 @@ A list with the following syntax:
     TrialComponentDisplayName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a transform job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_transform_job(
+\preformatted{svc$describe_transform_job(
   TransformJobName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

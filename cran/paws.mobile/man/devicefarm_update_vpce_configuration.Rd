@@ -25,9 +25,7 @@ VPC. The DNS name must not already be in use on the internet.}
 configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   vpceConfiguration = list(
     arn = "string",
     vpceConfigurationName = "string",
@@ -36,23 +34,21 @@ A list with the following syntax:
     vpceConfigurationDescription = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates information about an Amazon Virtual Private Cloud (VPC) endpoint
 configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_vpce_configuration(
+\preformatted{svc$update_vpce_configuration(
   arn = "string",
   vpceConfigurationName = "string",
   vpceServiceName = "string",
   serviceDnsName = "string",
   vpceConfigurationDescription = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

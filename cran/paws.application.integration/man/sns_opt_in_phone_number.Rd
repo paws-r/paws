@@ -20,12 +20,10 @@ enables you to resume sending SMS messages to the number.
 You can opt in a phone number only once every 30 days.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$opt_in_phone_number(
+\preformatted{svc$opt_in_phone_number(
   phoneNumber = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

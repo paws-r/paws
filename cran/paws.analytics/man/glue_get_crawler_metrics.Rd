@@ -14,9 +14,7 @@ glue_get_crawler_metrics(CrawlerNameList, MaxResults, NextToken)
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CrawlerMetricsList = list(
     list(
       CrawlerName = "string",
@@ -31,22 +29,20 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves metrics about specified crawlers.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_crawler_metrics(
+\preformatted{svc$get_crawler_metrics(
   CrawlerNameList = list(
     "string"
   ),
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

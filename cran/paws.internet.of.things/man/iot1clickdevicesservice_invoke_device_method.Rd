@@ -16,21 +16,17 @@ iot1clickdevicesservice_invoke_device_method(DeviceId, DeviceMethod,
 \item{DeviceMethodParameters}{A JSON encoded string containing the device method request parameters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DeviceMethodResponse = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Given a device ID, issues a request to invoke a named device method
 (with possible parameters). See the "Example POST" code snippet below.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$invoke_device_method(
+\preformatted{svc$invoke_device_method(
   DeviceId = "string",
   DeviceMethod = list(
     DeviceType = "string",
@@ -38,7 +34,7 @@ Given a device ID, issues a request to invoke a named device method
   ),
   DeviceMethodParameters = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

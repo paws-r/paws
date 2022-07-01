@@ -52,15 +52,13 @@ For information on configuring attributes for message delivery status,
 see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html}{Using Amazon SNS Application Attributes for Message Delivery Status}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_platform_application_attributes(
+\preformatted{svc$set_platform_application_attributes(
   PlatformApplicationArn = "string",
   Attributes = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

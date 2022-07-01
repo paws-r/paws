@@ -11,9 +11,7 @@ route53domains_get_domain_detail(DomainName)
 \item{DomainName}{[required] The name of the domain that you want to get detailed information about.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainName = "string",
   Nameservers = list(
     list(
@@ -111,7 +109,7 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation returns detailed information about a specified domain
@@ -119,12 +117,10 @@ that is associated with the current AWS account. Contact information for
 the domain is also returned as part of the output.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_domain_detail(
+\preformatted{svc$get_domain_detail(
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

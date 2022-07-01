@@ -18,9 +18,7 @@ configservice_put_configuration_aggregator(ConfigurationAggregatorName,
 \item{Tags}{An array of tag object.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConfigurationAggregator = list(
     ConfigurationAggregatorName = "string",
     ConfigurationAggregatorArn = "string",
@@ -51,7 +49,7 @@ A list with the following syntax:
     CreatedBy = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates and updates the configuration aggregator with the selected
@@ -67,9 +65,7 @@ AWS Config calls \code{EnableAwsServiceAccess} API to enable integration
 between AWS Config and AWS Organizations.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_configuration_aggregator(
+\preformatted{svc$put_configuration_aggregator(
   ConfigurationAggregatorName = "string",
   AccountAggregationSources = list(
     list(
@@ -96,7 +92,7 @@ between AWS Config and AWS Organizations.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

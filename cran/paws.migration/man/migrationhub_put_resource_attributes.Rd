@@ -65,9 +65,7 @@ based on the provided details, call
 \code{\link[=migrationhub_list_discovered_resources]{list_discovered_resources}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_resource_attributes(
+\preformatted{svc$put_resource_attributes(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   ResourceAttributeList = list(
@@ -78,7 +76,7 @@ based on the provided details, call
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

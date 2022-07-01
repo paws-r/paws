@@ -14,9 +14,7 @@ UTF-8 encoded characters.}
 \item{LanguageCode}{[required] The language of the input documents.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Entities = list(
     list(
       Score = 123.0,
@@ -26,20 +24,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Inspects the input text for entities that contain personally
 identifiable information (PII) and returns information about them.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_pii_entities(
+\preformatted{svc$detect_pii_entities(
   Text = "string",
   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

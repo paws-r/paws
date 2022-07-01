@@ -10,9 +10,7 @@ route53resolver_delete_resolver_rule(ResolverRuleId)
 \item{ResolverRuleId}{[required] The ID of the Resolver rule that you want to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResolverRule = list(
     Id = "string",
     CreatorRequestId = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
     ModificationTime = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a Resolver rule. Before you can delete a Resolver rule, you must
@@ -44,12 +42,10 @@ with. For more information, see
 \code{\link[=route53resolver_disassociate_resolver_rule]{disassociate_resolver_rule}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resolver_rule(
+\preformatted{svc$delete_resolver_rule(
   ResolverRuleId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

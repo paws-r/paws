@@ -20,9 +20,7 @@ output) that identifies the next page of information that you want to
 retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChangeSetName = "string",
   ChangeSetId = "string",
   StackId = "string",
@@ -100,7 +98,7 @@ A list with the following syntax:
   ParentChangeSetId = "string",
   RootChangeSetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the inputs for the change set and a list of changes that AWS
@@ -109,14 +107,12 @@ information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/User
 in the AWS CloudFormation User Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_change_set(
+\preformatted{svc$describe_change_set(
   ChangeSetName = "string",
   StackName = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

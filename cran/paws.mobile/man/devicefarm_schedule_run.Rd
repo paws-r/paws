@@ -33,9 +33,7 @@ required in a request.}
 execution timeout (in minutes).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   run = list(
     arn = "string",
     name = "string",
@@ -131,15 +129,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Schedules a run.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$schedule_run(
+\preformatted{svc$schedule_run(
   projectArn = "string",
   appArn = "string",
   devicePoolArn = "string",
@@ -206,7 +202,7 @@ Schedules a run.
     skipAppResign = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

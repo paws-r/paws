@@ -31,12 +31,10 @@ query logging configurations that you want to share with the account
 that you specified in \code{Arn}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReturnValue = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Specifies an AWS account that you want to share a query logging
@@ -45,13 +43,11 @@ share, and the operations that you want the account to be able to
 perform on the configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_resolver_query_log_config_policy(
+\preformatted{svc$put_resolver_query_log_config_policy(
   Arn = "string",
   ResolverQueryLogConfigPolicy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -44,23 +44,19 @@ useful.}
 \item{email}{An email address for the person adding or updating the file.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   commitId = "string",
   blobId = "string",
   treeId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds or updates a file in a branch in an AWS CodeCommit repository, and
 generates a commit for the addition in the specified branch.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_file(
+\preformatted{svc$put_file(
   repositoryName = "string",
   branchName = "string",
   fileContent = raw,
@@ -71,7 +67,7 @@ generates a commit for the addition in the specified branch.
   name = "string",
   email = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

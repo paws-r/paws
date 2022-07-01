@@ -16,12 +16,10 @@ An empty list.
 Enables the rule.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_topic_rule(
+\preformatted{svc$enable_topic_rule(
   ruleName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

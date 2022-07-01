@@ -20,13 +20,11 @@ For the workload management (WLM) configuration, you must supply all the
 name-value pairs in the wlm_json_configuration parameter.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ParameterGroupName = "string",
   ParameterGroupStatus = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the parameters of a parameter group.
@@ -36,9 +34,7 @@ For more information about parameters and parameter groups, go to
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_cluster_parameter_group(
+\preformatted{svc$modify_cluster_parameter_group(
   ParameterGroupName = "string",
   Parameters = list(
     list(
@@ -54,7 +50,7 @@ in the \emph{Amazon Redshift Cluster Management Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

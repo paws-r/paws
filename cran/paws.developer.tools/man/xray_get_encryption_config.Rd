@@ -7,25 +7,21 @@
 xray_get_encryption_config()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EncryptionConfig = list(
     KeyId = "string",
     Status = "UPDATING"|"ACTIVE",
     Type = "NONE"|"KMS"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the current encryption configuration for X-Ray data.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_encryption_config()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_encryption_config()
+}
 }
 
 \keyword{internal}

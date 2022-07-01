@@ -10,9 +10,7 @@ alexaforbusiness_get_profile(ProfileArn)
 \item{ProfileArn}{The ARN of the room profile for which to request details. Required.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Profile = list(
     ProfileArn = "string",
     ProfileName = "string",
@@ -47,18 +45,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the details of a room profile by profile ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_profile(
+\preformatted{svc$get_profile(
   ProfileArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

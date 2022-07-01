@@ -18,13 +18,11 @@ An empty list.
 Deletes an Authorizer.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_authorizer(
+\preformatted{svc$delete_authorizer(
   ApiId = "string",
   AuthorizerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

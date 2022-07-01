@@ -29,9 +29,7 @@ for DMS. For more information, see
 data type description.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags_to_resource(
+\preformatted{svc$add_tags_to_resource(
   ResourceArn = "string",
   Tags = list(
     list(
@@ -40,7 +38,7 @@ data type description.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -25,15 +25,13 @@ An empty list.
 Deletes a specified partition index from an existing table.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_partition_index(
+\preformatted{svc$delete_partition_index(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
   IndexName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

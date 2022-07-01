@@ -41,9 +41,7 @@ response records by providing the returned marker value in the \code{Marker}
 parameter and retrying the request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   ClusterVersions = list(
     list(
@@ -53,7 +51,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns descriptions of the available Amazon Redshift cluster versions.
@@ -63,15 +61,13 @@ managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cluster_versions(
+\preformatted{svc$describe_cluster_versions(
   ClusterVersion = "string",
   ClusterParameterGroupFamily = "string",
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

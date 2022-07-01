@@ -84,9 +84,7 @@ NextPageToken value that you can use in a subsequent call to get the
 next batch of objects.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UtilizationsByTime = list(
     list(
       TimePeriod = list(
@@ -163,7 +161,7 @@ A list with the following syntax:
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the reservation utilization for your account. Management
@@ -174,9 +172,7 @@ the possible dimension values. Currently, you can group only by
 \code{SUBSCRIPTION_ID}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_reservation_utilization(
+\preformatted{svc$get_reservation_utilization(
   TimePeriod = list(
     Start = "string",
     End = "string"
@@ -231,7 +227,7 @@ the possible dimension values. Currently, you can group only by
   NextPageToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

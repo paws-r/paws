@@ -10,9 +10,7 @@ directconnect_delete_connection(connectionId)
 \item{connectionId}{[required] The ID of the connection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ownerAccount = "string",
   connectionId = "string",
   connectionName = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
   ),
   providerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified connection.
@@ -49,12 +47,10 @@ connect with the AWS Direct Connect location, you must cancel your
 service with them separately.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_connection(
+\preformatted{svc$delete_connection(
   connectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

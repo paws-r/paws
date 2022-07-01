@@ -23,9 +23,7 @@ associate with this environment member. Available values include:
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   membership = list(
     permissions = "owner"|"read-write"|"read-only",
     userId = "string",
@@ -36,21 +34,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes the settings of an existing environment member for an AWS Cloud9
 development environment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_environment_membership(
+\preformatted{svc$update_environment_membership(
   environmentId = "string",
   userArn = "string",
   permissions = "read-write"|"read-only"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

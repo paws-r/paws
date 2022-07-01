@@ -14,13 +14,11 @@ personalize_create_event_tracker(name, datasetGroupArn)
 event data.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   eventTrackerArn = "string",
   trackingId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an event tracker that you use when sending event data to the
@@ -62,13 +60,11 @@ ID.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_event_tracker(
+\preformatted{svc$create_event_tracker(
   name = "string",
   datasetGroupArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

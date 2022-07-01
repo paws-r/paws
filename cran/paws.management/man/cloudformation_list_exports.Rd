@@ -13,9 +13,7 @@ response output) that identifies the next page of exported output values
 that you asked to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Exports = list(
     list(
       ExportingStackId = "string",
@@ -25,7 +23,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all exported output values in the account and Region in which you
@@ -37,12 +35,10 @@ function.
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html}{AWS CloudFormation Export Stack Output Values}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_exports(
+\preformatted{svc$list_exports(
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

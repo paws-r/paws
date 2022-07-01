@@ -57,20 +57,16 @@ raised while running tasks for these targets in this maintenance window.}
 \item{ClientToken}{User-provided idempotency token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   WindowTargetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Registers a target with a maintenance window.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_target_with_maintenance_window(
+\preformatted{svc$register_target_with_maintenance_window(
   WindowId = "string",
   ResourceType = "INSTANCE"|"RESOURCE_GROUP",
   Targets = list(
@@ -86,7 +82,7 @@ Registers a target with a maintenance window.
   Description = "string",
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

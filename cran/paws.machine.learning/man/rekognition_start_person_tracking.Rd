@@ -26,12 +26,10 @@ example, you can use \code{JobTag} to group related jobs and identify them in
 the completion notification.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts the asynchronous tracking of a person's path in a stored video.
@@ -52,9 +50,7 @@ pass the job identifier (\code{JobId}) from the initial call to
 \code{\link[=rekognition_start_person_tracking]{start_person_tracking}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_person_tracking(
+\preformatted{svc$start_person_tracking(
   Video = list(
     S3Object = list(
       Bucket = "string",
@@ -69,7 +65,7 @@ pass the job identifier (\code{JobId}) from the initial call to
   ),
   JobTag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

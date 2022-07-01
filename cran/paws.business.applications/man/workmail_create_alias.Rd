@@ -22,14 +22,12 @@ Adds an alias to the set of a given member (user or group) of Amazon
 WorkMail.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_alias(
+\preformatted{svc$create_alias(
   OrganizationId = "string",
   EntityId = "string",
   Alias = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

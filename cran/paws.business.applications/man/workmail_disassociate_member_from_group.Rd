@@ -21,14 +21,12 @@ An empty list.
 Removes a member from a group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_member_from_group(
+\preformatted{svc$disassociate_member_from_group(
   OrganizationId = "string",
   GroupId = "string",
   MemberId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

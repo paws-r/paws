@@ -19,9 +19,7 @@ partition indexes.}
 \item{NextToken}{A continuation token, included if this is a continuation call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PartitionIndexDescriptorList = list(
     list(
       IndexName = "string",
@@ -48,21 +46,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the partition indexes associated with a table.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_partition_indexes(
+\preformatted{svc$get_partition_indexes(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

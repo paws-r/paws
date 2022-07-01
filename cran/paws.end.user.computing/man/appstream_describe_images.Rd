@@ -20,9 +20,7 @@ this operation. If this value is null, it retrieves the first page.}
 \item{MaxResults}{The maximum size of each page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Images = list(
     list(
       Name = "string",
@@ -67,7 +65,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list that describes one or more specified images, if the
@@ -75,9 +73,7 @@ image names or image ARNs are provided. Otherwise, all images in the
 account are described.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_images(
+\preformatted{svc$describe_images(
   Names = list(
     "string"
   ),
@@ -88,7 +84,7 @@ account are described.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

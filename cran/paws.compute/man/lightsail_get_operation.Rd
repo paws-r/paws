@@ -10,9 +10,7 @@ lightsail_get_operation(operationId)
 \item{operationId}{[required] A GUID used to identify the operation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
     errorDetails = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a specific operation. Operations include
@@ -43,12 +41,10 @@ events such as when you create an instance, allocate a static IP, attach
 a static IP, and so on.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_operation(
+\preformatted{svc$get_operation(
   operationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

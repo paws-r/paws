@@ -19,15 +19,13 @@ listed.}
 inclusive.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Identities = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list containing all of the identities (email addresses and
@@ -37,14 +35,12 @@ verification status.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_identities(
+\preformatted{svc$list_identities(
   IdentityType = "EmailAddress"|"Domain",
   NextToken = "string",
   MaxItems = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

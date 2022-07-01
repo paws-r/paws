@@ -33,9 +33,7 @@ Reserved for use by the \href{https://docs.aws.amazon.com/cloudformation-cli/lat
 Do not use this API in your code.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$record_handler_progress(
+\preformatted{svc$record_handler_progress(
   BearerToken = "string",
   OperationStatus = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED",
   CurrentOperationStatus = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED",
@@ -44,7 +42,7 @@ Do not use this API in your code.
   ResourceModel = "string",
   ClientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

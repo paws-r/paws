@@ -22,9 +22,7 @@ migration, restoration, and deletion of backups, while also providing
 reporting and auditing.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- backup(
+\preformatted{svc <- backup(
   config = list(
     credentials = list(
       creds = list(
@@ -38,7 +36,7 @@ reporting and auditing.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

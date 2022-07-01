@@ -49,14 +49,12 @@ Region, contact AWS Support.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_workspace_image_permission(
+\preformatted{svc$update_workspace_image_permission(
   ImageId = "string",
   AllowCopyImage = TRUE|FALSE,
   SharedAccountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

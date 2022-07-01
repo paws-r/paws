@@ -15,9 +15,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceMonitorings = list(
     list(
       InstanceId = "string",
@@ -27,7 +25,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disables detailed monitoring for a running instance. For more
@@ -35,15 +33,13 @@ information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$unmonitor_instances(
+\preformatted{svc$unmonitor_instances(
   InstanceIds = list(
     "string"
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

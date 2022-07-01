@@ -11,9 +11,7 @@ devicefarm_stop_run(arn)
 stop.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   run = list(
     arn = "string",
     name = "string",
@@ -109,7 +107,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Initiates a stop request for the current test run. AWS Device Farm
@@ -120,12 +118,10 @@ those devices. You are billed for setup, teardown, and any tests that
 were in progress or already completed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_run(
+\preformatted{svc$stop_run(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

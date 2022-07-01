@@ -13,25 +13,21 @@ information, see arns.}
 \item{Name}{[required] The name of the schema.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SchemaArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the schema name with a new name. Only development schema names
 can be updated.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_schema(
+\preformatted{svc$update_schema(
   SchemaArn = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

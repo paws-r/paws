@@ -20,9 +20,7 @@ For more information, see arns.}
 approximate number.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PolicyToPathList = list(
     list(
       Path = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all policies from the root of the Directory to the object
@@ -50,9 +48,7 @@ are ignored. For more information, see
 \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies}{Policies}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$lookup_policy(
+\preformatted{svc$lookup_policy(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"
@@ -60,7 +56,7 @@ are ignored. For more information, see
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

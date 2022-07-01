@@ -20,12 +20,10 @@ outbound calling name once every seven days. Outbound calling names can
 take up to 72 hours to update.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_phone_number_settings(
+\preformatted{svc$update_phone_number_settings(
   CallingName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

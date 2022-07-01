@@ -12,24 +12,20 @@ applicationdiscoveryservice_create_application(name, description)
 \item{description}{Description of the application to be created.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   configurationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an application with the given name and description.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_application(
+\preformatted{svc$create_application(
   name = "string",
   description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

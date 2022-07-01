@@ -19,12 +19,10 @@ You do not have to delete the content of the dataset before you perform
 this operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_dataset(
+\preformatted{svc$delete_dataset(
   datasetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

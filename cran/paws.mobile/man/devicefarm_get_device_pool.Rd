@@ -10,9 +10,7 @@ devicefarm_get_device_pool(arn)
 \item{arn}{[required] The device pool's ARN.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   devicePool = list(
     arn = "string",
     name = "string",
@@ -28,18 +26,16 @@ A list with the following syntax:
     maxDevices = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a device pool.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_device_pool(
+\preformatted{svc$get_device_pool(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

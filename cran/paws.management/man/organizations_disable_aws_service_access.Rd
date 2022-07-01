@@ -48,12 +48,10 @@ This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_aws_service_access(
+\preformatted{svc$disable_aws_service_access(
   ServicePrincipal = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

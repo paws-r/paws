@@ -26,9 +26,7 @@ Constraints: Up to 255 ASCII characters}
 \item{TagSpecifications}{The tags to apply to the new placement group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PlacementGroup = list(
     GroupName = "string",
     State = "pending"|"available"|"deleting"|"deleted",
@@ -43,7 +41,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a placement group in which to launch instances. The strategy of
@@ -61,9 +59,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_placement_group(
+\preformatted{svc$create_placement_group(
   DryRun = TRUE|FALSE,
   GroupName = "string",
   Strategy = "cluster"|"spread"|"partition",
@@ -80,7 +76,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -36,21 +36,17 @@ metrics; cannot be used with dimensions.}
 \item{tags}{Metadata that can be used to manage the security profile.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   securityProfileName = "string",
   securityProfileArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Device Defender security profile.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_security_profile(
+\preformatted{svc$create_security_profile(
   securityProfileName = "string",
   securityProfileDescription = "string",
   behaviors = list(
@@ -117,7 +113,7 @@ Creates a Device Defender security profile.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

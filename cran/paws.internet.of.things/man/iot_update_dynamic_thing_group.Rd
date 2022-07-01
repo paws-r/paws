@@ -26,20 +26,16 @@ Currently one query version is supported: "2017-09-30". If not
 specified, the query version defaults to this value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   version = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a dynamic thing group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_dynamic_thing_group(
+\preformatted{svc$update_dynamic_thing_group(
   thingGroupName = "string",
   thingGroupProperties = list(
     thingGroupDescription = "string",
@@ -55,7 +51,7 @@ Updates a dynamic thing group.
   queryString = "string",
   queryVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

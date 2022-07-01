@@ -20,9 +20,7 @@ The maximum length is 255 characters.}
 \item{TagSpecifications}{The tags to apply to the instance export task during creation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ExportTask = list(
     Description = "string",
     ExportTaskId = "string",
@@ -46,7 +44,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Exports a running or stopped instance to an Amazon S3 bucket.
@@ -57,9 +55,7 @@ and known limitations for the types of instances you can export, see
 in the \emph{VM Import/Export User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_instance_export_task(
+\preformatted{svc$create_instance_export_task(
   Description = "string",
   ExportToS3Task = list(
     ContainerFormat = "ova",
@@ -81,7 +77,7 @@ in the \emph{VM Import/Export User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

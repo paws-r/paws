@@ -21,9 +21,7 @@ into machine-readable text. This is the API reference documentation for
 Amazon Textract.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- textract(
+\preformatted{svc <- textract(
   config = list(
     credentials = list(
       creds = list(
@@ -37,7 +35,7 @@ Amazon Textract.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

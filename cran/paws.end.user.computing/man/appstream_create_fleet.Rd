@@ -156,9 +156,7 @@ standard desktop that is provided by the operating system displays.
 The default value is \code{APP}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Fleet = list(
     Arn = "string",
     Name = "string",
@@ -204,16 +202,14 @@ A list with the following syntax:
     StreamView = "APP"|"DESKTOP"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a fleet. A fleet consists of streaming instances that run a
 specified image.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_fleet(
+\preformatted{svc$create_fleet(
   Name = "string",
   ImageName = "string",
   ImageArn = "string",
@@ -246,7 +242,7 @@ specified image.
   IamRoleArn = "string",
   StreamView = "APP"|"DESKTOP"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

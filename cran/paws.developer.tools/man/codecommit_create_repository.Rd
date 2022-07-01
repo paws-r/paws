@@ -29,9 +29,7 @@ on a webpage.}
 \item{tags}{One or more tag key-value pairs to use when tagging this repository.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   repositoryMetadata = list(
     accountId = "string",
     repositoryId = "string",
@@ -49,22 +47,20 @@ A list with the following syntax:
     Arn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new, empty repository.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_repository(
+\preformatted{svc$create_repository(
   repositoryName = "string",
   repositoryDescription = "string",
   tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -30,14 +30,12 @@ granted it permission with
 \code{\link[=eventbridge_describe_event_bus]{describe_event_bus}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_permission(
+\preformatted{svc$remove_permission(
   StatementId = "string",
   RemoveAllPermissions = TRUE|FALSE,
   EventBusName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

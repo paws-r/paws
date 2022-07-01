@@ -13,9 +13,7 @@ ec2_get_host_reservation_purchase_preview(HostIdSet, OfferingId)
 \item{OfferingId}{[required] The offering ID of the reservation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CurrencyCode = "USD",
   Purchase = list(
     list(
@@ -34,7 +32,7 @@ A list with the following syntax:
   TotalHourlyPrice = "string",
   TotalUpfrontPrice = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Preview a reservation purchase with configurations that match those of
@@ -46,15 +44,13 @@ This is a preview of the
 does not result in the offering being purchased.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_host_reservation_purchase_preview(
+\preformatted{svc$get_host_reservation_purchase_preview(
   HostIdSet = list(
     "string"
   ),
   OfferingId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

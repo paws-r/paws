@@ -20,13 +20,11 @@ An empty list.
 Removes all the permissions from the specified resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_all_resource_permissions(
+\preformatted{svc$remove_all_resource_permissions(
   AuthenticationToken = "string",
   ResourceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

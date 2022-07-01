@@ -18,20 +18,16 @@ organize and categorize them. Each tag consists of a key and an optional
 value, both of which you define.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   applicationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_application(
+\preformatted{svc$create_application(
   applicationName = "string",
   computePlatform = "Server"|"Lambda"|"ECS",
   tags = list(
@@ -41,7 +37,7 @@ Creates an application.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

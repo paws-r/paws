@@ -25,12 +25,10 @@ sagemaker_create_action(ActionName, Source, ActionType, Description,
 \item{Tags}{A list of tags to apply to the action.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ActionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an \emph{action}. An action is a lineage tracking entity that
@@ -39,9 +37,7 @@ HPO job. Generally, an action involves at least one input or output
 artifact. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_action(
+\preformatted{svc$create_action(
   ActionName = "string",
   Source = list(
     SourceUri = "string",
@@ -67,7 +63,7 @@ artifact. For more information, see \href{https://docs.aws.amazon.com/sagemaker/
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

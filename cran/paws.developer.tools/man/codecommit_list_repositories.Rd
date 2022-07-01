@@ -17,9 +17,7 @@ When the client sends the token back to AWS CodeCommit, another page of
 \item{order}{The order in which to sort the results of a list repositories operation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   repositories = list(
     list(
       repositoryName = "string",
@@ -28,20 +26,18 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about one or more repositories.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_repositories(
+\preformatted{svc$list_repositories(
   nextToken = "string",
   sortBy = "repositoryName"|"lastModifiedDate",
   order = "ascending"|"descending"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

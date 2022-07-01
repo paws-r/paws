@@ -33,9 +33,7 @@ them.}
 SIP application per AWS Region can be used.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SipRule = list(
     SipRuleId = "string",
     Name = "string",
@@ -57,16 +55,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a SIP rule which can be used to run a SIP media application as a
 target for a specific trigger type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_sip_rule(
+\preformatted{svc$create_sip_rule(
   Name = "string",
   TriggerType = "ToPhoneNumber"|"RequestUriHostname",
   TriggerValue = "string",
@@ -79,7 +75,7 @@ target for a specific trigger type.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

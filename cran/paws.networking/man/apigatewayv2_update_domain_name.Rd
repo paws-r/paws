@@ -15,9 +15,7 @@ apigatewayv2_update_domain_name(DomainName, DomainNameConfigurations,
 \item{MutualTlsAuthentication}{The mutual TLS authentication configuration for a custom domain name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApiMappingSelectionExpression = "string",
   DomainName = "string",
   DomainNameConfigurations = list(
@@ -46,15 +44,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a domain name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_domain_name(
+\preformatted{svc$update_domain_name(
   DomainName = "string",
   DomainNameConfigurations = list(
     list(
@@ -76,7 +72,7 @@ Updates a domain name.
     TruststoreVersion = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -18,21 +18,17 @@ cluster.}
 \item{TargetKafkaVersion}{[required] Target Kafka version.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClusterArn = "string",
   ClusterOperationArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the Apache Kafka version for the cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_cluster_kafka_version(
+\preformatted{svc$update_cluster_kafka_version(
   ClusterArn = "string",
   ConfigurationInfo = list(
     Arn = "string",
@@ -41,7 +37,7 @@ Updates the Apache Kafka version for the cluster.
   CurrentVersion = "string",
   TargetKafkaVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

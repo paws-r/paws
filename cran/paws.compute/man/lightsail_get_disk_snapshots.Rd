@@ -16,9 +16,7 @@ results are paginated, the response will return a next page token that
 you can specify as the page token in a subsequent request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   diskSnapshots = list(
     list(
       name = "string",
@@ -50,19 +48,17 @@ A list with the following syntax:
   ),
   nextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about all block storage disk snapshots in your AWS
 account and region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_disk_snapshots(
+\preformatted{svc$get_disk_snapshots(
   pageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

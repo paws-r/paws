@@ -28,9 +28,7 @@ returned.}
 \item{virtualGatewayId}{The ID of the virtual private gateway.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   directConnectGatewayAssociations = list(
     list(
       directConnectGatewayId = "string",
@@ -56,7 +54,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the associations between your Direct Connect gateways and virtual
@@ -70,9 +68,7 @@ association between the Direct Connect gateway and the virtual private
 gateway.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_direct_connect_gateway_associations(
+\preformatted{svc$describe_direct_connect_gateway_associations(
   associationId = "string",
   associatedGatewayId = "string",
   directConnectGatewayId = "string",
@@ -80,7 +76,7 @@ gateway.
   nextToken = "string",
   virtualGatewayId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

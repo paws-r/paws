@@ -135,12 +135,10 @@ key-value pairs can be used to correlated responses with tracking
 information from other systems.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   dataSetRequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Given a data set type and data set publication date, asynchronously
@@ -157,9 +155,7 @@ following actions: s3:PutObject, s3:GetBucketLocation,
 sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$generate_data_set(
+\preformatted{svc$generate_data_set(
   dataSetType = "customer_subscriber_hourly_monthly_subscriptions"|"customer_subscriber_annual_subscriptions"|"daily_business_usage_by_instance_type"|"daily_business_fees"|"daily_business_free_trial_conversions"|"daily_business_new_instances"|"daily_business_new_product_subscribers"|"daily_business_canceled_product_subscribers"|"monthly_revenue_billing_and_revenue_data"|"monthly_revenue_annual_subscriptions"|"monthly_revenue_field_demonstration_usage"|"monthly_revenue_flexible_payment_schedule"|"disbursed_amount_by_product"|"disbursed_amount_by_product_with_uncollected_funds"|"disbursed_amount_by_instance_hours"|"disbursed_amount_by_customer_geo"|"disbursed_amount_by_age_of_uncollected_funds"|"disbursed_amount_by_age_of_disbursed_funds"|"disbursed_amount_by_age_of_past_due_funds"|"disbursed_amount_by_uncollected_funds_breakdown"|"customer_profile_by_industry"|"customer_profile_by_revenue"|"customer_profile_by_geography"|"sales_compensation_billed_revenue"|"us_sales_and_use_tax_records",
   dataSetPublicationDate = as.POSIXct(
     "2015-01-01"
@@ -172,7 +168,7 @@ sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

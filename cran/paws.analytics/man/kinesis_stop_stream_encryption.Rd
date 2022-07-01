@@ -54,14 +54,12 @@ encryption is not applied by inspecting the API response from
 \code{\link[=kinesis_put_records]{put_records}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_stream_encryption(
+\preformatted{svc$stop_stream_encryption(
   StreamName = "string",
   EncryptionType = "NONE"|"KMS",
   KeyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

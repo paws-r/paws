@@ -15,24 +15,20 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{NetworkInsightsAnalysisId}{[required] The ID of the network insights analysis.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NetworkInsightsAnalysisId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified network insights analysis.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_network_insights_analysis(
+\preformatted{svc$delete_network_insights_analysis(
   DryRun = TRUE|FALSE,
   NetworkInsightsAnalysisId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

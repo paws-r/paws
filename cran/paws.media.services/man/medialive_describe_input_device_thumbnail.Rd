@@ -12,9 +12,7 @@ medialive_describe_input_device_thumbnail(InputDeviceId, Accept)
 \item{Accept}{[required] The HTTP Accept header. Indicates the requested type for the thumbnail.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Body = raw,
   ContentType = "image/jpeg",
   ContentLength = 123,
@@ -23,19 +21,17 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Get the latest thumbnail data for the input device.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_input_device_thumbnail(
+\preformatted{svc$describe_input_device_thumbnail(
   InputDeviceId = "string",
   Accept = "image/jpeg"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

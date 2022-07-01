@@ -13,20 +13,16 @@ sagemaker_update_app_image_config(AppImageConfigName,
 \item{KernelGatewayImageConfig}{The new KernelGateway app to run on the image.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AppImageConfigArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the properties of an AppImageConfig.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_app_image_config(
+\preformatted{svc$update_app_image_config(
   AppImageConfigName = "string",
   KernelGatewayImageConfig = list(
     KernelSpecs = list(
@@ -42,7 +38,7 @@ Updates the properties of an AppImageConfig.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,20 +16,16 @@ index exist.}
 \item{TargetReference}{[required] A reference to the object that you are attaching to the index.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AttachedObjectIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Attaches the specified object to the specified index.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_to_index(
+\preformatted{svc$attach_to_index(
   DirectoryArn = "string",
   IndexReference = list(
     Selector = "string"
@@ -38,7 +34,7 @@ Attaches the specified object to the specified index.
     Selector = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

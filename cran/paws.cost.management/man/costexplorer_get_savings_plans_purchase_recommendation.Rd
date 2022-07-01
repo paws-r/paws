@@ -46,9 +46,7 @@ see Savings Plans Purchase Recommendations. \code{AND} and \code{OR} operators a
 not supported.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Metadata = list(
     RecommendationId = "string",
     GenerationTimestamp = "string",
@@ -100,16 +98,14 @@ A list with the following syntax:
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves your request parameters, Savings Plan Recommendations Summary
 and Details.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_savings_plans_purchase_recommendation(
+\preformatted{svc$get_savings_plans_purchase_recommendation(
   SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP",
   TermInYears = "ONE_YEAR"|"THREE_YEARS",
   PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
@@ -154,7 +150,7 @@ and Details.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

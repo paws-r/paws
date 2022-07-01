@@ -17,26 +17,22 @@ target is being referenced, the system returns an error and does not
 deregister the target from the maintenance window.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   WindowId = "string",
   WindowTargetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes a target from a maintenance window.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_target_from_maintenance_window(
+\preformatted{svc$deregister_target_from_maintenance_window(
   WindowId = "string",
   WindowTargetId = "string",
   Safe = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

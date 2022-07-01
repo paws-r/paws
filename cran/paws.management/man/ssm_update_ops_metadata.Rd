@@ -15,21 +15,17 @@ ssm_update_ops_metadata(OpsMetadataArn, MetadataToUpdate, KeysToDelete)
 \item{KeysToDelete}{The metadata keys to delete from the OpsMetadata object.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OpsMetadataArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Systems Manager calls this API action when you edit OpsMetadata in
 Application Manager.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_ops_metadata(
+\preformatted{svc$update_ops_metadata(
   OpsMetadataArn = "string",
   MetadataToUpdate = list(
     list(
@@ -40,7 +36,7 @@ Application Manager.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

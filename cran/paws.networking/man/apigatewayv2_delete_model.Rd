@@ -18,13 +18,11 @@ An empty list.
 Deletes a Model.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_model(
+\preformatted{svc$delete_model(
   ApiId = "string",
   ModelId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

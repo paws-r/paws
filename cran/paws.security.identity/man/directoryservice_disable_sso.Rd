@@ -30,14 +30,12 @@ An empty list.
 Disables single-sign on for a directory.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_sso(
+\preformatted{svc$disable_sso(
   DirectoryId = "string",
   UserName = "string",
   Password = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

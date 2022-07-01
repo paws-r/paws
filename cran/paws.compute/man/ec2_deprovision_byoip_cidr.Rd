@@ -18,9 +18,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ByoipCidr = list(
     Cidr = "string",
     Description = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
     State = "advertised"|"deprovisioned"|"failed-deprovision"|"failed-provision"|"pending-deprovision"|"pending-provision"|"provisioned"|"provisioned-not-publicly-advertisable"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Releases the specified address range that you provisioned for use with
@@ -40,13 +38,11 @@ using \code{\link[=ec2_withdraw_byoip_cidr]{withdraw_byoip_cidr}} and you must n
 have any IP addresses allocated from its address range.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deprovision_byoip_cidr(
+\preformatted{svc$deprovision_byoip_cidr(
   Cidr = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

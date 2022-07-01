@@ -12,13 +12,11 @@ lambda_get_layer_version_policy(LayerName, VersionNumber)
 \item{VersionNumber}{[required] The version number.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Policy = "string",
   RevisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the permission policy for a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
@@ -26,13 +24,11 @@ For more information, see
 \code{\link[=lambda_add_layer_version_permission]{add_layer_version_permission}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_layer_version_policy(
+\preformatted{svc$get_layer_version_policy(
   LayerName = "string",
   VersionNumber = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

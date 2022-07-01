@@ -17,9 +17,7 @@ languages supported by Amazon Comprehend. All documents must be in the
 same language.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResultList = list(
     list(
       Index = 123,
@@ -40,22 +38,20 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Inspects a batch of documents and returns an inference of the prevailing
 sentiment, \code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE}, in each one.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_detect_sentiment(
+\preformatted{svc$batch_detect_sentiment(
   TextList = list(
     "string"
   ),
   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

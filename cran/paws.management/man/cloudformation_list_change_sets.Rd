@@ -15,9 +15,7 @@ want to list change sets.}
 that identifies the next page of change sets that you want to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Summaries = list(
     list(
       StackId = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the ID and status of each active change set for a stack. For
@@ -46,13 +44,11 @@ example, AWS CloudFormation lists change sets that are in the
 \code{CREATE_IN_PROGRESS} or \code{CREATE_PENDING} state.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_change_sets(
+\preformatted{svc$list_change_sets(
   StackName = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

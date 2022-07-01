@@ -33,9 +33,7 @@ value.}
 \item{virtualRouterName}{[required] The name of the virtual router to list routes in.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   nextToken = "string",
   routes = list(
     list(
@@ -55,22 +53,20 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of existing routes in a service mesh.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_routes(
+\preformatted{svc$list_routes(
   limit = 123,
   meshName = "string",
   meshOwner = "string",
   nextToken = "string",
   virtualRouterName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

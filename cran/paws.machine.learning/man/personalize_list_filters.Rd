@@ -16,9 +16,7 @@ filters (if they exist).}
 \item{maxResults}{The maximum number of filters to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Filters = list(
     list(
       name = "string",
@@ -36,20 +34,18 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all filters that belong to a given dataset group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_filters(
+\preformatted{svc$list_filters(
   datasetGroupArn = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

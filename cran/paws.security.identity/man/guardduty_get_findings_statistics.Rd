@@ -16,25 +16,21 @@ findings' statistics you want to retrieve.}
 \item{FindingCriteria}{Represents the criteria that is used for querying findings.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FindingStatistics = list(
     CountBySeverity = list(
       123
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists Amazon GuardDuty findings statistics for the specified detector
 ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_findings_statistics(
+\preformatted{svc$get_findings_statistics(
   DetectorId = "string",
   FindingStatisticTypes = list(
     "COUNT_BY_SEVERITY"
@@ -66,7 +62,7 @@ ID.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

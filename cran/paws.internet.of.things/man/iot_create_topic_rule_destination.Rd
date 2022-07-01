@@ -10,9 +10,7 @@ iot_create_topic_rule_destination(destinationConfiguration)
 \item{destinationConfiguration}{[required] The topic rule destination configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   topicRuleDestination = list(
     arn = "string",
     status = "ENABLED"|"IN_PROGRESS"|"DISABLED"|"ERROR"|"DELETING",
@@ -38,16 +36,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a topic rule destination. The destination must be confirmed
 prior to use.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_topic_rule_destination(
+\preformatted{svc$create_topic_rule_destination(
   destinationConfiguration = list(
     httpUrlConfiguration = list(
       confirmationUrl = "string"
@@ -64,7 +60,7 @@ prior to use.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

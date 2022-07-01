@@ -205,12 +205,10 @@ termination protection is set on the root stack and cannot be changed
 directly on the nested stack.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StackId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a stack as specified in the template. After the call completes
@@ -218,9 +216,7 @@ successfully, the stack creation starts. You can check the status of the
 stack via the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_stack(
+\preformatted{svc$create_stack(
   StackName = "string",
   TemplateBody = "string",
   TemplateURL = "string",
@@ -265,7 +261,7 @@ stack via the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} API
   ClientRequestToken = "string",
   EnableTerminationProtection = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,9 +19,7 @@ Operations section.
 Amazon Mechanical Turk API Reference
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- mturk(
+\preformatted{svc <- mturk(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +33,7 @@ Amazon Mechanical Turk API Reference
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -36,9 +36,7 @@ replication group. In practice, this mean Memcached and single node
 Redis clusters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   CacheClusters = list(
     list(
@@ -123,7 +121,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about all provisioned clusters if no cluster
@@ -151,16 +149,14 @@ If cache nodes are currently being removed from the cluster, no endpoint
 information for the removed nodes is displayed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cache_clusters(
+\preformatted{svc$describe_cache_clusters(
   CacheClusterId = "string",
   MaxRecords = 123,
   Marker = "string",
   ShowCacheNodeInfo = TRUE|FALSE,
   ShowCacheClustersNotInReplicationGroups = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

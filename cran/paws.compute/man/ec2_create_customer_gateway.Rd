@@ -32,9 +32,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CustomerGateway = list(
     BgpAsn = "string",
     CustomerGatewayId = "string",
@@ -51,7 +49,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides information to AWS about your VPN customer gateway device. The
@@ -84,9 +82,7 @@ gateway. Identical requests return information about the existing
 customer gateway and do not create new customer gateways.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_customer_gateway(
+\preformatted{svc$create_customer_gateway(
   BgpAsn = 123,
   PublicIp = "string",
   CertificateArn = "string",
@@ -105,7 +101,7 @@ customer gateway and do not create new customer gateways.
   DeviceName = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -44,9 +44,7 @@ They consist of lowercase letters, numbers, and hyphens.}
 associated with the specified account ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BackupJobs = list(
     list(
       AccountId = "string",
@@ -88,15 +86,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of existing backup jobs for an authenticated account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_backup_jobs(
+\preformatted{svc$list_backup_jobs(
   NextToken = "string",
   MaxResults = 123,
   ByResourceArn = "string",
@@ -111,7 +107,7 @@ Returns a list of existing backup jobs for an authenticated account.
   ByResourceType = "string",
   ByAccountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

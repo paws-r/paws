@@ -18,9 +18,7 @@ and the maximum value is 500. The GatewayResponses collection does not
 support pagination and the limit does not apply here.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   position = "string",
   items = list(
     list(
@@ -36,7 +34,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the GatewayResponses collection on the given RestApi. If an API
@@ -45,14 +43,12 @@ result will be the API Gateway-generated default GatewayResponses
 collection for the supported response types.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_gateway_responses(
+\preformatted{svc$get_gateway_responses(
   restApiId = "string",
   position = "string",
   limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,9 +19,7 @@ next set of results.}
 results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Summaries = list(
     list(
@@ -39,7 +37,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of all OpsItem events in the current AWS account and
@@ -47,9 +45,7 @@ Region. You can limit the results to events associated with specific
 OpsItems by specifying a filter.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_ops_item_events(
+\preformatted{svc$list_ops_item_events(
   Filters = list(
     list(
       Key = "OpsItemId",
@@ -62,7 +58,7 @@ OpsItems by specifying a filter.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

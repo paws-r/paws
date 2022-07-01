@@ -16,15 +16,13 @@ retrieve the next page of results.}
 \item{MaxItems}{Maximum number of items to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextMarker = "string",
   FunctionArns = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List the functions that use the specified code signing configuration.
@@ -32,14 +30,12 @@ You can use this method prior to deleting a code signing configuration,
 to verify that no functions are using it.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_functions_by_code_signing_config(
+\preformatted{svc$list_functions_by_code_signing_config(
   CodeSigningConfigArn = "string",
   Marker = "string",
   MaxItems = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

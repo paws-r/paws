@@ -14,9 +14,7 @@ elbv2_modify_rule(RuleArn, Conditions, Actions)
 \item{Actions}{The actions.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Rules = list(
     list(
       RuleArn = "string",
@@ -127,7 +125,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Replaces the specified properties of the specified rule. Any properties
@@ -138,9 +136,7 @@ in a list, you must provide the entire list. For example, to add an
 action, specify a list with the current actions plus the new action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_rule(
+\preformatted{svc$modify_rule(
   RuleArn = "string",
   Conditions = list(
     list(
@@ -245,7 +241,7 @@ action, specify a list with the current actions plus the new action.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -21,9 +21,7 @@ Example: \code{mysubnetgroup}}
 \item{SubnetIds}{[required] A list of VPC subnet IDs for the cache subnet group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CacheSubnetGroup = list(
     CacheSubnetGroupName = "string",
     CacheSubnetGroupDescription = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new cache subnet group.
@@ -51,16 +49,14 @@ Use this parameter only when you are creating a cluster in an Amazon
 Virtual Private Cloud (Amazon VPC).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cache_subnet_group(
+\preformatted{svc$create_cache_subnet_group(
   CacheSubnetGroupName = "string",
   CacheSubnetGroupDescription = "string",
   SubnetIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

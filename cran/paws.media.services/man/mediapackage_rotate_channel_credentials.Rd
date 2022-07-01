@@ -10,9 +10,7 @@ mediapackage_rotate_channel_credentials(Id)
 \item{Id}{[required] The ID of the channel to update.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   Description = "string",
   EgressAccessLogs = list(
@@ -36,7 +34,7 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes the Channel's first IngestEndpoint's username and password.
@@ -44,12 +42,10 @@ WARNING - This API is deprecated. Please use
 RotateIngestEndpointCredentials instead
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$rotate_channel_credentials(
+\preformatted{svc$rotate_channel_credentials(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

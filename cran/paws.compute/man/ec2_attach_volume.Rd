@@ -21,9 +21,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AttachTime = as.POSIXct(
     "2015-01-01"
   ),
@@ -33,7 +31,7 @@ A list with the following syntax:
   VolumeId = "string",
   DeleteOnTermination = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Attaches an EBS volume to a running or stopped instance and exposes it
@@ -61,15 +59,13 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_volume(
+\preformatted{svc$attach_volume(
   Device = "string",
   InstanceId = "string",
   VolumeId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

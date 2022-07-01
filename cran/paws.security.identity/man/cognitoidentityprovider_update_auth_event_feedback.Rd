@@ -29,16 +29,14 @@ evaluation decision for the user pool as part of Amazon Cognito advanced
 security.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_auth_event_feedback(
+\preformatted{svc$update_auth_event_feedback(
   UserPoolId = "string",
   Username = "string",
   EventId = "string",
   FeedbackToken = "string",
   FeedbackValue = "Valid"|"Invalid"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

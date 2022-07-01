@@ -18,9 +18,7 @@ characters}
 at a time.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NotifyWorkersFailureStatuses = list(
     list(
       NotifyWorkersFailureCode = "SoftFailure"|"HardFailure",
@@ -29,7 +27,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=mturk_notify_workers]{notify_workers}} operation sends an email to
@@ -40,16 +38,14 @@ notification email to a Worker only if you have previously approved or
 rejected work from the Worker.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$notify_workers(
+\preformatted{svc$notify_workers(
   Subject = "string",
   MessageText = "string",
   WorkerIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

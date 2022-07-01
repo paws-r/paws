@@ -32,9 +32,7 @@ results, use null.}
 \item{PageSize}{The maximum number of items to return with this call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OrganizationNodes = list(
     list(
       Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
@@ -43,7 +41,7 @@ A list with the following syntax:
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the organization nodes that have access to the specified
@@ -54,16 +52,14 @@ If a delegated admin is de-registered, they can no longer perform this
 operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_organization_portfolio_access(
+\preformatted{svc$list_organization_portfolio_access(
   AcceptLanguage = "string",
   PortfolioId = "string",
   OrganizationNodeType = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
   PageToken = "string",
   PageSize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

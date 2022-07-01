@@ -25,9 +25,7 @@ items is more than the value specified in \code{MaxResults}, then a
 pagination.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FlowDefinitionSummaries = list(
     list(
       FlowDefinitionName = "string",
@@ -41,15 +39,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the flow definitions in your account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_flow_definitions(
+\preformatted{svc$list_flow_definitions(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),
@@ -60,7 +56,7 @@ Returns information about the flow definitions in your account.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

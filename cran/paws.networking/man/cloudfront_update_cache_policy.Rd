@@ -19,9 +19,7 @@ returned in the cache policy’s \code{ETag} field in the response to
 \code{\link[=cloudfront_get_cache_policy_config]{get_cache_policy_config}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CachePolicy = list(
     Id = "string",
     LastModifiedTime = as.POSIXct(
@@ -68,7 +66,7 @@ A list with the following syntax:
   ),
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a cache policy configuration.
@@ -87,9 +85,7 @@ fields that you modified and those that you didn’t.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_cache_policy(
+\preformatted{svc$update_cache_policy(
   CachePolicyConfig = list(
     Comment = "string",
     Name = "string",
@@ -131,7 +127,7 @@ fields that you modified and those that you didn’t.
   Id = "string",
   IfMatch = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

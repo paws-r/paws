@@ -24,9 +24,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VpnConnection = list(
     CustomerGatewayConfiguration = "string",
     CustomerGatewayId = "string",
@@ -123,7 +121,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the customer gateway or the target gateway of an AWS
@@ -171,16 +169,14 @@ VPN connection will be temporarily unavailable for a brief period while
 we provision the new endpoints.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_vpn_connection(
+\preformatted{svc$modify_vpn_connection(
   VpnConnectionId = "string",
   TransitGatewayId = "string",
   CustomerGatewayId = "string",
   VpnGatewayId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

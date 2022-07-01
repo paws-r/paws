@@ -29,9 +29,7 @@ request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EngineDefaults = list(
     DBParameterGroupFamily = "string",
     Marker = "string",
@@ -54,7 +52,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the default engine and system parameter information for the
@@ -64,9 +62,7 @@ For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/Ama
 in the \emph{Amazon Aurora User Guide.}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_engine_default_cluster_parameters(
+\preformatted{svc$describe_engine_default_cluster_parameters(
   DBParameterGroupFamily = "string",
   Filters = list(
     list(
@@ -79,7 +75,7 @@ in the \emph{Amazon Aurora User Guide.}
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

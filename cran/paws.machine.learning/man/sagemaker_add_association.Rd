@@ -27,13 +27,11 @@ training job produced a model artifact.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SourceArn = "string",
   DestinationArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an \emph{association} between the source and the destination. A
@@ -42,14 +40,12 @@ can be associated with multiple sources. An association is a lineage
 tracking entity. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_association(
+\preformatted{svc$add_association(
   SourceArn = "string",
   DestinationArn = "string",
   AssociationType = "ContributedTo"|"AssociatedWith"|"DerivedFrom"|"Produced"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

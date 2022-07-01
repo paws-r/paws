@@ -25,13 +25,11 @@ representable in UTF-8 format, and the following special characters: + -
 the maximum length for a tag's value is 256.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VolumeARN = "string",
   SnapshotId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Initiates a snapshot of a volume.
@@ -67,9 +65,7 @@ more information, see the important note on the
 page.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_snapshot(
+\preformatted{svc$create_snapshot(
   VolumeARN = "string",
   SnapshotDescription = "string",
   Tags = list(
@@ -79,7 +75,7 @@ page.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -27,9 +27,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TagSpecifications}{The tags to assign to the NAT gateway.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClientToken = "string",
   NatGateway = list(
     CreateTime = as.POSIXct(
@@ -71,7 +69,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a NAT gateway in the specified public subnet. This action
@@ -83,9 +81,7 @@ more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_nat_gateway(
+\preformatted{svc$create_nat_gateway(
   AllocationId = "string",
   ClientToken = "string",
   DryRun = TRUE|FALSE,
@@ -102,7 +98,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

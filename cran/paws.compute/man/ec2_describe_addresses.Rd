@@ -46,9 +46,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Addresses = list(
     list(
       InstanceId = "string",
@@ -73,7 +71,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified Elastic IP addresses or all of your Elastic IP
@@ -84,9 +82,7 @@ in a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/lat
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_addresses(
+\preformatted{svc$describe_addresses(
   Filters = list(
     list(
       Name = "string",
@@ -103,7 +99,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

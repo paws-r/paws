@@ -23,9 +23,7 @@ pagination token in the next request.}
 is 10.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   slotTypes = list(
     list(
       signature = "string",
@@ -36,7 +34,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of built-in slot types that meet the specified criteria.
@@ -48,15 +46,13 @@ This operation requires permission for the \code{lex:GetBuiltInSlotTypes}
 action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_builtin_slot_types(
+\preformatted{svc$get_builtin_slot_types(
   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
   signatureContains = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -43,14 +43,12 @@ Omit this parameter for users in the third group, IAM users and IAM
 role-based sessions.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EmbedUrl = "string",
   Status = 123,
   RequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Generates a session URL and authorization code that you can use to embed
@@ -71,15 +69,13 @@ see the following sections in the \emph{Amazon QuickSight User Guide}:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_session_embed_url(
+\preformatted{svc$get_session_embed_url(
   AwsAccountId = "string",
   EntryPoint = "string",
   SessionLifetimeInMinutes = 123,
   UserArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

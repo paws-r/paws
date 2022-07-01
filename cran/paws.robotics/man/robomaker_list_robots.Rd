@@ -33,9 +33,7 @@ you are looking for items with the status \code{Registered} or the status
 \code{Available}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   robots = list(
     list(
       arn = "string",
@@ -55,16 +53,14 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of robots. You can optionally provide filters to retrieve
 specific robots.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_robots(
+\preformatted{svc$list_robots(
   nextToken = "string",
   maxResults = 123,
   filters = list(
@@ -76,7 +72,7 @@ specific robots.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

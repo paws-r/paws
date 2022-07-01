@@ -28,16 +28,14 @@ This operation is idempotent. The operation will be successful, even if
 there are no tags attached to the vault.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags_from_vault(
+\preformatted{svc$remove_tags_from_vault(
   accountId = "string",
   vaultName = "string",
   TagKeys = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

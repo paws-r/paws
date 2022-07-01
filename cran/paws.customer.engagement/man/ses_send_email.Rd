@@ -83,12 +83,10 @@ email sending events.}
 \code{\link[=ses_send_email]{send_email}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MessageId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Composes an email message and immediately queues it for sending. In
@@ -125,9 +123,7 @@ Amazon SES, see \href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Ma
 \emph{Amazon SES Developer Guide.}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_email(
+\preformatted{svc$send_email(
   Source = "string",
   Destination = list(
     ToAddresses = list(
@@ -170,7 +166,7 @@ Amazon SES, see \href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Ma
   ),
   ConfigurationSetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

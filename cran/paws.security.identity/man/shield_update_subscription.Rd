@@ -23,12 +23,10 @@ Updates the details of an existing subscription. Only enter values for
 parameters you want to change. Empty parameters are not updated.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_subscription(
+\preformatted{svc$update_subscription(
   AutoRenew = "ENABLED"|"DISABLED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

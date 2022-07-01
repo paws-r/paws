@@ -12,9 +12,7 @@ storagegateway_describe_smb_file_shares(FileShareARNList)
 be described.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SMBFileShareInfoList = list(
     list(
       FileShareARN = "string",
@@ -59,7 +57,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a description for one or more Server Message Block (SMB) file
@@ -67,14 +65,12 @@ shares from a file gateway. This operation is only supported for file
 gateways.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_smb_file_shares(
+\preformatted{svc$describe_smb_file_shares(
   FileShareARNList = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

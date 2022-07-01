@@ -10,9 +10,7 @@ mediaconnect_describe_reservation(ReservationArn)
 \item{ReservationArn}{[required] The Amazon Resource Name (ARN) of the reservation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Reservation = list(
     CurrencyCode = "string",
     Duration = 123,
@@ -32,7 +30,7 @@ A list with the following syntax:
     Start = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Displays the details of a reservation. The response includes the
@@ -41,12 +39,10 @@ offering that make up the rest of the reservation (such as price,
 duration, and outbound bandwidth).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_reservation(
+\preformatted{svc$describe_reservation(
   ReservationArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

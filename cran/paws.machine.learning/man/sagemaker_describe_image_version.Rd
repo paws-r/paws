@@ -13,9 +13,7 @@ sagemaker_describe_image_version(ImageName, Version)
 described.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BaseImage = "string",
   ContainerImage = "string",
   CreationTime = as.POSIXct(
@@ -30,19 +28,17 @@ A list with the following syntax:
   ),
   Version = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a version of a SageMaker image.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_image_version(
+\preformatted{svc$describe_image_version(
   ImageName = "string",
   Version = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

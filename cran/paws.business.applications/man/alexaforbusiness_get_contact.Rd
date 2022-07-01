@@ -10,9 +10,7 @@ alexaforbusiness_get_contact(ContactArn)
 \item{ContactArn}{[required] The ARN of the contact for which to request details.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Contact = list(
     ContactArn = "string",
     DisplayName = "string",
@@ -33,18 +31,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the contact details by the contact ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_contact(
+\preformatted{svc$get_contact(
   ContactArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

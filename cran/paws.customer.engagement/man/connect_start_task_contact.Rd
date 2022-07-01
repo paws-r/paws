@@ -42,20 +42,16 @@ Control Panel (CCP).}
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContactId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Initiates a contact flow to start a new task.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_task_contact(
+\preformatted{svc$start_task_contact(
   InstanceId = "string",
   PreviousContactId = "string",
   ContactFlowId = "string",
@@ -72,7 +68,7 @@ Initiates a contact flow to start a new task.
   Description = "string",
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -29,16 +29,14 @@ it's been updated. Existing messages are still expired as per the
 previous \code{MessageTtlSeconds} value.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_signaling_channel(
+\preformatted{svc$update_signaling_channel(
   ChannelARN = "string",
   CurrentVersion = "string",
   SingleMasterConfiguration = list(
     MessageTtlSeconds = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

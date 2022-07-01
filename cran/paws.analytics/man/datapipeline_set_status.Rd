@@ -29,16 +29,14 @@ You cannot perform this operation on \code{FINISHED} pipelines and attempting
 to do so returns \code{InvalidRequestException}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_status(
+\preformatted{svc$set_status(
   pipelineId = "string",
   objectIds = list(
     "string"
   ),
   status = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

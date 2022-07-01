@@ -20,14 +20,12 @@ An empty list.
 Updates address book details by the address book ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_address_book(
+\preformatted{svc$update_address_book(
   AddressBookArn = "string",
   Name = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

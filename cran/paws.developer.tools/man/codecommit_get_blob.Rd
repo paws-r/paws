@@ -13,25 +13,21 @@ codecommit_get_blob(repositoryName, blobId)
 \item{blobId}{[required] The ID of the blob, which is its SHA-1 pointer.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   content = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the base-64 encoded content of an individual blob in a
 repository.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_blob(
+\preformatted{svc$get_blob(
   repositoryName = "string",
   blobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,9 +23,7 @@ websites and applications. For general information about using ACM, see
 the \href{https://docs.aws.amazon.com/acm/latest/userguide/}{\emph{AWS Certificate Manager User Guide}} .
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- acm(
+\preformatted{svc <- acm(
   config = list(
     credentials = list(
       creds = list(
@@ -39,7 +37,7 @@ the \href{https://docs.aws.amazon.com/acm/latest/userguide/}{\emph{AWS Certifica
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

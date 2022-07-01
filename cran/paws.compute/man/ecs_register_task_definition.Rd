@@ -223,9 +223,7 @@ the Fargate launch type.}
 task.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   taskDefinition = list(
     taskDefinitionArn = "string",
     containerDefinitions = list(
@@ -491,7 +489,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Registers a new task definition from the supplied \code{family} and
@@ -517,9 +515,7 @@ task definition. For more information, see \href{https://docs.aws.amazon.com/Ama
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_task_definition(
+\preformatted{svc$register_task_definition(
   family = "string",
   taskRoleArn = "string",
   executionRoleArn = "string",
@@ -769,7 +765,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

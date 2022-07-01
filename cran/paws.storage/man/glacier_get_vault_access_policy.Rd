@@ -18,14 +18,12 @@ account ID, do not include any hyphens ('-') in the ID.}
 \item{vaultName}{[required] The name of the vault.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   policy = list(
     Policy = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation retrieves the \code{access-policy} subresource set on the
@@ -35,13 +33,11 @@ If there is no access policy set on the vault, the operation returns a
 see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html}{Amazon Glacier Access Control with Vault Access Policies}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_vault_access_policy(
+\preformatted{svc$get_vault_access_policy(
   accountId = "string",
   vaultName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

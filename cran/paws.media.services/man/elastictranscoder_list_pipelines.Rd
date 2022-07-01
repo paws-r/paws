@@ -17,9 +17,7 @@ order, enter \code{false}.}
 results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Pipelines = list(
     list(
       Id = "string",
@@ -66,20 +64,18 @@ A list with the following syntax:
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The ListPipelines operation gets a list of the pipelines associated with
 the current AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_pipelines(
+\preformatted{svc$list_pipelines(
   Ascending = "string",
   PageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

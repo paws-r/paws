@@ -12,9 +12,7 @@ lightsail_get_relational_database_snapshot(
 \item{relationalDatabaseSnapshotName}{[required] The name of the database snapshot for which to get information.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   relationalDatabaseSnapshot = list(
     name = "string",
     arn = "string",
@@ -43,19 +41,17 @@ A list with the following syntax:
     fromRelationalDatabaseBlueprintId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a specific database snapshot in Amazon
 Lightsail.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_relational_database_snapshot(
+\preformatted{svc$get_relational_database_snapshot(
   relationalDatabaseSnapshotName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

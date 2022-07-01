@@ -22,13 +22,11 @@ connect_create_instance(ClientToken, IdentityManagementType,
 \item{OutboundCallsEnabled}{[required] Whether your contact center allows outbound calls.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Id = "string",
   Arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -40,9 +38,7 @@ or allow for any configurations on features such as Contact Lens for
 Amazon Connect.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_instance(
+\preformatted{svc$create_instance(
   ClientToken = "string",
   IdentityManagementType = "SAML"|"CONNECT_MANAGED"|"EXISTING_DIRECTORY",
   InstanceAlias = "string",
@@ -50,7 +46,7 @@ Amazon Connect.
   InboundCallsEnabled = TRUE|FALSE,
   OutboundCallsEnabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

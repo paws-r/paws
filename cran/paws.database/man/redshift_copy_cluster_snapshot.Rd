@@ -47,9 +47,7 @@ The value must be either -1 or an integer between 1 and 3,653.
 The default value is -1.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Snapshot = list(
     SnapshotIdentifier = "string",
     ClusterIdentifier = "string",
@@ -105,7 +103,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Copies the specified automated cluster snapshot to a new manual cluster
@@ -123,15 +121,13 @@ For more information about working with snapshots, go to \href{https://docs.aws.
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_cluster_snapshot(
+\preformatted{svc$copy_cluster_snapshot(
   SourceSnapshotIdentifier = "string",
   SourceSnapshotClusterIdentifier = "string",
   TargetSnapshotIdentifier = "string",
   ManualSnapshotRetentionPeriod = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

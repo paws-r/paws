@@ -21,9 +21,7 @@ descriptions of the specified errors. Otherwise, it returns a
 description of every error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ServiceErrors = list(
     list(
       ServiceErrorId = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes AWS OpsWorks Stacks service errors.
@@ -48,16 +46,14 @@ user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguid
 This call accepts only one resource-identifying parameter.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_service_errors(
+\preformatted{svc$describe_service_errors(
   StackId = "string",
   InstanceId = "string",
   ServiceErrorIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

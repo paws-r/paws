@@ -10,9 +10,7 @@ chime_describe_channel(ChannelArn)
 \item{ChannelArn}{[required] The ARN of the channel.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Channel = list(
     Name = "string",
     ChannelArn = "string",
@@ -34,18 +32,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the full details of a channel in an Amazon Chime app instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_channel(
+\preformatted{svc$describe_channel(
   ChannelArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

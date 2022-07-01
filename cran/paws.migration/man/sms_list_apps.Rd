@@ -16,9 +16,7 @@ value is 100. To retrieve the remaining results, make another call with
 the returned \code{NextToken} value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   apps = list(
     list(
       appId = "string",
@@ -56,22 +54,20 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves summaries for all applications.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_apps(
+\preformatted{svc$list_apps(
   appIds = list(
     "string"
   ),
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

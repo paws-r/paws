@@ -25,9 +25,7 @@ Use this \strong{NextToken} value in a subsequent request to retrieve
 additional items.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -36,7 +34,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the tags, if any, that are associated with your private CA or one
@@ -49,14 +47,12 @@ to add one or more tags to your CA. Call the
 action to remove tags.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags(
+\preformatted{svc$list_tags(
   CertificateAuthorityArn = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -21,9 +21,7 @@ This action gives users permission to access their WorkSpaces from the
 CIDR address ranges specified in the rules.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$authorize_ip_rules(
+\preformatted{svc$authorize_ip_rules(
   GroupId = "string",
   UserRules = list(
     list(
@@ -32,7 +30,7 @@ CIDR address ranges specified in the rules.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

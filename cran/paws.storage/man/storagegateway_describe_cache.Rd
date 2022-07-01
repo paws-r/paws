@@ -10,9 +10,7 @@ storagegateway_describe_cache(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string",
   DiskIds = list(
     "string"
@@ -23,7 +21,7 @@ A list with the following syntax:
   CacheHitPercentage = 123.0,
   CacheMissPercentage = 123.0
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the cache of a gateway. This operation is only
@@ -33,12 +31,10 @@ The response includes disk IDs that are configured as cache, and it
 includes the amount of cache allocated and used.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cache(
+\preformatted{svc$describe_cache(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

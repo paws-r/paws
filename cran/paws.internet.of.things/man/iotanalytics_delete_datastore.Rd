@@ -16,12 +16,10 @@ An empty list.
 Deletes the specified data store.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_datastore(
+\preformatted{svc$delete_datastore(
   datastoreName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

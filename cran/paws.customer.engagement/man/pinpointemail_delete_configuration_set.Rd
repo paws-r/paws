@@ -22,12 +22,10 @@ of the email. When you apply a configuration set to an email, all of the
 rules in that configuration set are applied to the email.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_configuration_set(
+\preformatted{svc$delete_configuration_set(
   ConfigurationSetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

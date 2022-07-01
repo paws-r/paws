@@ -11,9 +11,7 @@ chime_get_voice_connector_proxy(VoiceConnectorId)
 \item{VoiceConnectorId}{[required] The Amazon Chime voice connector ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Proxy = list(
     DefaultSessionExpiryMinutes = 123,
     Disabled = TRUE|FALSE,
@@ -23,19 +21,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the proxy configuration details for the specified Amazon Chime
 Voice Connector.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_voice_connector_proxy(
+\preformatted{svc$get_voice_connector_proxy(
   VoiceConnectorId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

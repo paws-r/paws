@@ -28,13 +28,11 @@ thresholds.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_configuration_set_sending_enabled(
+\preformatted{svc$update_configuration_set_sending_enabled(
   ConfigurationSetName = "string",
   Enabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

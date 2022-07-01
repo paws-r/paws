@@ -94,9 +94,7 @@ console session. For more information, see \href{https://docs.aws.amazon.com/IAM
 in the \emph{IAM User Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Credentials = list(
     AccessKeyId = "string",
     SecretAccessKey = "string",
@@ -116,7 +114,7 @@ A list with the following syntax:
   Audience = "string",
   NameQualifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a set of temporary security credentials for users who have been
@@ -243,9 +241,7 @@ in the \emph{IAM User Guide}.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$assume_role_with_saml(
+\preformatted{svc$assume_role_with_saml(
   RoleArn = "string",
   PrincipalArn = "string",
   SAMLAssertion = "string",
@@ -257,7 +253,7 @@ in the \emph{IAM User Guide}.
   Policy = "string",
   DurationSeconds = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

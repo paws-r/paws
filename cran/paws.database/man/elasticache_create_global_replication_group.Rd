@@ -28,9 +28,7 @@ prefixes, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/
 updates to the secondary cluster.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GlobalReplicationGroup = list(
     GlobalReplicationGroupId = "string",
     GlobalReplicationGroupDescription = "string",
@@ -60,7 +58,7 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Global Datastore for Redis offers fully managed, fast, reliable and
@@ -77,14 +75,12 @@ secondary cluster.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_global_replication_group(
+\preformatted{svc$create_global_replication_group(
   GlobalReplicationGroupIdSuffix = "string",
   GlobalReplicationGroupDescription = "string",
   PrimaryReplicationGroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

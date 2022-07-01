@@ -18,9 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcEndpointIds}{[required] The IDs of one or more interface VPC endpoints.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Unsuccessful = list(
     list(
       Error = list(
@@ -31,23 +29,21 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Accepts one or more interface VPC endpoint connection requests to your
 VPC endpoint service.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$accept_vpc_endpoint_connections(
+\preformatted{svc$accept_vpc_endpoint_connections(
   DryRun = TRUE|FALSE,
   ServiceId = "string",
   VpcEndpointIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

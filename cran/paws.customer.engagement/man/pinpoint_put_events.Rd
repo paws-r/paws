@@ -14,9 +14,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{EventsRequest}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventsResponse = list(
     Results = list(
       list(
@@ -34,16 +32,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new event to record for endpoints, or creates or updates
 endpoint data that existing events are associated with.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_events(
+\preformatted{svc$put_events(
   ApplicationId = "string",
   EventsRequest = list(
     BatchItem = list(
@@ -117,7 +113,7 @@ endpoint data that existing events are associated with.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

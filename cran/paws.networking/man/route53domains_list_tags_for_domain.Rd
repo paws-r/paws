@@ -11,9 +11,7 @@ route53domains_list_tags_for_domain(DomainName)
 \item{DomainName}{[required] The domain for which you want to get a list of tags.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TagList = list(
     list(
       Key = "string",
@@ -21,7 +19,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation returns all of the tags that are associated with the
@@ -31,12 +29,10 @@ All tag operations are eventually consistent; subsequent operations
 might not immediately represent all issued operations.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_domain(
+\preformatted{svc$list_tags_for_domain(
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

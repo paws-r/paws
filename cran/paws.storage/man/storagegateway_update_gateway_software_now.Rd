@@ -10,12 +10,10 @@ storagegateway_update_gateway_software_now(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the gateway virtual machine (VM) software. The request
@@ -35,12 +33,10 @@ and \href{https://docs.aws.amazon.com/storagegateway/index.html#CustomizeLinuxiS
 respectively.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_gateway_software_now(
+\preformatted{svc$update_gateway_software_now(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

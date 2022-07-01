@@ -18,13 +18,11 @@ An empty list.
 Detaches a policy from the specified target.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_policy(
+\preformatted{svc$detach_policy(
   policyName = "string",
   target = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

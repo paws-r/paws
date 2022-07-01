@@ -20,9 +20,7 @@ fleet is deployed. Look up a VPC ID using the VPC Dashboard in the AWS
 Management Console. Learn more about VPC peering in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VpcPeeringAuthorization = list(
     GameLiftAwsAccountId = "string",
     PeerVpcAwsAccountId = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Requests authorization to create or delete a peer connection between the
@@ -80,13 +78,11 @@ is valid.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vpc_peering_authorization(
+\preformatted{svc$create_vpc_peering_authorization(
   GameLiftAwsAccountId = "string",
   PeerVpcId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

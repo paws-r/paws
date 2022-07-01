@@ -23,9 +23,7 @@ response will include a pagination token in the \code{NextToken} field to
 enable you to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Jobs = list(
     list(
@@ -48,7 +46,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists current S3 Batch Operations jobs and jobs that have ended within
@@ -65,9 +63,7 @@ Related actions include:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_jobs(
+\preformatted{svc$list_jobs(
   AccountId = "string",
   JobStatuses = list(
     "Active"|"Cancelled"|"Cancelling"|"Complete"|"Completing"|"Failed"|"Failing"|"New"|"Paused"|"Pausing"|"Preparing"|"Ready"|"Suspended"
@@ -75,7 +71,7 @@ Related actions include:
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

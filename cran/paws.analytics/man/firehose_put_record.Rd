@@ -13,13 +13,11 @@ firehose_put_record(DeliveryStreamName, Record)
 \item{Record}{[required] The record.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RecordId = "string",
   Encrypted = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Writes a single data record into an Amazon Kinesis Data Firehose
@@ -66,15 +64,13 @@ your records. Instead, concatenate the raw data, then perform base64
 encoding.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_record(
+\preformatted{svc$put_record(
   DeliveryStreamName = "string",
   Record = list(
     Data = raw
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

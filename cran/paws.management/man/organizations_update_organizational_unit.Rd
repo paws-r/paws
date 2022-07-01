@@ -25,16 +25,14 @@ validate this parameter is a string of any of the characters in the
 ASCII character range.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OrganizationalUnit = list(
     Id = "string",
     Arn = "string",
     Name = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Renames the specified organizational unit (OU). The ID and ARN don't
@@ -45,13 +43,11 @@ This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_organizational_unit(
+\preformatted{svc$update_organizational_unit(
   OrganizationalUnitId = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

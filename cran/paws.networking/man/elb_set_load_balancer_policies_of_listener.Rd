@@ -33,16 +33,14 @@ and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-st
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_load_balancer_policies_of_listener(
+\preformatted{svc$set_load_balancer_policies_of_listener(
   LoadBalancerName = "string",
   LoadBalancerPort = 123,
   PolicyNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

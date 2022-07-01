@@ -17,12 +17,10 @@ the verification email.}
 \item{ConfigurationSetName}{Name of a configuration set to use when sending the verification email.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MessageId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds an email address to the list of identities for your Amazon SES
@@ -38,14 +36,12 @@ the \emph{Amazon SES Developer Guide}.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_custom_verification_email(
+\preformatted{svc$send_custom_verification_email(
   EmailAddress = "string",
   TemplateName = "string",
   ConfigurationSetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

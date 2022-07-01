@@ -16,9 +16,7 @@ appstream_describe_image_builders(Names, MaxResults, NextToken)
 this operation. If this value is null, it retrieves the first page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ImageBuilders = list(
     list(
       Name = "string",
@@ -74,7 +72,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list that describes one or more specified image builders, if
@@ -82,16 +80,14 @@ the image builder names are provided. Otherwise, all image builders in
 the account are described.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_image_builders(
+\preformatted{svc$describe_image_builders(
   Names = list(
     "string"
   ),
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

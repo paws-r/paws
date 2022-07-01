@@ -10,9 +10,7 @@ lightsail_start_instance(instanceName)
 \item{instanceName}{[required] The name of the instance (a virtual private server) to start.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a specific Amazon Lightsail instance from a stopped state. To
@@ -53,12 +51,10 @@ resource tags applied to the resource identified by \verb{instance name}. For
 more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_instance(
+\preformatted{svc$start_instance(
   instanceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

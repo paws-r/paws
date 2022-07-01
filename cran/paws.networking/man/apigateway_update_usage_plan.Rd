@@ -13,9 +13,7 @@ apigateway_update_usage_plan(usagePlanId, patchOperations)
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   name = "string",
   description = "string",
@@ -45,15 +43,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a usage plan of a given plan Id.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_usage_plan(
+\preformatted{svc$update_usage_plan(
   usagePlanId = "string",
   patchOperations = list(
     list(
@@ -64,7 +60,7 @@ Updates a usage plan of a given plan Id.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,9 +15,7 @@ The value can be \code{ENABLE} or \code{DISABLE}. Be aware that it can take time
 for a validation status change to be completed.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResolverDNSSECConfig = list(
     Id = "string",
     OwnerId = "string",
@@ -25,20 +23,18 @@ A list with the following syntax:
     ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing DNSSEC validation configuration. If there is no
 existing DNSSEC validation configuration, one is created.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_resolver_dnssec_config(
+\preformatted{svc$update_resolver_dnssec_config(
   ResourceId = "string",
   Validation = "ENABLE"|"DISABLE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

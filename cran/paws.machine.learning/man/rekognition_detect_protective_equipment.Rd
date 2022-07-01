@@ -15,9 +15,7 @@ Amazon S3 bucket.}
 \item{SummarizationAttributes}{An array of PPE types that you want to summarize.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProtectiveEquipmentModelVersion = "string",
   Persons = list(
     list(
@@ -65,7 +63,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Detects Personal Protective Equipment (PPE) worn by people detected in
@@ -109,9 +107,7 @@ This operation requires permissions to perform the
 \code{rekognition:DetectProtectiveEquipment} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_protective_equipment(
+\preformatted{svc$detect_protective_equipment(
   Image = list(
     Bytes = raw,
     S3Object = list(
@@ -127,7 +123,7 @@ This operation requires permissions to perform the
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

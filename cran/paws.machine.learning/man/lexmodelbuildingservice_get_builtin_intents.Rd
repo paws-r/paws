@@ -24,9 +24,7 @@ the next request.}
 10.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   intents = list(
     list(
       signature = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of built-in intents that meet the specified criteria.
@@ -46,15 +44,13 @@ This operation requires permission for the \code{lex:GetBuiltinIntents}
 action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_builtin_intents(
+\preformatted{svc$get_builtin_intents(
   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
   signatureContains = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

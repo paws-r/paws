@@ -20,9 +20,7 @@ your endpoints if any exist, or an empty list if none exist.}
 request the next batch of endpoints.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Endpoints = list(
     list(
       Url = "string"
@@ -30,21 +28,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Send an request with an empty body to the regional API endpoint to get
 your account API endpoint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_endpoints(
+\preformatted{svc$describe_endpoints(
   MaxResults = 123,
   Mode = "DEFAULT"|"GET_ONLY",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

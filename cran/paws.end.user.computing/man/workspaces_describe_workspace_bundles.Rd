@@ -20,9 +20,7 @@ describe the bundles that belong to your account.}
 previous call.)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Bundles = list(
     list(
       BundleId = "string",
@@ -46,7 +44,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list that describes the available WorkSpace bundles.
@@ -55,16 +53,14 @@ You can filter the results using either bundle ID or owner, but not
 both.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_workspace_bundles(
+\preformatted{svc$describe_workspace_bundles(
   BundleIds = list(
     "string"
   ),
   Owner = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

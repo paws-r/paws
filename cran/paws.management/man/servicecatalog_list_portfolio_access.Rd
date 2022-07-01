@@ -27,15 +27,13 @@ results, use null.}
 \item{PageSize}{The maximum number of items to return with this call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccountIds = list(
     "string"
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the account IDs that have access to the specified portfolio.
@@ -45,16 +43,14 @@ portfolio. Note that if a delegated admin is de-registered, they can no
 longer perform this operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_portfolio_access(
+\preformatted{svc$list_portfolio_access(
   AcceptLanguage = "string",
   PortfolioId = "string",
   OrganizationParentId = "string",
   PageToken = "string",
   PageSize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,24 +11,20 @@ clouddirectory_delete_schema(SchemaArn)
 information, see arns.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SchemaArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a given schema. Schemas in a development and published state can
 only be deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_schema(
+\preformatted{svc$delete_schema(
   SchemaArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

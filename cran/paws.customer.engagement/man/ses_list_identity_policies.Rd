@@ -17,14 +17,12 @@ using its Amazon Resource Name (ARN). Examples: \code{user@example.com},
 To successfully call this API, you must own the identity.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PolicyNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of sending authorization policies that are attached to
@@ -42,12 +40,10 @@ using sending authorization, see the \href{https://docs.aws.amazon.com/ses/lates
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_identity_policies(
+\preformatted{svc$list_identity_policies(
   Identity = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

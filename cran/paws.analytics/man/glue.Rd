@@ -19,9 +19,7 @@ Operations section.
 Defines the public endpoint for the AWS Glue service.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- glue(
+\preformatted{svc <- glue(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +33,7 @@ Defines the public endpoint for the AWS Glue service.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -38,12 +38,10 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RequestCharged = "requester"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation aborts a multipart upload. After a multipart upload is
@@ -72,16 +70,14 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$abort_multipart_upload(
+\preformatted{svc$abort_multipart_upload(
   Bucket = "string",
   Key = "string",
   UploadId = "string",
   RequestPayer = "requester",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

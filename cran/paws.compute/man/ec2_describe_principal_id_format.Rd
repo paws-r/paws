@@ -33,9 +33,7 @@ value.}
 \item{NextToken}{The token to request the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Principals = list(
     list(
       Arn = "string",
@@ -52,7 +50,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the ID format settings for the root user and all IAM roles and
@@ -76,9 +74,7 @@ The following resource types support longer IDs: \code{bundle} |
 \code{vpc-peering-connection} | \code{vpn-connection} | \code{vpn-gateway}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_principal_id_format(
+\preformatted{svc$describe_principal_id_format(
   DryRun = TRUE|FALSE,
   Resources = list(
     "string"
@@ -86,7 +82,7 @@ The following resource types support longer IDs: \code{bundle} |
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

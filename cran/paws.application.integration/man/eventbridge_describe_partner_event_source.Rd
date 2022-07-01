@@ -11,13 +11,11 @@ eventbridge_describe_partner_event_source(Name)
 \item{Name}{[required] The name of the event source to display.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 An SaaS partner can use this operation to list details about a partner
@@ -27,12 +25,10 @@ operation. Instead, AWS customers can use
 details about a partner event source that is shared with them.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_partner_event_source(
+\preformatted{svc$describe_partner_event_source(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

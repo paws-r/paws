@@ -12,9 +12,7 @@ medialive_list_inputs(MaxResults, NextToken)
 \item{NextToken}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Inputs = list(
     list(
       Arn = "string",
@@ -66,19 +64,17 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Produces list of inputs that have been created
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_inputs(
+\preformatted{svc$list_inputs(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -14,28 +14,24 @@ version.}
 version.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Description = list(
     Name = "string",
     DefaultVersion = "string",
     DefaultVersionName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Set the default version of a document.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_document_default_version(
+\preformatted{svc$update_document_default_version(
   Name = "string",
   DocumentVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

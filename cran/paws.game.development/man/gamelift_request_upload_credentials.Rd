@@ -12,9 +12,7 @@ gamelift_request_upload_credentials(BuildId)
 either the build ID or ARN value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UploadCredentials = list(
     AccessKeyId = "string",
     SecretAccessKey = "string",
@@ -27,7 +25,7 @@ A list with the following syntax:
     ObjectVersion = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a fresh set of credentials for use when uploading a new set of
@@ -53,12 +51,10 @@ location associated with the build ID.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$request_upload_credentials(
+\preformatted{svc$request_upload_credentials(
   BuildId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

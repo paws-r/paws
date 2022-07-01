@@ -17,9 +17,7 @@ Pass null if this is the first call.}
 \item{Limit}{The maximum number of items to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SchemaExtensionsInfo = list(
     list(
       DirectoryId = "string",
@@ -37,20 +35,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all schema extensions applied to a Microsoft AD Directory.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_schema_extensions(
+\preformatted{svc$list_schema_extensions(
   DirectoryId = "string",
   NextToken = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

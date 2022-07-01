@@ -42,9 +42,7 @@ this parameter is not used, then
 \code{nextToken} value if applicable.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   attributes = list(
     list(
       name = "string",
@@ -55,7 +53,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the attributes for Amazon ECS resources within a specified target
@@ -68,9 +66,7 @@ value, for example, to see which container instances in a cluster are
 running a Linux AMI (\code{ecs.os-type=linux}).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_attributes(
+\preformatted{svc$list_attributes(
   cluster = "string",
   targetType = "container-instance",
   attributeName = "string",
@@ -78,7 +74,7 @@ running a Linux AMI (\code{ecs.os-type=linux}).
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

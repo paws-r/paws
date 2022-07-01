@@ -14,9 +14,7 @@ and by
 \code{\link[=waf_list_sql_injection_match_sets]{list_sql_injection_match_sets}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SqlInjectionMatchSet = list(
     SqlInjectionMatchSetId = "string",
     Name = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -47,12 +45,10 @@ Returns the SqlInjectionMatchSet that is specified by
 \code{SqlInjectionMatchSetId}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_sql_injection_match_set(
+\preformatted{svc$get_sql_injection_match_set(
   SqlInjectionMatchSetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

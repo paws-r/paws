@@ -21,9 +21,7 @@ Datastore}
 permitted value for this parameter is true.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GlobalReplicationGroup = list(
     GlobalReplicationGroupId = "string",
     GlobalReplicationGroupDescription = "string",
@@ -53,15 +51,13 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Increase the number of node groups in the Global Datastore
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$increase_node_groups_in_global_replication_group(
+\preformatted{svc$increase_node_groups_in_global_replication_group(
   GlobalReplicationGroupId = "string",
   NodeGroupCount = 123,
   RegionalConfigurations = list(
@@ -80,7 +76,7 @@ Increase the number of node groups in the Global Datastore
   ),
   ApplyImmediately = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

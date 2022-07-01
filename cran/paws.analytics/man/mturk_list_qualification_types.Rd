@@ -27,9 +27,7 @@ returned. If false, the operation returns all Qualification types.}
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NumResults = 123,
   NextToken = "string",
   QualificationTypes = list(
@@ -52,7 +50,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=mturk_list_qualification_types]{list_qualification_types}}
@@ -60,16 +58,14 @@ operation returns a list of Qualification types, filtered by an optional
 search term.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_qualification_types(
+\preformatted{svc$list_qualification_types(
   Query = "string",
   MustBeRequestable = TRUE|FALSE,
   MustBeOwnedByCaller = TRUE|FALSE,
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

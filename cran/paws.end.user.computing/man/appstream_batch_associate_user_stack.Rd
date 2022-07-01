@@ -10,9 +10,7 @@ appstream_batch_associate_user_stack(UserStackAssociations)
 \item{UserStackAssociations}{[required] The list of UserStackAssociation objects.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   errors = list(
     list(
       UserStackAssociation = list(
@@ -26,7 +24,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Associates the specified users with the specified stacks. Users in a
@@ -34,9 +32,7 @@ user pool cannot be assigned to stacks with fleets that are joined to an
 Active Directory domain.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_associate_user_stack(
+\preformatted{svc$batch_associate_user_stack(
   UserStackAssociations = list(
     list(
       StackName = "string",
@@ -46,7 +42,7 @@ Active Directory domain.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

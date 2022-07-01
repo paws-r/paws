@@ -37,9 +37,7 @@ running the Channel.}
 \item{Tags}{A collection of key-value pairs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Channel = list(
     Arn = "string",
     CdiInputSpecification = list(
@@ -942,15 +940,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new channel
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_channel(
+\preformatted{svc$create_channel(
   CdiInputSpecification = list(
     Resolution = "SD"|"HD"|"FHD"|"UHD"
   ),
@@ -1837,7 +1833,7 @@ Creates a new channel
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

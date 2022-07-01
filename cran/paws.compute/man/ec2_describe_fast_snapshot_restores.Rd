@@ -30,9 +30,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FastSnapshotRestores = list(
     list(
       SnapshotId = "string",
@@ -60,15 +58,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the state of fast snapshot restores for your snapshots.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_fast_snapshot_restores(
+\preformatted{svc$describe_fast_snapshot_restores(
   Filters = list(
     list(
       Name = "string",
@@ -81,7 +77,7 @@ Describes the state of fast snapshot restores for your snapshots.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ ssm_describe_effective_patches_for_patch_baseline(BaselineId,
 from a previous call.)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EffectivePatches = list(
     list(
       Patch = list(
@@ -66,7 +64,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the current effective patches (the patch and the approval
@@ -74,14 +72,12 @@ state) for the specified patch baseline. Note that this API applies only
 to Windows patch baselines.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_effective_patches_for_patch_baseline(
+\preformatted{svc$describe_effective_patches_for_patch_baseline(
   BaselineId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

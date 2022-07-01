@@ -59,14 +59,12 @@ update fails. For more information about permissions, see \href{https://docs.aws
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_server_certificate(
+\preformatted{svc$update_server_certificate(
   ServerCertificateName = "string",
   NewPath = "string",
   NewServerCertificateName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

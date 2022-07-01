@@ -29,9 +29,7 @@ describe.}
 \item{Options}{If specified, restricts the descriptions to only the specified options.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SolutionStackName = "string",
   PlatformArn = "string",
   Options = list(
@@ -55,7 +53,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the configuration options that are used in a particular
@@ -65,9 +63,7 @@ default values, and an indication of the required action on a running
 environment if an option value is changed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_configuration_options(
+\preformatted{svc$describe_configuration_options(
   ApplicationName = "string",
   TemplateName = "string",
   EnvironmentName = "string",
@@ -81,7 +77,7 @@ environment if an option value is changed.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

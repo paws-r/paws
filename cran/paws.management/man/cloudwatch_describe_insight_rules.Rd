@@ -14,9 +14,7 @@ the next set of rules.}
 this parameter, the default of 500 is used.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   InsightRules = list(
     list(
@@ -27,7 +25,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of all the Contributor Insights rules in your account.
@@ -35,13 +33,11 @@ Returns a list of all the Contributor Insights rules in your account.
 For more information about Contributor Insights, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html}{Using Contributor Insights to Analyze High-Cardinality Data}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_insight_rules(
+\preformatted{svc$describe_insight_rules(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

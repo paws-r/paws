@@ -18,9 +18,7 @@ see
 in the \emph{AWS SSO OIDC API Reference Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   roleCredentials = list(
     accessKeyId = "string",
     secretAccessKey = "string",
@@ -28,21 +26,19 @@ A list with the following syntax:
     expiration = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the STS short-term credentials for a given role name that is
 assigned to the user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_role_credentials(
+\preformatted{svc$get_role_credentials(
   roleName = "string",
   accountId = "string",
   accessToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

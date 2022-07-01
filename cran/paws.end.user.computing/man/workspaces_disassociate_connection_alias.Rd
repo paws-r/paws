@@ -24,12 +24,10 @@ to make sure that the current state of the connection alias is
 \code{CREATED}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_connection_alias(
+\preformatted{svc$disassociate_connection_alias(
   AliasId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

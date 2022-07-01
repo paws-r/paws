@@ -45,14 +45,12 @@ To create a change set for the entire stack hierachy,
 \code{IncludeNestedStacks} must have been set to \code{True}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$execute_change_set(
+\preformatted{svc$execute_change_set(
   ChangeSetName = "string",
   StackName = "string",
   ClientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

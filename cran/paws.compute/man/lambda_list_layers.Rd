@@ -15,9 +15,7 @@ lambda_list_layers(CompatibleRuntime, Marker, MaxItems)
 \item{MaxItems}{The maximum number of layers to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextMarker = "string",
   Layers = list(
     list(
@@ -36,7 +34,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layers}
@@ -46,14 +44,12 @@ to list only layers that indicate that they're compatible with that
 runtime.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_layers(
+\preformatted{svc$list_layers(
   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
   Marker = "string",
   MaxItems = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

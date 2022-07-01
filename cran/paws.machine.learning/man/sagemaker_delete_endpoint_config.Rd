@@ -27,12 +27,10 @@ visibility into the instance type the endpoint is using. The endpoint
 must be deleted in order to stop incurring charges.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_endpoint_config(
+\preformatted{svc$delete_endpoint_config(
   EndpointConfigName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

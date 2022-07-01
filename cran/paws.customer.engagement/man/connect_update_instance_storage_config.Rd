@@ -29,9 +29,7 @@ Updates an existing configuration for a resource type. This API is
 idempotent.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_instance_storage_config(
+\preformatted{svc$update_instance_storage_config(
   InstanceId = "string",
   AssociationId = "string",
   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS",
@@ -62,7 +60,7 @@ idempotent.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

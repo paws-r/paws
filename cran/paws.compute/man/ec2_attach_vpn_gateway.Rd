@@ -17,15 +17,13 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VpcAttachment = list(
     State = "attaching"|"attached"|"detaching"|"detached",
     VpcId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Attaches a virtual private gateway to a VPC. You can attach one virtual
@@ -35,14 +33,12 @@ For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VP
 \emph{AWS Site-to-Site VPN User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_vpn_gateway(
+\preformatted{svc$attach_vpn_gateway(
   VpcId = "string",
   VpnGatewayId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

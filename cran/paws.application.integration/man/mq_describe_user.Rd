@@ -14,9 +14,7 @@ alphanumeric characters, dashes, periods, underscores, and tildes (- .
 _ ~). This value must be 2-100 characters long.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BrokerId = "string",
   ConsoleAccess = TRUE|FALSE,
   Groups = list(
@@ -31,19 +29,17 @@ A list with the following syntax:
   ),
   Username = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about an ActiveMQ user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_user(
+\preformatted{svc$describe_user(
   BrokerId = "string",
   Username = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

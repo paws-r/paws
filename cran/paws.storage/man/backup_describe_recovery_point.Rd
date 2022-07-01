@@ -18,9 +18,7 @@ for example,
 \verb{arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RecoveryPointArn = "string",
   BackupVaultName = "string",
   BackupVaultArn = "string",
@@ -61,20 +59,18 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns metadata associated with a recovery point, including ID, status,
 encryption, and lifecycle.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_recovery_point(
+\preformatted{svc$describe_recovery_point(
   BackupVaultName = "string",
   RecoveryPointArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

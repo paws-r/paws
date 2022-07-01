@@ -25,9 +25,7 @@ If you specify a trail ARN, it must be in the format:
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrailARN = "string",
   InsightSelectors = list(
     list(
@@ -35,7 +33,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the settings for the Insights event selectors that you
@@ -51,12 +49,10 @@ For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest
 in the \emph{AWS CloudTrail User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_insight_selectors(
+\preformatted{svc$get_insight_selectors(
   TrailName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

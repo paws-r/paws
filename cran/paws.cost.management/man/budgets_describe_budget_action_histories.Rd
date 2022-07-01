@@ -21,9 +21,7 @@ budgets_describe_budget_action_histories(AccountId, BudgetName,
 \item{NextToken}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ActionHistories = list(
     list(
       Timestamp = as.POSIXct(
@@ -84,15 +82,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a budget action history detail.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_budget_action_histories(
+\preformatted{svc$describe_budget_action_histories(
   AccountId = "string",
   BudgetName = "string",
   ActionId = "string",
@@ -107,7 +103,7 @@ Describes a budget action history detail.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

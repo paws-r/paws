@@ -10,9 +10,7 @@ lightsail_delete_instance_snapshot(instanceSnapshotName)
 \item{instanceSnapshotName}{[required] The name of the snapshot to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a specific snapshot of a virtual private server (or \emph{instance}).
@@ -48,12 +46,10 @@ control via resource tags applied to the resource identified by
 Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_instance_snapshot(
+\preformatted{svc$delete_instance_snapshot(
   instanceSnapshotName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

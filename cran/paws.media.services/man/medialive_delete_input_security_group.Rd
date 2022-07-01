@@ -16,12 +16,10 @@ An empty list.
 Deletes an Input Security Group
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_input_security_group(
+\preformatted{svc$delete_input_security_group(
   InputSecurityGroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

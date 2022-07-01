@@ -19,12 +19,10 @@ In a blue/green deployment, overrides any specified wait time and starts
 terminating instances immediately after the traffic routing is complete.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$skip_wait_time_for_instance_termination(
+\preformatted{svc$skip_wait_time_for_instance_termination(
   deploymentId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

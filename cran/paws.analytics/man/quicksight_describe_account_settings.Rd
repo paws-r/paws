@@ -12,9 +12,7 @@ quicksight_describe_account_settings(AwsAccountId)
 list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccountSettings = list(
     AccountName = "string",
     Edition = "STANDARD"|"ENTERPRISE",
@@ -24,19 +22,17 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the settings that were used when your QuickSight subscription
 was first created in this AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_account_settings(
+\preformatted{svc$describe_account_settings(
   AwsAccountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

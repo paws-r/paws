@@ -21,14 +21,12 @@ An empty list.
 Updates the device status.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_device_status(
+\preformatted{svc$update_device_status(
   AccessToken = "string",
   DeviceKey = "string",
   DeviceRememberedStatus = "remembered"|"not_remembered"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -25,9 +25,7 @@ not contribute to the typed link’s identity, as defined by its
 \code{IdentityAttributeOrder}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_link_attributes(
+\preformatted{svc$update_link_attributes(
   DirectoryArn = "string",
   TypedLinkSpecifier = list(
     TypedLinkFacet = list(
@@ -77,7 +75,7 @@ not contribute to the typed link’s identity, as defined by its
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

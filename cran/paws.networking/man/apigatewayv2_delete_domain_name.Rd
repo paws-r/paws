@@ -16,12 +16,10 @@ An empty list.
 Deletes a domain name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_domain_name(
+\preformatted{svc$delete_domain_name(
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

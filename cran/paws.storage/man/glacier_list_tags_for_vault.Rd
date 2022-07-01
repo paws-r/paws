@@ -16,14 +16,12 @@ account ID, do not include any hyphens ('-') in the ID.}
 \item{vaultName}{[required] The name of the vault.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation lists all the tags attached to a vault. The operation
@@ -31,13 +29,11 @@ returns an empty map if there are no tags. For more information about
 tags, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html}{Tagging Amazon S3 Glacier Resources}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_vault(
+\preformatted{svc$list_tags_for_vault(
   accountId = "string",
   vaultName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

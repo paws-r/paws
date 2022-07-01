@@ -11,9 +11,7 @@ rds_describe_db_snapshot_attributes(DBSnapshotIdentifier)
 \item{DBSnapshotIdentifier}{[required] The identifier for the DB snapshot to describe the attributes for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBSnapshotAttributesResult = list(
     DBSnapshotIdentifier = "string",
     DBSnapshotAttributes = list(
@@ -26,7 +24,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of DB snapshot attribute names and values for a manual DB
@@ -46,12 +44,10 @@ the \code{\link[=rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute}
 API action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_snapshot_attributes(
+\preformatted{svc$describe_db_snapshot_attributes(
   DBSnapshotIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

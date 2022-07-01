@@ -29,15 +29,13 @@ An empty list.
 Associates a self-service action with a provisioning artifact.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_service_action_with_provisioning_artifact(
+\preformatted{svc$associate_service_action_with_provisioning_artifact(
   ProductId = "string",
   ProvisioningArtifactId = "string",
   ServiceActionId = "string",
   AcceptLanguage = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

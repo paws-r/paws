@@ -136,9 +136,7 @@ user.}
 intent activates when the intent is fulfilled.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   name = "string",
   description = "string",
   slots = list(
@@ -270,7 +268,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an intent or replaces an existing intent.
@@ -320,9 +318,7 @@ For more information, see how-it-works.
 This operation requires permissions for the \code{lex:PutIntent} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_intent(
+\preformatted{svc$put_intent(
   name = "string",
   description = "string",
   slots = list(
@@ -447,7 +443,7 @@ This operation requires permissions for the \code{lex:PutIntent} action.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -22,9 +22,7 @@ An empty list.
 Updates the delegated administrator account with the values provided.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_organization_configuration(
+\preformatted{svc$update_organization_configuration(
   DetectorId = "string",
   AutoEnable = TRUE|FALSE,
   DataSources = list(
@@ -33,7 +31,7 @@ Updates the delegated administrator account with the values provided.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

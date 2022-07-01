@@ -35,9 +35,7 @@ maximum even when there are more results available. You should check
 results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Handshakes = list(
     list(
       Id = "string",
@@ -67,7 +65,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the handshakes that are associated with the organization that the
@@ -91,9 +89,7 @@ account or by a member account that is a delegated administrator for an
 AWS service.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_handshakes_for_organization(
+\preformatted{svc$list_handshakes_for_organization(
   Filter = list(
     ActionType = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
     ParentHandshakeId = "string"
@@ -101,7 +97,7 @@ AWS service.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

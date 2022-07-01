@@ -15,9 +15,7 @@ Processing state) or the current, active configuration. Defaults to
 \code{false}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainEndpointOptions = list(
     Options = list(
       EnforceHTTPS = TRUE|FALSE,
@@ -36,7 +34,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the domain's endpoint options, specifically whether all requests
@@ -46,13 +44,11 @@ target="_blank">Configuring Domain Endpoint Options</a> in the \emph{Amazon
 CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_domain_endpoint_options(
+\preformatted{svc$describe_domain_endpoint_options(
   DomainName = "string",
   Deployed = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

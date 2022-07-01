@@ -12,12 +12,10 @@ sms_start_on_demand_replication_run(replicationJobId, description)
 \item{description}{The description of the replication run.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   replicationRunId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts an on-demand replication run for the specified replication job.
@@ -28,13 +26,11 @@ There is a limit on the number of on-demand replications runs that you
 can request in a 24-hour period.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_on_demand_replication_run(
+\preformatted{svc$start_on_demand_replication_run(
   replicationJobId = "string",
   description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

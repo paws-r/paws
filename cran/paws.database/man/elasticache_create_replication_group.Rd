@@ -372,9 +372,7 @@ Default: \code{false}}
 \item{UserGroupIds}{The list of user groups to associate with the replication group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationGroup = list(
     ReplicationGroupId = "string",
     Description = "string",
@@ -459,7 +457,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Redis (cluster mode disabled) or a Redis (cluster mode
@@ -490,9 +488,7 @@ in the \emph{ElastiCache User Guide}.
 This operation is valid for Redis only.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_replication_group(
+\preformatted{svc$create_replication_group(
   ReplicationGroupId = "string",
   ReplicationGroupDescription = "string",
   GlobalReplicationGroupId = "string",
@@ -555,7 +551,7 @@ This operation is valid for Redis only.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

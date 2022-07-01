@@ -20,10 +20,8 @@ designated Security Hub administrator) can disassociate a member
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_from_master_account()
-}\if{html}{\out{</div>}}
+\preformatted{svc$disassociate_from_master_account()
+}
 }
 
 \keyword{internal}

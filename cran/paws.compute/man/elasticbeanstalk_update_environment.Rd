@@ -67,9 +67,7 @@ configuration options to the requested value.}
 configuration set for this environment.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EnvironmentName = "string",
   EnvironmentId = "string",
   ApplicationName = "string",
@@ -116,7 +114,7 @@ A list with the following syntax:
   EnvironmentArn = "string",
   OperationsRole = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the environment description, deploys a new application version,
@@ -135,9 +133,7 @@ for this environment returns two setting descriptions with different
 \code{DeploymentStatus} values.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_environment(
+\preformatted{svc$update_environment(
   ApplicationName = "string",
   EnvironmentId = "string",
   EnvironmentName = "string",
@@ -168,7 +164,7 @@ for this environment returns two setting descriptions with different
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

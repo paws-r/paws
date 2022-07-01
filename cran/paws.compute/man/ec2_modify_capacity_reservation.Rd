@@ -43,12 +43,10 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies a Capacity Reservation's capacity and the conditions under
@@ -59,9 +57,7 @@ these attributes, we recommend that you cancel the Capacity Reservation,
 and then create a new one with the required attributes.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_capacity_reservation(
+\preformatted{svc$modify_capacity_reservation(
   CapacityReservationId = "string",
   InstanceCount = 123,
   EndDate = as.POSIXct(
@@ -70,7 +66,7 @@ and then create a new one with the required attributes.
   EndDateType = "unlimited"|"limited",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

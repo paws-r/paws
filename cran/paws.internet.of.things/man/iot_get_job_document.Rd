@@ -10,23 +10,19 @@ iot_get_job_document(jobId)
 \item{jobId}{[required] The unique identifier you assigned to this job when it was created.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   document = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a job document.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_job_document(
+\preformatted{svc$get_job_document(
   jobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

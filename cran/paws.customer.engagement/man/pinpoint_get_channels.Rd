@@ -12,9 +12,7 @@ pinpoint_get_channels(ApplicationId)
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelsResponse = list(
     Channels = list(
       list(
@@ -31,19 +29,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about the history and status of each channel for
 an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_channels(
+\preformatted{svc$get_channels(
   ApplicationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -12,9 +12,7 @@ iot_describe_provisioning_template_version(templateName, versionId)
 \item{versionId}{[required] The fleet provisioning template version ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   versionId = 123,
   creationDate = as.POSIXct(
     "2015-01-01"
@@ -22,19 +20,17 @@ A list with the following syntax:
   templateBody = "string",
   isDefaultVersion = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a fleet provisioning template version.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_provisioning_template_version(
+\preformatted{svc$describe_provisioning_template_version(
   templateName = "string",
   versionId = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

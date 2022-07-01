@@ -17,9 +17,7 @@ provisioned.}
 \item{newPublicVirtualInterfaceAllocation}{[required] Information about the public virtual interface.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ownerAccount = "string",
   virtualInterfaceId = "string",
   location = "string",
@@ -66,7 +64,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provisions a public virtual interface to be owned by the specified AWS
@@ -86,9 +84,7 @@ and customer address. IPv6 addresses are automatically assigned from the
 Amazon pool of IPv6 addresses; you cannot specify custom IPv6 addresses.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$allocate_public_virtual_interface(
+\preformatted{svc$allocate_public_virtual_interface(
   connectionId = "string",
   ownerAccount = "string",
   newPublicVirtualInterfaceAllocation = list(
@@ -112,7 +108,7 @@ Amazon pool of IPv6 addresses; you cannot specify custom IPv6 addresses.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

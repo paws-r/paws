@@ -34,9 +34,7 @@ An empty list.
 Updates the settings of a data store.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_datastore(
+\preformatted{svc$update_datastore(
   datastoreName = "string",
   retentionPeriod = list(
     unlimited = TRUE|FALSE,
@@ -64,7 +62,7 @@ Updates the settings of a data store.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -60,9 +60,7 @@ string.}
 specified git repository.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   NotebookInstances = list(
     list(
@@ -85,16 +83,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of the Amazon SageMaker notebook instances in the
 requester's account in an AWS Region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_notebook_instances(
+\preformatted{svc$list_notebook_instances(
   NextToken = "string",
   MaxResults = 123,
   SortBy = "Name"|"CreationTime"|"Status",
@@ -117,7 +113,7 @@ requester's account in an AWS Region.
   DefaultCodeRepositoryContains = "string",
   AdditionalCodeRepositoryEquals = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

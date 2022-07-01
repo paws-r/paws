@@ -10,9 +10,7 @@ opsworks_describe_time_based_auto_scaling(InstanceIds)
 \item{InstanceIds}{[required] An array of instance IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TimeBasedAutoScalingConfigurations = list(
     list(
       InstanceId = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes time-based auto scaling configurations for specified
@@ -56,14 +54,12 @@ policy that explicitly grants permissions. For more information about
 user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_time_based_auto_scaling(
+\preformatted{svc$describe_time_based_auto_scaling(
   InstanceIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

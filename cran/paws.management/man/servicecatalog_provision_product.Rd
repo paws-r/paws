@@ -53,9 +53,7 @@ stack-related events.}
 \item{ProvisionToken}{[required] An idempotency token that uniquely identifies the provisioning request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RecordDetail = list(
     RecordId = "string",
     ProvisionedProductName = "string",
@@ -87,7 +85,7 @@ A list with the following syntax:
     LaunchRoleArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provisions the specified product.
@@ -104,9 +102,7 @@ this causes the error "Parameter validation failed: Missing required
 parameter in Tags[\emph{N}]:\emph{Value}".
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$provision_product(
+\preformatted{svc$provision_product(
   AcceptLanguage = "string",
   ProductId = "string",
   ProductName = "string",
@@ -144,7 +140,7 @@ parameter in Tags[\emph{N}]:\emph{Value}".
   ),
   ProvisionToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

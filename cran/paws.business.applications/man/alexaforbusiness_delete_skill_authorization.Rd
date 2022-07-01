@@ -18,13 +18,11 @@ An empty list.
 Unlinks a third-party account from a skill.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_skill_authorization(
+\preformatted{svc$delete_skill_authorization(
   SkillId = "string",
   RoomArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

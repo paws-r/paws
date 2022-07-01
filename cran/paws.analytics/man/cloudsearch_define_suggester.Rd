@@ -12,9 +12,7 @@ cloudsearch_define_suggester(DomainName, Suggester)
 \item{Suggester}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Suggester = list(
     Options = list(
       SuggesterName = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Configures a suggester for a domain. A suggester enables you to display
@@ -50,9 +48,7 @@ target="_blank">Getting Search Suggestions</a> in the \emph{Amazon
 CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$define_suggester(
+\preformatted{svc$define_suggester(
   DomainName = "string",
   Suggester = list(
     SuggesterName = "string",
@@ -63,7 +59,7 @@ CloudSearch Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

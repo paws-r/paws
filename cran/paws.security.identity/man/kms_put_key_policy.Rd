@@ -87,15 +87,13 @@ a different AWS account.
 \strong{Related operations}: \code{\link[=kms_get_key_policy]{get_key_policy}}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_key_policy(
+\preformatted{svc$put_key_policy(
   KeyId = "string",
   PolicyName = "string",
   Policy = "string",
   BypassPolicyLockoutSafetyCheck = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -43,9 +43,7 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InternetGateways = list(
     list(
       Attachments = list(
@@ -66,15 +64,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your internet gateways.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_internet_gateways(
+\preformatted{svc$describe_internet_gateways(
   Filters = list(
     list(
       Name = "string",
@@ -90,7 +86,7 @@ Describes one or more of your internet gateways.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

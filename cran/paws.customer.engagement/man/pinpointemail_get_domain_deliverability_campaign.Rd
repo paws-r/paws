@@ -14,9 +14,7 @@ campaigns that you create and manage by using the Amazon Pinpoint API or
 the Amazon Pinpoint console.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainDeliverabilityCampaign = list(
     CampaignId = "string",
     ImageUrl = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieve all the deliverability data for a specific campaign. This data
@@ -52,12 +50,10 @@ domain that the Deliverability dashboard is enabled for
 operation).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_domain_deliverability_campaign(
+\preformatted{svc$get_domain_deliverability_campaign(
   CampaignId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

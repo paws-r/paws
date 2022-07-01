@@ -29,9 +29,7 @@ you want in the response. The default value is 10. The maximum value is
 500.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   assessmentRunAgents = list(
     list(
       agentId = "string",
@@ -51,16 +49,14 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the agents of the assessment runs that are specified by the ARNs
 of the assessment runs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_assessment_run_agents(
+\preformatted{svc$list_assessment_run_agents(
   assessmentRunArn = "string",
   filter = list(
     agentHealths = list(
@@ -73,7 +69,7 @@ of the assessment runs.
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

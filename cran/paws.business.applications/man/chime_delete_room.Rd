@@ -18,13 +18,11 @@ An empty list.
 Deletes a chat room in an Amazon Chime Enterprise account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_room(
+\preformatted{svc$delete_room(
   AccountId = "string",
   RoomId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

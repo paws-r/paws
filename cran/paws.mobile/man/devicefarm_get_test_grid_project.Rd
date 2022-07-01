@@ -12,9 +12,7 @@ devicefarm_get_test_grid_project(projectArn)
 \code{\link[=devicefarm_list_test_grid_projects]{list_test_grid_projects}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   testGridProject = list(
     arn = "string",
     name = "string",
@@ -24,18 +22,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about a Selenium testing project.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_test_grid_project(
+\preformatted{svc$get_test_grid_project(
   projectArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

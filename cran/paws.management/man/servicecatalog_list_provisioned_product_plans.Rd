@@ -26,9 +26,7 @@ results, use null.}
 \item{AccessLevelFilter}{The access level to use to obtain results. The default is \code{User}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProvisionedProductPlans = list(
     list(
       PlanName = "string",
@@ -41,16 +39,14 @@ A list with the following syntax:
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the plans for the specified provisioned product or all plans to
 which the user has access.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_provisioned_product_plans(
+\preformatted{svc$list_provisioned_product_plans(
   AcceptLanguage = "string",
   ProvisionProductId = "string",
   PageSize = 123,
@@ -60,7 +56,7 @@ which the user has access.
     Value = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

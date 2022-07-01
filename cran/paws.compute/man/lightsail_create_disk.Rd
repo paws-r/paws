@@ -29,9 +29,7 @@ resource after it's created.}
 disk.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -56,7 +54,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a block storage disk that can be attached to an Amazon Lightsail
@@ -66,9 +64,7 @@ The \verb{create disk} operation supports tag-based access control via
 request tags. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_disk(
+\preformatted{svc$create_disk(
   diskName = "string",
   availabilityZone = "string",
   sizeInGb = 123,
@@ -87,7 +83,7 @@ request tags. For more information, see the Lightsail Dev Guide.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

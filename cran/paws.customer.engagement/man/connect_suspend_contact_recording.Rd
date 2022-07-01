@@ -30,14 +30,12 @@ silence in the final recording.
 Only voice recordings are supported at this time.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$suspend_contact_recording(
+\preformatted{svc$suspend_contact_recording(
   InstanceId = "string",
   ContactId = "string",
   InitialContactId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

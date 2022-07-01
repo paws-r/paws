@@ -10,9 +10,7 @@ personalize_describe_filter(filterArn)
 \item{filterArn}{[required] The ARN of the filter to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   filter = list(
     name = "string",
     filterArn = "string",
@@ -28,18 +26,16 @@ A list with the following syntax:
     status = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a filter's properties.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_filter(
+\preformatted{svc$describe_filter(
   filterArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

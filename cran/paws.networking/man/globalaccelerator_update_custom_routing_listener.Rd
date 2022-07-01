@@ -18,9 +18,7 @@ Separately, you set port ranges for endpoints. For more information, see
 \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html}{About endpoints for custom routing accelerators}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Listener = list(
     ListenerArn = "string",
     PortRanges = list(
@@ -31,15 +29,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Update a listener for a custom routing accelerator.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_custom_routing_listener(
+\preformatted{svc$update_custom_routing_listener(
   ListenerArn = "string",
   PortRanges = list(
     list(
@@ -48,7 +44,7 @@ Update a listener for a custom routing accelerator.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

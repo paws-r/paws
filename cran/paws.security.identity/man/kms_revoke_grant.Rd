@@ -49,13 +49,11 @@ parameter.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$revoke_grant(
+\preformatted{svc$revoke_grant(
   KeyId = "string",
   GrantId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

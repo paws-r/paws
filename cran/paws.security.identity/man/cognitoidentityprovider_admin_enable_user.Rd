@@ -20,13 +20,11 @@ Enables the specified user as an administrator. Works on any user.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_enable_user(
+\preformatted{svc$admin_enable_user(
   UserPoolId = "string",
   Username = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

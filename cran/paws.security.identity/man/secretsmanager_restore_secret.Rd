@@ -32,13 +32,11 @@ receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ARN = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Cancels the scheduled deletion of a secret by removing the \code{DeletedDate}
@@ -58,12 +56,10 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_secret(
+\preformatted{svc$restore_secret(
   SecretId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

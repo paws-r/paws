@@ -27,9 +27,7 @@ Adds one or more custom properties to the specified resource (a folder,
 document, or version).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_custom_metadata(
+\preformatted{svc$create_custom_metadata(
   AuthenticationToken = "string",
   ResourceId = "string",
   VersionId = "string",
@@ -37,7 +35,7 @@ document, or version).
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

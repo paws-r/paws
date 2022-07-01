@@ -16,12 +16,10 @@ An empty list.
 Deregisters an on-premises instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_on_premises_instance(
+\preformatted{svc$deregister_on_premises_instance(
   instanceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

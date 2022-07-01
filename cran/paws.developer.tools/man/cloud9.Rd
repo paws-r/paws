@@ -54,9 +54,7 @@ environment.
 }
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloud9(
+\preformatted{svc <- cloud9(
   config = list(
     credentials = list(
       creds = list(
@@ -70,7 +68,7 @@ environment.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

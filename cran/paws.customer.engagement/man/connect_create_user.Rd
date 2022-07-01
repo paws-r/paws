@@ -45,13 +45,11 @@ management and include this parameter, an error is returned.}
 \item{Tags}{One or more tags.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserId = "string",
   UserArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a user account for the specified Amazon Connect instance.
@@ -61,9 +59,7 @@ Connect console, see \href{https://docs.aws.amazon.com/connect/latest/adminguide
 in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user(
+\preformatted{svc$create_user(
   Username = "string",
   Password = "string",
   IdentityInfo = list(
@@ -88,7 +84,7 @@ in the \emph{Amazon Connect Administrator Guide}.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

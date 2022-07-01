@@ -7,9 +7,7 @@
 directconnect_describe_locations()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   locations = list(
     list(
       locationCode = "string",
@@ -24,7 +22,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the AWS Direct Connect locations in the current AWS Region. These

@@ -10,9 +10,7 @@ glue_get_dev_endpoint(EndpointName)
 \item{EndpointName}{[required] Name of the \code{DevEndpoint} to retrieve information for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DevEndpoint = list(
     EndpointName = "string",
     RoleArn = "string",
@@ -51,7 +49,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about a specified development endpoint.
@@ -62,12 +60,10 @@ field is not populated. When you create a non-VPC development endpoint,
 AWS Glue returns only a public IP address.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_dev_endpoint(
+\preformatted{svc$get_dev_endpoint(
   EndpointName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

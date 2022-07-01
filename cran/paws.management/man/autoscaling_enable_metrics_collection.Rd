@@ -47,16 +47,14 @@ information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_metrics_collection(
+\preformatted{svc$enable_metrics_collection(
   AutoScalingGroupName = "string",
   Metrics = list(
     "string"
   ),
   Granularity = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

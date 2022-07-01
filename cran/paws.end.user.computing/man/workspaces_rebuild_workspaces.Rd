@@ -10,9 +10,7 @@ workspaces_rebuild_workspaces(RebuildWorkspaceRequests)
 \item{RebuildWorkspaceRequests}{[required] The WorkSpace to rebuild. You can specify a single WorkSpace.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FailedRequests = list(
     list(
       WorkspaceId = "string",
@@ -21,7 +19,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Rebuilds the specified WorkSpace.
@@ -36,16 +34,14 @@ This operation is asynchronous and returns before the WorkSpaces have
 been completely rebuilt.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$rebuild_workspaces(
+\preformatted{svc$rebuild_workspaces(
   RebuildWorkspaceRequests = list(
     list(
       WorkspaceId = "string"
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

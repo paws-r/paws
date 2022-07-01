@@ -22,9 +22,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcPeeringConnectionId}{[required] The ID of the VPC peering connection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccepterPeeringConnectionOptions = list(
     AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
     AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
@@ -36,7 +34,7 @@ A list with the following syntax:
     AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the VPC peering connection options on one side of a VPC peering
@@ -67,9 +65,7 @@ for a VPC peering connection, use the
 command.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_vpc_peering_connection_options(
+\preformatted{svc$modify_vpc_peering_connection_options(
   AccepterPeeringConnectionOptions = list(
     AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
     AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
@@ -83,7 +79,7 @@ command.
   ),
   VpcPeeringConnectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

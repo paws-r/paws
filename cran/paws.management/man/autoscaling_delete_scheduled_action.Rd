@@ -19,13 +19,11 @@ An empty list.
 Deletes the specified scheduled action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_scheduled_action(
+\preformatted{svc$delete_scheduled_action(
   AutoScalingGroupName = "string",
   ScheduledActionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

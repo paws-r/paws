@@ -27,9 +27,7 @@ gameplay.}
 parameter updates the game server's \emph{LastHealthCheckTime} timestamp.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GameServer = list(
     GameServerGroupName = "string",
     GameServerGroupArn = "string",
@@ -50,7 +48,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -97,16 +95,14 @@ timestamps are updated.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_game_server(
+\preformatted{svc$update_game_server(
   GameServerGroupName = "string",
   GameServerId = "string",
   GameServerData = "string",
   UtilizationStatus = "AVAILABLE"|"UTILIZED",
   HealthCheck = "HEALTHY"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

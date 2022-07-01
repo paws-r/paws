@@ -21,13 +21,11 @@ groups added to that room. This operation requires the device to be
 online, or else a manual sync is required.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_device_with_room(
+\preformatted{svc$associate_device_with_room(
   DeviceArn = "string",
   RoomArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

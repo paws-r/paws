@@ -15,9 +15,7 @@ apigatewayv2_get_models(ApiId, MaxResults, NextToken)
 element of the collection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Items = list(
     list(
       ContentType = "string",
@@ -29,20 +27,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the Models for an API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_models(
+\preformatted{svc$get_models(
   ApiId = "string",
   MaxResults = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

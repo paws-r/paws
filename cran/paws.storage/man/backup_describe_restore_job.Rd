@@ -11,9 +11,7 @@ backup_describe_restore_job(RestoreJobId)
 \item{RestoreJobId}{[required] Uniquely identifies the job that restores a recovery point.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccountId = "string",
   RestoreJobId = "string",
   RecoveryPointArn = "string",
@@ -32,19 +30,17 @@ A list with the following syntax:
   CreatedResourceArn = "string",
   ResourceType = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns metadata associated with a restore job that is specified by a
 job ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_restore_job(
+\preformatted{svc$describe_restore_job(
   RestoreJobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

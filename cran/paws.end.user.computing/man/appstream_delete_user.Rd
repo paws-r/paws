@@ -20,13 +20,11 @@ An empty list.
 Deletes a user from the user pool.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user(
+\preformatted{svc$delete_user(
   UserName = "string",
   AuthenticationType = "API"|"SAML"|"USERPOOL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

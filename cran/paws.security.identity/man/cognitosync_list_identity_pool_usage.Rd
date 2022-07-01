@@ -12,9 +12,7 @@ cognitosync_list_identity_pool_usage(NextToken, MaxResults)
 \item{MaxResults}{The maximum number of results to be returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IdentityPoolUsages = list(
     list(
       IdentityPoolId = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
   Count = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of identity pools registered with Cognito.
@@ -39,13 +37,11 @@ cannot make this API call with the temporary user credentials provided
 by Cognito Identity.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_identity_pool_usage(
+\preformatted{svc$list_identity_pool_usage(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

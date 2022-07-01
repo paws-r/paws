@@ -19,9 +19,7 @@ elasticache_modify_user(UserId, AccessString, AppendAccessString,
 \item{NoPasswordRequired}{Indicates no password is required for the user.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserId = "string",
   UserName = "string",
   Status = "string",
@@ -36,15 +34,13 @@ A list with the following syntax:
   ),
   ARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes user password(s) and/or access string.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_user(
+\preformatted{svc$modify_user(
   UserId = "string",
   AccessString = "string",
   AppendAccessString = "string",
@@ -53,7 +49,7 @@ Changes user password(s) and/or access string.
   ),
   NoPasswordRequired = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

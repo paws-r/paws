@@ -10,9 +10,7 @@ globalaccelerator_describe_custom_routing_accelerator(AcceleratorArn)
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the accelerator to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Accelerator = list(
     AcceleratorArn = "string",
     Name = "string",
@@ -36,18 +34,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describe a custom routing accelerator.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_custom_routing_accelerator(
+\preformatted{svc$describe_custom_routing_accelerator(
   AcceleratorArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

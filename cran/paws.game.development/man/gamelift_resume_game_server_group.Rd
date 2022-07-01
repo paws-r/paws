@@ -14,9 +14,7 @@ GameServerGroup name or ARN value.}
 \item{ResumeActions}{[required] The activity to resume for this game server group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GameServerGroup = list(
     GameServerGroupName = "string",
     GameServerGroupArn = "string",
@@ -43,7 +41,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -80,15 +78,13 @@ returned showing that the resumed activity is no longer listed in
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$resume_game_server_group(
+\preformatted{svc$resume_game_server_group(
   GameServerGroupName = "string",
   ResumeActions = list(
     "REPLACE_INSTANCE_TYPES"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

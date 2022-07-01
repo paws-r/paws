@@ -43,24 +43,20 @@ deployments.}
 be used to return the next set of deployments in the list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   deployments = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the deployments in a deployment group for an application
 registered with the IAM user or AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_deployments(
+\preformatted{svc$list_deployments(
   applicationName = "string",
   deploymentGroupName = "string",
   externalId = "string",
@@ -77,7 +73,7 @@ registered with the IAM user or AWS account.
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -161,13 +161,11 @@ default value is \code{1}. The maximum value is \code{256}.}
 \item{PlacementGroupConfigs}{The specified placement group configuration for an Amazon EMR cluster.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobFlowId = "string",
   ClusterArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 RunJobFlow creates and starts running a new cluster (job flow). The
@@ -202,9 +200,7 @@ request can contain InstanceFleets parameters or InstanceGroups
 parameters, but not both.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$run_job_flow(
+\preformatted{svc$run_job_flow(
   Name = "string",
   LogUri = "string",
   LogEncryptionKmsKeyId = "string",
@@ -459,7 +455,7 @@ parameters, but not both.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

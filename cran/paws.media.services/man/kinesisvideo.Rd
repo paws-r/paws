@@ -19,9 +19,7 @@ Operations section.
 Amazon Kinesis Video Streams
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- kinesisvideo(
+\preformatted{svc <- kinesisvideo(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +33,7 @@ Amazon Kinesis Video Streams
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

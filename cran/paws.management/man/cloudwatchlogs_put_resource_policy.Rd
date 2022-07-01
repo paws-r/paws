@@ -22,16 +22,14 @@ group or log stream.
 \verb{\{ "Version": "2012-10-17", "Statement": [ \{ "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": \{ "Service": [ "route53.amazonaws.com" ] \}, "Action":"logs:PutLogEvents", "Resource": "logArn" \} ] \} }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   resourcePolicy = list(
     policyName = "string",
     policyDocument = "string",
     lastUpdatedTime = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates or updates a resource policy allowing other AWS services to put
@@ -39,13 +37,11 @@ log events to this account, such as Amazon Route 53. An account can have
 up to 10 resource policies per AWS Region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_resource_policy(
+\preformatted{svc$put_resource_policy(
   policyName = "string",
   policyDocument = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

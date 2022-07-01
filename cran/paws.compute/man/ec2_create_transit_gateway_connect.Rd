@@ -21,9 +21,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TransitGatewayConnect = list(
     TransitGatewayAttachmentId = "string",
     TransportTransitGatewayAttachmentId = "string",
@@ -43,7 +41,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Connect attachment from a specified transit gateway
@@ -55,9 +53,7 @@ A Connect attachment uses an existing VPC or AWS Direct Connect
 attachment as the underlying transport mechanism.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_transit_gateway_connect(
+\preformatted{svc$create_transit_gateway_connect(
   TransportTransitGatewayAttachmentId = "string",
   Options = list(
     Protocol = "gre"
@@ -75,7 +71,7 @@ attachment as the underlying transport mechanism.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

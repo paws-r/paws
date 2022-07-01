@@ -15,25 +15,21 @@ sagemaker_update_model_package(ModelPackageArn, ModelApprovalStatus,
 \item{ApprovalDescription}{A description for the approval status of the model.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ModelPackageArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a versioned model.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_model_package(
+\preformatted{svc$update_model_package(
   ModelPackageArn = "string",
   ModelApprovalStatus = "Approved"|"Rejected"|"PendingManualApproval",
   ApprovalDescription = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -50,9 +50,7 @@ that were modified during the operation are returned in the response. If
 set to \code{NONE} (the default), no statistics are returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UnprocessedItems = list(
     list(
       list(
@@ -172,7 +170,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=dynamodb_batch_write_item]{batch_write_item}} operation puts or
@@ -258,9 +256,7 @@ range keys (which essentially is two put operations).
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_write_item(
+\preformatted{svc$batch_write_item(
   RequestItems = list(
     list(
       list(
@@ -322,7 +318,7 @@ range keys (which essentially is two put operations).
   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
   ReturnItemCollectionMetrics = "SIZE"|"NONE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

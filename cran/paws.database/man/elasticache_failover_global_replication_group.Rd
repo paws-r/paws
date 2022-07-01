@@ -15,9 +15,7 @@ elasticache_failover_global_replication_group(GlobalReplicationGroupId,
 \item{PrimaryReplicationGroupId}{[required] The name of the primary replication group}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GlobalReplicationGroup = list(
     GlobalReplicationGroupId = "string",
     GlobalReplicationGroupDescription = "string",
@@ -47,7 +45,7 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Used to failover the primary region to a selected secondary region. The
@@ -55,14 +53,12 @@ selected secondary region will become primary, and all other clusters
 will become secondary.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$failover_global_replication_group(
+\preformatted{svc$failover_global_replication_group(
   GlobalReplicationGroupId = "string",
   PrimaryRegion = "string",
   PrimaryReplicationGroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

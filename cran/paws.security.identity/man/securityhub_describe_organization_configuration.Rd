@@ -8,23 +8,19 @@ Hub}
 securityhub_describe_organization_configuration()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AutoEnable = TRUE|FALSE,
   MemberAccountLimitReached = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the Organizations configuration for Security
 Hub. Can only be called from a Security Hub administrator account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_organization_configuration()
-}\if{html}{\out{</div>}}
+\preformatted{svc$describe_organization_configuration()
+}
 }
 
 \keyword{internal}

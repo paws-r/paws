@@ -28,9 +28,7 @@ required permissions for Amazon EC2 Auto Scaling actions, see the
 \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html}{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- autoscaling(
+\preformatted{svc <- autoscaling(
   config = list(
     credentials = list(
       creds = list(
@@ -44,7 +42,7 @@ required permissions for Amazon EC2 Auto Scaling actions, see the
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -24,9 +24,7 @@ Deleting a notification also deletes the subscribers that are associated
 with the notification.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_notification(
+\preformatted{svc$delete_notification(
   AccountId = "string",
   BudgetName = "string",
   Notification = list(
@@ -37,7 +35,7 @@ with the notification.
     NotificationState = "OK"|"ALARM"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

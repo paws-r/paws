@@ -11,9 +11,7 @@ configservice_describe_configuration_recorders(
 \item{ConfigurationRecorderNames}{A list of configuration recorder names.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConfigurationRecorders = list(
     list(
       name = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the details for the specified configuration recorders. If the
@@ -39,14 +37,12 @@ Currently, you can specify only one configuration recorder per region in
 your account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_configuration_recorders(
+\preformatted{svc$describe_configuration_recorders(
   ConfigurationRecorderNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

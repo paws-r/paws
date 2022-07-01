@@ -18,12 +18,10 @@ Deregisters an AWS Batch job definition. Job definitions are permanently
 deleted after 180 days.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_job_definition(
+\preformatted{svc$deregister_job_definition(
   jobDefinition = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -30,9 +30,7 @@ results.}
 \item{MaxResults}{The maximum number of results to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Results = list(
     list(
       TrainingJob = list(
@@ -1219,7 +1217,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Finds Amazon SageMaker resources that match a search query. Matching
@@ -1231,9 +1229,7 @@ You can query against the following value types: numeric, text, Boolean,
 and timestamp.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search(
+\preformatted{svc$search(
   Resource = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent"|"Endpoint"|"ModelPackage"|"ModelPackageGroup"|"Pipeline"|"PipelineExecution"|"FeatureGroup",
   SearchExpression = list(
     Filters = list(
@@ -1265,7 +1261,7 @@ and timestamp.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

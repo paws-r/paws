@@ -11,9 +11,7 @@ s3control_get_public_access_block(AccountId)
 configuration you want to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PublicAccessBlockConfiguration = list(
     BlockPublicAcls = TRUE|FALSE,
     IgnorePublicAcls = TRUE|FALSE,
@@ -21,7 +19,7 @@ A list with the following syntax:
     RestrictPublicBuckets = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the \code{PublicAccessBlock} configuration for an AWS account. For
@@ -34,12 +32,10 @@ Related actions include:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_public_access_block(
+\preformatted{svc$get_public_access_block(
   AccountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

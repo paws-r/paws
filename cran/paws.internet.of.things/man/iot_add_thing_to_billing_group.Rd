@@ -23,15 +23,13 @@ An empty list.
 Adds a thing to a billing group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_thing_to_billing_group(
+\preformatted{svc$add_thing_to_billing_group(
   billingGroupName = "string",
   billingGroupArn = "string",
   thingName = "string",
   thingArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

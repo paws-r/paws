@@ -41,9 +41,7 @@ to retrieve the next items in a list and not for other programmatic
 purposes.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   capacityProviders = list(
     list(
       capacityProviderArn = "string",
@@ -79,15 +77,13 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your capacity providers.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_capacity_providers(
+\preformatted{svc$describe_capacity_providers(
   capacityProviders = list(
     "string"
   ),
@@ -97,7 +93,7 @@ Describes one or more of your capacity providers.
   maxResults = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

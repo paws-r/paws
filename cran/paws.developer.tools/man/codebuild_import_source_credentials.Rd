@@ -28,12 +28,10 @@ Set to \code{true} to overwrite the repository source credentials. The
 default value is \code{true}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Imports the source repository credentials for an AWS CodeBuild project
@@ -41,16 +39,14 @@ that has its source code stored in a GitHub, GitHub Enterprise, or
 Bitbucket repository.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_source_credentials(
+\preformatted{svc$import_source_credentials(
   username = "string",
   token = "string",
   serverType = "GITHUB"|"BITBUCKET"|"GITHUB_ENTERPRISE",
   authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN",
   shouldOverwrite = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

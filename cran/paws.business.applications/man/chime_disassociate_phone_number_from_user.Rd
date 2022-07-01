@@ -20,13 +20,11 @@ Disassociates the primary provisioned phone number from the specified
 Amazon Chime user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_phone_number_from_user(
+\preformatted{svc$disassociate_phone_number_from_user(
   AccountId = "string",
   UserId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

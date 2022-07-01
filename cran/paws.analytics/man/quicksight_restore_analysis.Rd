@@ -12,27 +12,23 @@ quicksight_restore_analysis(AwsAccountId, AnalysisId)
 \item{AnalysisId}{[required] The ID of the analysis that you're restoring.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = 123,
   Arn = "string",
   AnalysisId = "string",
   RequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Restores an analysis.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_analysis(
+\preformatted{svc$restore_analysis(
   AwsAccountId = "string",
   AnalysisId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

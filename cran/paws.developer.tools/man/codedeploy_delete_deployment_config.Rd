@@ -20,12 +20,10 @@ A deployment configuration cannot be deleted if it is currently in use.
 Predefined configurations cannot be deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_deployment_config(
+\preformatted{svc$delete_deployment_config(
   deploymentConfigName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

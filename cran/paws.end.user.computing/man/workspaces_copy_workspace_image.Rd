@@ -20,12 +20,10 @@ workspaces_copy_workspace_image(Name, Description, SourceImageId,
 \item{Tags}{The tags for the image.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ImageId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Copies the specified image from the specified Region to the current
@@ -46,9 +44,7 @@ and
 API operations.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_workspace_image(
+\preformatted{svc$copy_workspace_image(
   Name = "string",
   Description = "string",
   SourceImageId = "string",
@@ -60,7 +56,7 @@ API operations.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

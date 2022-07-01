@@ -18,12 +18,10 @@ Accept an incoming input device transfer. The ownership of the device
 will transfer to your AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$accept_input_device_transfer(
+\preformatted{svc$accept_input_device_transfer(
   InputDeviceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

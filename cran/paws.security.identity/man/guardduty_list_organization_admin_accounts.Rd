@@ -15,9 +15,7 @@ action. For subsequent calls, use the \code{NextToken} value returned from
 the previous request to continue listing results after the first page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AdminAccounts = list(
     list(
       AdminAccountId = "string",
@@ -26,19 +24,17 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the accounts configured as GuardDuty delegated administrators.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_organization_admin_accounts(
+\preformatted{svc$list_organization_admin_accounts(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

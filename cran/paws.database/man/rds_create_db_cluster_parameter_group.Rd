@@ -36,9 +36,7 @@ Example: \code{aurora-postgresql9.6}}
 \item{Tags}{Tags to assign to the DB cluster parameter group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBClusterParameterGroup = list(
     DBClusterParameterGroupName = "string",
     DBParameterGroupFamily = "string",
@@ -46,7 +44,7 @@ A list with the following syntax:
     DBClusterParameterGroupArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new DB cluster parameter group.
@@ -85,9 +83,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_cluster_parameter_group(
+\preformatted{svc$create_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string",
   DBParameterGroupFamily = "string",
   Description = "string",
@@ -98,7 +94,7 @@ This action only applies to Aurora DB clusters.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

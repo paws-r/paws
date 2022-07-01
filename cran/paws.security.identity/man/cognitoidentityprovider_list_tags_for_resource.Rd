@@ -11,14 +11,12 @@ cognitoidentityprovider_list_tags_for_resource(ResourceArn)
 assigned to.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the tags that are assigned to an Amazon Cognito user pool.
@@ -30,12 +28,10 @@ or other criteria.
 You can use this action up to 10 times per second, per account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

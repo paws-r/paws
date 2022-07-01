@@ -32,12 +32,10 @@ our registrar associate, Gandi (for all other TLDs). If you specify
 technical contact.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OperationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation updates the specified domain contact's privacy setting.
@@ -65,15 +63,13 @@ information on our privacy practices, see
 \url{https://aws.amazon.com/privacy/}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_domain_contact_privacy(
+\preformatted{svc$update_domain_contact_privacy(
   DomainName = "string",
   AdminPrivacy = TRUE|FALSE,
   RegistrantPrivacy = TRUE|FALSE,
   TechPrivacy = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

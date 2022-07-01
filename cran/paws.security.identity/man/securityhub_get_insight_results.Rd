@@ -11,9 +11,7 @@ securityhub_get_insight_results(InsightArn)
 \item{InsightArn}{[required] The ARN of the insight for which to return results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InsightResults = list(
     InsightArn = "string",
     GroupByAttribute = "string",
@@ -25,19 +23,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the results of the Security Hub insight specified by the insight
 ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_insight_results(
+\preformatted{svc$get_insight_results(
   InsightArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

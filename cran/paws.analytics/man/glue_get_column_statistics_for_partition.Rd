@@ -20,9 +20,7 @@ none is supplied, the AWS account ID is used by default.}
 \item{ColumnNames}{[required] A list of the column names.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ColumnStatisticsList = list(
     list(
       ColumnName = "string",
@@ -95,7 +93,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves partition statistics of columns.
@@ -104,9 +102,7 @@ The Identity and Access Management (IAM) permission required for this
 operation is \code{\link[=glue_get_partition]{get_partition}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_column_statistics_for_partition(
+\preformatted{svc$get_column_statistics_for_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -117,7 +113,7 @@ operation is \code{\link[=glue_get_partition]{get_partition}}.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

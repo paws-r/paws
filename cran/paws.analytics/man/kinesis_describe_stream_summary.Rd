@@ -11,9 +11,7 @@ kinesis_describe_stream_summary(StreamName)
 \item{StreamName}{[required] The name of the stream to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StreamDescriptionSummary = list(
     StreamName = "string",
     StreamARN = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
     ConsumerCount = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides a summarized description of the specified Kinesis data stream
@@ -49,12 +47,10 @@ monitoring, encryption details, and open shard count.
 of 20 transactions per second per account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stream_summary(
+\preformatted{svc$describe_stream_summary(
   StreamName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

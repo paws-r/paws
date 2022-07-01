@@ -16,12 +16,10 @@ An empty list.
 Deletes the validation configuration for the specified application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_app_validation_configuration(
+\preformatted{svc$delete_app_validation_configuration(
   appId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

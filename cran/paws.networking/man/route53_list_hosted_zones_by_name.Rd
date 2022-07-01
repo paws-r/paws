@@ -37,9 +37,7 @@ values of \code{NextDNSName} and \code{NextHostedZoneId} specify the first hoste
 zone in the next group of \code{maxitems} hosted zones.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HostedZones = list(
     list(
       Id = "string",
@@ -63,7 +61,7 @@ A list with the following syntax:
   NextHostedZoneId = "string",
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list of your hosted zones in lexicographic order. The
@@ -122,14 +120,12 @@ and specify the value of \code{NextDNSName} and \code{NextHostedZoneId} in the
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_hosted_zones_by_name(
+\preformatted{svc$list_hosted_zones_by_name(
   DNSName = "string",
   HostedZoneId = "string",
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -84,9 +84,7 @@ deployment and its settings, such as the HTTP or HTTPS port to use, and
 the health check configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   containerService = list(
     containerServiceName = "string",
     arn = "string",
@@ -185,7 +183,7 @@ A list with the following syntax:
     url = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an Amazon Lightsail container service.
@@ -195,9 +193,7 @@ deploy containers. For more information, see Container services in
 Amazon Lightsail in the \emph{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_container_service(
+\preformatted{svc$create_container_service(
   serviceName = "string",
   power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
   scale = 123,
@@ -241,7 +237,7 @@ Amazon Lightsail in the \emph{Lightsail Dev Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

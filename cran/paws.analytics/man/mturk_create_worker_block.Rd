@@ -24,13 +24,11 @@ block a Worker who is producing poor quality work. You can block up to
 100,000 Workers.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_worker_block(
+\preformatted{svc$create_worker_block(
   WorkerId = "string",
   Reason = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

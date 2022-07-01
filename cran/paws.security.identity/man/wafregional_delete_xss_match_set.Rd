@@ -16,12 +16,10 @@ wafregional_delete_xss_match_set(XssMatchSetId, ChangeToken)
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChangeToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -54,13 +52,11 @@ request.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_xss_match_set(
+\preformatted{svc$delete_xss_match_set(
   XssMatchSetId = "string",
   ChangeToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

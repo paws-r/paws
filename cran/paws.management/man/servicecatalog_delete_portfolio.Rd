@@ -28,13 +28,11 @@ associated products, users, constraints, or shared accounts.
 A delegated admin is authorized to invoke this command.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_portfolio(
+\preformatted{svc$delete_portfolio(
   AcceptLanguage = "string",
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

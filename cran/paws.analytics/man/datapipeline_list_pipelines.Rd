@@ -14,9 +14,7 @@ to call \code{\link[=datapipeline_list_pipelines]{list_pipelines}} with the mark
 value from the previous call to retrieve the next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pipelineIdList = list(
     list(
       id = "string",
@@ -26,19 +24,17 @@ A list with the following syntax:
   marker = "string",
   hasMoreResults = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the pipeline identifiers for all active pipelines that you have
 permission to access.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_pipelines(
+\preformatted{svc$list_pipelines(
   marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,9 +23,7 @@ from a prior call.)}
 \item{VpcId}{[required] The ID of the VPC.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   StaleSecurityGroupSet = list(
     list(
@@ -84,7 +82,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 [VPC only] Describes the stale security group rules for security
@@ -93,15 +91,13 @@ security group in a peer VPC, or a security group in a peer VPC for
 which the VPC peering connection has been deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stale_security_groups(
+\preformatted{svc$describe_stale_security_groups(
   DryRun = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string",
   VpcId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

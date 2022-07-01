@@ -24,9 +24,7 @@ inclusive.}
 default and the only supported value at this time.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   events = list(
     list(
       arn = "string",
@@ -49,7 +47,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about events across your organization in AWS
@@ -80,9 +78,7 @@ This API operation uses pagination. Specify the \code{nextToken} parameter in
 the next request to return more results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_events_for_organization(
+\preformatted{svc$describe_events_for_organization(
   filter = list(
     eventTypeCodes = list(
       "string"
@@ -137,7 +133,7 @@ the next request to return more results.
   maxResults = 123,
   locale = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

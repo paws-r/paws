@@ -17,9 +17,7 @@ elasticbeanstalk_describe_environment_managed_action_history(
 \item{MaxItems}{The maximum number of items to return for a single request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ManagedActionHistoryItems = list(
     list(
       ActionId = "string",
@@ -38,21 +36,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists an environment's completed and failed managed actions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_environment_managed_action_history(
+\preformatted{svc$describe_environment_managed_action_history(
   EnvironmentId = "string",
   EnvironmentName = "string",
   NextToken = "string",
   MaxItems = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

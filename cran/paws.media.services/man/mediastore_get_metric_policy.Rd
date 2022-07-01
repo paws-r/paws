@@ -10,9 +10,7 @@ mediastore_get_metric_policy(ContainerName)
 \item{ContainerName}{[required] The name of the container that is associated with the metric policy.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MetricPolicy = list(
     ContainerLevelMetrics = "ENABLED"|"DISABLED",
     MetricPolicyRules = list(
@@ -23,18 +21,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the metric policy for the specified container.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_metric_policy(
+\preformatted{svc$get_metric_policy(
   ContainerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

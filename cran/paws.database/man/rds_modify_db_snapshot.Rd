@@ -40,9 +40,7 @@ as when upgrading a DB instance. For more information, see \href{https://docs.aw
 in the \emph{Amazon RDS User Guide.}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBSnapshot = list(
     DBSnapshotIdentifier = "string",
     DBInstanceIdentifier = "string",
@@ -89,7 +87,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a manual DB snapshot with a new engine version. The snapshot can
@@ -99,14 +97,12 @@ Amazon RDS supports upgrading DB snapshots for MySQL, Oracle, and
 PostgreSQL.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_snapshot(
+\preformatted{svc$modify_db_snapshot(
   DBSnapshotIdentifier = "string",
   EngineVersion = "string",
   OptionGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

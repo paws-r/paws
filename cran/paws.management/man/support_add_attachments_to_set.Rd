@@ -22,13 +22,11 @@ base64-encoded string. The value for \code{fileName} is the name of the
 attachment, such as \code{troubleshoot-screenshot.png}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   attachmentSetId = "string",
   expiryTime = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds one or more attachments to an attachment set.
@@ -47,9 +45,7 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_attachments_to_set(
+\preformatted{svc$add_attachments_to_set(
   attachmentSetId = "string",
   attachments = list(
     list(
@@ -58,7 +54,7 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

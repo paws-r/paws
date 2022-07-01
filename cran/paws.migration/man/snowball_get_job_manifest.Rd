@@ -12,12 +12,10 @@ snowball_get_job_manifest(JobId)
 \verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ManifestURI = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a link to an Amazon S3 presigned URL for the manifest file
@@ -42,12 +40,10 @@ The credentials of a given job, including its manifest file and unlock
 code, expire 90 days after the job is created.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_job_manifest(
+\preformatted{svc$get_job_manifest(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

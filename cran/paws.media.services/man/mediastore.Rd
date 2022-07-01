@@ -21,9 +21,7 @@ and objects. You use a container endpoint to create, read, and delete
 objects.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- mediastore(
+\preformatted{svc <- mediastore(
   config = list(
     credentials = list(
       creds = list(
@@ -37,7 +35,7 @@ objects.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

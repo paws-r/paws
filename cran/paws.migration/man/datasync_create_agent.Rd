@@ -53,12 +53,10 @@ these four network interfaces.}
 subnets. See CreateAgentRequest$SubnetArns.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AgentArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Activates an AWS DataSync agent that you have deployed on your host. The
@@ -81,9 +79,7 @@ Agents are automatically updated by AWS on a regular basis, using a
 mechanism that ensures minimal interruption to your tasks.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_agent(
+\preformatted{svc$create_agent(
   ActivationKey = "string",
   AgentName = "string",
   Tags = list(
@@ -100,7 +96,7 @@ mechanism that ensures minimal interruption to your tasks.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

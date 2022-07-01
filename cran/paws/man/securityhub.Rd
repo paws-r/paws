@@ -58,9 +58,7 @@ second.
 }
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- securityhub(
+\preformatted{svc <- securityhub(
   config = list(
     credentials = list(
       creds = list(
@@ -74,7 +72,7 @@ second.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

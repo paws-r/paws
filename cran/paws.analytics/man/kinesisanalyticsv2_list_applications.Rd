@@ -14,9 +14,7 @@ value to retrieve the next set of results. For more information about
 pagination, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html}{Using the AWS Command Line Interface's Pagination Options}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationSummaries = list(
     list(
       ApplicationName = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of Kinesis Data Analytics applications in your account.
@@ -39,13 +37,11 @@ If you want detailed information about a specific application, use
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_applications(
+\preformatted{svc$list_applications(
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

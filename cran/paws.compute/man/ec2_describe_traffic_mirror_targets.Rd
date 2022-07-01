@@ -34,9 +34,7 @@ value.}
 \item{NextToken}{The token for the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrafficMirrorTargets = list(
     list(
       TrafficMirrorTargetId = "string",
@@ -55,15 +53,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Information about one or more Traffic Mirror targets.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_traffic_mirror_targets(
+\preformatted{svc$describe_traffic_mirror_targets(
   TrafficMirrorTargetIds = list(
     "string"
   ),
@@ -79,7 +75,7 @@ Information about one or more Traffic Mirror targets.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

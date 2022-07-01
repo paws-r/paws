@@ -14,12 +14,10 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Policy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the policy of a specified bucket. If you are using an identity
@@ -48,13 +46,11 @@ The following operation is related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bucket_policy(
+\preformatted{svc$get_bucket_policy(
   Bucket = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

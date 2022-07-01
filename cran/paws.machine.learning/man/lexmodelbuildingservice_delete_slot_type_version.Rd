@@ -27,13 +27,11 @@ This operation requires permissions for the \code{lex:DeleteSlotTypeVersion}
 action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_slot_type_version(
+\preformatted{svc$delete_slot_type_version(
   name = "string",
   version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,9 +16,7 @@ configservice_describe_conformance_pack_status(ConformancePackNames,
 request the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConformancePackStatusDetails = list(
     list(
       ConformancePackName = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides one or more conformance packs deployment status.
@@ -45,16 +43,14 @@ Provides one or more conformance packs deployment status.
 If there are no conformance packs then you will see an empty result.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_conformance_pack_status(
+\preformatted{svc$describe_conformance_pack_status(
   ConformancePackNames = list(
     "string"
   ),
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

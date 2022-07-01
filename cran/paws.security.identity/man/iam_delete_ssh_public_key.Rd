@@ -31,13 +31,11 @@ CodeCommit repository, see \href{https://docs.aws.amazon.com/codecommit/latest/u
 in the \emph{AWS CodeCommit User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_ssh_public_key(
+\preformatted{svc$delete_ssh_public_key(
   UserName = "string",
   SSHPublicKeyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

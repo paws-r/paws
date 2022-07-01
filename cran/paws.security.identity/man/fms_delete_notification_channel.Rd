@@ -17,10 +17,8 @@ Amazon Simple Notification Service (SNS) topic that is used to record
 AWS Firewall Manager SNS logs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_notification_channel()
-}\if{html}{\out{</div>}}
+\preformatted{svc$delete_notification_channel()
+}
 }
 
 \keyword{internal}

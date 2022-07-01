@@ -12,9 +12,7 @@ cloudfront_list_streaming_distributions(Marker, MaxItems)
 \item{MaxItems}{The value that you provided for the \code{MaxItems} request parameter.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StreamingDistributionList = list(
     Marker = "string",
     NextMarker = "string",
@@ -54,19 +52,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List streaming distributions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_streaming_distributions(
+\preformatted{svc$list_streaming_distributions(
   Marker = "string",
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

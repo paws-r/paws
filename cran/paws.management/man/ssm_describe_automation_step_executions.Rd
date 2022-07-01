@@ -26,9 +26,7 @@ next set of results.}
 order by start time. The default value is false.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StepExecutions = list(
     list(
       StepName = "string",
@@ -98,16 +96,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Information about all active and terminated step executions in an
 Automation workflow.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_automation_step_executions(
+\preformatted{svc$describe_automation_step_executions(
   AutomationExecutionId = "string",
   Filters = list(
     list(
@@ -121,7 +117,7 @@ Automation workflow.
   MaxResults = 123,
   ReverseOrder = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

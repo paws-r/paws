@@ -18,9 +18,7 @@ If true, \code{Recipe} is returned.
 If false, \code{Recipe} is not returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MLModelId = "string",
   TrainingDataSourceId = "string",
   CreatedByIamUser = "string",
@@ -62,7 +60,7 @@ A list with the following syntax:
   Recipe = "string",
   Schema = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns an \code{MLModel} that includes detailed metadata, data source
@@ -72,13 +70,11 @@ information, and the current status of the \code{MLModel}.
 normal or verbose format.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_ml_model(
+\preformatted{svc$get_ml_model(
   MLModelId = "string",
   Verbose = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

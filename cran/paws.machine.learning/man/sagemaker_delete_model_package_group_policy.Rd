@@ -16,12 +16,10 @@ An empty list.
 Deletes a model group resource policy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_model_package_group_policy(
+\preformatted{svc$delete_model_package_group_policy(
   ModelPackageGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

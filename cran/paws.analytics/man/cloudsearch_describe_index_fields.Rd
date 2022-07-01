@@ -16,9 +16,7 @@ information is returned for all configured index fields.}
 pending changes (\code{false}). Defaults to \code{false}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IndexFields = list(
     list(
       Options = list(
@@ -122,7 +120,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the index fields configured for the search
@@ -135,16 +133,14 @@ target="_blank">Getting Domain Information</a> in the \emph{Amazon
 CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_index_fields(
+\preformatted{svc$describe_index_fields(
   DomainName = "string",
   FieldNames = list(
     "string"
   ),
   Deployed = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

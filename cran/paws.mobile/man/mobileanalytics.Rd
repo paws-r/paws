@@ -20,9 +20,7 @@ Amazon Mobile Analytics is a service for collecting, visualizing, and
 understanding app usage data at scale.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- mobileanalytics(
+\preformatted{svc <- mobileanalytics(
   config = list(
     credentials = list(
       creds = list(
@@ -36,7 +34,7 @@ understanding app usage data at scale.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

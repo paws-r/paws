@@ -58,12 +58,10 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ImageId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Initiates the copy of an AMI from the specified source Region to the
@@ -80,9 +78,7 @@ AMI, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.h
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_image(
+\preformatted{svc$copy_image(
   ClientToken = "string",
   Description = "string",
   Encrypted = TRUE|FALSE,
@@ -92,7 +88,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   SourceRegion = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

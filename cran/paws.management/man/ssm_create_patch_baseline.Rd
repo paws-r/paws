@@ -77,12 +77,10 @@ To add tags to an existing patch baseline, use the
 \code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BaselineId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a patch baseline.
@@ -92,9 +90,7 @@ each supported operating system type, see
 \href{https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html}{PatchFilter}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_patch_baseline(
+\preformatted{svc$create_patch_baseline(
   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
   Name = "string",
   GlobalFilters = list(
@@ -154,7 +150,7 @@ each supported operating system type, see
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

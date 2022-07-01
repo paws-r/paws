@@ -33,9 +33,7 @@ the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.co
 .
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- swf(
+\preformatted{svc <- swf(
   config = list(
     credentials = list(
       creds = list(
@@ -49,7 +47,7 @@ the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.co
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

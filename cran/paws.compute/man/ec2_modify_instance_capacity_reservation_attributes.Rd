@@ -18,12 +18,10 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the Capacity Reservation settings for a stopped instance. Use
@@ -32,9 +30,7 @@ Reservation, run in any \code{open} Capacity Reservation with matching
 attributes, or run On-Demand Instance capacity.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_instance_capacity_reservation_attributes(
+\preformatted{svc$modify_instance_capacity_reservation_attributes(
   InstanceId = "string",
   CapacityReservationSpecification = list(
     CapacityReservationPreference = "open"|"none",
@@ -45,7 +41,7 @@ attributes, or run On-Demand Instance capacity.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

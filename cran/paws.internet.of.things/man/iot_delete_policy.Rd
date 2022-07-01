@@ -27,12 +27,10 @@ When a policy is deleted using DeletePolicy, its default version is
 deleted with it.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_policy(
+\preformatted{svc$delete_policy(
   policyName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

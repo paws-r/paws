@@ -15,9 +15,7 @@ pinpoint_update_apns_voip_sandbox_channel(APNSVoipSandboxChannelRequest,
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   APNSVoipSandboxChannelResponse = list(
     ApplicationId = "string",
     CreationDate = "string",
@@ -33,16 +31,14 @@ A list with the following syntax:
     Version = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables the APNs VoIP sandbox channel for an application or updates the
 status and settings of the APNs VoIP sandbox channel for an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_apns_voip_sandbox_channel(
+\preformatted{svc$update_apns_voip_sandbox_channel(
   APNSVoipSandboxChannelRequest = list(
     BundleId = "string",
     Certificate = "string",
@@ -55,7 +51,7 @@ status and settings of the APNs VoIP sandbox channel for an application.
   ),
   ApplicationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

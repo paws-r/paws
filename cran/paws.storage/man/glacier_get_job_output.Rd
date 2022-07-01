@@ -49,9 +49,7 @@ downloaded the entire archive content with no errors.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   body = raw,
   checksum = "string",
   status = 123,
@@ -60,7 +58,7 @@ A list with the following syntax:
   contentType = "string",
   archiveDescription = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation downloads the output of the job you initiated using
@@ -109,15 +107,13 @@ For conceptual information and the underlying REST API, see \href{https://docs.a
 and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-job-output-get.html}{Get Job Output}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_job_output(
+\preformatted{svc$get_job_output(
   accountId = "string",
   vaultName = "string",
   jobId = "string",
   range = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

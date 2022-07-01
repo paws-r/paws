@@ -12,9 +12,7 @@ mediaconnect_update_flow(FlowArn, SourceFailoverConfig)
 \item{SourceFailoverConfig}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Flow = list(
     AvailabilityZone = "string",
     Description = "string",
@@ -169,22 +167,20 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates flow
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_flow(
+\preformatted{svc$update_flow(
   FlowArn = "string",
   SourceFailoverConfig = list(
     RecoveryWindow = 123,
     State = "ENABLED"|"DISABLED"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

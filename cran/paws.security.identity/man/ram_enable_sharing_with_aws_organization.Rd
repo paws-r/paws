@@ -7,12 +7,10 @@
 ram_enable_sharing_with_aws_organization()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   returnValue = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables resource sharing within your AWS Organization.
@@ -20,10 +18,8 @@ Enables resource sharing within your AWS Organization.
 The caller must be the master account for the AWS Organization.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_sharing_with_aws_organization()
-}\if{html}{\out{</div>}}
+\preformatted{svc$enable_sharing_with_aws_organization()
+}
 }
 
 \keyword{internal}

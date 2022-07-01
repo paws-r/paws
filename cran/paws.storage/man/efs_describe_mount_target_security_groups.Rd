@@ -10,14 +10,12 @@ efs_describe_mount_target_security_groups(MountTargetId)
 \item{MountTargetId}{[required] The ID of the mount target whose security groups you want to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SecurityGroups = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the security groups currently in effect for a mount target. This
@@ -34,12 +32,10 @@ network interface.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_mount_target_security_groups(
+\preformatted{svc$describe_mount_target_security_groups(
   MountTargetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

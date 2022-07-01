@@ -10,9 +10,7 @@ medialive_describe_input_security_group(InputSecurityGroupId)
 \item{InputSecurityGroupId}{[required] The id of the Input Security Group to describe}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   Id = "string",
   Inputs = list(
@@ -28,18 +26,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Produces a summary of an Input Security Group
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_input_security_group(
+\preformatted{svc$describe_input_security_group(
   InputSecurityGroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,9 +19,7 @@ returned on each page.}
 request the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConformancePackName = "string",
   ConformancePackRuleComplianceList = list(
     list(
@@ -31,7 +29,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns compliance details for each rule in that conformance pack.
@@ -39,9 +37,7 @@ Returns compliance details for each rule in that conformance pack.
 You must provide exact rule names.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_conformance_pack_compliance(
+\preformatted{svc$describe_conformance_pack_compliance(
   ConformancePackName = "string",
   Filters = list(
     ConfigRuleNames = list(
@@ -52,7 +48,7 @@ You must provide exact rule names.
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

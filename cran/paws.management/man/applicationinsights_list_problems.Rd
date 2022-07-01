@@ -24,9 +24,7 @@ value.}
 \item{NextToken}{The token to request the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProblemList = list(
     list(
       Id = "string",
@@ -49,15 +47,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the problems with your application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_problems(
+\preformatted{svc$list_problems(
   ResourceGroupName = "string",
   StartTime = as.POSIXct(
     "2015-01-01"
@@ -68,7 +64,7 @@ Lists the problems with your application.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

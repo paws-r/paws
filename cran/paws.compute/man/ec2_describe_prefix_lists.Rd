@@ -30,9 +30,7 @@ value.}
 \item{PrefixListIds}{One or more prefix list IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   PrefixLists = list(
     list(
@@ -44,7 +42,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes available AWS services in a prefix list format, which includes
@@ -56,9 +54,7 @@ We recommend that you use
 instead.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_prefix_lists(
+\preformatted{svc$describe_prefix_lists(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(
@@ -74,7 +70,7 @@ instead.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

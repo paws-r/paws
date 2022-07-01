@@ -26,14 +26,12 @@ Used by activity workers and task states using the
 pattern to report that the task identified by the \code{taskToken} failed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_task_failure(
+\preformatted{svc$send_task_failure(
   taskToken = "string",
   error = "string",
   cause = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

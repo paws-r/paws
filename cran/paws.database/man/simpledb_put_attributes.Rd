@@ -68,9 +68,7 @@ The following limitations are enforced for this operation:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_attributes(
+\preformatted{svc$put_attributes(
   DomainName = "string",
   ItemName = "string",
   Attributes = list(
@@ -86,7 +84,7 @@ The following limitations are enforced for this operation:
     Exists = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

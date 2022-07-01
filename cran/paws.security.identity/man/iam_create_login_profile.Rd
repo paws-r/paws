@@ -31,9 +31,7 @@ within that tool.}
 sign-in.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LoginProfile = list(
     UserName = "string",
     CreateDate = as.POSIXct(
@@ -42,7 +40,7 @@ A list with the following syntax:
     PasswordResetRequired = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a password for the specified user, giving the user the ability
@@ -51,14 +49,12 @@ information about managing passwords, see \href{https://docs.aws.amazon.com/IAM/
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_login_profile(
+\preformatted{svc$create_login_profile(
   UserName = "string",
   Password = "string",
   PasswordResetRequired = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

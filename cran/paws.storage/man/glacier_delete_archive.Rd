@@ -47,14 +47,12 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delet
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_archive(
+\preformatted{svc$delete_archive(
   accountId = "string",
   vaultName = "string",
   archiveId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

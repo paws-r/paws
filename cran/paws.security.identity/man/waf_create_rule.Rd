@@ -22,9 +22,7 @@ can't change the name of the metric after you create the \code{Rule}.}
 \item{Tags}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Rule = list(
     RuleId = "string",
     Name = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
   ),
   ChangeToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -90,9 +88,7 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_rule(
+\preformatted{svc$create_rule(
   Name = "string",
   MetricName = "string",
   ChangeToken = "string",
@@ -103,7 +99,7 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

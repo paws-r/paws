@@ -12,9 +12,7 @@ chime_regenerate_security_token(AccountId, BotId)
 \item{BotId}{[required] The bot ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Bot = list(
     BotId = "string",
     UserId = "string",
@@ -31,19 +29,17 @@ A list with the following syntax:
     SecurityToken = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Regenerates the security token for a bot.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$regenerate_security_token(
+\preformatted{svc$regenerate_security_token(
   AccountId = "string",
   BotId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

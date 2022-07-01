@@ -83,9 +83,7 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_layer(
+\preformatted{svc$update_layer(
   LayerId = "string",
   Name = "string",
   Shortname = "string",
@@ -158,7 +156,7 @@ see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-securit
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

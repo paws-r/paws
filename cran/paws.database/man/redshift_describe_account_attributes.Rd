@@ -10,9 +10,7 @@ redshift_describe_account_attributes(AttributeNames)
 \item{AttributeNames}{A list of attribute names.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccountAttributes = list(
     list(
       AttributeName = "string",
@@ -24,20 +22,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of attributes attached to an account
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_account_attributes(
+\preformatted{svc$describe_account_attributes(
   AttributeNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -18,15 +18,13 @@ An empty list.
 Removes tags from a project.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_project(
+\preformatted{svc$untag_project(
   id = "string",
   tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

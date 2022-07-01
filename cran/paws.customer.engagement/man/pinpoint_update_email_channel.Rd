@@ -14,9 +14,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{EmailChannelRequest}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EmailChannelResponse = list(
     ApplicationId = "string",
     ConfigurationSet = "string",
@@ -35,16 +33,14 @@ A list with the following syntax:
     Version = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables the email channel for an application or updates the status and
 settings of the email channel for an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_email_channel(
+\preformatted{svc$update_email_channel(
   ApplicationId = "string",
   EmailChannelRequest = list(
     ConfigurationSet = "string",
@@ -54,7 +50,7 @@ settings of the email channel for an application.
     RoleArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

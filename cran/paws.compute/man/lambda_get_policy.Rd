@@ -25,26 +25,22 @@ function name, it is limited to 64 characters in length.}
 \item{Qualifier}{Specify a version or alias to get the policy for that resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Policy = "string",
   RevisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the \href{https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{resource-based IAM policy}
 for a function, version, or alias.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_policy(
+\preformatted{svc$get_policy(
   FunctionName = "string",
   Qualifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

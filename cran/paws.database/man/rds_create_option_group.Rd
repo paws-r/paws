@@ -30,9 +30,7 @@ be associated with.}
 \item{Tags}{Tags to assign to the option group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OptionGroup = list(
     OptionGroupName = "string",
     OptionGroupDescription = "string",
@@ -78,15 +76,13 @@ A list with the following syntax:
     OptionGroupArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new option group. You can create up to 20 option groups.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_option_group(
+\preformatted{svc$create_option_group(
   OptionGroupName = "string",
   EngineName = "string",
   MajorEngineVersion = "string",
@@ -98,7 +94,7 @@ Creates a new option group. You can create up to 20 option groups.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

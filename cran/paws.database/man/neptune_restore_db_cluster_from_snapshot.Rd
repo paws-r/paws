@@ -109,9 +109,7 @@ enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBCluster = list(
     AllocatedStorage = 123,
     AvailabilityZones = list(
@@ -187,7 +185,7 @@ A list with the following syntax:
     DeletionProtection = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
@@ -202,9 +200,7 @@ the original source DB cluster, except that the new DB cluster is
 created with the default security group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_db_cluster_from_snapshot(
+\preformatted{svc$restore_db_cluster_from_snapshot(
   AvailabilityZones = list(
     "string"
   ),
@@ -233,7 +229,7 @@ created with the default security group.
   DBClusterParameterGroupName = "string",
   DeletionProtection = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

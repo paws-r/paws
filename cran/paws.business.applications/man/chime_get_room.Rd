@@ -13,9 +13,7 @@ chime_get_room(AccountId, RoomId)
 \item{RoomId}{[required] The room ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Room = list(
     RoomId = "string",
     Name = "string",
@@ -29,20 +27,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves room details, such as the room name, for a room in an Amazon
 Chime Enterprise account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_room(
+\preformatted{svc$get_room(
   AccountId = "string",
   RoomId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,12 +16,10 @@ An empty list.
 Deletes a contact by the contact ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_contact(
+\preformatted{svc$delete_contact(
   ContactArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

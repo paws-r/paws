@@ -138,9 +138,7 @@ specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   ReservedCacheNodesOfferings = list(
     list(
@@ -160,15 +158,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists available reserved cache node offerings.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_reserved_cache_nodes_offerings(
+\preformatted{svc$describe_reserved_cache_nodes_offerings(
   ReservedCacheNodesOfferingId = "string",
   CacheNodeType = "string",
   Duration = "string",
@@ -177,7 +173,7 @@ Lists available reserved cache node offerings.
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

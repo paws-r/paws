@@ -37,12 +37,10 @@ currently being used by a matchmaking configuration.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_matchmaking_rule_set(
+\preformatted{svc$delete_matchmaking_rule_set(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

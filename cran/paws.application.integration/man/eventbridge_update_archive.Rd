@@ -17,9 +17,7 @@ eventbridge_update_archive(ArchiveName, Description, EventPattern,
 \item{RetentionDays}{The number of days to retain events in the archive.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ArchiveArn = "string",
   State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
   StateReason = "string",
@@ -27,21 +25,19 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified archive.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_archive(
+\preformatted{svc$update_archive(
   ArchiveName = "string",
   Description = "string",
   EventPattern = "string",
   RetentionDays = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

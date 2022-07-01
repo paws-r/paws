@@ -39,9 +39,7 @@ maintenance window. The reference structure is as follows, and we list
 following some related topics from the user guide.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- neptune(
+\preformatted{svc <- neptune(
   config = list(
     credentials = list(
       creds = list(
@@ -55,7 +53,7 @@ following some related topics from the user guide.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

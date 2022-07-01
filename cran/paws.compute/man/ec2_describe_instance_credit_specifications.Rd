@@ -33,9 +33,7 @@ parameter and the instance IDs parameter in the same call.}
 \item{NextToken}{The token to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceCreditSpecifications = list(
     list(
       InstanceId = "string",
@@ -44,7 +42,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the credit option for CPU usage of the specified burstable
@@ -75,9 +73,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instance_credit_specifications(
+\preformatted{svc$describe_instance_credit_specifications(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(
@@ -93,7 +89,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

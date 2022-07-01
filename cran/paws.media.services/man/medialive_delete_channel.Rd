@@ -10,9 +10,7 @@ medialive_delete_channel(ChannelId)
 \item{ChannelId}{[required] Unique ID of the channel.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   CdiInputSpecification = list(
     Resolution = "SD"|"HD"|"FHD"|"UHD"
@@ -913,18 +911,16 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts deletion of channel. The associated outputs are also deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_channel(
+\preformatted{svc$delete_channel(
   ChannelId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

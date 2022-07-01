@@ -33,9 +33,7 @@ specified time.}
 specified time.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobDefinitionSummaries = list(
     list(
       MonitoringJobDefinitionName = "string",
@@ -48,15 +46,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists model explainability job definitions that satisfy various filters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_model_explainability_job_definitions(
+\preformatted{svc$list_model_explainability_job_definitions(
   EndpointName = "string",
   SortBy = "Name"|"CreationTime",
   SortOrder = "Ascending"|"Descending",
@@ -70,7 +66,7 @@ Lists model explainability job definitions that satisfy various filters.
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

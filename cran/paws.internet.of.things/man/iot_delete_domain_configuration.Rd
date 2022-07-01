@@ -19,12 +19,10 @@ The domain configuration feature is in public preview and is subject to
 change.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_domain_configuration(
+\preformatted{svc$delete_domain_configuration(
   domainConfigurationName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

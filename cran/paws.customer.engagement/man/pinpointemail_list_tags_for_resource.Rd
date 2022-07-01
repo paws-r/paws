@@ -12,9 +12,7 @@ pinpointemail_list_tags_for_resource(ResourceArn)
 tag information for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -22,7 +20,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieve a list of the tags (keys and values) that are associated with a
@@ -33,12 +31,10 @@ a general label that acts as a category for more specific tag values. A
 tag value acts as a descriptor within a tag key.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

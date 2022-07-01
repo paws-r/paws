@@ -14,9 +14,7 @@ to \code{latest} (default) to use the last definition saved to the pipeline
 or \code{active} to use the last definition that was activated.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pipelineObjects = list(
     list(
       id = "string",
@@ -48,7 +46,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the definition of the specified pipeline. You can call
@@ -57,13 +55,11 @@ retrieve the pipeline definition that you provided using
 \code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_pipeline_definition(
+\preformatted{svc$get_pipeline_definition(
   pipelineId = "string",
   version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

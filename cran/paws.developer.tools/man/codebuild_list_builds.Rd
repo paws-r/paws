@@ -21,28 +21,24 @@ items in the list, keep calling this operation with each subsequent next
 token that is returned, until no more next tokens are returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ids = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of build IDs, with each build ID representing a single
 build.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_builds(
+\preformatted{svc$list_builds(
   sortOrder = "ASCENDING"|"DESCENDING",
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

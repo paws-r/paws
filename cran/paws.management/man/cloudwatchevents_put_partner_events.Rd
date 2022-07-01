@@ -11,9 +11,7 @@ cloudwatchevents_put_partner_events(Entries)
 \item{Entries}{[required] The list of events to write to the event bus.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FailedEntryCount = 123,
   Entries = list(
     list(
@@ -23,16 +21,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is used by SaaS partners to write events to a customer's partner
 event bus. AWS customers do not use this operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_partner_events(
+\preformatted{svc$put_partner_events(
   Entries = list(
     list(
       Time = as.POSIXct(
@@ -47,7 +43,7 @@ event bus. AWS customers do not use this operation.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

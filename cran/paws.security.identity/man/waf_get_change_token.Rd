@@ -7,12 +7,10 @@
 waf_get_change_token()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChangeToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -44,10 +42,8 @@ AWS WAF is propagating the change to all AWS WAF servers. Use
 the status of your change token.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_change_token()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_change_token()
+}
 }
 
 \examples{

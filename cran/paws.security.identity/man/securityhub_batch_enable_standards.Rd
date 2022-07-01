@@ -10,9 +10,7 @@ securityhub_batch_enable_standards(StandardsSubscriptionRequests)
 \item{StandardsSubscriptionRequests}{[required] The list of standards checks to enable.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StandardsSubscriptions = list(
     list(
       StandardsSubscriptionArn = "string",
@@ -24,7 +22,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables the standards specified by the provided \code{StandardsArn}. To
@@ -35,9 +33,7 @@ For more information, see the \href{https://docs.aws.amazon.com/securityhub/late
 section of the \emph{AWS Security Hub User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_enable_standards(
+\preformatted{svc$batch_enable_standards(
   StandardsSubscriptionRequests = list(
     list(
       StandardsArn = "string",
@@ -47,7 +43,7 @@ section of the \emph{AWS Security Hub User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

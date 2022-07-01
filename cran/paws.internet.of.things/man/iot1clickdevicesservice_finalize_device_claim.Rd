@@ -14,12 +14,10 @@ iot1clickdevicesservice_finalize_device_claim(DeviceId, Tags)
 information, see \href{https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf}{AWS Tagging Strategies}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   State = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Given a device ID, finalizes the claim request for the associated
@@ -30,15 +28,13 @@ device event, and finalizing the claim. For a device of type button, a
 device event can be published by simply clicking the device.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$finalize_device_claim(
+\preformatted{svc$finalize_device_claim(
   DeviceId = "string",
   Tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

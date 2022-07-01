@@ -18,9 +18,7 @@ describing virtual tapes.}
 specified number.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TapeArchives = list(
     list(
       TapeARN = "string",
@@ -48,7 +46,7 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a description of specified virtual tapes in the virtual tape
@@ -59,16 +57,14 @@ description of all virtual tapes found in the VTS associated with your
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tape_archives(
+\preformatted{svc$describe_tape_archives(
   TapeARNs = list(
     "string"
   ),
   Marker = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

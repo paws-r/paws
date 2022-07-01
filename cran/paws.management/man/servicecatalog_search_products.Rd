@@ -28,9 +28,7 @@ includes all products to which the caller has access.}
 results, use null.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProductViewSummaries = list(
     list(
       Id = "string",
@@ -56,15 +54,13 @@ A list with the following syntax:
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the products to which the caller has access.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_products(
+\preformatted{svc$search_products(
   AcceptLanguage = "string",
   Filters = list(
     list(
@@ -76,7 +72,7 @@ Gets information about the products to which the caller has access.
   SortOrder = "ASCENDING"|"DESCENDING",
   PageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

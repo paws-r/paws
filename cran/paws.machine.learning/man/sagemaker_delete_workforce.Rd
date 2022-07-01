@@ -25,12 +25,10 @@ you try to delete a workforce that contains one or more work teams, you
 will recieve a \code{ResourceInUse} error.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_workforce(
+\preformatted{svc$delete_workforce(
   WorkforceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -27,12 +27,10 @@ An empty list.
 Removes the code signing configuration from the function.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_function_code_signing_config(
+\preformatted{svc$delete_function_code_signing_config(
   FunctionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

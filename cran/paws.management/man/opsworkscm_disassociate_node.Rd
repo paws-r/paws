@@ -23,12 +23,10 @@ exist.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NodeAssociationStatusToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disassociates a node from an AWS OpsWorks CM server, and removes the
@@ -44,9 +42,7 @@ A node can can only be disassociated from a server that is in a
 valid.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_node(
+\preformatted{svc$disassociate_node(
   ServerName = "string",
   NodeName = "string",
   EngineAttributes = list(
@@ -56,7 +52,7 @@ valid.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

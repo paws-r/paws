@@ -31,9 +31,7 @@ receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ARN = "string",
   Name = "string",
   Description = "string",
@@ -71,7 +69,7 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the details of a secret. It does not include the encrypted
@@ -98,12 +96,10 @@ secret, use \code{\link[=secretsmanager_get_secret_value]{get_secret_value}}.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_secret(
+\preformatted{svc$describe_secret(
   SecretId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

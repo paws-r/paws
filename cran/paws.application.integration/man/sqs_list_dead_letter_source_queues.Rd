@@ -19,15 +19,13 @@ to 1000. You must set \code{MaxResults} to receive a value for \code{NextToken} 
 the response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   queueUrls = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of your queues that have the \code{RedrivePolicy} queue
@@ -48,14 +46,12 @@ For more information about using dead-letter queues, see \href{https://docs.aws.
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_dead_letter_source_queues(
+\preformatted{svc$list_dead_letter_source_queues(
   QueueUrl = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

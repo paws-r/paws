@@ -18,13 +18,11 @@ An empty list.
 Deletes an API mapping.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_api_mapping(
+\preformatted{svc$delete_api_mapping(
   ApiMappingId = "string",
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

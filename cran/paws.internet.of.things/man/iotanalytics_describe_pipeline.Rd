@@ -10,9 +10,7 @@ iotanalytics_describe_pipeline(pipelineName)
 \item{pipelineName}{[required] The name of the pipeline whose information is retrieved.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pipeline = list(
     name = "string",
     arn = "string",
@@ -98,18 +96,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about a pipeline.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_pipeline(
+\preformatted{svc$describe_pipeline(
   pipelineName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

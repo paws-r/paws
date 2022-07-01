@@ -24,9 +24,7 @@ example,
 \code{GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=apisummary}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   description = "string",
   createdDate = as.POSIXct(
@@ -41,22 +39,20 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a Deployment resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_deployment(
+\preformatted{svc$get_deployment(
   restApiId = "string",
   deploymentId = "string",
   embed = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

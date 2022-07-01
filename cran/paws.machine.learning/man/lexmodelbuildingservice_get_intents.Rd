@@ -20,9 +20,7 @@ part of its name matches the substring. For example, "xyz" matches both
 "xyzabc" and "abcxyz."}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   intents = list(
     list(
       name = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns intent information as follows:
@@ -52,14 +50,12 @@ about the \verb{$LATEST} version of all intents.
 The operation requires permission for the \code{lex:GetIntents} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_intents(
+\preformatted{svc$get_intents(
   nextToken = "string",
   maxResults = 123,
   nameContains = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

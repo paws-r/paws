@@ -25,9 +25,7 @@ from a previous call.)}
 value is \code{50} and the maximum value is \code{100}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ScalingPolicies = list(
     list(
       AutoScalingGroupName = "string",
@@ -79,15 +77,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the policies for the specified Auto Scaling group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_policies(
+\preformatted{svc$describe_policies(
   AutoScalingGroupName = "string",
   PolicyNames = list(
     "string"
@@ -98,7 +94,7 @@ Describes the policies for the specified Auto Scaling group.
   NextToken = "string",
   MaxRecords = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

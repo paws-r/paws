@@ -42,9 +42,7 @@ to identity pools to categorize and manage them in different ways, such
 as by purpose, owner, environment, or other criteria.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IdentityPoolId = "string",
   IdentityPoolName = "string",
   AllowUnauthenticatedIdentities = TRUE|FALSE,
@@ -70,7 +68,7 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new identity pool. The identity pool is a store of user
@@ -87,9 +85,7 @@ identity information that is specific to your AWS account. The keys for
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_identity_pool(
+\preformatted{svc$create_identity_pool(
   IdentityPoolName = "string",
   AllowUnauthenticatedIdentities = TRUE|FALSE,
   AllowClassicFlow = TRUE|FALSE,
@@ -114,7 +110,7 @@ You must use AWS Developer credentials to call this API.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

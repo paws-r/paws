@@ -23,12 +23,10 @@ This option can lead to failed or out-of-sequence tasks.}
 stopped.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pipelineExecutionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops the specified pipeline execution. You choose to either stop the
@@ -39,15 +37,13 @@ in a \code{Stopping} state. After all in-progress actions are completed or
 abandoned, the pipeline execution is in a \code{Stopped} state.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_pipeline_execution(
+\preformatted{svc$stop_pipeline_execution(
   pipelineName = "string",
   pipelineExecutionId = "string",
   abandon = TRUE|FALSE,
   reason = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

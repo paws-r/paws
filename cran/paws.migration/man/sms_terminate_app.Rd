@@ -16,12 +16,10 @@ An empty list.
 Terminates the stack for the specified application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$terminate_app(
+\preformatted{svc$terminate_app(
   appId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

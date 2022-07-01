@@ -12,9 +12,7 @@ sagemaker_describe_human_task_ui(HumanTaskUiName)
 want information about.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HumanTaskUiArn = "string",
   HumanTaskUiName = "string",
   HumanTaskUiStatus = "Active"|"Deleting",
@@ -26,19 +24,17 @@ A list with the following syntax:
     ContentSha256 = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the requested human task user interface
 (worker task template).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_human_task_ui(
+\preformatted{svc$describe_human_task_ui(
   HumanTaskUiName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

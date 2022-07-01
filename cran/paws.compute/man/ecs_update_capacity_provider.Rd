@@ -13,9 +13,7 @@ group capacity provider.}
 \item{autoScalingGroupProvider}{[required] The name of the capacity provider to update.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   capacityProvider = list(
     capacityProviderArn = "string",
     name = "string",
@@ -41,15 +39,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the parameters for a capacity provider.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_capacity_provider(
+\preformatted{svc$update_capacity_provider(
   name = "string",
   autoScalingGroupProvider = list(
     managedScaling = list(
@@ -62,7 +58,7 @@ Modifies the parameters for a capacity provider.
     managedTerminationProtection = "ENABLED"|"DISABLED"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

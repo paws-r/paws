@@ -19,15 +19,13 @@ parameter, then the response includes a \code{NextToken} element, which you
 can use to obtain additional results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConfigurationSets = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List all of the configuration sets associated with your Amazon Pinpoint
@@ -40,13 +38,11 @@ of the email. When you apply a configuration set to an email, all of the
 rules in that configuration set are applied to the email.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_configuration_sets(
+\preformatted{svc$list_configuration_sets(
   NextToken = "string",
   PageSize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

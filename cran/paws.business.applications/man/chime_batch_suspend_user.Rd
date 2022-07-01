@@ -13,9 +13,7 @@ chime_batch_suspend_user(AccountId, UserIdList)
 \item{UserIdList}{[required] The request containing the user IDs to suspend.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserErrors = list(
     list(
       UserId = "string",
@@ -24,7 +22,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Suspends up to 50 users from a \code{Team} or \code{EnterpriseLWA} Amazon Chime
@@ -47,15 +45,13 @@ To sign out users without suspending them, use the
 \code{\link[=chime_logout_user]{logout_user}} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_suspend_user(
+\preformatted{svc$batch_suspend_user(
   AccountId = "string",
   UserIdList = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

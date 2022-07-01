@@ -16,9 +16,7 @@ cloudfront_update_cloud_front_origin_access_identity(
 identity's configuration. For example: \code{E2QWRUHAPOMQZL}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CloudFrontOriginAccessIdentity = list(
     Id = "string",
     S3CanonicalUserId = "string",
@@ -29,15 +27,13 @@ A list with the following syntax:
   ),
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Update an origin access identity.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_cloud_front_origin_access_identity(
+\preformatted{svc$update_cloud_front_origin_access_identity(
   CloudFrontOriginAccessIdentityConfig = list(
     CallerReference = "string",
     Comment = "string"
@@ -45,7 +41,7 @@ Update an origin access identity.
   Id = "string",
   IfMatch = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -21,12 +21,10 @@ If emergency calling is configured for the Amazon Chime Voice Connector,
 it must be deleted prior to deleting the termination settings.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_voice_connector_termination(
+\preformatted{svc$delete_voice_connector_termination(
   VoiceConnectorId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

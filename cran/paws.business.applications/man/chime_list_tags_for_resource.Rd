@@ -10,9 +10,7 @@ chime_list_tags_for_resource(ResourceARN)
 \item{ResourceARN}{[required] The resource ARN.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -20,18 +18,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the tags applied to an Amazon Chime SDK meeting resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

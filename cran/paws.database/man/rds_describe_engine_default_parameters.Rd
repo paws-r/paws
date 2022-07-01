@@ -28,9 +28,7 @@ request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EngineDefaults = list(
     DBParameterGroupFamily = "string",
     Marker = "string",
@@ -53,16 +51,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the default engine and system parameter information for the
 specified database engine.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_engine_default_parameters(
+\preformatted{svc$describe_engine_default_parameters(
   DBParameterGroupFamily = "string",
   Filters = list(
     list(
@@ -75,7 +71,7 @@ specified database engine.
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

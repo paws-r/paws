@@ -22,12 +22,10 @@ The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReservedConcurrentExecutions = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns details about the reserved concurrency configuration for a
@@ -35,12 +33,10 @@ function. To set a concurrency limit for a function, use
 \code{\link[=lambda_put_function_concurrency]{put_function_concurrency}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_function_concurrency(
+\preformatted{svc$get_function_concurrency(
   FunctionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

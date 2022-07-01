@@ -77,9 +77,7 @@ Only \code{AMAZON.AlphaNumeric} is supported.}
 The configuration is added to the settings for the parent slot type.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   name = "string",
   description = "string",
   enumerationValues = list(
@@ -109,7 +107,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a custom slot type or replaces an existing custom slot type.
@@ -129,9 +127,7 @@ the bot's \code{status} field is set to \code{NOT_BUILT}.
 This operation requires permissions for the \code{lex:PutSlotType} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_slot_type(
+\preformatted{svc$put_slot_type(
   name = "string",
   description = "string",
   enumerationValues = list(
@@ -154,7 +150,7 @@ This operation requires permissions for the \code{lex:PutSlotType} action.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

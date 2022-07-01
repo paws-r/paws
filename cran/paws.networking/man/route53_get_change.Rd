@@ -13,9 +13,7 @@ the value that
 returned in the \code{Id} element when you submitted the request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChangeInfo = list(
     Id = "string",
     Status = "PENDING"|"INSYNC",
@@ -25,7 +23,7 @@ A list with the following syntax:
     Comment = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the current status of a change batch request. The status is one
@@ -39,12 +37,10 @@ DNS servers.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_change(
+\preformatted{svc$get_change(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

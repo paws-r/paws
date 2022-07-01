@@ -30,9 +30,7 @@ receiving accounts (subscribers) will be allowed to create their own
 flow using your content as the source.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Entitlement = list(
     DataTransferSubscriberFeePercent = 123,
     Description = "string",
@@ -56,7 +54,7 @@ A list with the following syntax:
   ),
   FlowArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 You can change an entitlement's description, subscribers, and
@@ -64,9 +62,7 @@ encryption. If you change the subscribers, the service will remove the
 outputs that are are used by the subscribers that are removed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_flow_entitlement(
+\preformatted{svc$update_flow_entitlement(
   Description = "string",
   Encryption = list(
     Algorithm = "aes128"|"aes192"|"aes256",
@@ -86,7 +82,7 @@ outputs that are are used by the subscribers that are removed.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

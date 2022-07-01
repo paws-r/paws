@@ -19,16 +19,14 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Default: disabled (\code{false})}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceId = "string",
   Output = "string",
   Timestamp = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the console output for the specified instance. For Linux instances,
@@ -51,14 +49,12 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_console_output(
+\preformatted{svc$get_console_output(
   InstanceId = "string",
   DryRun = TRUE|FALSE,
   Latest = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

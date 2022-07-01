@@ -18,9 +18,7 @@ chime_update_proxy_session(VoiceConnectorId, ProxySessionId,
 \item{ExpiryMinutes}{The number of minutes allowed for the proxy session.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProxySession = list(
     VoiceConnectorId = "string",
     ProxySessionId = "string",
@@ -53,16 +51,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified proxy session details, such as voice or SMS
 capabilities.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_proxy_session(
+\preformatted{svc$update_proxy_session(
   VoiceConnectorId = "string",
   ProxySessionId = "string",
   Capabilities = list(
@@ -70,7 +66,7 @@ capabilities.
   ),
   ExpiryMinutes = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

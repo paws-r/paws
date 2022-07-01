@@ -7,9 +7,7 @@
 dynamodb_describe_endpoints()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Endpoints = list(
     list(
       Address = "string",
@@ -17,16 +15,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the regional endpoint information.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_endpoints()
-}\if{html}{\out{</div>}}
+\preformatted{svc$describe_endpoints()
+}
 }
 
 \keyword{internal}

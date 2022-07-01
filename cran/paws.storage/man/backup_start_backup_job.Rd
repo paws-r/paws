@@ -52,24 +52,20 @@ backup option and create a VSS Windows backup. Set to
 option is not enabled by default.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BackupJobId = "string",
   RecoveryPointArn = "string",
   CreationDate = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts an on-demand backup job for the specified resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_backup_job(
+\preformatted{svc$start_backup_job(
   BackupVaultName = "string",
   ResourceArn = "string",
   IamRoleArn = "string",
@@ -87,7 +83,7 @@ Starts an on-demand backup job for the specified resource.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -27,13 +27,11 @@ template, an approval rule that matches the template contents is created
 for all pull requests in that repository.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_approval_rule_template_with_repository(
+\preformatted{svc$associate_approval_rule_template_with_repository(
   approvalRuleTemplateName = "string",
   repositoryName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

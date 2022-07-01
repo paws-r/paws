@@ -58,9 +58,7 @@ Amplify app. The token is used to create webhook and a read-only deploy
 key. The token is not stored.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   app = list(
     appId = "string",
     appArn = "string",
@@ -124,15 +122,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing Amplify app.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_app(
+\preformatted{svc$update_app(
   appId = "string",
   name = "string",
   description = "string",
@@ -177,7 +173,7 @@ Updates an existing Amplify app.
   oauthToken = "string",
   accessToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

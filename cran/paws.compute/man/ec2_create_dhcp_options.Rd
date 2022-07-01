@@ -17,9 +17,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DhcpOptions = list(
     DhcpConfigurations = list(
       list(
@@ -41,7 +39,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a set of DHCP options for your VPC. After creating the set, you
@@ -87,9 +85,7 @@ information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_dhcp_options(
+\preformatted{svc$create_dhcp_options(
   DhcpConfigurations = list(
     list(
       Key = "string",
@@ -111,7 +107,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

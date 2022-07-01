@@ -29,9 +29,7 @@ target IDs are CloudFormation stack IDs. Their target type is
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   deploymentTargets = list(
     list(
       deploymentTargetType = "InstanceTarget"|"LambdaTarget"|"ECSTarget"|"CloudFormationTarget",
@@ -169,7 +167,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns an array of one or more targets associated with a deployment.
@@ -189,15 +187,13 @@ deployments initiated by a CloudFormation stack update.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_deployment_targets(
+\preformatted{svc$batch_get_deployment_targets(
   deploymentId = "string",
   targetIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

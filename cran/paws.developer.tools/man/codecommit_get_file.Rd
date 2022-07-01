@@ -20,9 +20,7 @@ extension of the file. For example, /examples/file.md is the fully
 qualified path to a file named file.md in a folder named examples.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   commitId = "string",
   blobId = "string",
   filePath = "string",
@@ -30,21 +28,19 @@ A list with the following syntax:
   fileSize = 123,
   fileContent = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the base-64 encoded contents of a specified file and its
 metadata.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_file(
+\preformatted{svc$get_file(
   repositoryName = "string",
   commitSpecifier = "string",
   filePath = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

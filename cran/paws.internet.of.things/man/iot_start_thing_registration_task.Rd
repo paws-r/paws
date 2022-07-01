@@ -19,26 +19,22 @@ provision one device (thing).}
 \item{roleArn}{[required] The IAM role ARN that grants permission the input file.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   taskId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a bulk thing provisioning task.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_thing_registration_task(
+\preformatted{svc$start_thing_registration_task(
   templateBody = "string",
   inputFileBucket = "string",
   inputFileKey = "string",
   roleArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

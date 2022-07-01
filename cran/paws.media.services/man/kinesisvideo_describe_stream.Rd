@@ -12,9 +12,7 @@ kinesisvideo_describe_stream(StreamName, StreamARN)
 \item{StreamARN}{The Amazon Resource Name (ARN) of the stream.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StreamInfo = list(
     DeviceName = "string",
     StreamName = "string",
@@ -29,20 +27,18 @@ A list with the following syntax:
     DataRetentionInHours = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the most current information about the specified stream. You
 must specify either the \code{StreamName} or the \code{StreamARN}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stream(
+\preformatted{svc$describe_stream(
   StreamName = "string",
   StreamARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

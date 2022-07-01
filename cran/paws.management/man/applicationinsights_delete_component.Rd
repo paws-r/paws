@@ -20,13 +20,11 @@ applicable monitors that are set up for the component are removed and
 the instances revert to their standalone status.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_component(
+\preformatted{svc$delete_component(
   ResourceGroupName = "string",
   ComponentName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

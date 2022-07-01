@@ -30,9 +30,7 @@ be provided. Otherwise, \code{EC2SecurityGroupOwnerId} and either
 \code{EC2SecurityGroupName} or \code{EC2SecurityGroupId} must be provided.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBSecurityGroup = list(
     OwnerId = "string",
     DBSecurityGroupName = "string",
@@ -55,7 +53,7 @@ A list with the following syntax:
     DBSecurityGroupArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables ingress to a DBSecurityGroup using one of two forms of
@@ -75,16 +73,14 @@ another.
 For an overview of CIDR ranges, go to the \href{https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Wikipedia Tutorial}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$authorize_db_security_group_ingress(
+\preformatted{svc$authorize_db_security_group_ingress(
   DBSecurityGroupName = "string",
   CIDRIP = "string",
   EC2SecurityGroupName = "string",
   EC2SecurityGroupId = "string",
   EC2SecurityGroupOwnerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

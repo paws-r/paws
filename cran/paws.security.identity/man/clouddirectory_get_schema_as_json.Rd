@@ -10,25 +10,21 @@ clouddirectory_get_schema_as_json(SchemaArn)
 \item{SchemaArn}{[required] The ARN of the schema to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Name = "string",
   Document = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a JSON representation of the schema. See \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json}{JSON Schema Format}
 for more information.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_schema_as_json(
+\preformatted{svc$get_schema_as_json(
   SchemaArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

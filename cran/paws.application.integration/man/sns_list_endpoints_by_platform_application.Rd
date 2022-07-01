@@ -18,9 +18,7 @@ action to retrieve additional records that are available after the first
 page results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Endpoints = list(
     list(
       EndpointArn = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the endpoints and endpoint attributes for devices in a supported
@@ -49,13 +47,11 @@ information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-appl
 This action is throttled at 30 transactions per second (TPS).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_endpoints_by_platform_application(
+\preformatted{svc$list_endpoints_by_platform_application(
   PlatformApplicationArn = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

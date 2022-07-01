@@ -34,12 +34,10 @@ shard.
 reading.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ShardIterator = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a shard iterator. A shard iterator provides information about
@@ -51,15 +49,13 @@ A shard iterator expires 15 minutes after it is returned to the
 requester.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_shard_iterator(
+\preformatted{svc$get_shard_iterator(
   StreamArn = "string",
   ShardId = "string",
   ShardIteratorType = "TRIM_HORIZON"|"LATEST"|"AT_SEQUENCE_NUMBER"|"AFTER_SEQUENCE_NUMBER",
   SequenceNumber = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

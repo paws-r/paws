@@ -20,12 +20,10 @@ de-register managed instances. You must manually de-register managed
 instances.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_activation(
+\preformatted{svc$delete_activation(
   ActivationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

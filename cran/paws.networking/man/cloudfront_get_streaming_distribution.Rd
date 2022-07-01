@@ -11,9 +11,7 @@ cloudfront_get_streaming_distribution(Id)
 \item{Id}{[required] The streaming distribution's ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StreamingDistribution = list(
     Id = "string",
     ARN = "string",
@@ -68,19 +66,17 @@ A list with the following syntax:
   ),
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a specified RTMP distribution, including the
 distribution configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_streaming_distribution(
+\preformatted{svc$get_streaming_distribution(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

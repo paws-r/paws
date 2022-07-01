@@ -22,9 +22,7 @@ approved for AWS. To get the most out of this documentation, you should
 be familiar with the terminology discussed in \href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html}{AWS Service Catalog Concepts}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- servicecatalog(
+\preformatted{svc <- servicecatalog(
   config = list(
     credentials = list(
       creds = list(
@@ -38,7 +36,7 @@ be familiar with the terminology discussed in \href{https://docs.aws.amazon.com/
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

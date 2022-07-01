@@ -15,9 +15,7 @@ Valid values: cluster, cluster-snapshot, cluster-parameter-group,
 cluster-security-group, and scheduled-action.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventCategoriesMapList = list(
     list(
       SourceType = "string",
@@ -34,7 +32,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Displays a list of event categories for all event source types, or for a
@@ -42,12 +40,10 @@ specified source type. For a list of the event categories and source
 types, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html}{Amazon Redshift Event Notifications}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_categories(
+\preformatted{svc$describe_event_categories(
   SourceType = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

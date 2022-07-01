@@ -42,9 +42,7 @@ EC2 instance, or DMS endpoint, etc.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_created_artifact(
+\preformatted{svc$associate_created_artifact(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   CreatedArtifact = list(
@@ -53,7 +51,7 @@ EC2 instance, or DMS endpoint, etc.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

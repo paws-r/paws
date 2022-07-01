@@ -38,9 +38,7 @@ is currently in. Do not include latency values for any other Region.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MatchmakingTicket = list(
     TicketId = "string",
     ConfigurationName = "string",
@@ -90,7 +88,7 @@ A list with the following syntax:
     EstimatedWaitTime = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Finds new players to fill open slots in an existing game session. This
@@ -134,9 +132,7 @@ see \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-ma
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_match_backfill(
+\preformatted{svc$start_match_backfill(
   TicketId = "string",
   ConfigurationName = "string",
   GameSessionArn = "string",
@@ -162,7 +158,7 @@ see \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-ma
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

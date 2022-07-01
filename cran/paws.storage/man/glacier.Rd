@@ -50,9 +50,7 @@ archives, retrieving the job output, and deleting archives.
 }
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- glacier(
+\preformatted{svc <- glacier(
   config = list(
     credentials = list(
       creds = list(
@@ -66,7 +64,7 @@ archives, retrieving the job output, and deleting archives.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -51,12 +51,10 @@ For more information about tagging your load balancer, see \href{https://docs.aw
 in the \emph{Classic Load Balancers Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DNSName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Classic Load Balancer.
@@ -79,9 +77,7 @@ For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_load_balancer(
+\preformatted{svc$create_load_balancer(
   LoadBalancerName = "string",
   Listeners = list(
     list(
@@ -109,7 +105,7 @@ in the \emph{Classic Load Balancers Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -30,16 +30,14 @@ returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PolicyNames = list(
     "string"
   ),
   IsTruncated = TRUE|FALSE,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the names of the inline policies embedded in the specified IAM
@@ -56,14 +54,12 @@ parameters. If there are no inline policies embedded with the specified
 user, the operation returns an empty list.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_user_policies(
+\preformatted{svc$list_user_policies(
   UserName = "string",
   Marker = "string",
   MaxItems = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

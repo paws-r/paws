@@ -17,12 +17,10 @@ An empty list.
 Deletes an object at the specified path.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_object(
+\preformatted{svc$delete_object(
   Path = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

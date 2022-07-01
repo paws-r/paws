@@ -144,9 +144,7 @@ definition to run. If a \code{revision} is not specified, the latest \code{ACTIV
 revision is used.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   tasks = list(
     list(
       attachments = list(
@@ -311,7 +309,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a new task using the specified task definition.
@@ -347,9 +345,7 @@ increase gradually up to about five minutes of wait time.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$run_task(
+\preformatted{svc$run_task(
   capacityProviderStrategy = list(
     list(
       capacityProvider = "string",
@@ -438,7 +434,7 @@ increase gradually up to about five minutes of wait time.
   ),
   taskDefinition = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

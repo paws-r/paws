@@ -33,9 +33,7 @@ Examples:
 from a previous call.)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Mappings = list(
     list(
       PatchGroup = "string",
@@ -50,15 +48,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all patch groups that have been registered with patch baselines.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_patch_groups(
+\preformatted{svc$describe_patch_groups(
   MaxResults = 123,
   Filters = list(
     list(
@@ -70,7 +66,7 @@ Lists all patch groups that have been registered with patch baselines.
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

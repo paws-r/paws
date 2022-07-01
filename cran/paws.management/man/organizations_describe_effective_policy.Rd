@@ -21,9 +21,7 @@ account that you want details about. Specifying an organization root or
 organizational unit (OU) as the target is not supported.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EffectivePolicy = list(
     PolicyContent = "string",
     LastUpdatedTimestamp = as.POSIXct(
@@ -33,7 +31,7 @@ A list with the following syntax:
     PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the contents of the effective policy for specified policy type
@@ -52,13 +50,11 @@ account or by a member account that is a delegated administrator for an
 AWS service.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_effective_policy(
+\preformatted{svc$describe_effective_policy(
   PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
   TargetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

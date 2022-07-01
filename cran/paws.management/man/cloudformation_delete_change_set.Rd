@@ -30,13 +30,11 @@ change sets that belong to the stacks hierarchy and will also delete all
 change sets for nested stacks with the status of \code{REVIEW_IN_PROGRESS}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_change_set(
+\preformatted{svc$delete_change_set(
   ChangeSetName = "string",
   StackName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

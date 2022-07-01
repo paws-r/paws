@@ -11,12 +11,10 @@ sns_check_if_phone_number_is_opted_out(phoneNumber)
 \item{phoneNumber}{[required] The phone number for which you want to check the opt out status.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   isOptedOut = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Accepts a phone number and indicates whether the phone holder has opted
@@ -27,12 +25,10 @@ To resume sending messages, you can opt in the number by using the
 \code{\link[=sns_opt_in_phone_number]{opt_in_phone_number}} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$check_if_phone_number_is_opted_out(
+\preformatted{svc$check_if_phone_number_is_opted_out(
   phoneNumber = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

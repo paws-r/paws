@@ -14,9 +14,7 @@ consumer with. For more info, see \href{https://docs.aws.amazon.com/general/late
 However, consumer names don't have to be unique across data streams.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Consumer = list(
     ConsumerName = "string",
     ConsumerARN = "string",
@@ -26,7 +24,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Registers a consumer with a Kinesis data stream. When you use this
@@ -49,13 +47,11 @@ status at the same time. Registering a 6th consumer while there are 5 in
 a \code{CREATING} status results in a \code{LimitExceededException}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_stream_consumer(
+\preformatted{svc$register_stream_consumer(
   StreamARN = "string",
   ConsumerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,13 +19,11 @@ An empty list.
 Delete documentation version
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_documentation_version(
+\preformatted{svc$delete_documentation_version(
   restApiId = "string",
   documentationVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

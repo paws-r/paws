@@ -34,9 +34,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MulticastDomainAssociations = list(
     list(
       TransitGatewayAttachmentId = "string",
@@ -51,16 +49,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the associations for the transit gateway
 multicast domain.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_transit_gateway_multicast_domain_associations(
+\preformatted{svc$get_transit_gateway_multicast_domain_associations(
   TransitGatewayMulticastDomainId = "string",
   Filters = list(
     list(
@@ -74,7 +70,7 @@ multicast domain.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

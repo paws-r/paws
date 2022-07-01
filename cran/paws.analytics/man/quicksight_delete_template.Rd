@@ -18,28 +18,24 @@ don't provide a version number,
 the template.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RequestId = "string",
   Arn = "string",
   TemplateId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a template.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_template(
+\preformatted{svc$delete_template(
   AwsAccountId = "string",
   TemplateId = "string",
   VersionNumber = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ chime_get_voice_connector_streaming_configuration(VoiceConnectorId)
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StreamingConfiguration = list(
     DataRetentionInHours = 123,
     Disabled = TRUE|FALSE,
@@ -24,7 +22,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the streaming configuration details for the specified Amazon
@@ -33,12 +31,10 @@ sending to Amazon Kinesis. It also shows the retention period, in hours,
 for the Amazon Kinesis data.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_voice_connector_streaming_configuration(
+\preformatted{svc$get_voice_connector_streaming_configuration(
   VoiceConnectorId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -12,9 +12,7 @@ ram_get_permission(permissionArn, permissionVersion)
 \item{permissionVersion}{The identifier for the version of the permission.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   permission = list(
     arn = "string",
     version = "string",
@@ -30,19 +28,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the contents of an AWS RAM permission in JSON format.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_permission(
+\preformatted{svc$get_permission(
   permissionArn = "string",
   permissionVersion = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

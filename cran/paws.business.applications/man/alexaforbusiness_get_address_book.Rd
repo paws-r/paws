@@ -10,27 +10,23 @@ alexaforbusiness_get_address_book(AddressBookArn)
 \item{AddressBookArn}{[required] The ARN of the address book for which to request details.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AddressBook = list(
     AddressBookArn = "string",
     Name = "string",
     Description = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets address the book details by the address book ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_address_book(
+\preformatted{svc$get_address_book(
   AddressBookArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

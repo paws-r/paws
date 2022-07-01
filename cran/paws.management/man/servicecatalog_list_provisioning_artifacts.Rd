@@ -18,9 +18,7 @@ servicecatalog_list_provisioning_artifacts(AcceptLanguage, ProductId)
 \item{ProductId}{[required] The product identifier.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProvisioningArtifactDetails = list(
     list(
       Id = "string",
@@ -36,20 +34,18 @@ A list with the following syntax:
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all provisioning artifacts (also known as versions) for the
 specified product.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_provisioning_artifacts(
+\preformatted{svc$list_provisioning_artifacts(
   AcceptLanguage = "string",
   ProductId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

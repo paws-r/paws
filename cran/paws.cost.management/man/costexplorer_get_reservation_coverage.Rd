@@ -101,9 +101,7 @@ NextPageToken value that you can use in a subsequent call to get the
 next batch of objects.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CoveragesByTime = list(
     list(
       TimePeriod = list(
@@ -172,7 +170,7 @@ A list with the following syntax:
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the reservation coverage for your account. This enables you to
@@ -201,9 +199,7 @@ To determine valid values for a dimension, use the
 \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_reservation_coverage(
+\preformatted{svc$get_reservation_coverage(
   TimePeriod = list(
     Start = "string",
     End = "string"
@@ -261,7 +257,7 @@ To determine valid values for a dimension, use the
   ),
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

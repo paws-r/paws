@@ -18,9 +18,7 @@ list.}
 \item{maxResults}{The maximum number of results you want the request to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   types = list(
     list(
       name = "string",
@@ -32,21 +30,19 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the types for a given API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_types(
+\preformatted{svc$list_types(
   apiId = "string",
   format = "SDL"|"JSON",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

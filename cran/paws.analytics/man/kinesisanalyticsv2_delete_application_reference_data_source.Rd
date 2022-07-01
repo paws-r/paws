@@ -25,13 +25,11 @@ Kinesis Data Analytics assigns an ID. You can use the
 operation to get the reference ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationARN = "string",
   ApplicationVersionId = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a reference data source configuration from the specified
@@ -43,14 +41,12 @@ removes the in-application table that you created using the
 operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application_reference_data_source(
+\preformatted{svc$delete_application_reference_data_source(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   ReferenceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

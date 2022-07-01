@@ -27,9 +27,7 @@ it cannot be terminated during a scale-down event.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GameSession = list(
     GameSessionId = "string",
     Name = "string",
@@ -60,7 +58,7 @@ A list with the following syntax:
     MatchmakerData = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates game session properties. This includes the session name, maximum
@@ -86,16 +84,14 @@ object is returned.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_game_session(
+\preformatted{svc$update_game_session(
   GameSessionId = "string",
   MaximumPlayerSessionCount = 123,
   Name = "string",
   PlayerSessionCreationPolicy = "ACCEPT_ALL"|"DENY_ALL",
   ProtectionPolicy = "NoProtection"|"FullProtection"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

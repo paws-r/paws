@@ -17,9 +17,7 @@ results.}
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HoursOfOperationSummaryList = list(
     list(
       Id = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides information about the hours of operation for the specified
@@ -39,14 +37,12 @@ For more information about hours of operation, see \href{https://docs.aws.amazon
 in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_hours_of_operations(
+\preformatted{svc$list_hours_of_operations(
   InstanceId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

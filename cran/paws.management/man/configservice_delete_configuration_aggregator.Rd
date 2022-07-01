@@ -19,12 +19,10 @@ Deletes the specified configuration aggregator and the aggregated data
 associated with the aggregator.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_configuration_aggregator(
+\preformatted{svc$delete_configuration_aggregator(
   ConfigurationAggregatorName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

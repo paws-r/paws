@@ -25,20 +25,16 @@ findings.}
 \item{FindingCriteria}{Represents the criteria to be used in the filter for querying findings.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the filter specified by the filter name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_filter(
+\preformatted{svc$update_filter(
   DetectorId = "string",
   FilterName = "string",
   Description = "string",
@@ -71,7 +67,7 @@ Updates the filter specified by the filter name.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

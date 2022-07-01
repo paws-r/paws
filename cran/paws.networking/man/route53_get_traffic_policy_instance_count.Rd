@@ -8,22 +8,18 @@ current AWS account}
 route53_get_traffic_policy_instance_count()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrafficPolicyInstanceCount = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the number of traffic policy instances that are associated with the
 current AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_traffic_policy_instance_count()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_traffic_policy_instance_count()
+}
 }
 
 \keyword{internal}

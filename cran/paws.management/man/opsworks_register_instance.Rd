@@ -25,12 +25,10 @@ between the instance and the service.}
 \item{InstanceIdentity}{An InstanceIdentity object that contains the instance's identity.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Registers instances that were created outside of AWS OpsWorks Stacks
@@ -57,9 +55,7 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_instance(
+\preformatted{svc$register_instance(
   StackId = "string",
   Hostname = "string",
   PublicIp = "string",
@@ -71,7 +67,7 @@ see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-securit
     Signature = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -27,12 +27,10 @@ identifier, use
 temporarily pause the pipeline.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_job(
+\preformatted{svc$cancel_job(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -14,9 +14,7 @@ mediapackage_configure_logs(EgressAccessLogs, Id, IngressAccessLogs)
 \item{IngressAccessLogs}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   Description = "string",
   EgressAccessLogs = list(
@@ -40,15 +38,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes the Channel's properities to configure log subscription
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$configure_logs(
+\preformatted{svc$configure_logs(
   EgressAccessLogs = list(
     LogGroupName = "string"
   ),
@@ -57,7 +53,7 @@ Changes the Channel's properities to configure log subscription
     LogGroupName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,9 +16,7 @@ greengrass_create_group(AmznClientToken, InitialVersion, Name, tags)
 \item{tags}{Tag(s) to add to the new resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
@@ -27,7 +25,7 @@ A list with the following syntax:
   LatestVersionArn = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a group. You may provide the initial version of the group or use
@@ -37,9 +35,7 @@ Creates a group. You may provide the initial version of the group or use
 command-line application to create and deploy Greengrass groups.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_group(
+\preformatted{svc$create_group(
   AmznClientToken = "string",
   InitialVersion = list(
     ConnectorDefinitionVersionArn = "string",
@@ -55,7 +51,7 @@ command-line application to create and deploy Greengrass groups.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

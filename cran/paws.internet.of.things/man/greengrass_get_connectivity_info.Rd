@@ -10,9 +10,7 @@ greengrass_get_connectivity_info(ThingName)
 \item{ThingName}{[required] The thing name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConnectivityInfo = list(
     list(
       HostAddress = "string",
@@ -23,18 +21,16 @@ A list with the following syntax:
   ),
   Message = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the connectivity information for a core.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_connectivity_info(
+\preformatted{svc$get_connectivity_info(
   ThingName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,12 +23,10 @@ Valid values: \code{true} | \code{false}}
 one parameter to reset.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CacheParameterGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the parameters of a cache parameter group to the engine or
@@ -38,9 +36,7 @@ specify the \code{ResetAllParameters} and \code{CacheParameterGroupName}
 parameters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_cache_parameter_group(
+\preformatted{svc$reset_cache_parameter_group(
   CacheParameterGroupName = "string",
   ResetAllParameters = TRUE|FALSE,
   ParameterNameValues = list(
@@ -50,7 +46,7 @@ parameters.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

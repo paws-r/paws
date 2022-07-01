@@ -82,9 +82,7 @@ authorizer type. Supported only for HTTP APIs.}
 \item{Name}{The name of the authorizer.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AuthorizerCredentialsArn = "string",
   AuthorizerId = "string",
   AuthorizerPayloadFormatVersion = "string",
@@ -104,15 +102,13 @@ A list with the following syntax:
   ),
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an Authorizer.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_authorizer(
+\preformatted{svc$update_authorizer(
   ApiId = "string",
   AuthorizerCredentialsArn = "string",
   AuthorizerId = "string",
@@ -133,7 +129,7 @@ Updates an Authorizer.
   ),
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

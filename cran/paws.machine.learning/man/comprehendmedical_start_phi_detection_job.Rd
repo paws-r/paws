@@ -29,12 +29,10 @@ do not specify a key, the files are written in plain text.}
 language.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts an asynchronous job to detect protected health information (PHI).
@@ -43,9 +41,7 @@ Use the
 operation to track the status of a job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_phi_detection_job(
+\preformatted{svc$start_phi_detection_job(
   InputDataConfig = list(
     S3Bucket = "string",
     S3Key = "string"
@@ -60,7 +56,7 @@ operation to track the status of a job.
   KMSKey = "string",
   LanguageCode = "en"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

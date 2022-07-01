@@ -30,16 +30,14 @@ the vault under a specified key, the existing key value will be
 overwritten. For more information about tags, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html}{Tagging Amazon S3 Glacier Resources}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags_to_vault(
+\preformatted{svc$add_tags_to_vault(
   accountId = "string",
   vaultName = "string",
   Tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

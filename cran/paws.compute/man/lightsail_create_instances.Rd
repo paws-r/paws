@@ -56,9 +56,7 @@ resource after it's created.}
 instance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -83,7 +81,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates one or more Amazon Lightsail instances.
@@ -92,9 +90,7 @@ The \verb{create instances} operation supports tag-based access control via
 request tags. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_instances(
+\preformatted{svc$create_instances(
   instanceNames = list(
     "string"
   ),
@@ -119,7 +115,7 @@ request tags. For more information, see the Lightsail Dev Guide.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

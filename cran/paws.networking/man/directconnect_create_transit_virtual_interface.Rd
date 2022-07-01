@@ -13,9 +13,7 @@ directconnect_create_transit_virtual_interface(connectionId,
 \item{newTransitVirtualInterface}{[required] Information about the transit virtual interface.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   virtualInterface = list(
     ownerAccount = "string",
     virtualInterfaceId = "string",
@@ -64,7 +62,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a transit virtual interface. A transit virtual interface should
@@ -89,9 +87,7 @@ whether your virtual interface supports jumbo frames, call
 \code{\link[=directconnect_describe_virtual_interfaces]{describe_virtual_interfaces}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_transit_virtual_interface(
+\preformatted{svc$create_transit_virtual_interface(
   connectionId = "string",
   newTransitVirtualInterface = list(
     virtualInterfaceName = "string",
@@ -111,7 +107,7 @@ whether your virtual interface supports jumbo frames, call
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

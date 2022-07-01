@@ -11,9 +11,7 @@ lightsail_delete_disk_snapshot(diskSnapshotName)
 \code{my-disk-snapshot}).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified disk snapshot.
@@ -56,12 +54,10 @@ via resource tags applied to the resource identified by
 \verb{disk snapshot name}. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_disk_snapshot(
+\preformatted{svc$delete_disk_snapshot(
   diskSnapshotName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

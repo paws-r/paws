@@ -17,12 +17,10 @@ worklink_associate_website_certificate_authority(FleetArn, Certificate,
 \item{DisplayName}{The certificate name to display.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   WebsiteCaId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Imports the root certificate of a certificate authority (CA) used to
@@ -30,14 +28,12 @@ obtain TLS certificates used by associated websites within the company
 network.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_website_certificate_authority(
+\preformatted{svc$associate_website_certificate_authority(
   FleetArn = "string",
   Certificate = "string",
   DisplayName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,9 +16,7 @@ cloudsearch_describe_analysis_schemes(DomainName, AnalysisSchemeNames,
 pending changes (\code{false}). Defaults to \code{false}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AnalysisSchemes = list(
     list(
       Options = list(
@@ -46,7 +44,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the analysis schemes configured for a domain. An analysis scheme
@@ -60,16 +58,14 @@ target="_blank">Configuring Analysis Schemes</a> in the \emph{Amazon
 CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_analysis_schemes(
+\preformatted{svc$describe_analysis_schemes(
   DomainName = "string",
   AnalysisSchemeNames = list(
     "string"
   ),
   Deployed = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

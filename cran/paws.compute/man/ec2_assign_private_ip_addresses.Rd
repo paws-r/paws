@@ -27,9 +27,7 @@ You can't specify this parameter when also specifying private IP
 addresses.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NetworkInterfaceId = "string",
   AssignedPrivateIpAddresses = list(
     list(
@@ -37,7 +35,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Assigns one or more secondary private IP addresses to the specified
@@ -65,9 +63,7 @@ You must specify either the IP addresses or the IP address count in the
 request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$assign_private_ip_addresses(
+\preformatted{svc$assign_private_ip_addresses(
   AllowReassignment = TRUE|FALSE,
   NetworkInterfaceId = "string",
   PrivateIpAddresses = list(
@@ -75,7 +71,7 @@ request.
   ),
   SecondaryPrivateIpAddressCount = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

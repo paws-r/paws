@@ -22,9 +22,7 @@ each user.}
 \item{NoPasswordRequired}{Indicates a password is not required for this user.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserId = "string",
   UserName = "string",
   Status = "string",
@@ -39,16 +37,14 @@ A list with the following syntax:
   ),
   ARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 For Redis engine version 6.x onwards: Creates a Redis user. For more
 information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user(
+\preformatted{svc$create_user(
   UserId = "string",
   UserName = "string",
   Engine = "string",
@@ -58,7 +54,7 @@ information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-
   AccessString = "string",
   NoPasswordRequired = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

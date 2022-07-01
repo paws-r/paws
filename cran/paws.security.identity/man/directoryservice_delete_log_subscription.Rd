@@ -16,12 +16,10 @@ An empty list.
 Deletes the specified log subscription.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_log_subscription(
+\preformatted{svc$delete_log_subscription(
   DirectoryId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

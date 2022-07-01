@@ -13,9 +13,7 @@ operation returns descriptions of all registered Amazon RDS instances.}
 \item{RdsDbInstanceArns}{An array containing the ARNs of the instances to be described.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RdsDbInstances = list(
     list(
       RdsDbInstanceArn = "string",
@@ -30,7 +28,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes Amazon RDS instances.
@@ -43,15 +41,13 @@ user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguid
 This call accepts only one resource-identifying parameter.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_rds_db_instances(
+\preformatted{svc$describe_rds_db_instances(
   StackId = "string",
   RdsDbInstanceArns = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

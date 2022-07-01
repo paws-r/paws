@@ -39,9 +39,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CarrierGateways = list(
     list(
       CarrierGatewayId = "string",
@@ -58,15 +56,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your carrier gateways.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_carrier_gateways(
+\preformatted{svc$describe_carrier_gateways(
   CarrierGatewayIds = list(
     "string"
   ),
@@ -82,7 +78,7 @@ Describes one or more of your carrier gateways.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

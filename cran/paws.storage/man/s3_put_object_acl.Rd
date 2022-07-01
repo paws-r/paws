@@ -81,12 +81,10 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RequestCharged = "requester"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Uses the \code{acl} subresource to set the access control list (ACL)
@@ -211,9 +209,7 @@ different version, use the \code{versionId} subresource.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_object_acl(
+\preformatted{svc$put_object_acl(
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
   AccessControlPolicy = list(
     Grants = list(
@@ -245,7 +241,7 @@ different version, use the \code{versionId} subresource.
   VersionId = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

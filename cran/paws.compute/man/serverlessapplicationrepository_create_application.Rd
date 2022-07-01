@@ -97,9 +97,7 @@ You can specify only one of templateBody and templateUrl; otherwise an
 error results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationId = "string",
   Author = "string",
   CreationTime = "string",
@@ -148,16 +146,14 @@ A list with the following syntax:
     TemplateUrl = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an application, optionally including an AWS SAM file to create
 the first application version in the same call.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_application(
+\preformatted{svc$create_application(
   Author = "string",
   Description = "string",
   HomePageUrl = "string",
@@ -176,7 +172,7 @@ the first application version in the same call.
   TemplateBody = "string",
   TemplateUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

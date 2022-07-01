@@ -23,27 +23,23 @@ associated with them.}
 provided, the development schema is considered.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PublishedSchemaArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Publishes a development schema with a major version and a recommended
 minor version.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$publish_schema(
+\preformatted{svc$publish_schema(
   DevelopmentSchemaArn = "string",
   Version = "string",
   MinorVersion = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

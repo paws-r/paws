@@ -21,9 +21,7 @@ ec2_describe_id_format(Resource)
 | \code{vpn-connection} | \code{vpn-gateway}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Statuses = list(
     list(
       Deadline = as.POSIXct(
@@ -34,7 +32,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the ID format settings for your resources on a per-Region
@@ -63,12 +61,10 @@ regardless of these settings and provided that they have permission to
 use the relevant \code{Describe} command for the resource type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_id_format(
+\preformatted{svc$describe_id_format(
   Resource = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

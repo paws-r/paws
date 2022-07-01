@@ -20,13 +20,11 @@ Disables the specified user.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_disable_user(
+\preformatted{svc$admin_disable_user(
   UserPoolId = "string",
   Username = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

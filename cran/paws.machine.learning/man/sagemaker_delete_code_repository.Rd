@@ -16,12 +16,10 @@ An empty list.
 Deletes the specified Git repository from your account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_code_repository(
+\preformatted{svc$delete_code_repository(
   CodeRepositoryName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

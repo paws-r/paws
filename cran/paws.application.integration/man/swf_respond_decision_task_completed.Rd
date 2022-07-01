@@ -47,9 +47,7 @@ information, see \href{https://docs.aws.amazon.com/amazonswf/latest/developergui
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$respond_decision_task_completed(
+\preformatted{svc$respond_decision_task_completed(
   taskToken = "string",
   decisions = list(
     list(
@@ -154,7 +152,7 @@ in the \emph{Amazon SWF Developer Guide}.
   ),
   executionContext = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

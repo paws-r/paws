@@ -60,9 +60,7 @@ CreateMaintenanceWindow action are also required for this API request.
 Optional fields that are not specified are set to null.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   WindowId = "string",
   Name = "string",
   Description = "string",
@@ -76,7 +74,7 @@ A list with the following syntax:
   AllowUnassociatedTargets = TRUE|FALSE,
   Enabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing maintenance window. Only specified parameters are
@@ -91,9 +89,7 @@ value you specify for \code{Cutoff} is one hour, no maintenance window tasks
 can start after 5 PM.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_maintenance_window(
+\preformatted{svc$update_maintenance_window(
   WindowId = "string",
   Name = "string",
   Description = "string",
@@ -108,7 +104,7 @@ can start after 5 PM.
   Enabled = TRUE|FALSE,
   Replace = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

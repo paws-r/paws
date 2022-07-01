@@ -19,9 +19,7 @@ Operations section.
 API for AWS Elemental MediaConnect
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- mediaconnect(
+\preformatted{svc <- mediaconnect(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +33,7 @@ API for AWS Elemental MediaConnect
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -37,9 +37,7 @@ is specified the response includes only records beyond the marker, up to
 MaxRecords.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DescribeDBLogFiles = list(
     list(
       LogFileName = "string",
@@ -49,15 +47,13 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of DB log files for the DB instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_log_files(
+\preformatted{svc$describe_db_log_files(
   DBInstanceIdentifier = "string",
   FilenameContains = "string",
   FileLastWritten = 123,
@@ -73,7 +69,7 @@ Returns a list of DB log files for the DB instance.
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

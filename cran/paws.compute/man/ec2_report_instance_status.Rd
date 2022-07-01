@@ -59,9 +59,7 @@ Use of this action does not change the value returned by
 \code{\link[=ec2_describe_instance_status]{describe_instance_status}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$report_instance_status(
+\preformatted{svc$report_instance_status(
   Description = "string",
   DryRun = TRUE|FALSE,
   EndTime = as.POSIXct(
@@ -78,7 +76,7 @@ Use of this action does not change the value returned by
   ),
   Status = "ok"|"impaired"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

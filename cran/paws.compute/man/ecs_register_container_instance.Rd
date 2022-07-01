@@ -61,9 +61,7 @@ limit.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   containerInstance = list(
     containerInstanceArn = "string",
     ec2InstanceId = "string",
@@ -136,7 +134,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended
@@ -146,9 +144,7 @@ Registers an EC2 instance into the specified cluster. This instance
 becomes available to place containers on.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_container_instance(
+\preformatted{svc$register_container_instance(
   cluster = "string",
   instanceIdentityDocument = "string",
   instanceIdentityDocumentSignature = "string",
@@ -191,7 +187,7 @@ becomes available to place containers on.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

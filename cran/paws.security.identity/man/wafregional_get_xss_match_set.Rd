@@ -13,9 +13,7 @@ wafregional_get_xss_match_set(XssMatchSetId)
 \code{\link[=wafregional_list_xss_match_sets]{list_xss_match_sets}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   XssMatchSet = list(
     XssMatchSetId = "string",
     Name = "string",
@@ -30,7 +28,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -45,12 +43,10 @@ regional and global use.
 Returns the XssMatchSet that is specified by \code{XssMatchSetId}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_xss_match_set(
+\preformatted{svc$get_xss_match_set(
   XssMatchSetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

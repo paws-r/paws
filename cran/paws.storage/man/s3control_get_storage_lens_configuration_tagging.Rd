@@ -12,9 +12,7 @@ s3control_get_storage_lens_configuration_tagging(ConfigId, AccountId)
 \item{AccountId}{[required] The account ID of the requester.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -22,7 +20,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the tags of Amazon S3 Storage Lens configuration. For more
@@ -35,13 +33,11 @@ see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.htm
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_storage_lens_configuration_tagging(
+\preformatted{svc$get_storage_lens_configuration_tagging(
   ConfigId = "string",
   AccountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

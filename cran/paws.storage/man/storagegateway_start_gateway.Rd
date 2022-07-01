@@ -10,12 +10,10 @@ storagegateway_start_gateway(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a gateway that you previously shut down (see
@@ -35,12 +33,10 @@ To specify which gateway to start, use the Amazon Resource Name (ARN) of
 the gateway in your request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_gateway(
+\preformatted{svc$start_gateway(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

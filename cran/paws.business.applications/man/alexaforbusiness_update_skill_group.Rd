@@ -21,14 +21,12 @@ An empty list.
 Updates skill group details by skill group ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_skill_group(
+\preformatted{svc$update_skill_group(
   SkillGroupArn = "string",
   SkillGroupName = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,12 +16,10 @@ An empty list.
 Deletes a fleet.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_fleet(
+\preformatted{svc$delete_fleet(
   fleet = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

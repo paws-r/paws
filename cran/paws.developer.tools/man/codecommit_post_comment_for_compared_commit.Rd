@@ -29,9 +29,7 @@ is included, the request returns information about the initial request
 that used that token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   repositoryName = "string",
   beforeCommitId = "string",
   afterCommitId = "string",
@@ -63,15 +61,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Posts a comment on the comparison between two commits.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$post_comment_for_compared_commit(
+\preformatted{svc$post_comment_for_compared_commit(
   repositoryName = "string",
   beforeCommitId = "string",
   afterCommitId = "string",
@@ -83,7 +79,7 @@ Posts a comment on the comparison between two commits.
   content = "string",
   clientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

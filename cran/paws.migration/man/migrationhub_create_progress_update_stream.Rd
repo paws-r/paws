@@ -28,13 +28,11 @@ it does not need to be unique for each AWS account because it is scoped
 to the AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_progress_update_stream(
+\preformatted{svc$create_progress_update_stream(
   ProgressUpdateStreamName = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

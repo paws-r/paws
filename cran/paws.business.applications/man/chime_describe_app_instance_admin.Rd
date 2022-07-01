@@ -12,9 +12,7 @@ chime_describe_app_instance_admin(AppInstanceAdminArn, AppInstanceArn)
 \item{AppInstanceArn}{[required] The ARN of the app instance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AppInstanceAdmin = list(
     Admin = list(
       Arn = "string",
@@ -26,19 +24,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the full details of an \code{AppInstanceAdmin}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_app_instance_admin(
+\preformatted{svc$describe_app_instance_admin(
   AppInstanceAdminArn = "string",
   AppInstanceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

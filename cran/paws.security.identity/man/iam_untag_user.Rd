@@ -25,15 +25,13 @@ tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_user(
+\preformatted{svc$untag_user(
   UserName = "string",
   TagKeys = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

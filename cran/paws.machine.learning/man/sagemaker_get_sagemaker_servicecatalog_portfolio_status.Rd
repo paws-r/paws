@@ -7,22 +7,18 @@
 sagemaker_get_sagemaker_servicecatalog_portfolio_status()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = "Enabled"|"Disabled"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the status of Service Catalog in SageMaker. Service Catalog is used
 to create SageMaker projects.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_sagemaker_servicecatalog_portfolio_status()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_sagemaker_servicecatalog_portfolio_status()
+}
 }
 
 \keyword{internal}

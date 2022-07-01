@@ -21,9 +21,7 @@ idempotency of the request.}
 deployment job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   arn = "string",
   fleet = "string",
   status = "Pending"|"Preparing"|"InProgress"|"Failed"|"Succeeded"|"Canceled",
@@ -61,7 +59,7 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deploys a specific version of a robot application to robots in a fleet.
@@ -75,9 +73,7 @@ After 90 days, deployment jobs expire and will be deleted. They will no
 longer be accessible.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_deployment_job(
+\preformatted{svc$create_deployment_job(
   deploymentConfig = list(
     concurrentDeploymentPercentage = 123,
     failureThresholdPercentage = 123,
@@ -109,7 +105,7 @@ longer be accessible.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

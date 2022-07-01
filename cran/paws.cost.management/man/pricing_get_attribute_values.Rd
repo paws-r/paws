@@ -20,9 +20,7 @@ want to retrieve.}
 \item{MaxResults}{The maximum number of results to return in response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AttributeValues = list(
     list(
       Value = "string"
@@ -30,7 +28,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of attribute values. Attibutes are similar to the details
@@ -39,15 +37,13 @@ in a Price List API offer file. For a list of available attributes, see
 in the \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html}{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_attribute_values(
+\preformatted{svc$get_attribute_values(
   ServiceCode = "string",
   AttributeName = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

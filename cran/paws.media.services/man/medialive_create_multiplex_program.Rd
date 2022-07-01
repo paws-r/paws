@@ -18,9 +18,7 @@ medialive_create_multiplex_program(MultiplexId,
 resources.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MultiplexProgram = list(
     ChannelId = "string",
     MultiplexProgramSettings = list(
@@ -71,15 +69,13 @@ A list with the following syntax:
     ProgramName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create a new program in the multiplex.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_multiplex_program(
+\preformatted{svc$create_multiplex_program(
   MultiplexId = "string",
   MultiplexProgramSettings = list(
     PreferredChannelPipeline = "CURRENTLY_ACTIVE"|"PIPELINE_0"|"PIPELINE_1",
@@ -100,7 +96,7 @@ Create a new program in the multiplex.
   ProgramName = "string",
   RequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ cloudfront_create_key_group(KeyGroupConfig)
 \item{KeyGroupConfig}{[required] A key group configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   KeyGroup = list(
     Id = "string",
     LastModifiedTime = as.POSIXct(
@@ -30,7 +28,7 @@ A list with the following syntax:
   Location = "string",
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a key group that you can use with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html}{CloudFront signed URLs and signed cookies}.
@@ -47,9 +45,7 @@ see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Pri
 in the \emph{Amazon CloudFront Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_key_group(
+\preformatted{svc$create_key_group(
   KeyGroupConfig = list(
     Name = "string",
     Items = list(
@@ -58,7 +54,7 @@ in the \emph{Amazon CloudFront Developer Guide}.
     Comment = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

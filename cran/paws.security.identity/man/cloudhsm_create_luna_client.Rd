@@ -13,12 +13,10 @@ cloudhsm_create_luna_client(Label, Certificate)
 the HSMs used by this client.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClientArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -31,13 +29,11 @@ and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS Cl
 Creates an HSM client.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_luna_client(
+\preformatted{svc$create_luna_client(
   Label = "string",
   Certificate = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

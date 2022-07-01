@@ -39,9 +39,7 @@ operate your own cluster management and configuration management systems
 or worry about scaling your management infrastructure.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- ecs(
+\preformatted{svc <- ecs(
   config = list(
     credentials = list(
       creds = list(
@@ -55,7 +53,7 @@ or worry about scaling your management infrastructure.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -44,9 +44,7 @@ items.}
 \item{NextToken}{The token for the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Instances = list(
     list(
       Groups = list(
@@ -67,7 +65,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your linked EC2-Classic instances. This request
@@ -76,9 +74,7 @@ through ClassicLink. You cannot use this request to return information
 about other instances.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_classic_link_instances(
+\preformatted{svc$describe_classic_link_instances(
   Filters = list(
     list(
       Name = "string",
@@ -94,7 +90,7 @@ about other instances.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

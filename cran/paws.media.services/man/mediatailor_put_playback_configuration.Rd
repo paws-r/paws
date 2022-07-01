@@ -60,9 +60,7 @@ profiles with the help of AWS Support.}
 ID. The maximum length is 512 characters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AdDecisionServerUrl = "string",
   AvailSuppression = list(
     Mode = "OFF"|"BEHIND_LIVE_EDGE",
@@ -105,15 +103,13 @@ A list with the following syntax:
   TranscodeProfileName = "string",
   VideoContentSourceUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a new playback configuration to AWS Elemental MediaTailor.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_playback_configuration(
+\preformatted{svc$put_playback_configuration(
   AdDecisionServerUrl = "string",
   AvailSuppression = list(
     Mode = "OFF"|"BEHIND_LIVE_EDGE",
@@ -149,7 +145,7 @@ Adds a new playback configuration to AWS Elemental MediaTailor.
   TranscodeProfileName = "string",
   VideoContentSourceUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

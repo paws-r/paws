@@ -34,9 +34,7 @@ but they must be for the same named item. For example, if you are
 looking for items with the status \code{Preparing} or the status \code{Running}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   simulationJobSummaries = list(
     list(
       arn = "string",
@@ -58,16 +56,14 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of simulation jobs. You can optionally provide filters to
 retrieve specific simulation jobs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_simulation_jobs(
+\preformatted{svc$list_simulation_jobs(
   nextToken = "string",
   maxResults = 123,
   filters = list(
@@ -79,7 +75,7 @@ retrieve specific simulation jobs.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

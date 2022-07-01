@@ -83,14 +83,12 @@ original timeout value (not to the value you set using the
 next time the message is received.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$change_message_visibility(
+\preformatted{svc$change_message_visibility(
   QueueUrl = "string",
   ReceiptHandle = "string",
   VisibilityTimeout = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

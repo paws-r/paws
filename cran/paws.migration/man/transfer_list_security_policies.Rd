@@ -18,28 +18,24 @@ transfer_list_security_policies(MaxResults, NextToken)
 additional security policies.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   SecurityPolicyNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the security policies that are attached to your file transfer
 protocol-enabled servers.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_security_policies(
+\preformatted{svc$list_security_policies(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

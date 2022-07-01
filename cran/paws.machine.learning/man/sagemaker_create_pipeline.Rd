@@ -27,20 +27,16 @@ access and create resources.}
 \item{Tags}{A list of tags to apply to the created pipeline.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PipelineArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a pipeline using a JSON pipeline definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_pipeline(
+\preformatted{svc$create_pipeline(
   PipelineName = "string",
   PipelineDisplayName = "string",
   PipelineDefinition = "string",
@@ -54,7 +50,7 @@ Creates a pipeline using a JSON pipeline definition.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

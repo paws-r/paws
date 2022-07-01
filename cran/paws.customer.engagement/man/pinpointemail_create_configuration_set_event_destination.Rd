@@ -31,9 +31,7 @@ long-term storage.
 A single configuration set can include more than one event destination.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_configuration_set_event_destination(
+\preformatted{svc$create_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestinationName = "string",
   EventDestination = list(
@@ -62,7 +60,7 @@ A single configuration set can include more than one event destination.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

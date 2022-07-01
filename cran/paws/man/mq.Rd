@@ -23,9 +23,7 @@ communicate using various programming languages, operating systems, and
 formal messaging protocols.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- mq(
+\preformatted{svc <- mq(
   config = list(
     credentials = list(
       creds = list(
@@ -39,7 +37,7 @@ formal messaging protocols.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

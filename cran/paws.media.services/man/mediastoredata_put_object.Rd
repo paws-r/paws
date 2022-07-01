@@ -60,14 +60,12 @@ To use this header, you must also set the HTTP \code{Transfer-Encoding}
 header to \code{chunked}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContentSHA256 = "string",
   ETag = "string",
   StorageClass = "TEMPORAL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Uploads an object to the specified path. Object sizes are limited to 25
@@ -75,9 +73,7 @@ MB for standard upload availability and 10 MB for streaming upload
 availability.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_object(
+\preformatted{svc$put_object(
   Body = raw,
   Path = "string",
   ContentType = "string",
@@ -85,7 +81,7 @@ availability.
   StorageClass = "TEMPORAL",
   UploadAvailability = "STANDARD"|"STREAMING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ redshift_modify_cluster_subnet_group(ClusterSubnetGroupName,
 single request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClusterSubnetGroup = list(
     ClusterSubnetGroupName = "string",
     Description = "string",
@@ -47,7 +45,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies a cluster subnet group to include the specified list of VPC
@@ -55,16 +53,14 @@ subnets. The operation replaces the existing list of subnets with the
 new list of subnets.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_cluster_subnet_group(
+\preformatted{svc$modify_cluster_subnet_group(
   ClusterSubnetGroupName = "string",
   Description = "string",
   SubnetIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

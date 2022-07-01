@@ -19,13 +19,11 @@ Demotes an \code{AppInstanceAdmin} to an \code{AppInstanceUser}. This action doe
 not delete the user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_app_instance_admin(
+\preformatted{svc$delete_app_instance_admin(
   AppInstanceAdminArn = "string",
   AppInstanceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

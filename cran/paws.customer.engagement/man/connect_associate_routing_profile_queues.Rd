@@ -21,9 +21,7 @@ An empty list.
 Associates a set of queues with a routing profile.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_routing_profile_queues(
+\preformatted{svc$associate_routing_profile_queues(
   InstanceId = "string",
   RoutingProfileId = "string",
   QueueConfigs = list(
@@ -37,7 +35,7 @@ Associates a set of queues with a routing profile.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

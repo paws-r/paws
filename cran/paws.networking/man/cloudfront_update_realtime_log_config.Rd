@@ -26,9 +26,7 @@ in the real-time log data. You must provide an integer between 1 and
 100, inclusive.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RealtimeLogConfig = list(
     ARN = "string",
     Name = "string",
@@ -47,7 +45,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a real-time log configuration.
@@ -70,9 +68,7 @@ parameters that you modified and those that you didn’t.
 You cannot update a real-time log configuration’s \code{Name} or \code{ARN}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_realtime_log_config(
+\preformatted{svc$update_realtime_log_config(
   EndPoints = list(
     list(
       StreamType = "string",
@@ -89,7 +85,7 @@ You cannot update a real-time log configuration’s \code{Name} or \code{ARN}.
   ARN = "string",
   SamplingRate = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

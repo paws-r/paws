@@ -35,9 +35,7 @@ You cannot update a scaling plan if it is in the process of being
 created, updated, or deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_scaling_plan(
+\preformatted{svc$update_scaling_plan(
   ScalingPlanName = "string",
   ScalingPlanVersion = 123,
   ApplicationSource = list(
@@ -108,7 +106,7 @@ created, updated, or deleted.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -8,9 +8,7 @@ account}
 gamelift_describe_vpc_peering_authorizations()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VpcPeeringAuthorizations = list(
     list(
       GameLiftAwsAccountId = "string",
@@ -25,7 +23,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves valid VPC peering authorizations that are pending for the AWS
@@ -42,10 +40,8 @@ account.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vpc_peering_authorizations()
-}\if{html}{\out{</div>}}
+\preformatted{svc$describe_vpc_peering_authorizations()
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ describing the virtual tape recovery points.}
 described be limited to the specified number.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string",
   TapeRecoveryPointInfos = list(
     list(
@@ -33,7 +31,7 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of virtual tape recovery points that are available for
@@ -45,14 +43,12 @@ virtual tapes that have recovery points can be recovered to a new
 gateway. This operation is only supported in the tape gateway type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tape_recovery_points(
+\preformatted{svc$describe_tape_recovery_points(
   GatewayARN = "string",
   Marker = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

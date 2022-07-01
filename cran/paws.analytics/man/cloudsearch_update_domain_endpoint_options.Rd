@@ -17,9 +17,7 @@ compatibility with older clients, the default is
 Policy-Min-TLS-1-0-2019-07.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainEndpointOptions = list(
     Options = list(
       EnforceHTTPS = TRUE|FALSE,
@@ -38,7 +36,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the domain's endpoint options, specifically whether all requests
@@ -48,16 +46,14 @@ target="_blank">Configuring Domain Endpoint Options</a> in the \emph{Amazon
 CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_domain_endpoint_options(
+\preformatted{svc$update_domain_endpoint_options(
   DomainName = "string",
   DomainEndpointOptions = list(
     EnforceHTTPS = TRUE|FALSE,
     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,23 +10,19 @@ comprehendmedical_stop_entities_detection_v2_job(JobId)
 \item{JobId}{[required] The identifier of the medical entities job to stop.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops a medical entities detection job in progress.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_entities_detection_v2_job(
+\preformatted{svc$stop_entities_detection_v2_job(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

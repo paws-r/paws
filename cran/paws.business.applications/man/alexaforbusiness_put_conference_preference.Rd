@@ -18,14 +18,12 @@ Sets the conference preferences on a specific conference provider at the
 account level.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_conference_preference(
+\preformatted{svc$put_conference_preference(
   ConferencePreference = list(
     DefaultConferenceProviderArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

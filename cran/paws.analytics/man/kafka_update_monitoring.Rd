@@ -22,13 +22,11 @@ Amazon CloudWatch for this cluster.}
 \item{LoggingInfo}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClusterArn = "string",
   ClusterOperationArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the monitoring settings for the cluster. You can use this
@@ -37,9 +35,7 @@ send to Amazon CloudWatch. You can also specify settings for open
 monitoring with Prometheus.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_monitoring(
+\preformatted{svc$update_monitoring(
   ClusterArn = "string",
   CurrentVersion = "string",
   EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER"|"PER_TOPIC_PER_PARTITION",
@@ -71,7 +67,7 @@ monitoring with Prometheus.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -12,26 +12,22 @@ mediaconnect_remove_flow_source(FlowArn, SourceArn)
 \item{SourceArn}{[required] The ARN of the source that you want to remove.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FlowArn = "string",
   SourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes a source from an existing flow. This request can be made only if
 there is more than one source on the flow.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_flow_source(
+\preformatted{svc$remove_flow_source(
   FlowArn = "string",
   SourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

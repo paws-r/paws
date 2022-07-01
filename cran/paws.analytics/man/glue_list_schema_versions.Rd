@@ -24,9 +24,7 @@ supplied, this will be defaulted to 25 per page.}
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Schemas = list(
     list(
       SchemaArn = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of schema versions that you have created, with minimal
@@ -47,9 +45,7 @@ the results. Empty results will be returned if there are no schema
 versions available.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_schema_versions(
+\preformatted{svc$list_schema_versions(
   SchemaId = list(
     SchemaArn = "string",
     SchemaName = "string",
@@ -58,7 +54,7 @@ versions available.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

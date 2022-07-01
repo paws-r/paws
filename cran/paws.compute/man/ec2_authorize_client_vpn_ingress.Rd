@@ -32,15 +32,13 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = list(
     Code = "authorizing"|"active"|"failed"|"revoking",
     Message = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds an ingress authorization rule to a Client VPN endpoint. Ingress
@@ -49,9 +47,7 @@ You must configure ingress authorization rules to enable clients to
 access resources in AWS or on-premises networks.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$authorize_client_vpn_ingress(
+\preformatted{svc$authorize_client_vpn_ingress(
   ClientVpnEndpointId = "string",
   TargetNetworkCidr = "string",
   AccessGroupId = "string",
@@ -60,7 +56,7 @@ access resources in AWS or on-premises networks.
   ClientToken = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

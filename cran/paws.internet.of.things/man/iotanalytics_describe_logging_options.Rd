@@ -7,25 +7,21 @@
 iotanalytics_describe_logging_options()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   loggingOptions = list(
     roleArn = "string",
     level = "ERROR",
     enabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the current settings of the AWS IoT Analytics logging options.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_logging_options()
-}\if{html}{\out{</div>}}
+\preformatted{svc$describe_logging_options()
+}
 }
 
 \keyword{internal}

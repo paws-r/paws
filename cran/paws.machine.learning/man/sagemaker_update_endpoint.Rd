@@ -34,12 +34,10 @@ VariantProperty to override with the values provided by
 \item{DeploymentConfig}{The deployment configuration for the endpoint to be updated.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EndpointArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deploys the new \code{EndpointConfig} specified in the request, switches to
@@ -64,9 +62,7 @@ the endpoint is using. The endpoint must be deleted in order to stop
 incurring charges.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_endpoint(
+\preformatted{svc$update_endpoint(
   EndpointName = "string",
   EndpointConfigName = "string",
   RetainAllVariantProperties = TRUE|FALSE,
@@ -97,7 +93,7 @@ incurring charges.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

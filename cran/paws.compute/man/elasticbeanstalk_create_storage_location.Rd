@@ -8,12 +8,10 @@ other files used by Elastic Beanstalk environments}
 elasticbeanstalk_create_storage_location()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   S3Bucket = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a bucket in Amazon S3 to store application versions, logs, and

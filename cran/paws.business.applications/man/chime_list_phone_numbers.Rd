@@ -23,9 +23,7 @@ chime_list_phone_numbers(Status, ProductType, FilterName, FilterValue,
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PhoneNumbers = list(
     list(
       PhoneNumberId = "string",
@@ -65,7 +63,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the phone numbers for the specified Amazon Chime account, Amazon
@@ -73,9 +71,7 @@ Chime user, Amazon Chime Voice Connector, or Amazon Chime Voice
 Connector group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_phone_numbers(
+\preformatted{svc$list_phone_numbers(
   Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
   ProductType = "BusinessCalling"|"VoiceConnector",
   FilterName = "AccountId"|"UserId"|"VoiceConnectorId"|"VoiceConnectorGroupId"|"SipRuleId",
@@ -83,7 +79,7 @@ Connector group.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

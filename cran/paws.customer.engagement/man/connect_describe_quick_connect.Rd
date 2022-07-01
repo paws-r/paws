@@ -13,9 +13,7 @@ connect_describe_quick_connect(InstanceId, QuickConnectId)
 \item{QuickConnectId}{[required] The identifier for the quick connect.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   QuickConnect = list(
     QuickConnectARN = "string",
     QuickConnectId = "string",
@@ -40,7 +38,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -49,13 +47,11 @@ change.
 Describes the quick connect.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_quick_connect(
+\preformatted{svc$describe_quick_connect(
   InstanceId = "string",
   QuickConnectId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

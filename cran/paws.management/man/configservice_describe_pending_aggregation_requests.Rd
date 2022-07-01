@@ -14,9 +14,7 @@ default is maximum. If you specify 0, AWS Config uses the default.}
 the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PendingAggregationRequests = list(
     list(
       RequesterAccountId = "string",
@@ -25,19 +23,17 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of all pending aggregation requests.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_pending_aggregation_requests(
+\preformatted{svc$describe_pending_aggregation_requests(
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

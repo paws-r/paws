@@ -28,9 +28,7 @@ regardless of the tag value.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PublicIpv4Pools = list(
     list(
       PoolId = "string",
@@ -56,15 +54,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified IPv4 address pools.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_public_ipv_4_pools(
+\preformatted{svc$describe_public_ipv_4_pools(
   PoolIds = list(
     "string"
   ),
@@ -79,7 +75,7 @@ Describes the specified IPv4 address pools.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

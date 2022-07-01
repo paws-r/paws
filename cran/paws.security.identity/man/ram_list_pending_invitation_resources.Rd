@@ -18,9 +18,7 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   resources = list(
     list(
       arn = "string",
@@ -39,21 +37,19 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the resources in a resource share that is shared with you but that
 the invitation is still pending for.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_pending_invitation_resources(
+\preformatted{svc$list_pending_invitation_resources(
   resourceShareInvitationArn = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -13,9 +13,7 @@ ec2_replace_iam_instance_profile_association(IamInstanceProfile,
 \item{AssociationId}{[required] The ID of the existing IAM instance profile association.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IamInstanceProfileAssociation = list(
     AssociationId = "string",
     InstanceId = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Replaces an IAM instance profile for the specified running instance. You
@@ -42,16 +40,14 @@ Use
 to get the association ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$replace_iam_instance_profile_association(
+\preformatted{svc$replace_iam_instance_profile_association(
   IamInstanceProfile = list(
     Arn = "string",
     Name = "string"
   ),
   AssociationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

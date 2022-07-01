@@ -21,12 +21,10 @@ retrieve the current pipelineExecutionId of the failed stage}
 FAILED_ACTIONS.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pipelineExecutionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Resumes the pipeline execution by retrying the last failed actions in a
@@ -35,15 +33,13 @@ stage fail. When you retry, all actions that are still in progress
 continue working, and failed actions are triggered again.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$retry_stage_execution(
+\preformatted{svc$retry_stage_execution(
   pipelineName = "string",
   stageName = "string",
   pipelineExecutionId = "string",
   retryMode = "FAILED_ACTIONS"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

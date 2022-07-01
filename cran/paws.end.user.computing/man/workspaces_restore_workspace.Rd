@@ -25,12 +25,10 @@ This operation is asynchronous and returns before the WorkSpace is
 completely restored.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_workspace(
+\preformatted{svc$restore_workspace(
   WorkspaceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

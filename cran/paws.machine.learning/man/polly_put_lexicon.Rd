@@ -26,13 +26,11 @@ SynthesizeSpeech operation.
 For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_lexicon(
+\preformatted{svc$put_lexicon(
   Name = "string",
   Content = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

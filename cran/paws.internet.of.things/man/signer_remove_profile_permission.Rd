@@ -16,25 +16,21 @@ permissions.}
 \item{statementId}{[required] A unique identifier for the cross-account permissions statement.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   revisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes cross-account permissions from a signing profile.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_profile_permission(
+\preformatted{svc$remove_profile_permission(
   profileName = "string",
   revisionId = "string",
   statementId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

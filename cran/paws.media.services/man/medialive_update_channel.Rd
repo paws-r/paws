@@ -30,9 +30,7 @@ running the Channel. If you do not specify this on an update call but
 the role was previously set that role will be removed.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Channel = list(
     Arn = "string",
     CdiInputSpecification = list(
@@ -935,15 +933,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a channel.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_channel(
+\preformatted{svc$update_channel(
   CdiInputSpecification = list(
     Resolution = "SD"|"HD"|"FHD"|"UHD"
   ),
@@ -1825,7 +1821,7 @@ Updates a channel.
   Name = "string",
   RoleArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

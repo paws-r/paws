@@ -40,13 +40,11 @@ For more information about roles, go to \href{https://docs.aws.amazon.com/IAM/la
 For more information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About Instance Profiles}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_role_to_instance_profile(
+\preformatted{svc$add_role_to_instance_profile(
   InstanceProfileName = "string",
   RoleName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

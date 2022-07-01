@@ -18,12 +18,10 @@ instances in the current AWS account and region are included in the
 assessment target.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   assessmentTargetArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new assessment target using the ARN of the resource group that
@@ -39,13 +37,11 @@ assessment targets per AWS account. You can run up to 500 concurrent
 agents per AWS account. For more information, see \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspector_applications.html}{Amazon Inspector Assessment Targets}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_assessment_target(
+\preformatted{svc$create_assessment_target(
   assessmentTargetName = "string",
   resourceGroupArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

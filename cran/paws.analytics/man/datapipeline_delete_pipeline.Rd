@@ -24,12 +24,10 @@ it, call \code{\link[=datapipeline_set_status]{set_status}} with the status set 
 \code{\link[=datapipeline_set_status]{set_status}} can be resumed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_pipeline(
+\preformatted{svc$delete_pipeline(
   pipelineId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

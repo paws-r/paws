@@ -43,15 +43,13 @@ will have no effect. You can view a fleet's stopped actions using
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_fleet_actions(
+\preformatted{svc$start_fleet_actions(
   FleetId = "string",
   Actions = list(
     "AUTO_SCALING"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -37,16 +37,14 @@ An empty list.
 Creates a new user in the user pool.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user(
+\preformatted{svc$create_user(
   UserName = "string",
   MessageAction = "SUPPRESS"|"RESEND",
   FirstName = "string",
   LastName = "string",
   AuthenticationType = "API"|"SAML"|"USERPOOL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

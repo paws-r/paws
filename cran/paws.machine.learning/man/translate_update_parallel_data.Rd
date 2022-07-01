@@ -19,9 +19,7 @@ translate_update_parallel_data(Name, Description, ParallelDataConfig,
 generated when you use Amazon Translate through an AWS SDK.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Name = "string",
   Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
   LatestUpdateAttemptStatus = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
@@ -29,16 +27,14 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a previously created parallel data resource by importing a new
 input file from Amazon S3.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_parallel_data(
+\preformatted{svc$update_parallel_data(
   Name = "string",
   Description = "string",
   ParallelDataConfig = list(
@@ -47,7 +43,7 @@ input file from Amazon S3.
   ),
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

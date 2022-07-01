@@ -21,12 +21,10 @@ Deleted phone numbers remain in the \strong{Deletion queue} for 7 days before
 they are deleted permanently.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_phone_number(
+\preformatted{svc$delete_phone_number(
   PhoneNumberId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

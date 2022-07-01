@@ -16,9 +16,7 @@ results.}
 \item{namePrefixFilter}{Limit the results to billing groups whose names have the given prefix.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   billingGroups = list(
     list(
       groupName = "string",
@@ -27,20 +25,18 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the billing groups you have created.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_billing_groups(
+\preformatted{svc$list_billing_groups(
   nextToken = "string",
   maxResults = 123,
   namePrefixFilter = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -18,12 +18,10 @@ lifecycle hook is specified in the \code{hooks} section of the AppSpec file.}
 event (\code{Succeeded} or \code{Failed}).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   lifecycleEventHookExecutionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sets the result of a Lambda validation function. The function validates
@@ -38,14 +36,12 @@ functions return \code{Succeeded} or \code{Failed}. For more information, see
 and \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs}{AppSpec 'hooks' Section for an Amazon ECS Deployment}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_lifecycle_event_hook_execution_status(
+\preformatted{svc$put_lifecycle_event_hook_execution_status(
   deploymentId = "string",
   lifecycleEventHookExecutionId = "string",
   status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

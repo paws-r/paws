@@ -26,14 +26,12 @@ You cannot delete an application version that is associated with a
 running environment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application_version(
+\preformatted{svc$delete_application_version(
   ApplicationName = "string",
   VersionLabel = "string",
   DeleteSourceBundle = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -14,9 +14,7 @@ costexplorer_describe_cost_category_definition(CostCategoryArn,
 \item{EffectiveOn}{The date when the Cost Category was effective.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CostCategory = list(
     CostCategoryArn = "string",
     EffectiveStart = "string",
@@ -72,7 +70,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the name, ARN, rules, definition, and effective dates of a Cost
@@ -85,13 +83,11 @@ Cost Category is still effective, \code{EffectiveEnd} is omitted in the
 response.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cost_category_definition(
+\preformatted{svc$describe_cost_category_definition(
   CostCategoryArn = "string",
   EffectiveOn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

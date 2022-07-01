@@ -19,9 +19,7 @@ Operations section.
 This is the Amazon Rekognition API reference.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- rekognition(
+\preformatted{svc <- rekognition(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +33,7 @@ This is the Amazon Rekognition API reference.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

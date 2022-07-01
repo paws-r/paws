@@ -11,9 +11,7 @@ inspector_describe_resource_groups(resourceGroupArns)
 \item{resourceGroupArns}{[required] The ARN that specifies the resource group that you want to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   resourceGroups = list(
     list(
       arn = "string",
@@ -35,21 +33,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the resource groups that are specified by the ARNs of the
 resource groups.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_resource_groups(
+\preformatted{svc$describe_resource_groups(
   resourceGroupArns = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

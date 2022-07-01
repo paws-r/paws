@@ -43,9 +43,7 @@ processing.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LastModified = as.POSIXct(
     "2015-01-01"
   ),
@@ -61,7 +59,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Configures options for \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html}{asynchronous invocation}
@@ -87,9 +85,7 @@ You can configure destinations in addition to or instead of a
 dead-letter queue.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_function_event_invoke_config(
+\preformatted{svc$put_function_event_invoke_config(
   FunctionName = "string",
   Qualifier = "string",
   MaximumRetryAttempts = 123,
@@ -103,7 +99,7 @@ dead-letter queue.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

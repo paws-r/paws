@@ -23,13 +23,11 @@ When you disable a rule, incoming events might continue to match to the
 disabled rule. Allow a short period of time for changes to take effect.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_rule(
+\preformatted{svc$disable_rule(
   Name = "string",
   EventBusName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

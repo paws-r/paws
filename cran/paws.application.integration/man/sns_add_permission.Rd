@@ -29,9 +29,7 @@ Adds a statement to a topic's access control policy, granting access for
 the specified AWS accounts to the specified actions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_permission(
+\preformatted{svc$add_permission(
   TopicArn = "string",
   Label = "string",
   AWSAccountId = list(
@@ -41,7 +39,7 @@ the specified AWS accounts to the specified actions.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

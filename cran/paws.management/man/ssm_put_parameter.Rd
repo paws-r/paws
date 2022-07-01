@@ -210,21 +210,17 @@ in your AWS account. For more information, see \href{https://docs.aws.amazon.com
 in the \emph{AWS Systems Manager User Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Version = 123,
   Tier = "Standard"|"Advanced"|"Intelligent-Tiering"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Add a parameter to the system.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_parameter(
+\preformatted{svc$put_parameter(
   Name = "string",
   Description = "string",
   Value = "string",
@@ -242,7 +238,7 @@ Add a parameter to the system.
   Policies = "string",
   DataType = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

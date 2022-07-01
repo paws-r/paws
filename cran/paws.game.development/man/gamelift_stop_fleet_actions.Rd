@@ -45,15 +45,13 @@ using \code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_fleet_actions(
+\preformatted{svc$stop_fleet_actions(
   FleetId = "string",
   Actions = list(
     "AUTO_SCALING"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

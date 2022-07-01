@@ -28,12 +28,10 @@ called on the shadow trails (replicated trails in other regions) of a
 trail enabled in all regions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_logging(
+\preformatted{svc$stop_logging(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

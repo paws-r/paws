@@ -28,13 +28,11 @@ Related actions include:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_job_tagging(
+\preformatted{svc$delete_job_tagging(
   AccountId = "string",
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

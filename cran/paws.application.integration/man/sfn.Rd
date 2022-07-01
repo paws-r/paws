@@ -37,9 +37,7 @@ HTTP API. For more information about Step Functions, see the \emph{\href{https:/
 .
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- sfn(
+\preformatted{svc <- sfn(
   config = list(
     credentials = list(
       creds = list(
@@ -53,7 +51,7 @@ HTTP API. For more information about Step Functions, see the \emph{\href{https:/
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

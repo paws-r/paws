@@ -22,9 +22,7 @@ add them to.}
 to remove them from.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AnalysisArn = "string",
   AnalysisId = "string",
   Permissions = list(
@@ -38,15 +36,13 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the read and write permissions for an analysis.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_analysis_permissions(
+\preformatted{svc$update_analysis_permissions(
   AwsAccountId = "string",
   AnalysisId = "string",
   GrantPermissions = list(
@@ -66,7 +62,7 @@ Updates the read and write permissions for an analysis.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

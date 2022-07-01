@@ -10,9 +10,7 @@ sagemaker_describe_domain(DomainId)
 \item{DomainId}{[required] The domain ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainArn = "string",
   DomainId = "string",
   DomainName = "string",
@@ -75,18 +73,16 @@ A list with the following syntax:
   VpcId = "string",
   KmsKeyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The description of the domain.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_domain(
+\preformatted{svc$describe_domain(
   DomainId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

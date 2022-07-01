@@ -16,14 +16,12 @@ transfer_import_ssh_public_key(ServerId, SshPublicKeyBody, UserName)
 \item{UserName}{[required] The name of the user account that is assigned to one or more servers.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ServerId = "string",
   SshPublicKeyId = "string",
   UserName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a Secure Shell (SSH) public key to a user account identified by a
@@ -34,14 +32,12 @@ The response returns the \code{UserName} value, the \code{ServerId} value, and t
 name of the \code{SshPublicKeyId}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_ssh_public_key(
+\preformatted{svc$import_ssh_public_key(
   ServerId = "string",
   SshPublicKeyBody = "string",
   UserName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

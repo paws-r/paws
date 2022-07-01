@@ -21,9 +21,7 @@ of the specified commands. Otherwise, it returns a description of every
 command.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Commands = list(
     list(
       CommandId = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the results of specified commands.
@@ -52,16 +50,14 @@ policy that explicitly grants permissions. For more information about
 user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_commands(
+\preformatted{svc$describe_commands(
   DeploymentId = "string",
   InstanceId = "string",
   CommandIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

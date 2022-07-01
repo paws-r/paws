@@ -53,9 +53,7 @@ considered deprecated and are subject to deletion by Secrets Manager as
 needed.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Versions = list(
     list(
       VersionId = "string",
@@ -74,7 +72,7 @@ A list with the following syntax:
   ARN = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all of the versions attached to the specified secret. The output
@@ -103,15 +101,13 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_secret_version_ids(
+\preformatted{svc$list_secret_version_ids(
   SecretId = "string",
   MaxResults = 123,
   NextToken = "string",
   IncludeDeprecated = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

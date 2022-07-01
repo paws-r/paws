@@ -53,12 +53,10 @@ If you specify \code{image/png}, the HTTP response has a content-type set to
 \code{image/png}, and the body of the response is a PNG image.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MetricWidgetImage = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 You can use the
@@ -81,13 +79,11 @@ has the following limits:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_metric_widget_image(
+\preformatted{svc$get_metric_widget_image(
   MetricWidget = "string",
   OutputFormat = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

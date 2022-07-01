@@ -16,25 +16,21 @@ must use \code{ipv4}. You can’t specify \code{dualstack} for a load balancer w
 a UDP or TCP_UDP listener.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IpAddressType = "ipv4"|"dualstack"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sets the type of IP addresses used by the subnets of the specified
 Application Load Balancer or Network Load Balancer.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_ip_address_type(
+\preformatted{svc$set_ip_address_type(
   LoadBalancerArn = "string",
   IpAddressType = "ipv4"|"dualstack"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,12 +16,10 @@ An empty list.
 Delete a listener for a custom routing accelerator.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_custom_routing_listener(
+\preformatted{svc$delete_custom_routing_listener(
   ListenerArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -20,13 +20,11 @@ An empty list.
 Put dedicated ip warmup attributes
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_dedicated_ip_warmup_attributes(
+\preformatted{svc$put_dedicated_ip_warmup_attributes(
   Ip = "string",
   WarmupPercentage = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

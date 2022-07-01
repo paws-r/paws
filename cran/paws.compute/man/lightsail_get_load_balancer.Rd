@@ -10,9 +10,7 @@ lightsail_get_load_balancer(loadBalancerName)
 \item{loadBalancerName}{[required] The name of the load balancer.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   loadBalancer = list(
     name = "string",
     arn = "string",
@@ -57,18 +55,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the specified Lightsail load balancer.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_load_balancer(
+\preformatted{svc$get_load_balancer(
   loadBalancerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

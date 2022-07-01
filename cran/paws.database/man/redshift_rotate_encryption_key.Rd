@@ -14,9 +14,7 @@ Constraints: Must be the name of valid cluster that has encryption
 enabled.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Cluster = list(
     ClusterIdentifier = "string",
     NodeType = "string",
@@ -173,18 +171,16 @@ A list with the following syntax:
     ClusterNamespaceArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Rotates the encryption keys for a cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$rotate_encryption_key(
+\preformatted{svc$rotate_encryption_key(
   ClusterIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

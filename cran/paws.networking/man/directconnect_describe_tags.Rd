@@ -11,9 +11,7 @@ directconnect_describe_tags(resourceArns)
 \item{resourceArns}{[required] The Amazon Resource Names (ARNs) of the resources.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   resourceTags = list(
     list(
       resourceArn = "string",
@@ -26,21 +24,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the tags associated with the specified AWS Direct Connect
 resources.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tags(
+\preformatted{svc$describe_tags(
   resourceArns = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -12,13 +12,11 @@ is an alphanumeric string formatted as shown in this example:
 case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   initialCaseStatus = "string",
   finalCaseStatus = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Resolves a support case. This operation takes a \code{caseId} and returns the
@@ -33,12 +31,10 @@ information about changing your support plan, see \href{https://aws.amazon.com/p
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$resolve_case(
+\preformatted{svc$resolve_case(
   caseId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

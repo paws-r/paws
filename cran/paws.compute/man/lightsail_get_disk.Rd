@@ -10,9 +10,7 @@ lightsail_get_disk(diskName)
 \item{diskName}{[required] The name of the disk (e.g., \code{my-disk}).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   disk = list(
     name = "string",
     arn = "string",
@@ -50,18 +48,16 @@ A list with the following syntax:
     gbInUse = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a specific block storage disk.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_disk(
+\preformatted{svc$get_disk(
   diskName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -14,9 +14,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceTagAttribute = list(
     InstanceTagKeys = list(
       "string"
@@ -24,19 +22,17 @@ A list with the following syntax:
     IncludeAllTagsOfInstance = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the tag keys that are registered to appear in scheduled event
 notifications for resources in the current Region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instance_event_notification_attributes(
+\preformatted{svc$describe_instance_event_notification_attributes(
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

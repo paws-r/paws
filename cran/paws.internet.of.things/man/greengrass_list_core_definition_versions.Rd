@@ -16,9 +16,7 @@ greengrass_list_core_definition_versions(CoreDefinitionId, MaxResults,
 additional results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Versions = list(
     list(
@@ -29,20 +27,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the versions of a core definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_core_definition_versions(
+\preformatted{svc$list_core_definition_versions(
   CoreDefinitionId = "string",
   MaxResults = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

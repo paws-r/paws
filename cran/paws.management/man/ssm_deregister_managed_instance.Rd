@@ -21,12 +21,10 @@ plan to use Run Command on the server, we suggest uninstalling SSM Agent
 first.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_managed_instance(
+\preformatted{svc$deregister_managed_instance(
   InstanceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

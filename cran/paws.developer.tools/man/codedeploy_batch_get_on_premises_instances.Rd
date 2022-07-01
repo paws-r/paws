@@ -11,9 +11,7 @@ codedeploy_batch_get_on_premises_instances(instanceNames)
 The maximum number of instance names you can specify is 25.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   instanceInfos = list(
     list(
       instanceName = "string",
@@ -35,21 +33,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about one or more on-premises instances. The maximum
 number of on-premises instances that can be returned is 25.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_on_premises_instances(
+\preformatted{svc$batch_get_on_premises_instances(
   instanceNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

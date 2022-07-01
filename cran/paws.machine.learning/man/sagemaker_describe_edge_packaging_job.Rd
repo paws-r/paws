@@ -10,9 +10,7 @@ sagemaker_describe_edge_packaging_job(EdgePackagingJobName)
 \item{EdgePackagingJobName}{[required] The name of the edge packaging job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EdgePackagingJobArn = "string",
   EdgePackagingJobName = "string",
   CompilationJobName = "string",
@@ -35,18 +33,16 @@ A list with the following syntax:
   ModelArtifact = "string",
   ModelSignature = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 A description of edge packaging jobs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_edge_packaging_job(
+\preformatted{svc$describe_edge_packaging_job(
   EdgePackagingJobName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

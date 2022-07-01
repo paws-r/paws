@@ -27,12 +27,10 @@ An empty list.
 Removes a concurrent execution limit from a function.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_function_concurrency(
+\preformatted{svc$delete_function_concurrency(
   FunctionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

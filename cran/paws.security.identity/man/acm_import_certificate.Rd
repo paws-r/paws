@@ -24,12 +24,10 @@ this field.}
 Note: You cannot apply tags when reimporting a certificate.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CertificateArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Imports a certificate into AWS Certificate Manager (ACM) to use with
@@ -81,9 +79,7 @@ This operation returns the \href{https://docs.aws.amazon.com/general/latest/gr/a
 of the imported certificate.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_certificate(
+\preformatted{svc$import_certificate(
   CertificateArn = "string",
   Certificate = raw,
   PrivateKey = raw,
@@ -95,7 +91,7 @@ of the imported certificate.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

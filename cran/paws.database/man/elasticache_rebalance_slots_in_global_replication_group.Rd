@@ -14,9 +14,7 @@ elasticache_rebalance_slots_in_global_replication_group(
 \item{ApplyImmediately}{[required] If \code{True}, redistribution is applied immediately.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GlobalReplicationGroup = list(
     GlobalReplicationGroupId = "string",
     GlobalReplicationGroupDescription = "string",
@@ -46,20 +44,18 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Redistribute slots to ensure uniform distribution across existing shards
 in the cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$rebalance_slots_in_global_replication_group(
+\preformatted{svc$rebalance_slots_in_global_replication_group(
   GlobalReplicationGroupId = "string",
   ApplyImmediately = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

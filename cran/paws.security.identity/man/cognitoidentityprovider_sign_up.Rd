@@ -65,9 +65,7 @@ don't use it to provide sensitive information.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserConfirmed = TRUE|FALSE,
   CodeDeliveryDetails = list(
     Destination = "string",
@@ -76,16 +74,14 @@ A list with the following syntax:
   ),
   UserSub = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Registers the user in the specified user pool and creates a user name,
 password, and user attributes.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$sign_up(
+\preformatted{svc$sign_up(
   ClientId = "string",
   SecretHash = "string",
   Username = "string",
@@ -112,7 +108,7 @@ password, and user attributes.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

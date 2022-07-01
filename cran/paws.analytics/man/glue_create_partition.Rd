@@ -25,9 +25,7 @@ An empty list.
 Creates a new partition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_partition(
+\preformatted{svc$create_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -103,7 +101,7 @@ Creates a new partition.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

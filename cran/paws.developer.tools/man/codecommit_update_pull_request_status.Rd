@@ -15,9 +15,7 @@ the status from \code{OPEN} to \code{OPEN}, \code{OPEN} to \code{CLOSED} or from
 \code{CLOSED}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pullRequest = list(
     pullRequestId = "string",
     title = "string",
@@ -69,19 +67,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the status of a pull request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_pull_request_status(
+\preformatted{svc$update_pull_request_status(
   pullRequestId = "string",
   pullRequestStatus = "OPEN"|"CLOSED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

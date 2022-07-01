@@ -53,9 +53,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE,
   UnknownIpPermissions = list(
     list(
@@ -94,7 +92,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes the specified ingress rules from a security group. To remove a
@@ -120,9 +118,7 @@ Rule changes are propagated to instances within the security group as
 quickly as possible. However, a small delay might occur.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$revoke_security_group_ingress(
+\preformatted{svc$revoke_security_group_ingress(
   CidrIp = "string",
   FromPort = 123,
   GroupId = "string",
@@ -169,7 +165,7 @@ quickly as possible. However, a small delay might occur.
   ToPort = 123,
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

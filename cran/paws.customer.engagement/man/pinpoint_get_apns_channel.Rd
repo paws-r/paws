@@ -12,9 +12,7 @@ pinpoint_get_apns_channel(ApplicationId)
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   APNSChannelResponse = list(
     ApplicationId = "string",
     CreationDate = "string",
@@ -30,19 +28,17 @@ A list with the following syntax:
     Version = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about the status and settings of the APNs channel
 for an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_apns_channel(
+\preformatted{svc$get_apns_channel(
   ApplicationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -24,9 +24,7 @@ algorithm PS384. For more information, see \href{https://datatracker.ietf.org/do
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LicenseArn = "string",
   LicenseConsumptionToken = "string",
   EntitlementsAllowed = list(
@@ -47,15 +45,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Checks out the specified license for offline use.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$checkout_borrow_license(
+\preformatted{svc$checkout_borrow_license(
   LicenseArn = "string",
   Entitlements = list(
     list(
@@ -74,7 +70,7 @@ Checks out the specified license for offline use.
   ),
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

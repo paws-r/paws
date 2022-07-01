@@ -17,13 +17,11 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OwnerId = "string",
   Return = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Determines whether a product code is associated with an instance. This
@@ -32,14 +30,12 @@ when a product code owner must verify whether another user's instance is
 eligible for support.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$confirm_product_instance(
+\preformatted{svc$confirm_product_instance(
   InstanceId = "string",
   ProductCode = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

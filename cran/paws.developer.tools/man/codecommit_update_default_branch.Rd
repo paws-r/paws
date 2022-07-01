@@ -22,13 +22,11 @@ current default branch name, a success message is returned even though
 the default branch did not change.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_default_branch(
+\preformatted{svc$update_default_branch(
   repositoryName = "string",
   defaultBranchName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

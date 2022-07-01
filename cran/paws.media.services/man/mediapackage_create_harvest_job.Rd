@@ -21,9 +21,7 @@ cannot be changed after the HarvestJob is submitted.}
 \item{StartTime}{[required] The start of the time-window which will be harvested}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   ChannelId = "string",
   CreatedAt = "string",
@@ -38,15 +36,13 @@ A list with the following syntax:
   StartTime = "string",
   Status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new HarvestJob record.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_harvest_job(
+\preformatted{svc$create_harvest_job(
   EndTime = "string",
   Id = "string",
   OriginEndpointId = "string",
@@ -57,7 +53,7 @@ Creates a new HarvestJob record.
   ),
   StartTime = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

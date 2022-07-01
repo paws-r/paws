@@ -18,12 +18,10 @@ Deletes a device pool given the pool ARN. Does not allow deletion of
 curated pools owned by the system.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_device_pool(
+\preformatted{svc$delete_device_pool(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

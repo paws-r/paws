@@ -19,9 +19,7 @@ using the AWS CLI or SDK.}
 \item{LustreConfiguration}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FileSystemId = "string",
   Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
   WindowsResponse = list(
@@ -43,7 +41,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a file system, deleting its contents. After deletion, the file
@@ -72,9 +70,7 @@ The data in a deleted file system is also deleted and can't be recovered
 by any means.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_file_system(
+\preformatted{svc$delete_file_system(
   FileSystemId = "string",
   ClientRequestToken = "string",
   WindowsConfiguration = list(
@@ -96,7 +92,7 @@ by any means.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

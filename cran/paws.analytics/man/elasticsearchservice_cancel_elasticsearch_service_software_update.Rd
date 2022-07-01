@@ -12,9 +12,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update(
 update on.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ServiceSoftwareOptions = list(
     CurrentVersion = "string",
     NewVersion = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
     OptionalDeployment = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Cancels a scheduled service software update for an Amazon ES domain. You
@@ -36,12 +34,10 @@ can only perform this operation before the \code{AutomatedUpdateDate} and
 when the \code{UpdateStatus} is in the \code{PENDING_UPDATE} state.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_elasticsearch_service_software_update(
+\preformatted{svc$cancel_elasticsearch_service_software_update(
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

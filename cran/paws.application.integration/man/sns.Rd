@@ -36,9 +36,7 @@ your service requests, retrying requests, and handling error responses.
 For a list of available SDKs, go to \href{https://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- sns(
+\preformatted{svc <- sns(
   config = list(
     credentials = list(
       creds = list(
@@ -52,7 +50,7 @@ For a list of available SDKs, go to \href{https://aws.amazon.com/tools/}{Tools f
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

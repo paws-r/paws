@@ -20,12 +20,10 @@ it cannot perform new signing jobs, and is deleted two years after
 cancelation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_signing_profile(
+\preformatted{svc$cancel_signing_profile(
   profileName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

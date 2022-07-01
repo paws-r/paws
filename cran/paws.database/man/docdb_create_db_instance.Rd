@@ -66,9 +66,7 @@ Default: 1
 Valid values: 0-15}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -157,15 +155,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_instance(
+\preformatted{svc$create_db_instance(
   DBInstanceIdentifier = "string",
   DBInstanceClass = "string",
   Engine = "string",
@@ -181,7 +177,7 @@ Creates a new instance.
   DBClusterIdentifier = "string",
   PromotionTier = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

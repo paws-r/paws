@@ -10,24 +10,20 @@ mediaconnect_delete_flow(FlowArn)
 \item{FlowArn}{[required] The ARN of the flow that you want to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FlowArn = "string",
   Status = "STANDBY"|"ACTIVE"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"ERROR"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a flow. Before you can delete a flow, you must stop the flow.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_flow(
+\preformatted{svc$delete_flow(
   FlowArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,9 +10,7 @@ backup_describe_copy_job(CopyJobId)
 \item{CopyJobId}{[required] Uniquely identifies a copy job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CopyJob = list(
     AccountId = "string",
     CopyJobId = "string",
@@ -40,18 +38,16 @@ A list with the following syntax:
     ResourceType = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns metadata associated with creating a copy of a resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_copy_job(
+\preformatted{svc$describe_copy_job(
   CopyJobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

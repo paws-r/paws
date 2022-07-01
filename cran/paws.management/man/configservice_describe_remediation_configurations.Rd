@@ -11,9 +11,7 @@ configservice_describe_remediation_configurations(ConfigRuleNames)
 you want details.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RemediationConfigurations = list(
     list(
       ConfigRuleName = "string",
@@ -47,20 +45,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the details of one or more remediation configurations.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_remediation_configurations(
+\preformatted{svc$describe_remediation_configurations(
   ConfigRuleNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

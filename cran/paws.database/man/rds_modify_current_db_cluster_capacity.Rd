@@ -46,16 +46,14 @@ specified value as soon as possible.
 isn't found in the timeout period.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBClusterIdentifier = "string",
   PendingCapacity = 123,
   CurrentCapacity = 123,
   SecondsBeforeTimeout = 123,
   TimeoutAction = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Set the capacity of an Aurora Serverless DB cluster to a specific value.
@@ -84,15 +82,13 @@ in the \emph{Amazon Aurora User Guide}.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_current_db_cluster_capacity(
+\preformatted{svc$modify_current_db_cluster_capacity(
   DBClusterIdentifier = "string",
   Capacity = 123,
   SecondsBeforeTimeout = 123,
   TimeoutAction = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

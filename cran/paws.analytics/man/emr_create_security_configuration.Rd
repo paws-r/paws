@@ -15,28 +15,24 @@ and examples, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/e
 in the \emph{Amazon EMR Management Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Name = "string",
   CreationDateTime = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a security configuration, which is stored in the service and can
 be specified when a cluster is created.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_security_configuration(
+\preformatted{svc$create_security_configuration(
   Name = "string",
   SecurityConfiguration = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

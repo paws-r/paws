@@ -31,9 +31,7 @@ must be supplied.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventSubscription = list(
     CustomerAwsId = "string",
     CustSubscriptionId = "string",
@@ -51,20 +49,18 @@ A list with the following syntax:
     EventSubscriptionArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a source identifier to an existing RDS event notification
 subscription.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_source_identifier_to_subscription(
+\preformatted{svc$add_source_identifier_to_subscription(
   SubscriptionName = "string",
   SourceIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

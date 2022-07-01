@@ -26,12 +26,10 @@ is associated with a running instance will break any applications
 running on the instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_role(
+\preformatted{svc$delete_role(
   RoleName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

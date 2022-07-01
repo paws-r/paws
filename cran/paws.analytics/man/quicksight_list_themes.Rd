@@ -25,9 +25,7 @@ QuickSight.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ThemeSummaryList = list(
     list(
       Arn = "string",
@@ -46,21 +44,19 @@ A list with the following syntax:
   Status = 123,
   RequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all the themes in the current AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_themes(
+\preformatted{svc$list_themes(
   AwsAccountId = "string",
   NextToken = "string",
   MaxResults = 123,
   Type = "QUICKSIGHT"|"CUSTOM"|"ALL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

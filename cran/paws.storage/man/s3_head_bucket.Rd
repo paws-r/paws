@@ -47,13 +47,11 @@ permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/usi
 and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$head_bucket(
+\preformatted{svc$head_bucket(
   Bucket = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

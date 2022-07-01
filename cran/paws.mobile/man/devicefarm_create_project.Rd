@@ -14,9 +14,7 @@ runs in this project use the specified execution timeout value unless
 overridden when scheduling a run.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   project = list(
     arn = "string",
     name = "string",
@@ -26,19 +24,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a project.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_project(
+\preformatted{svc$create_project(
   name = "string",
   defaultJobTimeoutMinutes = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

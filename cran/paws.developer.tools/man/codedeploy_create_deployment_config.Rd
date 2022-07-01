@@ -36,20 +36,16 @@ FLEET_PERCENT and a value of 95.}
 \code{ECS}).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   deploymentConfigId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a deployment configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_deployment_config(
+\preformatted{svc$create_deployment_config(
   deploymentConfigName = "string",
   minimumHealthyHosts = list(
     value = 123,
@@ -68,7 +64,7 @@ Creates a deployment configuration.
   ),
   computePlatform = "Server"|"Lambda"|"ECS"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

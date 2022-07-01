@@ -16,9 +16,7 @@ disk.}
 \item{diskPath}{[required] The disk path to expose to the instance (e.g., \verb{/dev/xvdf}).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -43,7 +41,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Attaches a block storage disk to a running or stopped Lightsail instance
@@ -54,14 +52,12 @@ resource tags applied to the resource identified by \verb{disk name}. For
 more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_disk(
+\preformatted{svc$attach_disk(
   diskName = "string",
   instanceName = "string",
   diskPath = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

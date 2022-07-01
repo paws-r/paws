@@ -33,14 +33,12 @@ Deletes an
 from an input.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application_input_processing_configuration(
+\preformatted{svc$delete_application_input_processing_configuration(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   InputId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

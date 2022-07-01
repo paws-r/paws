@@ -23,23 +23,19 @@ used to validate that the approval request corresponding to this token
 is still valid.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   approvedAt = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides the response to a manual approval request to AWS CodePipeline.
 Valid responses include Approved and Rejected.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_approval_result(
+\preformatted{svc$put_approval_result(
   pipelineName = "string",
   stageName = "string",
   actionName = "string",
@@ -49,7 +45,7 @@ Valid responses include Approved and Rejected.
   ),
   token = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

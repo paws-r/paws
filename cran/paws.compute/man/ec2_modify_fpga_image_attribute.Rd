@@ -38,9 +38,7 @@ attribute.}
 \item{Name}{A name for the AFI.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FpgaImageAttribute = list(
     FpgaImageId = "string",
     Name = "string",
@@ -59,16 +57,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the specified attribute of the specified Amazon FPGA Image
 (AFI).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_fpga_image_attribute(
+\preformatted{svc$modify_fpga_image_attribute(
   DryRun = TRUE|FALSE,
   FpgaImageId = "string",
   Attribute = "description"|"name"|"loadPermission"|"productCodes",
@@ -99,7 +95,7 @@ Modifies the specified attribute of the specified Amazon FPGA Image
   Description = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -22,12 +22,10 @@ Region.}
 \item{Tags}{A list of tags to apply to the artifact.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ArtifactArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an \emph{artifact}. An artifact is a lineage tracking entity that
@@ -36,9 +34,7 @@ URI of a dataset and the ECR registry path of an image. For more
 information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_artifact(
+\preformatted{svc$create_artifact(
   ArtifactName = "string",
   Source = list(
     SourceUri = "string",
@@ -66,7 +62,7 @@ information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-t
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

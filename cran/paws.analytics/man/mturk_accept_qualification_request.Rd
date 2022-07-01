@@ -30,13 +30,11 @@ A successful request for the
 operation returns with no errors and an empty body.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$accept_qualification_request(
+\preformatted{svc$accept_qualification_request(
   QualificationRequestId = "string",
   IntegerValue = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -32,12 +32,10 @@ define, so that you can publish email sending events.}
 email.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MessageId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sends an email message. You can use the Amazon Pinpoint Email API to
@@ -54,9 +52,7 @@ to be a valid MIME message.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_email(
+\preformatted{svc$send_email(
   FromEmailAddress = "string",
   Destination = list(
     ToAddresses = list(
@@ -106,7 +102,7 @@ to be a valid MIME message.
   ),
   ConfigurationSetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

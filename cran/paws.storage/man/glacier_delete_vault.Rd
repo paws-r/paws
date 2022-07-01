@@ -41,13 +41,11 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-delete.
 in the \emph{Amazon S3 Glacier Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vault(
+\preformatted{svc$delete_vault(
   accountId = "string",
   vaultName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

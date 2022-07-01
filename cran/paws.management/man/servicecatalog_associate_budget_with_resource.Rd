@@ -18,13 +18,11 @@ An empty list.
 Associates the specified budget with the specified resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_budget_with_resource(
+\preformatted{svc$associate_budget_with_resource(
   BudgetName = "string",
   ResourceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

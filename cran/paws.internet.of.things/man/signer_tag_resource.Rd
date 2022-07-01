@@ -21,15 +21,13 @@ key and an optional value. To specify the signing profile, use its
 Amazon Resource Name (ARN). To specify the tag, use a key-value pair.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

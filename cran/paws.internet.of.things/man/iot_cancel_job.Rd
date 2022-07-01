@@ -23,28 +23,24 @@ caution and ensure that each device executing a job which is canceled is
 able to recover to a valid state.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   jobArn = "string",
   jobId = "string",
   description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Cancels a job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_job(
+\preformatted{svc$cancel_job(
   jobId = "string",
   reasonCode = "string",
   comment = "string",
   force = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

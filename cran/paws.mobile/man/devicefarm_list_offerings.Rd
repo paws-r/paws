@@ -13,9 +13,7 @@ operation, which can be used to return the next set of items in the
 list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   offerings = list(
     list(
       id = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of products or offerings that the user can manage through
@@ -46,12 +44,10 @@ able to invoke this operation, contact
 \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefarm-support@amazon.com}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_offerings(
+\preformatted{svc$list_offerings(
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

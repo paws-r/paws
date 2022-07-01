@@ -59,9 +59,7 @@ For information about costs that are associated with the AWS Budgets
 API, see \href{https://aws.amazon.com/aws-cost-management/pricing/}{AWS Cost Management Pricing}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- budgets(
+\preformatted{svc <- budgets(
   config = list(
     credentials = list(
       creds = list(
@@ -75,7 +73,7 @@ API, see \href{https://aws.amazon.com/aws-cost-management/pricing/}{AWS Cost Man
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

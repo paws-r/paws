@@ -49,24 +49,20 @@ of the template.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MessageBody = list(
     Message = "string",
     RequestID = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing message template for messages that are sent through
 a push notification channel.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_push_template(
+\preformatted{svc$update_push_template(
   CreateNewVersion = TRUE|FALSE,
   PushNotificationTemplateRequest = list(
     ADM = list(
@@ -128,7 +124,7 @@ a push notification channel.
   TemplateName = "string",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -24,16 +24,14 @@ returned, the response does not contain a pagination token value.}
 inclusive.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   affectedAccounts = list(
     "string"
   ),
   eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE",
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of accounts in the organization from AWS Organizations
@@ -50,14 +48,12 @@ This API operation uses pagination. Specify the \code{nextToken} parameter in
 the next request to return more results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_affected_accounts_for_organization(
+\preformatted{svc$describe_affected_accounts_for_organization(
   eventArn = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

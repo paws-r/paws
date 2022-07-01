@@ -45,9 +45,7 @@ they complete at most one time. If you repeat an operation, it succeeds
 with a 200 OK response code.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- elb(
+\preformatted{svc <- elb(
   config = list(
     credentials = list(
       creds = list(
@@ -61,7 +59,7 @@ with a 200 OK response code.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

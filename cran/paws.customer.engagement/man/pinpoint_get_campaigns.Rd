@@ -19,9 +19,7 @@ journey metrics.}
 paginated response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CampaignsResponse = list(
     Item = list(
       list(
@@ -367,21 +365,19 @@ A list with the following syntax:
     NextToken = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about the status, configuration, and other
 settings for all the campaigns that are associated with an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_campaigns(
+\preformatted{svc$get_campaigns(
   ApplicationId = "string",
   PageSize = "string",
   Token = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

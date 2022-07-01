@@ -32,9 +32,7 @@ to the repository.}
 contents of your repository are encrypted at rest.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   repository = list(
     repositoryArn = "string",
     registryId = "string",
@@ -53,16 +51,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a repository. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html}{Amazon ECR Repositories}
 in the \emph{Amazon Elastic Container Registry User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_repository(
+\preformatted{svc$create_repository(
   repositoryName = "string",
   tags = list(
     list(
@@ -79,7 +75,7 @@ in the \emph{Amazon Elastic Container Registry User Guide}.
     kmsKey = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -12,24 +12,20 @@ snowball_get_software_updates(JobId)
 example \verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UpdatesURI = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns an Amazon S3 presigned URL for an update file associated with a
 specified \code{JobId}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_software_updates(
+\preformatted{svc$get_software_updates(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

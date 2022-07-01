@@ -14,9 +14,7 @@ be from the same gateway. Use
 gateway.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StorediSCSIVolumes = list(
     list(
       VolumeARN = "string",
@@ -45,7 +43,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the description of the gateway volumes specified in the request.
@@ -55,14 +53,12 @@ volume ARNs. This operation is only supported in stored volume gateway
 type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_storedi_scsi_volumes(
+\preformatted{svc$describe_storedi_scsi_volumes(
   VolumeARNs = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

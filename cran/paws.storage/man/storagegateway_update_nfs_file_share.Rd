@@ -79,12 +79,10 @@ Valid Values: \code{true} | \code{false}}
 \item{NotificationPolicy}{The notification policy of the file share.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FileShareARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a Network File System (NFS) file share. This operation is only
@@ -103,9 +101,7 @@ Updates the following file share settings:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_nfs_file_share(
+\preformatted{svc$update_nfs_file_share(
   FileShareARN = "string",
   KMSEncrypted = TRUE|FALSE,
   KMSKey = "string",
@@ -130,7 +126,7 @@ Updates the following file share settings:
   ),
   NotificationPolicy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

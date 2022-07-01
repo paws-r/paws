@@ -65,9 +65,7 @@ mark phone and email as verified.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_update_user_attributes(
+\preformatted{svc$admin_update_user_attributes(
   UserPoolId = "string",
   Username = "string",
   UserAttributes = list(
@@ -80,7 +78,7 @@ Calling this action requires developer credentials.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

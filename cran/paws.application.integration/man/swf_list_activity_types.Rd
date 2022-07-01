@@ -33,9 +33,7 @@ the results are returned in ascending alphabetical order by \code{name} of
 the activity types.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   typeInfos = list(
     list(
       activityType = list(
@@ -54,7 +52,7 @@ A list with the following syntax:
   ),
   nextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about all activities registered in the specified
@@ -84,9 +82,7 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_activity_types(
+\preformatted{svc$list_activity_types(
   domain = "string",
   name = "string",
   registrationStatus = "REGISTERED"|"DEPRECATED",
@@ -94,7 +90,7 @@ in the \emph{Amazon SWF Developer Guide}.
   maximumPageSize = 123,
   reverseOrder = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

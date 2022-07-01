@@ -19,9 +19,7 @@ the replica to be updated.}
 be modified.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TableAutoScalingDescription = list(
     TableName = "string",
     TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
@@ -107,7 +105,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates auto scaling settings on your global tables at once.
@@ -116,9 +114,7 @@ This operation only applies to \href{https://docs.aws.amazon.com/amazondynamodb/
 of global tables.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_table_replica_auto_scaling(
+\preformatted{svc$update_table_replica_auto_scaling(
   GlobalSecondaryIndexUpdates = list(
     list(
       IndexName = "string",
@@ -196,7 +192,7 @@ of global tables.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

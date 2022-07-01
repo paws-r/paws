@@ -17,9 +17,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AutoEnableIO = list(
     Value = TRUE|FALSE
   ),
@@ -31,7 +29,7 @@ A list with the following syntax:
   ),
   VolumeId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified attribute of the specified volume. You can
@@ -41,14 +39,12 @@ For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AW
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_volume_attribute(
+\preformatted{svc$describe_volume_attribute(
   Attribute = "autoEnableIO"|"productCodes",
   VolumeId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -15,12 +15,10 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrafficMirrorTargetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified Traffic Mirror target.
@@ -29,13 +27,11 @@ You cannot delete a Traffic Mirror target that is in use by a Traffic
 Mirror session.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_traffic_mirror_target(
+\preformatted{svc$delete_traffic_mirror_target(
   TrafficMirrorTargetId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

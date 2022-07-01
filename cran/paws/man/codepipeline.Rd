@@ -149,9 +149,7 @@ which provides details of a job success.
 }
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- codepipeline(
+\preformatted{svc <- codepipeline(
   config = list(
     credentials = list(
       creds = list(
@@ -165,7 +163,7 @@ which provides details of a job success.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

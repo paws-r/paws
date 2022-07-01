@@ -21,9 +21,7 @@ expiration date or not. If parameter isn't provided,
 \item{maxResults}{The maximum number of results to return at one time. The default is 25.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   suppressions = list(
     list(
       checkName = "string",
@@ -49,15 +47,13 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists your Device Defender audit listings.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_audit_suppressions(
+\preformatted{svc$list_audit_suppressions(
   checkName = "string",
   resourceIdentifier = list(
     deviceCertificateId = "string",
@@ -76,7 +72,7 @@ Lists your Device Defender audit listings.
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

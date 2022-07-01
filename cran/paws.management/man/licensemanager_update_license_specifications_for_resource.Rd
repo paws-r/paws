@@ -28,9 +28,7 @@ AWS CloudFormation templates, as they send license configurations to the
 operation that creates the resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_license_specifications_for_resource(
+\preformatted{svc$update_license_specifications_for_resource(
   ResourceArn = "string",
   AddLicenseSpecifications = list(
     list(
@@ -45,7 +43,7 @@ operation that creates the resource.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

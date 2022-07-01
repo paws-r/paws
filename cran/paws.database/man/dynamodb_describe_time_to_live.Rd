@@ -11,27 +11,23 @@ dynamodb_describe_time_to_live(TableName)
 \item{TableName}{[required] The name of the table to be described.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TimeToLiveDescription = list(
     TimeToLiveStatus = "ENABLING"|"DISABLING"|"ENABLED"|"DISABLED",
     AttributeName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gives a description of the Time to Live (TTL) status on the specified
 table.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_time_to_live(
+\preformatted{svc$describe_time_to_live(
   TableName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

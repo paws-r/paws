@@ -21,9 +21,7 @@ service. If not specified, then AWS returns service-specific credentials
 for all services.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ServiceSpecificCredentials = list(
     list(
       UserName = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the service-specific credentials associated
@@ -49,13 +47,11 @@ authenticate to an AWS service, see \href{https://docs.aws.amazon.com/codecommit
 in the AWS CodeCommit User Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_service_specific_credentials(
+\preformatted{svc$list_service_specific_credentials(
   UserName = "string",
   ServiceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

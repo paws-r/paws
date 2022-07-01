@@ -13,9 +13,7 @@ apigatewayv2_get_domain_names(MaxResults, NextToken)
 element of the collection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Items = list(
     list(
       ApiMappingSelectionExpression = "string",
@@ -49,19 +47,17 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the domain names for an AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_domain_names(
+\preformatted{svc$get_domain_names(
   MaxResults = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

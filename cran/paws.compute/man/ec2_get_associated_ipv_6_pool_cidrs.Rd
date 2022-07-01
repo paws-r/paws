@@ -23,9 +23,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Ipv6CidrAssociations = list(
     list(
       Ipv6Cidr = "string",
@@ -34,22 +32,20 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the IPv6 CIDR block associations for a specified
 IPv6 address pool.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_associated_ipv_6_pool_cidrs(
+\preformatted{svc$get_associated_ipv_6_pool_cidrs(
   PoolId = "string",
   NextToken = "string",
   MaxResults = 123,
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ not specify a value, or if you specify a value less than 1 or greater
 than 50, the operation will return up to 50 results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CustomVerificationEmailTemplates = list(
     list(
       TemplateName = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the existing custom verification email templates for your account
@@ -44,13 +42,11 @@ the \emph{Amazon SES Developer Guide}.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_custom_verification_email_templates(
+\preformatted{svc$list_custom_verification_email_templates(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -53,9 +53,7 @@ For details about creating a custom user policy, see \href{https://docs.aws.amaz
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_tags_for_resource(
+\preformatted{svc$update_tags_for_resource(
   ResourceArn = "string",
   TagsToAdd = list(
     list(
@@ -67,7 +65,7 @@ For details about creating a custom user policy, see \href{https://docs.aws.amaz
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

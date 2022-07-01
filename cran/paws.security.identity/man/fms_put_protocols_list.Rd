@@ -12,9 +12,7 @@ fms_put_protocols_list(ProtocolsList, TagList)
 \item{TagList}{The tags associated with the resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProtocolsList = list(
     ListId = "string",
     ListName = "string",
@@ -36,15 +34,13 @@ A list with the following syntax:
   ),
   ProtocolsListArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an AWS Firewall Manager protocols list.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_protocols_list(
+\preformatted{svc$put_protocols_list(
   ProtocolsList = list(
     ListId = "string",
     ListName = "string",
@@ -71,7 +67,7 @@ Creates an AWS Firewall Manager protocols list.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

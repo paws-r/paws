@@ -11,9 +11,7 @@ cloudfront_get_distribution_config(Id)
 configuration is returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DistributionConfig = list(
     CallerReference = "string",
     Aliases = list(
@@ -284,18 +282,16 @@ A list with the following syntax:
   ),
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Get the configuration information about a distribution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_distribution_config(
+\preformatted{svc$get_distribution_config(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

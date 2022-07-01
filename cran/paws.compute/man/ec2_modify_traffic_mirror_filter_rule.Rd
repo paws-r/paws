@@ -44,9 +44,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrafficMirrorFilterRule = list(
     TrafficMirrorFilterRuleId = "string",
     TrafficMirrorFilterId = "string",
@@ -67,7 +65,7 @@ A list with the following syntax:
     Description = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the specified Traffic Mirror rule.
@@ -76,9 +74,7 @@ Modifies the specified Traffic Mirror rule.
 or an IPv6 range.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_traffic_mirror_filter_rule(
+\preformatted{svc$modify_traffic_mirror_filter_rule(
   TrafficMirrorFilterRuleId = "string",
   TrafficDirection = "ingress"|"egress",
   RuleNumber = 123,
@@ -100,7 +96,7 @@ or an IPv6 range.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

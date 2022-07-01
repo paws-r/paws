@@ -18,13 +18,11 @@ An empty list.
 Updates a Lambda function definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_function_definition(
+\preformatted{svc$update_function_definition(
   FunctionDefinitionId = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

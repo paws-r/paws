@@ -15,9 +15,7 @@ iot_list_outgoing_certificates(pageSize, marker, ascendingOrder)
 ascending order, based on the creation date.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   outgoingCertificates = list(
     list(
       certificateArn = "string",
@@ -34,20 +32,18 @@ A list with the following syntax:
   ),
   nextMarker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists certificates that are being transferred but not yet accepted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_outgoing_certificates(
+\preformatted{svc$list_outgoing_certificates(
   pageSize = 123,
   marker = "string",
   ascendingOrder = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

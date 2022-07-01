@@ -18,9 +18,7 @@ provided.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RegistryName = "string",
   RegistryArn = "string",
   SchemaName = "string",
@@ -35,22 +33,20 @@ A list with the following syntax:
   CreatedTime = "string",
   UpdatedTime = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified schema in detail.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_schema(
+\preformatted{svc$get_schema(
   SchemaId = list(
     SchemaArn = "string",
     SchemaName = "string",
     RegistryName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

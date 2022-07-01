@@ -11,13 +11,11 @@ storagegateway_notify_when_uploaded(FileShareARN)
 \item{FileShareARN}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FileShareARN = "string",
   NotificationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sends you notification through CloudWatch Events when all files written
@@ -37,12 +35,10 @@ For more information, see \href{https://docs.aws.amazon.com/storagegateway/index
 in the \emph{AWS Storage Gateway User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$notify_when_uploaded(
+\preformatted{svc$notify_when_uploaded(
   FileShareARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

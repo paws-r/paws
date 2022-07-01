@@ -15,9 +15,7 @@ a tag.}
 \item{tags}{[required] The tag key and optional value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds one or more tags to the specified Amazon Lightsail resource. Each
@@ -55,9 +53,7 @@ request tags and resource tags applied to the resource identified by
 \verb{resource name}. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   resourceName = "string",
   resourceArn = "string",
   tags = list(
@@ -67,7 +63,7 @@ request tags and resource tags applied to the resource identified by
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -104,12 +104,10 @@ default value is \code{ClientSpecified}.}
 \item{NotificationPolicy}{The notification policy of the file share.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FileShareARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a Server Message Block (SMB) file share. This operation is only
@@ -129,9 +127,7 @@ File gateways don't support creating hard or symbolic links on a file
 share.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_smb_file_share(
+\preformatted{svc$update_smb_file_share(
   FileShareARN = "string",
   KMSEncrypted = TRUE|FALSE,
   KMSKey = "string",
@@ -159,7 +155,7 @@ share.
   ),
   NotificationPolicy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

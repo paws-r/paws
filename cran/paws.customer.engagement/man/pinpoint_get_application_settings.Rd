@@ -11,9 +11,7 @@ pinpoint_get_application_settings(ApplicationId)
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationSettingsResource = list(
     ApplicationId = "string",
     CampaignHook = list(
@@ -34,18 +32,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about the settings for an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_application_settings(
+\preformatted{svc$get_application_settings(
   ApplicationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

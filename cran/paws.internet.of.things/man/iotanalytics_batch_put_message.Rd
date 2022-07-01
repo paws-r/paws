@@ -31,9 +31,7 @@ For example, \{"temp_01": 29\} or \{"_temp_01": 29\} are valid, but
 invalid in message payloads.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   batchPutMessageErrorEntries = list(
     list(
       messageId = "string",
@@ -42,15 +40,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sends messages to a channel.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_put_message(
+\preformatted{svc$batch_put_message(
   channelName = "string",
   messages = list(
     list(
@@ -59,7 +55,7 @@ Sends messages to a channel.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

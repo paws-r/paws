@@ -29,9 +29,7 @@ insertion behavior and mapping information for the origin server and the
 ad decision server (ADS).
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- mediatailor(
+\preformatted{svc <- mediatailor(
   config = list(
     credentials = list(
       creds = list(
@@ -45,7 +43,7 @@ ad decision server (ADS).
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

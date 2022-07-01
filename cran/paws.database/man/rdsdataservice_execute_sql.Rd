@@ -24,9 +24,7 @@ Any valid SQL statement is permitted, including data definition, data
 manipulation, and commit statements.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   sqlStatementResults = list(
     list(
       numberOfRecordsUpdated = 123,
@@ -80,7 +78,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Runs one or more SQL statements.
@@ -90,16 +88,14 @@ This operation is deprecated. Use the
 \code{\link[=rdsdataservice_execute_statement]{execute_statement}} operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$execute_sql(
+\preformatted{svc$execute_sql(
   awsSecretStoreArn = "string",
   database = "string",
   dbClusterOrInstanceArn = "string",
   schema = "string",
   sqlStatements = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

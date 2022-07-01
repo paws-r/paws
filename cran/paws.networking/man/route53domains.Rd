@@ -20,9 +20,7 @@ Amazon Route 53 API actions let you register domain names and perform
 related operations.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- route53domains(
+\preformatted{svc <- route53domains(
   config = list(
     credentials = list(
       creds = list(
@@ -36,7 +34,7 @@ related operations.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -16,12 +16,10 @@ value for an existing tag, use
 \code{\link[=cloudhsm_add_tags_to_resource]{add_tags_to_resource}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -38,15 +36,13 @@ overwrite the value for an existing tag, use
 \code{\link[=cloudhsm_add_tags_to_resource]{add_tags_to_resource}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags_from_resource(
+\preformatted{svc$remove_tags_from_resource(
   ResourceArn = "string",
   TagKeyList = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

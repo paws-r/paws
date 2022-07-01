@@ -11,15 +11,13 @@ cloudhsm_list_hsms(NextToken)
 \code{\link[=cloudhsm_list_hsms]{list_hsms}}. Pass null if this is the first call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HsmList = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -38,12 +36,10 @@ response contains a token that you pass in the next call to
 \code{\link[=cloudhsm_list_hsms]{list_hsms}} to retrieve the next set of items.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_hsms(
+\preformatted{svc$list_hsms(
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

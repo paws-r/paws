@@ -22,15 +22,13 @@ To list the tags for a log group, use
 tags, use \code{\link[=cloudwatchlogs_tag_log_group]{tag_log_group}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_log_group(
+\preformatted{svc$untag_log_group(
   logGroupName = "string",
   tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

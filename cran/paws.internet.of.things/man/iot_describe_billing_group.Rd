@@ -10,9 +10,7 @@ iot_describe_billing_group(billingGroupName)
 \item{billingGroupName}{[required] The name of the billing group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   billingGroupName = "string",
   billingGroupId = "string",
   billingGroupArn = "string",
@@ -26,18 +24,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a billing group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_billing_group(
+\preformatted{svc$describe_billing_group(
   billingGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ pointed to by the next token.}
 \item{MaxResults}{The maximum number of items to be returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Results = list(
     list(
       ResourceArn = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns an array of resources successfully backed up by AWS Backup,
@@ -39,13 +37,11 @@ including the time the resource was saved, an Amazon Resource Name (ARN)
 of the resource, and a resource type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_protected_resources(
+\preformatted{svc$list_protected_resources(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

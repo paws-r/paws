@@ -12,25 +12,21 @@ sagemaker_delete_association(SourceArn, DestinationArn)
 \item{DestinationArn}{[required] The Amazon Resource Name (ARN) of the destination.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SourceArn = "string",
   DestinationArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an association.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_association(
+\preformatted{svc$delete_association(
   SourceArn = "string",
   DestinationArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -32,9 +32,7 @@ was returned in the previous response.}
 Default: 20}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextPageMarker = "string",
   BillingRecords = list(
     list(
@@ -48,16 +46,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns all the domain-related billing records for the current AWS
 account for a specified period
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$view_billing(
+\preformatted{svc$view_billing(
   Start = as.POSIXct(
     "2015-01-01"
   ),
@@ -67,7 +63,7 @@ account for a specified period
   Marker = "string",
   MaxItems = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

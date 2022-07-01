@@ -14,13 +14,11 @@ idempotent deletion. This is automatically filled on your behalf when
 using the AWS CLI or SDK.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BackupId = "string",
   Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an Amazon FSx backup, deleting its contents. After deletion, the
@@ -34,13 +32,11 @@ The data in a deleted backup is also deleted and can't be recovered by
 any means.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_backup(
+\preformatted{svc$delete_backup(
   BackupId = "string",
   ClientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

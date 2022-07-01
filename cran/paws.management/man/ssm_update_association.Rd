@@ -117,9 +117,7 @@ want to run the association. Use this action to update an association in
 multiple Regions and multiple accounts.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AssociationDescription = list(
     Name = "string",
     InstanceId = "string",
@@ -196,7 +194,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an association. You can update the association name and version,
@@ -213,9 +211,7 @@ When you update an association, the association immediately runs against
 the specified targets.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_association(
+\preformatted{svc$update_association(
   AssociationId = "string",
   Parameters = list(
     list(
@@ -262,7 +258,7 @@ the specified targets.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -14,9 +14,7 @@ specified an AttributeKey of 'Username' with a value of 'root', the call
 with NextToken should include those same parameters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Trails = list(
     list(
       TrailARN = "string",
@@ -26,18 +24,16 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists trails that are in the current account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_trails(
+\preformatted{svc$list_trails(
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

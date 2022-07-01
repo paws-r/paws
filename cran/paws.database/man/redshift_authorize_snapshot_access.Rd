@@ -22,9 +22,7 @@ specified snapshot.
 To share a snapshot with AWS support, specify amazon-redshift-support.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Snapshot = list(
     SnapshotIdentifier = "string",
     ClusterIdentifier = "string",
@@ -80,7 +78,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Authorizes the specified AWS customer account to restore the specified
@@ -90,14 +88,12 @@ For more information about working with snapshots, go to \href{https://docs.aws.
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$authorize_snapshot_access(
+\preformatted{svc$authorize_snapshot_access(
   SnapshotIdentifier = "string",
   SnapshotClusterIdentifier = "string",
   AccountWithRestoreAccess = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

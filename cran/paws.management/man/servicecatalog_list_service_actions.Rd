@@ -20,9 +20,7 @@ servicecatalog_list_service_actions(AcceptLanguage, PageSize, PageToken)
 results, use null.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ServiceActionSummaries = list(
     list(
       Id = "string",
@@ -33,20 +31,18 @@ A list with the following syntax:
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all self-service actions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_service_actions(
+\preformatted{svc$list_service_actions(
   AcceptLanguage = "string",
   PageSize = 123,
   PageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

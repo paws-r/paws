@@ -41,15 +41,13 @@ To resume processes that have been suspended, call the
 \code{\link[=autoscaling_resume_processes]{resume_processes}} API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$suspend_processes(
+\preformatted{svc$suspend_processes(
   AutoScalingGroupName = "string",
   ScalingProcesses = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

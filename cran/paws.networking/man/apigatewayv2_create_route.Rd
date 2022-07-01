@@ -44,9 +44,7 @@ for WebSocket APIs.}
 \item{Target}{The target for the route.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApiGatewayManaged = TRUE|FALSE,
   ApiKeyRequired = TRUE|FALSE,
   AuthorizationScopes = list(
@@ -69,15 +67,13 @@ A list with the following syntax:
   RouteResponseSelectionExpression = "string",
   Target = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Route for an API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_route(
+\preformatted{svc$create_route(
   ApiId = "string",
   ApiKeyRequired = TRUE|FALSE,
   AuthorizationScopes = list(
@@ -99,7 +95,7 @@ Creates a Route for an API.
   RouteResponseSelectionExpression = "string",
   Target = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

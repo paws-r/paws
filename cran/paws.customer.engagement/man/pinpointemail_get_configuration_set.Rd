@@ -13,9 +13,7 @@ pinpointemail_get_configuration_set(ConfigurationSetName)
 information about.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConfigurationSetName = "string",
   TrackingOptions = list(
     CustomRedirectDomain = "string"
@@ -40,7 +38,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Get information about an existing configuration set, including the
@@ -54,12 +52,10 @@ of the email. When you apply a configuration set to an email, all of the
 rules in that configuration set are applied to the email.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_configuration_set(
+\preformatted{svc$get_configuration_set(
   ConfigurationSetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

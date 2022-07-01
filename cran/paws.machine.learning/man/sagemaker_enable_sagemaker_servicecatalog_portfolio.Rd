@@ -14,10 +14,8 @@ Enables using Service Catalog in SageMaker. Service Catalog is used to
 create SageMaker projects.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_sagemaker_servicecatalog_portfolio()
-}\if{html}{\out{</div>}}
+\preformatted{svc$enable_sagemaker_servicecatalog_portfolio()
+}
 }
 
 \keyword{internal}

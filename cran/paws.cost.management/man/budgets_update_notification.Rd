@@ -24,9 +24,7 @@ An empty list.
 Updates a notification.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_notification(
+\preformatted{svc$update_notification(
   AccountId = "string",
   BudgetName = "string",
   OldNotification = list(
@@ -44,7 +42,7 @@ Updates a notification.
     NotificationState = "OK"|"ALARM"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

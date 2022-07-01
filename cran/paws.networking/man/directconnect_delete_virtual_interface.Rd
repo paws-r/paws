@@ -10,23 +10,19 @@ directconnect_delete_virtual_interface(virtualInterfaceId)
 \item{virtualInterfaceId}{[required] The ID of the virtual interface.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a virtual interface.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_virtual_interface(
+\preformatted{svc$delete_virtual_interface(
   virtualInterfaceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

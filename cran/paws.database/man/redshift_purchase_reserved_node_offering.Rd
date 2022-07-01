@@ -16,9 +16,7 @@ purchase.}
 Default: \code{1}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReservedNode = list(
     ReservedNodeId = "string",
     ReservedNodeOfferingId = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
     ReservedNodeOfferingType = "Regular"|"Upgradable"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Allows you to purchase reserved nodes. Amazon Redshift offers a
@@ -57,13 +55,11 @@ For more information about reserved node offerings, go to \href{https://docs.aws
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$purchase_reserved_node_offering(
+\preformatted{svc$purchase_reserved_node_offering(
   ReservedNodeOfferingId = "string",
   NodeCount = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

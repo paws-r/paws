@@ -17,9 +17,7 @@ of an object is reflected in a subsequent read operation of that same
 object.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Responses = list(
     list(
       SuccessfulResponse = list(
@@ -268,15 +266,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Performs all the read operations in a batch.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_read(
+\preformatted{svc$batch_read(
   DirectoryArn = "string",
   Operations = list(
     list(
@@ -506,7 +502,7 @@ Performs all the read operations in a batch.
   ),
   ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

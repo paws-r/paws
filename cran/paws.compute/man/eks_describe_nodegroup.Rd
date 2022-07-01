@@ -12,9 +12,7 @@ eks_describe_nodegroup(clusterName, nodegroupName)
 \item{nodegroupName}{[required] The name of the node group to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   nodegroup = list(
     nodegroupName = "string",
     nodegroupArn = "string",
@@ -81,19 +79,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns descriptive information about an Amazon EKS node group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_nodegroup(
+\preformatted{svc$describe_nodegroup(
   clusterName = "string",
   nodegroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

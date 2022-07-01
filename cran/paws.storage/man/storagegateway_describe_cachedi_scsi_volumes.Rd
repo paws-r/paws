@@ -14,9 +14,7 @@ be from the same gateway. Use
 gateway.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CachediSCSIVolumes = list(
     list(
       VolumeARN = "string",
@@ -43,7 +41,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a description of the gateway volumes specified in the request.
@@ -54,14 +52,12 @@ the response, AWS Storage Gateway returns volume information sorted by
 volume Amazon Resource Name (ARN).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cachedi_scsi_volumes(
+\preformatted{svc$describe_cachedi_scsi_volumes(
   VolumeARNs = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

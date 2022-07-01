@@ -11,9 +11,7 @@ iot_get_policy(policyName)
 \item{policyName}{[required] The name of the policy.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   policyName = "string",
   policyArn = "string",
   policyDocument = "string",
@@ -26,19 +24,17 @@ A list with the following syntax:
   ),
   generationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the specified policy with the policy document of
 the default version.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_policy(
+\preformatted{svc$get_policy(
   policyName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

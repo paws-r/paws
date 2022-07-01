@@ -14,9 +14,7 @@ quicksight_list_analyses(AwsAccountId, NextToken, MaxResults)
 \item{MaxResults}{The maximum number of results to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AnalysisSummaryList = list(
     list(
       Arn = "string",
@@ -35,21 +33,19 @@ A list with the following syntax:
   Status = 123,
   RequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists Amazon QuickSight analyses that exist in the specified AWS
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_analyses(
+\preformatted{svc$list_analyses(
   AwsAccountId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

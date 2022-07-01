@@ -8,16 +8,14 @@ user's account}
 elasticsearchservice_list_domain_names()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainNames = list(
     list(
       DomainName = "string"
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the name of all Elasticsearch domains owned by the current

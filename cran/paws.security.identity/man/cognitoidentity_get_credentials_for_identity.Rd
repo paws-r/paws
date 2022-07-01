@@ -28,9 +28,7 @@ example, a SAML-based identity provider. This parameter is optional for
 identity providers that do not support role customization.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IdentityId = "string",
   Credentials = list(
     AccessKeyId = "string",
@@ -41,7 +39,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns credentials for the provided identity ID. Any provided logins
@@ -52,16 +50,14 @@ Security Token Service with the appropriate role for the token.
 This is a public API. You do not need any credentials to call this API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_credentials_for_identity(
+\preformatted{svc$get_credentials_for_identity(
   IdentityId = "string",
   Logins = list(
     "string"
   ),
   CustomRoleArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

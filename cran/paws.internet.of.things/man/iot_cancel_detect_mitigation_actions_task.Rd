@@ -16,12 +16,10 @@ An empty list.
 Cancels a Device Defender ML Detect mitigation action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_detect_mitigation_actions_task(
+\preformatted{svc$cancel_detect_mitigation_actions_task(
   taskId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

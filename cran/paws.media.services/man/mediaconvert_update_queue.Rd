@@ -25,9 +25,7 @@ are running when you pause the queue continue to run until they finish
 or result in an error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Queue = list(
     Arn = "string",
     CreatedAt = as.POSIXct(
@@ -57,15 +55,13 @@ A list with the following syntax:
     Type = "SYSTEM"|"CUSTOM"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modify one of your existing queues.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_queue(
+\preformatted{svc$update_queue(
   Description = "string",
   Name = "string",
   ReservationPlanSettings = list(
@@ -75,7 +71,7 @@ Modify one of your existing queues.
   ),
   Status = "ACTIVE"|"PAUSED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

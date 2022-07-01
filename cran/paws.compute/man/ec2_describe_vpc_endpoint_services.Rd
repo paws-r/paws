@@ -39,9 +39,7 @@ items.}
 from a prior call.)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ServiceNames = list(
     "string"
   ),
@@ -81,7 +79,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes available services to which you can create a VPC endpoint.
@@ -95,9 +93,7 @@ us-east-1b, the response includes the VPC endpoint services in the
 common Availability Zone, \verb{us-east-1a}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vpc_endpoint_services(
+\preformatted{svc$describe_vpc_endpoint_services(
   DryRun = TRUE|FALSE,
   ServiceNames = list(
     "string"
@@ -113,7 +109,7 @@ common Availability Zone, \verb{us-east-1a}.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ apigateway_get_method_response(restApiId, resourceId, httpMethod,
 \item{statusCode}{[required] [Required] The status code for the MethodResponse resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   statusCode = "string",
   responseParameters = list(
     TRUE|FALSE
@@ -28,21 +26,19 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a MethodResponse resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_method_response(
+\preformatted{svc$get_method_response(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",
   statusCode = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -71,9 +71,7 @@ be true.}
 This parameter is used only if the AutoGranted parameter is true.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   QualificationType = list(
     QualificationTypeId = "string",
     CreationTime = as.POSIXct(
@@ -92,7 +90,7 @@ A list with the following syntax:
     AutoGrantedValue = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=mturk_create_qualification_type]{create_qualification_type}}
@@ -100,9 +98,7 @@ operation creates a new Qualification type, which is represented by a
 \code{QualificationType} data structure.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_qualification_type(
+\preformatted{svc$create_qualification_type(
   Name = "string",
   Keywords = "string",
   Description = "string",
@@ -114,7 +110,7 @@ operation creates a new Qualification type, which is represented by a
   AutoGranted = TRUE|FALSE,
   AutoGrantedValue = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

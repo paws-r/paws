@@ -17,15 +17,13 @@ results.}
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Origins = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -35,14 +33,12 @@ Returns a paginated list of all approved origins associated with the
 instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_approved_origins(
+\preformatted{svc$list_approved_origins(
   InstanceId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

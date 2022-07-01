@@ -11,9 +11,7 @@ mturk_get_assignment(AssignmentId)
 \item{AssignmentId}{[required] The ID of the Assignment to be retrieved.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Assignment = list(
     AssignmentId = "string",
     WorkerId = "string",
@@ -84,19 +82,17 @@ A list with the following syntax:
     NumberOfAssignmentsCompleted = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=mturk_get_assignment]{get_assignment}} operation retrieves the
 details of the specified Assignment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_assignment(
+\preformatted{svc$get_assignment(
   AssignmentId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

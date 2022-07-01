@@ -12,9 +12,7 @@ workspaces_describe_account_modifications(NextToken)
 provide this token to receive the next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccountModifications = list(
     list(
       ModificationState = "PENDING"|"COMPLETED"|"FAILED",
@@ -29,19 +27,17 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list that describes modifications to the configuration of
 Bring Your Own License (BYOL) for the specified account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_account_modifications(
+\preformatted{svc$describe_account_modifications(
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

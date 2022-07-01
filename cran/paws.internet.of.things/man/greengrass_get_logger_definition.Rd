@@ -10,9 +10,7 @@ greengrass_get_logger_definition(LoggerDefinitionId)
 \item{LoggerDefinitionId}{[required] The ID of the logger definition.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
@@ -24,18 +22,16 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about a logger definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_logger_definition(
+\preformatted{svc$get_logger_definition(
   LoggerDefinitionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

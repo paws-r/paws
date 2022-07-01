@@ -80,12 +80,10 @@ user guide. The ARN must have the following form:
 \item{Tags}{One or more resource tags to associate with the certificate.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CertificateArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Requests an ACM certificate for use with other AWS services. To request
@@ -102,9 +100,7 @@ We recommend that you use DNS validation. ACM issues public certificates
 after receiving approval from the domain owner.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$request_certificate(
+\preformatted{svc$request_certificate(
   DomainName = "string",
   ValidationMethod = "EMAIL"|"DNS",
   SubjectAlternativeNames = list(
@@ -128,7 +124,7 @@ after receiving approval from the domain owner.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

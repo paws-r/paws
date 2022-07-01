@@ -45,9 +45,7 @@ of model packages, use the token in the next request.}
 \item{SortOrder}{The sort order for the results. The default is \code{Ascending}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ModelPackageSummaryList = list(
     list(
       ModelPackageName = "string",
@@ -64,15 +62,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the model packages that have been created.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_model_packages(
+\preformatted{svc$list_model_packages(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),
@@ -88,7 +84,7 @@ Lists the model packages that have been created.
   SortBy = "Name"|"CreationTime",
   SortOrder = "Ascending"|"Descending"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

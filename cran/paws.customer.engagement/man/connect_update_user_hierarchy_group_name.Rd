@@ -21,14 +21,12 @@ An empty list.
 Updates the name of the user hierarchy group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user_hierarchy_group_name(
+\preformatted{svc$update_user_hierarchy_group_name(
   Name = "string",
   HierarchyGroupId = "string",
   InstanceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

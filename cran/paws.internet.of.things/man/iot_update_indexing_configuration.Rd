@@ -19,9 +19,7 @@ An empty list.
 Updates the search configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_indexing_configuration(
+\preformatted{svc$update_indexing_configuration(
   thingIndexingConfiguration = list(
     thingIndexingMode = "OFF"|"REGISTRY"|"REGISTRY_AND_SHADOW",
     thingConnectivityIndexingMode = "OFF"|"STATUS",
@@ -54,7 +52,7 @@ Updates the search configuration.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

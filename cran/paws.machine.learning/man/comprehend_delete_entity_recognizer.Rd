@@ -25,12 +25,10 @@ recognizer disappears from your account and is no longer available for
 use.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_entity_recognizer(
+\preformatted{svc$delete_entity_recognizer(
   EntityRecognizerArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

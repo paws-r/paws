@@ -16,9 +16,7 @@ AWS CloudFormation retains for any given stack, and for how long, may
 vary.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StackId = "string",
   StackDriftDetectionId = "string",
   StackDriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
@@ -29,7 +27,7 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a stack drift detection operation. A stack
@@ -51,12 +49,10 @@ Once the drift detection operation has completed, use
 to return drift information about the stack and its resources.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stack_drift_detection_status(
+\preformatted{svc$describe_stack_drift_detection_status(
   StackDriftDetectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

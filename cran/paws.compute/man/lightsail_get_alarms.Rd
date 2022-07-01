@@ -24,9 +24,7 @@ Specify a monitored resource name to return information about all alarms
 for a specific resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   alarms = list(
     list(
       name = "string",
@@ -66,7 +64,7 @@ A list with the following syntax:
   ),
   nextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the configured alarms. Specify an alarm name
@@ -80,14 +78,12 @@ text message, and a banner displayed on the Amazon Lightsail console.
 For more information, see Alarms in Amazon Lightsail.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_alarms(
+\preformatted{svc$get_alarms(
   alarmName = "string",
   pageToken = "string",
   monitoredResourceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

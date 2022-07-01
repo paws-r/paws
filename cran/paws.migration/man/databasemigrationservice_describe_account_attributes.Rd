@@ -7,9 +7,7 @@
 databasemigrationservice_describe_account_attributes()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccountQuotas = list(
     list(
       AccountQuotaName = "string",
@@ -19,7 +17,7 @@ A list with the following syntax:
   ),
   UniqueAccountIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all of the AWS DMS attributes for a customer account. These
@@ -34,10 +32,8 @@ each artifact used by DMS in the given region.
 This command does not take any parameters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_account_attributes()
-}\if{html}{\out{</div>}}
+\preformatted{svc$describe_account_attributes()
+}
 }
 
 \examples{

@@ -40,12 +40,10 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$undeprecate_domain(
+\preformatted{svc$undeprecate_domain(
   name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

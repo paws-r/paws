@@ -24,9 +24,7 @@ listing.
 \item{ReservedInstancesListingId}{One or more Reserved Instance listing IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReservedInstancesListings = list(
     list(
       ClientToken = "string",
@@ -63,7 +61,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes your account's Reserved Instance listings in the Reserved
@@ -91,9 +89,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_reserved_instances_listings(
+\preformatted{svc$describe_reserved_instances_listings(
   Filters = list(
     list(
       Name = "string",
@@ -105,7 +101,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   ReservedInstancesId = "string",
   ReservedInstancesListingId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

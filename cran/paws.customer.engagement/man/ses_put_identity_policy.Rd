@@ -42,14 +42,12 @@ using sending authorization, see the \href{https://docs.aws.amazon.com/ses/lates
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_identity_policy(
+\preformatted{svc$put_identity_policy(
   Identity = "string",
   PolicyName = "string",
   Policy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

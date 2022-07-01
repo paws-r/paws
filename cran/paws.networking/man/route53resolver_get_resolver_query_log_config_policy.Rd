@@ -11,12 +11,10 @@ route53resolver_get_resolver_query_log_config_policy(Arn)
 query logging policy for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResolverQueryLogConfigPolicy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a query logging policy. A query logging policy
@@ -24,12 +22,10 @@ specifies the Resolver query logging operations and resources that you
 want to allow another AWS account to be able to use.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resolver_query_log_config_policy(
+\preformatted{svc$get_resolver_query_log_config_policy(
   Arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

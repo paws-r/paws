@@ -10,9 +10,7 @@ fms_get_policy(PolicyId)
 \item{PolicyId}{[required] The ID of the AWS Firewall Manager policy that you want the details for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Policy = list(
     PolicyId = "string",
     PolicyName = "string",
@@ -46,18 +44,16 @@ A list with the following syntax:
   ),
   PolicyArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the specified AWS Firewall Manager policy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_policy(
+\preformatted{svc$get_policy(
   PolicyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

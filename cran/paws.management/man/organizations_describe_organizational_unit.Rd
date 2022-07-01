@@ -19,16 +19,14 @@ This string is followed by a second "-" dash and from 8 to 32 additional
 lowercase letters or digits.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OrganizationalUnit = list(
     Id = "string",
     Arn = "string",
     Name = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about an organizational unit (OU).
@@ -38,12 +36,10 @@ account or by a member account that is a delegated administrator for an
 AWS service.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_organizational_unit(
+\preformatted{svc$describe_organizational_unit(
   OrganizationalUnitId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

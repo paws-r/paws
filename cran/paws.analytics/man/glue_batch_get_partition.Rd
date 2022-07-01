@@ -18,9 +18,7 @@ none is supplied, the AWS account ID is used by default.}
 \item{PartitionsToGet}{[required] A list of partition values identifying the partitions to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Partitions = list(
     list(
       Values = list(
@@ -108,15 +106,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves partitions in a batch request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_partition(
+\preformatted{svc$batch_get_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -128,7 +124,7 @@ Retrieves partitions in a batch request.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

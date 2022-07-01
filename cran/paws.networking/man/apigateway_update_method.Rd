@@ -18,9 +18,7 @@ apigateway_update_method(restApiId, resourceId, httpMethod,
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   httpMethod = "string",
   authorizationType = "string",
   authorizerId = "string",
@@ -85,15 +83,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing Method resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_method(
+\preformatted{svc$update_method(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",
@@ -106,7 +102,7 @@ Updates an existing Method resource.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

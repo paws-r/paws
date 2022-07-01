@@ -22,9 +22,7 @@ combined with historical data. For more information see
 recording-events.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- personalizeevents(
+\preformatted{svc <- personalizeevents(
   config = list(
     credentials = list(
       creds = list(
@@ -38,7 +36,7 @@ recording-events.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

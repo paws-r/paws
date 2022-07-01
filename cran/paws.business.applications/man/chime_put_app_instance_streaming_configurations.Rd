@@ -13,9 +13,7 @@ chime_put_app_instance_streaming_configurations(AppInstanceArn,
 \item{AppInstanceStreamingConfigurations}{[required] The streaming configurations set for an app instance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AppInstanceStreamingConfigurations = list(
     list(
       AppInstanceDataType = "Channel"|"ChannelMessage",
@@ -23,15 +21,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The data streaming configurations of an app instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_app_instance_streaming_configurations(
+\preformatted{svc$put_app_instance_streaming_configurations(
   AppInstanceArn = "string",
   AppInstanceStreamingConfigurations = list(
     list(
@@ -40,7 +36,7 @@ The data streaming configurations of an app instance.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

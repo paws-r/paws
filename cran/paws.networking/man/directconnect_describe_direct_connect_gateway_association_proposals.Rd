@@ -26,9 +26,7 @@ returned.}
 \item{nextToken}{The token for the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   directConnectGatewayAssociationProposals = list(
     list(
       proposalId = "string",
@@ -55,23 +53,21 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more association proposals for connection between a
 virtual private gateway or transit gateway and a Direct Connect gateway.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_direct_connect_gateway_association_proposals(
+\preformatted{svc$describe_direct_connect_gateway_association_proposals(
   directConnectGatewayId = "string",
   proposalId = "string",
   associatedGatewayId = "string",
   maxResults = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

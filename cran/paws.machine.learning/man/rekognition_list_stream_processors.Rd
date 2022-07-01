@@ -17,9 +17,7 @@ next set of stream processors.}
 return in the response. The default is 1000.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   StreamProcessors = list(
     list(
@@ -28,20 +26,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of stream processors that you have created with
 \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_stream_processors(
+\preformatted{svc$list_stream_processors(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

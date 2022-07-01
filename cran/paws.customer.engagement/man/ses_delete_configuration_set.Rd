@@ -20,12 +20,10 @@ see the \href{https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_configuration_set(
+\preformatted{svc$delete_configuration_set(
   ConfigurationSetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ glue_get_ml_transforms(NextToken, MaxResults, Filter, Sort)
 \item{Sort}{The sorting criteria.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Transforms = list(
     list(
       TransformId = "string",
@@ -95,7 +93,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a sortable, filterable list of existing AWS Glue machine learning
@@ -106,9 +104,7 @@ transformations are then saved by AWS Glue, and you can retrieve their
 metadata by calling \code{\link[=glue_get_ml_transforms]{get_ml_transforms}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_ml_transforms(
+\preformatted{svc$get_ml_transforms(
   NextToken = "string",
   MaxResults = 123,
   Filter = list(
@@ -140,7 +136,7 @@ metadata by calling \code{\link[=glue_get_ml_transforms]{get_ml_transforms}}.
     SortDirection = "DESCENDING"|"ASCENDING"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

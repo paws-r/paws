@@ -37,9 +37,7 @@ This operation requires permission for the
 \code{kinesisanalytics:UpdateApplication} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_application(
+\preformatted{svc$update_application(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   ApplicationUpdate = list(
@@ -152,7 +150,7 @@ This operation requires permission for the
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

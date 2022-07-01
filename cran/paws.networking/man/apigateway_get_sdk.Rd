@@ -23,22 +23,18 @@ parameters named \code{groupId}, \code{artifactId}, \code{artifactVersion}, and
 \code{serviceName} and \code{javaPackageName} are required.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   contentType = "string",
   contentDisposition = "string",
   body = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Generates a client SDK for a RestApi and Stage.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_sdk(
+\preformatted{svc$get_sdk(
   restApiId = "string",
   stageName = "string",
   sdkType = "string",
@@ -46,7 +42,7 @@ Generates a client SDK for a RestApi and Stage.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

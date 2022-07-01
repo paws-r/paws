@@ -53,12 +53,10 @@ the operation.}
 \item{Tags}{The tags to be assigned to the Simple AD directory.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DirectoryId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Simple AD directory. For more information, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html}{Simple Active Directory}
@@ -71,9 +69,7 @@ the \code{\link[=directoryservice_create_directory]{create_directory}} operation
 see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_directory(
+\preformatted{svc$create_directory(
   Name = "string",
   ShortName = "string",
   Password = "string",
@@ -92,7 +88,7 @@ see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingW
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

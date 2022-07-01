@@ -22,13 +22,11 @@ that use this token return the same response as the first call.}
 \item{profileOwner}{The AWS account ID of the signing profile owner.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   jobId = "string",
   jobOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Initiates a signing job to be performed on the code provided. Signing
@@ -57,9 +55,7 @@ For a Java example that shows how to use this action, see
 \href{https://docs.aws.amazon.com/acm/latest/userguide/}{http://docs.aws.amazon.com/acm/latest/userguide/}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_signing_job(
+\preformatted{svc$start_signing_job(
   source = list(
     s3 = list(
       bucketName = "string",
@@ -77,7 +73,7 @@ For a Java example that shows how to use this action, see
   clientRequestToken = "string",
   profileOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

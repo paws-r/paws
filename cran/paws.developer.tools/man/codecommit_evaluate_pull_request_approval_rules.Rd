@@ -16,9 +16,7 @@ most recent revision ID for a pull request, use
 \code{\link[=codecommit_get_pull_request]{get_pull_request}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   evaluation = list(
     approved = TRUE|FALSE,
     overridden = TRUE|FALSE,
@@ -30,20 +28,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Evaluates whether a pull request has met all the conditions specified in
 its associated approval rules.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$evaluate_pull_request_approval_rules(
+\preformatted{svc$evaluate_pull_request_approval_rules(
   pullRequestId = "string",
   revisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

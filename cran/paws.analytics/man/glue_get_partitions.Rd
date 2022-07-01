@@ -109,9 +109,7 @@ partitions.}
 \item{MaxResults}{The maximum number of partitions to return in a single response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Partitions = list(
     list(
       Values = list(
@@ -193,15 +191,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about the partitions in a table.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_partitions(
+\preformatted{svc$get_partitions(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -213,7 +209,7 @@ Retrieves information about the partitions in a table.
   ),
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

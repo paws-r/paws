@@ -21,9 +21,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Route = list(
     DestinationCidrBlock = "string",
     LocalGatewayVirtualInterfaceGroupId = "string",
@@ -34,21 +32,19 @@ A list with the following syntax:
     OwnerId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a static route for the specified local gateway route table.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_local_gateway_route(
+\preformatted{svc$create_local_gateway_route(
   DestinationCidrBlock = "string",
   LocalGatewayRouteTableId = "string",
   LocalGatewayVirtualInterfaceGroupId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -24,9 +24,7 @@ has a tag with the same key, \code{\link[=elbv2_add_tags]{add_tags}} updates its
 value.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags(
+\preformatted{svc$add_tags(
   ResourceArns = list(
     "string"
   ),
@@ -37,7 +35,7 @@ value.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

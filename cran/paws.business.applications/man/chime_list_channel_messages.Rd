@@ -23,9 +23,7 @@ based on time created.}
 returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelArn = "string",
   NextToken = "string",
   ChannelMessages = list(
@@ -51,7 +49,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List all the messages in a channel. Returns a paginated list of
@@ -63,9 +61,7 @@ redacted, not deleted. Deleted messages do not appear in the results.
 This action always returns the latest version of an edited message.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_channel_messages(
+\preformatted{svc$list_channel_messages(
   ChannelArn = "string",
   SortOrder = "ASCENDING"|"DESCENDING",
   NotBefore = as.POSIXct(
@@ -77,7 +73,7 @@ This action always returns the latest version of an edited message.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

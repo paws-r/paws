@@ -26,12 +26,10 @@ directory should be shared within your AWS organization
 request (\code{HANDSHAKE}).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SharedDirectoryId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Shares a specified directory (\code{DirectoryId}) in your AWS account
@@ -55,9 +53,7 @@ The \code{ShareNotes} parameter is only used when \code{HANDSHAKE} is called,
 which sends a directory sharing request to the directory consumer.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$share_directory(
+\preformatted{svc$share_directory(
   DirectoryId = "string",
   ShareNotes = "string",
   ShareTarget = list(
@@ -66,7 +62,7 @@ which sends a directory sharing request to the directory consumer.
   ),
   ShareMethod = "ORGANIZATIONS"|"HANDSHAKE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

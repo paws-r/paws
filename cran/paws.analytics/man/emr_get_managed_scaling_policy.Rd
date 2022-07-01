@@ -11,9 +11,7 @@ emr_get_managed_scaling_policy(ClusterId)
 will be fetched.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ManagedScalingPolicy = list(
     ComputeLimits = list(
       UnitType = "InstanceFleetUnits"|"Instances"|"VCPU",
@@ -24,18 +22,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Fetches the attached managed scaling policy for an Amazon EMR cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_managed_scaling_policy(
+\preformatted{svc$get_managed_scaling_policy(
   ClusterId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

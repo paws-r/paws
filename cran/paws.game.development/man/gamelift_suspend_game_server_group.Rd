@@ -14,9 +14,7 @@ GameServerGroup name or ARN value.}
 \item{SuspendActions}{[required] The activity to suspend for this game server group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GameServerGroup = list(
     GameServerGroupName = "string",
     GameServerGroupArn = "string",
@@ -43,7 +41,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -86,15 +84,13 @@ returned showing that the activity is listed in \code{SuspendedActions}.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$suspend_game_server_group(
+\preformatted{svc$suspend_game_server_group(
   GameServerGroupName = "string",
   SuspendActions = list(
     "REPLACE_INSTANCE_TYPES"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

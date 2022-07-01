@@ -17,9 +17,7 @@ dax_decrease_replication_factor(ClusterName, NewReplicationFactor,
 \item{NodeIdsToRemove}{The unique identifiers of the nodes to be removed from the cluster.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Cluster = list(
     ClusterName = "string",
     Description = "string",
@@ -75,7 +73,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes one or more nodes from a DAX cluster.
@@ -86,9 +84,7 @@ remove the last node in a DAX cluster. If you need to do this, use
 \code{\link[=dax_delete_cluster]{delete_cluster}} instead.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$decrease_replication_factor(
+\preformatted{svc$decrease_replication_factor(
   ClusterName = "string",
   NewReplicationFactor = 123,
   AvailabilityZones = list(
@@ -98,7 +94,7 @@ remove the last node in a DAX cluster. If you need to do this, use
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

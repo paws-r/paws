@@ -18,9 +18,7 @@ greengrass_create_function_definition(AmznClientToken, InitialVersion,
 \item{tags}{Tag(s) to add to the new resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
   LatestVersionArn = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Lambda function definition which contains a list of Lambda
@@ -39,9 +37,7 @@ functions and their configurations now, or use
 ''CreateFunctionDefinitionVersion'' later.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_function_definition(
+\preformatted{svc$create_function_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     DefaultConfig = list(
@@ -92,7 +88,7 @@ functions and their configurations now, or use
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

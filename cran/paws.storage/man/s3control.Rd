@@ -19,9 +19,7 @@ Operations section.
 AWS S3 Control provides access to Amazon S3 control plane operations.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- s3control(
+\preformatted{svc <- s3control(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +33,7 @@ AWS S3 Control provides access to Amazon S3 control plane operations.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

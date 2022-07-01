@@ -12,9 +12,7 @@ licensemanager_get_license(LicenseArn, Version)
 \item{Version}{License version.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   License = list(
     LicenseArn = "string",
     LicenseName = "string",
@@ -62,19 +60,17 @@ A list with the following syntax:
     Version = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets detailed information about the specified license.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_license(
+\preformatted{svc$get_license(
   LicenseArn = "string",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

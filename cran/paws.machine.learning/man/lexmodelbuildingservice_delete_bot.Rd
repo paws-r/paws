@@ -37,12 +37,10 @@ operation is successful.
 This operation requires permissions for the \code{lex:DeleteBot} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bot(
+\preformatted{svc$delete_bot(
   name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

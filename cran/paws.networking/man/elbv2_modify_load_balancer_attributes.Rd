@@ -13,9 +13,7 @@ elbv2_modify_load_balancer_attributes(LoadBalancerArn, Attributes)
 \item{Attributes}{[required] The load balancer attributes.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attributes = list(
     list(
       Key = "string",
@@ -23,7 +21,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the specified attributes of the specified Application Load
@@ -34,9 +32,7 @@ call fails. Any existing attributes that you do not modify retain their
 current values.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_load_balancer_attributes(
+\preformatted{svc$modify_load_balancer_attributes(
   LoadBalancerArn = "string",
   Attributes = list(
     list(
@@ -45,7 +41,7 @@ current values.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

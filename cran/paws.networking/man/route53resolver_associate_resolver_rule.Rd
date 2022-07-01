@@ -17,9 +17,7 @@ and a VPC.}
 \item{VPCId}{[required] The ID of the VPC that you want to associate the Resolver rule with.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResolverRuleAssociation = list(
     Id = "string",
     ResolverRuleId = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
     StatusMessage = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Associates a Resolver rule with a VPC. When you associate a rule with a
@@ -40,14 +38,12 @@ in the rule. For more information about rules, see
 \code{\link[=route53resolver_create_resolver_rule]{create_resolver_rule}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_resolver_rule(
+\preformatted{svc$associate_resolver_rule(
   ResolverRuleId = "string",
   Name = "string",
   VPCId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

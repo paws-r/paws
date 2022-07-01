@@ -18,13 +18,11 @@ describes the action (for example, \code{EnableLoggingAction}).}
 \item{tags}{Metadata that can be used to manage the mitigation action.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   actionArn = "string",
   actionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Defines an action that can be applied to audit findings by using
@@ -34,9 +32,7 @@ see \href{https://docs.aws.amazon.com/iot/latest/developerguide/dd-mitigation-ac
 Each mitigation action can apply only one type of change.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_mitigation_action(
+\preformatted{svc$create_mitigation_action(
   actionName = "string",
   roleArn = "string",
   actionParams = list(
@@ -70,7 +66,7 @@ Each mitigation action can apply only one type of change.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

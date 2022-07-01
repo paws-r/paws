@@ -10,9 +10,7 @@ cloudwatchevents_describe_replay(ReplayName)
 \item{ReplayName}{[required] The name of the replay to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplayName = "string",
   ReplayArn = "string",
   Description = "string",
@@ -41,7 +39,7 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves details about a replay. Use
@@ -58,12 +56,10 @@ determine the progress of a replay. The value returned for
 range associated with the last event replayed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_replay(
+\preformatted{svc$describe_replay(
   ReplayName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

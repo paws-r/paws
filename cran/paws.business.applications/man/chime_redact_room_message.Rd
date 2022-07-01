@@ -20,14 +20,12 @@ An empty list.
 Redacts the specified message from the specified Amazon Chime channel.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$redact_room_message(
+\preformatted{svc$redact_room_message(
   AccountId = "string",
   RoomId = "string",
   MessageId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

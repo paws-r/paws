@@ -53,9 +53,7 @@ are available to all accounts and only need to be associated with a
 cluster to be used.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   cluster = list(
     clusterArn = "string",
     clusterName = "string",
@@ -108,7 +106,7 @@ A list with the following syntax:
     attachmentsStatus = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the available capacity providers and the default capacity
@@ -132,9 +130,7 @@ default capacity provider strategy for your cluster, however you may
 specify an empty array (\verb{[]}) to bypass defining a default strategy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_cluster_capacity_providers(
+\preformatted{svc$put_cluster_capacity_providers(
   cluster = "string",
   capacityProviders = list(
     "string"
@@ -147,7 +143,7 @@ specify an empty array (\verb{[]}) to bypass defining a default strategy.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

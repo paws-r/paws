@@ -29,9 +29,7 @@ single request.}
 \item{Tags}{A list of tag instances.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClusterSubnetGroup = list(
     ClusterSubnetGroupName = "string",
     Description = "string",
@@ -59,7 +57,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Amazon Redshift subnet group. You must provide a list of
@@ -70,9 +68,7 @@ For information about subnet groups, go to \href{https://docs.aws.amazon.com/red
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cluster_subnet_group(
+\preformatted{svc$create_cluster_subnet_group(
   ClusterSubnetGroupName = "string",
   Description = "string",
   SubnetIds = list(
@@ -85,7 +81,7 @@ in the \emph{Amazon Redshift Cluster Management Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

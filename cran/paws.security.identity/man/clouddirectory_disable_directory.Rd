@@ -10,12 +10,10 @@ clouddirectory_disable_directory(DirectoryArn)
 \item{DirectoryArn}{[required] The ARN of the directory to disable.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DirectoryArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disables the specified directory. Disabled directories cannot be read or
@@ -23,12 +21,10 @@ written to. Only enabled directories can be disabled. Disabled
 directories may be reenabled.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_directory(
+\preformatted{svc$disable_directory(
   DirectoryArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

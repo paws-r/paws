@@ -15,9 +15,7 @@ licensemanager_list_associations_for_license_configuration(
 \item{NextToken}{Token for the next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LicenseConfigurationAssociations = list(
     list(
       ResourceArn = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the resource associations for the specified license configuration.
@@ -41,14 +39,12 @@ configuration. For example, an AMI or a stopped instance might not
 consume a license (depending on the license rules).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_associations_for_license_configuration(
+\preformatted{svc$list_associations_for_license_configuration(
   LicenseConfigurationArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

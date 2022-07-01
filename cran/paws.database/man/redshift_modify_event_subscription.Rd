@@ -47,9 +47,7 @@ Values: ERROR, INFO}
 indicates the subscription is enabled}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventSubscription = list(
     CustomerAwsId = "string",
     CustSubscriptionId = "string",
@@ -75,15 +73,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies an existing Amazon Redshift event notification subscription.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_event_subscription(
+\preformatted{svc$modify_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",
@@ -96,7 +92,7 @@ Modifies an existing Amazon Redshift event notification subscription.
   Severity = "string",
   Enabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

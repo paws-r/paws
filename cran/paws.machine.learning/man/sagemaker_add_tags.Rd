@@ -15,9 +15,7 @@ resources in different ways, for example, by purpose, owner, or
 environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -25,7 +23,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds or overwrites one or more tags for the specified Amazon SageMaker
@@ -48,9 +46,7 @@ the \code{Tags} parameter of
 \code{\link[=sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job}}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags(
+\preformatted{svc$add_tags(
   ResourceArn = "string",
   Tags = list(
     list(
@@ -59,7 +55,7 @@ the \code{Tags} parameter of
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

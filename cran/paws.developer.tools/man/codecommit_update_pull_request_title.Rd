@@ -13,9 +13,7 @@ codecommit_update_pull_request_title(pullRequestId, title)
 \item{title}{[required] The updated title of the pull request. This replaces the existing title.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pullRequest = list(
     pullRequestId = "string",
     title = "string",
@@ -67,19 +65,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Replaces the title of a pull request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_pull_request_title(
+\preformatted{svc$update_pull_request_title(
   pullRequestId = "string",
   title = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

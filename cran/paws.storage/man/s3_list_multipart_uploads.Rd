@@ -70,9 +70,7 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Bucket = "string",
   KeyMarker = "string",
   UploadIdMarker = "string",
@@ -107,7 +105,7 @@ A list with the following syntax:
   ),
   EncodingType = "url"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation lists in-progress multipart uploads. An in-progress
@@ -146,9 +144,7 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_multipart_uploads(
+\preformatted{svc$list_multipart_uploads(
   Bucket = "string",
   Delimiter = "string",
   EncodingType = "url",
@@ -158,7 +154,7 @@ The following operations are related to
   UploadIdMarker = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

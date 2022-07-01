@@ -16,9 +16,7 @@ the remaining results, if any, make another call with the token returned
 from this call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Quotas = list(
     list(
@@ -50,7 +48,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the applied quota values for the specified AWS service. For some
@@ -58,14 +56,12 @@ quotas, only the default values are available. If the applied quota
 value is not available for a quota, the quota is not retrieved.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_service_quotas(
+\preformatted{svc$list_service_quotas(
   ServiceCode = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

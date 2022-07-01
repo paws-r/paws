@@ -27,9 +27,7 @@ values are \code{Accept}, \code{Connect}, \code{Delete}, and \code{Reject}.}
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConnectionNotification = list(
     ConnectionNotificationId = "string",
     ServiceId = "string",
@@ -43,7 +41,7 @@ A list with the following syntax:
   ),
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a connection notification for a specified VPC endpoint or VPC
@@ -55,9 +53,7 @@ in the \emph{Amazon Simple Notification Service Developer Guide}.
 You can create a connection notification for interface endpoints only.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vpc_endpoint_connection_notification(
+\preformatted{svc$create_vpc_endpoint_connection_notification(
   DryRun = TRUE|FALSE,
   ServiceId = "string",
   VpcEndpointId = "string",
@@ -67,7 +63,7 @@ You can create a connection notification for interface endpoints only.
   ),
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

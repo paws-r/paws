@@ -23,9 +23,7 @@ An empty list.
 Updates a fleet of devices.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_device_fleet(
+\preformatted{svc$update_device_fleet(
   DeviceFleetName = "string",
   RoleArn = "string",
   Description = "string",
@@ -34,7 +32,7 @@ Updates a fleet of devices.
     KmsKeyId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

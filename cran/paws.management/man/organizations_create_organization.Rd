@@ -25,9 +25,7 @@ in the \emph{AWS Organizations User Guide.}
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Organization = list(
     Id = "string",
     Arn = "string",
@@ -43,7 +41,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an AWS organization. The account whose user is calling the
@@ -64,12 +62,10 @@ features by setting the \code{FeatureSet} parameter to
 you can't use organization policies
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_organization(
+\preformatted{svc$create_organization(
   FeatureSet = "ALL"|"CONSOLIDATED_BILLING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

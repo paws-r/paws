@@ -10,12 +10,10 @@ machinelearning_delete_evaluation(EvaluationId)
 \item{EvaluationId}{[required] A user-supplied ID that uniquely identifies the \code{Evaluation} to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EvaluationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Assigns the \code{DELETED} status to an \code{Evaluation}, rendering it unusable.
@@ -32,12 +30,10 @@ The results of the
 irreversible.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_evaluation(
+\preformatted{svc$delete_evaluation(
   EvaluationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

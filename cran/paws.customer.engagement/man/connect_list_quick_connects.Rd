@@ -22,9 +22,7 @@ create a quick connect, you are prompted to assign one of the following
 types: Agent (USER), External (PHONE_NUMBER), or Queue (QUEUE).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   QuickConnectSummaryList = list(
     list(
       Id = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -45,9 +43,7 @@ Provides information about the quick connects for the specified Amazon
 Connect instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_quick_connects(
+\preformatted{svc$list_quick_connects(
   InstanceId = "string",
   NextToken = "string",
   MaxResults = 123,
@@ -55,7 +51,7 @@ Connect instance.
     "USER"|"QUEUE"|"PHONE_NUMBER"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -42,12 +42,10 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RequestCharged = "requester"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Places an Object Retention configuration on an object.
@@ -60,9 +58,7 @@ This action is not supported by Amazon S3 on Outposts.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_object_retention(
+\preformatted{svc$put_object_retention(
   Bucket = "string",
   Key = "string",
   Retention = list(
@@ -77,7 +73,7 @@ This action is not supported by Amazon S3 on Outposts.
   ContentMD5 = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

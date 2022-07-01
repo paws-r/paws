@@ -30,16 +30,14 @@ An empty list.
 Deletes the specified route from the specified route table.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_route(
+\preformatted{svc$delete_route(
   DestinationCidrBlock = "string",
   DestinationIpv6CidrBlock = "string",
   DestinationPrefixListId = "string",
   DryRun = TRUE|FALSE,
   RouteTableId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

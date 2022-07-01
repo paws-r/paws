@@ -22,9 +22,7 @@ Default: There is no default value.}
 retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Stacks = list(
     list(
       StackId = "string",
@@ -95,7 +93,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the description for the specified stack; if no stack name was
@@ -105,13 +103,11 @@ If the stack does not exist, an \code{AmazonCloudFormationException} is
 returned.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stacks(
+\preformatted{svc$describe_stacks(
   StackName = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -107,9 +107,7 @@ calling the \code{\link[=autoscaling_delete_lifecycle_hook]{delete_lifecycle_hoo
 API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_lifecycle_hook(
+\preformatted{svc$put_lifecycle_hook(
   LifecycleHookName = "string",
   AutoScalingGroupName = "string",
   LifecycleTransition = "string",
@@ -119,7 +117,7 @@ API.
   HeartbeatTimeout = 123,
   DefaultResult = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

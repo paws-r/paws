@@ -124,12 +124,10 @@ history event. For more information, see
 in the \emph{Amazon SWF Developer Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   runId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts an execution of the workflow type in the specified domain using
@@ -170,9 +168,7 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_workflow_execution(
+\preformatted{svc$start_workflow_execution(
   domain = "string",
   workflowId = "string",
   workflowType = list(
@@ -192,7 +188,7 @@ in the \emph{Amazon SWF Developer Guide}.
   childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
   lambdaRole = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,9 +19,7 @@ Operations section.
 Amazon API Gateway V2
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- apigatewayv2(
+\preformatted{svc <- apigatewayv2(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +33,7 @@ Amazon API Gateway V2
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

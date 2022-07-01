@@ -22,12 +22,10 @@ change the thing type on any associated thing, and finally use
 \code{\link[=iot_delete_thing_type]{delete_thing_type}} to delete the thing type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_thing_type(
+\preformatted{svc$delete_thing_type(
   thingTypeName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -18,9 +18,7 @@ is 100.}
 next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OrganizationConformancePacks = list(
     list(
       OrganizationConformancePackName = "string",
@@ -43,7 +41,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of organization conformance packs.
@@ -56,16 +54,14 @@ conformance packs names. They are only applicable, when you request all
 the organization conformance packs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_organization_conformance_packs(
+\preformatted{svc$describe_organization_conformance_packs(
   OrganizationConformancePackNames = list(
     "string"
   ),
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

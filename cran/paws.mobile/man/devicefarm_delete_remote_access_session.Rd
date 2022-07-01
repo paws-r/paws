@@ -17,12 +17,10 @@ An empty list.
 Deletes a completed remote access session and its results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_remote_access_session(
+\preformatted{svc$delete_remote_access_session(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

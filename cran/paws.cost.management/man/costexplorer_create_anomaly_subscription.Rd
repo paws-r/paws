@@ -10,12 +10,10 @@ costexplorer_create_anomaly_subscription(AnomalySubscription)
 \item{AnomalySubscription}{[required] The cost anomaly subscription object that you want to create.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SubscriptionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a subscription to a cost anomaly detection monitor. You can use
@@ -24,9 +22,7 @@ Email subscribers can set a dollar threshold and a time frequency for
 receiving notifications.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_anomaly_subscription(
+\preformatted{svc$create_anomaly_subscription(
   AnomalySubscription = list(
     SubscriptionArn = "string",
     AccountId = "string",
@@ -45,7 +41,7 @@ receiving notifications.
     SubscriptionName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -34,13 +34,11 @@ For more information about IAM roles, go to \href{https://docs.aws.amazon.com/IA
 For more information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About Instance Profiles}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_role_from_instance_profile(
+\preformatted{svc$remove_role_from_instance_profile(
   InstanceProfileName = "string",
   RoleName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

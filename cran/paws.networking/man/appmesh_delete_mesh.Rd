@@ -10,9 +10,7 @@ appmesh_delete_mesh(meshName)
 \item{meshName}{[required] The name of the service mesh to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   mesh = list(
     meshName = "string",
     metadata = list(
@@ -38,7 +36,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an existing service mesh.
@@ -48,12 +46,10 @@ routers, and virtual nodes) in the service mesh before you can delete
 the mesh itself.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_mesh(
+\preformatted{svc$delete_mesh(
   meshName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

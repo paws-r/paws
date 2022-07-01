@@ -17,12 +17,10 @@ Deletes a SIP rule. You must disable a SIP rule before you can delete
 it.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_sip_rule(
+\preformatted{svc$delete_sip_rule(
   SipRuleId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

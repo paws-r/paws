@@ -14,15 +14,13 @@ keys.}
 \item{Keys}{[required] The keys of the tags to be removed.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   Keys = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes tags from a specified resource group.
@@ -35,15 +33,13 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag(
+\preformatted{svc$untag(
   Arn = "string",
   Keys = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

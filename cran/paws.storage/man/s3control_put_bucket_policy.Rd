@@ -79,15 +79,13 @@ The following actions are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_policy(
+\preformatted{svc$put_bucket_policy(
   AccountId = "string",
   Bucket = "string",
   ConfirmRemoveSelfBucketAccess = TRUE|FALSE,
   Policy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

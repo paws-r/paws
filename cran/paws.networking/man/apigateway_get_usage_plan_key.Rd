@@ -15,27 +15,23 @@ plan customer.}
 representing a plan customer.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   type = "string",
   value = "string",
   name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a usage plan key of a given key identifier.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_usage_plan_key(
+\preformatted{svc$get_usage_plan_key(
   usagePlanId = "string",
   keyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

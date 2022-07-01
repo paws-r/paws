@@ -11,21 +11,17 @@ costexplorer_create_anomaly_monitor(AnomalyMonitor)
 \item{AnomalyMonitor}{[required] The cost anomaly detection monitor object that you want to create.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MonitorArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new cost anomaly detection monitor with the requested type and
 monitor specification.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_anomaly_monitor(
+\preformatted{svc$create_anomaly_monitor(
   AnomalyMonitor = list(
     MonitorArn = "string",
     MonitorName = "string",
@@ -73,7 +69,7 @@ monitor specification.
     DimensionalValueCount = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

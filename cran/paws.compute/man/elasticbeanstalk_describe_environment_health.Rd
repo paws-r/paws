@@ -22,9 +22,7 @@ to \code{All}. If no attribute names are specified, returns the name of the
 environment.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EnvironmentName = "string",
   HealthStatus = "string",
   Status = "Green"|"Yellow"|"Red"|"Grey",
@@ -66,7 +64,7 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the overall health of the specified
@@ -74,16 +72,14 @@ environment. The \strong{DescribeEnvironmentHealth} operation is only
 available with AWS Elastic Beanstalk Enhanced Health.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_environment_health(
+\preformatted{svc$describe_environment_health(
   EnvironmentName = "string",
   EnvironmentId = "string",
   AttributeNames = list(
     "Status"|"Color"|"Causes"|"ApplicationMetrics"|"InstancesHealth"|"All"|"HealthStatus"|"RefreshedAt"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

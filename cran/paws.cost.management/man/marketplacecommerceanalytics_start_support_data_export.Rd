@@ -51,12 +51,10 @@ the data set has been published or if an error has occurred.}
 Amazon SNS notification message and the data set metadata file.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   dataSetRequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Given a data set type and a from date, asynchronously publishes the
@@ -73,9 +71,7 @@ following actions: s3:PutObject, s3:GetBucketLocation,
 sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_support_data_export(
+\preformatted{svc$start_support_data_export(
   dataSetType = "customer_support_contacts_data"|"test_customer_support_contacts_data",
   fromDate = as.POSIXct(
     "2015-01-01"
@@ -88,7 +84,7 @@ sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ the next page of results in a paginated response.}
 The default is maximum. If you specify 0, AWS Config uses the default.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConfigurationAggregators = list(
     list(
       ConfigurationAggregatorName = "string",
@@ -53,7 +51,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the details of one or more configuration aggregators. If the
@@ -62,16 +60,14 @@ details for all the configuration aggregators associated with the
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_configuration_aggregators(
+\preformatted{svc$describe_configuration_aggregators(
   ConfigurationAggregatorNames = list(
     "string"
   ),
   NextToken = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

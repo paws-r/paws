@@ -10,9 +10,7 @@ mobile_delete_project(projectId)
 \item{projectId}{[required] Unique project identifier.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   deletedResources = list(
     list(
       type = "string",
@@ -36,18 +34,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Delets a project in AWS Mobile Hub.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_project(
+\preformatted{svc$delete_project(
   projectId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

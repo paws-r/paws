@@ -11,9 +11,7 @@ securityhub_decline_invitations(AccountIds)
 invitations to Security Hub.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UnprocessedAccounts = list(
     list(
       AccountId = "string",
@@ -21,7 +19,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Declines invitations to become a member account.
@@ -30,14 +28,12 @@ This operation is only used by accounts that are not part of an
 organization. Organization accounts do not receive invitations.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$decline_invitations(
+\preformatted{svc$decline_invitations(
   AccountIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

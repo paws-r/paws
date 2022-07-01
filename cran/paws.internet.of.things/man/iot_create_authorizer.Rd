@@ -34,21 +34,17 @@ For the cli-input-json file use format: "tags":
 authorization request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   authorizerName = "string",
   authorizerArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an authorizer.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_authorizer(
+\preformatted{svc$create_authorizer(
   authorizerName = "string",
   authorizerFunctionArn = "string",
   tokenKeyName = "string",
@@ -64,7 +60,7 @@ Creates an authorizer.
   ),
   signingDisabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

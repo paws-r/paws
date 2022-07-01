@@ -54,9 +54,7 @@ Replaces an entry (rule) in a network ACL. For more information, see
 \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$replace_network_acl_entry(
+\preformatted{svc$replace_network_acl_entry(
   CidrBlock = "string",
   DryRun = TRUE|FALSE,
   Egress = TRUE|FALSE,
@@ -74,7 +72,7 @@ Replaces an entry (rule) in a network ACL. For more information, see
   RuleAction = "allow"|"deny",
   RuleNumber = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

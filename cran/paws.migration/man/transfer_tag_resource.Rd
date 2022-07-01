@@ -26,9 +26,7 @@ entities.
 There is no response returned from this call.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   Arn = "string",
   Tags = list(
     list(
@@ -37,7 +35,7 @@ There is no response returned from this call.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

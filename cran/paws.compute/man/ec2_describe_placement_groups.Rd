@@ -37,9 +37,7 @@ specified.}
 \item{GroupIds}{The IDs of the placement groups.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PlacementGroups = list(
     list(
       GroupName = "string",
@@ -56,7 +54,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified placement groups or all of your placement
@@ -64,9 +62,7 @@ groups. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/lates
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_placement_groups(
+\preformatted{svc$describe_placement_groups(
   Filters = list(
     list(
       Name = "string",
@@ -83,7 +79,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

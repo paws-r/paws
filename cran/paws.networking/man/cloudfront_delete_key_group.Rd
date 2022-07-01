@@ -32,13 +32,11 @@ version. To get these values, use
 \code{\link[=cloudfront_get_key_group_config]{get_key_group_config}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_key_group(
+\preformatted{svc$delete_key_group(
   Id = "string",
   IfMatch = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

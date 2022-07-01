@@ -19,9 +19,7 @@ Operations section.
 Pinpoint SMS and Voice Messaging public facing APIs
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- pinpointsmsvoice(
+\preformatted{svc <- pinpointsmsvoice(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +33,7 @@ Pinpoint SMS and Voice Messaging public facing APIs
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

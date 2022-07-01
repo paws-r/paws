@@ -23,15 +23,13 @@ Removes the specified tag or tags from the specified AWS CloudHSM
 cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceId = "string",
   TagKeyList = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

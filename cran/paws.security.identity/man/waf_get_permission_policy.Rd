@@ -11,12 +11,10 @@ waf_get_permission_policy(ResourceArn)
 get the policy.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Policy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -31,12 +29,10 @@ regional and global use.
 Returns the IAM policy attached to the RuleGroup.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_permission_policy(
+\preformatted{svc$get_permission_policy(
   ResourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

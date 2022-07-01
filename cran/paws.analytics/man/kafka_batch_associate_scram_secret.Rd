@@ -12,9 +12,7 @@ kafka_batch_associate_scram_secret(ClusterArn, SecretArnList)
 \item{SecretArnList}{[required] List of AWS Secrets Manager secret ARNs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClusterArn = "string",
   UnprocessedScramSecrets = list(
     list(
@@ -24,21 +22,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Associates one or more Scram Secrets with an Amazon MSK cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_associate_scram_secret(
+\preformatted{svc$batch_associate_scram_secret(
   ClusterArn = "string",
   SecretArnList = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

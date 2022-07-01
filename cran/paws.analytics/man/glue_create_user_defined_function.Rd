@@ -23,9 +23,7 @@ An empty list.
 Creates a new function definition in the Data Catalog.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user_defined_function(
+\preformatted{svc$create_user_defined_function(
   CatalogId = "string",
   DatabaseName = "string",
   FunctionInput = list(
@@ -41,7 +39,7 @@ Creates a new function definition in the Data Catalog.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

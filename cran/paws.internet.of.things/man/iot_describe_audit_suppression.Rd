@@ -12,9 +12,7 @@ iot_describe_audit_suppression(checkName, resourceIdentifier)
 \item{resourceIdentifier}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   checkName = "string",
   resourceIdentifier = list(
     deviceCertificateId = "string",
@@ -35,15 +33,13 @@ A list with the following syntax:
   suppressIndefinitely = TRUE|FALSE,
   description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a Device Defender audit suppression.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_audit_suppression(
+\preformatted{svc$describe_audit_suppression(
   checkName = "string",
   resourceIdentifier = list(
     deviceCertificateId = "string",
@@ -59,7 +55,7 @@ Gets information about a Device Defender audit suppression.
     roleAliasArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -13,29 +13,25 @@ chime_get_events_configuration(AccountId, BotId)
 \item{BotId}{[required] The bot ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventsConfiguration = list(
     BotId = "string",
     OutboundEventsHTTPSEndpoint = "string",
     LambdaFunctionArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets details for an events configuration that allows a bot to receive
 outgoing events, such as an HTTPS endpoint or Lambda function ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_events_configuration(
+\preformatted{svc$get_events_configuration(
   AccountId = "string",
   BotId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

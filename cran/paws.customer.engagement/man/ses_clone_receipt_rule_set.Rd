@@ -30,13 +30,11 @@ For information about setting up rule sets, see the \href{https://docs.aws.amazo
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$clone_receipt_rule_set(
+\preformatted{svc$clone_receipt_rule_set(
   RuleSetName = "string",
   OriginalRuleSetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -26,9 +26,7 @@ RegisterTargetWithMaintenanceWindow action are also required for this
 API request. Optional fields that are not specified are set to null.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   WindowId = "string",
   WindowTargetId = "string",
   Targets = list(
@@ -43,7 +41,7 @@ A list with the following syntax:
   Name = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the target of an existing maintenance window. You can change
@@ -62,9 +60,7 @@ information, see Target.
 If a parameter is null, then the corresponding field is not modified.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_maintenance_window_target(
+\preformatted{svc$update_maintenance_window_target(
   WindowId = "string",
   WindowTargetId = "string",
   Targets = list(
@@ -80,7 +76,7 @@ If a parameter is null, then the corresponding field is not modified.
   Description = "string",
   Replace = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

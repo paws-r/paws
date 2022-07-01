@@ -37,9 +37,7 @@ an AWS account whose account ID is explicitly added to the \code{restore}
 attribute can still copy or restore a manual cluster snapshot.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBClusterSnapshotAttributesResult = list(
     DBClusterSnapshotIdentifier = "string",
     DBClusterSnapshotAttributes = list(
@@ -52,7 +50,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds an attribute and values to, or removes an attribute and values
@@ -71,9 +69,7 @@ for the \code{ValuesToAdd} parameter. You can't use \code{all} as a value for th
 parameter in this case.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_cluster_snapshot_attribute(
+\preformatted{svc$modify_db_cluster_snapshot_attribute(
   DBClusterSnapshotIdentifier = "string",
   AttributeName = "string",
   ValuesToAdd = list(
@@ -83,7 +79,7 @@ parameter in this case.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

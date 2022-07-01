@@ -13,9 +13,7 @@ dynamodb_describe_contributor_insights(TableName, IndexName)
 \item{IndexName}{The name of the global secondary index to describe, if applicable.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TableName = "string",
   IndexName = "string",
   ContributorInsightsRuleList = list(
@@ -30,20 +28,18 @@ A list with the following syntax:
     ExceptionDescription = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about contributor insights, for a given table or
 global secondary index.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_contributor_insights(
+\preformatted{svc$describe_contributor_insights(
   TableName = "string",
   IndexName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -12,9 +12,7 @@ apigatewayv2_get_authorizer(ApiId, AuthorizerId)
 \item{AuthorizerId}{[required] The authorizer identifier.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AuthorizerCredentialsArn = "string",
   AuthorizerId = "string",
   AuthorizerPayloadFormatVersion = "string",
@@ -34,19 +32,17 @@ A list with the following syntax:
   ),
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets an Authorizer.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_authorizer(
+\preformatted{svc$get_authorizer(
   ApiId = "string",
   AuthorizerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

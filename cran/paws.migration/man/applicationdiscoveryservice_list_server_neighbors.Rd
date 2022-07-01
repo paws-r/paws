@@ -26,9 +26,7 @@ results along with a token. Use that token in this query to get the next
 set of 10.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   neighbors = list(
     list(
       sourceServerId = "string",
@@ -41,16 +39,14 @@ A list with the following syntax:
   nextToken = "string",
   knownDependencyCount = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list of servers that are one network hop away from a
 specified server.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_server_neighbors(
+\preformatted{svc$list_server_neighbors(
   configurationId = "string",
   portInformationNeeded = TRUE|FALSE,
   neighborConfigurationIds = list(
@@ -59,7 +55,7 @@ specified server.
   maxResults = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

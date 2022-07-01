@@ -21,9 +21,7 @@ tags using the \code{\link[=fsx_create_backup]{create_backup}} action, no existi
 file system tags are copied from the file system to the backup.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Backup = list(
     BackupId = "string",
     Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING",
@@ -143,7 +141,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a backup of an existing Amazon FSx file system. Creating regular
@@ -192,9 +190,7 @@ creation status by calling the
 backup state along with other information.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_backup(
+\preformatted{svc$create_backup(
   FileSystemId = "string",
   ClientRequestToken = "string",
   Tags = list(
@@ -204,7 +200,7 @@ backup state along with other information.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

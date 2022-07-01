@@ -17,9 +17,7 @@ robomaker_create_robot(name, architecture, greengrassGroupId, tags)
 robot.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   arn = "string",
   name = "string",
   createdAt = as.POSIXct(
@@ -31,15 +29,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a robot.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_robot(
+\preformatted{svc$create_robot(
   name = "string",
   architecture = "X86_64"|"ARM64"|"ARMHF",
   greengrassGroupId = "string",
@@ -47,7 +43,7 @@ Creates a robot.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

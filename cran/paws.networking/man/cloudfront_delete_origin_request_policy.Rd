@@ -34,13 +34,11 @@ identifier and version. To get the identifier, you can use
 or \code{\link[=cloudfront_get_origin_request_policy]{get_origin_request_policy}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_origin_request_policy(
+\preformatted{svc$delete_origin_request_policy(
   Id = "string",
   IfMatch = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -27,9 +27,7 @@ a streaming URL or \code{SAML} for a SAML federated user. The default is to
 authenticate users using a streaming URL.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Sessions = list(
     list(
       Id = "string",
@@ -53,7 +51,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list that describes the streaming sessions for a specified
@@ -63,9 +61,7 @@ type is not provided, the default is to authenticate users using a
 streaming URL.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_sessions(
+\preformatted{svc$describe_sessions(
   StackName = "string",
   FleetName = "string",
   UserId = "string",
@@ -73,7 +69,7 @@ streaming URL.
   Limit = 123,
   AuthenticationType = "API"|"SAML"|"USERPOOL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

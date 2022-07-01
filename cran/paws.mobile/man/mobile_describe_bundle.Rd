@@ -10,9 +10,7 @@ mobile_describe_bundle(bundleId)
 \item{bundleId}{[required] Unique bundle identifier.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   details = list(
     bundleId = "string",
     title = "string",
@@ -24,18 +22,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Get the bundle details for the requested bundle id.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_bundle(
+\preformatted{svc$describe_bundle(
   bundleId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

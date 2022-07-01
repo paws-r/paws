@@ -24,9 +24,7 @@ specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   CacheParameterGroups = list(
     list(
@@ -38,7 +36,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of cache parameter group descriptions. If a cache
@@ -46,14 +44,12 @@ parameter group name is specified, the list contains only the
 descriptions for that group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cache_parameter_groups(
+\preformatted{svc$describe_cache_parameter_groups(
   CacheParameterGroupName = "string",
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -25,9 +25,7 @@ often faster than Internet transfer and more cost effective than
 upgrading your connectivity.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- importexport(
+\preformatted{svc <- importexport(
   config = list(
     credentials = list(
       creds = list(
@@ -41,7 +39,7 @@ upgrading your connectivity.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

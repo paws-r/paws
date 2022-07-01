@@ -51,9 +51,7 @@ a list of supported character sets for each engine version.}
 a list of supported time zones for each engine version.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   DBEngineVersions = list(
     list(
@@ -78,15 +76,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of the available engines.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_engine_versions(
+\preformatted{svc$describe_db_engine_versions(
   Engine = "string",
   EngineVersion = "string",
   DBParameterGroupFamily = "string",
@@ -104,7 +100,7 @@ Returns a list of the available engines.
   ListSupportedCharacterSets = TRUE|FALSE,
   ListSupportedTimezones = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

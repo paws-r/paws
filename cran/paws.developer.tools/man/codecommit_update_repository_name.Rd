@@ -24,13 +24,11 @@ repository names, see
 in the AWS CodeCommit User Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_repository_name(
+\preformatted{svc$update_repository_name(
   oldName = "string",
   newName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

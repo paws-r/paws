@@ -14,9 +14,7 @@ dax_update_subnet_group(SubnetGroupName, Description, SubnetIds)
 \item{SubnetIds}{A list of subnet IDs in the subnet group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SubnetGroup = list(
     SubnetGroupName = "string",
     Description = "string",
@@ -29,22 +27,20 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies an existing subnet group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_subnet_group(
+\preformatted{svc$update_subnet_group(
   SubnetGroupName = "string",
   Description = "string",
   SubnetIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

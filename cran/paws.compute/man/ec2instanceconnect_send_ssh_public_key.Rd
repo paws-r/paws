@@ -20,28 +20,24 @@ publication you must have the matching private key.}
 \item{AvailabilityZone}{[required] The availability zone the EC2 instance was launched in.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RequestId = "string",
   Success = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Pushes an SSH public key to a particular OS user on a given EC2 instance
 for 60 seconds.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_ssh_public_key(
+\preformatted{svc$send_ssh_public_key(
   InstanceId = "string",
   InstanceOSUser = "string",
   SSHPublicKey = "string",
   AvailabilityZone = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

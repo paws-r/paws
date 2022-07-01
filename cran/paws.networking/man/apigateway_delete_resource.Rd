@@ -18,13 +18,11 @@ An empty list.
 Deletes a Resource resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resource(
+\preformatted{svc$delete_resource(
   restApiId = "string",
   resourceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

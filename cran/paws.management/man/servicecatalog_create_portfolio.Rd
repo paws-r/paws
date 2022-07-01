@@ -28,9 +28,7 @@ requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PortfolioDetail = list(
     Id = "string",
     ARN = "string",
@@ -48,7 +46,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a portfolio.
@@ -56,9 +54,7 @@ Creates a portfolio.
 A delegated admin is authorized to invoke this command.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_portfolio(
+\preformatted{svc$create_portfolio(
   AcceptLanguage = "string",
   DisplayName = "string",
   Description = "string",
@@ -71,7 +67,7 @@ A delegated admin is authorized to invoke this command.
   ),
   IdempotencyToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

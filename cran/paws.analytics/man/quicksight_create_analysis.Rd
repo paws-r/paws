@@ -40,24 +40,20 @@ to it.}
 assigned to the analysis.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   AnalysisId = "string",
   CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
   Status = 123,
   RequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an analysis in Amazon QuickSight.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_analysis(
+\preformatted{svc$create_analysis(
   AwsAccountId = "string",
   AnalysisId = "string",
   Name = "string",
@@ -124,7 +120,7 @@ Creates an analysis in Amazon QuickSight.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

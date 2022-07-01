@@ -34,9 +34,7 @@ supports, go to \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#e
 in the \emph{Amazon Web Services Glossary}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- elasticbeanstalk(
+\preformatted{svc <- elasticbeanstalk(
   config = list(
     credentials = list(
       creds = list(
@@ -50,7 +48,7 @@ in the \emph{Amazon Web Services Glossary}.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

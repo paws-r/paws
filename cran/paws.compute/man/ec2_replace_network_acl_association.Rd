@@ -18,12 +18,10 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{NetworkAclId}{[required] The ID of the new network ACL to associate with the subnet.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NewAssociationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes which network ACL a subnet is associated with. By default when
@@ -34,14 +32,12 @@ Virtual Private Cloud User Guide}.
 This is an idempotent operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$replace_network_acl_association(
+\preformatted{svc$replace_network_acl_association(
   AssociationId = "string",
   DryRun = TRUE|FALSE,
   NetworkAclId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

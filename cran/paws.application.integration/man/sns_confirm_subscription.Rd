@@ -19,12 +19,10 @@ only the topic owner and the subscription owner can unsubscribe the
 endpoint. The unsubscribe action requires AWS authentication.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SubscriptionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Verifies an endpoint owner's intent to receive messages by validating
@@ -35,14 +33,12 @@ This call requires an AWS signature only when the
 \code{AuthenticateOnUnsubscribe} flag is set to "true".
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$confirm_subscription(
+\preformatted{svc$confirm_subscription(
   TopicArn = "string",
   Token = "string",
   AuthenticateOnUnsubscribe = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

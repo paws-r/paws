@@ -12,9 +12,7 @@ amplify_delete_branch(appId, branchName)
 \item{branchName}{[required] The name for the branch.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   branch = list(
     branchArn = "string",
     branchName = "string",
@@ -57,19 +55,17 @@ A list with the following syntax:
     backendEnvironmentArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a branch for an Amplify app.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_branch(
+\preformatted{svc$delete_branch(
   appId = "string",
   branchName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

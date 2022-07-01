@@ -20,9 +20,7 @@ in the \emph{AWS SSO OIDC API Reference Guide}.}
 \item{accountId}{[required] The identifier for the AWS account that is assigned to the user.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   nextToken = "string",
   roleList = list(
     list(
@@ -31,21 +29,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all roles that are assigned to the user for a given AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_account_roles(
+\preformatted{svc$list_account_roles(
   nextToken = "string",
   maxResults = 123,
   accessToken = "string",
   accountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,13 +23,11 @@ For information about managing receipt rules, see the \href{https://docs.aws.ama
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_receipt_rule(
+\preformatted{svc$delete_receipt_rule(
   RuleSetName = "string",
   RuleName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

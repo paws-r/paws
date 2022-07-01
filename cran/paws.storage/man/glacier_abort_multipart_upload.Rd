@@ -43,14 +43,12 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-abo
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$abort_multipart_upload(
+\preformatted{svc$abort_multipart_upload(
   accountId = "string",
   vaultName = "string",
   uploadId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -14,9 +14,7 @@ glue_get_job_run(JobName, RunId, PredecessorsIncluded)
 \item{PredecessorsIncluded}{True if a list of predecessor runs should be returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobRun = list(
     Id = "string",
     Attempt = 123,
@@ -57,20 +55,18 @@ A list with the following syntax:
     GlueVersion = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the metadata for a given job run.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_job_run(
+\preformatted{svc$get_job_run(
   JobName = "string",
   RunId = "string",
   PredecessorsIncluded = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

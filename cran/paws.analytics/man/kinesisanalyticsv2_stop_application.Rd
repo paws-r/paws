@@ -41,13 +41,11 @@ Kinesis Data Analytics takes a snapshot when the application is stopped,
 unless \code{Force} is set to \code{true}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_application(
+\preformatted{svc$stop_application(
   ApplicationName = "string",
   Force = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

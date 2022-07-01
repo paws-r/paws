@@ -33,9 +33,7 @@ For information about costs associated with the Cost Explorer API, see
 \href{https://aws.amazon.com/aws-cost-management/pricing/}{AWS Cost Management Pricing}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- costexplorer(
+\preformatted{svc <- costexplorer(
   config = list(
     credentials = list(
       creds = list(
@@ -49,7 +47,7 @@ For information about costs associated with the Cost Explorer API, see
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -19,9 +19,7 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AnalyticsConfiguration = list(
     Id = "string",
     Filter = list(
@@ -55,7 +53,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This implementation of the GET operation returns an analytics
@@ -80,14 +78,12 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bucket_analytics_configuration(
+\preformatted{svc$get_bucket_analytics_configuration(
   Bucket = "string",
   Id = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

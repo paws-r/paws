@@ -20,9 +20,7 @@ Provides translation between one source language and another of the same
 set of languages.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- translate(
+\preformatted{svc <- translate(
   config = list(
     credentials = list(
       creds = list(
@@ -36,7 +34,7 @@ set of languages.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

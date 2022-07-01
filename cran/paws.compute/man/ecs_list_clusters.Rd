@@ -28,27 +28,23 @@ parameter is not used, then \code{\link[=ecs_list_clusters]{list_clusters}} retu
 up to 100 results and a \code{nextToken} value if applicable.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   clusterArns = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of existing clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_clusters(
+\preformatted{svc$list_clusters(
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

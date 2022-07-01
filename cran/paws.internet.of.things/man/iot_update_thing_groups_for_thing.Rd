@@ -26,9 +26,7 @@ An empty list.
 Updates the groups to which the thing belongs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_thing_groups_for_thing(
+\preformatted{svc$update_thing_groups_for_thing(
   thingName = "string",
   thingGroupsToAdd = list(
     "string"
@@ -38,7 +36,7 @@ Updates the groups to which the thing belongs.
   ),
   overrideDynamicGroups = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

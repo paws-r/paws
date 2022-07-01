@@ -31,9 +31,7 @@ An empty list.
 Updates the information for an ActiveMQ user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user(
+\preformatted{svc$update_user(
   BrokerId = "string",
   ConsoleAccess = TRUE|FALSE,
   Groups = list(
@@ -42,7 +40,7 @@ Updates the information for an ActiveMQ user.
   Password = "string",
   Username = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

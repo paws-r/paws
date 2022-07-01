@@ -16,12 +16,10 @@ An empty list.
 Stops the specified fleet.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_fleet(
+\preformatted{svc$stop_fleet(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

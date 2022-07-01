@@ -16,9 +16,7 @@ subnet ID. If you specify a subnet ID, Resolver chooses an IP address
 for you from the available IPs in the specified subnet.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResolverEndpoint = list(
     Id = "string",
     CreatorRequestId = "string",
@@ -36,7 +34,7 @@ A list with the following syntax:
     ModificationTime = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds IP addresses to an inbound or an outbound Resolver endpoint. If you
@@ -48,9 +46,7 @@ To remove an IP address from an endpoint, see
 \code{\link[=route53resolver_disassociate_resolver_endpoint_ip_address]{disassociate_resolver_endpoint_ip_address}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_resolver_endpoint_ip_address(
+\preformatted{svc$associate_resolver_endpoint_ip_address(
   ResolverEndpointId = "string",
   IpAddress = list(
     IpId = "string",
@@ -58,7 +54,7 @@ To remove an IP address from an endpoint, see
     Ip = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

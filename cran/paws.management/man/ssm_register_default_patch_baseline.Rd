@@ -10,12 +10,10 @@ ssm_register_default_patch_baseline(BaselineId)
 \item{BaselineId}{[required] The ID of the patch baseline that should be the default patch baseline.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BaselineId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Defines the default patch baseline for the relevant operating system.
@@ -27,12 +25,10 @@ CentOS, specify
 instead of \verb{pb-0574b43a65ea646ed}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_default_patch_baseline(
+\preformatted{svc$register_default_patch_baseline(
   BaselineId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

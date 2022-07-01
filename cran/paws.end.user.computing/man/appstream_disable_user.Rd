@@ -22,13 +22,11 @@ AppStream 2.0 until they are re-enabled. This action does not delete the
 user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_user(
+\preformatted{svc$disable_user(
   UserName = "string",
   AuthenticationType = "API"|"SAML"|"USERPOOL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

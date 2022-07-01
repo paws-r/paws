@@ -35,9 +35,7 @@ a canary release deployment.}
 \item{tracingEnabled}{Specifies whether active tracing with X-ray is enabled for the Stage.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   description = "string",
   createdDate = as.POSIXct(
@@ -52,16 +50,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Deployment resource, which makes a specified RestApi callable
 over the internet.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_deployment(
+\preformatted{svc$create_deployment(
   restApiId = "string",
   stageName = "string",
   stageDescription = "string",
@@ -80,7 +76,7 @@ over the internet.
   ),
   tracingEnabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

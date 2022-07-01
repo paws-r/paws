@@ -30,23 +30,19 @@ greengrass_create_group_version(AmznClientToken,
 \item{SubscriptionDefinitionVersionArn}{The ARN of the subscription definition version for this group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a version of a group which has already been defined.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_group_version(
+\preformatted{svc$create_group_version(
   AmznClientToken = "string",
   ConnectorDefinitionVersionArn = "string",
   CoreDefinitionVersionArn = "string",
@@ -57,7 +53,7 @@ Creates a version of a group which has already been defined.
   ResourceDefinitionVersionArn = "string",
   SubscriptionDefinitionVersionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

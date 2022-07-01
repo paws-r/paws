@@ -12,9 +12,7 @@ route53_delete_key_signing_key(HostedZoneId, Name)
 \item{Name}{[required] An alphanumeric string used to identify a key signing key (KSK).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChangeInfo = list(
     Id = "string",
     Status = "PENDING"|"INSYNC",
@@ -24,7 +22,7 @@ A list with the following syntax:
     Comment = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a key signing key (KSK). Before you can delete a KSK, you must
@@ -32,13 +30,11 @@ deactivate it. The KSK must be deactived before you can delete it
 regardless of whether the hosted zone is enabled for DNSSEC signing.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_key_signing_key(
+\preformatted{svc$delete_key_signing_key(
   HostedZoneId = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

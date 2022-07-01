@@ -15,12 +15,10 @@ sagemaker_update_endpoint_weights_and_capacities(EndpointName,
 \item{DesiredWeightsAndCapacities}{[required] An object that provides new capacity and weight values for a variant.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EndpointArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates variant weight of one or more variants associated with an
@@ -31,9 +29,7 @@ the status to \code{InService}. To check the status of an endpoint, use the
 \code{\link[=sagemaker_describe_endpoint]{describe_endpoint}} API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_endpoint_weights_and_capacities(
+\preformatted{svc$update_endpoint_weights_and_capacities(
   EndpointName = "string",
   DesiredWeightsAndCapacities = list(
     list(
@@ -43,7 +39,7 @@ the status to \code{InService}. To check the status of an endpoint, use the
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

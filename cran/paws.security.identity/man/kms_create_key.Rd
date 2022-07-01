@@ -174,9 +174,7 @@ To use this parameter, you must have
 permission in an IAM policy.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   KeyMetadata = list(
     AWSAccountId = "string",
     KeyId = "string",
@@ -208,7 +206,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a unique customer managed \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master-keys}{customer master key}
@@ -304,9 +302,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_key(
+\preformatted{svc$create_key(
   Policy = "string",
   Description = "string",
   KeyUsage = "SIGN_VERIFY"|"ENCRYPT_DECRYPT",
@@ -321,7 +317,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

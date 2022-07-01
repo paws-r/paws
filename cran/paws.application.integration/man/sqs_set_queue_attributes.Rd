@@ -179,15 +179,13 @@ IAM policy.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_queue_attributes(
+\preformatted{svc$set_queue_attributes(
   QueueUrl = "string",
   Attributes = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

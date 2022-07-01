@@ -21,9 +21,7 @@ results.}
 \item{thingTypeName}{The name of the thing type used to search for things.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   things = list(
     list(
       thingName = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists your things. Use the \strong{attributeName} and \strong{attributeValue}
@@ -52,16 +50,14 @@ token was provided in request and no pagination token and no results
 were returned.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_things(
+\preformatted{svc$list_things(
   nextToken = "string",
   maxResults = 123,
   attributeName = "string",
   attributeValue = "string",
   thingTypeName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

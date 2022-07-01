@@ -12,9 +12,7 @@ cloudsearch_delete_expression(DomainName, ExpressionName)
 \item{ExpressionName}{[required] The name of the \code{Expression} to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Expression = list(
     Options = list(
       ExpressionName = "string",
@@ -33,7 +31,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes an \code{Expression} from the search domain. For more information,
@@ -43,13 +41,11 @@ target="_blank">Configuring Expressions</a> in the \emph{Amazon CloudSearch
 Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_expression(
+\preformatted{svc$delete_expression(
   DomainName = "string",
   ExpressionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

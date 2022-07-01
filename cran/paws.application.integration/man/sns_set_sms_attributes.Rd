@@ -93,14 +93,12 @@ use the \code{\link[=sns_publish]{publish}} action with the
 in the \emph{Amazon SNS Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_sms_attributes(
+\preformatted{svc$set_sms_attributes(
   attributes = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -13,9 +13,7 @@ identifier is displayed as the \strong{Recommender ID} on the Amazon Pinpoint
 console.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RecommenderConfigurationResponse = list(
     Attributes = list(
       "string"
@@ -33,19 +31,17 @@ A list with the following syntax:
     RecommendationsPerMessage = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about an Amazon Pinpoint configuration for a
 recommender model.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_recommender_configuration(
+\preformatted{svc$get_recommender_configuration(
   RecommenderId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

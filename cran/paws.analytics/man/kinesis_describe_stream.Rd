@@ -16,9 +16,7 @@ shards are returned.}
 \item{ExclusiveStartShardId}{The shard ID of the shard to start with.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StreamDescription = list(
     StreamName = "string",
     StreamARN = "string",
@@ -54,7 +52,7 @@ A list with the following syntax:
     KeyId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified Kinesis data stream.
@@ -78,14 +76,12 @@ to track the lineage to the oldest shard.
 This operation has a limit of 10 transactions per second per account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stream(
+\preformatted{svc$describe_stream(
   StreamName = "string",
   Limit = 123,
   ExclusiveStartShardId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

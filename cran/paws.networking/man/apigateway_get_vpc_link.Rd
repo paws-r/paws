@@ -11,9 +11,7 @@ apigateway_get_vpc_link(vpcLinkId)
 to reference this VpcLink.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   name = "string",
   description = "string",
@@ -26,18 +24,16 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a specified VPC link under the caller's account in a region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_vpc_link(
+\preformatted{svc$get_vpc_link(
   vpcLinkId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

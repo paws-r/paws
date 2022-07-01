@@ -24,9 +24,7 @@ value.}
 \item{NextToken}{The token to request the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IamInstanceProfileAssociations = list(
     list(
       AssociationId = "string",
@@ -43,15 +41,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes your IAM instance profile associations.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_iam_instance_profile_associations(
+\preformatted{svc$describe_iam_instance_profile_associations(
   AssociationIds = list(
     "string"
   ),
@@ -66,7 +62,7 @@ Describes your IAM instance profile associations.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

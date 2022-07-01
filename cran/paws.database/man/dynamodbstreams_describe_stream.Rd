@@ -18,9 +18,7 @@ the value that was returned for \code{LastEvaluatedShardId} in the previous
 operation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StreamDescription = list(
     StreamArn = "string",
     StreamLabel = "string",
@@ -49,7 +47,7 @@ A list with the following syntax:
     LastEvaluatedShardId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a stream, including the current status of the
@@ -67,14 +65,12 @@ more stream records). If both \code{StartingSequenceNumber} and
 longer receive more data.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stream(
+\preformatted{svc$describe_stream(
   StreamArn = "string",
   Limit = 123,
   ExclusiveStartShardId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

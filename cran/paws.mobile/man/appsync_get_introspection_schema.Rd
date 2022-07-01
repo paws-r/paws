@@ -15,25 +15,21 @@ appsync_get_introspection_schema(apiId, format, includeDirectives)
 directives.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   schema = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the introspection schema for a GraphQL API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_introspection_schema(
+\preformatted{svc$get_introspection_schema(
   apiId = "string",
   format = "SDL"|"JSON",
   includeDirectives = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

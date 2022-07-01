@@ -34,12 +34,10 @@ associate up to 50 tags with a private CA. For information using tags
 with IAM to manage permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CertificateAuthorityArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a root or subordinate private certificate authority (CA). You
@@ -63,9 +61,7 @@ have permission to write to the bucket, then an exception is thrown. For
 more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/}{Configure Access to ACM Private CA}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_certificate_authority(
+\preformatted{svc$create_certificate_authority(
   CertificateAuthorityConfiguration = list(
     KeyAlgorithm = "RSA_2048"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1",
     SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
@@ -155,7 +151,7 @@ more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

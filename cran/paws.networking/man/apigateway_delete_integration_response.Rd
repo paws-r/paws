@@ -26,15 +26,13 @@ An empty list.
 Represents a delete integration response.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_integration_response(
+\preformatted{svc$delete_integration_response(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",
   statusCode = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

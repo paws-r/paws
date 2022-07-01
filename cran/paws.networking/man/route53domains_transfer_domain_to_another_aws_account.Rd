@@ -15,13 +15,11 @@ account to another account.}
 to, for example, \code{111122223333}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OperationId = "string",
   Password = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Transfers a domain from the current AWS account to another AWS account.
@@ -53,13 +51,11 @@ additional information, for example,
 \verb{Domain Transfer from Aws Account 111122223333 has been cancelled}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$transfer_domain_to_another_aws_account(
+\preformatted{svc$transfer_domain_to_another_aws_account(
   DomainName = "string",
   AccountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

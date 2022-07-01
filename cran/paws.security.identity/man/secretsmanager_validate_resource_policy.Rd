@@ -34,9 +34,7 @@ receive either a \emph{ResourceNotFoundException} or an
 \item{ResourcePolicy}{[required] Identifies the Resource Policy attached to the secret.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PolicyValidationPassed = TRUE|FALSE,
   ValidationErrors = list(
     list(
@@ -45,7 +43,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Validates the JSON text of the resource-based policy document attached
@@ -55,13 +53,11 @@ better readability. Submit your input as a single line JSON string. A
 resource-based policy is optional.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$validate_resource_policy(
+\preformatted{svc$validate_resource_policy(
   SecretId = "string",
   ResourcePolicy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

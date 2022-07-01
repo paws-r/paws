@@ -12,20 +12,16 @@ glue_update_job(JobName, JobUpdate)
 \item{JobUpdate}{[required] Specifies the values with which to update the job definition.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing job definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_job(
+\preformatted{svc$update_job(
   JobName = "string",
   JobUpdate = list(
     Description = "string",
@@ -63,7 +59,7 @@ Updates an existing job definition.
     GlueVersion = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -22,16 +22,14 @@ alias ARN, or alias name for the AWS KMS customer master key (CMK).}
 soon as possible, regardless of the maintenance window for the database.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   KmsKeyId = "string",
   KinesisStreamName = "string",
   Status = "stopped"|"starting"|"started"|"stopping",
   Mode = "sync"|"async",
   ApplyImmediately = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a database activity stream to monitor activity on the database.
@@ -39,15 +37,13 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Aur
 in the \emph{Amazon Aurora User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_activity_stream(
+\preformatted{svc$start_activity_stream(
   ResourceArn = "string",
   Mode = "sync"|"async",
   KmsKeyId = "string",
   ApplyImmediately = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

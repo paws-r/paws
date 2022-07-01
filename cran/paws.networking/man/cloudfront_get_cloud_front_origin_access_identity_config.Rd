@@ -10,27 +10,23 @@ cloudfront_get_cloud_front_origin_access_identity_config(Id)
 \item{Id}{[required] The identity's ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CloudFrontOriginAccessIdentityConfig = list(
     CallerReference = "string",
     Comment = "string"
   ),
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Get the configuration information about an origin access identity.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_cloud_front_origin_access_identity_config(
+\preformatted{svc$get_cloud_front_origin_access_identity_config(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

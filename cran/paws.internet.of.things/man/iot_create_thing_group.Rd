@@ -17,14 +17,12 @@ iot_create_thing_group(thingGroupName, parentGroupName,
 \item{tags}{Metadata which can be used to manage the thing group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   thingGroupName = "string",
   thingGroupArn = "string",
   thingGroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create a thing group.
@@ -34,9 +32,7 @@ This is a control plane operation. See
 for information about authorizing control plane actions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_thing_group(
+\preformatted{svc$create_thing_group(
   thingGroupName = "string",
   parentGroupName = "string",
   thingGroupProperties = list(
@@ -55,7 +51,7 @@ for information about authorizing control plane actions.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

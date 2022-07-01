@@ -12,9 +12,7 @@ emr_list_instance_groups(ClusterId, Marker)
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceGroups = list(
     list(
       Id = "string",
@@ -135,19 +133,17 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides all available details about the instance groups in a cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_instance_groups(
+\preformatted{svc$list_instance_groups(
   ClusterId = "string",
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -31,9 +31,7 @@ An empty list.
 Creates an ActiveMQ user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user(
+\preformatted{svc$create_user(
   BrokerId = "string",
   ConsoleAccess = TRUE|FALSE,
   Groups = list(
@@ -42,7 +40,7 @@ Creates an ActiveMQ user.
   Password = "string",
   Username = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

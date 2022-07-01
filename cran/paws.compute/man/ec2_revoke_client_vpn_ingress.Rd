@@ -24,30 +24,26 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = list(
     Code = "authorizing"|"active"|"failed"|"revoking",
     Message = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes an ingress authorization rule from a Client VPN endpoint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$revoke_client_vpn_ingress(
+\preformatted{svc$revoke_client_vpn_ingress(
   ClientVpnEndpointId = "string",
   TargetNetworkCidr = "string",
   AccessGroupId = "string",
   RevokeAllGroups = TRUE|FALSE,
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -24,9 +24,7 @@ specify 0, AWS Config uses the default.}
 the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GroupByKey = "string",
   AggregateComplianceCounts = list(
     list(
@@ -48,7 +46,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the number of compliant and noncompliant rules for one or more
@@ -58,9 +56,7 @@ The results can return an empty result page, but if you have a
 nextToken, the results are displayed on the next page.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_aggregate_config_rule_compliance_summary(
+\preformatted{svc$get_aggregate_config_rule_compliance_summary(
   ConfigurationAggregatorName = "string",
   Filters = list(
     AccountId = "string",
@@ -70,7 +66,7 @@ nextToken, the results are displayed on the next page.
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

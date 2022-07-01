@@ -19,13 +19,11 @@ Signs the user out from all of their devices. The user can sign in again
 if they have valid credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$sign_out_user(
+\preformatted{svc$sign_out_user(
   FleetArn = "string",
   Username = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

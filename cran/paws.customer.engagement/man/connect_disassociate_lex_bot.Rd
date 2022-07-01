@@ -25,14 +25,12 @@ Revokes authorization from the specified instance to access the
 specified Amazon Lex bot.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_lex_bot(
+\preformatted{svc$disassociate_lex_bot(
   InstanceId = "string",
   BotName = "string",
   LexRegion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -74,9 +74,7 @@ topics in the Amazon Simple Storage Service Developer Guide:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_lifecycle(
+\preformatted{svc$put_bucket_lifecycle(
   Bucket = "string",
   ContentMD5 = "string",
   LifecycleConfiguration = list(
@@ -114,7 +112,7 @@ topics in the Amazon Simple Storage Service Developer Guide:
   ),
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -13,9 +13,7 @@ lightsail_update_domain_entry(domainName, domainEntry)
 entry.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -40,7 +38,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a domain recordset after it is created.
@@ -50,9 +48,7 @@ via resource tags applied to the resource identified by \verb{domain name}.
 For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_domain_entry(
+\preformatted{svc$update_domain_entry(
   domainName = "string",
   domainEntry = list(
     id = "string",
@@ -65,7 +61,7 @@ For more information, see the Lightsail Dev Guide.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

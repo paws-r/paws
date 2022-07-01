@@ -27,9 +27,7 @@ that can be executed in the AWS Region that contains the source DB
 instance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBInstanceAutomatedBackup = list(
     DBInstanceArn = "string",
     DbiResourceId = "string",
@@ -72,7 +70,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables replication of automated backups to a different AWS Region.
@@ -81,15 +79,13 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Use
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_db_instance_automated_backups_replication(
+\preformatted{svc$start_db_instance_automated_backups_replication(
   SourceDBInstanceArn = "string",
   BackupRetentionPeriod = 123,
   KmsKeyId = "string",
   PreSignedUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

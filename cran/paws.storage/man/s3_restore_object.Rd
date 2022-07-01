@@ -40,13 +40,11 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RequestCharged = "requester",
   RestoreOutputPath = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Restores an archived copy of an object back into Amazon S3
@@ -269,9 +267,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_object(
+\preformatted{svc$restore_object(
   Bucket = "string",
   Key = "string",
   VersionId = "string",
@@ -358,7 +354,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}
   RequestPayer = "requester",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

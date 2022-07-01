@@ -143,12 +143,10 @@ provided attributes (sum of all keys and values) must not exceed 5,000
 characters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OperationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates or updates one or more records and, optionally, creates a health
@@ -187,9 +185,7 @@ using the same namespace and using the same service, see \href{https://docs.aws.
 in the \emph{AWS Cloud Map Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_instance(
+\preformatted{svc$register_instance(
   ServiceId = "string",
   InstanceId = "string",
   CreatorRequestId = "string",
@@ -197,7 +193,7 @@ in the \emph{AWS Cloud Map Developer Guide}.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

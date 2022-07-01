@@ -21,12 +21,10 @@ request. For more information on campaigns, see
 \code{\link[=personalize_create_campaign]{create_campaign}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_campaign(
+\preformatted{svc$delete_campaign(
   campaignArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

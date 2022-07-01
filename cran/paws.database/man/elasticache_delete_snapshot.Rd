@@ -10,9 +10,7 @@ elasticache_delete_snapshot(SnapshotName)
 \item{SnapshotName}{[required] The name of the snapshot to be deleted.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Snapshot = list(
     SnapshotName = "string",
     ReplicationGroupId = "string",
@@ -71,7 +69,7 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an existing snapshot. When you receive a successful response
@@ -81,12 +79,10 @@ snapshot; you cannot cancel or revert this operation.
 This operation is valid for Redis only.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_snapshot(
+\preformatted{svc$delete_snapshot(
   SnapshotName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

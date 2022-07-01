@@ -33,12 +33,10 @@ Messages sent to the queue \emph{after} you call
 being purged.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$purge_queue(
+\preformatted{svc$purge_queue(
   QueueUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -22,9 +22,7 @@ An empty list.
 Adds or updates permissions for the specified private image.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_image_permissions(
+\preformatted{svc$update_image_permissions(
   Name = "string",
   SharedAccountId = "string",
   ImagePermissions = list(
@@ -32,7 +30,7 @@ Adds or updates permissions for the specified private image.
     allowImageBuilder = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

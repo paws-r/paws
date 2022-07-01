@@ -11,9 +11,7 @@ sms_get_app_launch_configuration(appId)
 \item{appId}{The ID of the application.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   appId = "string",
   roleName = "string",
   autoLaunch = TRUE|FALSE,
@@ -63,19 +61,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the application launch configuration associated with the
 specified application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_app_launch_configuration(
+\preformatted{svc$get_app_launch_configuration(
   appId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

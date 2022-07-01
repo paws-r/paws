@@ -49,14 +49,12 @@ Only 10 jobs may have status "DELETION_IN_PROGRESS" at the same time, or
 a LimitExceededException will occur.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_job(
+\preformatted{svc$delete_job(
   jobId = "string",
   force = TRUE|FALSE,
   namespaceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

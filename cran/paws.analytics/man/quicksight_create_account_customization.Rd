@@ -24,9 +24,7 @@ Or, you can add a custom theme by specifying
 \item{Tags}{A list of the tags that you want to attach to this resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   AwsAccountId = "string",
   Namespace = "string",
@@ -36,7 +34,7 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates Amazon QuickSight customizations the current AWS Region.
@@ -68,9 +66,7 @@ API operation. To share the theme, grant permissions by using the
 operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_account_customization(
+\preformatted{svc$create_account_customization(
   AwsAccountId = "string",
   Namespace = "string",
   AccountCustomization = list(
@@ -83,7 +79,7 @@ operation.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

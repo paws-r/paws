@@ -71,13 +71,11 @@ The following actions are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bucket_policy(
+\preformatted{svc$delete_bucket_policy(
   AccountId = "string",
   Bucket = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

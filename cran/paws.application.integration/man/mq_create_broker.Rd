@@ -78,21 +78,17 @@ underscores, and tildes (- . _ ~). This value must be 2-100 characters
 long.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BrokerArn = "string",
   BrokerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a broker. Note: This API is asynchronous.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_broker(
+\preformatted{svc$create_broker(
   AuthenticationStrategy = "SIMPLE"|"LDAP",
   AutoMinorVersionUpgrade = TRUE|FALSE,
   BrokerName = "string",
@@ -155,7 +151,7 @@ Creates a broker. Note: This API is asynchronous.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

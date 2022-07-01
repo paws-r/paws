@@ -14,12 +14,10 @@ directconnect_confirm_transit_virtual_interface(virtualInterfaceId,
 \item{directConnectGatewayId}{[required] The ID of the Direct Connect gateway.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Accepts ownership of a transit virtual interface created by another AWS
@@ -30,13 +28,11 @@ specified transit virtual interface is created and made available to
 handle traffic.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$confirm_transit_virtual_interface(
+\preformatted{svc$confirm_transit_virtual_interface(
   virtualInterfaceId = "string",
   directConnectGatewayId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

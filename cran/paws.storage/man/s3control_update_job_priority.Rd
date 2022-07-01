@@ -14,13 +14,11 @@ s3control_update_job_priority(AccountId, JobId, Priority)
 \item{Priority}{[required] The priority you want to assign to this job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobId = "string",
   Priority = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing S3 Batch Operations job's priority. For more
@@ -36,14 +34,12 @@ Related actions include:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_job_priority(
+\preformatted{svc$update_job_priority(
   AccountId = "string",
   JobId = "string",
   Priority = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

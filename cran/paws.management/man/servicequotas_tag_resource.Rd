@@ -25,9 +25,7 @@ Adds tags to the specified applied quota. You can include one or more
 tags to add to the quota.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceARN = "string",
   Tags = list(
     list(
@@ -36,7 +34,7 @@ tags to add to the quota.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

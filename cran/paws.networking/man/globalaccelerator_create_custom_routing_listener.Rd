@@ -22,9 +22,7 @@ Separately, you set port ranges for endpoints. For more information, see
 idempotency—that is, the uniqueness—of the request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Listener = list(
     ListenerArn = "string",
     PortRanges = list(
@@ -35,7 +33,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create a listener to process inbound connections from clients to a
@@ -43,9 +41,7 @@ custom routing accelerator. Connections arrive to assigned static IP
 addresses on the port range that you specify.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_custom_routing_listener(
+\preformatted{svc$create_custom_routing_listener(
   AcceleratorArn = "string",
   PortRanges = list(
     list(
@@ -55,7 +51,7 @@ addresses on the port range that you specify.
   ),
   IdempotencyToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

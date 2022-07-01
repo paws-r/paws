@@ -39,9 +39,7 @@ endpoints). The subnet ID uniquely identifies a VPC.}
 endpoint.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResolverEndpoint = list(
     Id = "string",
     CreatorRequestId = "string",
@@ -59,7 +57,7 @@ A list with the following syntax:
     ModificationTime = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Resolver endpoint. There are two types of Resolver endpoints,
@@ -72,9 +70,7 @@ service for a VPC to your network.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_resolver_endpoint(
+\preformatted{svc$create_resolver_endpoint(
   CreatorRequestId = "string",
   Name = "string",
   SecurityGroupIds = list(
@@ -94,7 +90,7 @@ service for a VPC to your network.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

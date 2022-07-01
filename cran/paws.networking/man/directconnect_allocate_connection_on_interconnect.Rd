@@ -24,9 +24,7 @@ be provisioned.}
 \item{vlan}{[required] The dedicated VLAN provisioned to the connection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ownerAccount = "string",
   connectionId = "string",
   connectionName = "string",
@@ -52,7 +50,7 @@ A list with the following syntax:
   ),
   providerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deprecated. Use
@@ -67,16 +65,14 @@ hosted connection on the specified interconnect.
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$allocate_connection_on_interconnect(
+\preformatted{svc$allocate_connection_on_interconnect(
   bandwidth = "string",
   connectionName = "string",
   ownerAccount = "string",
   interconnectId = "string",
   vlan = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

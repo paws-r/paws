@@ -55,9 +55,7 @@ enable SriovNetSupport on an instance and create an AMI from the
 instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_image_attribute(
+\preformatted{svc$modify_image_attribute(
   Attribute = "string",
   Description = list(
     Value = "string"
@@ -90,7 +88,7 @@ instance.
   Value = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -53,9 +53,7 @@ be true.}
 This parameter is used only if the AutoGranted parameter is true.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   QualificationType = list(
     QualificationTypeId = "string",
     CreationTime = as.POSIXct(
@@ -74,7 +72,7 @@ A list with the following syntax:
     AutoGrantedValue = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=mturk_update_qualification_type]{update_qualification_type}}
@@ -114,9 +112,7 @@ You can also update the AutoGranted and AutoGrantedValue attributes of
 the Qualification type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_qualification_type(
+\preformatted{svc$update_qualification_type(
   QualificationTypeId = "string",
   Description = "string",
   QualificationTypeStatus = "Active"|"Inactive",
@@ -127,7 +123,7 @@ the Qualification type.
   AutoGranted = TRUE|FALSE,
   AutoGrantedValue = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

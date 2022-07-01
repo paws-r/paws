@@ -26,16 +26,14 @@ policy records in the Amazon Route 53 console.)
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Limit = list(
     Type = "MAX_HEALTH_CHECKS_BY_OWNER"|"MAX_HOSTED_ZONES_BY_OWNER"|"MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER"|"MAX_REUSABLE_DELEGATION_SETS_BY_OWNER"|"MAX_TRAFFIC_POLICIES_BY_OWNER",
     Value = 123
   ),
   Count = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the specified limit for the current account, for example, the
@@ -52,12 +50,10 @@ https://console.aws.amazon.com/trustedadvisor/. Then choose \strong{Service
 limits} in the navigation pane.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_account_limit(
+\preformatted{svc$get_account_limit(
   Type = "MAX_HEALTH_CHECKS_BY_OWNER"|"MAX_HOSTED_ZONES_BY_OWNER"|"MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER"|"MAX_REUSABLE_DELEGATION_SETS_BY_OWNER"|"MAX_TRAFFIC_POLICIES_BY_OWNER"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

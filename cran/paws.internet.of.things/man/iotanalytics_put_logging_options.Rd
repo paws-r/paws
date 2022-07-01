@@ -22,16 +22,14 @@ to correct an invalid policy), it takes up to five minutes for that
 change to take effect.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_logging_options(
+\preformatted{svc$put_logging_options(
   loggingOptions = list(
     roleArn = "string",
     level = "ERROR",
     enabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

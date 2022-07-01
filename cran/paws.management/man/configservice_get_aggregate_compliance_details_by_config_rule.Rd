@@ -33,9 +33,7 @@ specify 0, AWS Config uses the default.}
 the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AggregateEvaluationResults = list(
     list(
       EvaluationResultIdentifier = list(
@@ -62,7 +60,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the evaluation results for the specified AWS Config rule for a
@@ -74,9 +72,7 @@ The results can return an empty result page. But if you have a
 \code{nextToken}, the results are displayed on the next page.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_aggregate_compliance_details_by_config_rule(
+\preformatted{svc$get_aggregate_compliance_details_by_config_rule(
   ConfigurationAggregatorName = "string",
   ConfigRuleName = "string",
   AccountId = "string",
@@ -85,7 +81,7 @@ The results can return an empty result page. But if you have a
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

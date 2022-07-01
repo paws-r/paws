@@ -11,9 +11,7 @@ robomaker_describe_world_template(template)
 describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   arn = "string",
   clientRequestToken = "string",
   name = "string",
@@ -27,18 +25,16 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a world template.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_world_template(
+\preformatted{svc$describe_world_template(
   template = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

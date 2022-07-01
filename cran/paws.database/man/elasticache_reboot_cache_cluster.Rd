@@ -14,9 +14,7 @@ elasticache_reboot_cache_cluster(CacheClusterId, CacheNodeIdsToReboot)
 cache node IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CacheCluster = list(
     CacheClusterId = "string",
     ConfigurationEndpoint = list(
@@ -98,7 +96,7 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Reboots some, or all, of the cache nodes within a provisioned cluster.
@@ -121,15 +119,13 @@ enabled) cluster reboot for the changes to be applied, see \href{https://docs.aw
 for an alternate process.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reboot_cache_cluster(
+\preformatted{svc$reboot_cache_cluster(
   CacheClusterId = "string",
   CacheNodeIdsToReboot = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

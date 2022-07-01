@@ -86,12 +86,10 @@ Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OpsItemId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new OpsItem. You must have permission in AWS Identity and
@@ -105,9 +103,7 @@ and health of their AWS resources. For more information, see \href{https://docs.
 in the \emph{AWS Systems Manager User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_ops_item(
+\preformatted{svc$create_ops_item(
   Description = "string",
   OpsItemType = "string",
   OperationalData = list(
@@ -150,7 +146,7 @@ in the \emph{AWS Systems Manager User Guide}.
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

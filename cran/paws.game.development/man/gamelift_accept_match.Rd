@@ -61,16 +61,14 @@ players can be submitted as needed.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$accept_match(
+\preformatted{svc$accept_match(
   TicketId = "string",
   PlayerIds = list(
     "string"
   ),
   AcceptanceType = "ACCEPT"|"REJECT"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

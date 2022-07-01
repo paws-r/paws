@@ -24,9 +24,7 @@ Service (Amazon S3), Amazon Elasticsearch Service (Amazon ES), Amazon
 Redshift, and Splunk.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- firehose(
+\preformatted{svc <- firehose(
   config = list(
     credentials = list(
       creds = list(
@@ -40,7 +38,7 @@ Redshift, and Splunk.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

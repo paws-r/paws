@@ -43,9 +43,7 @@ Example: \code{my-cluster-param-group1}}
 \item{Tags}{The tags to be assigned to the copied DB cluster parameter group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBClusterParameterGroup = list(
     DBClusterParameterGroupName = "string",
     DBParameterGroupFamily = "string",
@@ -53,15 +51,13 @@ A list with the following syntax:
     DBClusterParameterGroupArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Copies the specified DB cluster parameter group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_db_cluster_parameter_group(
+\preformatted{svc$copy_db_cluster_parameter_group(
   SourceDBClusterParameterGroupIdentifier = "string",
   TargetDBClusterParameterGroupIdentifier = "string",
   TargetDBClusterParameterGroupDescription = "string",
@@ -72,7 +68,7 @@ Copies the specified DB cluster parameter group.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

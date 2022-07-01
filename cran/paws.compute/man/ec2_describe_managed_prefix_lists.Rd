@@ -29,9 +29,7 @@ value.}
 \item{PrefixListIds}{One or more prefix list IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   PrefixLists = list(
     list(
@@ -53,7 +51,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes your managed prefix lists and any AWS-managed prefix lists.
@@ -62,9 +60,7 @@ To view the entries for your prefix list, use
 \code{\link[=ec2_get_managed_prefix_list_entries]{get_managed_prefix_list_entries}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_managed_prefix_lists(
+\preformatted{svc$describe_managed_prefix_lists(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(
@@ -80,7 +76,7 @@ To view the entries for your prefix list, use
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

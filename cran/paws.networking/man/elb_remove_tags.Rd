@@ -19,9 +19,7 @@ An empty list.
 Removes one or more tags from the specified load balancer.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags(
+\preformatted{svc$remove_tags(
   LoadBalancerNames = list(
     "string"
   ),
@@ -31,7 +29,7 @@ Removes one or more tags from the specified load balancer.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

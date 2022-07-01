@@ -22,13 +22,11 @@ Deletes the specified customer gateway. You must delete the VPN
 connection before you can delete the customer gateway.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_customer_gateway(
+\preformatted{svc$delete_customer_gateway(
   CustomerGatewayId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

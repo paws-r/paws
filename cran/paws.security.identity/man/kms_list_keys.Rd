@@ -20,9 +20,7 @@ with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Keys = list(
     list(
       KeyId = "string",
@@ -32,7 +30,7 @@ A list with the following syntax:
   NextMarker = "string",
   Truncated = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of all customer master keys (CMKs) in the caller's AWS
@@ -54,13 +52,11 @@ a different AWS account.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_keys(
+\preformatted{svc$list_keys(
   Limit = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -26,9 +26,7 @@ An empty list.
 Creates a device fleet.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_device_fleet(
+\preformatted{svc$create_device_fleet(
   DeviceFleetName = "string",
   RoleArn = "string",
   Description = "string",
@@ -43,7 +41,7 @@ Creates a device fleet.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

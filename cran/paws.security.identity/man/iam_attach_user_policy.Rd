@@ -32,13 +32,11 @@ For more information about policies, see \href{https://docs.aws.amazon.com/IAM/l
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_user_policy(
+\preformatted{svc$attach_user_policy(
   UserName = "string",
   PolicyArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

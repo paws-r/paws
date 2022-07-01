@@ -25,9 +25,7 @@ members.}
 inviting to GuardDuty as members.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UnprocessedAccounts = list(
     list(
       AccountId = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Invites other AWS accounts (created as members of the current AWS
@@ -44,9 +42,7 @@ account to view and manage these accounts' findings on their behalf as
 the GuardDuty administrator account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$invite_members(
+\preformatted{svc$invite_members(
   DetectorId = "string",
   AccountIds = list(
     "string"
@@ -54,7 +50,7 @@ the GuardDuty administrator account.
   DisableEmailNotification = TRUE|FALSE,
   Message = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

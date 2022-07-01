@@ -21,9 +21,7 @@ mismatch error.}
 \item{retryType}{Specifies the type of retry to perform.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   buildBatch = list(
     id = "string",
     arn = "string",
@@ -248,21 +246,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Restarts a failed batch build. Only batch builds that have failed can be
 retried.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$retry_build_batch(
+\preformatted{svc$retry_build_batch(
   id = "string",
   idempotencyToken = "string",
   retryType = "RETRY_ALL_BUILDS"|"RETRY_FAILED_BUILDS"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

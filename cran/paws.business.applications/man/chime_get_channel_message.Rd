@@ -12,9 +12,7 @@ chime_get_channel_message(ChannelArn, MessageId)
 \item{MessageId}{[required] The ID of the message.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelMessage = list(
     ChannelArn = "string",
     MessageId = "string",
@@ -38,19 +36,17 @@ A list with the following syntax:
     Persistence = "PERSISTENT"|"NON_PERSISTENT"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the full details of a channel message.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_channel_message(
+\preformatted{svc$get_channel_message(
   ChannelArn = "string",
   MessageId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

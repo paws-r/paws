@@ -10,9 +10,7 @@ licensemanager_get_license_configuration(LicenseConfigurationArn)
 \item{LicenseConfigurationArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LicenseConfigurationId = "string",
   LicenseConfigurationArn = "string",
   Name = "string",
@@ -65,18 +63,16 @@ A list with the following syntax:
   ),
   DisassociateWhenNotFound = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets detailed information about the specified license configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_license_configuration(
+\preformatted{svc$get_license_configuration(
   LicenseConfigurationArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

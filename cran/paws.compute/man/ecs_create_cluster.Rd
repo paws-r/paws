@@ -92,9 +92,7 @@ during creation, it can be defined later with the
 API operation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   cluster = list(
     clusterArn = "string",
     clusterName = "string",
@@ -147,7 +145,7 @@ A list with the following syntax:
     attachmentsStatus = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Amazon ECS cluster. By default, your account receives a
@@ -164,9 +162,7 @@ created. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/l
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cluster(
+\preformatted{svc$create_cluster(
   clusterName = "string",
   tags = list(
     list(
@@ -191,7 +187,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

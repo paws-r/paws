@@ -44,9 +44,7 @@ Example: \code{my-cluster-param-group1}}
 \item{Tags}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBClusterParameterGroup = list(
     DBClusterParameterGroupName = "string",
     DBParameterGroupFamily = "string",
@@ -54,7 +52,7 @@ A list with the following syntax:
     DBClusterParameterGroupArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Copies the specified DB cluster parameter group.
@@ -62,9 +60,7 @@ Copies the specified DB cluster parameter group.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_db_cluster_parameter_group(
+\preformatted{svc$copy_db_cluster_parameter_group(
   SourceDBClusterParameterGroupIdentifier = "string",
   TargetDBClusterParameterGroupIdentifier = "string",
   TargetDBClusterParameterGroupDescription = "string",
@@ -75,7 +71,7 @@ This action only applies to Aurora DB clusters.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

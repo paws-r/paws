@@ -12,9 +12,7 @@ machinelearning_describe_tags(ResourceId, ResourceType)
 \item{ResourceType}{[required] The type of the ML object.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourceId = "string",
   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel",
   Tags = list(
@@ -24,19 +22,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of the tags for your Amazon ML object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tags(
+\preformatted{svc$describe_tags(
   ResourceId = "string",
   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

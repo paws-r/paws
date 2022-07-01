@@ -24,9 +24,7 @@ existing data.}
 \item{virtualServiceName}{[required] The name of the virtual service to update.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   virtualService = list(
     meshName = "string",
     metadata = list(
@@ -58,15 +56,13 @@ A list with the following syntax:
     virtualServiceName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing virtual service in a specified service mesh.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_virtual_service(
+\preformatted{svc$update_virtual_service(
   clientToken = "string",
   meshName = "string",
   meshOwner = "string",
@@ -82,7 +78,7 @@ Updates an existing virtual service in a specified service mesh.
   ),
   virtualServiceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

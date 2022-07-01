@@ -132,9 +132,7 @@ pass the \code{department}=\code{engineering} session tag. \code{Department} and
 in the request takes precedence over the role tag.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Credentials = list(
     AccessKeyId = "string",
     SecretAccessKey = "string",
@@ -149,7 +147,7 @@ A list with the following syntax:
   ),
   PackedPolicySize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a set of temporary security credentials (consisting of an access
@@ -247,9 +245,7 @@ tags, and the session tag passed in the request takes precedence over
 the user tag.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_federation_token(
+\preformatted{svc$get_federation_token(
   Name = "string",
   Policy = "string",
   PolicyArns = list(
@@ -265,7 +261,7 @@ the user tag.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

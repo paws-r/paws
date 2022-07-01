@@ -23,9 +23,7 @@ target="_blank">Tagging Amazon Elasticsearch Service Domains for more
 information.</a>
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags(
+\preformatted{svc$add_tags(
   ARN = "string",
   TagList = list(
     list(
@@ -34,7 +32,7 @@ information.</a>
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

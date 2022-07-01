@@ -18,9 +18,7 @@ map. Only jobs whose action configuration matches the mapped value are
 returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   jobs = list(
     list(
       id = "string",
@@ -90,7 +88,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about any jobs for AWS CodePipeline to act on.
@@ -105,9 +103,7 @@ action requires access to that S3 bucket for input or output artifacts.
 This API also returns any secret values defined for the action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$poll_for_jobs(
+\preformatted{svc$poll_for_jobs(
   actionTypeId = list(
     category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
     owner = "AWS"|"ThirdParty"|"Custom",
@@ -119,7 +115,7 @@ This API also returns any secret values defined for the action.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,9 +10,7 @@ cognitoidentity_delete_identities(IdentityIdsToDelete)
 \item{IdentityIdsToDelete}{[required] A list of 1-60 identities that you want to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UnprocessedIdentityIds = list(
     list(
       IdentityId = "string",
@@ -20,7 +18,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes identities from an identity pool. You can specify a list of 1-60
@@ -29,14 +27,12 @@ identities that you want to delete.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_identities(
+\preformatted{svc$delete_identities(
   IdentityIdsToDelete = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

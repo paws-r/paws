@@ -25,9 +25,7 @@ filters are NetworkProfileName, Ssid, and SecurityType.}
 Valid sort criteria includes NetworkProfileName, Ssid, and SecurityType.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NetworkProfiles = list(
     list(
       NetworkProfileArn = "string",
@@ -42,16 +40,14 @@ A list with the following syntax:
   NextToken = "string",
   TotalCount = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Searches network profiles and lists the ones that meet a set of filter
 and sort criteria.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_network_profiles(
+\preformatted{svc$search_network_profiles(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(
@@ -69,7 +65,7 @@ and sort criteria.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

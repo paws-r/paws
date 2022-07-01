@@ -25,9 +25,7 @@ that isn't related to the value of \code{FeatureTypes}).}
 documents.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DocumentMetadata = list(
     Pages = 123
   ),
@@ -80,7 +78,7 @@ A list with the following syntax:
   ),
   AnalyzeDocumentModelVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Analyzes an input document for relationships between detected items.
@@ -118,9 +116,7 @@ operation. To analyze documents asynchronously, use
 For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html}{Document Text Analysis}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$analyze_document(
+\preformatted{svc$analyze_document(
   Document = list(
     Bytes = raw,
     S3Object = list(
@@ -142,7 +138,7 @@ For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/h
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

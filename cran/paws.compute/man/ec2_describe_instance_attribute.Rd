@@ -19,9 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{InstanceId}{[required] The ID of the instance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Groups = list(
     list(
       GroupName = "string",
@@ -85,7 +83,7 @@ A list with the following syntax:
     Value = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified attribute of the specified instance. You can
@@ -96,14 +94,12 @@ specify only one attribute at a time. Valid attribute values are:
 \code{sourceDestCheck} | \code{groupSet} | \code{ebsOptimized} | \code{sriovNetSupport}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instance_attribute(
+\preformatted{svc$describe_instance_attribute(
   Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport"|"enclaveOptions",
   DryRun = TRUE|FALSE,
   InstanceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

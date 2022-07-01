@@ -40,9 +40,7 @@ Constraints: minimum 20; maximum 50.}
 included in the snapshot description.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   Snapshots = list(
     list(
@@ -104,7 +102,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about cluster or replication group snapshots. By
@@ -115,9 +113,7 @@ just the snapshots associated with a particular cache cluster.
 This operation is valid for Redis only.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_snapshots(
+\preformatted{svc$describe_snapshots(
   ReplicationGroupId = "string",
   CacheClusterId = "string",
   SnapshotName = "string",
@@ -126,7 +122,7 @@ This operation is valid for Redis only.
   MaxRecords = 123,
   ShowNodeGroupConfig = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

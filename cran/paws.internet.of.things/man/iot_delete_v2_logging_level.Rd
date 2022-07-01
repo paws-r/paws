@@ -19,13 +19,11 @@ An empty list.
 Deletes a logging level.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_v2_logging_level(
+\preformatted{svc$delete_v2_logging_level(
   targetType = "DEFAULT"|"THING_GROUP",
   targetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -25,12 +25,10 @@ request and specify the ID of the reusable delegation set that you want
 to delete.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_reusable_delegation_set(
+\preformatted{svc$delete_reusable_delegation_set(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -68,9 +68,7 @@ in the \emph{AWS Elastic Beanstalk Developer Guide}.}
 \item{Tags}{Specifies the tags applied to the configuration template.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SolutionStackName = "string",
   PlatformArn = "string",
   ApplicationName = "string",
@@ -93,7 +91,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an AWS Elastic Beanstalk configuration template, associated with
@@ -113,9 +111,7 @@ Related Topics
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_configuration_template(
+\preformatted{svc$create_configuration_template(
   ApplicationName = "string",
   TemplateName = "string",
   SolutionStackName = "string",
@@ -141,7 +137,7 @@ Related Topics
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

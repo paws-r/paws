@@ -151,14 +151,12 @@ characters: + - = . _ : / @.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ARN = "string",
   Name = "string",
   VersionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new secret. A secret in Secrets Manager consists of both the
@@ -239,9 +237,7 @@ examine the \code{SecretVersionsToStages} response value.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_secret(
+\preformatted{svc$create_secret(
   Name = "string",
   ClientRequestToken = "string",
   Description = "string",
@@ -255,7 +251,7 @@ examine the \code{SecretVersionsToStages} response value.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -62,9 +62,7 @@ the \emph{Amazon Chime Administration Guide}.
 }
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- chime(
+\preformatted{svc <- chime(
   config = list(
     credentials = list(
       creds = list(
@@ -78,7 +76,7 @@ the \emph{Amazon Chime Administration Guide}.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -25,9 +25,7 @@ Amazon RDS.
 For an overview on tagging Amazon RDS resources, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html}{Tagging Amazon RDS Resources}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags_to_resource(
+\preformatted{svc$add_tags_to_resource(
   ResourceName = "string",
   Tags = list(
     list(
@@ -36,7 +34,7 @@ For an overview on tagging Amazon RDS resources, see \href{https://docs.aws.amaz
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

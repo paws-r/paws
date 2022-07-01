@@ -10,9 +10,7 @@ opsworks_describe_load_based_auto_scaling(LayerIds)
 \item{LayerIds}{[required] An array of layer IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LoadBasedAutoScalingConfigurations = list(
     list(
       LayerId = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes load-based auto scaling configurations for specified layers.
@@ -55,14 +53,12 @@ policy that explicitly grants permissions. For more information about
 user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_load_based_auto_scaling(
+\preformatted{svc$describe_load_based_auto_scaling(
   LayerIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

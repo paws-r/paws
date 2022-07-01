@@ -11,13 +11,11 @@ fsx_cancel_data_repository_task(TaskId)
 \item{TaskId}{[required] Specifies the data repository task to cancel.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Lifecycle = "PENDING"|"EXECUTING"|"FAILED"|"SUCCEEDED"|"CANCELED"|"CANCELING",
   TaskId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Cancels an existing Amazon FSx for Lustre data repository task if that
@@ -31,12 +29,10 @@ cancel operation is received.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_data_repository_task(
+\preformatted{svc$cancel_data_repository_task(
   TaskId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

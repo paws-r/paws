@@ -31,9 +31,7 @@ next set of results.}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceInformationList = list(
     list(
       InstanceId = "string",
@@ -72,7 +70,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your instances, including information about the
@@ -89,9 +87,7 @@ Management (IAM) role assigned to on-premises instances. This call does
 not return the IAM role for EC2 instances.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instance_information(
+\preformatted{svc$describe_instance_information(
   InstanceInformationFilterList = list(
     list(
       key = "InstanceIds"|"AgentVersion"|"PingStatus"|"PlatformTypes"|"ActivationIds"|"IamRole"|"ResourceType"|"AssociationStatus",
@@ -111,7 +107,7 @@ not return the IAM role for EC2 instances.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -21,12 +21,10 @@ to do this, see
 \code{\link[=cloudformation_delete_stack_instances]{delete_stack_instances}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_stack_set(
+\preformatted{svc$delete_stack_set(
   StackSetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

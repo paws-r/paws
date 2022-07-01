@@ -15,12 +15,10 @@ a JSON object, typically consisting of key-value pairs in which the keys
 correspond to replacement tags in the email template.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RenderedTemplate = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a preview of the MIME content of an email when provided with a
@@ -29,13 +27,11 @@ template and a set of replacement data.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$test_render_template(
+\preformatted{svc$test_render_template(
   TemplateName = "string",
   TemplateData = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

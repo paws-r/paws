@@ -10,9 +10,7 @@ lightsail_get_instance_snapshot(instanceSnapshotName)
 \item{instanceSnapshotName}{[required] The name of the snapshot for which you are requesting information.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   instanceSnapshot = list(
     name = "string",
     arn = "string",
@@ -79,18 +77,16 @@ A list with the following syntax:
     sizeInGb = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a specific instance snapshot.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_instance_snapshot(
+\preformatted{svc$get_instance_snapshot(
   instanceSnapshotName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -25,15 +25,13 @@ Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FleetIds = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a collection of fleet resources for this AWS account. You can
@@ -59,15 +57,13 @@ Fleet resources are not listed in a particular order.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_fleets(
+\preformatted{svc$list_fleets(
   BuildId = "string",
   ScriptId = "string",
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

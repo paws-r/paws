@@ -12,9 +12,7 @@ lexmodelbuildingservice_get_bot(name, versionOrAlias)
 \item{versionOrAlias}{[required] The version or alias of the bot.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   name = "string",
   description = "string",
   intents = list(
@@ -62,7 +60,7 @@ A list with the following syntax:
   childDirected = TRUE|FALSE,
   detectSentiment = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns metadata information for a specific bot. You must provide the
@@ -71,13 +69,11 @@ bot name and the bot version or alias.
 This operation requires permissions for the \code{lex:GetBot} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bot(
+\preformatted{svc$get_bot(
   name = "string",
   versionOrAlias = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

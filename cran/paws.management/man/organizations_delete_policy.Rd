@@ -28,12 +28,10 @@ This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_policy(
+\preformatted{svc$delete_policy(
   PolicyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -18,9 +18,7 @@ An empty list.
 Deletes a Device Defender audit suppression.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_audit_suppression(
+\preformatted{svc$delete_audit_suppression(
   checkName = "string",
   resourceIdentifier = list(
     deviceCertificateId = "string",
@@ -36,7 +34,7 @@ Deletes a Device Defender audit suppression.
     roleAliasArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

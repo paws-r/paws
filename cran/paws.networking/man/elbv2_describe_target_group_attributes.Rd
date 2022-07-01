@@ -10,9 +10,7 @@ elbv2_describe_target_group_attributes(TargetGroupArn)
 \item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attributes = list(
     list(
       Key = "string",
@@ -20,7 +18,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the attributes for the specified target group.
@@ -36,12 +34,10 @@ in the \emph{Gateway Load Balancers Guide}
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_target_group_attributes(
+\preformatted{svc$describe_target_group_attributes(
   TargetGroupArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

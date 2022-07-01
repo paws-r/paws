@@ -10,9 +10,7 @@ chime_batch_delete_phone_number(PhoneNumberIds)
 \item{PhoneNumberIds}{[required] List of phone number IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PhoneNumberErrors = list(
     list(
       PhoneNumberId = "string",
@@ -21,7 +19,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Moves phone numbers into the \strong{Deletion queue}. Phone numbers must be
@@ -32,14 +30,12 @@ Phone numbers remain in the \strong{Deletion queue} for 7 days before they
 are deleted permanently.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_delete_phone_number(
+\preformatted{svc$batch_delete_phone_number(
   PhoneNumberIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

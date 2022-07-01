@@ -17,28 +17,24 @@ assumed.}
 \item{lifecyclePolicyText}{[required] The JSON repository policy text to apply to the repository.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   registryId = "string",
   repositoryName = "string",
   lifecyclePolicyText = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates or updates the lifecycle policy for the specified repository.
 For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html}{Lifecycle Policy Template}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_lifecycle_policy(
+\preformatted{svc$put_lifecycle_policy(
   registryId = "string",
   repositoryName = "string",
   lifecyclePolicyText = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

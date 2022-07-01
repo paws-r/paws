@@ -41,15 +41,13 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_load_balancer_target_groups(
+\preformatted{svc$attach_load_balancer_target_groups(
   AutoScalingGroupName = "string",
   TargetGroupARNs = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

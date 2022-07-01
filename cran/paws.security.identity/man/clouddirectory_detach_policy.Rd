@@ -23,9 +23,7 @@ An empty list.
 Detaches a policy from an object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_policy(
+\preformatted{svc$detach_policy(
   DirectoryArn = "string",
   PolicyReference = list(
     Selector = "string"
@@ -34,7 +32,7 @@ Detaches a policy from an object.
     Selector = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

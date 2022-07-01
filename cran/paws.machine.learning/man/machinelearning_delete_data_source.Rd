@@ -10,12 +10,10 @@ machinelearning_delete_data_source(DataSourceId)
 \item{DataSourceId}{[required] A user-supplied ID that uniquely identifies the \code{DataSource}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DataSourceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Assigns the DELETED status to a \code{DataSource}, rendering it unusable.
@@ -31,12 +29,10 @@ DELETED.
 irreversible.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_data_source(
+\preformatted{svc$delete_data_source(
   DataSourceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,9 +23,7 @@ customizations to apply to the console. Omit this flag, or set it to
 levels.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   AwsAccountId = "string",
   Namespace = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the customizations associated with the provided AWS account
@@ -85,14 +83,12 @@ customizations.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_account_customization(
+\preformatted{svc$describe_account_customization(
   AwsAccountId = "string",
   Namespace = "string",
   Resolved = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

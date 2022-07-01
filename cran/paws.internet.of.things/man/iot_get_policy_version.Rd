@@ -12,9 +12,7 @@ iot_get_policy_version(policyName, policyVersionId)
 \item{policyVersionId}{[required] The policy version ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   policyArn = "string",
   policyName = "string",
   policyDocument = "string",
@@ -28,19 +26,17 @@ A list with the following syntax:
   ),
   generationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the specified policy version.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_policy_version(
+\preformatted{svc$get_policy_version(
   policyName = "string",
   policyVersionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ lambda_update_code_signing_config(CodeSigningConfigArn, Description,
 \item{CodeSigningPolicies}{The code signing policy.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CodeSigningConfig = list(
     CodeSigningConfigId = "string",
     CodeSigningConfigArn = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
     LastModified = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Update the code signing configuration. Changes to the code signing
@@ -43,9 +41,7 @@ configuration take effect the next time a user tries to deploy a code
 package to the function.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_code_signing_config(
+\preformatted{svc$update_code_signing_config(
   CodeSigningConfigArn = "string",
   Description = "string",
   AllowedPublishers = list(
@@ -57,7 +53,7 @@ package to the function.
     UntrustedArtifactOnDeployment = "Warn"|"Enforce"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

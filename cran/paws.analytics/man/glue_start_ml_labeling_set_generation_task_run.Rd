@@ -16,12 +16,10 @@ glue_start_ml_labeling_set_generation_task_run(TransformId,
 the labeling set.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TaskRunId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts the active learning workflow for your machine learning transform
@@ -46,13 +44,11 @@ finishes, all future runs of the machine learning transform will use the
 new and improved labels and perform a higher-quality transformation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_ml_labeling_set_generation_task_run(
+\preformatted{svc$start_ml_labeling_set_generation_task_run(
   TransformId = "string",
   OutputS3Path = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -39,9 +39,7 @@ value.}
 \item{NextToken}{The token for the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NatGateways = list(
     list(
       CreateTime = as.POSIXct(
@@ -85,15 +83,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your NAT gateways.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_nat_gateways(
+\preformatted{svc$describe_nat_gateways(
   DryRun = TRUE|FALSE,
   Filter = list(
     list(
@@ -109,7 +105,7 @@ Describes one or more of your NAT gateways.
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

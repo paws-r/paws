@@ -27,9 +27,7 @@ The only \code{Option} that can be modified by
 \code{BytesPerSecond}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_task_execution(
+\preformatted{svc$update_task_execution(
   TaskExecutionArn = "string",
   Options = list(
     VerifyMode = "POINT_IN_TIME_CONSISTENT"|"ONLY_FILES_TRANSFERRED"|"NONE",
@@ -47,7 +45,7 @@ The only \code{Option} that can be modified by
     TransferMode = "CHANGED"|"ALL"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

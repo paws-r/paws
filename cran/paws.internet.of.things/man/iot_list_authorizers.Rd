@@ -16,9 +16,7 @@ iot_list_authorizers(pageSize, marker, ascendingOrder, status)
 \item{status}{The status of the list authorizers request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   authorizers = list(
     list(
       authorizerName = "string",
@@ -27,21 +25,19 @@ A list with the following syntax:
   ),
   nextMarker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the authorizers registered in your account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_authorizers(
+\preformatted{svc$list_authorizers(
   pageSize = 123,
   marker = "string",
   ascendingOrder = TRUE|FALSE,
   status = "ACTIVE"|"INACTIVE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

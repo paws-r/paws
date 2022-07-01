@@ -35,9 +35,7 @@ distribution.}
 \item{isEnabled}{Indicates whether to enable the distribution.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -60,7 +58,7 @@ A list with the following syntax:
     errorDetails = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing Amazon Lightsail content delivery network (CDN)
@@ -70,9 +68,7 @@ Use this action to update the configuration of your existing
 distribution
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_distribution(
+\preformatted{svc$update_distribution(
   distributionName = "string",
   origin = list(
     name = "string",
@@ -115,7 +111,7 @@ distribution
   ),
   isEnabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

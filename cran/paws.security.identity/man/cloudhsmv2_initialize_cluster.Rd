@@ -23,13 +23,11 @@ available, and thus must be the root certificate. The certificate must
 be in PEM format and can contain a maximum of 5000 characters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
   StateMessage = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Claims an AWS CloudHSM cluster by submitting the cluster certificate
@@ -39,14 +37,12 @@ certificate signing request (CSR) with your issuing CA. To get the
 cluster's CSR, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$initialize_cluster(
+\preformatted{svc$initialize_cluster(
   ClusterId = "string",
   SignedCert = "string",
   TrustAnchor = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -58,9 +58,7 @@ the original SSD file system had a storage capacity of at least 2000
 GiB.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FileSystem = list(
     OwnerId = "string",
     CreationTime = as.POSIXct(
@@ -156,7 +154,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Amazon FSx file system from an existing Amazon FSx backup.
@@ -195,9 +193,7 @@ call returns while the file system's lifecycle state is still
 returns the file system state along with other information.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_file_system_from_backup(
+\preformatted{svc$create_file_system_from_backup(
   BackupId = "string",
   ClientRequestToken = "string",
   SubnetIds = list(
@@ -250,7 +246,7 @@ returns the file system state along with other information.
   ),
   StorageType = "SSD"|"HDD"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -28,12 +28,10 @@ applications running on the instance.
 For more information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About Instance Profiles}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_instance_profile(
+\preformatted{svc$delete_instance_profile(
   InstanceProfileName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

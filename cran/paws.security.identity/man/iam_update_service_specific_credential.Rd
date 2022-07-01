@@ -34,14 +34,12 @@ disable a user's service-specific credential as part of a credential
 rotation work flow.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_service_specific_credential(
+\preformatted{svc$update_service_specific_credential(
   UserName = "string",
   ServiceSpecificCredentialId = "string",
   Status = "Active"|"Inactive"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

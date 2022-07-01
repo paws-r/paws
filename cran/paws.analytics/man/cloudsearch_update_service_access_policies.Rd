@@ -14,9 +14,7 @@ cloudsearch_update_service_access_policies(DomainName, AccessPolicies)
 rules.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccessPolicies = list(
     Options = "string",
     Status = list(
@@ -32,7 +30,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Configures the access rules that control access to the domain's document
@@ -41,13 +39,11 @@ href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-
 target="_blank">Configuring Access for an Amazon CloudSearch Domain</a>.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_service_access_policies(
+\preformatted{svc$update_service_access_policies(
   DomainName = "string",
   AccessPolicies = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

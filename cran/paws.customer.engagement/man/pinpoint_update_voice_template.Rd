@@ -49,24 +49,20 @@ of the template.
 \item{VoiceTemplateRequest}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MessageBody = list(
     Message = "string",
     RequestID = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing message template for messages that are sent through
 the voice channel.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_voice_template(
+\preformatted{svc$update_voice_template(
   CreateNewVersion = TRUE|FALSE,
   TemplateName = "string",
   Version = "string",
@@ -81,7 +77,7 @@ the voice channel.
     VoiceId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

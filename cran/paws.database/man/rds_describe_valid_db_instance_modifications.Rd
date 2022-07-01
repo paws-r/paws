@@ -11,9 +11,7 @@ rds_describe_valid_db_instance_modifications(DBInstanceIdentifier)
 \item{DBInstanceIdentifier}{[required] The customer identifier or the ARN of your DB instance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ValidDBInstanceModificationsMessage = list(
     Storage = list(
       list(
@@ -50,7 +48,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 You can call
@@ -60,12 +58,10 @@ use this information when you call
 \code{\link[=rds_modify_db_instance]{modify_db_instance}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_valid_db_instance_modifications(
+\preformatted{svc$describe_valid_db_instance_modifications(
   DBInstanceIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ cloudhsmv2_delete_backup(BackupId)
 \code{\link[=cloudhsmv2_describe_backups]{describe_backups}} operation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Backup = list(
     BackupId = "string",
     BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
@@ -39,7 +37,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a specified AWS CloudHSM backup. A backup can be restored up to
@@ -47,12 +45,10 @@ Deletes a specified AWS CloudHSM backup. A backup can be restored up to
 restoring a backup, see \code{\link[=cloudhsmv2_restore_backup]{restore_backup}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_backup(
+\preformatted{svc$delete_backup(
   BackupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

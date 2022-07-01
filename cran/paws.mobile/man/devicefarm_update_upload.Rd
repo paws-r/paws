@@ -19,9 +19,7 @@ file extension.}
 set to false.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   upload = list(
     arn = "string",
     name = "string",
@@ -37,21 +35,19 @@ A list with the following syntax:
     category = "CURATED"|"PRIVATE"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an uploaded test spec.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_upload(
+\preformatted{svc$update_upload(
   arn = "string",
   name = "string",
   contentType = "string",
   editContent = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

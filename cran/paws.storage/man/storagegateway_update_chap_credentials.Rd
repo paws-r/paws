@@ -29,13 +29,11 @@ Byte constraints: Minimum bytes of 12. Maximum bytes of 16.
 The secret key must be between 12 and 16 bytes when encoded in UTF-8.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TargetARN = "string",
   InitiatorName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the Challenge-Handshake Authentication Protocol (CHAP)
@@ -47,15 +45,13 @@ When you update CHAP credentials, all existing connections on the target
 are closed and initiators must reconnect with the new credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_chap_credentials(
+\preformatted{svc$update_chap_credentials(
   TargetARN = "string",
   SecretToAuthenticateInitiator = "string",
   InitiatorName = "string",
   SecretToAuthenticateTarget = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

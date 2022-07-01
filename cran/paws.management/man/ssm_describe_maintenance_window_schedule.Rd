@@ -27,9 +27,7 @@ next set of results.}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ScheduledWindowExecutions = list(
     list(
       WindowId = "string",
@@ -39,15 +37,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about upcoming executions of a maintenance window.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_maintenance_window_schedule(
+\preformatted{svc$describe_maintenance_window_schedule(
   WindowId = "string",
   Targets = list(
     list(
@@ -69,7 +65,7 @@ Retrieves information about upcoming executions of a maintenance window.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

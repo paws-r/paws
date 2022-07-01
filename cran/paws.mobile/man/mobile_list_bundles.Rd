@@ -14,9 +14,7 @@ non-null pagination token is returned in a result, then pass its value
 in here in another request to list more bundles.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   bundleList = list(
     list(
       bundleId = "string",
@@ -31,19 +29,17 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List all available bundles.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_bundles(
+\preformatted{svc$list_bundles(
   maxResults = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

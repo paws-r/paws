@@ -15,9 +15,7 @@ workmail_list_mailbox_export_jobs(OrganizationId, NextToken, MaxResults)
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Jobs = list(
     list(
       JobId = "string",
@@ -37,21 +35,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the mailbox export jobs started for the specified organization
 within the last seven days.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_mailbox_export_jobs(
+\preformatted{svc$list_mailbox_export_jobs(
   OrganizationId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

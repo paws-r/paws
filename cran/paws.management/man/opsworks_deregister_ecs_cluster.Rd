@@ -23,12 +23,10 @@ see
 \url{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_ecs_cluster(
+\preformatted{svc$deregister_ecs_cluster(
   EcsClusterArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

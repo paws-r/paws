@@ -22,9 +22,7 @@ Plugin names are also referred to as step names in Systems Manager
 documents.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CommandId = "string",
   InstanceId = "string",
   Comment = "string",
@@ -46,21 +44,19 @@ A list with the following syntax:
     CloudWatchOutputEnabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns detailed information about command execution for an invocation
 or plugin.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_command_invocation(
+\preformatted{svc$get_command_invocation(
   CommandId = "string",
   InstanceId = "string",
   PluginName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,9 +19,7 @@ retrieve.}
 ReservedNodeOfferings.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   ReservedNodeOfferings = list(
     list(
@@ -42,21 +40,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns an array of DC2 ReservedNodeOfferings that matches the payment
 type, term, and usage price of the given DC1 reserved node.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_reserved_node_exchange_offerings(
+\preformatted{svc$get_reserved_node_exchange_offerings(
   ReservedNodeId = "string",
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

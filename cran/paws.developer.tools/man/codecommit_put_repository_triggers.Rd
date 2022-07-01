@@ -13,21 +13,17 @@ trigger.}
 \item{triggers}{[required] The JSON block of configuration information for each trigger.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   configurationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Replaces all triggers for a repository. Used to create or delete
 triggers.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_repository_triggers(
+\preformatted{svc$put_repository_triggers(
   repositoryName = "string",
   triggers = list(
     list(
@@ -43,7 +39,7 @@ triggers.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

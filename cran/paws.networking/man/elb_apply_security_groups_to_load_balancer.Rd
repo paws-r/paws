@@ -15,14 +15,12 @@ elb_apply_security_groups_to_load_balancer(LoadBalancerName,
 that you cannot specify the name of the security group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SecurityGroups = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Associates one or more security groups with your load balancer in a
@@ -33,15 +31,13 @@ For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$apply_security_groups_to_load_balancer(
+\preformatted{svc$apply_security_groups_to_load_balancer(
   LoadBalancerName = "string",
   SecurityGroups = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

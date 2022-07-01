@@ -10,9 +10,7 @@ cognitoidentityprovider_get_user_pool_mfa_config(UserPoolId)
 \item{UserPoolId}{[required] The user pool ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SmsMfaConfiguration = list(
     SmsAuthenticationMessage = "string",
     SmsConfiguration = list(
@@ -25,18 +23,16 @@ A list with the following syntax:
   ),
   MfaConfiguration = "OFF"|"ON"|"OPTIONAL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the user pool multi-factor authentication (MFA) configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_user_pool_mfa_config(
+\preformatted{svc$get_user_pool_mfa_config(
   UserPoolId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

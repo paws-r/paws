@@ -16,9 +16,7 @@ lambda_create_code_signing_config(Description, AllowedPublishers,
 checks fail.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CodeSigningConfig = list(
     CodeSigningConfigId = "string",
     CodeSigningConfigArn = "string",
@@ -34,7 +32,7 @@ A list with the following syntax:
     LastModified = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a code signing configuration. A \href{https://docs.aws.amazon.com/lambda/latest/dg/}{code signing configuration} defines a
@@ -42,9 +40,7 @@ list of allowed signing profiles and defines the code-signing validation
 policy (action to be taken if deployment validation checks fail).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_code_signing_config(
+\preformatted{svc$create_code_signing_config(
   Description = "string",
   AllowedPublishers = list(
     SigningProfileVersionArns = list(
@@ -55,7 +51,7 @@ policy (action to be taken if deployment validation checks fail).
     UntrustedArtifactOnDeployment = "Warn"|"Enforce"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

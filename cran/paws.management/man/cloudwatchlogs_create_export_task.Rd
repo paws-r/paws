@@ -31,12 +31,10 @@ the same AWS region.}
 you don't specify a value, the default is \code{exportedlogs}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   taskId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an export task, which allows you to efficiently export data from
@@ -62,9 +60,7 @@ Exporting to S3 buckets that are encrypted with AES-256 is supported.
 Exporting to S3 buckets encrypted with SSE-KMS is not supported.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_export_task(
+\preformatted{svc$create_export_task(
   taskName = "string",
   logGroupName = "string",
   logStreamNamePrefix = "string",
@@ -73,7 +69,7 @@ Exporting to S3 buckets encrypted with SSE-KMS is not supported.
   destination = "string",
   destinationPrefix = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

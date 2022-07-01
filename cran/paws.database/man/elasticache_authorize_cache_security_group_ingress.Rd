@@ -18,9 +18,7 @@ this is not the same thing as an AWS access key ID - you must provide a
 valid AWS account number for this parameter.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CacheSecurityGroup = list(
     OwnerId = "string",
     CacheSecurityGroupName = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Allows network ingress to a cache security group. Applications using
@@ -46,14 +44,12 @@ You cannot authorize ingress from an Amazon EC2 security group in one
 region to an ElastiCache cluster in another region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$authorize_cache_security_group_ingress(
+\preformatted{svc$authorize_cache_security_group_ingress(
   CacheSecurityGroupName = "string",
   EC2SecurityGroupName = "string",
   EC2SecurityGroupOwnerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

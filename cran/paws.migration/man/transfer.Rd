@@ -29,9 +29,7 @@ learning, and archiving. Getting started with AWS Transfer Family is
 easy since there is no infrastructure to buy and set up.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- transfer(
+\preformatted{svc <- transfer(
   config = list(
     credentials = list(
       creds = list(
@@ -45,7 +43,7 @@ easy since there is no infrastructure to buy and set up.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

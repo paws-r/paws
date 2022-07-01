@@ -18,13 +18,11 @@ An empty list.
 Ends the specified contact.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_contact(
+\preformatted{svc$stop_contact(
   ContactId = "string",
   InstanceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -35,9 +35,7 @@ deployed Stage.}
 \item{additionalContext}{[Optional] A key-value map of additional context variables.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   clientStatus = 123,
   log = "string",
   latency = 123,
@@ -52,7 +50,7 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Simulate the execution of an Authorizer in your RestApi with headers,
@@ -63,9 +61,7 @@ parameters, and an incoming request body.<div class="seeAlso">
 \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html}{Use Cognito User Pool as Authorizer}</div>
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$test_invoke_authorizer(
+\preformatted{svc$test_invoke_authorizer(
   restApiId = "string",
   authorizerId = "string",
   headers = list(
@@ -85,7 +81,7 @@ parameters, and an incoming request body.<div class="seeAlso">
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

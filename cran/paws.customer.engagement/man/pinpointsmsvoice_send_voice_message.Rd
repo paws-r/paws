@@ -24,20 +24,16 @@ recipients' devices when they receive the message, because you can
 specify a CallerId parameter in the request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MessageId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create a new voice message and send it to a recipient's phone number.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_voice_message(
+\preformatted{svc$send_voice_message(
   CallerId = "string",
   ConfigurationSetName = "string",
   Content = list(
@@ -58,7 +54,7 @@ Create a new voice message and send it to a recipient's phone number.
   DestinationPhoneNumber = "string",
   OriginationPhoneNumber = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

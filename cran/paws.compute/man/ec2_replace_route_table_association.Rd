@@ -18,16 +18,14 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{RouteTableId}{[required] The ID of the new route table to associate with the subnet.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NewAssociationId = "string",
   AssociationState = list(
     State = "associating"|"associated"|"disassociating"|"disassociated"|"failed",
     StatusMessage = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes the route table associated with a given subnet, internet
@@ -41,14 +39,12 @@ table in the VPC. Specify the main route table's association ID and the
 route table ID of the new main route table.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$replace_route_table_association(
+\preformatted{svc$replace_route_table_association(
   AssociationId = "string",
   DryRun = TRUE|FALSE,
   RouteTableId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

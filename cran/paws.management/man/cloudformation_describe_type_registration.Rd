@@ -15,15 +15,13 @@ a registration request using
 \code{\link[=cloudformation_register_type]{register_type}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProgressStatus = "COMPLETE"|"IN_PROGRESS"|"FAILED",
   Description = "string",
   TypeArn = "string",
   TypeVersionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a type's registration, including its current
@@ -39,12 +37,10 @@ Once the registration request has completed, use
 informaiton about a type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_type_registration(
+\preformatted{svc$describe_type_registration(
   RegistrationToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

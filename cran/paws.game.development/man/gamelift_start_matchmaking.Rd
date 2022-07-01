@@ -23,9 +23,7 @@ used in the matchmaking process. After a successful match, \code{Player}
 objects contain the name of the team the player is assigned to.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MatchmakingTicket = list(
     TicketId = "string",
     ConfigurationName = "string",
@@ -75,7 +73,7 @@ A list with the following syntax:
     EstimatedWaitTime = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Uses FlexMatch to create a game match for a group of players based on
@@ -120,9 +118,7 @@ which is defined in the matchmaking configuration.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_matchmaking(
+\preformatted{svc$start_matchmaking(
   TicketId = "string",
   ConfigurationName = "string",
   Players = list(
@@ -147,7 +143,7 @@ which is defined in the matchmaking configuration.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

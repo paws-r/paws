@@ -10,9 +10,7 @@ sagemaker_describe_image(ImageName)
 \item{ImageName}{[required] The name of the image to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CreationTime = as.POSIXct(
     "2015-01-01"
   ),
@@ -27,18 +25,16 @@ A list with the following syntax:
   ),
   RoleArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a SageMaker image.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_image(
+\preformatted{svc$describe_image(
   ImageName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

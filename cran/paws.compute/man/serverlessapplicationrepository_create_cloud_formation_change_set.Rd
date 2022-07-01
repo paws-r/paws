@@ -103,23 +103,19 @@ Pattern:
 [0-9a-fA-F]\{8\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{12\}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationId = "string",
   ChangeSetId = "string",
   SemanticVersion = "string",
   StackId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an AWS CloudFormation change set for the given application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cloud_formation_change_set(
+\preformatted{svc$create_cloud_formation_change_set(
   ApplicationId = "string",
   Capabilities = list(
     "string"
@@ -158,7 +154,7 @@ Creates an AWS CloudFormation change set for the given application.
   ),
   TemplateId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

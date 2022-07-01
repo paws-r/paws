@@ -21,13 +21,11 @@ You must specify either the StreamName or the StreamARN.}
 \item{ClipFragmentSelector}{[required] The time range of the requested clip and the source of the timestamps.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContentType = "string",
   Payload = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Downloads an MP4 file (clip) containing the archived, on-demand media
@@ -66,9 +64,7 @@ For pricing information, see \href{https://aws.amazon.com/kinesis/video-streams/
 apply.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_clip(
+\preformatted{svc$get_clip(
   StreamName = "string",
   StreamARN = "string",
   ClipFragmentSelector = list(
@@ -83,7 +79,7 @@ apply.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

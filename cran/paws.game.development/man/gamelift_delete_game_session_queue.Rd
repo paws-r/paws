@@ -34,12 +34,10 @@ the queue name.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_game_session_queue(
+\preformatted{svc$delete_game_session_queue(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

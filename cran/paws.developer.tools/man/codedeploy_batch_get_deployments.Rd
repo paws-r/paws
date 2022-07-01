@@ -11,9 +11,7 @@ codedeploy_batch_get_deployments(deploymentIds)
 deployment IDs you can specify is 25.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   deploymentsInfo = list(
     list(
       applicationName = "string",
@@ -183,21 +181,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about one or more deployments. The maximum number of
 deployments that can be returned is 25.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_deployments(
+\preformatted{svc$batch_get_deployments(
   deploymentIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

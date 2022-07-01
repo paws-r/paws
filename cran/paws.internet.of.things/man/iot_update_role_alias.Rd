@@ -14,26 +14,22 @@ iot_update_role_alias(roleAlias, roleArn, credentialDurationSeconds)
 \item{credentialDurationSeconds}{The number of seconds the credential will be valid.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   roleAlias = "string",
   roleAliasArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a role alias.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_role_alias(
+\preformatted{svc$update_role_alias(
   roleAlias = "string",
   roleArn = "string",
   credentialDurationSeconds = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

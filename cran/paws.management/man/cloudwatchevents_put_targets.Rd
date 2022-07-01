@@ -16,9 +16,7 @@ this, the default event bus is used.}
 \item{Targets}{[required] The targets to update or add to the rule.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FailedEntryCount = 123,
   FailedEntries = list(
     list(
@@ -28,7 +26,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds the specified targets to the specified rule, or updates the targets
@@ -135,9 +133,7 @@ and each entry in \code{FailedEntries} provides the ID of the failed target
 and the error code.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_targets(
+\preformatted{svc$put_targets(
   Rule = "string",
   EventBusName = "string",
   Targets = list(
@@ -226,7 +222,7 @@ and the error code.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

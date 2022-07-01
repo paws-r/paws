@@ -23,14 +23,12 @@ Updates a user's current mailbox quota for a specified organization and
 user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_mailbox_quota(
+\preformatted{svc$update_mailbox_quota(
   OrganizationId = "string",
   UserId = "string",
   MailboxQuota = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,12 +19,10 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disassociates an IAM role from an AWS Certificate Manager (ACM)
@@ -36,14 +34,12 @@ customer master key (CMK) used to encrypt the private key. This
 effectively revokes the role's permission to use the certificate.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_enclave_certificate_iam_role(
+\preformatted{svc$disassociate_enclave_certificate_iam_role(
   CertificateArn = "string",
   RoleArn = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

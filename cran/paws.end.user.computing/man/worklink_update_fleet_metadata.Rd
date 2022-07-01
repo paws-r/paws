@@ -24,14 +24,12 @@ An empty list.
 Updates fleet metadata, such as DisplayName.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_fleet_metadata(
+\preformatted{svc$update_fleet_metadata(
   FleetArn = "string",
   DisplayName = "string",
   OptimizeForEndUserLocation = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

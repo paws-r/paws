@@ -17,12 +17,10 @@ Deprecated. Use the \code{\link[=ses_delete_identity]{delete_identity}} operatio
 to delete email addresses and domains.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_verified_email_address(
+\preformatted{svc$delete_verified_email_address(
   EmailAddress = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

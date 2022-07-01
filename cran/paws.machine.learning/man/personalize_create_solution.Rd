@@ -41,12 +41,10 @@ to true, Amazon Personalize only evaluates the \code{autoMLConfig} section of
 the solution configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   solutionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates the configuration for training a model. A trained model is known
@@ -97,9 +95,7 @@ status shows as ACTIVE before calling
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_solution(
+\preformatted{svc$create_solution(
   name = "string",
   performHPO = TRUE|FALSE,
   performAutoML = TRUE|FALSE,
@@ -157,7 +153,7 @@ status shows as ACTIVE before calling
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

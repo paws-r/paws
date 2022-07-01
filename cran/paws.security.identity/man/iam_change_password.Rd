@@ -35,13 +35,11 @@ about modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/User
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$change_password(
+\preformatted{svc$change_password(
   OldPassword = "string",
   NewPassword = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

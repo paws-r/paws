@@ -10,9 +10,7 @@ dynamodb_delete_backup(BackupArn)
 \item{BackupArn}{[required] The ARN associated with the backup.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BackupDescription = list(
     BackupDetails = list(
       BackupArn = "string",
@@ -106,7 +104,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an existing backup of a table.
@@ -115,12 +113,10 @@ You can call \code{\link[=dynamodb_delete_backup]{delete_backup}} at a maximum r
 of 10 times per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_backup(
+\preformatted{svc$delete_backup(
   BackupArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

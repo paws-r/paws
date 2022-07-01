@@ -18,10 +18,8 @@ You can change this by submitting an
 \code{\link[=shield_update_subscription]{update_subscription}} request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_subscription()
-}\if{html}{\out{</div>}}
+\preformatted{svc$create_subscription()
+}
 }
 
 \keyword{internal}

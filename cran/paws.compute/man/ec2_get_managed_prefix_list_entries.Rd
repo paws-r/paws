@@ -25,9 +25,7 @@ value.}
 \item{NextToken}{The token for the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Entries = list(
     list(
       Cidr = "string",
@@ -36,22 +34,20 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the entries for a specified managed prefix list.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_managed_prefix_list_entries(
+\preformatted{svc$get_managed_prefix_list_entries(
   DryRun = TRUE|FALSE,
   PrefixListId = "string",
   TargetVersion = 123,
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

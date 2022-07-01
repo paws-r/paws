@@ -12,9 +12,7 @@ sagemaker_describe_user_profile(DomainId, UserProfileName)
 \item{UserProfileName}{[required] The user profile name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainId = "string",
   UserProfileArn = "string",
   UserProfileName = "string",
@@ -69,20 +67,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a user profile. For more information, see
 \code{\link[=sagemaker_create_user_profile]{create_user_profile}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_user_profile(
+\preformatted{svc$describe_user_profile(
   DomainId = "string",
   UserProfileName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

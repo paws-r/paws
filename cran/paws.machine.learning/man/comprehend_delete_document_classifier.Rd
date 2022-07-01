@@ -25,12 +25,10 @@ classifier disappears from your account and is no longer available for
 use.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_document_classifier(
+\preformatted{svc$delete_document_classifier(
   DocumentClassifierArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -32,9 +32,7 @@ exactly two source URLs for redundancy. Only specify sources for PULL
 type Inputs. Leave Destinations empty.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Input = list(
     Arn = "string",
     AttachedChannels = list(
@@ -83,15 +81,13 @@ A list with the following syntax:
     Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT"|"INPUT_DEVICE"|"AWS_CDI"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an input.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_input(
+\preformatted{svc$update_input(
   Destinations = list(
     list(
       StreamName = "string"
@@ -121,7 +117,7 @@ Updates an input.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

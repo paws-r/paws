@@ -18,9 +18,7 @@ accounts.}
 builder to connect to the directory.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DirectoryConfig = list(
     DirectoryName = "string",
     OrganizationalUnitDistinguishedNames = list(
@@ -35,7 +33,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Directory Config object in AppStream 2.0. This object includes
@@ -43,9 +41,7 @@ the configuration information required to join fleets and image builders
 to Microsoft Active Directory domains.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_directory_config(
+\preformatted{svc$create_directory_config(
   DirectoryName = "string",
   OrganizationalUnitDistinguishedNames = list(
     "string"
@@ -55,7 +51,7 @@ to Microsoft Active Directory domains.
     AccountPassword = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,28 +16,24 @@ dynamodb_update_contributor_insights(TableName, IndexName,
 \item{ContributorInsightsAction}{[required] Represents the contributor insights action.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TableName = "string",
   IndexName = "string",
   ContributorInsightsStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"FAILED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the status for contributor insights for a specific table or
 index.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_contributor_insights(
+\preformatted{svc$update_contributor_insights(
   TableName = "string",
   IndexName = "string",
   ContributorInsightsAction = "ENABLE"|"DISABLE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

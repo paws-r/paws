@@ -13,9 +13,7 @@ appstream_start_image_builder(Name, AppstreamAgentVersion)
 use the latest version of the AppStream 2.0 agent, specify [LATEST].}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ImageBuilder = list(
     Name = "string",
     Arn = "string",
@@ -68,19 +66,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts the specified image builder.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_image_builder(
+\preformatted{svc$start_image_builder(
   Name = "string",
   AppstreamAgentVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

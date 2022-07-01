@@ -15,9 +15,7 @@ DisassociateNodeResponse.}
 \item{ServerName}{[required] The name of the server from which to disassociate the node.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NodeAssociationStatus = "SUCCESS"|"FAILED"|"IN_PROGRESS",
   EngineAttributes = list(
     list(
@@ -26,7 +24,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the current status of an existing association or disassociation
@@ -38,13 +36,11 @@ server does not exist. A \code{ValidationException} is raised when parameters
 of the request are not valid.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_node_association_status(
+\preformatted{svc$describe_node_association_status(
   NodeAssociationStatusToken = "string",
   ServerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -7,9 +7,7 @@
 opsworkscm_describe_account_attributes()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attributes = list(
     list(
       Name = "string",
@@ -18,7 +16,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes your OpsWorks-CM account attributes.
@@ -26,10 +24,8 @@ Describes your OpsWorks-CM account attributes.
 This operation is synchronous.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_account_attributes()
-}\if{html}{\out{</div>}}
+\preformatted{svc$describe_account_attributes()
+}
 }
 
 \keyword{internal}

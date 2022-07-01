@@ -74,12 +74,10 @@ To add tags to an existing maintenance window, use the
 \code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   WindowId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new maintenance window.
@@ -93,9 +91,7 @@ value you specify for \code{Cutoff} is one hour, no maintenance window tasks
 can start after 5 PM.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_maintenance_window(
+\preformatted{svc$create_maintenance_window(
   Name = "string",
   Description = "string",
   StartDate = "string",
@@ -114,7 +110,7 @@ can start after 5 PM.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

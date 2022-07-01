@@ -63,9 +63,7 @@ endpoint.}
 \item{AdvancedSecurityOptions}{Specifies advanced security options.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainStatus = list(
     DomainId = "string",
     DomainName = "string",
@@ -172,7 +170,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Elasticsearch domain. For more information, see <a
@@ -181,9 +179,7 @@ target="_blank">Creating Elasticsearch Domains</a> in the \emph{Amazon
 Elasticsearch Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_elasticsearch_domain(
+\preformatted{svc$create_elasticsearch_domain(
   DomainName = "string",
   ElasticsearchVersion = "string",
   ElasticsearchClusterConfig = list(
@@ -269,7 +265,7 @@ Elasticsearch Service Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

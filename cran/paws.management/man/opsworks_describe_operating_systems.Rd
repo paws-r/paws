@@ -8,9 +8,7 @@ Stacks}
 opsworks_describe_operating_systems()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OperatingSystems = list(
     list(
       Name = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the operating systems that are supported by AWS OpsWorks

@@ -25,9 +25,7 @@ the connection properties.}
 \item{MaxResults}{The maximum number of connections to return in one response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConnectionList = list(
     list(
       Name = "string",
@@ -57,15 +55,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list of connection definitions from the Data Catalog.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_connections(
+\preformatted{svc$get_connections(
   CatalogId = "string",
   Filter = list(
     MatchCriteria = list(
@@ -77,7 +73,7 @@ Retrieves a list of connection definitions from the Data Catalog.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

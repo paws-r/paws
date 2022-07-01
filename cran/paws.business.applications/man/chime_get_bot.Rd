@@ -13,9 +13,7 @@ chime_get_bot(AccountId, BotId)
 \item{BotId}{[required] The bot ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Bot = list(
     BotId = "string",
     UserId = "string",
@@ -32,20 +30,18 @@ A list with the following syntax:
     SecurityToken = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves details for the specified bot, such as bot email address, bot
 type, status, and display name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bot(
+\preformatted{svc$get_bot(
   AccountId = "string",
   BotId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

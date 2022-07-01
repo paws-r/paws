@@ -15,29 +15,25 @@ iotdataplane_list_named_shadows_for_thing(thingName, nextToken,
 \item{pageSize}{The result page size.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   results = list(
     "string"
   ),
   nextToken = "string",
   timestamp = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the shadows for the specified thing.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_named_shadows_for_thing(
+\preformatted{svc$list_named_shadows_for_thing(
   thingName = "string",
   nextToken = "string",
   pageSize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

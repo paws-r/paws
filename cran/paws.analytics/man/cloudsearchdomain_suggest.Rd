@@ -14,9 +14,7 @@ cloudsearchdomain_suggest(query, suggester, size)
 \item{size}{Specifies the maximum number of suggestions to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   status = list(
     timems = 123,
     rid = "string"
@@ -33,7 +31,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves autocomplete suggestions for a partial query string. You can
@@ -56,14 +54,12 @@ domain's endpoints are also displayed on the domain dashboard in the
 Amazon CloudSearch console.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$suggest(
+\preformatted{svc$suggest(
   query = "string",
   suggester = "string",
   size = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

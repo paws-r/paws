@@ -28,14 +28,12 @@ To add a role to a DB instance, the status of the DB instance must be
 \code{available}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_role_to_db_instance(
+\preformatted{svc$add_role_to_db_instance(
   DBInstanceIdentifier = "string",
   RoleArn = "string",
   FeatureName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

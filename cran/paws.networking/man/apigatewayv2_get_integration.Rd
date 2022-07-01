@@ -12,9 +12,7 @@ apigatewayv2_get_integration(ApiId, IntegrationId)
 \item{IntegrationId}{[required] The integration ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApiGatewayManaged = TRUE|FALSE,
   ConnectionId = "string",
   ConnectionType = "INTERNET"|"VPC_LINK",
@@ -46,19 +44,17 @@ A list with the following syntax:
     ServerNameToVerify = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets an Integration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_integration(
+\preformatted{svc$get_integration(
   ApiId = "string",
   IntegrationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

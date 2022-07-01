@@ -33,12 +33,10 @@ template.}
 \item{ConformancePackInputParameters}{A list of \code{ConformancePackInputParameter} objects.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConformancePackArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates or updates a conformance pack. A conformance pack is a
@@ -54,9 +52,7 @@ parameter, but not both. If you provide both AWS Config uses the
 \code{TemplateS3Uri} parameter and ignores the \code{TemplateBody} parameter.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_conformance_pack(
+\preformatted{svc$put_conformance_pack(
   ConformancePackName = "string",
   TemplateS3Uri = "string",
   TemplateBody = "string",
@@ -69,7 +65,7 @@ parameter, but not both. If you provide both AWS Config uses the
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -13,9 +13,7 @@ the NextToken to fetch the next group of custom terminologies.}
 \item{MaxResults}{The maximum number of custom terminologies returned per list request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TerminologyPropertiesList = list(
     list(
       Name = "string",
@@ -41,19 +39,17 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides a list of custom terminologies associated with your account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_terminologies(
+\preformatted{svc$list_terminologies(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -20,13 +20,11 @@ Deletes the AccessLogSettings for a Stage. To disable access logging for
 a Stage, delete its AccessLogSettings.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_access_log_settings(
+\preformatted{svc$delete_access_log_settings(
   ApiId = "string",
   StageName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

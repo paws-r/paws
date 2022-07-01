@@ -207,9 +207,7 @@ specify these sizes with the same units that you use for weighting
 instances.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_auto_scaling_group(
+\preformatted{svc$create_auto_scaling_group(
   AutoScalingGroupName = "string",
   LaunchConfigurationName = "string",
   LaunchTemplate = list(
@@ -291,7 +289,7 @@ instances.
   ServiceLinkedRoleARN = "string",
   MaxInstanceLifetime = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

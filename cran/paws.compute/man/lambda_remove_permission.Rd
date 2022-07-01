@@ -41,15 +41,13 @@ You can get the ID of the statement from the output of
 \code{\link[=lambda_get_policy]{get_policy}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_permission(
+\preformatted{svc$remove_permission(
   FunctionName = "string",
   StatementId = "string",
   Qualifier = "string",
   RevisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

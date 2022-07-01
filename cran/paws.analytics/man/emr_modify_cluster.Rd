@@ -14,25 +14,21 @@ emr_modify_cluster(ClusterId, StepConcurrencyLevel)
 maximum of 256 steps.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StepConcurrencyLevel = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the number of steps that can be executed concurrently for the
 cluster specified using ClusterID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_cluster(
+\preformatted{svc$modify_cluster(
   ClusterId = "string",
   StepConcurrencyLevel = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

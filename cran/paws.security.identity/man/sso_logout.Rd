@@ -21,12 +21,10 @@ Removes the client- and server-side session that is associated with the
 user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$logout(
+\preformatted{svc$logout(
   accessToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

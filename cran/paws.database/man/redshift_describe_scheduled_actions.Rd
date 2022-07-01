@@ -43,9 +43,7 @@ Default: \code{100}
 Constraints: minimum 20, maximum 100.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   ScheduledActions = list(
     list(
@@ -83,15 +81,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes properties of scheduled actions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_scheduled_actions(
+\preformatted{svc$describe_scheduled_actions(
   ScheduledActionName = "string",
   TargetActionType = "ResizeCluster"|"PauseCluster"|"ResumeCluster",
   StartTime = as.POSIXct(
@@ -112,7 +108,7 @@ Describes properties of scheduled actions.
   Marker = "string",
   MaxRecords = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

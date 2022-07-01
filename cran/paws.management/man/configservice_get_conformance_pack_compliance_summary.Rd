@@ -17,9 +17,7 @@ configservice_get_conformance_pack_compliance_summary(
 next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConformancePackComplianceSummaryList = list(
     list(
       ConformancePackName = "string",
@@ -28,23 +26,21 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns compliance details for the conformance pack based on the
 cumulative compliance results of all the rules in that conformance pack.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_conformance_pack_compliance_summary(
+\preformatted{svc$get_conformance_pack_compliance_summary(
   ConformancePackNames = list(
     "string"
   ),
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

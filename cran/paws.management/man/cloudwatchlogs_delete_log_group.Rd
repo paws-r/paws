@@ -18,12 +18,10 @@ Deletes the specified log group and permanently deletes all the archived
 log events associated with the log group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_log_group(
+\preformatted{svc$delete_log_group(
   logGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

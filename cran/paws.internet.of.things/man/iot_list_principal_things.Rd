@@ -16,15 +16,13 @@ results.}
 \item{principal}{[required] The principal.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   things = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the things associated with the specified principal. A principal
@@ -32,14 +30,12 @@ can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
 identities or federated identities.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_principal_things(
+\preformatted{svc$list_principal_things(
   nextToken = "string",
   maxResults = 123,
   principal = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

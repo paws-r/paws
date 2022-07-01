@@ -23,13 +23,11 @@ An empty list.
 Deletes a self-service action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_service_action(
+\preformatted{svc$delete_service_action(
   Id = "string",
   AcceptLanguage = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

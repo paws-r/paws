@@ -22,9 +22,7 @@ response.}
 \item{MaxResults}{The maximum number of results to return in the response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StandardsSubscriptions = list(
     list(
       StandardsSubscriptionArn = "string",
@@ -37,22 +35,20 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of the standards that are currently enabled.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_enabled_standards(
+\preformatted{svc$get_enabled_standards(
   StandardsSubscriptionArns = list(
     "string"
   ),
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

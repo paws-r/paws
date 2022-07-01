@@ -10,9 +10,7 @@ datasync_describe_location_nfs(LocationArn)
 \item{LocationArn}{[required] The Amazon Resource Name (ARN) of the NFS location to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LocationArn = "string",
   LocationUri = "string",
   OnPremConfig = list(
@@ -27,18 +25,16 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns metadata, such as the path information, about an NFS location.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_location_nfs(
+\preformatted{svc$describe_location_nfs(
   LocationArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

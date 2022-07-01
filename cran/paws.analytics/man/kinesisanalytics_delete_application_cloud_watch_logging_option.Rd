@@ -32,14 +32,12 @@ information about using CloudWatch log streams with Amazon Kinesis
 Analytics applications, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html}{Working with Amazon CloudWatch Logs}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application_cloud_watch_logging_option(
+\preformatted{svc$delete_application_cloud_watch_logging_option(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   CloudWatchLoggingOptionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

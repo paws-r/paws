@@ -10,9 +10,7 @@ sns_list_topics(NextToken)
 \item{NextToken}{Token returned by the previous \code{\link[=sns_list_topics]{list_topics}} request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Topics = list(
     list(
       TopicArn = "string"
@@ -20,7 +18,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of the requester's topics. Each call returns a limited
@@ -31,12 +29,10 @@ also returned. Use the \code{NextToken} parameter in a new
 This action is throttled at 30 transactions per second (TPS).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_topics(
+\preformatted{svc$list_topics(
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,9 +15,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{InstanceId}{[required] The ID of the instance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LaunchTemplateData = list(
     KernelId = "string",
     EbsOptimized = TRUE|FALSE,
@@ -165,7 +163,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the configuration data of the specified instance. You can use
@@ -179,13 +177,11 @@ DescribeInstanceAttribute, and DescribeElasticGpus. Or, you can allow
 \verb{describe*} depending on your instance requirements.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_launch_template_data(
+\preformatted{svc$get_launch_template_data(
   DryRun = TRUE|FALSE,
   InstanceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

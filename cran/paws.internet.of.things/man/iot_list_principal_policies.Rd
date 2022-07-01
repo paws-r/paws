@@ -20,9 +20,7 @@ iot_list_principal_policies(principal, marker, pageSize, ascendingOrder)
 ascending creation order.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   policies = list(
     list(
       policyName = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
   ),
   nextMarker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the policies attached to the specified principal. If you use an
@@ -41,15 +39,13 @@ Cognito identity, the ID must be in \href{https://docs.aws.amazon.com/cognitoide
 \code{\link[=iot_list_attached_policies]{list_attached_policies}} instead.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_principal_policies(
+\preformatted{svc$list_principal_policies(
   principal = "string",
   marker = "string",
   pageSize = 123,
   ascendingOrder = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

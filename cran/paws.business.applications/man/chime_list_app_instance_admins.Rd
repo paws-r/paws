@@ -15,9 +15,7 @@ chime_list_app_instance_admins(AppInstanceArn, MaxResults, NextToken)
 administrators is reached.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AppInstanceArn = "string",
   AppInstanceAdmins = list(
     list(
@@ -29,20 +27,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of the administrators in the app instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_app_instance_admins(
+\preformatted{svc$list_app_instance_admins(
   AppInstanceArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

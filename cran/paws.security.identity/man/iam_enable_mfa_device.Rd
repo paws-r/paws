@@ -53,15 +53,13 @@ IAM user. When enabled, the MFA device is required for every subsequent
 login by the IAM user associated with the device.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_mfa_device(
+\preformatted{svc$enable_mfa_device(
   UserName = "string",
   SerialNumber = "string",
   AuthenticationCode1 = "string",
   AuthenticationCode2 = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

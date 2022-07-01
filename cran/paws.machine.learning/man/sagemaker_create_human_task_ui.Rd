@@ -17,12 +17,10 @@ and organize a human review workflow user interface. Each tag consists
 of a key and a value, both of which you define.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HumanTaskUiArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Defines the settings you will use for the human review workflow user
@@ -30,9 +28,7 @@ interface. Reviewers will see a three-panel interface with an
 instruction area, the item to review, and an input area.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_human_task_ui(
+\preformatted{svc$create_human_task_ui(
   HumanTaskUiName = "string",
   UiTemplate = list(
     Content = "string"
@@ -44,7 +40,7 @@ instruction area, the item to review, and an input area.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

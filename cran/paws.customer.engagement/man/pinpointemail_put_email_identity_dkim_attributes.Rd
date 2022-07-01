@@ -24,13 +24,11 @@ An empty list.
 Used to enable or disable DKIM authentication for an email identity.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_email_identity_dkim_attributes(
+\preformatted{svc$put_email_identity_dkim_attributes(
   EmailIdentity = "string",
   SigningEnabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

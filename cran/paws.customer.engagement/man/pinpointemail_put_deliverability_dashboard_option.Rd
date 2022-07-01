@@ -31,9 +31,7 @@ using Amazon Pinpoint. For more information about the features and cost
 of a Deliverability dashboard subscription, see \href{https://aws.amazon.com/pinpoint/pricing/}{Amazon Pinpoint Pricing}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_deliverability_dashboard_option(
+\preformatted{svc$put_deliverability_dashboard_option(
   DashboardEnabled = TRUE|FALSE,
   SubscribedDomains = list(
     list(
@@ -50,7 +48,7 @@ of a Deliverability dashboard subscription, see \href{https://aws.amazon.com/pin
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

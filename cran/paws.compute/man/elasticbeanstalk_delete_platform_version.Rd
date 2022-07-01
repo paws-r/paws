@@ -10,9 +10,7 @@ elasticbeanstalk_delete_platform_version(PlatformArn)
 \item{PlatformArn}{The ARN of the version of the custom platform.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PlatformSummary = list(
     PlatformArn = "string",
     PlatformOwner = "string",
@@ -32,18 +30,16 @@ A list with the following syntax:
     PlatformBranchLifecycleState = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified version of a custom platform.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_platform_version(
+\preformatted{svc$delete_platform_version(
   PlatformArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

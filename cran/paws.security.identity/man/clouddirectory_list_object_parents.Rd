@@ -28,9 +28,7 @@ object.}
 There could be multiple links between a parent-child pair.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Parents = list(
     "string"
   ),
@@ -42,16 +40,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists parent objects that are associated with a given object in
 pagination fashion.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_object_parents(
+\preformatted{svc$list_object_parents(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"
@@ -61,7 +57,7 @@ pagination fashion.
   ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL",
   IncludeAllLinksToEachParent = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -24,9 +24,7 @@ next set of results.}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Associations = list(
     list(
       Name = "string",
@@ -58,7 +56,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns all State Manager associations in the current AWS account and
@@ -66,9 +64,7 @@ Region. You can limit the results to a specific State Manager
 association document or instance by specifying a filter.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_associations(
+\preformatted{svc$list_associations(
   AssociationFilterList = list(
     list(
       key = "InstanceId"|"Name"|"AssociationId"|"AssociationStatusName"|"LastExecutedBefore"|"LastExecutedAfter"|"AssociationName"|"ResourceGroupName",
@@ -78,7 +74,7 @@ association document or instance by specifying a filter.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -70,9 +70,7 @@ between 1 second up to 15 minutes.}
 source mapping.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UUID = "string",
   StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
   StartingPositionTimestamp = as.POSIXct(
@@ -124,7 +122,7 @@ A list with the following syntax:
     "ReportBatchItemFailures"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an event source mapping. You can change the function that AWS
@@ -149,9 +147,7 @@ concurrently.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_event_source_mapping(
+\preformatted{svc$update_event_source_mapping(
   UUID = "string",
   FunctionName = "string",
   Enabled = TRUE|FALSE,
@@ -180,7 +176,7 @@ concurrently.
     "ReportBatchItemFailures"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

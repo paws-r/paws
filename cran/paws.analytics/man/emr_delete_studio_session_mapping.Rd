@@ -40,15 +40,13 @@ subject to change.
 Removes a user or group from an Amazon EMR Studio.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_studio_session_mapping(
+\preformatted{svc$delete_studio_session_mapping(
   StudioId = "string",
   IdentityId = "string",
   IdentityName = "string",
   IdentityType = "USER"|"GROUP"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

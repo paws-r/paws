@@ -10,9 +10,7 @@ sagemaker_describe_pipeline_execution(PipelineExecutionArn)
 \item{PipelineExecutionArn}{[required] The Amazon Resource Name (ARN) of the pipeline execution.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PipelineArn = "string",
   PipelineExecutionArn = "string",
   PipelineExecutionDisplayName = "string",
@@ -35,18 +33,16 @@ A list with the following syntax:
     DomainId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the details of a pipeline execution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_pipeline_execution(
+\preformatted{svc$describe_pipeline_execution(
   PipelineExecutionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

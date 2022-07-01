@@ -21,13 +21,11 @@ breaking functions, a copy of the version remains in Lambda until no
 functions refer to it.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_layer_version(
+\preformatted{svc$delete_layer_version(
   LayerName = "string",
   VersionNumber = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

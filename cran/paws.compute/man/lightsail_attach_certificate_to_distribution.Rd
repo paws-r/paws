@@ -29,9 +29,7 @@ might be \code{WordPress-Blog-Certificate} and the domain name of the
 certificate might be \code{example.com}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -54,7 +52,7 @@ A list with the following syntax:
     errorDetails = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Attaches an SSL/TLS certificate to your Amazon Lightsail content
@@ -73,13 +71,11 @@ content globally. However, all distributions are located in the
 \code{us-east-1} Region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_certificate_to_distribution(
+\preformatted{svc$attach_certificate_to_distribution(
   distributionName = "string",
   certificateName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

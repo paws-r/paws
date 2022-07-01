@@ -14,9 +14,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{UserId}{[required] The unique identifier for the user.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EndpointsResponse = list(
     Item = list(
       list(
@@ -68,20 +66,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about all the endpoints that are associated with a
 specific user ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_user_endpoints(
+\preformatted{svc$get_user_endpoints(
   ApplicationId = "string",
   UserId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

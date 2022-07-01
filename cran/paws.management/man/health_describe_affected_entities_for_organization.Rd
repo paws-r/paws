@@ -25,9 +25,7 @@ returned, the response does not contain a pagination token value.}
 inclusive.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   entities = list(
     list(
       entityArn = "string",
@@ -54,7 +52,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of entities that have been affected by one or more events
@@ -76,9 +74,7 @@ This API operation uses pagination. Specify the \code{nextToken} parameter in
 the next request to return more results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_affected_entities_for_organization(
+\preformatted{svc$describe_affected_entities_for_organization(
   organizationEntityFilters = list(
     list(
       eventArn = "string",
@@ -89,7 +85,7 @@ the next request to return more results.
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

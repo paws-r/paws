@@ -19,13 +19,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 that's in standby or "sleep" mode.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ImageData = "string",
   InstanceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieve a JPG-format screenshot of a running instance to help with
@@ -34,14 +32,12 @@ troubleshooting.
 The returned content is Base64-encoded.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_console_screenshot(
+\preformatted{svc$get_console_screenshot(
   DryRun = TRUE|FALSE,
   InstanceId = "string",
   WakeUp = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

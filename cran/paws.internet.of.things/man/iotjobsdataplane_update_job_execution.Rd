@@ -47,9 +47,7 @@ default is false.}
 particular device.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   executionState = list(
     status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
     statusDetails = list(
@@ -59,15 +57,13 @@ A list with the following syntax:
   ),
   jobDocument = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the status of a job execution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_job_execution(
+\preformatted{svc$update_job_execution(
   jobId = "string",
   thingName = "string",
   status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
@@ -80,7 +76,7 @@ Updates the status of a job execution.
   includeJobDocument = TRUE|FALSE,
   executionNumber = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

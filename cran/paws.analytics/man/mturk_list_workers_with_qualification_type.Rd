@@ -18,9 +18,7 @@ mturk_list_workers_with_qualification_type(QualificationTypeId, Status,
 \item{MaxResults}{Limit the number of results returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   NumResults = 123,
   Qualifications = list(
@@ -39,7 +37,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The
@@ -48,15 +46,13 @@ operation returns all of the Workers that have been associated with a
 given Qualification type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_workers_with_qualification_type(
+\preformatted{svc$list_workers_with_qualification_type(
   QualificationTypeId = "string",
   Status = "Granted"|"Revoked",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -26,14 +26,12 @@ enabling connectivity between the internet and the VPC. For more
 information about your VPC and internet gateway, see the \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_internet_gateway(
+\preformatted{svc$attach_internet_gateway(
   DryRun = TRUE|FALSE,
   InternetGatewayId = "string",
   VpcId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -23,9 +23,7 @@ this call. The default value is 10.}
 previous call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PortMappings = list(
     list(
       AcceleratorPort = 123,
@@ -43,7 +41,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides a complete mapping from the public accelerator IP address and
@@ -65,15 +63,13 @@ The mappings also include a flag for each destination denoting which
 destination IP addresses and ports are allowed or denied traffic.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_custom_routing_port_mappings(
+\preformatted{svc$list_custom_routing_port_mappings(
   AcceleratorArn = "string",
   EndpointGroupArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

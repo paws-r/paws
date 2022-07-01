@@ -14,16 +14,14 @@ quicksight_create_ingestion(DataSetId, IngestionId, AwsAccountId)
 \item{AwsAccountId}{[required] The AWS account ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   IngestionId = "string",
   IngestionStatus = "INITIALIZED"|"QUEUED"|"RUNNING"|"FAILED"|"COMPLETED"|"CANCELLED",
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates and starts a new SPICE ingestion on a dataset
@@ -34,14 +32,12 @@ in the AWS Knowledge Center. Tags are visible on the tagged dataset, but
 not on the ingestion resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_ingestion(
+\preformatted{svc$create_ingestion(
   DataSetId = "string",
   IngestionId = "string",
   AwsAccountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

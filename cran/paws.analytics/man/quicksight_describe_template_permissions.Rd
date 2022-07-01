@@ -13,9 +13,7 @@ describing.}
 \item{TemplateId}{[required] The ID for the template.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TemplateId = "string",
   TemplateArn = "string",
   Permissions = list(
@@ -29,19 +27,17 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes read and write permissions on a template.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_template_permissions(
+\preformatted{svc$describe_template_permissions(
   AwsAccountId = "string",
   TemplateId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

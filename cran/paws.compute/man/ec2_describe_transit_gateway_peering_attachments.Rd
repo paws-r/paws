@@ -44,9 +44,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TransitGatewayPeeringAttachments = list(
     list(
       TransitGatewayAttachmentId = "string",
@@ -78,15 +76,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes your transit gateway peering attachments.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_transit_gateway_peering_attachments(
+\preformatted{svc$describe_transit_gateway_peering_attachments(
   TransitGatewayAttachmentIds = list(
     "string"
   ),
@@ -102,7 +98,7 @@ Describes your transit gateway peering attachments.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

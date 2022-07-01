@@ -36,9 +36,7 @@ of versions.}
 \item{SortOrder}{The sort order. The default value is \code{DESCENDING}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ImageVersions = list(
     list(
       CreationTime = as.POSIXct(
@@ -56,16 +54,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the versions of a specified image and their properties. The list
 can be filtered by creation time or modified time.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_image_versions(
+\preformatted{svc$list_image_versions(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),
@@ -84,7 +80,7 @@ can be filtered by creation time or modified time.
   SortBy = "CREATION_TIME"|"LAST_MODIFIED_TIME"|"VERSION",
   SortOrder = "ASCENDING"|"DESCENDING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

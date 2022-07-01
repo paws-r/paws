@@ -33,9 +33,7 @@ default role is named 'vmimport'.}
 \item{TagSpecifications}{The tags to apply to the image being exported.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Description = "string",
   DiskImageFormat = "VMDK"|"RAW"|"VHD",
   ExportImageTaskId = "string",
@@ -55,7 +53,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Exports an Amazon Machine Image (AMI) to a VM file. For more
@@ -63,9 +61,7 @@ information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vm
 in the \emph{VM Import/Export User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$export_image(
+\preformatted{svc$export_image(
   ClientToken = "string",
   Description = "string",
   DiskImageFormat = "VMDK"|"RAW"|"VHD",
@@ -88,7 +84,7 @@ in the \emph{VM Import/Export User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

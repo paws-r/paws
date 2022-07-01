@@ -28,12 +28,10 @@ submit a
 request to remove this access.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_drt_log_bucket(
+\preformatted{svc$disassociate_drt_log_bucket(
   LogBucket = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

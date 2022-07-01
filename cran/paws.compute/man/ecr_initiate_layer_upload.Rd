@@ -14,13 +14,11 @@ assumed.}
 \item{repositoryName}{[required] The name of the repository to which you intend to upload layers.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   uploadId = "string",
   partSize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Notifies Amazon ECR that you intend to upload an image layer.
@@ -35,13 +33,11 @@ by customers for pulling and pushing images. In most cases, you should
 use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$initiate_layer_upload(
+\preformatted{svc$initiate_layer_upload(
   registryId = "string",
   repositoryName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

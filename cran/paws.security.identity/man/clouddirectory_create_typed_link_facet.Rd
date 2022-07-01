@@ -19,9 +19,7 @@ An empty list.
 Creates a TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_typed_link_facet(
+\preformatted{svc$create_typed_link_facet(
   SchemaArn = "string",
   Facet = list(
     Name = "string",
@@ -55,7 +53,7 @@ Creates a TypedLinkFacet. For more information, see \href{https://docs.aws.amazo
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -24,9 +24,7 @@ _ ~). This value must be 1-150 characters long.}
 \item{Tags}{Create tags when creating the configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   AuthenticationStrategy = "SIMPLE"|"LDAP",
   Created = as.POSIXct(
@@ -42,16 +40,14 @@ A list with the following syntax:
   ),
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new configuration for the specified configuration name. Amazon
 MQ uses the default configuration (the engine type and version).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_configuration(
+\preformatted{svc$create_configuration(
   AuthenticationStrategy = "SIMPLE"|"LDAP",
   EngineType = "ACTIVEMQ"|"RABBITMQ",
   EngineVersion = "string",
@@ -60,7 +56,7 @@ MQ uses the default configuration (the engine type and version).
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

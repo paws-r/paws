@@ -18,9 +18,7 @@ of campaigns (if they exist).}
 \item{maxResults}{The maximum number of campaigns to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   campaigns = list(
     list(
       name = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of campaigns that use the given solution. When a solution
@@ -47,14 +45,12 @@ including the Amazon Resource Name (ARN). For more information on
 campaigns, see \code{\link[=personalize_create_campaign]{create_campaign}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_campaigns(
+\preformatted{svc$list_campaigns(
   solutionArn = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

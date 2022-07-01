@@ -11,9 +11,7 @@ workmail_describe_organization(OrganizationId)
 \item{OrganizationId}{[required] The identifier for the organization to be described.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OrganizationId = "string",
   Alias = "string",
   State = "string",
@@ -26,19 +24,17 @@ A list with the following syntax:
   ErrorMessage = "string",
   ARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides more information regarding a given organization based on its
 identifier.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_organization(
+\preformatted{svc$describe_organization(
   OrganizationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

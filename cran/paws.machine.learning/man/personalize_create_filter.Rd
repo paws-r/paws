@@ -22,25 +22,21 @@ items with any interactions history, set \code{"*"} as the EVENT_TYPE. For
 more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/}{Using Filters with Amazon Personalize}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   filterArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a recommendation filter. For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/}{Using Filters with Amazon Personalize}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_filter(
+\preformatted{svc$create_filter(
   name = "string",
   datasetGroupArn = "string",
   filterExpression = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

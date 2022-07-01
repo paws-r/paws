@@ -33,9 +33,7 @@ specific date and time.}
 \code{\link[=sagemaker_list_feature_groups]{list_feature_groups}} results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FeatureGroupSummaries = list(
     list(
       FeatureGroupName = "string",
@@ -52,15 +50,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List \code{FeatureGroup}s based on given filter and order.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_feature_groups(
+\preformatted{svc$list_feature_groups(
   NameContains = "string",
   FeatureGroupStatusEquals = "Creating"|"Created"|"CreateFailed"|"Deleting"|"DeleteFailed",
   OfflineStoreStatusEquals = "Active"|"Blocked"|"Disabled",
@@ -75,7 +71,7 @@ List \code{FeatureGroup}s based on given filter and order.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

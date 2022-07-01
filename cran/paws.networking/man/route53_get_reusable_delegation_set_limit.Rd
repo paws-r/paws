@@ -15,16 +15,14 @@ delegation set.}
 \item{DelegationSetId}{[required] The ID of the delegation set that you want to get the limit for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Limit = list(
     Type = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET",
     Value = 123
   ),
   Count = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the maximum number of hosted zones that you can associate with the
@@ -36,13 +34,11 @@ in the \emph{Amazon Route 53 Developer Guide}. To request a higher limit,
 open a case.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_reusable_delegation_set_limit(
+\preformatted{svc$get_reusable_delegation_set_limit(
   Type = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET",
   DelegationSetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,28 +15,24 @@ to stop sharing.}
 has to be unshared.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SharedDirectoryId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops the directory sharing between the directory owner and consumer
 accounts.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$unshare_directory(
+\preformatted{svc$unshare_directory(
   DirectoryId = "string",
   UnshareTarget = list(
     Id = "string",
     Type = "ACCOUNT"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

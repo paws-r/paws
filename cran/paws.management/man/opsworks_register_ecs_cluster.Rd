@@ -12,12 +12,10 @@ opsworks_register_ecs_cluster(EcsClusterArn, StackId)
 \item{StackId}{[required] The stack ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EcsClusterArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Registers a specified Amazon ECS cluster with a stack. You can register
@@ -30,13 +28,11 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_ecs_cluster(
+\preformatted{svc$register_ecs_cluster(
   EcsClusterArn = "string",
   StackId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

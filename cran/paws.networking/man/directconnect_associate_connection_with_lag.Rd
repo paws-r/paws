@@ -12,9 +12,7 @@ directconnect_associate_connection_with_lag(connectionId, lagId)
 \item{lagId}{[required] The ID of the LAG with which to associate the connection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ownerAccount = "string",
   connectionId = "string",
   connectionName = "string",
@@ -40,7 +38,7 @@ A list with the following syntax:
   ),
   providerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Associates an existing connection with a link aggregation group (LAG).
@@ -63,13 +61,11 @@ associated with a different LAG, the hosted connections remain
 associated with the original LAG.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_connection_with_lag(
+\preformatted{svc$associate_connection_with_lag(
   connectionId = "string",
   lagId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

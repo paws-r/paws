@@ -35,9 +35,7 @@ created before the specified time.}
 created after the specified time.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobDefinitionSummaries = list(
     list(
       MonitoringJobDefinitionName = "string",
@@ -50,15 +48,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the data quality job definitions in your account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_data_quality_job_definitions(
+\preformatted{svc$list_data_quality_job_definitions(
   EndpointName = "string",
   SortBy = "Name"|"CreationTime",
   SortOrder = "Ascending"|"Descending",
@@ -72,7 +68,7 @@ Lists the data quality job definitions in your account.
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

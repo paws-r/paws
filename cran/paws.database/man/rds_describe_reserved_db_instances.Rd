@@ -57,9 +57,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   ReservedDBInstances = list(
     list(
@@ -89,16 +87,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about reserved DB instances for this account, or
 about a specified reserved DB instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_reserved_db_instances(
+\preformatted{svc$describe_reserved_db_instances(
   ReservedDBInstanceId = "string",
   ReservedDBInstancesOfferingId = "string",
   DBInstanceClass = "string",
@@ -118,7 +114,7 @@ about a specified reserved DB instance.
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

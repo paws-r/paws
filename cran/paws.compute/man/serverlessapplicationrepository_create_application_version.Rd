@@ -26,9 +26,7 @@ for example the URL of a specific GitHub commit.}
 \item{TemplateUrl}{A link to the packaged AWS SAM template of your application.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationId = "string",
   CreationTime = "string",
   ParameterDefinitions = list(
@@ -61,15 +59,13 @@ A list with the following syntax:
   SourceCodeUrl = "string",
   TemplateUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an application version.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_application_version(
+\preformatted{svc$create_application_version(
   ApplicationId = "string",
   SemanticVersion = "string",
   SourceCodeArchiveUrl = "string",
@@ -77,7 +73,7 @@ Creates an application version.
   TemplateBody = "string",
   TemplateUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,9 +16,7 @@ also the ID of the last public key on that page).}
 \item{MaxItems}{The maximum number of public keys you want in the response body.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PublicKeyList = list(
     NextMarker = "string",
     MaxItems = 123,
@@ -36,20 +34,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List all public keys that have been added to CloudFront for this
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_public_keys(
+\preformatted{svc$list_public_keys(
   Marker = "string",
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

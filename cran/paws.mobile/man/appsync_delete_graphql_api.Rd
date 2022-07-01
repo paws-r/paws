@@ -16,12 +16,10 @@ An empty list.
 Deletes a \code{GraphqlApi} object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_graphql_api(
+\preformatted{svc$delete_graphql_api(
   apiId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -36,12 +36,10 @@ performs the default action if a request doesn't match the criteria in
 any of the rules in a web ACL.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChangeToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -122,9 +120,7 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_web_acl(
+\preformatted{svc$update_web_acl(
   WebACLId = "string",
   ChangeToken = "string",
   Updates = list(
@@ -152,7 +148,7 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
     Type = "BLOCK"|"ALLOW"|"COUNT"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

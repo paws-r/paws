@@ -20,13 +20,11 @@ to the service.}
 \item{FriendlyDeviceName}{The friendly device name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = "SUCCESS"|"ERROR",
   Session = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Use this API to register a user's entered TOTP code and mark the user's
@@ -34,15 +32,13 @@ software token MFA status as "verified" if successful. The request takes
 an access token or a session string, but not both.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$verify_software_token(
+\preformatted{svc$verify_software_token(
   AccessToken = "string",
   Session = "string",
   UserCode = "string",
   FriendlyDeviceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

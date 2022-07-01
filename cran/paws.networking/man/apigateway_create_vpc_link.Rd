@@ -22,9 +22,7 @@ account of the API owner.}
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   name = "string",
   description = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a VPC link, under the caller's account in a selected region, in
@@ -46,9 +44,7 @@ and become operational. The caller must have permissions to create and
 update VPC Endpoint services.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vpc_link(
+\preformatted{svc$create_vpc_link(
   name = "string",
   description = "string",
   targetArns = list(
@@ -58,7 +54,7 @@ update VPC Endpoint services.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

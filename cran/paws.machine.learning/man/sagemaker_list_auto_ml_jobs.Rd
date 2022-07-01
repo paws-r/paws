@@ -32,9 +32,7 @@ AutoMLJobName.}
 in your next request to receive the next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AutoMLJobSummaries = list(
     list(
       AutoMLJobName = "string",
@@ -55,15 +53,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Request a list of jobs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_auto_ml_jobs(
+\preformatted{svc$list_auto_ml_jobs(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),
@@ -83,7 +79,7 @@ Request a list of jobs.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

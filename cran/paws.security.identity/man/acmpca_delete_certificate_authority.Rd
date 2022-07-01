@@ -56,13 +56,11 @@ CA in the \code{DELETED} state. To restore an eligible CA, call the
 action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_certificate_authority(
+\preformatted{svc$delete_certificate_authority(
   CertificateAuthorityArn = "string",
   PermanentDeletionTimeInDays = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

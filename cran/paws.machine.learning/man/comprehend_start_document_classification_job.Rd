@@ -39,22 +39,18 @@ either of the following formats:
 classification job. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{Amazon VPC}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobId = "string",
   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts an asynchronous document classification job. Use the operation to
 track the progress of the job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_document_classification_job(
+\preformatted{svc$start_document_classification_job(
   JobName = "string",
   DocumentClassifierArn = "string",
   InputDataConfig = list(
@@ -77,7 +73,7 @@ track the progress of the job.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

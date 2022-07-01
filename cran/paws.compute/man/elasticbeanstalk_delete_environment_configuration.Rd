@@ -27,13 +27,11 @@ deployment is in process or has failed. The draft configuration remains
 in existence until it is deleted with this action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_environment_configuration(
+\preformatted{svc$delete_environment_configuration(
   ApplicationName = "string",
   EnvironmentName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -22,9 +22,7 @@ Supported resource types are: \verb{AWS::EC2::Instance},
 \verb{AWS::NetworkFirewall::FirewallPolicy}, and \verb{AWS::EC2::Subnet}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ViolationDetail = list(
     PolicyId = "string",
     MemberAccount = "string",
@@ -157,22 +155,20 @@ A list with the following syntax:
     ResourceDescription = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves violations for a resource based on the specified AWS Firewall
 Manager policy and AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_violation_details(
+\preformatted{svc$get_violation_details(
   PolicyId = "string",
   MemberAccount = "string",
   ResourceId = "string",
   ResourceType = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

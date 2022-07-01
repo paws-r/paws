@@ -58,15 +58,13 @@ data capture on the endpoint. For information about data capture, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html}{Capture Data}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Body = raw,
   ContentType = "string",
   InvokedProductionVariant = "string",
   CustomAttributes = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 After you deploy a model into production using Amazon SageMaker hosting
@@ -96,9 +94,7 @@ URL does not contain the account ID, but Amazon SageMaker determines the
 account ID from the authentication token that is supplied by the caller.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$invoke_endpoint(
+\preformatted{svc$invoke_endpoint(
   EndpointName = "string",
   Body = raw,
   ContentType = "string",
@@ -108,7 +104,7 @@ account ID from the authentication token that is supplied by the caller.
   TargetVariant = "string",
   InferenceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

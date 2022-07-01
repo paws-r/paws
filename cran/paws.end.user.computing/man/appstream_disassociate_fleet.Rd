@@ -18,13 +18,11 @@ An empty list.
 Disassociates the specified fleet from the specified stack.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_fleet(
+\preformatted{svc$disassociate_fleet(
   FleetName = "string",
   StackName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

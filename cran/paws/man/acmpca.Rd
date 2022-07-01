@@ -32,9 +32,7 @@ times the action can be called per second. For more information, see
 in the ACM Private CA user guide.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- acmpca(
+\preformatted{svc <- acmpca(
   config = list(
     credentials = list(
       creds = list(
@@ -48,7 +46,7 @@ in the ACM Private CA user guide.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

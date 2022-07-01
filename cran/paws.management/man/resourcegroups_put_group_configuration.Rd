@@ -38,9 +38,7 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_group_configuration(
+\preformatted{svc$put_group_configuration(
   Group = "string",
   Configuration = list(
     list(
@@ -56,7 +54,7 @@ To run this command, you must have the following permissions:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

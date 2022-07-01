@@ -16,12 +16,10 @@ An empty list.
 Deletes the specified token. Must be called in the license home Region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_token(
+\preformatted{svc$delete_token(
   TokenId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

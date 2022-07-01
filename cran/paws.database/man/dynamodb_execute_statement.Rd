@@ -21,9 +21,7 @@ used.}
 the statement response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Items = list(
     list(
       list(
@@ -52,16 +50,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation allows you to perform reads and singleton writes on data
 stored in DynamoDB, using PartiQL.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$execute_statement(
+\preformatted{svc$execute_statement(
   Statement = "string",
   Parameters = list(
     list(
@@ -90,7 +86,7 @@ stored in DynamoDB, using PartiQL.
   ConsistentRead = TRUE|FALSE,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

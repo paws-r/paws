@@ -40,9 +40,7 @@ updated.
 \item{NextToken}{The token to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   ReservedInstancesModifications = list(
     list(
@@ -79,7 +77,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the modifications made to your Reserved Instances. If no
@@ -91,9 +89,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the Amazon Elastic Compute Cloud User Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_reserved_instances_modifications(
+\preformatted{svc$describe_reserved_instances_modifications(
   Filters = list(
     list(
       Name = "string",
@@ -107,7 +103,7 @@ in the Amazon Elastic Compute Cloud User Guide.
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

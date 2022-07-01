@@ -17,21 +17,17 @@ generate a new version.}
 update to.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClusterArn = "string",
   ClusterOperationArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the EBS storage associated with MSK brokers.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_broker_storage(
+\preformatted{svc$update_broker_storage(
   ClusterArn = "string",
   CurrentVersion = "string",
   TargetBrokerEBSVolumeInfo = list(
@@ -41,7 +37,7 @@ Updates the EBS storage associated with MSK brokers.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,12 +16,10 @@ An empty list.
 Deletes the retention configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_retention_configuration(
+\preformatted{svc$delete_retention_configuration(
   RetentionConfigurationName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -35,9 +35,7 @@ is included, the request returns information about the initial request
 that used that token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   repositoryName = "string",
   pullRequestId = "string",
   beforeCommitId = "string",
@@ -70,15 +68,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Posts a comment on a pull request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$post_comment_for_pull_request(
+\preformatted{svc$post_comment_for_pull_request(
   pullRequestId = "string",
   repositoryName = "string",
   beforeCommitId = "string",
@@ -91,7 +87,7 @@ Posts a comment on a pull request.
   content = "string",
   clientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

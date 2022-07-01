@@ -12,9 +12,7 @@ athena_batch_get_query_execution(QueryExecutionIds)
 \item{QueryExecutionIds}{[required] An array of query execution IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   QueryExecutions = list(
     list(
       QueryExecutionId = "string",
@@ -61,7 +59,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the details of a single query execution or a list of up to 50
@@ -73,14 +71,12 @@ ListQueryExecutionsInput$WorkGroup. Query executions differ from named
 queries.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_query_execution(
+\preformatted{svc$batch_get_query_execution(
   QueryExecutionIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -32,12 +32,10 @@ repeat until the intent has no references and the call to
 This operation requires permission for the \code{lex:DeleteIntent} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_intent(
+\preformatted{svc$delete_intent(
   name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

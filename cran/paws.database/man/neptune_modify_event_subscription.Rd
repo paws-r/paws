@@ -29,9 +29,7 @@ the \strong{DescribeEventCategories} action.}
 \item{Enabled}{A Boolean value; set to \strong{true} to activate the subscription.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventSubscription = list(
     CustomerAwsId = "string",
     CustSubscriptionId = "string",
@@ -49,7 +47,7 @@ A list with the following syntax:
     EventSubscriptionArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies an existing event notification subscription. Note that you
@@ -64,9 +62,7 @@ You can see a list of the event categories for a given SourceType by
 using the \strong{DescribeEventCategories} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_event_subscription(
+\preformatted{svc$modify_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",
@@ -75,7 +71,7 @@ using the \strong{DescribeEventCategories} action.
   ),
   Enabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

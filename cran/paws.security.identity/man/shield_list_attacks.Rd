@@ -38,9 +38,7 @@ If there are more objects to return, Shield Advanced returns a value in
 of objects.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AttackSummaries = list(
     list(
       AttackId = "string",
@@ -60,16 +58,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns all ongoing DDoS attacks or all DDoS attacks during a specified
 time period.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_attacks(
+\preformatted{svc$list_attacks(
   ResourceArns = list(
     "string"
   ),
@@ -92,7 +88,7 @@ time period.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

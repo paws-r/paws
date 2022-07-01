@@ -281,9 +281,7 @@ For more information on expression attribute values, see \href{https://docs.aws.
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Items = list(
     list(
       list(
@@ -362,7 +360,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=dynamodb_query]{query}} operation finds items based on primary key
@@ -423,9 +421,7 @@ consistent reads only, so do not specify \code{ConsistentRead} when querying
 a global secondary index.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$query(
+\preformatted{svc$query(
   TableName = "string",
   IndexName = "string",
   Select = "ALL_ATTRIBUTES"|"ALL_PROJECTED_ATTRIBUTES"|"SPECIFIC_ATTRIBUTES"|"COUNT",
@@ -550,7 +546,7 @@ a global secondary index.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

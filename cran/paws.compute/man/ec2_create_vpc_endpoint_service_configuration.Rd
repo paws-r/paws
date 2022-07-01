@@ -33,9 +33,7 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \item{TagSpecifications}{The tags to associate with the service.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ServiceConfiguration = list(
     ServiceType = list(
       list(
@@ -75,7 +73,7 @@ A list with the following syntax:
   ),
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a VPC endpoint service configuration to which service consumers
@@ -100,9 +98,7 @@ DNS domain name. For more information, see \href{https://docs.aws.amazon.com/vpc
 the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vpc_endpoint_service_configuration(
+\preformatted{svc$create_vpc_endpoint_service_configuration(
   DryRun = TRUE|FALSE,
   AcceptanceRequired = TRUE|FALSE,
   PrivateDnsName = "string",
@@ -125,7 +121,7 @@ the \emph{Amazon Virtual Private Cloud User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

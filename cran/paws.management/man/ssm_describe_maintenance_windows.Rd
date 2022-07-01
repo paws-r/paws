@@ -18,9 +18,7 @@ next set of results.}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   WindowIdentities = list(
     list(
       WindowId = "string",
@@ -39,15 +37,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the maintenance windows in an AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_maintenance_windows(
+\preformatted{svc$describe_maintenance_windows(
   Filters = list(
     list(
       Key = "string",
@@ -59,7 +55,7 @@ Retrieves the maintenance windows in an AWS account.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

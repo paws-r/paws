@@ -16,9 +16,7 @@ elasticsearchservice_get_upgrade_history(DomainName, MaxResults,
 \item{NextToken}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UpgradeHistories = list(
     list(
       UpgradeName = "string",
@@ -40,21 +38,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the complete history of the last 10 upgrades that were
 performed on the domain.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_upgrade_history(
+\preformatted{svc$get_upgrade_history(
   DomainName = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,12 +16,10 @@ An empty list.
 Deletes a data quality monitoring job definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_data_quality_job_definition(
+\preformatted{svc$delete_data_quality_job_definition(
   JobDefinitionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

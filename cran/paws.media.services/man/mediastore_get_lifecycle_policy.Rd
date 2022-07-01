@@ -11,23 +11,19 @@ mediastore_get_lifecycle_policy(ContainerName)
 to.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LifecyclePolicy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the object lifecycle policy that is assigned to a container.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_lifecycle_policy(
+\preformatted{svc$get_lifecycle_policy(
   ContainerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

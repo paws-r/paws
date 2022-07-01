@@ -15,15 +15,13 @@ information about tags, if any.}
 batch of the results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   tags = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about AWS tags for a specified Amazon Resource Name
@@ -32,13 +30,11 @@ CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/#a
 in the \emph{AWS CodeCommit User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   resourceArn = "string",
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

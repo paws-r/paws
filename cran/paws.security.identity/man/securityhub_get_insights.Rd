@@ -22,9 +22,7 @@ response.}
 \item{MaxResults}{The maximum number of items to return in the response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Insights = list(
     list(
       InsightArn = "string",
@@ -589,22 +587,20 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists and describes insights for the specified insight ARNs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_insights(
+\preformatted{svc$get_insights(
   InsightArns = list(
     "string"
   ),
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

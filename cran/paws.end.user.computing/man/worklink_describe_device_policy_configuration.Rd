@@ -10,23 +10,19 @@ worklink_describe_device_policy_configuration(FleetArn)
 \item{FleetArn}{[required] The ARN of the fleet.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DeviceCaCertificate = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the device policy configuration for the specified fleet.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_device_policy_configuration(
+\preformatted{svc$describe_device_policy_configuration(
   FleetArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

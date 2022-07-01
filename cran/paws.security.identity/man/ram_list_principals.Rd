@@ -33,9 +33,7 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   principals = list(
     list(
       id = "string",
@@ -51,16 +49,14 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the principals that you have shared resources with or that have
 shared resources with you.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_principals(
+\preformatted{svc$list_principals(
   resourceOwner = "SELF"|"OTHER-ACCOUNTS",
   resourceArn = "string",
   principals = list(
@@ -73,7 +69,7 @@ shared resources with you.
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -50,9 +50,7 @@ different from the actual version, a \code{VersionConflictException} is
 thrown.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   securityProfileName = "string",
   securityProfileArn = "string",
   securityProfileDescription = "string",
@@ -121,15 +119,13 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a Device Defender security profile.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_security_profile(
+\preformatted{svc$update_security_profile(
   securityProfileName = "string",
   securityProfileDescription = "string",
   behaviors = list(
@@ -194,7 +190,7 @@ Updates a Device Defender security profile.
   deleteAdditionalMetricsToRetain = TRUE|FALSE,
   expectedVersion = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

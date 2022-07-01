@@ -15,9 +15,7 @@ contents of the latest or latest successfully completed data set. If not
 specified, "$LATEST_SUCCEEDED" is the default.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   entries = list(
     list(
       entryName = "string",
@@ -32,19 +30,17 @@ A list with the following syntax:
     reason = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the contents of a data set as presigned URIs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_dataset_content(
+\preformatted{svc$get_dataset_content(
   datasetName = "string",
   versionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -20,9 +20,7 @@ value.}
 \item{MaxResults}{Limit the number of results returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   NumResults = 123,
   HITs = list(
@@ -71,7 +69,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=mturk_list_reviewable_hi_ts]{list_reviewable_hi_ts}} operation
@@ -79,15 +77,13 @@ retrieves the HITs with Status equal to Reviewable or Status equal to
 Reviewing that belong to the Requester calling the operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_reviewable_hi_ts(
+\preformatted{svc$list_reviewable_hi_ts(
   HITTypeId = "string",
   Status = "Reviewable"|"Reviewing",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

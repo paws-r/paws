@@ -20,9 +20,7 @@ pointed to by the next token.}
 \item{MaxResults}{The maximum number of items to be returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   RecoveryPoints = list(
     list(
@@ -37,21 +35,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns detailed information about recovery points of the type specified
 by a resource Amazon Resource Name (ARN).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_recovery_points_by_resource(
+\preformatted{svc$list_recovery_points_by_resource(
   ResourceArn = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

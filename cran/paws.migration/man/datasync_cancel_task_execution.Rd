@@ -26,12 +26,10 @@ successfully complete the transfer when you start the next task
 execution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_task_execution(
+\preformatted{svc$cancel_task_execution(
   TaskExecutionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,23 +10,19 @@ directoryservice_delete_snapshot(SnapshotId)
 \item{SnapshotId}{[required] The identifier of the directory snapshot to be deleted.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SnapshotId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a directory snapshot.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_snapshot(
+\preformatted{svc$delete_snapshot(
   SnapshotId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

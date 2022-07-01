@@ -14,13 +14,11 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = "Enabled"|"Suspended",
   MFADelete = "Enabled"|"Disabled"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the versioning state of a bucket.
@@ -41,13 +39,11 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bucket_versioning(
+\preformatted{svc$get_bucket_versioning(
   Bucket = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

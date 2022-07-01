@@ -24,13 +24,11 @@ of DHCP options by associating either a new set of options or the
 default set of options with the VPC.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_dhcp_options(
+\preformatted{svc$delete_dhcp_options(
   DhcpOptionsId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

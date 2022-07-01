@@ -20,15 +20,13 @@ An empty list.
 Associates one or more configuration items with an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_configuration_items_to_application(
+\preformatted{svc$associate_configuration_items_to_application(
   applicationConfigurationId = "string",
   configurationIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

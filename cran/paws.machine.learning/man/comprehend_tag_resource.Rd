@@ -24,9 +24,7 @@ Comprehend. For example, a tag with "Sales" as the key might be added to
 a resource to indicate its use by the sales department.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(
@@ -35,7 +33,7 @@ a resource to indicate its use by the sales department.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

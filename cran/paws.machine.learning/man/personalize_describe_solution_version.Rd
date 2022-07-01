@@ -10,9 +10,7 @@ personalize_describe_solution_version(solutionVersionArn)
 \item{solutionVersionArn}{[required] The Amazon Resource Name (ARN) of the solution version.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   solutionVersion = list(
     solutionVersionArn = "string",
     solutionArn = "string",
@@ -88,19 +86,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a specific version of a solution. For more information on
 solutions, see \code{\link[=personalize_create_solution]{create_solution}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_solution_version(
+\preformatted{svc$describe_solution_version(
   solutionVersionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

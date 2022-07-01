@@ -18,12 +18,10 @@ Deletes the specified Amazon Chime Voice Connector group. Any
 be removed before it can be deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_voice_connector_group(
+\preformatted{svc$delete_voice_connector_group(
   VoiceConnectorGroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

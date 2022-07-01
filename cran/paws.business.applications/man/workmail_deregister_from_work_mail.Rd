@@ -22,13 +22,11 @@ WorkMail keeps mailboxes for 30 days before they are permanently
 removed. The functionality in the console is \emph{Disable}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_from_work_mail(
+\preformatted{svc$deregister_from_work_mail(
   OrganizationId = "string",
   EntityId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

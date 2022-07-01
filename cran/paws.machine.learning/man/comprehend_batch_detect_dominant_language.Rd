@@ -14,9 +14,7 @@ characters and must contain fewer than 5,000 bytes of UTF-8 encoded
 characters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResultList = list(
     list(
       Index = 123,
@@ -36,7 +34,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Determines the dominant language of the input text for a batch of
@@ -44,14 +42,12 @@ documents. For a list of languages that Amazon Comprehend can detect,
 see \href{https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html}{Amazon Comprehend Supported Languages}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_detect_dominant_language(
+\preformatted{svc$batch_detect_dominant_language(
   TextList = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

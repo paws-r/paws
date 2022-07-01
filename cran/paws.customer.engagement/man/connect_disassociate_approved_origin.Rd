@@ -22,13 +22,11 @@ change.
 Revokes access to integrated applications from Amazon Connect.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_approved_origin(
+\preformatted{svc$disassociate_approved_origin(
   InstanceId = "string",
   Origin = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

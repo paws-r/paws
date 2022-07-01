@@ -57,13 +57,11 @@ For more information, see \href{https://docs.aws.amazon.com/kms/latest/developer
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CiphertextBlob = raw,
   KeyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Generates a unique symmetric data key. This operation returns a data key
@@ -132,9 +130,7 @@ the \code{KeyId} parameter.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$generate_data_key_without_plaintext(
+\preformatted{svc$generate_data_key_without_plaintext(
   KeyId = "string",
   EncryptionContext = list(
     "string"
@@ -145,7 +141,7 @@ the \code{KeyId} parameter.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

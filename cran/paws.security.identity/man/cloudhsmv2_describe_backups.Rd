@@ -40,9 +40,7 @@ retention policy defined at the cluster.}
 chronological order of generation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Backups = list(
     list(
       BackupId = "string",
@@ -71,7 +69,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about backups of AWS CloudHSM clusters.
@@ -85,9 +83,7 @@ request to get more backups. When you receive a response with no
 backups to get.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_backups(
+\preformatted{svc$describe_backups(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(
@@ -97,7 +93,7 @@ backups to get.
   ),
   SortAscending = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

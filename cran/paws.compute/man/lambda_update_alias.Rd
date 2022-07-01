@@ -35,9 +35,7 @@ specified. Use this option to avoid modifying an alias that has changed
 since you last read it.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AliasArn = "string",
   Name = "string",
   FunctionVersion = "string",
@@ -49,16 +47,14 @@ A list with the following syntax:
   ),
   RevisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the configuration of a Lambda function
 \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_alias(
+\preformatted{svc$update_alias(
   FunctionName = "string",
   Name = "string",
   FunctionVersion = "string",
@@ -70,7 +66,7 @@ Updates the configuration of a Lambda function
   ),
   RevisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -30,9 +30,7 @@ administrator credentials to access the API.}
 privileges.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   User = list(
     Id = "string",
     Username = "string",
@@ -61,16 +59,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified attributes of the specified user, and grants or
 revokes administrative privileges to the Amazon WorkDocs site.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user(
+\preformatted{svc$update_user(
   AuthenticationToken = "string",
   UserId = "string",
   GivenName = "string",
@@ -84,7 +80,7 @@ revokes administrative privileges to the Amazon WorkDocs site.
   Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
   GrantPoweruserPrivileges = "TRUE"|"FALSE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

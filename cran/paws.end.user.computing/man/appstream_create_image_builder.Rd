@@ -98,9 +98,7 @@ Administrators can connect to the image builder only through the
 specified endpoints.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ImageBuilder = list(
     Name = "string",
     Arn = "string",
@@ -153,7 +151,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an image builder. An image builder is a virtual machine that is
@@ -163,9 +161,7 @@ The initial state of the builder is \code{PENDING}. When it is ready, the
 state is \code{RUNNING}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_image_builder(
+\preformatted{svc$create_image_builder(
   Name = "string",
   ImageName = "string",
   ImageArn = "string",
@@ -197,7 +193,7 @@ state is \code{RUNNING}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

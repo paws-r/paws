@@ -12,13 +12,11 @@ the same format as IAM policy text. For more information, see \href{https://docs
 in the \emph{Amazon Elastic Container Registry User Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   registryId = "string",
   policyText = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates or updates the permissions policy for your registry.
@@ -29,12 +27,10 @@ information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/re
 in the \emph{Amazon Elastic Container Registry User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_registry_policy(
+\preformatted{svc$put_registry_policy(
   policyText = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

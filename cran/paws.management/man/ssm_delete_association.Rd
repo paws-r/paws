@@ -28,14 +28,12 @@ document with the desired configuration and associate it with the
 instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_association(
+\preformatted{svc$delete_association(
   Name = "string",
   InstanceId = "string",
   AssociationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

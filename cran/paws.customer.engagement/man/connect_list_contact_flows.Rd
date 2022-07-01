@@ -20,9 +20,7 @@ results.}
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContactFlowSummaryList = list(
     list(
       Id = "string",
@@ -33,7 +31,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides information about the contact flows for the specified Amazon
@@ -45,9 +43,7 @@ For more information about contact flows, see \href{https://docs.aws.amazon.com/
 in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_contact_flows(
+\preformatted{svc$list_contact_flows(
   InstanceId = "string",
   ContactFlowTypes = list(
     "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER"
@@ -55,7 +51,7 @@ in the \emph{Amazon Connect Administrator Guide}.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

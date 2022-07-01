@@ -16,9 +16,7 @@ databasemigrationservice_modify_replication_subnet_group(
 \item{SubnetIds}{[required] A list of subnet IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationSubnetGroup = list(
     ReplicationSubnetGroupIdentifier = "string",
     ReplicationSubnetGroupDescription = "string",
@@ -35,22 +33,20 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the settings for the specified replication subnet group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_replication_subnet_group(
+\preformatted{svc$modify_replication_subnet_group(
   ReplicationSubnetGroupIdentifier = "string",
   ReplicationSubnetGroupDescription = "string",
   SubnetIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

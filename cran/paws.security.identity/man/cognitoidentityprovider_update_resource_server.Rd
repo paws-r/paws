@@ -17,9 +17,7 @@ cognitoidentityprovider_update_resource_server(UserPoolId, Identifier,
 \item{Scopes}{The scope values to be set for the resource server.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourceServer = list(
     UserPoolId = "string",
     Identifier = "string",
@@ -32,7 +30,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the name and scopes of resource server. All other fields are
@@ -42,9 +40,7 @@ If you don't provide a value for an attribute, it will be set to the
 default value.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_resource_server(
+\preformatted{svc$update_resource_server(
   UserPoolId = "string",
   Identifier = "string",
   Name = "string",
@@ -55,7 +51,7 @@ default value.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

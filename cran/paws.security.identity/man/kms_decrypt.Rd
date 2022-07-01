@@ -70,14 +70,12 @@ an asymmetric CMK. The default value, \code{SYMMETRIC_DEFAULT}, represents
 the only supported algorithm that is valid for symmetric CMKs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   KeyId = "string",
   Plaintext = raw,
   EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Decrypts ciphertext that was encrypted by a AWS KMS customer master key
@@ -146,9 +144,7 @@ a different AWS account.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$decrypt(
+\preformatted{svc$decrypt(
   CiphertextBlob = raw,
   EncryptionContext = list(
     "string"
@@ -159,7 +155,7 @@ a different AWS account.
   KeyId = "string",
   EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

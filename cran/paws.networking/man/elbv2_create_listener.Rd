@@ -51,9 +51,7 @@ in the \emph{Network Load Balancers Guide}.}
 \item{Tags}{The tags to assign to the listener.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Listeners = list(
     list(
       ListenerArn = "string",
@@ -133,7 +131,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a listener for the specified Application Load Balancer, Network
@@ -151,9 +149,7 @@ time. If you attempt to create multiple listeners with the same
 settings, each call succeeds.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_listener(
+\preformatted{svc$create_listener(
   LoadBalancerArn = "string",
   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
   Port = 123,
@@ -234,7 +230,7 @@ settings, each call succeeds.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -21,12 +21,10 @@ evaluation results, you can call the
 API to start evaluating your AWS resources against the rule.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_evaluation_results(
+\preformatted{svc$delete_evaluation_results(
   ConfigRuleName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

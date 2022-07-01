@@ -12,9 +12,7 @@ opsworks_describe_agent_versions(StackId, ConfigurationManager)
 \item{ConfigurationManager}{The configuration manager.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AgentVersions = list(
     list(
       Version = "string",
@@ -25,7 +23,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the available AWS OpsWorks Stacks agent versions. You must
@@ -35,16 +33,14 @@ list of available agent versions for the specified stack or
 configuration manager.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_agent_versions(
+\preformatted{svc$describe_agent_versions(
   StackId = "string",
   ConfigurationManager = list(
     Name = "string",
     Version = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

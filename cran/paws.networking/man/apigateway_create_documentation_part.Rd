@@ -17,9 +17,7 @@ entity. Enclosed key-value pairs are API-specific, but only
 OpenAPI-compliant key-value pairs can be exported and, hence, published.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   location = list(
     type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
@@ -30,15 +28,13 @@ A list with the following syntax:
   ),
   properties = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create documentation part
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_documentation_part(
+\preformatted{svc$create_documentation_part(
   restApiId = "string",
   location = list(
     type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
@@ -49,7 +45,7 @@ Create documentation part
   ),
   properties = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

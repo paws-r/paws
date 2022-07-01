@@ -37,9 +37,7 @@ update the tags on a bot alias. To update tags, use the
 \code{\link[=lexmodelbuildingservice_tag_resource]{tag_resource}} operation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   name = "string",
   description = "string",
   botVersion = "string",
@@ -70,7 +68,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an alias for the specified version of the bot or replaces an
@@ -81,9 +79,7 @@ see versioning-aliases.
 This operation requires permissions for the \code{lex:PutBotAlias} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bot_alias(
+\preformatted{svc$put_bot_alias(
   name = "string",
   description = "string",
   botVersion = "string",
@@ -107,7 +103,7 @@ This operation requires permissions for the \code{lex:PutBotAlias} action.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

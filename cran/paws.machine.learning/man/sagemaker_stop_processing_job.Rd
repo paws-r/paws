@@ -16,12 +16,10 @@ An empty list.
 Stops a processing job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_processing_job(
+\preformatted{svc$stop_processing_job(
   ProcessingJobName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

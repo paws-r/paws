@@ -22,13 +22,11 @@ Deletes the specified subnet. You must terminate all running instances
 in the subnet before you can delete the subnet.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_subnet(
+\preformatted{svc$delete_subnet(
   SubnetId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

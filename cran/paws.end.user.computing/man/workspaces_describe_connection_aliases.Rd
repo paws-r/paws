@@ -19,9 +19,7 @@ workspaces_describe_connection_aliases(AliasIds, ResourceId, Limit,
 provide this token to receive the next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConnectionAliases = list(
     list(
       ConnectionString = "string",
@@ -40,16 +38,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list that describes the connection aliases used for
 cross-Region redirection. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_connection_aliases(
+\preformatted{svc$describe_connection_aliases(
   AliasIds = list(
     "string"
   ),
@@ -57,7 +53,7 @@ cross-Region redirection. For more information, see \href{https://docs.aws.amazo
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

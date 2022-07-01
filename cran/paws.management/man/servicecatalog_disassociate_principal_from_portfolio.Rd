@@ -28,14 +28,12 @@ Disassociates a previously associated principal ARN from a specified
 portfolio.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_principal_from_portfolio(
+\preformatted{svc$disassociate_principal_from_portfolio(
   AcceptLanguage = "string",
   PortfolioId = "string",
   PrincipalARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

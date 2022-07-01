@@ -14,9 +14,7 @@ apigatewayv2_create_deployment(ApiId, Description, StageName)
 \item{StageName}{The name of the Stage resource for the Deployment resource to create.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AutoDeployed = TRUE|FALSE,
   CreatedDate = as.POSIXct(
     "2015-01-01"
@@ -26,20 +24,18 @@ A list with the following syntax:
   DeploymentStatusMessage = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Deployment for an API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_deployment(
+\preformatted{svc$create_deployment(
   ApiId = "string",
   Description = "string",
   StageName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

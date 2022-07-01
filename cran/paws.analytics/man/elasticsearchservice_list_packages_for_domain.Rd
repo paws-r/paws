@@ -17,9 +17,7 @@ non-null NextToken value. If provided, returns results for the next
 page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainPackageDetailsList = list(
     list(
       PackageID = "string",
@@ -40,20 +38,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all packages associated with the Amazon ES domain.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_packages_for_domain(
+\preformatted{svc$list_packages_for_domain(
   DomainName = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

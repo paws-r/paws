@@ -78,9 +78,7 @@ Results are sorted by \code{FilterVariable}.}
 of acceptable values is \code{1} through \code{100}. The default value is \code{100}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Results = list(
     list(
       MLModelId = "string",
@@ -125,16 +123,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of \code{MLModel} that match the search criteria in the
 request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_ml_models(
+\preformatted{svc$describe_ml_models(
   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"TrainingDataSourceId"|"RealtimeEndpointStatus"|"MLModelType"|"Algorithm"|"TrainingDataURI",
   EQ = "string",
   GT = "string",
@@ -147,7 +143,7 @@ request.
   NextToken = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

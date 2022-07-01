@@ -25,14 +25,12 @@ Deletes the specified key pair, by removing the public key from Amazon
 EC2.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_key_pair(
+\preformatted{svc$delete_key_pair(
   KeyName = "string",
   KeyPairId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

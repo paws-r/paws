@@ -139,12 +139,10 @@ of video on streams with 1-second fragments, and more than 2 1/2 hours
 of video on streams with 10-second fragments.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DASHStreamingSessionURL = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves an MPEG Dynamic Adaptive Streaming over HTTP (DASH) URL for
@@ -289,9 +287,7 @@ For more information, see the \strong{Errors} section at the bottom of this
 topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html}{Common Errors}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_dash_streaming_session_url(
+\preformatted{svc$get_dash_streaming_session_url(
   StreamName = "string",
   StreamARN = "string",
   PlaybackMode = "LIVE"|"LIVE_REPLAY"|"ON_DEMAND",
@@ -311,7 +307,7 @@ topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/d
   Expires = 123,
   MaxManifestFragmentResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

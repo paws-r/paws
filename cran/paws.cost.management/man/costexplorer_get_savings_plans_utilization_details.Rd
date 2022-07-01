@@ -55,9 +55,7 @@ The following values are supported for \code{Key}:
 Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SavingsPlansUtilizationDetails = list(
     list(
       SavingsPlanArn = "string",
@@ -104,7 +102,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves attribute data along with aggregate utilization and savings
@@ -120,9 +118,7 @@ providing individual dates. You can use
 \code{SavingsPlansArn}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_savings_plans_utilization_details(
+\preformatted{svc$get_savings_plans_utilization_details(
   TimePeriod = list(
     Start = "string",
     End = "string"
@@ -173,7 +169,7 @@ providing individual dates. You can use
     SortOrder = "ASCENDING"|"DESCENDING"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

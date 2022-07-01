@@ -136,12 +136,10 @@ tensors.}
 framework metrics.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrainingJobArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a model training job. After training completes, Amazon SageMaker
@@ -186,9 +184,7 @@ for a managed spot training job to complete.
 For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/}{How It Works}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_training_job(
+\preformatted{svc$create_training_job(
   TrainingJobName = "string",
   HyperParameters = list(
     "string"
@@ -327,7 +323,7 @@ For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.c
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,12 +19,10 @@ until their expiry. Access and Id tokens expire one hour after they are
 issued.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$global_sign_out(
+\preformatted{svc$global_sign_out(
   AccessToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

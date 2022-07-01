@@ -8,16 +8,14 @@ scaling policies}
 autoscaling_describe_adjustment_types()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AdjustmentTypes = list(
     list(
       AdjustmentType = "string"
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the available adjustment types for Amazon EC2 Auto Scaling

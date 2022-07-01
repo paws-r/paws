@@ -24,9 +24,7 @@ This parameter is ignored when the request specifies one or a list of
 fleet IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FleetUtilization = list(
     list(
       FleetId = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves utilization statistics for one or more fleets. These
@@ -83,16 +81,14 @@ error message includes the maximum allowed.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_fleet_utilization(
+\preformatted{svc$describe_fleet_utilization(
   FleetIds = list(
     "string"
   ),
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

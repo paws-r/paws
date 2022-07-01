@@ -32,15 +32,13 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:DeleteApplication} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application(
+\preformatted{svc$delete_application(
   ApplicationName = "string",
   CreateTimestamp = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

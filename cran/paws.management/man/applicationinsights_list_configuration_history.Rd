@@ -39,9 +39,7 @@ results that returned the \code{NextToken} value. This value is \code{null} when
 there are no more results to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventList = list(
     list(
       MonitoredResourceARN = "string",
@@ -56,7 +54,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the INFO, WARN, and ERROR events for periodic configuration
@@ -71,9 +69,7 @@ quotas.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_configuration_history(
+\preformatted{svc$list_configuration_history(
   ResourceGroupName = "string",
   StartTime = as.POSIXct(
     "2015-01-01"
@@ -85,7 +81,7 @@ quotas.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

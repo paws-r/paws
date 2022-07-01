@@ -10,9 +10,7 @@ medialive_stop_multiplex(MultiplexId)
 \item{MultiplexId}{[required] The ID of the multiplex.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   AvailabilityZones = list(
     "string"
@@ -39,19 +37,17 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops a running multiplex. If the multiplex isn't running, this action
 has no effect.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_multiplex(
+\preformatted{svc$stop_multiplex(
   MultiplexId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

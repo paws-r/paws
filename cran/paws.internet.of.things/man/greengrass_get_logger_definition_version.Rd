@@ -21,9 +21,7 @@ corresponding ''DefinitionInformation'' object.}
 additional results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Definition = list(
@@ -40,20 +38,18 @@ A list with the following syntax:
   Id = "string",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about a logger definition version.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_logger_definition_version(
+\preformatted{svc$get_logger_definition_version(
   LoggerDefinitionId = "string",
   LoggerDefinitionVersionId = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

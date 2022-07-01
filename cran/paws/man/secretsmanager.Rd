@@ -79,9 +79,7 @@ in the \emph{AWS Secrets Manager User Guide}. To learn more about CloudTrail,
 including enabling it and find your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html}{AWS CloudTrail User Guide}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- secretsmanager(
+\preformatted{svc <- secretsmanager(
   config = list(
     credentials = list(
       creds = list(
@@ -95,7 +93,7 @@ including enabling it and find your log files, see the \href{https://docs.aws.am
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -15,9 +15,7 @@ licensemanager_list_failures_for_license_configuration_operations(
 \item{NextToken}{Token for the next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LicenseOperationFailureList = list(
     list(
       ResourceArn = "string",
@@ -39,20 +37,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the license configuration operations that failed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_failures_for_license_configuration_operations(
+\preformatted{svc$list_failures_for_license_configuration_operations(
   LicenseConfigurationArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

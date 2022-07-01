@@ -24,13 +24,11 @@ This operation requires permissions for the \code{lex:DeleteBotVersion}
 action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bot_version(
+\preformatted{svc$delete_bot_version(
   name = "string",
   version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

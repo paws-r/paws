@@ -26,9 +26,7 @@ list of results.}
 and any command output. By default this is set to False.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CommandInvocations = list(
     list(
       CommandId = "string",
@@ -81,7 +79,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 An invocation is copy of a command sent to a specific instance. A
@@ -92,9 +90,7 @@ instance ID. ListCommandInvocations provide status about command
 execution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_command_invocations(
+\preformatted{svc$list_command_invocations(
   CommandId = "string",
   InstanceId = "string",
   MaxResults = 123,
@@ -107,7 +103,7 @@ execution.
   ),
   Details = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

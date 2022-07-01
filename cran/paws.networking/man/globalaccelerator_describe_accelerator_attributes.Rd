@@ -11,27 +11,23 @@ globalaccelerator_describe_accelerator_attributes(AcceleratorArn)
 that you want to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AcceleratorAttributes = list(
     FlowLogsEnabled = TRUE|FALSE,
     FlowLogsS3Bucket = "string",
     FlowLogsS3Prefix = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describe the attributes of an accelerator.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_accelerator_attributes(
+\preformatted{svc$describe_accelerator_attributes(
   AcceleratorArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

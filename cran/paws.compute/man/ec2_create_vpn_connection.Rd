@@ -29,9 +29,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TagSpecifications}{The tags to apply to the VPN connection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VpnConnection = list(
     CustomerGatewayConfiguration = "string",
     CustomerGatewayId = "string",
@@ -128,7 +126,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a VPN connection between an existing virtual private gateway or
@@ -153,9 +151,7 @@ For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VP
 \emph{AWS Site-to-Site VPN User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vpn_connection(
+\preformatted{svc$create_vpn_connection(
   CustomerGatewayId = "string",
   Type = "string",
   VpnGatewayId = "string",
@@ -232,7 +228,7 @@ For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VP
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

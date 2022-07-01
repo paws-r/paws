@@ -26,13 +26,11 @@ delete any approval rules previously created for pull requests through
 the template association.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_approval_rule_template_from_repository(
+\preformatted{svc$disassociate_approval_rule_template_from_repository(
   approvalRuleTemplateName = "string",
   repositoryName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

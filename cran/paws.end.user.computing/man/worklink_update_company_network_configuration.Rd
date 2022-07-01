@@ -24,9 +24,7 @@ An empty list.
 Updates the company network configuration for the fleet.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_company_network_configuration(
+\preformatted{svc$update_company_network_configuration(
   FleetArn = "string",
   VpcId = "string",
   SubnetIds = list(
@@ -36,7 +34,7 @@ Updates the company network configuration for the fleet.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

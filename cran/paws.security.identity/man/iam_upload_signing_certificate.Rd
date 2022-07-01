@@ -28,9 +28,7 @@ carriage return (\verb{\\u000D})
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Certificate = list(
     UserName = "string",
     CertificateId = "string",
@@ -41,7 +39,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Uploads an X.509 signing certificate and associates it with the
@@ -65,13 +63,11 @@ Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$upload_signing_certificate(
+\preformatted{svc$upload_signing_certificate(
   UserName = "string",
   CertificateBody = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

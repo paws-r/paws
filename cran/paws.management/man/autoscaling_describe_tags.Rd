@@ -17,9 +17,7 @@ from a previous call.)}
 is \code{50} and the maximum value is \code{100}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     list(
       ResourceId = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified tags.
@@ -49,9 +47,7 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tags(
+\preformatted{svc$describe_tags(
   Filters = list(
     list(
       Name = "string",
@@ -63,7 +59,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
   NextToken = "string",
   MaxRecords = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

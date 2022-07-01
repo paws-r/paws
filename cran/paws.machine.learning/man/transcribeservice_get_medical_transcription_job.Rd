@@ -12,9 +12,7 @@ transcribeservice_get_medical_transcription_job(
 \item{MedicalTranscriptionJobName}{[required] The name of the medical transcription job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MedicalTranscriptionJob = list(
     MedicalTranscriptionJobName = "string",
     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
@@ -49,7 +47,7 @@ A list with the following syntax:
     Type = "CONVERSATION"|"DICTATION"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a transcription job from Amazon Transcribe
@@ -59,12 +57,10 @@ finished. You find the results of the completed job in the
 \code{TranscriptFileUri} field.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_medical_transcription_job(
+\preformatted{svc$get_medical_transcription_job(
   MedicalTranscriptionJobName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

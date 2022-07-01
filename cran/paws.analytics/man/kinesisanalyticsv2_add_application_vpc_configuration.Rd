@@ -20,9 +20,7 @@ specified is not the current version, the
 \item{VpcConfiguration}{[required] Description of the VPC to add to the application.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationARN = "string",
   ApplicationVersionId = 123,
   VpcConfigurationDescription = list(
@@ -36,7 +34,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a Virtual Private Cloud (VPC) configuration to the application.
@@ -53,9 +51,7 @@ to your VPC.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_application_vpc_configuration(
+\preformatted{svc$add_application_vpc_configuration(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   VpcConfiguration = list(
@@ -67,7 +63,7 @@ to your VPC.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

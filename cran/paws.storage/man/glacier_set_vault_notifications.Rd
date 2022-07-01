@@ -60,9 +60,7 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notific
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_vault_notifications(
+\preformatted{svc$set_vault_notifications(
   accountId = "string",
   vaultName = "string",
   vaultNotificationConfig = list(
@@ -72,7 +70,7 @@ in the \emph{Amazon Glacier Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

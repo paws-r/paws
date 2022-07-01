@@ -15,12 +15,10 @@ returned by \code{\link[=waf_create_web_acl]{create_web_acl}} and by
 \code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChangeToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -46,13 +44,11 @@ token that you provide in the \code{ChangeToken} parameter of a
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_web_acl(
+\preformatted{svc$delete_web_acl(
   WebACLId = "string",
   ChangeToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

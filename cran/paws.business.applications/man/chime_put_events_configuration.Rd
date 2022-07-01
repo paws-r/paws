@@ -18,16 +18,14 @@ chime_put_events_configuration(AccountId, BotId,
 \item{LambdaFunctionArn}{Lambda function ARN that allows the bot to receive outgoing events.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventsConfiguration = list(
     BotId = "string",
     OutboundEventsHTTPSEndpoint = "string",
     LambdaFunctionArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an events configuration that allows a bot to receive outgoing
@@ -35,15 +33,13 @@ events sent by Amazon Chime. Choose either an HTTPS endpoint or a Lambda
 function ARN. For more information, see Bot.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_events_configuration(
+\preformatted{svc$put_events_configuration(
   AccountId = "string",
   BotId = "string",
   OutboundEventsHTTPSEndpoint = "string",
   LambdaFunctionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

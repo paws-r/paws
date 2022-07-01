@@ -18,9 +18,7 @@ object that is described. When submitting the
 provide either the \code{ResourceArn} or the \code{ProtectionID}, but not both.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Protection = list(
     Id = "string",
     Name = "string",
@@ -30,19 +28,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the details of a Protection object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_protection(
+\preformatted{svc$describe_protection(
   ProtectionId = "string",
   ResourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -36,16 +36,14 @@ with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PolicyNames = list(
     "string"
   ),
   NextMarker = "string",
   Truncated = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the names of the key policies that are attached to a customer
@@ -67,14 +65,12 @@ a different AWS account.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_key_policies(
+\preformatted{svc$list_key_policies(
   KeyId = "string",
   Limit = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

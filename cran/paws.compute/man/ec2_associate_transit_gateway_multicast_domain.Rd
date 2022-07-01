@@ -24,9 +24,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Associations = list(
     TransitGatewayMulticastDomainId = "string",
     TransitGatewayAttachmentId = "string",
@@ -41,7 +39,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Associates the specified subnets and transit gateway attachments with
@@ -53,9 +51,7 @@ can add a resource. Use
 to see the state of the attachment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_transit_gateway_multicast_domain(
+\preformatted{svc$associate_transit_gateway_multicast_domain(
   TransitGatewayMulticastDomainId = "string",
   TransitGatewayAttachmentId = "string",
   SubnetIds = list(
@@ -63,7 +59,7 @@ to see the state of the attachment.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

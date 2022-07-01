@@ -25,14 +25,12 @@ greengrass_create_software_update_job(AmznClientToken, S3UrlSignerRole,
 \item{UpdateTargetsOperatingSystem}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IotJobArn = "string",
   IotJobId = "string",
   PlatformSoftwareVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a software update for a core or group of cores (specified as an
@@ -42,9 +40,7 @@ provides additional commands to manage a Greengrass core software update
 job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_software_update_job(
+\preformatted{svc$create_software_update_job(
   AmznClientToken = "string",
   S3UrlSignerRole = "string",
   SoftwareToUpdate = "core"|"ota_agent",
@@ -55,7 +51,7 @@ job.
   UpdateTargetsArchitecture = "armv6l"|"armv7l"|"x86_64"|"aarch64",
   UpdateTargetsOperatingSystem = "ubuntu"|"raspbian"|"amazon_linux"|"openwrt"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

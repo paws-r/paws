@@ -17,15 +17,13 @@ account ID, do not include any hyphens ('-') in the ID.}
 \item{vaultName}{[required] The name of the vault.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Policy = "string",
   State = "string",
   ExpirationDate = "string",
   CreationDate = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation retrieves the following attributes from the \code{lock-policy}
@@ -53,13 +51,11 @@ a \verb{404 Not found} error. For more information about vault lock policies,
 \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html}{Amazon Glacier Access Control with Vault Lock Policies}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_vault_lock(
+\preformatted{svc$get_vault_lock(
   accountId = "string",
   vaultName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

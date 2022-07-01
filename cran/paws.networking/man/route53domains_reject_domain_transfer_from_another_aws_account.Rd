@@ -15,12 +15,10 @@ submitted a
 request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OperationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Rejects the transfer of a domain from another AWS account to the current
@@ -35,12 +33,10 @@ additional information, for example,
 \verb{Domain Transfer from Aws Account 111122223333 has been cancelled}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reject_domain_transfer_from_another_aws_account(
+\preformatted{svc$reject_domain_transfer_from_another_aws_account(
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

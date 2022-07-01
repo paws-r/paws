@@ -16,9 +16,7 @@ previous call.)}
 to 400). The default is 400.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LoadBalancerDescriptions = list(
     list(
       LoadBalancerName = "string",
@@ -98,23 +96,21 @@ A list with the following syntax:
   ),
   NextMarker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified the load balancers. If no load balancers are
 specified, the call describes all of your load balancers.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_load_balancers(
+\preformatted{svc$describe_load_balancers(
   LoadBalancerNames = list(
     "string"
   ),
   Marker = "string",
   PageSize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

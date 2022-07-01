@@ -23,13 +23,11 @@ Enables alternative client authentication methods for the specified
 directory.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_client_authentication(
+\preformatted{svc$enable_client_authentication(
   DirectoryId = "string",
   Type = "SmartCard"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

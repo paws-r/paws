@@ -56,9 +56,7 @@ object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/a
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_public_access_block(
+\preformatted{svc$put_public_access_block(
   Bucket = "string",
   ContentMD5 = "string",
   PublicAccessBlockConfiguration = list(
@@ -69,7 +67,7 @@ object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/a
   ),
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

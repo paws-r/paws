@@ -25,9 +25,7 @@ high-quality speech from plain text and Speech Synthesis Markup Language
 get the best results for your application domain.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- polly(
+\preformatted{svc <- polly(
   config = list(
     credentials = list(
       creds = list(
@@ -41,7 +39,7 @@ get the best results for your application domain.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

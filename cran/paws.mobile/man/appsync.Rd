@@ -20,9 +20,7 @@ AWS AppSync provides API actions for creating and interacting with data
 sources using GraphQL from your application.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- appsync(
+\preformatted{svc <- appsync(
   config = list(
     credentials = list(
       creds = list(
@@ -36,7 +34,7 @@ sources using GraphQL from your application.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

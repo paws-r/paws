@@ -25,20 +25,16 @@ For more information, see
 in the \emph{AWS Auto Scaling API Reference}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ScalingPlanVersion = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a scaling plan.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_scaling_plan(
+\preformatted{svc$create_scaling_plan(
   ScalingPlanName = "string",
   ApplicationSource = list(
     CloudFormationStackARN = "string",
@@ -108,7 +104,7 @@ Creates a scaling plan.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,12 +19,10 @@ your account.}
 \item{campaignConfig}{The configuration details of a campaign.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   campaignArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a campaign by deploying a solution version. When a client calls
@@ -72,9 +70,7 @@ campaign for recommendations.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_campaign(
+\preformatted{svc$create_campaign(
   name = "string",
   solutionVersionArn = "string",
   minProvisionedTPS = 123,
@@ -84,7 +80,7 @@ campaign for recommendations.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

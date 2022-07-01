@@ -10,9 +10,7 @@ iot1clickprojects_describe_project(projectName)
 \item{projectName}{[required] The name of the project to be described.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   project = list(
     arn = "string",
     projectName = "string",
@@ -41,18 +39,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns an object describing a project.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_project(
+\preformatted{svc$describe_project(
   projectName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -13,9 +13,7 @@ apigateway_update_rest_api(restApiId, patchOperations)
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   name = "string",
   description = "string",
@@ -45,15 +43,13 @@ A list with the following syntax:
   ),
   disableExecuteApiEndpoint = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes information about the specified API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_rest_api(
+\preformatted{svc$update_rest_api(
   restApiId = "string",
   patchOperations = list(
     list(
@@ -64,7 +60,7 @@ Changes information about the specified API.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,9 +23,7 @@ match the pattern are returned.}
 \item{MaxResults}{The maximum number of tables to return in a single response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TableList = list(
     list(
       Name = "string",
@@ -130,23 +128,21 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the definitions of some or all of the tables in a given
 \code{Database}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_tables(
+\preformatted{svc$get_tables(
   CatalogId = "string",
   DatabaseName = "string",
   Expression = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

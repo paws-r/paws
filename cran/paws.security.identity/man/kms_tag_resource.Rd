@@ -70,9 +70,7 @@ a different AWS account.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   KeyId = "string",
   Tags = list(
     list(
@@ -81,7 +79,7 @@ a different AWS account.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

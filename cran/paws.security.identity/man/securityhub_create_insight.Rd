@@ -19,12 +19,10 @@ example, if an insight is grouped by resource identifier, then the
 insight produces a list of resource identifiers.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InsightArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a custom insight in Security Hub. An insight is a consolidation
@@ -35,9 +33,7 @@ To group the related findings in the insight, use the
 \code{GroupByAttribute}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_insight(
+\preformatted{svc$create_insight(
   Name = "string",
   Filters = list(
     ProductArn = list(
@@ -596,7 +592,7 @@ To group the related findings in the insight, use the
   ),
   GroupByAttribute = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

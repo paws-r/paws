@@ -19,13 +19,11 @@ An empty list.
 Updates a subscription definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_subscription_definition(
+\preformatted{svc$update_subscription_definition(
   Name = "string",
   SubscriptionDefinitionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -47,9 +47,7 @@ The following actions are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_lifecycle_configuration(
+\preformatted{svc$put_bucket_lifecycle_configuration(
   AccountId = "string",
   Bucket = "string",
   LifecycleConfiguration = list(
@@ -105,7 +103,7 @@ The following actions are related to
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

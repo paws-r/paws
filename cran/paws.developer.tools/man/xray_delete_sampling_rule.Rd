@@ -14,9 +14,7 @@ not both.}
 not both.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SamplingRuleRecord = list(
     SamplingRule = list(
       RuleName = "string",
@@ -43,19 +41,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a sampling rule.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_sampling_rule(
+\preformatted{svc$delete_sampling_rule(
   RuleName = "string",
   RuleARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

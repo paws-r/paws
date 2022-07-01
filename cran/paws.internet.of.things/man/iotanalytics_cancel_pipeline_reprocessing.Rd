@@ -19,13 +19,11 @@ An empty list.
 Cancels the reprocessing of data through the pipeline.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_pipeline_reprocessing(
+\preformatted{svc$cancel_pipeline_reprocessing(
   pipelineName = "string",
   reprocessingId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

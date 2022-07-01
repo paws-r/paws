@@ -40,20 +40,16 @@ a maximum of 128 characters and an optional value string with a maximum
 of 256 characters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NotebookExecutionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a notebook execution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_notebook_execution(
+\preformatted{svc$start_notebook_execution(
   EditorId = "string",
   RelativePath = "string",
   NotebookExecutionName = "string",
@@ -72,7 +68,7 @@ Starts a notebook execution.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

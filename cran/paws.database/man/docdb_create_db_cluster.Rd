@@ -136,9 +136,7 @@ is enabled, the cluster cannot be deleted unless it is modified and
 from being accidentally deleted.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBCluster = list(
     AvailabilityZones = list(
       "string"
@@ -198,15 +196,13 @@ A list with the following syntax:
     DeletionProtection = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Amazon DocumentDB cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_cluster(
+\preformatted{svc$create_db_cluster(
   AvailabilityZones = list(
     "string"
   ),
@@ -238,7 +234,7 @@ Creates a new Amazon DocumentDB cluster.
   ),
   DeletionProtection = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

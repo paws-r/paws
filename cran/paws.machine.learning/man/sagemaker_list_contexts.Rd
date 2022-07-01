@@ -30,9 +30,7 @@ getting the next set of contexts.}
 value is 10.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContextSummaries = list(
     list(
       ContextArn = "string",
@@ -53,15 +51,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the contexts in your account and their properties.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_contexts(
+\preformatted{svc$list_contexts(
   SourceUri = "string",
   ContextType = "string",
   CreatedAfter = as.POSIXct(
@@ -75,7 +71,7 @@ Lists the contexts in your account and their properties.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,30 +19,26 @@ results.}
 \item{Limit}{The maximum number of results to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RuleNames = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the rules for the specified target. You can see which of the rules
 in Amazon EventBridge can invoke a specific target in your account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_rule_names_by_target(
+\preformatted{svc$list_rule_names_by_target(
   TargetArn = "string",
   EventBusName = "string",
   NextToken = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

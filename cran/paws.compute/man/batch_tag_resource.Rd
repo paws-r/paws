@@ -31,15 +31,13 @@ definitions, and job queues. ARNs for child jobs of array and multi-node
 parallel (MNP) jobs are not supported.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

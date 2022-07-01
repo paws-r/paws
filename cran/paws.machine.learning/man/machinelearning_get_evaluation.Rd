@@ -13,9 +13,7 @@ is recorded and cataloged. The ID provides the means to access the
 information.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EvaluationId = "string",
   MLModelId = "string",
   EvaluationDataSourceId = "string",
@@ -44,19 +42,17 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns an \code{Evaluation} that includes metadata as well as the current
 status of the \code{Evaluation}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_evaluation(
+\preformatted{svc$get_evaluation(
   EvaluationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

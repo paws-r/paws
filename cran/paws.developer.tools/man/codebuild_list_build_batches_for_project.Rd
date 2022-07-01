@@ -28,23 +28,19 @@ This specifies the next item to return. To return the beginning of the
 list, exclude this parameter.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ids = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the identifiers of the build batches for a specific project.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_build_batches_for_project(
+\preformatted{svc$list_build_batches_for_project(
   projectName = "string",
   filter = list(
     status = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED"
@@ -53,7 +49,7 @@ Retrieves the identifiers of the build batches for a specific project.
   sortOrder = "ASCENDING"|"DESCENDING",
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

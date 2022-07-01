@@ -29,14 +29,12 @@ command fails and returns an exception.
 For more information, see \href{http://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf}{Importing a Virtual Machine Using the Amazon EC2 CLI}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_conversion_task(
+\preformatted{svc$cancel_conversion_task(
   ConversionTaskId = "string",
   DryRun = TRUE|FALSE,
   ReasonMessage = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

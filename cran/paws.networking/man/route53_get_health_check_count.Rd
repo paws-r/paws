@@ -8,22 +8,18 @@ current AWS account}
 route53_get_health_check_count()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HealthCheckCount = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the number of health checks that are associated with the
 current AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_health_check_count()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_health_check_count()
+}
 }
 
 \keyword{internal}

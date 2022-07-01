@@ -83,9 +83,7 @@ will cache authorizer responses. If this field is not set, the default
 value is 300. The maximum value is 3600, or 1 hour.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   name = "string",
   type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
@@ -99,7 +97,7 @@ A list with the following syntax:
   identityValidationExpression = "string",
   authorizerResultTtlInSeconds = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a new Authorizer resource to an existing RestApi resource.<div class="seeAlso">
@@ -108,9 +106,7 @@ Adds a new Authorizer resource to an existing RestApi resource.<div class="seeAl
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html}{AWS CLI}</div>
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_authorizer(
+\preformatted{svc$create_authorizer(
   restApiId = "string",
   name = "string",
   type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
@@ -124,7 +120,7 @@ Adds a new Authorizer resource to an existing RestApi resource.<div class="seeAl
   identityValidationExpression = "string",
   authorizerResultTtlInSeconds = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

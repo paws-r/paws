@@ -28,9 +28,7 @@ Creates a notification. You must create the budget before you create the
 associated notification.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_notification(
+\preformatted{svc$create_notification(
   AccountId = "string",
   BudgetName = "string",
   Notification = list(
@@ -47,7 +45,7 @@ associated notification.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,9 +15,7 @@ Multi-AZ option to downgrade the domain to a single Availability Zone by
 setting the Multi-AZ option to \code{false}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AvailabilityOptions = list(
     Options = TRUE|FALSE,
     Status = list(
@@ -33,7 +31,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Configures the availability options for a domain. Enabling the Multi-AZ
@@ -46,13 +44,11 @@ target="_blank">Configuring Availability Options</a> in the \emph{Amazon
 CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_availability_options(
+\preformatted{svc$update_availability_options(
   DomainName = "string",
   MultiAZ = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

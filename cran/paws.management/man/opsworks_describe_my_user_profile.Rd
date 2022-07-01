@@ -7,9 +7,7 @@
 opsworks_describe_my_user_profile()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserProfile = list(
     IamUserArn = "string",
     Name = "string",
@@ -17,7 +15,7 @@ A list with the following syntax:
     SshPublicKey = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a user's SSH information.

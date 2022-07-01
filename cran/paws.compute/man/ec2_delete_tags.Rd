@@ -38,9 +38,7 @@ more information about tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_tags(
+\preformatted{svc$delete_tags(
   DryRun = TRUE|FALSE,
   Resources = list(
     "string"
@@ -52,7 +50,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

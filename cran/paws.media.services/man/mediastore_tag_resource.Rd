@@ -29,9 +29,7 @@ up to 50 tags to each container. For more information about tagging,
 including naming and usage conventions, see \href{https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html}{Tagging Resources in MediaStore}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   Resource = "string",
   Tags = list(
     list(
@@ -40,7 +38,7 @@ including naming and usage conventions, see \href{https://docs.aws.amazon.com/me
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

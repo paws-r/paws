@@ -12,9 +12,7 @@ cloudfront_get_key_group(Id)
 identifier, use \code{\link[=cloudfront_list_key_groups]{list_key_groups}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   KeyGroup = list(
     Id = "string",
     LastModifiedTime = as.POSIXct(
@@ -30,7 +28,7 @@ A list with the following syntax:
   ),
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a key group, including the date and time when the key group was
@@ -45,12 +43,10 @@ not referenced in a cache behavior, you can get the identifier using
 \code{\link[=cloudfront_list_key_groups]{list_key_groups}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_key_group(
+\preformatted{svc$get_key_group(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

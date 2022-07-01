@@ -50,16 +50,14 @@ version, use the \code{\link[=kinesisvideo_describe_stream]{describe_stream}} AP
 operation, and takes time to complete.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_stream(
+\preformatted{svc$update_stream(
   StreamName = "string",
   StreamARN = "string",
   CurrentVersion = "string",
   DeviceName = "string",
   MediaType = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

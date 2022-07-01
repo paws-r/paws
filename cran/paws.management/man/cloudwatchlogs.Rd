@@ -50,9 +50,7 @@ need it.
 }
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloudwatchlogs(
+\preformatted{svc <- cloudwatchlogs(
   config = list(
     credentials = list(
       creds = list(
@@ -66,7 +64,7 @@ need it.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

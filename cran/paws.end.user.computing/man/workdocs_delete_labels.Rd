@@ -24,9 +24,7 @@ An empty list.
 Deletes the specified list of labels from a resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_labels(
+\preformatted{svc$delete_labels(
   ResourceId = "string",
   AuthenticationToken = "string",
   Labels = list(
@@ -34,7 +32,7 @@ Deletes the specified list of labels from a resource.
   ),
   DeleteAll = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

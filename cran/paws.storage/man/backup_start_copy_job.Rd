@@ -30,23 +30,19 @@ to \code{\link[=backup_start_copy_job]{start_copy_job}}.}
 \item{Lifecycle}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CopyJobId = "string",
   CreationDate = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a job to create a one-time copy of the specified resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_copy_job(
+\preformatted{svc$start_copy_job(
   RecoveryPointArn = "string",
   SourceBackupVaultName = "string",
   DestinationBackupVaultArn = "string",
@@ -57,7 +53,7 @@ Starts a job to create a one-time copy of the specified resource.
     DeleteAfterDays = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

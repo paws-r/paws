@@ -21,15 +21,13 @@ Detaches one or more target groups from the specified Auto Scaling
 group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_load_balancer_target_groups(
+\preformatted{svc$detach_load_balancer_target_groups(
   AutoScalingGroupName = "string",
   TargetGroupARNs = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

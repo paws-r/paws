@@ -10,9 +10,7 @@ storagegateway_list_volume_recovery_points(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string",
   VolumeRecoveryPointInfos = list(
     list(
@@ -23,7 +21,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the recovery points for a specified gateway. This operation is
@@ -37,12 +35,10 @@ source volume. To create a snapshot from a volume recovery point use the
 operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_volume_recovery_points(
+\preformatted{svc$list_volume_recovery_points(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

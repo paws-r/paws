@@ -20,12 +20,10 @@ For information about managing IP address filters, see the \href{https://docs.aw
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_receipt_filter(
+\preformatted{svc$delete_receipt_filter(
   FilterName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

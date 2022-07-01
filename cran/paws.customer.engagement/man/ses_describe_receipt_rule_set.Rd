@@ -10,9 +10,7 @@ ses_describe_receipt_rule_set(RuleSetName)
 \item{RuleSetName}{[required] The name of the receipt rule set to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Metadata = list(
     Name = "string",
     CreatedTimestamp = as.POSIXct(
@@ -69,7 +67,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the details of the specified receipt rule set.
@@ -79,12 +77,10 @@ For information about managing receipt rule sets, see the \href{https://docs.aws
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_receipt_rule_set(
+\preformatted{svc$describe_receipt_rule_set(
   RuleSetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

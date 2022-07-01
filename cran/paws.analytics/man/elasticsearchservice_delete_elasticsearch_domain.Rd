@@ -12,9 +12,7 @@ elasticsearchservice_delete_elasticsearch_domain(DomainName)
 delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainStatus = list(
     DomainId = "string",
     DomainName = "string",
@@ -121,19 +119,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Permanently deletes the specified Elasticsearch domain and all of its
 data. Once a domain is deleted, it cannot be recovered.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_elasticsearch_domain(
+\preformatted{svc$delete_elasticsearch_domain(
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

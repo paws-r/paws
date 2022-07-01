@@ -25,14 +25,12 @@ Remove one or more specified aliases from a set of aliases for a given
 user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_alias(
+\preformatted{svc$delete_alias(
   OrganizationId = "string",
   EntityId = "string",
   Alias = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

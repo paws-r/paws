@@ -12,9 +12,7 @@ cognitoidentityprovider_describe_resource_server(UserPoolId, Identifier)
 \item{Identifier}{[required] The identifier for the resource server}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourceServer = list(
     UserPoolId = "string",
     Identifier = "string",
@@ -27,19 +25,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a resource server.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_resource_server(
+\preformatted{svc$describe_resource_server(
   UserPoolId = "string",
   Identifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

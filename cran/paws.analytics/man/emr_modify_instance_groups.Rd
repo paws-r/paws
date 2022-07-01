@@ -22,9 +22,7 @@ target instance count for the group and the instance group ID. The call
 will either succeed or fail atomically.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_instance_groups(
+\preformatted{svc$modify_instance_groups(
   ClusterId = "string",
   InstanceGroups = list(
     list(
@@ -57,7 +55,7 @@ will either succeed or fail atomically.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

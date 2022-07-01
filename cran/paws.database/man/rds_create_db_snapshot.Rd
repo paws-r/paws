@@ -30,9 +30,7 @@ Constraints:
 \item{Tags}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBSnapshot = list(
     DBSnapshotIdentifier = "string",
     DBInstanceIdentifier = "string",
@@ -79,16 +77,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a snapshot of a DB instance. The source DB instance must be in
 the \code{available} or \code{storage-optimization} state.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_snapshot(
+\preformatted{svc$create_db_snapshot(
   DBSnapshotIdentifier = "string",
   DBInstanceIdentifier = "string",
   Tags = list(
@@ -98,7 +94,7 @@ the \code{available} or \code{storage-optimization} state.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

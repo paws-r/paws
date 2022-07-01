@@ -17,12 +17,10 @@ Deletes a SageMaker image and all versions of the image. The container
 images aren't deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_image(
+\preformatted{svc$delete_image(
   ImageName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

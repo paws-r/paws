@@ -30,9 +30,7 @@ return the full set of trials, the call returns a token for getting the
 next set of trials.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrialSummaries = list(
     list(
       TrialArn = "string",
@@ -52,7 +50,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the trials in your account. Specify an experiment name to limit
@@ -63,9 +61,7 @@ created in a specific time range. The list can be sorted by trial name
 or creation time.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_trials(
+\preformatted{svc$list_trials(
   ExperimentName = "string",
   TrialComponentName = "string",
   CreatedAfter = as.POSIXct(
@@ -79,7 +75,7 @@ or creation time.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

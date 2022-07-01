@@ -35,9 +35,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VpnConnection = list(
     CustomerGatewayConfiguration = "string",
     CustomerGatewayId = "string",
@@ -134,7 +132,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the connection options for your Site-to-Site VPN connection.
@@ -145,9 +143,7 @@ change. Your VPN connection will be temporarily unavailable for a brief
 period while the VPN connection is updated.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_vpn_connection_options(
+\preformatted{svc$modify_vpn_connection_options(
   VpnConnectionId = "string",
   LocalIpv4NetworkCidr = "string",
   RemoteIpv4NetworkCidr = "string",
@@ -155,7 +151,7 @@ period while the VPN connection is updated.
   RemoteIpv6NetworkCidr = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

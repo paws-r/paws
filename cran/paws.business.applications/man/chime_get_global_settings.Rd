@@ -8,9 +8,7 @@ Amazon Chime Business Calling and Amazon Chime Voice Connector settings}
 chime_get_global_settings()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BusinessCalling = list(
     CdrBucket = "string"
   ),
@@ -18,7 +16,7 @@ A list with the following syntax:
     CdrBucket = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves global settings for the administrator's AWS account, such as

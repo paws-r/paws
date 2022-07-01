@@ -24,9 +24,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{CopyTagsFromSource}{Copies the tags from the specified volume to corresponding snapshot.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Snapshots = list(
     list(
       Description = "string",
@@ -49,7 +47,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates crash-consistent snapshots of multiple EBS volumes and stores
@@ -59,9 +57,7 @@ across the instance. Boot volumes can be excluded by changing the
 parameters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_snapshots(
+\preformatted{svc$create_snapshots(
   Description = "string",
   InstanceSpecification = list(
     InstanceId = "string",
@@ -81,7 +77,7 @@ parameters.
   DryRun = TRUE|FALSE,
   CopyTagsFromSource = "volume"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

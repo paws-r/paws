@@ -17,13 +17,11 @@ workmail_delete_organization(ClientToken, OrganizationId,
 organization.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OrganizationId = "string",
   State = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an Amazon WorkMail organization and all underlying AWS resources
@@ -33,14 +31,12 @@ whether to delete the associated directory. For more information, see
 in the \emph{Amazon WorkMail Administrator Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_organization(
+\preformatted{svc$delete_organization(
   ClientToken = "string",
   OrganizationId = "string",
   DeleteDirectory = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

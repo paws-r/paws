@@ -43,16 +43,14 @@ that are canceled by the web service during a call to
 \code{\link[=datapipeline_report_task_progress]{report_task_progress}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_task_status(
+\preformatted{svc$set_task_status(
   taskId = "string",
   taskStatus = "FINISHED"|"FAILED"|"FALSE",
   errorId = "string",
   errorMessage = "string",
   errorStackTrace = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

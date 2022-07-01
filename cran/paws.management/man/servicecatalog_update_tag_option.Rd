@@ -14,9 +14,7 @@ servicecatalog_update_tag_option(Id, Value, Active)
 \item{Active}{The updated active state.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TagOptionDetail = list(
     Key = "string",
     Value = "string",
@@ -25,20 +23,18 @@ A list with the following syntax:
     Owner = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified TagOption.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_tag_option(
+\preformatted{svc$update_tag_option(
   Id = "string",
   Value = "string",
   Active = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

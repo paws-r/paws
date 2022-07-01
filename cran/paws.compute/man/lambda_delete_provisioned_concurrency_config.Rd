@@ -29,13 +29,11 @@ An empty list.
 Deletes the provisioned concurrency configuration for a function.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_provisioned_concurrency_config(
+\preformatted{svc$delete_provisioned_concurrency_config(
   FunctionName = "string",
   Qualifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

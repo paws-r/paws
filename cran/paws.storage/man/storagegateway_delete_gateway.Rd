@@ -10,12 +10,10 @@ storagegateway_delete_gateway(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a gateway. To specify which gateway to delete, use the Amazon
@@ -37,12 +35,10 @@ you can delete your snapshots using the Amazon EC2 console. For more
 information, see the \href{https://aws.amazon.com/storagegateway/}{AWS Storage Gateway detail page}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_gateway(
+\preformatted{svc$delete_gateway(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

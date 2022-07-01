@@ -12,9 +12,7 @@ elbv2_modify_target_group_attributes(TargetGroupArn, Attributes)
 \item{Attributes}{[required] The attributes.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attributes = list(
     list(
       Key = "string",
@@ -22,15 +20,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the specified attributes of the specified target group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_target_group_attributes(
+\preformatted{svc$modify_target_group_attributes(
   TargetGroupArn = "string",
   Attributes = list(
     list(
@@ -39,7 +35,7 @@ Modifies the specified attributes of the specified target group.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

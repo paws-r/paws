@@ -19,13 +19,11 @@ An empty list.
 Deletes an identity provider for a user pool.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_identity_provider(
+\preformatted{svc$delete_identity_provider(
   UserPoolId = "string",
   ProviderName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

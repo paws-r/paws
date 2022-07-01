@@ -22,9 +22,7 @@ more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguid
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Server = list(
     AssociatePublicIpAddress = TRUE|FALSE,
     BackupRetentionCount = 123,
@@ -63,7 +61,7 @@ A list with the following syntax:
     ServerArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Manually starts server maintenance. This command can be useful if an
@@ -78,9 +76,7 @@ states. Otherwise, an \code{InvalidStateException} is thrown. A
 valid.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_maintenance(
+\preformatted{svc$start_maintenance(
   ServerName = "string",
   EngineAttributes = list(
     list(
@@ -89,7 +85,7 @@ valid.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

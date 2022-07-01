@@ -15,9 +15,7 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 in the \emph{AWS General Reference}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SAMLMetadataDocument = "string",
   CreateDate = as.POSIXct(
     "2015-01-01"
@@ -26,7 +24,7 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the SAML provider metadocument that was uploaded when the IAM
@@ -35,12 +33,10 @@ SAML provider resource object was created or updated.
 This operation requires \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_saml_provider(
+\preformatted{svc$get_saml_provider(
   SAMLProviderArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

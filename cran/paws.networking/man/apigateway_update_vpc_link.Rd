@@ -14,9 +14,7 @@ to reference this VpcLink.}
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   name = "string",
   description = "string",
@@ -29,15 +27,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing VpcLink of a specified identifier.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_vpc_link(
+\preformatted{svc$update_vpc_link(
   vpcLinkId = "string",
   patchOperations = list(
     list(
@@ -48,7 +44,7 @@ Updates an existing VpcLink of a specified identifier.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

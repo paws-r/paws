@@ -25,9 +25,7 @@ This API interface reference for AWS DataSync contains documentation for
 a programming interface that you can use to manage AWS DataSync.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- datasync(
+\preformatted{svc <- datasync(
   config = list(
     credentials = list(
       creds = list(
@@ -41,7 +39,7 @@ a programming interface that you can use to manage AWS DataSync.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

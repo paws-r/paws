@@ -89,9 +89,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Images = list(
     list(
       Architecture = "i386"|"x86_64"|"arm64",
@@ -152,7 +150,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified images (AMIs, AKIs, and ARIs) available to you
@@ -168,9 +166,7 @@ reference a deregistered AMI are terminated, specifying the ID of the
 image results in an error indicating that the AMI ID cannot be found.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_images(
+\preformatted{svc$describe_images(
   ExecutableUsers = list(
     "string"
   ),
@@ -190,7 +186,7 @@ image results in an error indicating that the AMI ID cannot be found.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

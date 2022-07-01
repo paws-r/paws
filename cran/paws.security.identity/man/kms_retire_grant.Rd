@@ -59,14 +59,12 @@ in the \emph{AWS Key Management Service Developer Guide}.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$retire_grant(
+\preformatted{svc$retire_grant(
   GrantToken = "string",
   KeyId = "string",
   GrantId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

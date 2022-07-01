@@ -20,9 +20,7 @@ page token that you can specify as the page token in a subsequent
 request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   parameters = list(
     list(
       allowedValues = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
   ),
   nextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns all of the runtime parameters offered by the underlying database
@@ -49,13 +47,11 @@ whether changes require a reboot, whether the parameter is modifiable,
 the allowed values, and the data types.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_relational_database_parameters(
+\preformatted{svc$get_relational_database_parameters(
   relationalDatabaseName = "string",
   pageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

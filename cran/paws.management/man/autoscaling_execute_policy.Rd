@@ -44,16 +44,14 @@ Executes the specified policy. This can be useful for testing the design
 of your scaling policy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$execute_policy(
+\preformatted{svc$execute_policy(
   AutoScalingGroupName = "string",
   PolicyName = "string",
   HonorCooldown = TRUE|FALSE,
   MetricValue = 123.0,
   BreachThreshold = 123.0
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

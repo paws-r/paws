@@ -12,9 +12,7 @@ chime_list_meetings(NextToken, MaxResults)
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Meetings = list(
     list(
       MeetingId = "string",
@@ -33,7 +31,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists up to 100 active Amazon Chime SDK meetings. For more information
@@ -41,13 +39,11 @@ about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime-sdk/late
 in the \emph{Amazon Chime Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_meetings(
+\preformatted{svc$list_meetings(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -20,12 +20,10 @@ state. This action doesn't rollback completed deployments or cancel
 pending deployments.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_bulk_deployment(
+\preformatted{svc$stop_bulk_deployment(
   BulkDeploymentId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

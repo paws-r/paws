@@ -24,9 +24,7 @@ operation, which can be used to return the next set of items in the
 list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   devicePools = list(
     list(
       arn = "string",
@@ -45,20 +43,18 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about device pools.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_device_pools(
+\preformatted{svc$list_device_pools(
   arn = "string",
   type = "CURATED"|"PRIVATE",
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

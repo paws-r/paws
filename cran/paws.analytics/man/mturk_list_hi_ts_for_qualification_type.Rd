@@ -16,9 +16,7 @@ mturk_list_hi_ts_for_qualification_type(QualificationTypeId, NextToken,
 \item{MaxResults}{Limit the number of results returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   NumResults = 123,
   HITs = list(
@@ -67,7 +65,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The
@@ -79,14 +77,12 @@ except for HITs that have been deleted with the
 auto-deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_hi_ts_for_qualification_type(
+\preformatted{svc$list_hi_ts_for_qualification_type(
   QualificationTypeId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

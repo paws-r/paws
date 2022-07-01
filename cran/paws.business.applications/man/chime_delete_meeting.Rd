@@ -19,12 +19,10 @@ it. For more information about the Amazon Chime SDK, see \href{https://docs.aws.
 in the \emph{Amazon Chime Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_meeting(
+\preformatted{svc$delete_meeting(
   MeetingId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,12 +16,10 @@ An empty list.
 Deletes a robot.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_robot(
+\preformatted{svc$delete_robot(
   robot = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

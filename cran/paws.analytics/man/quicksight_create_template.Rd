@@ -42,9 +42,7 @@ is created. Each version of the template maintains a description of the
 version in the \code{VersionDescription} field.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   VersionArn = "string",
   TemplateId = "string",
@@ -52,7 +50,7 @@ A list with the following syntax:
   Status = 123,
   RequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a template from an existing QuickSight analysis or template. You
@@ -67,9 +65,7 @@ datasets that follow the same schema that was used to create the source
 analysis and template.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_template(
+\preformatted{svc$create_template(
   AwsAccountId = "string",
   TemplateId = "string",
   Name = "string",
@@ -103,7 +99,7 @@ analysis and template.
   ),
   VersionDescription = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

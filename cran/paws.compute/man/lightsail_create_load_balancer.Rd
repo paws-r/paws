@@ -42,9 +42,7 @@ Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
 resource after it's created.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -69,7 +67,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Lightsail load balancer. To learn more about deciding whether
@@ -86,9 +84,7 @@ The \verb{create load balancer} operation supports tag-based access control
 via request tags. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_load_balancer(
+\preformatted{svc$create_load_balancer(
   loadBalancerName = "string",
   instancePort = 123,
   healthCheckPath = "string",
@@ -104,7 +100,7 @@ via request tags. For more information, see the Lightsail Dev Guide.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -45,9 +45,7 @@ use them, retrieve the list using
 and then provide it to this call.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_proactive_engagement_details(
+\preformatted{svc$associate_proactive_engagement_details(
   EmergencyContactList = list(
     list(
       EmailAddress = "string",
@@ -56,7 +54,7 @@ and then provide it to this call.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

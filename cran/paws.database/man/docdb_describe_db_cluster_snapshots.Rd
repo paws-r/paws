@@ -79,9 +79,7 @@ can be copied or restored by any AWS account, and otherwise \code{false}. The
 default is \code{false}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   DBClusterSnapshots = list(
     list(
@@ -111,16 +109,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about cluster snapshots. This API operation supports
 pagination.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_cluster_snapshots(
+\preformatted{svc$describe_db_cluster_snapshots(
   DBClusterIdentifier = "string",
   DBClusterSnapshotIdentifier = "string",
   SnapshotType = "string",
@@ -137,7 +133,7 @@ pagination.
   IncludeShared = TRUE|FALSE,
   IncludePublic = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

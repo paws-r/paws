@@ -25,13 +25,11 @@ Updates the state when a the shipment states changes to a different
 state.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_job_shipment_state(
+\preformatted{svc$update_job_shipment_state(
   JobId = "string",
   ShipmentState = "RECEIVED"|"RETURNED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,13 +23,11 @@ Enables I/O operations for a volume that had I/O operations disabled
 because the data on the volume was potentially inconsistent.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_volume_io(
+\preformatted{svc$enable_volume_io(
   DryRun = TRUE|FALSE,
   VolumeId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -20,9 +20,7 @@ ID string requires "h-" followed by from 8 to 32 lowercase letters or
 digits.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Handshake = list(
     Id = "string",
     Arn = "string",
@@ -49,7 +47,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about a previously requested handshake. The
@@ -64,12 +62,10 @@ and no longer accessible.
 This operation can be called from any account in the organization.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_handshake(
+\preformatted{svc$describe_handshake(
   HandshakeId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

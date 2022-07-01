@@ -22,13 +22,11 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$unshare_application(
+\preformatted{svc$unshare_application(
   ApplicationId = "string",
   OrganizationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

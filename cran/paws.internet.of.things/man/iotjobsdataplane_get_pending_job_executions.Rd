@@ -10,9 +10,7 @@ iotjobsdataplane_get_pending_job_executions(thingName)
 \item{thingName}{[required] The name of the thing that is executing the job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   inProgressJobs = list(
     list(
       jobId = "string",
@@ -34,18 +32,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the list of all jobs for a thing that are not in a terminal status.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_pending_job_executions(
+\preformatted{svc$get_pending_job_executions(
   thingName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ amplify_get_webhook(webhookId)
 \item{webhookId}{[required] The unique ID for a webhook.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   webhook = list(
     webhookArn = "string",
     webhookId = "string",
@@ -28,19 +26,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the webhook information that corresponds to a specified webhook
 ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_webhook(
+\preformatted{svc$get_webhook(
   webhookId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

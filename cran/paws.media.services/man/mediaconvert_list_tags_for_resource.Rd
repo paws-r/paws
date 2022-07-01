@@ -11,9 +11,7 @@ mediaconvert_list_tags_for_resource(Arn)
 tags for. To get the ARN, send a GET request with the resource name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourceTags = list(
     Arn = "string",
     Tags = list(
@@ -21,18 +19,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieve the tags for a MediaConvert resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   Arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

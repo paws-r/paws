@@ -7,9 +7,7 @@
 autoscaling_describe_metric_collection_types()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Metrics = list(
     list(
       Metric = "string"
@@ -21,7 +19,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.

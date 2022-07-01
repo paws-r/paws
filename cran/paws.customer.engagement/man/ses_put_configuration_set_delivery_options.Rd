@@ -21,15 +21,13 @@ An empty list.
 Adds or updates the delivery options for a configuration set.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_configuration_set_delivery_options(
+\preformatted{svc$put_configuration_set_delivery_options(
   ConfigurationSetName = "string",
   DeliveryOptions = list(
     TlsPolicy = "Require"|"Optional"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

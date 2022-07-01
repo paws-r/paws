@@ -23,9 +23,7 @@ licensemanager_list_received_licenses(LicenseArns, Filters, NextToken,
 \item{MaxResults}{Maximum number of results to return in a single call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Licenses = list(
     list(
       LicenseArn = "string",
@@ -82,15 +80,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists received licenses.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_received_licenses(
+\preformatted{svc$list_received_licenses(
   LicenseArns = list(
     "string"
   ),
@@ -105,7 +101,7 @@ Lists received licenses.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

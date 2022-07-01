@@ -12,9 +12,7 @@ xray_batch_get_traces(TraceIds, NextToken)
 \item{NextToken}{Pagination token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Traces = list(
     list(
       Id = "string",
@@ -33,7 +31,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list of traces specified by ID. Each trace is a collection
@@ -42,15 +40,13 @@ of segment documents that originates from a single request. Use
 IDs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_traces(
+\preformatted{svc$batch_get_traces(
   TraceIds = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -12,25 +12,21 @@ robomaker_register_robot(fleet, robot)
 \item{robot}{[required] The Amazon Resource Name (ARN) of the robot.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   fleet = "string",
   robot = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Registers a robot with a fleet.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_robot(
+\preformatted{svc$register_robot(
   fleet = "string",
   robot = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

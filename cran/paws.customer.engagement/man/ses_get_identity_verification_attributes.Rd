@@ -12,9 +12,7 @@ ses_get_identity_verification_attributes(Identities)
 \item{Identities}{[required] A list of identities.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VerificationAttributes = list(
     list(
       VerificationStatus = "Pending"|"Success"|"Failed"|"TemporaryFailure"|"NotStarted",
@@ -22,7 +20,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Given a list of identities (email addresses and/or domains), returns the
@@ -50,14 +48,12 @@ This operation is throttled at one request per second and can only get
 verification attributes for up to 100 identities at a time.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_identity_verification_attributes(
+\preformatted{svc$get_identity_verification_attributes(
   Identities = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

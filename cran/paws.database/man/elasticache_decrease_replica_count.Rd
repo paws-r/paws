@@ -43,9 +43,7 @@ group (shard).}
 \code{ApplyImmediately=False} is not currently supported.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationGroup = list(
     ReplicationGroupId = "string",
     Description = "string",
@@ -130,7 +128,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Dynamically decreases the number of replicas in a Redis (cluster mode
@@ -139,9 +137,7 @@ more node groups (shards) of a Redis (cluster mode enabled) replication
 group. This operation is performed with no cluster down time.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$decrease_replica_count(
+\preformatted{svc$decrease_replica_count(
   ReplicationGroupId = "string",
   NewReplicaCount = 123,
   ReplicaConfiguration = list(
@@ -161,7 +157,7 @@ group. This operation is performed with no cluster down time.
   ),
   ApplyImmediately = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

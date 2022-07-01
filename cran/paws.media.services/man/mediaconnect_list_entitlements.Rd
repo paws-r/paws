@@ -24,9 +24,7 @@ NextToken value. To see the next batch of results, you can submit the
 ListEntitlements request a second time and specify the NextToken value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Entitlements = list(
     list(
       DataTransferSubscriberFeePercent = 123,
@@ -36,20 +34,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Displays a list of all entitlements that have been granted to this
 account. This request returns 20 results per page.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_entitlements(
+\preformatted{svc$list_entitlements(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

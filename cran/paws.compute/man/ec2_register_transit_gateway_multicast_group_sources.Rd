@@ -23,9 +23,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RegisteredMulticastGroupSources = list(
     TransitGatewayMulticastDomainId = "string",
     RegisteredNetworkInterfaceIds = list(
@@ -34,7 +32,7 @@ A list with the following syntax:
     GroupIpAddress = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Registers sources (network interfaces) with the specified transit
@@ -50,9 +48,7 @@ After you add the source, use
 to verify that the source was added to the multicast group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_transit_gateway_multicast_group_sources(
+\preformatted{svc$register_transit_gateway_multicast_group_sources(
   TransitGatewayMulticastDomainId = "string",
   GroupIpAddress = "string",
   NetworkInterfaceIds = list(
@@ -60,7 +56,7 @@ to verify that the source was added to the multicast group.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

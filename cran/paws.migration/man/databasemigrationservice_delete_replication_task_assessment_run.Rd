@@ -12,9 +12,7 @@ databasemigrationservice_delete_replication_task_assessment_run(
 deleted.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationTaskAssessmentRun = list(
     ReplicationTaskAssessmentRunArn = "string",
     ReplicationTaskArn = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
     AssessmentRunName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the record of a single premigration assessment run.
@@ -45,12 +43,10 @@ assessment run. However, the operation leaves untouched all information
 about this assessment run that is stored in your Amazon S3 bucket.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_replication_task_assessment_run(
+\preformatted{svc$delete_replication_task_assessment_run(
   ReplicationTaskAssessmentRunArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -43,9 +43,7 @@ instances, go to the \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuid
 }
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- pi(
+\preformatted{svc <- pi(
   config = list(
     credentials = list(
       creds = list(
@@ -59,7 +57,7 @@ instances, go to the \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuid
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -18,9 +18,7 @@ the exchange. You can obtain the value for the parameter by calling
 \code{\link[=redshift_get_reserved_node_exchange_offerings]{get_reserved_node_exchange_offerings}}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ExchangedReservedNode = list(
     ReservedNodeId = "string",
     ReservedNodeOfferingId = "string",
@@ -44,7 +42,7 @@ A list with the following syntax:
     ReservedNodeOfferingType = "Regular"|"Upgradable"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes to
@@ -52,13 +50,11 @@ the configuration (term, payment type, or number of nodes) and no
 additional costs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$accept_reserved_node_exchange(
+\preformatted{svc$accept_reserved_node_exchange(
   ReservedNodeId = "string",
   TargetReservedNodeOfferingId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

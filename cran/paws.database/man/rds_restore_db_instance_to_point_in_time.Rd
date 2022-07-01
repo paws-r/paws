@@ -252,9 +252,7 @@ For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts
 in the \emph{AWS Outposts User Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -440,7 +438,7 @@ A list with the following syntax:
     CustomerOwnedIpEnabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Restores a DB instance to an arbitrary point in time. You can restore to
@@ -461,9 +459,7 @@ Aurora, use
 \code{\link[=rds_restore_db_cluster_to_point_in_time]{restore_db_cluster_to_point_in_time}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_db_instance_to_point_in_time(
+\preformatted{svc$restore_db_instance_to_point_in_time(
   SourceDBInstanceIdentifier = "string",
   TargetDBInstanceIdentifier = "string",
   RestoreTime = as.POSIXct(
@@ -515,7 +511,7 @@ Aurora, use
   SourceDBInstanceAutomatedBackupsArn = "string",
   EnableCustomerOwnedIp = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

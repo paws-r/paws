@@ -10,9 +10,7 @@ elasticache_delete_user(UserId)
 \item{UserId}{[required] The ID of the user.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserId = "string",
   UserName = "string",
   Status = "string",
@@ -27,7 +25,7 @@ A list with the following syntax:
   ),
   ARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 For Redis engine version 6.x onwards: Deletes a user. The user will be
@@ -35,12 +33,10 @@ removed from all user groups and in turn removed from all replication
 groups. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user(
+\preformatted{svc$delete_user(
   UserId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

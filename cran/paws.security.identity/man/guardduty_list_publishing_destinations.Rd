@@ -19,9 +19,7 @@ action. For subsequent calls, use the \code{NextToken} value returned from
 the previous request to continue listing results after the first page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Destinations = list(
     list(
       DestinationId = "string",
@@ -31,21 +29,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of publishing destinations associated with the specified
 \code{dectectorId}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_publishing_destinations(
+\preformatted{svc$list_publishing_destinations(
   DetectorId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

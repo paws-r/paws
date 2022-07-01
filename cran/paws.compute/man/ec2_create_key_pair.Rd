@@ -19,9 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TagSpecifications}{The tags to apply to the new key pair.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   KeyFingerprint = "string",
   KeyMaterial = "string",
   KeyName = "string",
@@ -33,7 +31,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a 2048-bit RSA key pair with the specified name. Amazon EC2
@@ -53,9 +51,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_key_pair(
+\preformatted{svc$create_key_pair(
   KeyName = "string",
   DryRun = TRUE|FALSE,
   TagSpecifications = list(
@@ -70,7 +66,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

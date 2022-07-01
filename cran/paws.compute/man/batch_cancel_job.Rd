@@ -25,13 +25,11 @@ operation still succeeds, even if no job is canceled); these jobs must
 be terminated with the \code{\link[=batch_terminate_job]{terminate_job}} operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_job(
+\preformatted{svc$cancel_job(
   jobId = "string",
   reason = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

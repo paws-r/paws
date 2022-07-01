@@ -39,12 +39,10 @@ your service configuration.}
 from your service configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the attributes of your VPC endpoint service configuration. You
@@ -57,9 +55,7 @@ the private DNS domain name. For more information, see \href{https://docs.aws.am
 the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_vpc_endpoint_service_configuration(
+\preformatted{svc$modify_vpc_endpoint_service_configuration(
   DryRun = TRUE|FALSE,
   ServiceId = "string",
   PrivateDnsName = "string",
@@ -78,7 +74,7 @@ the \emph{Amazon Virtual Private Cloud User Guide}.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

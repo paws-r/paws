@@ -27,14 +27,12 @@ An empty list.
 Enables artifacts in a pipeline to transition to a stage in a pipeline.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_stage_transition(
+\preformatted{svc$enable_stage_transition(
   pipelineName = "string",
   stageName = "string",
   transitionType = "Inbound"|"Outbound"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

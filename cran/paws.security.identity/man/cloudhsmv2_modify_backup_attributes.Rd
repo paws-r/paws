@@ -16,9 +16,7 @@ policy. \code{False} means the service applies the backup retention policy
 defined at the cluster.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Backup = list(
     BackupId = "string",
     BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
@@ -44,19 +42,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies attributes for AWS CloudHSM backup.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_backup_attributes(
+\preformatted{svc$modify_backup_attributes(
   BackupId = "string",
   NeverExpires = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

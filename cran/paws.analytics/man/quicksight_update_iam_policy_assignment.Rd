@@ -32,9 +32,7 @@ specified in this assignment.}
 to.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AssignmentName = "string",
   AssignmentId = "string",
   PolicyArn = "string",
@@ -47,7 +45,7 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing IAM policy assignment. This operation updates only
@@ -55,9 +53,7 @@ the optional parameter or parameters that are specified in the request.
 This overwrites all of the users included in \code{Identities}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_iam_policy_assignment(
+\preformatted{svc$update_iam_policy_assignment(
   AwsAccountId = "string",
   AssignmentName = "string",
   Namespace = "string",
@@ -69,7 +65,7 @@ This overwrites all of the users included in \code{Identities}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

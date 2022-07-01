@@ -47,9 +47,7 @@ For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing
 in the \emph{Network Load Balancers Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Listeners = list(
     list(
       ListenerArn = "string",
@@ -129,7 +127,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Replaces the specified properties of the specified listener. Any
@@ -145,9 +143,7 @@ in a list, you must provide the entire list. For example, to add an
 action, specify a list with the current actions plus the new action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_listener(
+\preformatted{svc$modify_listener(
   ListenerArn = "string",
   Port = 123,
   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
@@ -222,7 +218,7 @@ action, specify a list with the current actions plus the new action.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

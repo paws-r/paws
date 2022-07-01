@@ -16,9 +16,7 @@ page token that you can specify as the page token in a subsequent
 request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   cloudFormationStackRecords = list(
     list(
       name = "string",
@@ -47,7 +45,7 @@ A list with the following syntax:
   ),
   nextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the CloudFormation stack record created as a result of the
@@ -57,12 +55,10 @@ An AWS CloudFormation stack is used to create a new Amazon EC2 instance
 from an exported Lightsail snapshot.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_cloud_formation_stack_records(
+\preformatted{svc$get_cloud_formation_stack_records(
   pageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

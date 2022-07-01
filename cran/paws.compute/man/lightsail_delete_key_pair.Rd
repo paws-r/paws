@@ -10,9 +10,7 @@ lightsail_delete_key_pair(keyPairName)
 \item{keyPairName}{[required] The name of the key pair to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
     errorDetails = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a specific SSH key pair.
@@ -45,12 +43,10 @@ resource tags applied to the resource identified by \verb{key pair name}. For
 more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_key_pair(
+\preformatted{svc$delete_key_pair(
   keyPairName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

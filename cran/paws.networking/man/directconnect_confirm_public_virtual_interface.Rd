@@ -11,12 +11,10 @@ directconnect_confirm_public_virtual_interface(virtualInterfaceId)
 \item{virtualInterfaceId}{[required] The ID of the virtual interface.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Accepts ownership of a public virtual interface created by another AWS
@@ -26,12 +24,10 @@ After the virtual interface owner makes this call, the specified virtual
 interface is created and made available to handle traffic.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$confirm_public_virtual_interface(
+\preformatted{svc$confirm_public_virtual_interface(
   virtualInterfaceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

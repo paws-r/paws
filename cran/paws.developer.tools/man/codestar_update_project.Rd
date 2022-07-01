@@ -20,14 +20,12 @@ An empty list.
 Updates a project in AWS CodeStar.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_project(
+\preformatted{svc$update_project(
   id = "string",
   name = "string",
   description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

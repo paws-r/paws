@@ -65,9 +65,7 @@ AWS_PROXY, respectively. Supported only for HTTP APIs.}
 \item{Version}{A version identifier for the API.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApiEndpoint = "string",
   ApiGatewayManaged = TRUE|FALSE,
   ApiId = "string",
@@ -108,15 +106,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an Api resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_api(
+\preformatted{svc$create_api(
   ApiKeySelectionExpression = "string",
   CorsConfiguration = list(
     AllowCredentials = TRUE|FALSE,
@@ -148,7 +144,7 @@ Creates an Api resource.
   Target = "string",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

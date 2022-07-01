@@ -139,9 +139,7 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_workflow_type(
+\preformatted{svc$register_workflow_type(
   domain = "string",
   name = "string",
   version = "string",
@@ -155,7 +153,7 @@ in the \emph{Amazon SWF Developer Guide}.
   defaultChildPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
   defaultLambdaRole = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

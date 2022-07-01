@@ -23,9 +23,7 @@ only applies to the core and task nodes. The master node cannot be
 scaled after initial configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_managed_scaling_policy(
+\preformatted{svc$put_managed_scaling_policy(
   ClusterId = "string",
   ManagedScalingPolicy = list(
     ComputeLimits = list(
@@ -37,7 +35,7 @@ scaled after initial configuration.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

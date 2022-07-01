@@ -37,9 +37,7 @@ points, then the response will include a continuation token in the
 points.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccessPointList = list(
     list(
       Name = "string",
@@ -53,7 +51,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of the access points currently associated with the
@@ -81,15 +79,13 @@ The following actions are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_access_points(
+\preformatted{svc$list_access_points(
   AccountId = "string",
   Bucket = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

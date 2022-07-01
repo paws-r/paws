@@ -12,20 +12,16 @@ sagemaker_delete_artifact(ArtifactArn, Source)
 \item{Source}{The URI of the source.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ArtifactArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an artifact. Either \code{ArtifactArn} or \code{Source} must be specified.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_artifact(
+\preformatted{svc$delete_artifact(
   ArtifactArn = "string",
   Source = list(
     SourceUri = "string",
@@ -37,7 +33,7 @@ Deletes an artifact. Either \code{ArtifactArn} or \code{Source} must be specifie
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

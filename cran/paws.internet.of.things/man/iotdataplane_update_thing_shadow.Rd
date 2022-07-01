@@ -14,12 +14,10 @@ iotdataplane_update_thing_shadow(thingName, shadowName, payload)
 \item{payload}{[required] The state information, in JSON format.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   payload = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the shadow for the specified thing.
@@ -29,14 +27,12 @@ For more information, see
 Developer Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_thing_shadow(
+\preformatted{svc$update_thing_shadow(
   thingName = "string",
   shadowName = "string",
   payload = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

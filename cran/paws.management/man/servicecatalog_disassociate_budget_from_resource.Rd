@@ -19,13 +19,11 @@ An empty list.
 Disassociates the specified budget from the specified resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_budget_from_resource(
+\preformatted{svc$disassociate_budget_from_resource(
   BudgetName = "string",
   ResourceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

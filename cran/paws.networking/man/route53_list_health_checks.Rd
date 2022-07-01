@@ -26,9 +26,7 @@ If you set \code{MaxItems} to a value greater than 100, Route 53 returns only
 the first 100 health checks.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HealthChecks = list(
     list(
       Id = "string",
@@ -86,20 +84,18 @@ A list with the following syntax:
   NextMarker = "string",
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieve a list of the health checks that are associated with the
 current AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_health_checks(
+\preformatted{svc$list_health_checks(
   Marker = "string",
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

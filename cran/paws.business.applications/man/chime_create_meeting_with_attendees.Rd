@@ -32,9 +32,7 @@ Available values: \code{af-south-1}, \code{ap-northeast-1}, \code{ap-northeast-2
 \item{Attendees}{The request containing the attendees to create.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Meeting = list(
     MeetingId = "string",
     ExternalMeetingId = "string",
@@ -64,7 +62,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Amazon Chime SDK meeting in the specified media Region,
@@ -75,9 +73,7 @@ Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime-sdk/latest/dg/meet
 in the \emph{Amazon Chime Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_meeting_with_attendees(
+\preformatted{svc$create_meeting_with_attendees(
   ClientRequestToken = "string",
   ExternalMeetingId = "string",
   MeetingHostId = "string",
@@ -104,7 +100,7 @@ in the \emph{Amazon Chime Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

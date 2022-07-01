@@ -23,9 +23,7 @@ prefix.}
 \item{recursive}{If true, return child groups as well.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   thingGroups = list(
     list(
       groupName = "string",
@@ -34,22 +32,20 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List the thing groups in your account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_thing_groups(
+\preformatted{svc$list_thing_groups(
   nextToken = "string",
   maxResults = 123,
   parentGroup = "string",
   namePrefixFilter = "string",
   recursive = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

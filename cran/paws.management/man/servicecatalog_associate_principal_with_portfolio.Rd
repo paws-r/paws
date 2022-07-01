@@ -28,15 +28,13 @@ An empty list.
 Associates the specified principal ARN with the specified portfolio.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_principal_with_portfolio(
+\preformatted{svc$associate_principal_with_portfolio(
   AcceptLanguage = "string",
   PortfolioId = "string",
   PrincipalARN = "string",
   PrincipalType = "IAM"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

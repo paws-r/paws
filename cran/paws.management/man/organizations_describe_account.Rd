@@ -18,9 +18,7 @@ The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an account
 ID string requires exactly 12 digits.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Account = list(
     Id = "string",
     Arn = "string",
@@ -33,7 +31,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves AWS Organizations-related information about the specified
@@ -44,12 +42,10 @@ account or by a member account that is a delegated administrator for an
 AWS service.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_account(
+\preformatted{svc$describe_account(
   AccountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

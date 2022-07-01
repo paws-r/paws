@@ -18,15 +18,13 @@ unique per AWS Region for each AWS account.}
 \item{RevokePermissions}{The resource permissions that you want to revoke from the dataset.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DataSetArn = "string",
   DataSetId = "string",
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the permissions on a dataset.
@@ -35,9 +33,7 @@ The permissions resource is
 \code{arn:aws:quicksight:region:aws-account-id:dataset/data-set-id}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_data_set_permissions(
+\preformatted{svc$update_data_set_permissions(
   AwsAccountId = "string",
   DataSetId = "string",
   GrantPermissions = list(
@@ -57,7 +53,7 @@ The permissions resource is
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -12,9 +12,7 @@ glue_update_trigger(Name, TriggerUpdate)
 \item{TriggerUpdate}{[required] The new values with which to update the trigger.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Trigger = list(
     Name = "string",
     WorkflowName = "string",
@@ -51,15 +49,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a trigger definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_trigger(
+\preformatted{svc$update_trigger(
   Name = "string",
   TriggerUpdate = list(
     Name = "string",
@@ -93,7 +89,7 @@ Updates a trigger definition.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

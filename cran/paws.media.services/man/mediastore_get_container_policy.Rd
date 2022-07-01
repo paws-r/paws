@@ -10,24 +10,20 @@ mediastore_get_container_policy(ContainerName)
 \item{ContainerName}{[required] The name of the container.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Policy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the access policy for the specified container. For information
 about the data that is included in an access policy, see the \href{https://docs.aws.amazon.com/iam/index.html}{AWS Identity and Access Management User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_container_policy(
+\preformatted{svc$get_container_policy(
   ContainerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

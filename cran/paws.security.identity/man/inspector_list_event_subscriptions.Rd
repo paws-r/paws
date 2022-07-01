@@ -21,9 +21,7 @@ previous response to continue listing data.}
 want in the response. The default value is 10. The maximum value is 500.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   subscriptions = list(
     list(
       resourceArn = "string",
@@ -40,7 +38,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all the event subscriptions for the assessment template that is
@@ -49,14 +47,12 @@ see \code{\link[=inspector_subscribe_to_event]{subscribe_to_event}} and
 \code{\link[=inspector_unsubscribe_from_event]{unsubscribe_from_event}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_event_subscriptions(
+\preformatted{svc$list_event_subscriptions(
   resourceArn = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

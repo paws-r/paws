@@ -217,9 +217,7 @@ target Availability Zone.}
 \item{Port}{The option to change the port of an Amazon Redshift cluster.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Cluster = list(
     ClusterIdentifier = "string",
     NodeType = "string",
@@ -376,7 +374,7 @@ A list with the following syntax:
     ClusterNamespaceArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the settings for a cluster.
@@ -394,9 +392,7 @@ effect. For more information about managing clusters, go to \href{https://docs.a
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_cluster(
+\preformatted{svc$modify_cluster(
   ClusterIdentifier = "string",
   ClusterType = "string",
   NodeType = "string",
@@ -427,7 +423,7 @@ in the \emph{Amazon Redshift Cluster Management Guide}.
   AvailabilityZone = "string",
   Port = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

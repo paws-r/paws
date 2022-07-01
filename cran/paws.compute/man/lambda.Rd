@@ -24,9 +24,7 @@ and for information about how the service works, see \href{https://docs.aws.amaz
 in the \strong{AWS Lambda Developer Guide}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- lambda(
+\preformatted{svc <- lambda(
   config = list(
     credentials = list(
       creds = list(
@@ -40,7 +38,7 @@ in the \strong{AWS Lambda Developer Guide}.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -33,13 +33,11 @@ effective permissions for a role are evaluated, see \href{https://docs.aws.amazo
 in the IAM User Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_role_permissions_boundary(
+\preformatted{svc$put_role_permissions_boundary(
   RoleName = "string",
   PermissionsBoundary = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

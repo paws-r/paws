@@ -27,15 +27,13 @@ of your own to handle these events. For information about using custom
 domains, see the \href{https://docs.aws.amazon.com/ses/latest/dg/configure-custom-open-click-domains.html}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_configuration_set_tracking_options(
+\preformatted{svc$update_configuration_set_tracking_options(
   ConfigurationSetName = "string",
   TrackingOptions = list(
     CustomRedirectDomain = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

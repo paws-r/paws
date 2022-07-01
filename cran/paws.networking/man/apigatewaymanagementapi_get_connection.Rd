@@ -10,9 +10,7 @@ apigatewaymanagementapi_get_connection(ConnectionId)
 \item{ConnectionId}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConnectedAt = as.POSIXct(
     "2015-01-01"
   ),
@@ -24,18 +22,16 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Get information about the connection with the provided id.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_connection(
+\preformatted{svc$get_connection(
   ConnectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

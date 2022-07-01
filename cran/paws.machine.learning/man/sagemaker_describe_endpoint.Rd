@@ -10,9 +10,7 @@ sagemaker_describe_endpoint(EndpointName)
 \item{EndpointName}{[required] The name of the endpoint.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EndpointName = "string",
   EndpointArn = "string",
   EndpointConfigName = "string",
@@ -71,18 +69,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the description of an endpoint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_endpoint(
+\preformatted{svc$describe_endpoint(
   EndpointName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

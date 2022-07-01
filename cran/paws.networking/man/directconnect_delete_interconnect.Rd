@@ -10,12 +10,10 @@ directconnect_delete_interconnect(interconnectId)
 \item{interconnectId}{[required] The ID of the interconnect.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   interconnectState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified interconnect.
@@ -23,12 +21,10 @@ Deletes the specified interconnect.
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_interconnect(
+\preformatted{svc$delete_interconnect(
   interconnectId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -24,12 +24,10 @@ the tuning job moves to the \code{Stopped} state, it releases all reserved
 resources for the tuning job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_hyper_parameter_tuning_job(
+\preformatted{svc$stop_hyper_parameter_tuning_job(
   HyperParameterTuningJobName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

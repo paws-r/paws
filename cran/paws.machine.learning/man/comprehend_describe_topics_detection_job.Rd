@@ -10,9 +10,7 @@ comprehend_describe_topics_detection_job(JobId)
 \item{JobId}{[required] The identifier assigned by the user to the detection job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TopicsDetectionJobProperties = list(
     JobId = "string",
     JobName = "string",
@@ -45,19 +43,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the properties associated with a topic detection job. Use this
 operation to get the status of a detection job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_topics_detection_job(
+\preformatted{svc$describe_topics_detection_job(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

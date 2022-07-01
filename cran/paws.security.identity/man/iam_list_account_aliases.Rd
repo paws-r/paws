@@ -24,16 +24,14 @@ returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccountAliases = list(
     "string"
   ),
   IsTruncated = TRUE|FALSE,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the account alias associated with the AWS account (Note: you can
@@ -42,13 +40,11 @@ have only one). For information about using an AWS account alias, see
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_account_aliases(
+\preformatted{svc$list_account_aliases(
   Marker = "string",
   MaxItems = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

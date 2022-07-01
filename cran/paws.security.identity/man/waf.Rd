@@ -36,9 +36,7 @@ overview of how to use the AWS WAF Classic API, see the \href{https://docs.aws.a
 in the developer guide.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- waf(
+\preformatted{svc <- waf(
   config = list(
     credentials = list(
       creds = list(
@@ -52,7 +50,7 @@ in the developer guide.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

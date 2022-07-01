@@ -19,13 +19,11 @@ An empty list.
 Deletes an event destination in a configuration set.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_configuration_set_event_destination(
+\preformatted{svc$delete_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestinationName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

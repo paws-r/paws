@@ -13,9 +13,7 @@ waf_get_geo_match_set(GeoMatchSetId)
 \code{\link[=waf_list_geo_match_sets]{list_geo_match_sets}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GeoMatchSet = list(
     GeoMatchSetId = "string",
     Name = "string",
@@ -27,7 +25,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -42,12 +40,10 @@ regional and global use.
 Returns the GeoMatchSet that is specified by \code{GeoMatchSetId}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_geo_match_set(
+\preformatted{svc$get_geo_match_set(
   GeoMatchSetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

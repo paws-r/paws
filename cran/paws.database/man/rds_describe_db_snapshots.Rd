@@ -106,9 +106,7 @@ You can share a manual DB snapshot as public by using the
 \item{DbiResourceId}{A specific DB resource ID to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   DBSnapshots = list(
     list(
@@ -158,16 +156,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about DB snapshots. This API action supports
 pagination.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_snapshots(
+\preformatted{svc$describe_db_snapshots(
   DBInstanceIdentifier = "string",
   DBSnapshotIdentifier = "string",
   SnapshotType = "string",
@@ -185,7 +181,7 @@ pagination.
   IncludePublic = TRUE|FALSE,
   DbiResourceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

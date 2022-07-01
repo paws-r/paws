@@ -49,16 +49,14 @@ CloudWatch Logs supports only symmetric CMKs. Do not associate an
 asymmetric CMK with your log group. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_log_group(
+\preformatted{svc$create_log_group(
   logGroupName = "string",
   kmsKeyId = "string",
   tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -20,27 +20,23 @@ There are two types of assessment reports: a finding report and a full
 report. For more information, see \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspector_reports.html}{Assessment Reports}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   status = "WORK_IN_PROGRESS"|"FAILED"|"COMPLETED",
   url = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Produces an assessment report that includes detailed and comprehensive
 results of a specified assessment run.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_assessment_report(
+\preformatted{svc$get_assessment_report(
   assessmentRunArn = "string",
   reportFileFormat = "HTML"|"PDF",
   reportType = "FINDING"|"FULL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

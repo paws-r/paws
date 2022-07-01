@@ -22,14 +22,12 @@ Updates the name and description of a custom action target in Security
 Hub.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_action_target(
+\preformatted{svc$update_action_target(
   ActionTargetArn = "string",
   Name = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

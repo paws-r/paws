@@ -23,9 +23,7 @@ if this is the first call.}
 \item{Limit}{The maximum number of objects to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Snapshots = list(
     list(
       DirectoryId = "string",
@@ -40,7 +38,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Obtains information about the directory snapshots that belong to this
@@ -57,9 +55,7 @@ You can also specify a maximum number of return results with the \emph{Limit}
 parameter.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_snapshots(
+\preformatted{svc$describe_snapshots(
   DirectoryId = "string",
   SnapshotIds = list(
     "string"
@@ -67,7 +63,7 @@ parameter.
   NextToken = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

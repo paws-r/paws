@@ -10,12 +10,10 @@ storagegateway_delete_snapshot_schedule(VolumeARN)
 \item{VolumeARN}{[required] The volume which snapshot schedule to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VolumeARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a snapshot of a volume.
@@ -34,12 +32,10 @@ information, go to
 in the \emph{Amazon Elastic Compute Cloud API Reference}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_snapshot_schedule(
+\preformatted{svc$delete_snapshot_schedule(
   VolumeARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

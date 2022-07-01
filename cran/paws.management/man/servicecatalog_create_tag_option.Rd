@@ -12,9 +12,7 @@ servicecatalog_create_tag_option(Key, Value)
 \item{Value}{[required] The TagOption value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TagOptionDetail = list(
     Key = "string",
     Value = "string",
@@ -23,19 +21,17 @@ A list with the following syntax:
     Owner = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a TagOption.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_tag_option(
+\preformatted{svc$create_tag_option(
   Key = "string",
   Value = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

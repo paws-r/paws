@@ -27,13 +27,11 @@ making a subsequent
 file system. The default value is False.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FileSystemId = "string",
   Policy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Applies an Amazon EFS \code{FileSystemPolicy} to an Amazon EFS file system. A
@@ -48,14 +46,12 @@ This operation requires permissions for the
 \code{elasticfilesystem:PutFileSystemPolicy} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_file_system_policy(
+\preformatted{svc$put_file_system_policy(
   FileSystemId = "string",
   Policy = "string",
   BypassPolicyLockoutSafetyCheck = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

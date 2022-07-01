@@ -10,9 +10,7 @@ personalize_describe_recipe(recipeArn)
 \item{recipeArn}{[required] The Amazon Resource Name (ARN) of the recipe to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   recipe = list(
     name = "string",
     recipeArn = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a recipe.
@@ -53,12 +51,10 @@ the
 API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_recipe(
+\preformatted{svc$describe_recipe(
   recipeArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

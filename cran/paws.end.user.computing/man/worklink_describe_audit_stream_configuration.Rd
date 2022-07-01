@@ -11,24 +11,20 @@ worklink_describe_audit_stream_configuration(FleetArn)
 \item{FleetArn}{[required] The ARN of the fleet.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AuditStreamArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the configuration for delivering audit streams to the customer
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_audit_stream_configuration(
+\preformatted{svc$describe_audit_stream_configuration(
   FleetArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

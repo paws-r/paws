@@ -22,20 +22,16 @@ alexaforbusiness_create_conference_provider(ConferenceProviderName,
 \item{ClientRequestToken}{The request token of the client.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConferenceProviderArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a new conference provider under the user's AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_conference_provider(
+\preformatted{svc$create_conference_provider(
   ConferenceProviderName = "string",
   ConferenceProviderType = "CHIME"|"BLUEJEANS"|"FUZE"|"GOOGLE_HANGOUTS"|"POLYCOM"|"RINGCENTRAL"|"SKYPE_FOR_BUSINESS"|"WEBEX"|"ZOOM"|"CUSTOM",
   IPDialIn = list(
@@ -53,7 +49,7 @@ Adds a new conference provider under the user's AWS account.
   ),
   ClientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

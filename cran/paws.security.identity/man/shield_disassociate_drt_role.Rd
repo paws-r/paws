@@ -21,10 +21,8 @@ submit a \code{\link[=shield_disassociate_drt_role]{disassociate_drt_role}} requ
 to remove this access.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_drt_role()
-}\if{html}{\out{</div>}}
+\preformatted{svc$disassociate_drt_role()
+}
 }
 
 \keyword{internal}

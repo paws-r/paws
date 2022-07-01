@@ -16,12 +16,10 @@ An empty list.
 Cancels a bulk thing provisioning task.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_thing_registration_task(
+\preformatted{svc$stop_thing_registration_task(
   taskId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

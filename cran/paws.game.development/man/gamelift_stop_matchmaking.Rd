@@ -42,12 +42,10 @@ struct with the HTTP 200 response (not an empty HTTP body).
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_matchmaking(
+\preformatted{svc$stop_matchmaking(
   TicketId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

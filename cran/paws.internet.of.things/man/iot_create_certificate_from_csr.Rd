@@ -12,14 +12,12 @@ iot_create_certificate_from_csr(certificateSigningRequest, setAsActive)
 \item{setAsActive}{Specifies whether the certificate is active.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   certificateArn = "string",
   certificateId = "string",
   certificatePem = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an X.509 certificate using the specified certificate signing
@@ -70,13 +68,11 @@ CSRs in my-csr-directory is:
 create-certificate-from-csr --certificate-signing-request file://@path"
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_certificate_from_csr(
+\preformatted{svc$create_certificate_from_csr(
   certificateSigningRequest = "string",
   setAsActive = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

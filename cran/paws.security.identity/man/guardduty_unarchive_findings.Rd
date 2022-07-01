@@ -18,15 +18,13 @@ An empty list.
 Unarchives GuardDuty findings specified by the \code{findingIds}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$unarchive_findings(
+\preformatted{svc$unarchive_findings(
   DetectorId = "string",
   FindingIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

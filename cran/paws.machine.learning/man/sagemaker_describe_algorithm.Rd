@@ -10,9 +10,7 @@ sagemaker_describe_algorithm(AlgorithmName)
 \item{AlgorithmName}{[required] The name of the algorithm to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AlgorithmName = "string",
   AlgorithmArn = "string",
   AlgorithmDescription = "string",
@@ -209,19 +207,17 @@ A list with the following syntax:
   ProductId = "string",
   CertifyForMarketplace = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a description of the specified algorithm that is in your
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_algorithm(
+\preformatted{svc$describe_algorithm(
   AlgorithmName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

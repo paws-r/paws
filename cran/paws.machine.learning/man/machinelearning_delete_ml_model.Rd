@@ -10,12 +10,10 @@ machinelearning_delete_ml_model(MLModelId)
 \item{MLModelId}{[required] A user-supplied ID that uniquely identifies the \code{MLModel}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MLModelId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Assigns the \code{DELETED} status to an \code{MLModel}, rendering it unusable.
@@ -30,12 +28,10 @@ the status of the \code{MLModel} changed to DELETED.
 irreversible.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_ml_model(
+\preformatted{svc$delete_ml_model(
   MLModelId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

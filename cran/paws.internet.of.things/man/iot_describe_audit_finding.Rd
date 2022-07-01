@@ -11,9 +11,7 @@ iot_describe_audit_finding(findingId)
 identifier to apply mitigation actions to the finding.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   finding = list(
     findingId = "string",
     taskId = "string",
@@ -70,7 +68,7 @@ A list with the following syntax:
     isSuppressed = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a single audit finding. Properties include the
@@ -78,12 +76,10 @@ reason for noncompliance, the severity of the issue, and the start time
 when the audit that returned the finding.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_audit_finding(
+\preformatted{svc$describe_audit_finding(
   findingId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

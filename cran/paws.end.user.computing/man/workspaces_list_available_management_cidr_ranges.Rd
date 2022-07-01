@@ -20,15 +20,13 @@ range as an IPv4 CIDR block).}
 provide this token to receive the next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ManagementCidrRanges = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
@@ -45,14 +43,12 @@ the WorkSpace desktop to Amazon WorkSpaces clients, and to allow Amazon
 WorkSpaces to manage the WorkSpace.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_available_management_cidr_ranges(
+\preformatted{svc$list_available_management_cidr_ranges(
   ManagementCidrRangeConstraint = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

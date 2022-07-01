@@ -12,9 +12,7 @@ kinesisvideo_describe_signaling_channel(ChannelName, ChannelARN)
 \item{ChannelARN}{The ARN of the signaling channel that you want to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelInfo = list(
     ChannelName = "string",
     ChannelARN = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
     Version = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the most current information about the signaling channel. You
@@ -37,13 +35,11 @@ must specify either the name or the Amazon Resource Name (ARN) of the
 channel that you want to describe.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_signaling_channel(
+\preformatted{svc$describe_signaling_channel(
   ChannelName = "string",
   ChannelARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

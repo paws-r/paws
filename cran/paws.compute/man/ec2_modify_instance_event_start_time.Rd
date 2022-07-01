@@ -20,9 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{NotBefore}{[required] The new date and time when the event will take place.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Event = list(
     InstanceEventId = "string",
     Code = "instance-reboot"|"system-reboot"|"system-maintenance"|"instance-retirement"|"instance-stop",
@@ -38,15 +36,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the start time for a scheduled Amazon EC2 instance event.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_instance_event_start_time(
+\preformatted{svc$modify_instance_event_start_time(
   DryRun = TRUE|FALSE,
   InstanceId = "string",
   InstanceEventId = "string",
@@ -54,7 +50,7 @@ Modifies the start time for a scheduled Amazon EC2 instance event.
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

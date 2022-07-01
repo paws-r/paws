@@ -18,9 +18,7 @@ A resource group can contain either a \code{Configuration} or a
 \code{ResourceQuery}, but not both.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GroupQuery = list(
     GroupName = "string",
     ResourceQuery = list(
@@ -29,7 +27,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the resource query of a group. For more information about
@@ -43,9 +41,7 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_group_query(
+\preformatted{svc$update_group_query(
   GroupName = "string",
   Group = "string",
   ResourceQuery = list(
@@ -53,7 +49,7 @@ To run this command, you must have the following permissions:
     Query = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -20,9 +20,7 @@ decrypt the password, but it does have permission to access the rest of
 the connection properties.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Connection = list(
     Name = "string",
     Description = "string",
@@ -49,20 +47,18 @@ A list with the following syntax:
     LastUpdatedBy = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a connection definition from the Data Catalog.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_connection(
+\preformatted{svc$get_connection(
   CatalogId = "string",
   Name = "string",
   HidePassword = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

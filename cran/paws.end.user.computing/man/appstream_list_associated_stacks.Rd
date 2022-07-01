@@ -14,28 +14,24 @@ appstream_list_associated_stacks(FleetName, NextToken)
 this operation. If this value is null, it retrieves the first page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Names = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the name of the stack with which the specified fleet is
 associated.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_associated_stacks(
+\preformatted{svc$list_associated_stacks(
   FleetName = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

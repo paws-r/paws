@@ -237,9 +237,7 @@ in the \emph{Amazon Aurora User Guide}.}
 Directory Service.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBCluster = list(
     AllocatedStorage = 123,
     AvailabilityZones = list(
@@ -369,7 +367,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon
@@ -394,9 +392,7 @@ This action only applies to Aurora DB clusters. The source DB engine
 must be MySQL.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_db_cluster_from_s3(
+\preformatted{svc$restore_db_cluster_from_s3(
   AvailabilityZones = list(
     "string"
   ),
@@ -440,7 +436,7 @@ must be MySQL.
   Domain = "string",
   DomainIAMRoleName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -35,12 +35,10 @@ To delete a build, specify the build ID.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_build(
+\preformatted{svc$delete_build(
   BuildId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

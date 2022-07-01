@@ -16,12 +16,10 @@ An empty list.
 Deletes a task.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_task(
+\preformatted{svc$delete_task(
   TaskArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

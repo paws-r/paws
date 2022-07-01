@@ -37,15 +37,13 @@ API is useful in cases where you want to send signals from anywhere
 other than an Amazon EC2 instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$signal_resource(
+\preformatted{svc$signal_resource(
   StackName = "string",
   LogicalResourceId = "string",
   UniqueId = "string",
   Status = "SUCCESS"|"FAILURE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

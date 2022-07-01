@@ -12,9 +12,7 @@ elasticsearchservice_reject_inbound_cross_cluster_search_connection(
 \item{CrossClusterSearchConnectionId}{[required] The id of the inbound connection that you want to reject.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CrossClusterSearchConnection = list(
     SourceDomainInfo = list(
       OwnerId = "string",
@@ -33,19 +31,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Allows the destination domain owner to reject an inbound cross-cluster
 search connection request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reject_inbound_cross_cluster_search_connection(
+\preformatted{svc$reject_inbound_cross_cluster_search_connection(
   CrossClusterSearchConnectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

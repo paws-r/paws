@@ -10,9 +10,7 @@ appsync_get_graphql_api(apiId)
 \item{apiId}{[required] The API ID for the GraphQL API.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   graphqlApi = list(
     name = "string",
     apiId = "string",
@@ -61,18 +59,16 @@ A list with the following syntax:
     wafWebAclArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a \code{GraphqlApi} object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_graphql_api(
+\preformatted{svc$get_graphql_api(
   apiId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -66,12 +66,10 @@ For versioned models, the value of this parameter must be set to
 \item{ClientToken}{A unique token that guarantees that the call to this API is idempotent.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ModelPackageArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a model package that you can use to create Amazon SageMaker
@@ -93,9 +91,7 @@ registry.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_model_package(
+\preformatted{svc$create_model_package(
   ModelPackageName = "string",
   ModelPackageGroupName = "string",
   ModelPackageDescription = "string",
@@ -224,7 +220,7 @@ registry.
   ),
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

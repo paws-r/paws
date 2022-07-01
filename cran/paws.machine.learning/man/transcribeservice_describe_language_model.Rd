@@ -11,9 +11,7 @@ transcribeservice_describe_language_model(ModelName)
 information.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LanguageModel = list(
     ModelName = "string",
     CreateTime = as.POSIXct(
@@ -34,7 +32,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a single custom language model. Use this
@@ -46,12 +44,10 @@ updated base model. If the language model wasn't created, you can use
 this operation to understand why Amazon Transcribe couldn't create it.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_language_model(
+\preformatted{svc$describe_language_model(
   ModelName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

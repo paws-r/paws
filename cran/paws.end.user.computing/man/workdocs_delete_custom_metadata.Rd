@@ -28,9 +28,7 @@ An empty list.
 Deletes custom metadata from the specified resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_custom_metadata(
+\preformatted{svc$delete_custom_metadata(
   AuthenticationToken = "string",
   ResourceId = "string",
   VersionId = "string",
@@ -39,7 +37,7 @@ Deletes custom metadata from the specified resource.
   ),
   DeleteAll = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

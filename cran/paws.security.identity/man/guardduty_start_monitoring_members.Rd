@@ -14,9 +14,7 @@ associated with the member accounts to monitor.}
 monitoring.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UnprocessedAccounts = list(
     list(
       AccountId = "string",
@@ -24,7 +22,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Turns on GuardDuty monitoring of the specified member accounts. Use this
@@ -33,15 +31,13 @@ with the \code{\link[=guardduty_stop_monitoring_members]{stop_monitoring_members
 operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_monitoring_members(
+\preformatted{svc$start_monitoring_members(
   DetectorId = "string",
   AccountIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

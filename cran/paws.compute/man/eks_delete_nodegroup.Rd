@@ -13,9 +13,7 @@ group.}
 \item{nodegroupName}{[required] The name of the node group to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   nodegroup = list(
     nodegroupName = "string",
     nodegroupArn = "string",
@@ -82,19 +80,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an Amazon EKS node group for a cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_nodegroup(
+\preformatted{svc$delete_nodegroup(
   clusterName = "string",
   nodegroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

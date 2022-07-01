@@ -25,9 +25,7 @@ incomplete versions.}
 source document.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DocumentVersions = list(
     list(
       Id = "string",
@@ -59,7 +57,7 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the document versions for the specified document.
@@ -67,9 +65,7 @@ Retrieves the document versions for the specified document.
 By default, only active versions are returned.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_document_versions(
+\preformatted{svc$describe_document_versions(
   AuthenticationToken = "string",
   DocumentId = "string",
   Marker = "string",
@@ -77,7 +73,7 @@ By default, only active versions are returned.
   Include = "string",
   Fields = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

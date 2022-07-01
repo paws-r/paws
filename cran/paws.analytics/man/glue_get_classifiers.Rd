@@ -12,9 +12,7 @@ glue_get_classifiers(MaxResults, NextToken)
 \item{NextToken}{An optional continuation token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Classifiers = list(
     list(
       GrokClassifier = list(
@@ -75,19 +73,17 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all classifier objects in the Data Catalog.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_classifiers(
+\preformatted{svc$get_classifiers(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

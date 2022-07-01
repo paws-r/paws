@@ -15,9 +15,7 @@ a previous call to ListTagOfResource. When provided in this manner, this
 API fetches the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -26,7 +24,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List all tags on an Amazon DynamoDB resource. You can call
@@ -36,13 +34,11 @@ For an overview on tagging DynamoDB resources, see \href{https://docs.aws.amazon
 in the \emph{Amazon DynamoDB Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_of_resource(
+\preformatted{svc$list_tags_of_resource(
   ResourceArn = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

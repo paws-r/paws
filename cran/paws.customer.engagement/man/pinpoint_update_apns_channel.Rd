@@ -14,9 +14,7 @@ pinpoint_update_apns_channel(APNSChannelRequest, ApplicationId)
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   APNSChannelResponse = list(
     ApplicationId = "string",
     CreationDate = "string",
@@ -32,16 +30,14 @@ A list with the following syntax:
     Version = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables the APNs channel for an application or updates the status and
 settings of the APNs channel for an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_apns_channel(
+\preformatted{svc$update_apns_channel(
   APNSChannelRequest = list(
     BundleId = "string",
     Certificate = "string",
@@ -54,7 +50,7 @@ settings of the APNs channel for an application.
   ),
   ApplicationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

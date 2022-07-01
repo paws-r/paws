@@ -32,9 +32,7 @@ field referenced in other methods. The ClientContext field is not yet
 implemented.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Records = list(
     list(
       Key = "string",
@@ -50,7 +48,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Posts updates to records and adds and deletes records for a dataset and
@@ -73,9 +71,7 @@ This API can be called with temporary user credentials provided by
 Cognito Identity or with developer credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_records(
+\preformatted{svc$update_records(
   IdentityPoolId = "string",
   IdentityId = "string",
   DatasetName = "string",
@@ -94,7 +90,7 @@ Cognito Identity or with developer credentials.
   SyncSessionToken = "string",
   ClientContext = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

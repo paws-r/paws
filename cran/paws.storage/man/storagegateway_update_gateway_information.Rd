@@ -21,13 +21,11 @@ you want to use to monitor and log events in the gateway.
 For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html}{What is Amazon CloudWatch Logs?}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string",
   GatewayName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a gateway's metadata, which includes the gateway's name and time
@@ -39,15 +37,13 @@ contains the gateway ID rather than the gateway name. However, changing
 the name of the gateway has no effect on the gateway's ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_gateway_information(
+\preformatted{svc$update_gateway_information(
   GatewayARN = "string",
   GatewayName = "string",
   GatewayTimezone = "string",
   CloudWatchLogGroupARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

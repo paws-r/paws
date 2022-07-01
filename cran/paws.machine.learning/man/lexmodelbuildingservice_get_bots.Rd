@@ -20,9 +20,7 @@ its name matches the substring. For example, "xyz" matches both "xyzabc"
 and "abcxyz."}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   bots = list(
     list(
       name = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns bot information as follows:
@@ -54,14 +52,12 @@ information about the \verb{$LATEST} version of all of your bots.
 This operation requires permission for the \code{lex:GetBots} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bots(
+\preformatted{svc$get_bots(
   nextToken = "string",
   maxResults = 123,
   nameContains = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

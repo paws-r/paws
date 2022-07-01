@@ -10,9 +10,7 @@ cloudhsm_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the AWS CloudHSM resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TagList = list(
     list(
       Key = "string",
@@ -20,7 +18,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -33,12 +31,10 @@ and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS Cl
 Returns a list of all tags for the specified AWS CloudHSM resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

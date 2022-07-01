@@ -30,9 +30,7 @@ provided by a previous call's \code{NextToken} response to indicate where the
 output should continue from.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourceIdentifiers = list(
     list(
       ResourceArn = "string",
@@ -47,7 +45,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of AWS resource identifiers that matches the specified
@@ -62,9 +60,7 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_resources(
+\preformatted{svc$search_resources(
   ResourceQuery = list(
     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
     Query = "string"
@@ -72,7 +68,7 @@ To run this command, you must have the following permissions:
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

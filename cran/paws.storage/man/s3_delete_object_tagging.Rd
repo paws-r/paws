@@ -35,12 +35,10 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VersionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes the entire tag set from the specified object. For more
@@ -61,15 +59,13 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_object_tagging(
+\preformatted{svc$delete_object_tagging(
   Bucket = "string",
   Key = "string",
   VersionId = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

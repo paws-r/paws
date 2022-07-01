@@ -10,9 +10,7 @@ batch_describe_jobs(jobs)
 \item{jobs}{[required] A list of up to 100 job IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   jobs = list(
     list(
       jobArn = "string",
@@ -303,20 +301,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a list of AWS Batch jobs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_jobs(
+\preformatted{svc$describe_jobs(
   jobs = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

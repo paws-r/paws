@@ -12,9 +12,7 @@ dynamodb_create_backup(TableName, BackupName)
 \item{BackupName}{[required] Specified name for the backup.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BackupDetails = list(
     BackupArn = "string",
     BackupName = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a backup for an existing table.
@@ -65,13 +63,11 @@ Along with data, the following are also included on the backups:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_backup(
+\preformatted{svc$create_backup(
   TableName = "string",
   BackupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

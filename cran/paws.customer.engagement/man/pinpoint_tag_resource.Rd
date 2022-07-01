@@ -20,9 +20,7 @@ Adds one or more tags (keys and values) to an application, campaign,
 message template, or segment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   TagsModel = list(
     tags = list(
@@ -30,7 +28,7 @@ message template, or segment.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

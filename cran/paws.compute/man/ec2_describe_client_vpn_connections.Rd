@@ -31,9 +31,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Connections = list(
     list(
       ClientVpnEndpointId = "string",
@@ -59,7 +57,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes active client connections and connections that have been
@@ -67,9 +65,7 @@ terminated within the last 60 minutes for the specified Client VPN
 endpoint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_client_vpn_connections(
+\preformatted{svc$describe_client_vpn_connections(
   ClientVpnEndpointId = "string",
   Filters = list(
     list(
@@ -83,7 +79,7 @@ endpoint.
   MaxResults = 123,
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

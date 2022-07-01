@@ -13,9 +13,7 @@ route53_deactivate_key_signing_key(HostedZoneId, Name)
 \item{Name}{[required] An alphanumeric string used to identify a key signing key (KSK).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChangeInfo = list(
     Id = "string",
     Status = "PENDING"|"INSYNC",
@@ -25,20 +23,18 @@ A list with the following syntax:
     Comment = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deactivates a key signing key (KSK) so that it will not be used for
 signing by DNSSEC. This operation changes the KSK status to \code{INACTIVE}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deactivate_key_signing_key(
+\preformatted{svc$deactivate_key_signing_key(
   HostedZoneId = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

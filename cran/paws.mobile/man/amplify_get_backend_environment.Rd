@@ -12,9 +12,7 @@ amplify_get_backend_environment(appId, environmentName)
 \item{environmentName}{[required] The name for the backend environment.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   backendEnvironment = list(
     backendEnvironmentArn = "string",
     environmentName = "string",
@@ -28,19 +26,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a backend environment for an Amplify app.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_backend_environment(
+\preformatted{svc$get_backend_environment(
   appId = "string",
   environmentName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

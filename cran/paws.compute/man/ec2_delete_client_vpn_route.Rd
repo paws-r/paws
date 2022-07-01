@@ -20,15 +20,13 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = list(
     Code = "creating"|"active"|"failed"|"deleting",
     Message = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a route from a Client VPN endpoint. You can only delete routes
@@ -38,15 +36,13 @@ subnet. To remove routes that have been automatically added,
 disassociate the target subnet from the Client VPN endpoint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_client_vpn_route(
+\preformatted{svc$delete_client_vpn_route(
   ClientVpnEndpointId = "string",
   TargetVpcSubnetId = "string",
   DestinationCidrBlock = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

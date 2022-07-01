@@ -12,24 +12,20 @@ robomaker_get_world_template_body(template, generationJob)
 \item{generationJob}{The Amazon Resource Name (arn) of the world generator job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   templateBody = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the world template body.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_world_template_body(
+\preformatted{svc$get_world_template_body(
   template = "string",
   generationJob = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

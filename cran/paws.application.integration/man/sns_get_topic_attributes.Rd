@@ -10,26 +10,22 @@ sns_get_topic_attributes(TopicArn)
 \item{TopicArn}{[required] The ARN of the topic whose properties you want to get.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attributes = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns all of the properties of a topic. Topic properties returned
 might differ based on the authorization of the user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_topic_attributes(
+\preformatted{svc$get_topic_attributes(
   TopicArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

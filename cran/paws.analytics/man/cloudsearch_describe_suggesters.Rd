@@ -15,9 +15,7 @@ cloudsearch_describe_suggesters(DomainName, SuggesterNames, Deployed)
 pending changes (\code{false}). Defaults to \code{false}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Suggesters = list(
     list(
       Options = list(
@@ -42,7 +40,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the suggesters configured for a domain. A suggester enables you to
@@ -56,16 +54,14 @@ target="_blank">Getting Search Suggestions</a> in the \emph{Amazon
 CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_suggesters(
+\preformatted{svc$describe_suggesters(
   DomainName = "string",
   SuggesterNames = list(
     "string"
   ),
   Deployed = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

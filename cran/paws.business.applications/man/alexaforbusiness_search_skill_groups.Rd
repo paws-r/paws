@@ -25,9 +25,7 @@ supported filter key is SkillGroupName.}
 supported sort key is SkillGroupName.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SkillGroups = list(
     list(
       SkillGroupArn = "string",
@@ -38,16 +36,14 @@ A list with the following syntax:
   NextToken = "string",
   TotalCount = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Searches skill groups and lists the ones that meet a set of filter and
 sort criteria.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_skill_groups(
+\preformatted{svc$search_skill_groups(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(
@@ -65,7 +61,7 @@ sort criteria.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

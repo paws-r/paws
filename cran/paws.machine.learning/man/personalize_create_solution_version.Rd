@@ -23,12 +23,10 @@ and the input solution was trained with the native-recipe-hrnn-coldstart
 recipe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   solutionVersionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Trains or retrains an active solution. A solution is created using the
@@ -63,13 +61,11 @@ If the status shows as CREATE FAILED, the response includes a
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_solution_version(
+\preformatted{svc$create_solution_version(
   solutionArn = "string",
   trainingMode = "FULL"|"UPDATE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

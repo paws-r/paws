@@ -20,14 +20,12 @@ An empty list.
 Assigns the specified hierarchy group to the specified user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user_hierarchy(
+\preformatted{svc$update_user_hierarchy(
   HierarchyGroupId = "string",
   UserId = "string",
   InstanceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -27,9 +27,7 @@ the Global Datastore.}
 read/write primary if the existing primary encounters a failure.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GlobalReplicationGroup = list(
     GlobalReplicationGroupId = "string",
     GlobalReplicationGroupDescription = "string",
@@ -59,15 +57,13 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the settings for a Global Datastore.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_global_replication_group(
+\preformatted{svc$modify_global_replication_group(
   GlobalReplicationGroupId = "string",
   ApplyImmediately = TRUE|FALSE,
   CacheNodeType = "string",
@@ -75,7 +71,7 @@ Modifies the settings for a Global Datastore.
   GlobalReplicationGroupDescription = "string",
   AutomaticFailoverEnabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

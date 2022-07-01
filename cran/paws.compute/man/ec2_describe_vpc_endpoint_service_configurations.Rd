@@ -41,9 +41,7 @@ can be between 5 and 1,000; if \code{MaxResults} is given a value larger than
 \item{NextToken}{The token to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ServiceConfigurations = list(
     list(
       ServiceType = list(
@@ -85,16 +83,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the VPC endpoint service configurations in your account (your
 services).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vpc_endpoint_service_configurations(
+\preformatted{svc$describe_vpc_endpoint_service_configurations(
   DryRun = TRUE|FALSE,
   ServiceIds = list(
     "string"
@@ -110,7 +106,7 @@ services).
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

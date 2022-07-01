@@ -54,9 +54,7 @@ value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GameSession = list(
     GameSessionId = "string",
     Name = "string",
@@ -87,7 +85,7 @@ A list with the following syntax:
     MatchmakerData = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a multiplayer game session for players. This operation creates a
@@ -140,9 +138,7 @@ download the log files.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_game_session(
+\preformatted{svc$create_game_session(
   FleetId = "string",
   AliasId = "string",
   MaximumPlayerSessionCount = 123,
@@ -158,7 +154,7 @@ download the log files.
   IdempotencyToken = "string",
   GameSessionData = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -25,12 +25,10 @@ the function name, it is limited to 64 characters in length.}
 \item{ReservedConcurrentExecutions}{[required] The number of simultaneous executions to reserve for the function.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReservedConcurrentExecutions = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sets the maximum number of simultaneous executions for a function, and
@@ -50,13 +48,11 @@ executions unreserved for functions that aren't configured with a
 per-function limit. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-scaling.html}{Managing Concurrency}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_function_concurrency(
+\preformatted{svc$put_function_concurrency(
   FunctionName = "string",
   ReservedConcurrentExecutions = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

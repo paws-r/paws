@@ -10,9 +10,7 @@ securityhub_delete_members(AccountIds)
 \item{AccountIds}{[required] The list of account IDs for the member accounts to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UnprocessedAccounts = list(
     list(
       AccountId = "string",
@@ -20,7 +18,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified member accounts from Security Hub.
@@ -29,14 +27,12 @@ Can be used to delete member accounts that belong to an organization as
 well as member accounts that were invited manually.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_members(
+\preformatted{svc$delete_members(
   AccountIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

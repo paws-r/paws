@@ -24,9 +24,7 @@ An empty list.
 Marks the specified GuardDuty findings as useful or not useful.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_findings_feedback(
+\preformatted{svc$update_findings_feedback(
   DetectorId = "string",
   FindingIds = list(
     "string"
@@ -34,7 +32,7 @@ Marks the specified GuardDuty findings as useful or not useful.
   Feedback = "USEFUL"|"NOT_USEFUL",
   Comments = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

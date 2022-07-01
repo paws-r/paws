@@ -34,9 +34,7 @@ To get the key ID and key ARN for a CMK, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Grants = list(
     list(
       KeyId = "string",
@@ -64,7 +62,7 @@ A list with the following syntax:
   NextMarker = "string",
   Truncated = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of all grants for the specified customer master key (CMK).
@@ -92,14 +90,12 @@ parameter.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_grants(
+\preformatted{svc$list_grants(
   Limit = 123,
   Marker = "string",
   KeyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

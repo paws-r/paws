@@ -39,13 +39,11 @@ API and set the minimum size and desired capacity of the Auto Scaling
 group to zero.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_auto_scaling_group(
+\preformatted{svc$delete_auto_scaling_group(
   AutoScalingGroupName = "string",
   ForceDelete = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

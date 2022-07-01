@@ -16,9 +16,7 @@ additional results.}
 \item{ResourceDefinitionId}{[required] The ID of the resource definition.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Versions = list(
     list(
@@ -29,20 +27,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the versions of a resource definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resource_definition_versions(
+\preformatted{svc$list_resource_definition_versions(
   MaxResults = "string",
   NextToken = "string",
   ResourceDefinitionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

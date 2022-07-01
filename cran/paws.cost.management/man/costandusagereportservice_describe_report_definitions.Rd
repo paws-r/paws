@@ -13,9 +13,7 @@ costandusagereportservice_describe_report_definitions(MaxResults,
 \item{NextToken}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReportDefinitions = list(
     list(
       ReportName = "string",
@@ -37,19 +35,17 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the AWS Cost and Usage reports available to this account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_report_definitions(
+\preformatted{svc$describe_report_definitions(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -12,9 +12,7 @@ elasticsearchservice_start_elasticsearch_service_software_update(
 software.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ServiceSoftwareOptions = list(
     CurrentVersion = "string",
     NewVersion = "string",
@@ -28,18 +26,16 @@ A list with the following syntax:
     OptionalDeployment = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Schedules a service software update for an Amazon ES domain.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_elasticsearch_service_software_update(
+\preformatted{svc$start_elasticsearch_service_software_update(
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

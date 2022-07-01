@@ -26,9 +26,7 @@ in UTF-8 encoding.}
 in the request payload.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   executionArn = "string",
   stateMachineArn = "string",
   name = "string",
@@ -55,21 +53,19 @@ A list with the following syntax:
     billedDurationInMilliseconds = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a Synchronous Express state machine execution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_sync_execution(
+\preformatted{svc$start_sync_execution(
   stateMachineArn = "string",
   name = "string",
   input = "string",
   traceHeader = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

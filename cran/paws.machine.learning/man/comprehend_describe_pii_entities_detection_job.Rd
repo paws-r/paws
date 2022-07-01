@@ -11,9 +11,7 @@ comprehend_describe_pii_entities_detection_job(JobId)
 operation returns this identifier in its response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PiiEntitiesDetectionJobProperties = list(
     JobId = "string",
     JobName = "string",
@@ -45,19 +43,17 @@ A list with the following syntax:
     Mode = "ONLY_REDACTION"|"ONLY_OFFSETS"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the properties associated with a PII entities detection job. For
 example, you can use this operation to get the job status.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_pii_entities_detection_job(
+\preformatted{svc$describe_pii_entities_detection_job(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,16 +23,14 @@ Allows the specified Amazon Connect instance to access the specified
 Amazon Lex bot.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_lex_bot(
+\preformatted{svc$associate_lex_bot(
   InstanceId = "string",
   LexBot = list(
     Name = "string",
     LexRegion = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

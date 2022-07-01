@@ -30,22 +30,18 @@ Currently \code{application/json} and \code{application/yaml} are supported for
 \code{Accept} header for direct API requests.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   contentType = "string",
   contentDisposition = "string",
   body = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Exports a deployed version of a RestApi in a specified format.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_export(
+\preformatted{svc$get_export(
   restApiId = "string",
   stageName = "string",
   exportType = "string",
@@ -54,7 +50,7 @@ Exports a deployed version of a RestApi in a specified format.
   ),
   accepts = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

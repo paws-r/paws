@@ -29,14 +29,12 @@ API as the migration tool must first register the migration task with
 Migration Hub.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_migration_task(
+\preformatted{svc$import_migration_task(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,16 +10,14 @@ applicationdiscoveryservice_describe_configurations(configurationIds)
 \item{configurationIds}{[required] One or more configuration IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   configurations = list(
     list(
       "string"
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves attributes for a list of configuration item IDs.
@@ -42,14 +40,12 @@ For a complete list of outputs for each asset type, see \href{https://docs.aws.a
 in the \emph{AWS Application Discovery Service User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_configurations(
+\preformatted{svc$describe_configurations(
   configurationIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

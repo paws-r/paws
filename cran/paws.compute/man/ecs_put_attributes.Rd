@@ -16,9 +16,7 @@ custom attributes per resource. You can specify up to 10 attributes in a
 single call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   attributes = list(
     list(
       name = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create or update an attribute on an Amazon ECS resource. If the
@@ -39,9 +37,7 @@ value is replaced with the specified value. To delete an attribute, use
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_attributes(
+\preformatted{svc$put_attributes(
   cluster = "string",
   attributes = list(
     list(
@@ -52,7 +48,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -26,9 +26,7 @@ An empty list.
 Updates a Device Defender audit suppression.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_audit_suppression(
+\preformatted{svc$update_audit_suppression(
   checkName = "string",
   resourceIdentifier = list(
     deviceCertificateId = "string",
@@ -49,7 +47,7 @@ Updates a Device Defender audit suppression.
   suppressIndefinitely = TRUE|FALSE,
   description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

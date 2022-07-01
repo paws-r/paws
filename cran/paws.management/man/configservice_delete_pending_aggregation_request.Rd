@@ -21,13 +21,11 @@ Deletes pending authorization requests for a specified aggregator
 account in a specified region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_pending_aggregation_request(
+\preformatted{svc$delete_pending_aggregation_request(
   RequesterAccountId = "string",
   RequesterAwsRegion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

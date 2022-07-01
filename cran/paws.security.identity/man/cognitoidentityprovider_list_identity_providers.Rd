@@ -15,9 +15,7 @@ cognitoidentityprovider_list_identity_providers(UserPoolId, MaxResults,
 \item{NextToken}{A pagination token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Providers = list(
     list(
       ProviderName = "string",
@@ -32,20 +30,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists information about all identity providers for a user pool.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_identity_providers(
+\preformatted{svc$list_identity_providers(
   UserPoolId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

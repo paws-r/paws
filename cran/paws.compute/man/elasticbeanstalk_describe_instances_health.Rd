@@ -20,9 +20,7 @@ list of instances.}
 \item{NextToken}{Specify the pagination token returned by a previous call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceHealthList = list(
     list(
       InstanceId = "string",
@@ -86,16 +84,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves detailed information about the health of instances in your AWS
 Elastic Beanstalk. This operation requires \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html}{enhanced health reporting}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instances_health(
+\preformatted{svc$describe_instances_health(
   EnvironmentName = "string",
   EnvironmentId = "string",
   AttributeNames = list(
@@ -103,7 +99,7 @@ Elastic Beanstalk. This operation requires \href{https://docs.aws.amazon.com/ela
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

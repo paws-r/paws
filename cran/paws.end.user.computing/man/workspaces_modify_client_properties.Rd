@@ -18,15 +18,13 @@ An empty list.
 Modifies the properties of the specified Amazon WorkSpaces clients.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_client_properties(
+\preformatted{svc$modify_client_properties(
   ResourceId = "string",
   ClientProperties = list(
     ReconnectEnabled = "ENABLED"|"DISABLED"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

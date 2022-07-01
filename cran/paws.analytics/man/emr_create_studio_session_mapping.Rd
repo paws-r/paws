@@ -46,16 +46,14 @@ and applies a session policy to refine Studio permissions for that user
 or group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_studio_session_mapping(
+\preformatted{svc$create_studio_session_mapping(
   StudioId = "string",
   IdentityId = "string",
   IdentityName = "string",
   IdentityType = "USER"|"GROUP",
   SessionPolicyArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

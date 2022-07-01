@@ -17,9 +17,7 @@ sequence number of a data record in the shard.}
 The default value is 10,000.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Records = list(
     list(
       SequenceNumber = "string",
@@ -46,7 +44,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets data records from a Kinesis data stream's shard.
@@ -119,13 +117,11 @@ shard or across a stream might have time stamps that are out of order.
 This operation has a limit of five transactions per second per shard.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_records(
+\preformatted{svc$get_records(
   ShardIterator = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

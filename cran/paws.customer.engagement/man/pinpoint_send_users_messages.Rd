@@ -13,9 +13,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{SendUsersMessageRequest}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SendUsersMessageResponse = list(
     ApplicationId = "string",
     RequestId = "string",
@@ -33,15 +31,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates and sends a message to a list of users.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_users_messages(
+\preformatted{svc$send_users_messages(
   ApplicationId = "string",
   SendUsersMessageRequest = list(
     Context = list(
@@ -259,7 +255,7 @@ Creates and sends a message to a list of users.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

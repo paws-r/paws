@@ -18,9 +18,7 @@ directconnect_update_direct_connect_gateway_association(associationId,
 gateway.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   directConnectGatewayAssociation = list(
     directConnectGatewayId = "string",
     directConnectGatewayOwnerAccount = "string",
@@ -43,7 +41,7 @@ A list with the following syntax:
     virtualGatewayOwnerAccount = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified attributes of the Direct Connect gateway
@@ -52,9 +50,7 @@ association.
 Add or remove prefixes from the association.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_direct_connect_gateway_association(
+\preformatted{svc$update_direct_connect_gateway_association(
   associationId = "string",
   addAllowedPrefixesToDirectConnectGateway = list(
     list(
@@ -67,7 +63,7 @@ Add or remove prefixes from the association.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

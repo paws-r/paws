@@ -34,15 +34,13 @@ Tags may only contain Unicode letters, digits, white space, or these
 symbols: \verb{_ . : / = + - @}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   activityArn = "string",
   creationDate = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an activity. An activity is a task that you write in any
@@ -65,9 +63,7 @@ as an idempotent request of the previous. In this case, \code{tags} will not
 be updated, even if they are different.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_activity(
+\preformatted{svc$create_activity(
   name = "string",
   tags = list(
     list(
@@ -76,7 +72,7 @@ be updated, even if they are different.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

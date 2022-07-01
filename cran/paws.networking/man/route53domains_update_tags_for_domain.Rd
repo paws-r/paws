@@ -23,9 +23,7 @@ All tag operations are eventually consistent; subsequent operations
 might not immediately represent all issued operations.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_tags_for_domain(
+\preformatted{svc$update_tags_for_domain(
   DomainName = "string",
   TagsToUpdate = list(
     list(
@@ -34,7 +32,7 @@ might not immediately represent all issued operations.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

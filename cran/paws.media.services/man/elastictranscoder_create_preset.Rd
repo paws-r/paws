@@ -26,9 +26,7 @@ and \code{webm}.}
 if any.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Preset = list(
     Id = "string",
     Arn = "string",
@@ -94,7 +92,7 @@ A list with the following syntax:
   ),
   Warning = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The CreatePreset operation creates a preset with settings that you
@@ -117,9 +115,7 @@ information, see the International Telecommunication Union publication
 audiovisual services}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_preset(
+\preformatted{svc$create_preset(
   Name = "string",
   Description = "string",
   Container = "string",
@@ -179,7 +175,7 @@ audiovisual services}.
     PaddingPolicy = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

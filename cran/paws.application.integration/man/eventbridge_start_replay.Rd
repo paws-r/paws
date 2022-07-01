@@ -24,9 +24,7 @@ occurred between the \code{EventStartTime} and \code{EventEndTime} are replayed.
 for the replay.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplayArn = "string",
   State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
   StateReason = "string",
@@ -34,7 +32,7 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts the specified replay. Events are not necessarily replayed in the
@@ -50,9 +48,7 @@ indicates the time within the specified time range associated with the
 last event replayed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_replay(
+\preformatted{svc$start_replay(
   ReplayName = "string",
   Description = "string",
   EventSourceArn = "string",
@@ -69,7 +65,7 @@ last event replayed.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

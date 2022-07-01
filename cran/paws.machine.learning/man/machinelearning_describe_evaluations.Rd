@@ -78,9 +78,7 @@ Results are sorted by \code{FilterVariable}.}
 \item{Limit}{The maximum number of \code{Evaluation} to include in the result.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Results = list(
     list(
       EvaluationId = "string",
@@ -113,7 +111,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of
@@ -121,9 +119,7 @@ Returns a list of
 match the search criteria in the request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_evaluations(
+\preformatted{svc$describe_evaluations(
   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"MLModelId"|"DataSourceId"|"DataURI",
   EQ = "string",
   GT = "string",
@@ -136,7 +132,7 @@ match the search criteria in the request.
   NextToken = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

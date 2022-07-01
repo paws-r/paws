@@ -20,12 +20,10 @@ than the \code{ScoreThreshold} receive a negative response from the
 \code{MLModel}, such as \code{false}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MLModelId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the \code{MLModelName} and the \code{ScoreThreshold} of an \code{MLModel}.
@@ -34,14 +32,12 @@ You can use the \code{\link[=machinelearning_get_ml_model]{get_ml_model}} operat
 to view the contents of the updated data element.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_ml_model(
+\preformatted{svc$update_ml_model(
   MLModelId = "string",
   MLModelName = "string",
   ScoreThreshold = 123.0
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

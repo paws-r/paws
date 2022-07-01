@@ -22,16 +22,14 @@ CloudWatch Container Insights for your clusters is affected.}
 values are \code{enabled} and \code{disabled}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   setting = list(
     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
     value = "string",
     principalArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies an account setting for all IAM users on an account for whom no
@@ -39,13 +37,11 @@ individual account setting has been specified. Account settings are set
 on a per-Region basis.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_account_setting_default(
+\preformatted{svc$put_account_setting_default(
   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
   value = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

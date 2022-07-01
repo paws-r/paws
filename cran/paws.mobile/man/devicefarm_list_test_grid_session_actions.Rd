@@ -15,9 +15,7 @@ devicefarm_list_test_grid_session_actions(sessionArn, maxResult,
 \item{nextToken}{Pagination token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   actions = list(
     list(
       action = "string",
@@ -31,20 +29,18 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of the actions taken in a TestGridSession.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_test_grid_session_actions(
+\preformatted{svc$list_test_grid_session_actions(
   sessionArn = "string",
   maxResult = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

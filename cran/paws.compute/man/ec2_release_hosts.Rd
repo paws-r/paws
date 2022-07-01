@@ -11,9 +11,7 @@ ec2_release_hosts(HostIds)
 \item{HostIds}{[required] The IDs of the Dedicated Hosts to release.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Successful = list(
     "string"
   ),
@@ -27,7 +25,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 When you no longer want to use an On-Demand Dedicated Host it can be
@@ -46,14 +44,12 @@ Released hosts still appear in a \code{\link[=ec2_describe_hosts]{describe_hosts
 response.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$release_hosts(
+\preformatted{svc$release_hosts(
   HostIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

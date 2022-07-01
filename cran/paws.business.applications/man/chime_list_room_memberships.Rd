@@ -17,9 +17,7 @@ chime_list_room_memberships(AccountId, RoomId, MaxResults, NextToken)
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RoomMemberships = list(
     list(
       RoomId = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the membership details for the specified room in an Amazon Chime
@@ -47,15 +45,13 @@ Enterprise account, such as the members' IDs, email addresses, and
 names.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_room_memberships(
+\preformatted{svc$list_room_memberships(
   AccountId = "string",
   RoomId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

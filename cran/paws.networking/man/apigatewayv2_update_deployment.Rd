@@ -14,9 +14,7 @@ apigatewayv2_update_deployment(ApiId, DeploymentId, Description)
 \item{Description}{The description for the deployment resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AutoDeployed = TRUE|FALSE,
   CreatedDate = as.POSIXct(
     "2015-01-01"
@@ -26,20 +24,18 @@ A list with the following syntax:
   DeploymentStatusMessage = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a Deployment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_deployment(
+\preformatted{svc$update_deployment(
   ApiId = "string",
   DeploymentId = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

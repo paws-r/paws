@@ -20,30 +20,26 @@ version.}
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SchemaArns = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists schema major versions applied to a directory. If \code{SchemaArn} is
 provided, lists the minor version.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_applied_schema_arns(
+\preformatted{svc$list_applied_schema_arns(
   DirectoryArn = "string",
   SchemaArn = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -24,9 +24,7 @@ Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
 resource after it's created.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -51,7 +49,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a snapshot of your database in Amazon Lightsail. You can use
@@ -63,9 +61,7 @@ access control via request tags. For more information, see the Lightsail
 Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_relational_database_snapshot(
+\preformatted{svc$create_relational_database_snapshot(
   relationalDatabaseName = "string",
   relationalDatabaseSnapshotName = "string",
   tags = list(
@@ -75,7 +71,7 @@ Dev Guide.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

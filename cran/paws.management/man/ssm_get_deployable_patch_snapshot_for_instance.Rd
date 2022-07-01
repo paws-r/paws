@@ -13,15 +13,13 @@ be retrieved.}
 \item{SnapshotId}{[required] The user-defined snapshot ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceId = "string",
   SnapshotId = "string",
   SnapshotDownloadUrl = "string",
   Product = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the current snapshot for the patch baseline the instance uses.
@@ -29,13 +27,11 @@ This API is primarily used by the AWS-RunPatchBaseline Systems Manager
 document.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_deployable_patch_snapshot_for_instance(
+\preformatted{svc$get_deployable_patch_snapshot_for_instance(
   InstanceId = "string",
   SnapshotId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

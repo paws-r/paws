@@ -19,12 +19,10 @@ Deletes an AWS Device Farm project, given the project ARN.
 Deleting this resource does not stop an in-progress run.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_project(
+\preformatted{svc$delete_project(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

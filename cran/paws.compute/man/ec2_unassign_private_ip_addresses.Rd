@@ -23,15 +23,13 @@ Unassigns one or more secondary private IP addresses from a network
 interface.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$unassign_private_ip_addresses(
+\preformatted{svc$unassign_private_ip_addresses(
   NetworkInterfaceId = "string",
   PrivateIpAddresses = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

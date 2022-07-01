@@ -10,9 +10,7 @@ mturk_get_hit(HITId)
 \item{HITId}{[required] The ID of the HIT to be retrieved.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HIT = list(
     HITId = "string",
     HITTypeId = "string",
@@ -57,19 +55,17 @@ A list with the following syntax:
     NumberOfAssignmentsCompleted = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=mturk_get_hit]{get_hit}} operation retrieves the details of the
 specified HIT.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_hit(
+\preformatted{svc$get_hit(
   HITId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

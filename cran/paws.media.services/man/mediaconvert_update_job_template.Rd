@@ -40,9 +40,7 @@ begins processing your job to the time it completes the transcode or
 encounters an error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobTemplate = list(
     AccelerationSettings = list(
       Mode = "DISABLED"|"ENABLED"|"PREFERRED"
@@ -1184,15 +1182,13 @@ A list with the following syntax:
     Type = "SYSTEM"|"CUSTOM"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modify one of your existing job templates.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_job_template(
+\preformatted{svc$update_job_template(
   AccelerationSettings = list(
     Mode = "DISABLED"|"ENABLED"|"PREFERRED"
   ),
@@ -2324,7 +2320,7 @@ Modify one of your existing job templates.
   ),
   StatusUpdateInterval = "SECONDS_10"|"SECONDS_12"|"SECONDS_15"|"SECONDS_20"|"SECONDS_30"|"SECONDS_60"|"SECONDS_120"|"SECONDS_180"|"SECONDS_240"|"SECONDS_300"|"SECONDS_360"|"SECONDS_420"|"SECONDS_480"|"SECONDS_540"|"SECONDS_600"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

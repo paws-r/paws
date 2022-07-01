@@ -16,9 +16,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ByoipCidr = list(
     Cidr = "string",
     Description = "string",
@@ -26,7 +24,7 @@ A list with the following syntax:
     State = "advertised"|"deprovisioned"|"failed-deprovision"|"failed-provision"|"pending-deprovision"|"pending-provision"|"provisioned"|"provisioned-not-publicly-advertisable"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops advertising an address range that is provisioned as an address
@@ -39,13 +37,11 @@ It can take a few minutes before traffic to the specified addresses
 stops routing to AWS because of BGP propagation delays.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$withdraw_byoip_cidr(
+\preformatted{svc$withdraw_byoip_cidr(
   Cidr = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

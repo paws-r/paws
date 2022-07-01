@@ -15,9 +15,7 @@ apigatewayv2_get_routes(ApiId, MaxResults, NextToken)
 element of the collection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Items = list(
     list(
       ApiGatewayManaged = TRUE|FALSE,
@@ -45,20 +43,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the Routes for an API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_routes(
+\preformatted{svc$get_routes(
   ApiId = "string",
   MaxResults = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ cognitoidentityprovider_admin_list_devices(UserPoolId, Username, Limit,
 \item{PaginationToken}{The pagination token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Devices = list(
     list(
       DeviceKey = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
   ),
   PaginationToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists devices, as an administrator.
@@ -50,15 +48,13 @@ Lists devices, as an administrator.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_list_devices(
+\preformatted{svc$admin_list_devices(
   UserPoolId = "string",
   Username = "string",
   Limit = 123,
   PaginationToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

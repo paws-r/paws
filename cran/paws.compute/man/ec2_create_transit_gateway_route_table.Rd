@@ -18,9 +18,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TransitGatewayRouteTable = list(
     TransitGatewayRouteTableId = "string",
     TransitGatewayId = "string",
@@ -38,15 +36,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a route table for the specified transit gateway.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_transit_gateway_route_table(
+\preformatted{svc$create_transit_gateway_route_table(
   TransitGatewayId = "string",
   TagSpecifications = list(
     list(
@@ -61,7 +57,7 @@ Creates a route table for the specified transit gateway.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

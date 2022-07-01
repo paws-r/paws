@@ -28,9 +28,7 @@ response. Use this \strong{NextToken} value in a subsequent request to
 retrieve additional items.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Permissions = list(
     list(
       CertificateAuthorityArn = "string",
@@ -47,7 +45,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List all permissions on a private CA, if any, granted to the AWS
@@ -77,14 +75,12 @@ For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userg
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_permissions(
+\preformatted{svc$list_permissions(
   CertificateAuthorityArn = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

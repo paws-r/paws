@@ -26,12 +26,10 @@ call to \code{\link[=elb_delete_load_balancer]{delete_load_balancer}} still
 succeeds.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_load_balancer(
+\preformatted{svc$delete_load_balancer(
   LoadBalancerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

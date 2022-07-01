@@ -16,12 +16,10 @@ An empty list.
 Deletes the specified API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_rest_api(
+\preformatted{svc$delete_rest_api(
   restApiId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

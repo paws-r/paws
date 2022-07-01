@@ -38,9 +38,7 @@ determine whether the domain is available, you can call
 \code{checkDomainAvailability} for each suggestion.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SuggestionsList = list(
     list(
       DomainName = "string",
@@ -48,21 +46,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The GetDomainSuggestions operation returns a list of suggested domain
 names.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_domain_suggestions(
+\preformatted{svc$get_domain_suggestions(
   DomainName = "string",
   SuggestionCount = 123,
   OnlyAvailable = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

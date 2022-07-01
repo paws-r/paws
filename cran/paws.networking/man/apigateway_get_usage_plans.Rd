@@ -15,9 +15,7 @@ apigateway_get_usage_plans(position, keyId, limit)
 and the maximum value is 500.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   position = "string",
   items = list(
     list(
@@ -52,20 +50,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets all the usage plans of the caller's account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_usage_plans(
+\preformatted{svc$get_usage_plans(
   position = "string",
   keyId = "string",
   limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -41,9 +41,7 @@ example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value
 should also be fewer than 90 days from the current day.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JourneyDateRangeKpiResponse = list(
     ApplicationId = "string",
     EndTime = as.POSIXct(
@@ -77,16 +75,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves (queries) pre-aggregated data for a standard engagement metric
 that applies to a journey.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_journey_date_range_kpi(
+\preformatted{svc$get_journey_date_range_kpi(
   ApplicationId = "string",
   EndTime = as.POSIXct(
     "2015-01-01"
@@ -99,7 +95,7 @@ that applies to a journey.
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

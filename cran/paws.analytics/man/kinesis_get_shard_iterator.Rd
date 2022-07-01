@@ -45,12 +45,10 @@ horizon, the iterator returned is for the oldest untrimmed data record
 (TRIM_HORIZON).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ShardIterator = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets an Amazon Kinesis shard iterator. A shard iterator expires 5
@@ -106,9 +104,7 @@ closed as a result of using \code{\link[=kinesis_split_shard]{split_shard}} or
 transactions per second per account per open shard.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_shard_iterator(
+\preformatted{svc$get_shard_iterator(
   StreamName = "string",
   ShardId = "string",
   ShardIteratorType = "AT_SEQUENCE_NUMBER"|"AFTER_SEQUENCE_NUMBER"|"TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
@@ -117,7 +113,7 @@ transactions per second per account per open shard.
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

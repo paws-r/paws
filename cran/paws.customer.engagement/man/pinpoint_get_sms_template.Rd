@@ -36,9 +36,7 @@ of the template.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SMSTemplateResponse = list(
     Arn = "string",
     Body = "string",
@@ -55,20 +53,18 @@ A list with the following syntax:
     Version = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the content and settings of a message template for messages
 that are sent through the SMS channel.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_sms_template(
+\preformatted{svc$get_sms_template(
   TemplateName = "string",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,26 +15,22 @@ unique. If \code{DisplayName} isn't specified, \code{ExperimentName} is displaye
 \item{Description}{The description of the experiment.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ExperimentArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds, updates, or removes the description of an experiment. Updates the
 display name of an experiment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_experiment(
+\preformatted{svc$update_experiment(
   ExperimentName = "string",
   DisplayName = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -21,9 +21,7 @@ response. You can use this pagination token to retrieve the next set of
 faces.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
   StatusMessage = "string",
   VideoMetadata = list(
@@ -108,7 +106,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets face detection results for a Amazon Rekognition Video analysis
@@ -139,14 +137,12 @@ getting the next set of results. To get the next page of results, call
 previous call to \code{\link[=rekognition_get_face_detection]{get_face_detection}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_face_detection(
+\preformatted{svc$get_face_detection(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

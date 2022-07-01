@@ -22,26 +22,22 @@ no larger than 1MB.}
 \item{Description}{[required] A description of the schema extension.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SchemaExtensionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Applies a schema extension to a Microsoft AD directory.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_schema_extension(
+\preformatted{svc$start_schema_extension(
   DirectoryId = "string",
   CreateSnapshotBeforeSchemaExtension = TRUE|FALSE,
   LdifContent = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

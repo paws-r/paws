@@ -16,12 +16,10 @@ An empty list.
 Deletes the specified pipeline.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_pipeline(
+\preformatted{svc$delete_pipeline(
   name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

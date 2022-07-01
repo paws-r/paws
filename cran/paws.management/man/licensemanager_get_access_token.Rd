@@ -12,27 +12,23 @@ licensemanager_get_access_token(Token, TokenProperties)
 \item{TokenProperties}{Token properties to validate against those present in the JWT token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccessToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a temporary access token to use with AssumeRoleWithWebIdentity.
 Access tokens are valid for one hour.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_access_token(
+\preformatted{svc$get_access_token(
   Token = "string",
   TokenProperties = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

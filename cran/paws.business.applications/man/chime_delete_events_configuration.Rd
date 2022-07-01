@@ -20,13 +20,11 @@ Deletes the events configuration that allows a bot to receive outgoing
 events.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_events_configuration(
+\preformatted{svc$delete_events_configuration(
   AccountId = "string",
   BotId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

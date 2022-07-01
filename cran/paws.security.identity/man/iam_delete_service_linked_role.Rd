@@ -11,12 +11,10 @@ iam_delete_service_linked_role(RoleName)
 \item{RoleName}{[required] The name of the service-linked role to be deleted.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DeletionTaskId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Submits a service-linked role deletion request and returns a
@@ -42,12 +40,10 @@ For more information about service-linked roles, see \href{https://docs.aws.amaz
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_service_linked_role(
+\preformatted{svc$delete_service_linked_role(
   RoleName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

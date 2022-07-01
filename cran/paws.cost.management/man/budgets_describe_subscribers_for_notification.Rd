@@ -22,9 +22,7 @@ response contains. The maximum is 100.}
 next set of results that you want to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Subscribers = list(
     list(
       SubscriptionType = "SNS"|"EMAIL",
@@ -33,15 +31,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the subscribers that are associated with a notification.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_subscribers_for_notification(
+\preformatted{svc$describe_subscribers_for_notification(
   AccountId = "string",
   BudgetName = "string",
   Notification = list(
@@ -54,7 +50,7 @@ Lists the subscribers that are associated with a notification.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

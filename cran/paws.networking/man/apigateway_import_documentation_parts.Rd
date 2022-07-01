@@ -23,9 +23,7 @@ documentation parts. To import from an OpenAPI file, this is a JSON
 object.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ids = list(
     "string"
   ),
@@ -33,21 +31,19 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Import documentation parts
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_documentation_parts(
+\preformatted{svc$import_documentation_parts(
   restApiId = "string",
   mode = "merge"|"overwrite",
   failOnWarnings = TRUE|FALSE,
   body = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

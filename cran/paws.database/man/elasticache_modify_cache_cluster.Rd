@@ -258,9 +258,7 @@ must be specified with the \code{auth-token} parameter. Possible values:
 For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html}{Authenticating Users with Redis AUTH}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CacheCluster = list(
     CacheClusterId = "string",
     ConfigurationEndpoint = list(
@@ -342,7 +340,7 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the settings for a cluster. You can use this operation to
@@ -350,9 +348,7 @@ change one or more cluster configuration parameters by specifying the
 parameters and the new values.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_cache_cluster(
+\preformatted{svc$modify_cache_cluster(
   CacheClusterId = "string",
   NumCacheNodes = 123,
   CacheNodeIdsToRemove = list(
@@ -381,7 +377,7 @@ parameters and the new values.
   AuthToken = "string",
   AuthTokenUpdateStrategy = "SET"|"ROTATE"|"DELETE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

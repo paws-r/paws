@@ -8,9 +8,7 @@ account in the current Region}
 emr_get_block_public_access_configuration()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BlockPublicAccessConfiguration = list(
     BlockPublicSecurityGroupRules = TRUE|FALSE,
     PermittedPublicSecurityGroupRuleRanges = list(
@@ -27,7 +25,7 @@ A list with the following syntax:
     CreatedByArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the Amazon EMR block public access configuration for your AWS
@@ -35,10 +33,8 @@ account in the current Region. For more information see \href{https://docs.aws.a
 \emph{Amazon EMR Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_block_public_access_configuration()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_block_public_access_configuration()
+}
 }
 
 \keyword{internal}

@@ -36,22 +36,18 @@ computers to the domain.}
 the Active Directory domain.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string",
   ActiveDirectoryStatus = "ACCESS_DENIED"|"DETACHED"|"JOINED"|"JOINING"|"NETWORK_ERROR"|"TIMEOUT"|"UNKNOWN_ERROR"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a file gateway to an Active Directory domain. This operation is
 only supported for file gateways that support the SMB file protocol.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$join_domain(
+\preformatted{svc$join_domain(
   GatewayARN = "string",
   DomainName = "string",
   OrganizationalUnit = "string",
@@ -62,7 +58,7 @@ only supported for file gateways that support the SMB file protocol.
   UserName = "string",
   Password = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

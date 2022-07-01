@@ -17,9 +17,7 @@ is returned in the output. You can then pass the \code{NextToken} parameter
 in a subsequent command to continue listing additional servers.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Servers = list(
     list(
@@ -34,20 +32,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the file transfer protocol-enabled servers that are associated
 with your AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_servers(
+\preformatted{svc$list_servers(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

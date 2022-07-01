@@ -16,12 +16,10 @@ An empty list.
 Deletes a defined mitigation action from your AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_mitigation_action(
+\preformatted{svc$delete_mitigation_action(
   actionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

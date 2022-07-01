@@ -21,13 +21,11 @@ Deprecates a thing type. You can not associate new things with
 deprecated thing type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deprecate_thing_type(
+\preformatted{svc$deprecate_thing_type(
   thingTypeName = "string",
   undoDeprecate = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -18,9 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attachment = list(
     AttachTime = as.POSIXct(
       "2015-01-01"
@@ -47,21 +45,19 @@ A list with the following syntax:
     Value = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a network interface attribute. You can specify only one
 attribute at a time.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_network_interface_attribute(
+\preformatted{svc$describe_network_interface_attribute(
   Attribute = "description"|"groupSet"|"sourceDestCheck"|"attachment",
   DryRun = TRUE|FALSE,
   NetworkInterfaceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

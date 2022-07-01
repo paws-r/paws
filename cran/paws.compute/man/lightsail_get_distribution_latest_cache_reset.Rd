@@ -18,27 +18,23 @@ When omitted, the response includes the latest cache reset timestamp of
 all your distributions.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   status = "string",
   createTime = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the timestamp and status of the last cache reset of a specific
 Amazon Lightsail content delivery network (CDN) distribution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_distribution_latest_cache_reset(
+\preformatted{svc$get_distribution_latest_cache_reset(
   distributionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,12 +19,10 @@ account. Any configuration data you entered is deleted and all audit
 checks are reset to disabled.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_account_audit_configuration(
+\preformatted{svc$delete_account_audit_configuration(
   deleteScheduledAudits = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

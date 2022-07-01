@@ -25,13 +25,11 @@ This operation requires permissions for the \code{lex:DeleteIntentVersion}
 action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_intent_version(
+\preformatted{svc$delete_intent_version(
   name = "string",
   version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

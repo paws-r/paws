@@ -24,13 +24,11 @@ controller security logs to the specified Amazon CloudWatch log group in
 your AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_log_subscription(
+\preformatted{svc$create_log_subscription(
   DirectoryId = "string",
   LogGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

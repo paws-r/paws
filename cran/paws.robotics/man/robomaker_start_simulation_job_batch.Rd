@@ -19,9 +19,7 @@ idempotency of the request.}
 deployment job batch.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   arn = "string",
   status = "Pending"|"InProgress"|"Failed"|"Completed"|"Canceled"|"Canceling"|"Completing"|"TimingOut"|"TimedOut",
   createdAt = as.POSIXct(
@@ -244,16 +242,14 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a new simulation job batch. The batch is defined using one or
 more \code{SimulationJobRequest} objects.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_simulation_job_batch(
+\preformatted{svc$start_simulation_job_batch(
   clientRequestToken = "string",
   batchPolicy = list(
     timeoutInSeconds = 123,
@@ -353,7 +349,7 @@ more \code{SimulationJobRequest} objects.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

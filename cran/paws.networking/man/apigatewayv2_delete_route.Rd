@@ -18,13 +18,11 @@ An empty list.
 Deletes a Route.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_route(
+\preformatted{svc$delete_route(
   ApiId = "string",
   RouteId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

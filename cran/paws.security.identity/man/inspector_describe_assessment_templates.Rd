@@ -11,9 +11,7 @@ inspector_describe_assessment_templates(assessmentTemplateArns)
 \item{assessmentTemplateArns}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   assessmentTemplates = list(
     list(
       arn = "string",
@@ -43,21 +41,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the assessment templates that are specified by the ARNs of the
 assessment templates.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_assessment_templates(
+\preformatted{svc$describe_assessment_templates(
   assessmentTemplateArns = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

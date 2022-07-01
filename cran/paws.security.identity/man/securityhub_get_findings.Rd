@@ -30,9 +30,7 @@ response.}
 \item{MaxResults}{The maximum number of findings to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Findings = list(
     list(
       SchemaVersion = "string",
@@ -1663,15 +1661,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of findings that match the specified criteria.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_findings(
+\preformatted{svc$get_findings(
   Filters = list(
     ProductArn = list(
       list(
@@ -2236,7 +2232,7 @@ Returns a list of findings that match the specified criteria.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

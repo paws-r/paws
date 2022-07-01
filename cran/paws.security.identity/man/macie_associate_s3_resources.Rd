@@ -15,9 +15,7 @@ want to associate with Macie Classic.}
 for monitoring and data classification.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   failedS3Resources = list(
     list(
       failedItem = list(
@@ -29,7 +27,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Associates specified S3 resources with Amazon Macie Classic for
@@ -40,9 +38,7 @@ associates specified S3 resources with Macie Classic for the specified
 member account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_s3_resources(
+\preformatted{svc$associate_s3_resources(
   memberAccountId = "string",
   s3Resources = list(
     list(
@@ -55,7 +51,7 @@ member account.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

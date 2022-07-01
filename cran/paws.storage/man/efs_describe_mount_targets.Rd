@@ -34,9 +34,7 @@ to list. It must be included in your request if a \code{FileSystemId} or
 access point ID or ARN as input.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   MountTargets = list(
     list(
@@ -54,7 +52,7 @@ A list with the following syntax:
   ),
   NextMarker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the descriptions of all the current mount targets, or a specific
@@ -68,16 +66,14 @@ system ID that you specify in \code{FileSystemId}, or on the file system of
 the mount target that you specify in \code{MountTargetId}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_mount_targets(
+\preformatted{svc$describe_mount_targets(
   MaxItems = 123,
   Marker = "string",
   FileSystemId = "string",
   MountTargetId = "string",
   AccessPointId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

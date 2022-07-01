@@ -10,9 +10,7 @@ route53_enable_hosted_zone_dnssec(HostedZoneId)
 \item{HostedZoneId}{[required] A unique string used to identify a hosted zone.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChangeInfo = list(
     Id = "string",
     Status = "PENDING"|"INSYNC",
@@ -22,18 +20,16 @@ A list with the following syntax:
     Comment = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables DNSSEC signing in a specific hosted zone.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_hosted_zone_dnssec(
+\preformatted{svc$enable_hosted_zone_dnssec(
   HostedZoneId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

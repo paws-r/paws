@@ -36,9 +36,7 @@ connections to the broker.}
 connections to brokers.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AuthenticationStrategy = "SIMPLE"|"LDAP",
   AutoMinorVersionUpgrade = TRUE|FALSE,
   BrokerId = "string",
@@ -70,15 +68,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a pending configuration change to a broker.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_broker(
+\preformatted{svc$update_broker(
   AuthenticationStrategy = "SIMPLE"|"LDAP",
   AutoMinorVersionUpgrade = TRUE|FALSE,
   BrokerId = "string",
@@ -111,7 +107,7 @@ Adds a pending configuration change to a broker.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

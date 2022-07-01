@@ -61,9 +61,7 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NetworkAcls = list(
     list(
       Associations = list(
@@ -105,7 +103,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your network ACLs.
@@ -114,9 +112,7 @@ For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide
 Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_network_acls(
+\preformatted{svc$describe_network_acls(
   Filters = list(
     list(
       Name = "string",
@@ -132,7 +128,7 @@ Virtual Private Cloud User Guide}.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

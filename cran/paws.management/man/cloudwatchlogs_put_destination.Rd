@@ -16,9 +16,7 @@ events.}
 the Amazon Kinesis \code{PutRecord} operation on the destination stream.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   destination = list(
     destinationName = "string",
     targetArn = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
     creationTime = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates or updates a destination. This operation is used only to create
@@ -52,14 +50,12 @@ To perform a \code{\link[=cloudwatchlogs_put_destination]{put_destination}}
 operation, you must also have the \code{iam:PassRole} permission.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_destination(
+\preformatted{svc$put_destination(
   destinationName = "string",
   targetArn = "string",
   roleArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

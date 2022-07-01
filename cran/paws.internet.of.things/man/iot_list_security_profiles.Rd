@@ -18,9 +18,7 @@ dimension. Cannot be used with \code{metricName}}
 \item{metricName}{The name of the custom metric. Cannot be used with \code{dimensionName}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   securityProfileIdentifiers = list(
     list(
       name = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the Device Defender security profiles you've created. You can
@@ -38,15 +36,13 @@ filter security profiles by dimension or custom metric.
 \code{dimensionName} and \code{metricName} cannot be used in the same request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_security_profiles(
+\preformatted{svc$list_security_profiles(
   nextToken = "string",
   maxResults = 123,
   dimensionName = "string",
   metricName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

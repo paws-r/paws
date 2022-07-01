@@ -16,9 +16,7 @@ operation, which can be used to return the next set of items in the
 list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Groups = list(
     list(
       GroupName = "string",
@@ -36,7 +34,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the groups associated with a user pool.
@@ -44,14 +42,12 @@ Lists the groups associated with a user pool.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_groups(
+\preformatted{svc$list_groups(
   UserPoolId = "string",
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

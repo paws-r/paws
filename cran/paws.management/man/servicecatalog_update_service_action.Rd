@@ -24,9 +24,7 @@ servicecatalog_update_service_action(Id, Name, Definition, Description,
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ServiceActionDetail = list(
     ServiceActionSummary = list(
       Id = "string",
@@ -39,15 +37,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a self-service action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_service_action(
+\preformatted{svc$update_service_action(
   Id = "string",
   Name = "string",
   Definition = list(
@@ -56,7 +52,7 @@ Updates a self-service action.
   Description = "string",
   AcceptLanguage = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

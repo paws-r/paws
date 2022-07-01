@@ -14,9 +14,7 @@ amplify_stop_job(appId, branchName, jobId)
 \item{jobId}{[required] The unique id for the job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   jobSummary = list(
     jobArn = "string",
     jobId = "string",
@@ -35,20 +33,18 @@ A list with the following syntax:
     jobType = "RELEASE"|"RETRY"|"MANUAL"|"WEB_HOOK"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops a job that is in progress for a branch of an Amplify app.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_job(
+\preformatted{svc$stop_job(
   appId = "string",
   branchName = "string",
   jobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

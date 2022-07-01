@@ -24,15 +24,13 @@ value between 1 and 604800 seconds. The default is 60 seconds.}
 in the \emph{Amazon AppStream 2.0 Administration Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StreamingURL = "string",
   Expires = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a temporary URL to start an AppStream 2.0 streaming session for
@@ -40,9 +38,7 @@ the specified user. A streaming URL enables application streaming to be
 tested without user setup.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_streaming_url(
+\preformatted{svc$create_streaming_url(
   StackName = "string",
   FleetName = "string",
   UserId = "string",
@@ -50,7 +46,7 @@ tested without user setup.
   Validity = 123,
   SessionContext = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

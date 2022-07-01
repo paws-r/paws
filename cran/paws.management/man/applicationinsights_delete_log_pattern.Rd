@@ -21,14 +21,12 @@ An empty list.
 Removes the specified log pattern from a \code{LogPatternSet}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_log_pattern(
+\preformatted{svc$delete_log_pattern(
   ResourceGroupName = "string",
   PatternSetName = "string",
   PatternName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

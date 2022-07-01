@@ -14,9 +14,7 @@ not specify any names, AWS Config returns details for all your rules.}
 the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConfigRules = list(
     list(
       ConfigRuleName = "string",
@@ -50,21 +48,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns details about your AWS Config rules.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_config_rules(
+\preformatted{svc$describe_config_rules(
   ConfigRuleNames = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -25,9 +25,7 @@ requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProvisioningArtifactDetail = list(
     Id = "string",
     Name = "string",
@@ -44,7 +42,7 @@ A list with the following syntax:
   ),
   Status = "AVAILABLE"|"CREATING"|"FAILED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a provisioning artifact (also known as a version) for the
@@ -59,9 +57,7 @@ permission is required when using the \code{ImportFromPhysicalId} template
 source in the information data section.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_provisioning_artifact(
+\preformatted{svc$create_provisioning_artifact(
   AcceptLanguage = "string",
   ProductId = "string",
   Parameters = list(
@@ -75,7 +71,7 @@ source in the information data section.
   ),
   IdempotencyToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

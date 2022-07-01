@@ -8,9 +8,7 @@ currently active}
 ses_describe_active_receipt_rule_set()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Metadata = list(
     Name = "string",
     CreatedTimestamp = as.POSIXct(
@@ -67,7 +65,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the metadata and receipt rules for the receipt rule set that is
@@ -78,10 +76,8 @@ For information about setting up receipt rule sets, see the \href{https://docs.a
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_active_receipt_rule_set()
-}\if{html}{\out{</div>}}
+\preformatted{svc$describe_active_receipt_rule_set()
+}
 }
 
 \examples{

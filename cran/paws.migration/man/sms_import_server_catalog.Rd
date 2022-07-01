@@ -17,10 +17,8 @@ This call returns immediately, but might take additional time to
 retrieve all the servers.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_server_catalog()
-}\if{html}{\out{</div>}}
+\preformatted{svc$import_server_catalog()
+}
 }
 
 \keyword{internal}

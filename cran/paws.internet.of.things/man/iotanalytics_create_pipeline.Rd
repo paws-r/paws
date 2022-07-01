@@ -24,13 +24,11 @@ contain only one activity. For example:
 \item{tags}{Metadata which can be used to manage the pipeline.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pipelineName = "string",
   pipelineArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a pipeline. A pipeline consumes messages from a channel and
@@ -40,9 +38,7 @@ optionally, as many as 23 additional activities in the
 \code{pipelineActivities} array.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_pipeline(
+\preformatted{svc$create_pipeline(
   pipelineName = "string",
   pipelineActivities = list(
     list(
@@ -116,7 +112,7 @@ optionally, as many as 23 additional activities in the
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

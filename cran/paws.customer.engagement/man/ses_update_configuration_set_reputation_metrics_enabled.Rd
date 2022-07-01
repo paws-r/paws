@@ -28,13 +28,11 @@ bounce or complaint rates exceed certain thresholds.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_configuration_set_reputation_metrics_enabled(
+\preformatted{svc$update_configuration_set_reputation_metrics_enabled(
   ConfigurationSetName = "string",
   Enabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

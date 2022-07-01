@@ -63,14 +63,12 @@ information about using the Query API with IAM, go to \href{https://docs.aws.ama
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_group_policy(
+\preformatted{svc$put_group_policy(
   GroupName = "string",
   PolicyName = "string",
   PolicyDocument = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

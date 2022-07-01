@@ -11,9 +11,7 @@ codepipeline_get_pipeline_state(name)
 \item{name}{[required] The name of the pipeline about which you want to get information.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pipelineName = "string",
   pipelineVersion = 123,
   stageStates = list(
@@ -75,7 +73,7 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the state of a pipeline, including the stages
@@ -86,12 +84,10 @@ the source revision information, such as the commit ID, for the current
 state.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_pipeline_state(
+\preformatted{svc$get_pipeline_state(
   name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

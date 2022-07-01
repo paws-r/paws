@@ -24,9 +24,7 @@ specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   CacheSecurityGroups = list(
     list(
@@ -44,7 +42,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of cache security group descriptions. If a cache security
@@ -52,14 +50,12 @@ group name is specified, the list contains only the description of that
 group. This applicable only when you have ElastiCache in Classic setup
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cache_security_groups(
+\preformatted{svc$describe_cache_security_groups(
   CacheSecurityGroupName = "string",
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,9 +15,7 @@ The default is maximum. If you specify 0, AWS Config uses the default.}
 the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AggregationAuthorizations = list(
     list(
       AggregationAuthorizationArn = "string",
@@ -30,20 +28,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of authorizations granted to various aggregator accounts
 and regions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_aggregation_authorizations(
+\preformatted{svc$describe_aggregation_authorizations(
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

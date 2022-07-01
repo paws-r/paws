@@ -58,9 +58,7 @@ deletion starts. Deleted stacks do not show up in the
 has been completed successfully.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_stack(
+\preformatted{svc$delete_stack(
   StackName = "string",
   RetainResources = list(
     "string"
@@ -68,7 +66,7 @@ has been completed successfully.
   RoleARN = "string",
   ClientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

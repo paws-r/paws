@@ -10,9 +10,7 @@ ssm_delete_parameters(Names)
 \item{Names}{[required] The names of the parameters to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DeletedParameters = list(
     "string"
   ),
@@ -20,20 +18,18 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Delete a list of parameters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_parameters(
+\preformatted{svc$delete_parameters(
   Names = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -14,9 +14,7 @@ lightsail_open_instance_public_ports(portInfo, instanceName)
 \item{instanceName}{[required] The name of the instance for which to open ports.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
     errorDetails = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Opens ports for a specific Amazon Lightsail instance, and specifies the
@@ -52,9 +50,7 @@ the resource identified by \code{instanceName}. For more information, see the
 Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$open_instance_public_ports(
+\preformatted{svc$open_instance_public_ports(
   portInfo = list(
     fromPort = 123,
     toPort = 123,
@@ -68,7 +64,7 @@ Lightsail Dev Guide.
   ),
   instanceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

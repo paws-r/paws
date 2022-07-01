@@ -41,9 +41,7 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_request_payment(
+\preformatted{svc$put_bucket_request_payment(
   Bucket = "string",
   ContentMD5 = "string",
   RequestPaymentConfiguration = list(
@@ -51,7 +49,7 @@ The following operations are related to
   ),
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

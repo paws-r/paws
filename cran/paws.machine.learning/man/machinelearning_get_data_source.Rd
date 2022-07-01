@@ -19,9 +19,7 @@ If true, \code{DataSourceSchema} is returned.
 If false, \code{DataSourceSchema} is not returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DataSourceId = "string",
   DataLocationS3 = "string",
   DataRearrangement = "string",
@@ -68,7 +66,7 @@ A list with the following syntax:
   ),
   DataSourceSchema = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a \code{DataSource} that includes metadata and data file information,
@@ -79,13 +77,11 @@ normal or verbose format. The verbose format adds the schema description
 and the list of files pointed to by the DataSource to the normal format.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_data_source(
+\preformatted{svc$get_data_source(
   DataSourceId = "string",
   Verbose = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

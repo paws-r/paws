@@ -10,9 +10,7 @@ sagemaker_describe_model(ModelName)
 \item{ModelName}{[required] The name of the model.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ModelName = "string",
   PrimaryContainer = list(
     ContainerHostname = "string",
@@ -57,19 +55,17 @@ A list with the following syntax:
   ModelArn = "string",
   EnableNetworkIsolation = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a model that you created using the
 \code{\link[=sagemaker_create_model]{create_model}} API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_model(
+\preformatted{svc$describe_model(
   ModelName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

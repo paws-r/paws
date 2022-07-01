@@ -11,9 +11,7 @@ lightsail_detach_static_ip(staticIpName)
 \item{staticIpName}{[required] The name of the static IP to detach from the instance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -38,19 +36,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Detaches a static IP from the Amazon Lightsail instance to which it is
 attached.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_static_ip(
+\preformatted{svc$detach_static_ip(
   staticIpName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ connect_describe_instance(InstanceId)
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Instance = list(
     Id = "string",
     Arn = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
     OutboundCallsEnabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -47,12 +45,10 @@ state is returned only for 24 hours after the CreateInstance API was
 invoked.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instance(
+\preformatted{svc$describe_instance(
   InstanceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

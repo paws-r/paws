@@ -27,9 +27,7 @@ The dataset in the request should be the one expected when performing
 another \code{\link[=workmail_describe_resource]{describe_resource}} call.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_resource(
+\preformatted{svc$update_resource(
   OrganizationId = "string",
   ResourceId = "string",
   Name = "string",
@@ -39,7 +37,7 @@ another \code{\link[=workmail_describe_resource]{describe_resource}} call.
     AutoDeclineConflictingRequests = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

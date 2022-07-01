@@ -21,9 +21,7 @@ Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Instances = list(
     list(
       FleetId = "string",
@@ -40,7 +38,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about a fleet's instances, including instance IDs.
@@ -65,15 +63,13 @@ successful, an Instance object is returned for each result.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instances(
+\preformatted{svc$describe_instances(
   FleetId = "string",
   InstanceId = "string",
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

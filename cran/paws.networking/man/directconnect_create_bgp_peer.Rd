@@ -12,9 +12,7 @@ directconnect_create_bgp_peer(virtualInterfaceId, newBGPPeer)
 \item{newBGPPeer}{Information about the BGP peer.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   virtualInterface = list(
     ownerAccount = "string",
     virtualInterfaceId = "string",
@@ -63,7 +61,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a BGP peer on the specified virtual interface.
@@ -84,9 +82,7 @@ For a public virtual interface, the Autonomous System Number (ASN) must
 be private or already whitelisted for the virtual interface.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_bgp_peer(
+\preformatted{svc$create_bgp_peer(
   virtualInterfaceId = "string",
   newBGPPeer = list(
     asn = 123,
@@ -96,7 +92,7 @@ be private or already whitelisted for the virtual interface.
     customerAddress = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

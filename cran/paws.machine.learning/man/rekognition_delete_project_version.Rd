@@ -11,12 +11,10 @@ rekognition_delete_project_version(ProjectVersionArn)
 delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an Amazon Rekognition Custom Labels model.
@@ -32,12 +30,10 @@ This operation requires permissions to perform the
 \code{rekognition:DeleteProjectVersion} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_project_version(
+\preformatted{svc$delete_project_version(
   ProjectVersionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

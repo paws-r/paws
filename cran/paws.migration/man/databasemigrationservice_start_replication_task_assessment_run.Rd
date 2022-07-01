@@ -66,9 +66,7 @@ supports for the associated migration task, run the
 operation using its own \code{ReplicationTaskArn} request parameter.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationTaskAssessmentRun = list(
     ReplicationTaskAssessmentRunArn = "string",
     ReplicationTaskArn = "string",
@@ -89,7 +87,7 @@ A list with the following syntax:
     AssessmentRunName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a new premigration assessment run for one or more individual
@@ -103,9 +101,7 @@ assessment. You can also run the migration task manually after the
 assessment run and its individual assessments complete.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_replication_task_assessment_run(
+\preformatted{svc$start_replication_task_assessment_run(
   ReplicationTaskArn = "string",
   ServiceAccessRoleArn = "string",
   ResultLocationBucket = "string",
@@ -120,7 +116,7 @@ assessment run and its individual assessments complete.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -8,9 +8,7 @@ content delivery network (CDN) distributions}
 lightsail_get_distribution_bundles()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   bundles = list(
     list(
       bundleId = "string",
@@ -21,7 +19,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the list bundles that can be applied to you Amazon Lightsail
@@ -31,10 +29,8 @@ A distribution bundle specifies the monthly network transfer quota and
 monthly cost of your dsitribution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_distribution_bundles()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_distribution_bundles()
+}
 }
 
 \keyword{internal}

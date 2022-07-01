@@ -37,9 +37,7 @@ Visit
 more information.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- simpledb(
+\preformatted{svc <- simpledb(
   config = list(
     credentials = list(
       creds = list(
@@ -53,7 +51,7 @@ more information.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

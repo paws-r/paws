@@ -18,13 +18,11 @@ An empty list.
 Changes the name of an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_application(
+\preformatted{svc$update_application(
   applicationName = "string",
   newApplicationName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

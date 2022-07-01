@@ -24,28 +24,24 @@ network cards. The primary network interface must be assigned to network
 card index 0. The default is network card index 0.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AttachmentId = "string",
   NetworkCardIndex = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Attaches a network interface to an instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_network_interface(
+\preformatted{svc$attach_network_interface(
   DeviceIndex = 123,
   DryRun = TRUE|FALSE,
   InstanceId = "string",
   NetworkInterfaceId = "string",
   NetworkCardIndex = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

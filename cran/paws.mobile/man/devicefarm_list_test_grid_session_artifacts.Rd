@@ -17,9 +17,7 @@ devicefarm_list_test_grid_session_artifacts(sessionArn, type, maxResult,
 \item{nextToken}{Pagination token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   artifacts = list(
     list(
       filename = "string",
@@ -29,21 +27,19 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list of artifacts created during the session.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_test_grid_session_artifacts(
+\preformatted{svc$list_test_grid_session_artifacts(
   sessionArn = "string",
   type = "VIDEO"|"LOG",
   maxResult = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

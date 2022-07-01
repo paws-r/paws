@@ -16,12 +16,10 @@ An empty list.
 Deletes a connector definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_connector_definition(
+\preformatted{svc$delete_connector_definition(
   ConnectorDefinitionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -13,9 +13,7 @@ them and the AWS Region where they are created. They consist of
 lowercase letters, numbers, and hyphens.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BackupVaultName = "string",
   BackupVaultArn = "string",
   EncryptionKeyArn = "string",
@@ -25,18 +23,16 @@ A list with the following syntax:
   CreatorRequestId = "string",
   NumberOfRecoveryPoints = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns metadata about a backup vault specified by its name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_backup_vault(
+\preformatted{svc$describe_backup_vault(
   BackupVaultName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

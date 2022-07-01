@@ -23,9 +23,7 @@ Updates the channels that agents can handle in the Contact Control Panel
 (CCP) for a routing profile.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_routing_profile_concurrency(
+\preformatted{svc$update_routing_profile_concurrency(
   InstanceId = "string",
   RoutingProfileId = "string",
   MediaConcurrencies = list(
@@ -35,7 +33,7 @@ Updates the channels that agents can handle in the Contact Control Panel
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

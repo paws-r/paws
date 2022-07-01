@@ -24,15 +24,13 @@ call. It can be used to return the next set of on-premises instances in
 the list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   instanceNames = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of names for one or more on-premises instances.
@@ -42,9 +40,7 @@ instance names are listed. To list only registered or deregistered
 on-premises instance names, use the registration status parameter.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_on_premises_instances(
+\preformatted{svc$list_on_premises_instances(
   registrationStatus = "Registered"|"Deregistered",
   tagFilters = list(
     list(
@@ -55,7 +51,7 @@ on-premises instance names, use the registration status parameter.
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

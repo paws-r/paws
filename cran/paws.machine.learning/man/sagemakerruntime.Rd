@@ -19,9 +19,7 @@ Operations section.
 The Amazon SageMaker runtime API.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- sagemakerruntime(
+\preformatted{svc <- sagemakerruntime(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +33,7 @@ The Amazon SageMaker runtime API.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

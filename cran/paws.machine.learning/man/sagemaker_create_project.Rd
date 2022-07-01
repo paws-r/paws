@@ -22,13 +22,11 @@ your AWS resource costs. For more information, see \href{https://docs.aws.amazon
 in the \emph{AWS General Reference Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProjectArn = "string",
   ProjectId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a machine learning (ML) project that can contain one or more
@@ -36,9 +34,7 @@ templates that set up an ML pipeline from training to deploying an
 approved model.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_project(
+\preformatted{svc$create_project(
   ProjectName = "string",
   ProjectDescription = "string",
   ServiceCatalogProvisioningDetails = list(
@@ -59,7 +55,7 @@ approved model.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

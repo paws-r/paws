@@ -23,9 +23,7 @@ distributions. If you specify "null" for the ID, the request returns a
 list of the distributions that aren't associated with a web ACL.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DistributionList = list(
     Marker = "string",
     NextMarker = "string",
@@ -309,21 +307,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List the distributions that are associated with a specified AWS WAF web
 ACL.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_distributions_by_web_acl_id(
+\preformatted{svc$list_distributions_by_web_acl_id(
   Marker = "string",
   MaxItems = "string",
   WebACLId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

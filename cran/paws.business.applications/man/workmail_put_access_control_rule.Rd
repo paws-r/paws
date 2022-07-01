@@ -42,9 +42,7 @@ addresses, access protocol actions, and user IDs. Adding a new rule with
 the same name as an existing rule replaces the older rule.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_access_control_rule(
+\preformatted{svc$put_access_control_rule(
   Name = "string",
   Effect = "ALLOW"|"DENY",
   Description = "string",
@@ -68,7 +66,7 @@ the same name as an existing rule replaces the older rule.
   ),
   OrganizationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

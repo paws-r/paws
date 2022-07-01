@@ -21,9 +21,7 @@ Cognito. GUID generation is unique within a region.}
 \item{MaxResults}{The maximum number of results to be returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Datasets = list(
     list(
       IdentityId = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
   Count = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists datasets for an identity. With Amazon Cognito Sync, each identity
@@ -54,15 +52,13 @@ Cognito Identity or with developer credentials. You should use the
 Cognito Identity credentials to make this API call.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_datasets(
+\preformatted{svc$list_datasets(
   IdentityPoolId = "string",
   IdentityId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

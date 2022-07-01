@@ -40,9 +40,7 @@ request.}
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Hosts = list(
     list(
       AutoPlacement = "on"|"off",
@@ -96,7 +94,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified Dedicated Hosts or all your Dedicated Hosts.
@@ -107,9 +105,7 @@ Host. Dedicated Hosts that have recently been released are listed with
 the state \code{released}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_hosts(
+\preformatted{svc$describe_hosts(
   Filter = list(
     list(
       Name = "string",
@@ -124,7 +120,7 @@ the state \code{released}.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

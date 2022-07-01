@@ -24,9 +24,7 @@ Adds two domain controllers in the specified Region for the specified
 directory.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_region(
+\preformatted{svc$add_region(
   DirectoryId = "string",
   RegionName = "string",
   VPCSettings = list(
@@ -36,7 +34,7 @@ directory.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

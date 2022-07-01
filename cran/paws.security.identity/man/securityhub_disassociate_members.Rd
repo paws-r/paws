@@ -22,14 +22,12 @@ Can be used to disassociate both accounts that are in an organization
 and accounts that were invited manually.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_members(
+\preformatted{svc$disassociate_members(
   AccountIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

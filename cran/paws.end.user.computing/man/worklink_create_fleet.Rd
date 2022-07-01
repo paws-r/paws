@@ -19,12 +19,10 @@ Region.}
 \item{Tags}{The tags to add to the resource. A tag is a key-value pair.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FleetArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a fleet. A fleet consists of resources and the configuration
@@ -32,9 +30,7 @@ that delivers associated websites to authorized users who download and
 set up the Amazon WorkLink app.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_fleet(
+\preformatted{svc$create_fleet(
   FleetName = "string",
   DisplayName = "string",
   OptimizeForEndUserLocation = TRUE|FALSE,
@@ -42,7 +38,7 @@ set up the Amazon WorkLink app.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

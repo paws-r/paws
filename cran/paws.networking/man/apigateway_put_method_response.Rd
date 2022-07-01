@@ -35,9 +35,7 @@ Response models are represented as a key/value map, with a content type
 as the key and a Model name as the value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   statusCode = "string",
   responseParameters = list(
     TRUE|FALSE
@@ -46,15 +44,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a MethodResponse to an existing Method resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_method_response(
+\preformatted{svc$put_method_response(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",
@@ -66,7 +62,7 @@ Adds a MethodResponse to an existing Method resource.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

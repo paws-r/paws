@@ -22,12 +22,10 @@ nor is it possible to retrieve it using either the
 For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_lexicon(
+\preformatted{svc$delete_lexicon(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

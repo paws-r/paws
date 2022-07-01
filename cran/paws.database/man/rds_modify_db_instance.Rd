@@ -571,9 +571,7 @@ For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts
 in the \emph{AWS Outposts User Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -759,7 +757,7 @@ A list with the following syntax:
     CustomerOwnedIpEnabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database
@@ -770,9 +768,7 @@ DB instance, call
 before you call \code{\link[=rds_modify_db_instance]{modify_db_instance}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_instance(
+\preformatted{svc$modify_db_instance(
   DBInstanceIdentifier = "string",
   AllocatedStorage = 123,
   DBInstanceClass = "string",
@@ -834,7 +830,7 @@ before you call \code{\link[=rds_modify_db_instance]{modify_db_instance}}.
   ReplicaMode = "open-read-only"|"mounted",
   EnableCustomerOwnedIp = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

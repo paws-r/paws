@@ -46,13 +46,11 @@ The following actions are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_access_point_policy(
+\preformatted{svc$delete_access_point_policy(
   AccountId = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

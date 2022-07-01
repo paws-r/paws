@@ -11,9 +11,7 @@ lambda_get_layer_version_by_arn(Arn)
 \item{Arn}{[required] The ARN of the layer version.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Content = list(
     Location = "string",
     CodeSha256 = "string",
@@ -31,19 +29,17 @@ A list with the following syntax:
   ),
   LicenseInfo = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer},
 with a link to download the layer archive that's valid for 10 minutes.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_layer_version_by_arn(
+\preformatted{svc$get_layer_version_by_arn(
   Arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

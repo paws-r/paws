@@ -22,13 +22,11 @@ connect_create_integration_association(InstanceId, IntegrationType,
 \item{SourceType}{[required] The type of the data source.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IntegrationAssociationId = "string",
   IntegrationAssociationArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -37,9 +35,7 @@ change.
 Create an AppIntegration association with an Amazon Connect instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_integration_association(
+\preformatted{svc$create_integration_association(
   InstanceId = "string",
   IntegrationType = "EVENT",
   IntegrationArn = "string",
@@ -47,7 +43,7 @@ Create an AppIntegration association with an Amazon Connect instance.
   SourceApplicationName = "string",
   SourceType = "SALESFORCE"|"ZENDESK"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

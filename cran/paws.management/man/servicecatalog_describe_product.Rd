@@ -19,9 +19,7 @@ servicecatalog_describe_product(AcceptLanguage, Id, Name)
 \item{Name}{The product name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProductViewSummary = list(
     Id = "string",
     ProductId = "string",
@@ -58,20 +56,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the specified product.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_product(
+\preformatted{svc$describe_product(
   AcceptLanguage = "string",
   Id = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -18,13 +18,11 @@ An empty list.
 Delete documentation part
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_documentation_part(
+\preformatted{svc$delete_documentation_part(
   restApiId = "string",
   documentationPartId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

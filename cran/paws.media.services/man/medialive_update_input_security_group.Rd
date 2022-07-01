@@ -15,9 +15,7 @@ medialive_update_input_security_group(InputSecurityGroupId, Tags,
 \item{WhitelistRules}{List of IPv4 CIDR addresses to whitelist}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SecurityGroup = list(
     Arn = "string",
     Id = "string",
@@ -35,15 +33,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Update an Input Security Group's Whilelists.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_input_security_group(
+\preformatted{svc$update_input_security_group(
   InputSecurityGroupId = "string",
   Tags = list(
     "string"
@@ -54,7 +50,7 @@ Update an Input Security Group's Whilelists.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

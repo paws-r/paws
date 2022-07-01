@@ -34,9 +34,7 @@ see \href{https://docs.aws.amazon.com/application-discovery/latest/userguide/dis
 in the \emph{AWS Application Discovery Service User Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   configurations = list(
     list(
       "string"
@@ -44,7 +42,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list of configuration items as specified by the value passed
@@ -52,9 +50,7 @@ to the required parameter \code{configurationType}. Optional filtering may be
 applied to refine search results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_configurations(
+\preformatted{svc$list_configurations(
   configurationType = "SERVER"|"PROCESS"|"CONNECTION"|"APPLICATION",
   filters = list(
     list(
@@ -74,7 +70,7 @@ applied to refine search results.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

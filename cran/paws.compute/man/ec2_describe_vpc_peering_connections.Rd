@@ -54,9 +54,7 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VpcPeeringConnections = list(
     list(
       AccepterVpcInfo = list(
@@ -119,15 +117,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your VPC peering connections.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vpc_peering_connections(
+\preformatted{svc$describe_vpc_peering_connections(
   Filters = list(
     list(
       Name = "string",
@@ -143,7 +139,7 @@ Describes one or more of your VPC peering connections.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

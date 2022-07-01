@@ -23,9 +23,7 @@ value. To see the next batch of results, you can submit the ListFlows
 request a second time and specify the NextToken value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Flows = list(
     list(
       AvailabilityZone = "string",
@@ -38,20 +36,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Displays a list of flows that are associated with this account. This
 request returns a paginated result.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_flows(
+\preformatted{svc$list_flows(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

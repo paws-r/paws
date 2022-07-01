@@ -47,14 +47,12 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DeleteMarker = TRUE|FALSE,
   VersionId = "string",
   RequestCharged = "requester"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes the null version (if there is one) of an object and inserts a
@@ -89,9 +87,7 @@ The following operation is related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_object(
+\preformatted{svc$delete_object(
   Bucket = "string",
   Key = "string",
   MFA = "string",
@@ -100,7 +96,7 @@ The following operation is related to
   BypassGovernanceRetention = TRUE|FALSE,
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

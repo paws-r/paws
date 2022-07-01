@@ -21,15 +21,13 @@ Disassociates the specified sign-in delegate groups from the specified
 Amazon Chime account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_signin_delegate_groups_from_account(
+\preformatted{svc$disassociate_signin_delegate_groups_from_account(
   AccountId = "string",
   GroupNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -29,9 +29,7 @@ settings when a client connects to an access point. When specifying a
 is optional.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClientToken = "string",
   Name = "string",
   Tags = list(
@@ -61,7 +59,7 @@ A list with the following syntax:
   OwnerId = "string",
   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an EFS access point. An access point is an application-specific
@@ -77,9 +75,7 @@ This operation requires permissions for the
 \code{elasticfilesystem:CreateAccessPoint} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_access_point(
+\preformatted{svc$create_access_point(
   ClientToken = "string",
   Tags = list(
     list(
@@ -104,7 +100,7 @@ This operation requires permissions for the
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

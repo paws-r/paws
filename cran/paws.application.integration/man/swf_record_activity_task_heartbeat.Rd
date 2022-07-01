@@ -18,12 +18,10 @@ with results.}
 \item{details}{If specified, contains details about the progress of the task.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   cancelRequested = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Used by activity workers to report to the service that the ActivityTask
@@ -79,13 +77,11 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$record_activity_task_heartbeat(
+\preformatted{svc$record_activity_task_heartbeat(
   taskToken = "string",
   details = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

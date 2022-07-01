@@ -11,9 +11,7 @@ worklink_describe_fleet_metadata(FleetArn)
 \item{FleetArn}{[required] The Amazon Resource Name (ARN) of the fleet.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CreatedTime = as.POSIXct(
     "2015-01-01"
   ),
@@ -29,19 +27,17 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides basic information for the specified fleet, excluding identity
 provider, networking, and device configuration details.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_fleet_metadata(
+\preformatted{svc$describe_fleet_metadata(
   FleetArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

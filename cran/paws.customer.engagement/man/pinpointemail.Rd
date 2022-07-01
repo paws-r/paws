@@ -52,9 +52,7 @@ latency. To learn more about the number of Availability Zones that are
 available in each Region, see \href{https://aws.amazon.com/about-aws/global-infrastructure/}{AWS Global Infrastructure}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- pinpointemail(
+\preformatted{svc <- pinpointemail(
   config = list(
     credentials = list(
       creds = list(
@@ -68,7 +66,7 @@ available in each Region, see \href{https://aws.amazon.com/about-aws/global-infr
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

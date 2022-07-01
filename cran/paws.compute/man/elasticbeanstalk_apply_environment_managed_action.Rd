@@ -15,15 +15,13 @@ elasticbeanstalk_apply_environment_managed_action(EnvironmentName,
 \item{ActionId}{[required] The action ID of the scheduled managed action to execute.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ActionId = "string",
   ActionDescription = "string",
   ActionType = "InstanceRefresh"|"PlatformUpdate"|"Unknown",
   Status = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Applies a scheduled managed action immediately. A managed action can be
@@ -32,14 +30,12 @@ of a managed action with
 \code{\link[=elasticbeanstalk_describe_environment_managed_actions]{describe_environment_managed_actions}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$apply_environment_managed_action(
+\preformatted{svc$apply_environment_managed_action(
   EnvironmentName = "string",
   EnvironmentId = "string",
   ActionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

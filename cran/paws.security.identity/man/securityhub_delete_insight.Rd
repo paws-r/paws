@@ -10,23 +10,19 @@ securityhub_delete_insight(InsightArn)
 \item{InsightArn}{[required] The ARN of the insight to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InsightArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the insight specified by the \code{InsightArn}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_insight(
+\preformatted{svc$delete_insight(
   InsightArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

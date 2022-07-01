@@ -12,9 +12,7 @@ databasemigrationservice_cancel_replication_task_assessment_run(
 canceled.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationTaskAssessmentRun = list(
     ReplicationTaskAssessmentRunArn = "string",
     ReplicationTaskArn = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
     AssessmentRunName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Cancels a single premigration assessment run.
@@ -45,12 +43,10 @@ haven't started running. It also attempts to cancel any individual
 assessments that are currently running.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_replication_task_assessment_run(
+\preformatted{svc$cancel_replication_task_assessment_run(
   ReplicationTaskAssessmentRunArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

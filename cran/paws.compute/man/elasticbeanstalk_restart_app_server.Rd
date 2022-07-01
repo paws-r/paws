@@ -28,13 +28,11 @@ Causes the environment to restart the application container server
 running on each Amazon EC2 instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restart_app_server(
+\preformatted{svc$restart_app_server(
   EnvironmentId = "string",
   EnvironmentName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

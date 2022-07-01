@@ -24,9 +24,7 @@ specify 0, AWS Config uses the default.}
 the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EvaluationResults = list(
     list(
       EvaluationResultIdentifier = list(
@@ -52,7 +50,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the evaluation results for the specified AWS Config rule. The
@@ -61,9 +59,7 @@ each resource was last evaluated, and whether each resource complies
 with the rule.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_compliance_details_by_config_rule(
+\preformatted{svc$get_compliance_details_by_config_rule(
   ConfigRuleName = "string",
   ComplianceTypes = list(
     "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
@@ -71,7 +67,7 @@ with the rule.
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

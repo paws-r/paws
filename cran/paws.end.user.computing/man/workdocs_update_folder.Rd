@@ -28,16 +28,14 @@ Updates the specified attributes of the specified folder. The user must
 have access to both the folder and its parent folder, if applicable.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_folder(
+\preformatted{svc$update_folder(
   AuthenticationToken = "string",
   FolderId = "string",
   Name = "string",
   ParentFolderId = "string",
   ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

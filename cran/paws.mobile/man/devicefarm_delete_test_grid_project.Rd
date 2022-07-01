@@ -22,12 +22,10 @@ You cannot undo this operation.
 You cannot delete a project if it has active sessions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_test_grid_project(
+\preformatted{svc$delete_test_grid_project(
   projectArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

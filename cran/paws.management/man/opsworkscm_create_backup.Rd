@@ -28,9 +28,7 @@ OpsWorks-CM resources.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Backup = list(
     BackupArn = "string",
     BackupId = "string",
@@ -64,7 +62,7 @@ A list with the following syntax:
     UserArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an application-level backup of a server. While the server is in
@@ -85,9 +83,7 @@ is not in any of the following states: RUNNING, HEALTHY, or UNHEALTHY. A
 valid.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_backup(
+\preformatted{svc$create_backup(
   ServerName = "string",
   Description = "string",
   Tags = list(
@@ -97,7 +93,7 @@ valid.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

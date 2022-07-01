@@ -19,9 +19,7 @@ between 1 and 50. The default value is 50.}
 \item{NextToken}{The token for the next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ScalingPlanResources = list(
     list(
       ScalingPlanName = "string",
@@ -64,21 +62,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the scalable resources in the specified scaling plan.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_scaling_plan_resources(
+\preformatted{svc$describe_scaling_plan_resources(
   ScalingPlanName = "string",
   ScalingPlanVersion = 123,
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

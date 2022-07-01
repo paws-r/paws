@@ -17,9 +17,7 @@ The default value is 10.}
 previous call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Listeners = list(
     list(
       ListenerArn = "string",
@@ -33,20 +31,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List the listeners for a custom routing accelerator.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_custom_routing_listeners(
+\preformatted{svc$list_custom_routing_listeners(
   AcceleratorArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

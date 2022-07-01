@@ -10,9 +10,7 @@ cloudfront_get_public_key(Id)
 \item{Id}{[required] The identifier of the public key you are getting.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PublicKey = list(
     Id = "string",
     CreatedTime = as.POSIXct(
@@ -27,18 +25,16 @@ A list with the following syntax:
   ),
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a public key.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_public_key(
+\preformatted{svc$get_public_key(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

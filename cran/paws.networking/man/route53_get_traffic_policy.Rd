@@ -13,9 +13,7 @@ route53_get_traffic_policy(Id, Version)
 information about.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrafficPolicy = list(
     Id = "string",
     Version = 123,
@@ -25,7 +23,7 @@ A list with the following syntax:
     Comment = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a specific traffic policy version.
@@ -35,13 +33,11 @@ response from \code{\link[=route53_get_traffic_policy]{get_traffic_policy}}, see
 \code{\link[=route53_delete_traffic_policy]{delete_traffic_policy}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_traffic_policy(
+\preformatted{svc$get_traffic_policy(
   Id = "string",
   Version = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

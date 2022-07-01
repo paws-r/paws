@@ -15,9 +15,7 @@ By default, resize operations for all clusters defined for an AWS
 account are returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TargetNodeType = "string",
   TargetNumberOfNodes = 123,
   TargetClusterType = "string",
@@ -41,7 +39,7 @@ A list with the following syntax:
   TargetEncryptionType = "string",
   DataTransferProgressPercent = 123.0
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the last resize operation for the specified
@@ -55,12 +53,10 @@ A resize operation can be requested using
 number or type of nodes for the cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_resize(
+\preformatted{svc$describe_resize(
   ClusterIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

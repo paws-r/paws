@@ -16,9 +16,7 @@ Pattern:
 [0-9a-fA-F]\{8\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{12\}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationId = "string",
   CreationTime = "string",
   ExpirationTime = "string",
@@ -27,19 +25,17 @@ A list with the following syntax:
   TemplateId = "string",
   TemplateUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the specified AWS CloudFormation template.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_cloud_formation_template(
+\preformatted{svc$get_cloud_formation_template(
   ApplicationId = "string",
   TemplateId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

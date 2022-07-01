@@ -27,9 +27,7 @@ remove, and view tags. The maximum tag limit may be lower than stated.
 See the AWS General Reference for actual tagging limits.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RuleSet = list(
     RuleSetName = "string",
     RuleSetArn = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new rule set for FlexMatch matchmaking. A rule set describes
@@ -77,9 +75,7 @@ before creating a new rule set.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_matchmaking_rule_set(
+\preformatted{svc$create_matchmaking_rule_set(
   Name = "string",
   RuleSetBody = "string",
   Tags = list(
@@ -89,7 +85,7 @@ before creating a new rule set.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

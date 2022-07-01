@@ -21,14 +21,12 @@ An empty list.
 Deletes an IntegrationResponses.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_integration_response(
+\preformatted{svc$delete_integration_response(
   ApiId = "string",
   IntegrationId = "string",
   IntegrationResponseId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

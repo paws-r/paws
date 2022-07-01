@@ -53,16 +53,14 @@ delete a secret with the \code{ForceDeleteWithouRecovery} parameter, then you
 have no opportunity to recover the secret. It is permanently lost.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ARN = "string",
   Name = "string",
   DeletionDate = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an entire secret and all of its versions. You can optionally
@@ -112,14 +110,12 @@ window has expired, use
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_secret(
+\preformatted{svc$delete_secret(
   SecretId = "string",
   RecoveryWindowInDays = 123,
   ForceDeleteWithoutRecovery = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

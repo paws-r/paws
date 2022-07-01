@@ -21,15 +21,13 @@ transforms.}
 \item{Tags}{Specifies to return only these tagged resources.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TransformIds = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a sortable, filterable list of existing AWS Glue machine
@@ -40,9 +38,7 @@ retrieved as a group. If you choose to use tag filtering, only resources
 with the tags are retrieved.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_ml_transforms(
+\preformatted{svc$list_ml_transforms(
   NextToken = "string",
   MaxResults = 123,
   Filter = list(
@@ -77,7 +73,7 @@ with the tags are retrieved.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

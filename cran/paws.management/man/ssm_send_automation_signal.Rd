@@ -39,9 +39,7 @@ Sends a signal to an Automation execution to change the current behavior
 or status of the execution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_automation_signal(
+\preformatted{svc$send_automation_signal(
   AutomationExecutionId = "string",
   SignalType = "Approve"|"Reject"|"StartStep"|"StopStep"|"Resume",
   Payload = list(
@@ -50,7 +48,7 @@ or status of the execution.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

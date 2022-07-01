@@ -21,12 +21,10 @@ Certificate Manager (ACM) certificate and an AWS Elemental MediaConvert
 resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_certificate(
+\preformatted{svc$disassociate_certificate(
   Arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

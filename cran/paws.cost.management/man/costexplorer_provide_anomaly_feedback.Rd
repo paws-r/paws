@@ -13,24 +13,20 @@ costexplorer_provide_anomaly_feedback(AnomalyId, Feedback)
 considered it an anomaly.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AnomalyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the feedback property of a given cost anomaly.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$provide_anomaly_feedback(
+\preformatted{svc$provide_anomaly_feedback(
   AnomalyId = "string",
   Feedback = "YES"|"NO"|"PLANNED_ACTIVITY"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

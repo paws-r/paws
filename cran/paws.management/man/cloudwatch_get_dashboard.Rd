@@ -10,14 +10,12 @@ cloudwatch_get_dashboard(DashboardName)
 \item{DashboardName}{[required] The name of the dashboard to be described.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DashboardArn = "string",
   DashboardBody = "string",
   DashboardName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Displays the details of the dashboard that you specify.
@@ -29,12 +27,10 @@ when you call \code{\link[=cloudwatch_put_dashboard]{put_dashboard}} to create t
 copy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_dashboard(
+\preformatted{svc$get_dashboard(
   DashboardName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

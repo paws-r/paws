@@ -33,16 +33,14 @@ If any one of the tags is invalid or if you exceed the allowed number of
 tags for an OU, then the entire request fails and the OU is not created.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OrganizationalUnit = list(
     Id = "string",
     Arn = "string",
     Name = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an organizational unit (OU) within a root or parent OU. An OU is
@@ -61,9 +59,7 @@ This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_organizational_unit(
+\preformatted{svc$create_organizational_unit(
   ParentId = "string",
   Name = "string",
   Tags = list(
@@ -73,7 +69,7 @@ account.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

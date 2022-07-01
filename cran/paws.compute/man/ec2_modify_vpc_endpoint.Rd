@@ -47,12 +47,10 @@ the network interface.}
 associated with the VPC.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies attributes of a specified VPC endpoint. The attributes that you
@@ -61,9 +59,7 @@ Gateway Load Balancer). For more information, see \href{https://docs.aws.amazon.
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_vpc_endpoint(
+\preformatted{svc$modify_vpc_endpoint(
   DryRun = TRUE|FALSE,
   VpcEndpointId = "string",
   ResetPolicy = TRUE|FALSE,
@@ -88,7 +84,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   ),
   PrivateDnsEnabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -22,31 +22,27 @@ target="_blank">JSON schema draft 4</a> model.}
 \item{contentType}{[required] [Required] The content-type for the model.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   name = "string",
   description = "string",
   schema = "string",
   contentType = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a new Model resource to an existing RestApi resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_model(
+\preformatted{svc$create_model(
   restApiId = "string",
   name = "string",
   description = "string",
   schema = "string",
   contentType = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

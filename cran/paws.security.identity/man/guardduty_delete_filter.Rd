@@ -18,13 +18,11 @@ An empty list.
 Deletes the filter specified by the filter name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_filter(
+\preformatted{svc$delete_filter(
   DetectorId = "string",
   FilterName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

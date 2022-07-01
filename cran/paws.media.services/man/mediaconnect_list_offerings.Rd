@@ -24,9 +24,7 @@ NextToken value. To see the next batch of results, you can submit the
 ListOfferings request a second time and specify the NextToken value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Offerings = list(
     list(
@@ -44,7 +42,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Displays a list of all offerings that are available to this account in
@@ -53,13 +51,11 @@ you've purchased an offering that has already started and hasn't expired
 yet), your account isn't eligible for other offerings.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_offerings(
+\preformatted{svc$list_offerings(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

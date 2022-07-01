@@ -17,12 +17,10 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcId}{[required] The ID of the VPC to which the instance is linked.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the
@@ -31,14 +29,12 @@ associated with it. An instance is automatically unlinked from a VPC
 when it's stopped.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_classic_link_vpc(
+\preformatted{svc$detach_classic_link_vpc(
   DryRun = TRUE|FALSE,
   InstanceId = "string",
   VpcId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

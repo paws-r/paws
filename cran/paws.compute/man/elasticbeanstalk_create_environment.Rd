@@ -86,9 +86,7 @@ role. For more information, see \href{https://docs.aws.amazon.com/elasticbeansta
 \emph{AWS Elastic Beanstalk Developer Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EnvironmentName = "string",
   EnvironmentId = "string",
   ApplicationName = "string",
@@ -135,16 +133,14 @@ A list with the following syntax:
   EnvironmentArn = "string",
   OperationsRole = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Launches an AWS Elastic Beanstalk environment for the specified
 application using the specified configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_environment(
+\preformatted{svc$create_environment(
   ApplicationName = "string",
   EnvironmentName = "string",
   GroupName = "string",
@@ -182,7 +178,7 @@ application using the specified configuration.
   ),
   OperationsRole = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

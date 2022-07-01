@@ -10,9 +10,7 @@ applicationdiscoveryservice_stop_continuous_export(exportId)
 \item{exportId}{[required] The unique ID assigned to this export.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   startTime = as.POSIXct(
     "2015-01-01"
   ),
@@ -20,18 +18,16 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stop the continuous flow of agent's discovered data into Amazon Athena.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_continuous_export(
+\preformatted{svc$stop_continuous_export(
   exportId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

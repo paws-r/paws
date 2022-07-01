@@ -13,9 +13,7 @@ serverlessapplicationrepository_get_application(ApplicationId,
 \item{SemanticVersion}{The semantic version of the application to get.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationId = "string",
   Author = "string",
   CreationTime = "string",
@@ -64,19 +62,17 @@ A list with the following syntax:
     TemplateUrl = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the specified application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_application(
+\preformatted{svc$get_application(
   ApplicationId = "string",
   SemanticVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

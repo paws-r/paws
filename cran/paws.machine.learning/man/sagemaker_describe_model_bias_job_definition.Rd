@@ -11,9 +11,7 @@ sagemaker_describe_model_bias_job_definition(JobDefinitionName)
 within an AWS Region in the AWS account.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobDefinitionArn = "string",
   JobDefinitionName = "string",
   CreationTime = as.POSIXct(
@@ -86,18 +84,16 @@ A list with the following syntax:
     MaxRuntimeInSeconds = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a description of a model bias job definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_model_bias_job_definition(
+\preformatted{svc$describe_model_bias_job_definition(
   JobDefinitionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

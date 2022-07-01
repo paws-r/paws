@@ -12,9 +12,7 @@ lexmodelbuildingservice_get_bot_alias(name, botName)
 \item{botName}{[required] The name of the bot.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   name = "string",
   description = "string",
   botVersion = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
     iamRoleArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about an Amazon Lex bot alias. For more information
@@ -48,13 +46,11 @@ about aliases, see versioning-aliases.
 This operation requires permissions for the \code{lex:GetBotAlias} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bot_alias(
+\preformatted{svc$get_bot_alias(
   name = "string",
   botName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -37,12 +37,10 @@ buckets.}
 \item{PublicAccessBlockConfiguration}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccessPointArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an access point and associates it with the specified bucket. For
@@ -81,9 +79,7 @@ The following actions are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_access_point(
+\preformatted{svc$create_access_point(
   AccountId = "string",
   Name = "string",
   Bucket = "string",
@@ -97,7 +93,7 @@ The following actions are related to
     RestrictPublicBuckets = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ amplify_create_backend_environment(appId, environmentName, stackName,
 \item{deploymentArtifacts}{The name of deployment artifacts.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   backendEnvironment = list(
     backendEnvironmentArn = "string",
     environmentName = "string",
@@ -33,21 +31,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new backend environment for an Amplify app.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_backend_environment(
+\preformatted{svc$create_backend_environment(
   appId = "string",
   environmentName = "string",
   stackName = "string",
   deploymentArtifacts = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

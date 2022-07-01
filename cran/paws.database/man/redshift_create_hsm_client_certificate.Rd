@@ -17,9 +17,7 @@ keys.}
 \item{Tags}{A list of tag instances.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HsmClientCertificate = list(
     HsmClientCertificateIdentifier = "string",
     HsmClientCertificatePublicKey = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an HSM client certificate that an Amazon Redshift cluster will
@@ -46,9 +44,7 @@ information, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/}{Hard
 Amazon Redshift Cluster Management Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_hsm_client_certificate(
+\preformatted{svc$create_hsm_client_certificate(
   HsmClientCertificateIdentifier = "string",
   Tags = list(
     list(
@@ -57,7 +53,7 @@ Amazon Redshift Cluster Management Guide.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

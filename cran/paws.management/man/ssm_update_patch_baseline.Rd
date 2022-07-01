@@ -62,9 +62,7 @@ action are also required for this API request. Optional fields that are
 not specified are set to null.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BaselineId = "string",
   Name = "string",
   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
@@ -124,7 +122,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies an existing patch baseline. Fields not specified in the request
@@ -135,9 +133,7 @@ each supported operating system type, see
 \href{https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html}{PatchFilter}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_patch_baseline(
+\preformatted{svc$update_patch_baseline(
   BaselineId = "string",
   Name = "string",
   GlobalFilters = list(
@@ -191,7 +187,7 @@ each supported operating system type, see
   ),
   Replace = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

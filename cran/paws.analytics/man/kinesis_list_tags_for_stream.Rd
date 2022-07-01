@@ -19,9 +19,7 @@ number of tags associated with the stream, \code{HasMoreTags} is set to
 key in the response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -30,21 +28,19 @@ A list with the following syntax:
   ),
   HasMoreTags = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the tags for the specified Kinesis data stream. This operation has
 a limit of five transactions per second per account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_stream(
+\preformatted{svc$list_tags_for_stream(
   StreamName = "string",
   ExclusiveStartTagKey = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

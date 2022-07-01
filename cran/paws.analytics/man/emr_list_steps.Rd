@@ -19,9 +19,7 @@ applies to the overall length of the array.}
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Steps = list(
     list(
       Id = "string",
@@ -64,7 +62,7 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides a list of steps for the cluster in reverse order unless you
@@ -72,9 +70,7 @@ specify \code{stepIds} with the request of filter by \code{StepStates}. You can
 specify a maximum of ten \code{stepIDs}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_steps(
+\preformatted{svc$list_steps(
   ClusterId = "string",
   StepStates = list(
     "PENDING"|"CANCEL_PENDING"|"RUNNING"|"COMPLETED"|"CANCELLED"|"FAILED"|"INTERRUPTED"
@@ -84,7 +80,7 @@ specify a maximum of ten \code{stepIDs}.
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

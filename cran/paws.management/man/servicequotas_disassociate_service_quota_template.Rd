@@ -16,10 +16,8 @@ in your organization. Disabling a quota request template does not apply
 its quota increase requests.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_service_quota_template()
-}\if{html}{\out{</div>}}
+\preformatted{svc$disassociate_service_quota_template()
+}
 }
 
 \keyword{internal}

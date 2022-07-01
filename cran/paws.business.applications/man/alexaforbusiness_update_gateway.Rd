@@ -25,15 +25,13 @@ Updates the details of a gateway. If any optional field is not provided,
 the existing corresponding value is left unmodified.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_gateway(
+\preformatted{svc$update_gateway(
   GatewayArn = "string",
   Name = "string",
   Description = "string",
   SoftwareVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -24,9 +24,7 @@ For example, you can log an event to an Amazon CloudWatch destination
 when a call fails.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_configuration_set_event_destination(
+\preformatted{svc$update_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestination = list(
     CloudWatchLogsDestination = list(
@@ -47,7 +45,7 @@ when a call fails.
   ),
   EventDestinationName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -22,9 +22,7 @@ from a previous call.)}
 \item{MaxResults}{The maximum number of patches to return (per page).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Patches = list(
     list(
       Title = "string",
@@ -40,16 +38,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about the patches on the specified instance and
 their state relative to the patch baseline being used for the instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instance_patches(
+\preformatted{svc$describe_instance_patches(
   InstanceId = "string",
   Filters = list(
     list(
@@ -62,7 +58,7 @@ their state relative to the patch baseline being used for the instance.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ databasemigrationservice_delete_endpoint(EndpointArn)
 endpoint.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Endpoint = list(
     EndpointIdentifier = "string",
     EndpointType = "source"|"target",
@@ -272,7 +270,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified endpoint.
@@ -281,12 +279,10 @@ All tasks associated with the endpoint must be deleted before you can
 delete the endpoint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_endpoint(
+\preformatted{svc$delete_endpoint(
   EndpointArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

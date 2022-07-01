@@ -10,25 +10,21 @@ greengrass_get_group_certificate_configuration(GroupId)
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CertificateAuthorityExpiryInMilliseconds = "string",
   CertificateExpiryInMilliseconds = "string",
   GroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the current configuration for the CA used by the group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_group_certificate_configuration(
+\preformatted{svc$get_group_certificate_configuration(
   GroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -13,12 +13,10 @@ greengrass_associate_role_to_group(GroupId, RoleArn)
 of the role is not validated.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AssociatedAt = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Associates a role with a group. Your Greengrass core will use the role
@@ -26,13 +24,11 @@ to access AWS cloud services. The role's permissions should allow
 Greengrass core Lambda functions to perform actions against the cloud.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_role_to_group(
+\preformatted{svc$associate_role_to_group(
   GroupId = "string",
   RoleArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

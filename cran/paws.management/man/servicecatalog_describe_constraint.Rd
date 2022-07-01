@@ -17,9 +17,7 @@ servicecatalog_describe_constraint(AcceptLanguage, Id)
 \item{Id}{[required] The identifier of the constraint.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConstraintDetail = list(
     ConstraintId = "string",
     Type = "string",
@@ -31,19 +29,17 @@ A list with the following syntax:
   ConstraintParameters = "string",
   Status = "AVAILABLE"|"CREATING"|"FAILED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the specified constraint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_constraint(
+\preformatted{svc$describe_constraint(
   AcceptLanguage = "string",
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -52,9 +52,7 @@ rotation process. If you use this parameter then don't specify
 with the \code{VersionStage} value of \code{AWSCURRENT}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ARN = "string",
   Name = "string",
   VersionId = "string",
@@ -67,7 +65,7 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the contents of the encrypted fields \code{SecretString} or
@@ -94,14 +92,12 @@ information, use
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_secret_value(
+\preformatted{svc$get_secret_value(
   SecretId = "string",
   VersionId = "string",
   VersionStage = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

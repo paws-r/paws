@@ -24,9 +24,7 @@ environment and the name of the solution stack to use, and optionally
 can specify environment links to create.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Environments = list(
     list(
       EnvironmentName = "string",
@@ -78,7 +76,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create or update a group of environments that each run a separate
@@ -90,16 +88,14 @@ manifest named \code{env.yaml}. See \href{https://docs.aws.amazon.com/elasticbea
 for details.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$compose_environments(
+\preformatted{svc$compose_environments(
   ApplicationName = "string",
   GroupName = "string",
   VersionLabels = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

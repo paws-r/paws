@@ -25,9 +25,7 @@ last linked login will make this identity inaccessible.
 This is a public API. You do not need any credentials to call this API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$unlink_identity(
+\preformatted{svc$unlink_identity(
   IdentityId = "string",
   Logins = list(
     "string"
@@ -36,7 +34,7 @@ This is a public API. You do not need any credentials to call this API.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

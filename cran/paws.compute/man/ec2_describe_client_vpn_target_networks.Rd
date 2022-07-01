@@ -33,9 +33,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClientVpnTargetNetworks = list(
     list(
       AssociationId = "string",
@@ -53,16 +51,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the target networks associated with the specified Client VPN
 endpoint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_client_vpn_target_networks(
+\preformatted{svc$describe_client_vpn_target_networks(
   ClientVpnEndpointId = "string",
   AssociationIds = list(
     "string"
@@ -79,7 +75,7 @@ endpoint.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,9 +10,7 @@ robomaker_describe_robot(robot)
 \item{robot}{[required] The Amazon Resource Name (ARN) of the robot to be described.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   arn = "string",
   name = "string",
   fleetArn = "string",
@@ -30,18 +28,16 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a robot.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_robot(
+\preformatted{svc$describe_robot(
   robot = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

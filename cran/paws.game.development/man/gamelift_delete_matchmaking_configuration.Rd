@@ -31,12 +31,10 @@ deleted if it is being used in any active matchmaking tickets.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_matchmaking_configuration(
+\preformatted{svc$delete_matchmaking_configuration(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -36,9 +36,7 @@ security group.}
 security group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE,
   UnknownIpPermissions = list(
     list(
@@ -77,7 +75,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 [VPC only] Removes the specified egress rules from a security group
@@ -104,9 +102,7 @@ Rule changes are propagated to instances within the security group as
 quickly as possible. However, a small delay might occur.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$revoke_security_group_egress(
+\preformatted{svc$revoke_security_group_egress(
   DryRun = TRUE|FALSE,
   GroupId = "string",
   IpPermissions = list(
@@ -152,7 +148,7 @@ quickly as possible. However, a small delay might occur.
   SourceSecurityGroupName = "string",
   SourceSecurityGroupOwnerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

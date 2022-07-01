@@ -30,9 +30,7 @@ available only for apps that are connected to a repository. The job type
 \item{commitTime}{The commit date and time for the job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   jobSummary = list(
     jobArn = "string",
     jobId = "string",
@@ -51,15 +49,13 @@ A list with the following syntax:
     jobType = "RELEASE"|"RETRY"|"MANUAL"|"WEB_HOOK"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a new job for a branch of an Amplify app.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_job(
+\preformatted{svc$start_job(
   appId = "string",
   branchName = "string",
   jobId = "string",
@@ -71,7 +67,7 @@ Starts a new job for a branch of an Amplify app.
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

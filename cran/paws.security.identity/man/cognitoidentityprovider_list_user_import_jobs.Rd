@@ -18,9 +18,7 @@ into.}
 which can be used to return the next set of import jobs in the list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserImportJobs = list(
     list(
       JobName = "string",
@@ -46,20 +44,18 @@ A list with the following syntax:
   ),
   PaginationToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the user import jobs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_user_import_jobs(
+\preformatted{svc$list_user_import_jobs(
   UserPoolId = "string",
   MaxResults = 123,
   PaginationToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

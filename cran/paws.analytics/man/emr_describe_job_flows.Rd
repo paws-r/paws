@@ -17,9 +17,7 @@ emr_describe_job_flows(CreatedAfter, CreatedBefore, JobFlowIds,
 \item{JobFlowStates}{Return only job flows whose state is contained in this list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobFlows = list(
     list(
       JobFlowId = "string",
@@ -146,7 +144,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This API is no longer supported and will eventually be removed. We
@@ -174,9 +172,7 @@ following states: \code{RUNNING}, \code{WAITING}, \code{SHUTTING_DOWN}, \code{ST
 Amazon EMR can return a maximum of 512 job flow descriptions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_job_flows(
+\preformatted{svc$describe_job_flows(
   CreatedAfter = as.POSIXct(
     "2015-01-01"
   ),
@@ -190,7 +186,7 @@ Amazon EMR can return a maximum of 512 job flow descriptions.
     "STARTING"|"BOOTSTRAPPING"|"RUNNING"|"WAITING"|"SHUTTING_DOWN"|"TERMINATED"|"COMPLETED"|"FAILED"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

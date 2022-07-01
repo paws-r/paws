@@ -37,30 +37,26 @@ up to 10 results and a \code{nextToken} value if applicable.}
 \item{schedulingStrategy}{The scheduling strategy for services to list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   serviceArns = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the services that are running in a specified cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_services(
+\preformatted{svc$list_services(
   cluster = "string",
   nextToken = "string",
   maxResults = 123,
   launchType = "EC2"|"FARGATE",
   schedulingStrategy = "REPLICA"|"DAEMON"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

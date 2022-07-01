@@ -18,12 +18,10 @@ Disassociates the current GuardDuty member account from its
 administrator account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_from_master_account(
+\preformatted{svc$disassociate_from_master_account(
   DetectorId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

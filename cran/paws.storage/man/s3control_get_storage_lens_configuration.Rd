@@ -12,9 +12,7 @@ s3control_get_storage_lens_configuration(ConfigId, AccountId)
 \item{AccountId}{[required] The account ID of the requester.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StorageLensConfiguration = list(
     Id = "string",
     AccountLevel = list(
@@ -75,7 +73,7 @@ A list with the following syntax:
     StorageLensArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the Amazon S3 Storage Lens configuration. For more information, see
@@ -88,13 +86,11 @@ To use this action, you must have permission to perform the
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_storage_lens_configuration(
+\preformatted{svc$get_storage_lens_configuration(
   ConfigId = "string",
   AccountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -56,9 +56,7 @@ and Aurora PostgreSQL.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ExportTaskIdentifier = "string",
   SourceArn = "string",
   ExportOnly = list(
@@ -83,16 +81,14 @@ A list with the following syntax:
   FailureCause = "string",
   WarningMessage = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts an export of a snapshot to Amazon S3. The provided IAM role must
 have access to the S3 bucket.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_export_task(
+\preformatted{svc$start_export_task(
   ExportTaskIdentifier = "string",
   SourceArn = "string",
   S3BucketName = "string",
@@ -103,7 +99,7 @@ have access to the S3 bucket.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

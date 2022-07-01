@@ -12,9 +12,7 @@ licensemanager_get_grant(GrantArn, Version)
 \item{Version}{Grant version.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Grant = list(
     GrantArn = "string",
     GrantName = "string",
@@ -30,19 +28,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets detailed information about the specified grant.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_grant(
+\preformatted{svc$get_grant(
   GrantArn = "string",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

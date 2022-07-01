@@ -16,9 +16,7 @@ customizations for.}
 \item{AccountCustomization}{[required] The QuickSight customizations you're updating in the current AWS Region.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   AwsAccountId = "string",
   Namespace = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates Amazon QuickSight customizations the current AWS Region.
@@ -42,16 +40,14 @@ find out which customizations apply, use the
 API operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_account_customization(
+\preformatted{svc$update_account_customization(
   AwsAccountId = "string",
   Namespace = "string",
   AccountCustomization = list(
     DefaultTheme = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -29,9 +29,7 @@ response object.}
 want to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Metadata = list(
     RecommendationId = "string",
     GenerationTimestamp = "string",
@@ -143,7 +141,7 @@ A list with the following syntax:
     BenefitsConsidered = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates recommendations that help you save cost by identifying idle and
@@ -155,9 +153,7 @@ calculation and function, see \href{https://docs.aws.amazon.com/cost-management/
 in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_rightsizing_recommendation(
+\preformatted{svc$get_rightsizing_recommendation(
   Filter = list(
     Or = list(
       list()
@@ -202,7 +198,7 @@ in the \emph{AWS Billing and Cost Management User Guide}.
   PageSize = 123,
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

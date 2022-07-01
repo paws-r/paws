@@ -21,9 +21,7 @@ group. All other eligible instances are reachable through the custom
 endpoint. Only relevant if the list of static members is empty.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBClusterEndpointIdentifier = "string",
   DBClusterIdentifier = "string",
   DBClusterEndpointResourceIdentifier = "string",
@@ -39,15 +37,13 @@ A list with the following syntax:
   ),
   DBClusterEndpointArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the properties of an endpoint in an Amazon Neptune DB cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_cluster_endpoint(
+\preformatted{svc$modify_db_cluster_endpoint(
   DBClusterEndpointIdentifier = "string",
   EndpointType = "string",
   StaticMembers = list(
@@ -57,7 +53,7 @@ Modifies the properties of an endpoint in an Amazon Neptune DB cluster.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

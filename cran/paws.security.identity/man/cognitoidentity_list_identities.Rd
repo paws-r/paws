@@ -19,9 +19,7 @@ identities. If omitted, the ListIdentities API will include disabled
 identities in the response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IdentityPoolId = "string",
   Identities = list(
     list(
@@ -39,7 +37,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the identities in an identity pool.
@@ -47,15 +45,13 @@ Lists the identities in an identity pool.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_identities(
+\preformatted{svc$list_identities(
   IdentityPoolId = "string",
   MaxResults = 123,
   NextToken = "string",
   HideDisabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

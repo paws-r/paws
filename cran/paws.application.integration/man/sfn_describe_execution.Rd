@@ -10,9 +10,7 @@ sfn_describe_execution(executionArn)
 \item{executionArn}{[required] The Amazon Resource Name (ARN) of the execution to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   executionArn = "string",
   stateMachineArn = "string",
   name = "string",
@@ -33,7 +31,7 @@ A list with the following syntax:
   ),
   traceHeader = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes an execution.
@@ -44,12 +42,10 @@ may not reflect very recent updates and changes.
 This API action is not supported by \code{EXPRESS} state machines.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_execution(
+\preformatted{svc$describe_execution(
   executionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

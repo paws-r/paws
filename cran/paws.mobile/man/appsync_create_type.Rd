@@ -16,9 +16,7 @@ For more information, see the \href{https://graphql.org/learn/schema/}{GraphQL S
 \item{format}{[required] The type format: SDL or JSON.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   type = list(
     name = "string",
     description = "string",
@@ -27,20 +25,18 @@ A list with the following syntax:
     format = "SDL"|"JSON"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a \code{Type} object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_type(
+\preformatted{svc$create_type(
   apiId = "string",
   definition = "string",
   format = "SDL"|"JSON"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

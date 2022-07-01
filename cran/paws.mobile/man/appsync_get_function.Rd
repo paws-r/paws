@@ -12,9 +12,7 @@ appsync_get_function(apiId, functionId)
 \item{functionId}{[required] The \code{Function} ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   functionConfiguration = list(
     functionId = "string",
     functionArn = "string",
@@ -26,19 +24,17 @@ A list with the following syntax:
     functionVersion = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Get a \code{Function}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_function(
+\preformatted{svc$get_function(
   apiId = "string",
   functionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

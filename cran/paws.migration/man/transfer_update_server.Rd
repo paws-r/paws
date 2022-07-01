@@ -101,12 +101,10 @@ server.}
 account is assigned to.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ServerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the file transfer protocol-enabled server's properties after
@@ -116,9 +114,7 @@ The \code{\link[=transfer_update_server]{update_server}} call returns the
 \code{ServerId} of the server you updated.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_server(
+\preformatted{svc$update_server(
   Certificate = "string",
   EndpointDetails = list(
     AddressAllocationIds = list(
@@ -146,7 +142,7 @@ The \code{\link[=transfer_update_server]{update_server}} call returns the
   SecurityPolicyName = "string",
   ServerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

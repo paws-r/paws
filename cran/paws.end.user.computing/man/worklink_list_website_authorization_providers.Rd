@@ -17,9 +17,7 @@ this operation. If this value is null, it retrieves the first page.}
 \item{MaxResults}{The maximum number of results to be included in the next page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   WebsiteAuthorizationProviders = list(
     list(
       AuthorizationProviderId = "string",
@@ -32,21 +30,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list of website authorization providers associated with a
 specified fleet.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_website_authorization_providers(
+\preformatted{svc$list_website_authorization_providers(
   FleetArn = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

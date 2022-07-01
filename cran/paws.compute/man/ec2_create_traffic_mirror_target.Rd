@@ -27,9 +27,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrafficMirrorTarget = list(
     TrafficMirrorTargetId = "string",
     NetworkInterfaceId = "string",
@@ -46,7 +44,7 @@ A list with the following syntax:
   ),
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a target for your Traffic Mirror session.
@@ -63,9 +61,7 @@ To use the target in a Traffic Mirror session, use
 \code{\link[=ec2_create_traffic_mirror_session]{create_traffic_mirror_session}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_traffic_mirror_target(
+\preformatted{svc$create_traffic_mirror_target(
   NetworkInterfaceId = "string",
   NetworkLoadBalancerArn = "string",
   Description = "string",
@@ -83,7 +79,7 @@ To use the target in a Traffic Mirror session, use
   DryRun = TRUE|FALSE,
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

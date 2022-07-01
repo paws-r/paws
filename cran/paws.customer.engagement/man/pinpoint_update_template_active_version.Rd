@@ -19,31 +19,27 @@ characters can be alphanumeric characters, underscores (_), or hyphens
 values are: EMAIL, PUSH, SMS, and VOICE.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MessageBody = list(
     Message = "string",
     RequestID = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes the status of a specific version of a message template to
 \emph{active}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_template_active_version(
+\preformatted{svc$update_template_active_version(
   TemplateActiveVersionRequest = list(
     Version = "string"
   ),
   TemplateName = "string",
   TemplateType = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,13 +23,11 @@ If there are any outstanding lifecycle actions, they are completed first
 instances).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_lifecycle_hook(
+\preformatted{svc$delete_lifecycle_hook(
   LifecycleHookName = "string",
   AutoScalingGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -12,9 +12,7 @@ mediapackage_update_channel(Description, Id)
 \item{Id}{[required] The ID of the Channel to update.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   Description = "string",
   EgressAccessLogs = list(
@@ -38,19 +36,17 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing Channel.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_channel(
+\preformatted{svc$update_channel(
   Description = "string",
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

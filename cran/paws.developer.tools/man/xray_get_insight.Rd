@@ -11,9 +11,7 @@ xray_get_insight(InsightId)
 retrieve an InsightId.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Insight = list(
     InsightId = "string",
     GroupARN = "string",
@@ -61,7 +59,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the summary information of an insight. This includes impact to
@@ -70,12 +68,10 @@ category, the state of the insight, and the start and end time of the
 insight.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_insight(
+\preformatted{svc$get_insight(
   InsightId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

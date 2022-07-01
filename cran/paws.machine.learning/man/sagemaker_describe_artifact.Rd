@@ -10,9 +10,7 @@ sagemaker_describe_artifact(ArtifactArn)
 \item{ArtifactArn}{[required] The Amazon Resource Name (ARN) of the artifact to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ArtifactName = "string",
   ArtifactArn = "string",
   Source = list(
@@ -51,18 +49,16 @@ A list with the following syntax:
     ProjectId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes an artifact.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_artifact(
+\preformatted{svc$describe_artifact(
   ArtifactArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

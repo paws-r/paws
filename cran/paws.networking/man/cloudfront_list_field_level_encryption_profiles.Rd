@@ -18,9 +18,7 @@ also the ID of the last profile on that page).}
 response body.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FieldLevelEncryptionProfileList = list(
     NextMarker = "string",
     MaxItems = 123,
@@ -52,20 +50,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Request a list of field-level encryption profiles that have been created
 in CloudFront for this account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_field_level_encryption_profiles(
+\preformatted{svc$list_field_level_encryption_profiles(
   Marker = "string",
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

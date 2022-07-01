@@ -42,13 +42,11 @@ stop any applications that are sending records before you delete a
 delivery stream.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_delivery_stream(
+\preformatted{svc$delete_delivery_stream(
   DeliveryStreamName = "string",
   AllowForceDelete = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,9 +19,7 @@ more tags than the number you specify, the response contains a
 \code{NextToken} value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TagList = list(
     list(
       Key = "string",
@@ -30,7 +28,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of tags for the specified AWS CloudHSM cluster.
@@ -43,14 +41,12 @@ When you receive a response with no \code{NextToken} (or an empty or null
 value), that means there are no more tags to get.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags(
+\preformatted{svc$list_tags(
   ResourceId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -159,9 +159,7 @@ has scaling policies, you can update them by calling the
 \code{\link[=autoscaling_put_scaling_policy]{put_scaling_policy}} API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_auto_scaling_group(
+\preformatted{svc$update_auto_scaling_group(
   AutoScalingGroupName = "string",
   LaunchConfigurationName = "string",
   LaunchTemplate = list(
@@ -216,7 +214,7 @@ has scaling policies, you can update them by calling the
   MaxInstanceLifetime = 123,
   CapacityRebalance = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

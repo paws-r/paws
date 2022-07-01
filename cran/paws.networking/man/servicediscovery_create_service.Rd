@@ -66,9 +66,7 @@ character length of 128 characters, and tag values can have a maximum
 length of 256 characters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Service = list(
     Id = "string",
     Arn = "string",
@@ -100,7 +98,7 @@ A list with the following syntax:
     CreatorRequestId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a service, which defines the configuration for the following
@@ -128,9 +126,7 @@ using the same namespace and using the same service, see \href{https://docs.aws.
 in the \emph{AWS Cloud Map Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_service(
+\preformatted{svc$create_service(
   Name = "string",
   NamespaceId = "string",
   CreatorRequestId = "string",
@@ -160,7 +156,7 @@ in the \emph{AWS Cloud Map Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -24,9 +24,7 @@ An empty list.
 Updates the Amazon GuardDuty detector specified by the detectorId.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_detector(
+\preformatted{svc$update_detector(
   DetectorId = "string",
   Enable = TRUE|FALSE,
   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS",
@@ -36,7 +34,7 @@ Updates the Amazon GuardDuty detector specified by the detectorId.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

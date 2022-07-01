@@ -20,9 +20,7 @@ the risk of running the operation twice. If the request includes a
 returned. This parameter is optional.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BackupPlanId = "string",
   BackupPlanArn = "string",
   CreationDate = as.POSIXct(
@@ -38,7 +36,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a backup plan using a backup plan name and backup rules. A
@@ -49,9 +47,7 @@ If you call \code{\link[=backup_create_backup_plan]{create_backup_plan}} with a
 plan that already exists, an \code{AlreadyExistsException} is returned.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_backup_plan(
+\preformatted{svc$create_backup_plan(
   BackupPlan = list(
     BackupPlanName = "string",
     Rules = list(
@@ -93,7 +89,7 @@ plan that already exists, an \code{AlreadyExistsException} is returned.
   ),
   CreatorRequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

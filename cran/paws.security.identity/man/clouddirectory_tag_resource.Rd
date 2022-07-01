@@ -19,9 +19,7 @@ An empty list.
 An API operation for adding tags to a resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(
@@ -30,7 +28,7 @@ An API operation for adding tags to a resource.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

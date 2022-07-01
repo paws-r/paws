@@ -17,9 +17,7 @@ medialive_update_input_device(HdDeviceSettings, InputDeviceId, Name,
 \item{UhdDeviceSettings}{The settings that you want to apply to the UHD input device.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   ConnectionState = "DISCONNECTED"|"CONNECTED",
   DeviceSettingsSyncState = "SYNCED"|"SYNCING",
@@ -59,15 +57,13 @@ A list with the following syntax:
     Width = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the parameters for the input device.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_input_device(
+\preformatted{svc$update_input_device(
   HdDeviceSettings = list(
     ConfiguredInput = "AUTO"|"HDMI"|"SDI",
     MaxBitrate = 123
@@ -79,7 +75,7 @@ Updates the parameters for the input device.
     MaxBitrate = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

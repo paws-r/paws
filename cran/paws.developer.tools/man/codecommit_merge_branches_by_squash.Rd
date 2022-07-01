@@ -48,21 +48,17 @@ false.}
 use when resolving conflicts during a merge.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   commitId = "string",
   treeId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Merges two branches using the squash merge strategy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$merge_branches_by_squash(
+\preformatted{svc$merge_branches_by_squash(
   repositoryName = "string",
   sourceCommitSpecifier = "string",
   destinationCommitSpecifier = "string",
@@ -95,7 +91,7 @@ Merges two branches using the squash merge strategy.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

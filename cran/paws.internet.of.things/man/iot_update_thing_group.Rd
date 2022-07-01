@@ -16,20 +16,16 @@ iot_update_thing_group(thingGroupName, thingGroupProperties,
 version of the thing group being updated, the update will fail.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   version = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Update a thing group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_thing_group(
+\preformatted{svc$update_thing_group(
   thingGroupName = "string",
   thingGroupProperties = list(
     thingGroupDescription = "string",
@@ -42,7 +38,7 @@ Update a thing group.
   ),
   expectedVersion = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

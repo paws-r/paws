@@ -25,9 +25,7 @@ returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Entities = list(
     list(
       Id = "string",
@@ -45,15 +43,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 View a summary of OpsItems based on specified filters and aggregators.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_ops_summary(
+\preformatted{svc$get_ops_summary(
   SyncName = "string",
   Filters = list(
     list(
@@ -92,7 +88,7 @@ View a summary of OpsItems based on specified filters and aggregators.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

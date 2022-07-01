@@ -18,9 +18,7 @@ response.}
 \item{MaxResults}{The maximum number of standards to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Standards = list(
     list(
       StandardsArn = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of the available standards in Security Hub.
@@ -40,13 +38,11 @@ For each standard, the results include the standard ARN, the name, and a
 description.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_standards(
+\preformatted{svc$describe_standards(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

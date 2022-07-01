@@ -7,13 +7,11 @@
 iam_generate_credential_report()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   State = "STARTED"|"INPROGRESS"|"COMPLETE",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Generates a credential report for the AWS account. For more information

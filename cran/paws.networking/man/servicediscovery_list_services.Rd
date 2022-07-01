@@ -34,9 +34,7 @@ If you specify more than one filter, an operation must match all filters
 to be returned by \code{\link[=servicediscovery_list_services]{list_services}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Services = list(
     list(
       Id = "string",
@@ -69,16 +67,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists summary information for all the services that are associated with
 one or more specified namespaces.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_services(
+\preformatted{svc$list_services(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(
@@ -91,7 +87,7 @@ one or more specified namespaces.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

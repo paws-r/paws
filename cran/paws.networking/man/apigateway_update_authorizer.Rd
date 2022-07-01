@@ -15,9 +15,7 @@ apigateway_update_authorizer(restApiId, authorizerId, patchOperations)
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   name = "string",
   type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
@@ -31,7 +29,7 @@ A list with the following syntax:
   identityValidationExpression = "string",
   authorizerResultTtlInSeconds = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing Authorizer resource.<div class="seeAlso">
@@ -40,9 +38,7 @@ Updates an existing Authorizer resource.<div class="seeAlso">
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html}{AWS CLI}</div>
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_authorizer(
+\preformatted{svc$update_authorizer(
   restApiId = "string",
   authorizerId = "string",
   patchOperations = list(
@@ -54,7 +50,7 @@ Updates an existing Authorizer resource.<div class="seeAlso">
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

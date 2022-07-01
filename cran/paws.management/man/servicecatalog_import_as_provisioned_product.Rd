@@ -34,9 +34,7 @@ requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RecordDetail = list(
     RecordId = "string",
     ProvisionedProductName = "string",
@@ -68,7 +66,7 @@ A list with the following syntax:
     LaunchRoleArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Requests the import of a resource as a Service Catalog provisioned
@@ -92,9 +90,7 @@ The user or role that performs this operation must have the
 policy permissions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_as_provisioned_product(
+\preformatted{svc$import_as_provisioned_product(
   AcceptLanguage = "string",
   ProductId = "string",
   ProvisioningArtifactId = "string",
@@ -102,7 +98,7 @@ policy permissions.
   PhysicalId = "string",
   IdempotencyToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

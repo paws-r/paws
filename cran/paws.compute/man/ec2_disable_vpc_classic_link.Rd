@@ -15,25 +15,21 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcId}{[required] The ID of the VPC.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC
 that has EC2-Classic instances linked to it.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_vpc_classic_link(
+\preformatted{svc$disable_vpc_classic_link(
   DryRun = TRUE|FALSE,
   VpcId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

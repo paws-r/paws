@@ -25,23 +25,19 @@ next item to return. To return the beginning of the list, exclude this
 parameter.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ids = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the identifiers of your build batches in the current region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_build_batches(
+\preformatted{svc$list_build_batches(
   filter = list(
     status = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED"
   ),
@@ -49,7 +45,7 @@ Retrieves the identifiers of your build batches in the current region.
   sortOrder = "ASCENDING"|"DESCENDING",
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

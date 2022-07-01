@@ -15,9 +15,7 @@ details for.}
 Firewall Manager.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AppsList = list(
     ListId = "string",
     ListName = "string",
@@ -47,20 +45,18 @@ A list with the following syntax:
   ),
   AppsListArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the specified AWS Firewall Manager
 applications list.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_apps_list(
+\preformatted{svc$get_apps_list(
   ListId = "string",
   DefaultList = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

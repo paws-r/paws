@@ -27,9 +27,7 @@ AND operator to determine which attributes to return (in this case, all
 attributes).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FaceDetails = list(
     list(
       BoundingBox = list(
@@ -101,7 +99,7 @@ A list with the following syntax:
   ),
   OrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Detects faces within an image that is provided as input.
@@ -129,9 +127,7 @@ This operation requires permissions to perform the
 \code{rekognition:DetectFaces} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_faces(
+\preformatted{svc$detect_faces(
   Image = list(
     Bytes = raw,
     S3Object = list(
@@ -144,7 +140,7 @@ This operation requires permissions to perform the
     "DEFAULT"|"ALL"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

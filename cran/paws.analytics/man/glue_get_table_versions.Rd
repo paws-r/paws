@@ -23,9 +23,7 @@ lowercase.}
 \item{MaxResults}{The maximum number of table versions to return in one response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TableVersions = list(
     list(
       Table = list(
@@ -133,23 +131,21 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list of strings that identify available versions of a
 specified table.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_table_versions(
+\preformatted{svc$get_table_versions(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

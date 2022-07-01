@@ -7,21 +7,17 @@
 lightsail_is_vpc_peered()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   isPeered = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a Boolean value indicating whether your Lightsail VPC is peered.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$is_vpc_peered()
-}\if{html}{\out{</div>}}
+\preformatted{svc$is_vpc_peered()
+}
 }
 
 \keyword{internal}

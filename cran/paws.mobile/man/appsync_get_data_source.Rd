@@ -12,9 +12,7 @@ appsync_get_data_source(apiId, name)
 \item{name}{[required] The name of the data source.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   dataSource = list(
     dataSourceArn = "string",
     name = "string",
@@ -61,19 +59,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a \code{DataSource} object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_data_source(
+\preformatted{svc$get_data_source(
   apiId = "string",
   name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ Hive compatibility, this name is entirely lowercase.}
 compatibility, this name is entirely lowercase.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Table = list(
     Name = "string",
     DatabaseName = "string",
@@ -121,21 +119,19 @@ A list with the following syntax:
     CatalogId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the \code{Table} definition in a Data Catalog for a specified
 table.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_table(
+\preformatted{svc$get_table(
   CatalogId = "string",
   DatabaseName = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,24 +10,20 @@ servicediscovery_delete_namespace(Id)
 \item{Id}{[required] The ID of the namespace that you want to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OperationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a namespace from the current account. If the namespace still
 contains one or more services, the request fails.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_namespace(
+\preformatted{svc$delete_namespace(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

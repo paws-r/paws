@@ -37,9 +37,7 @@ quotas of the Lightsail service, see \href{https://docs.aws.amazon.com/general/l
 the \emph{AWS General Reference}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- lightsail(
+\preformatted{svc <- lightsail(
   config = list(
     credentials = list(
       creds = list(
@@ -53,7 +51,7 @@ the \emph{AWS General Reference}.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

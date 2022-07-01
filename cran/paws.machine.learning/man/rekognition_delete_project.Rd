@@ -10,12 +10,10 @@ rekognition_delete_project(ProjectArn)
 \item{ProjectArn}{[required] The Amazon Resource Name (ARN) of the project that you want to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = "CREATING"|"CREATED"|"DELETING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an Amazon Rekognition Custom Labels project. To delete a project
@@ -27,12 +25,10 @@ This operation requires permissions to perform the
 \code{rekognition:DeleteProject} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_project(
+\preformatted{svc$delete_project(
   ProjectArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

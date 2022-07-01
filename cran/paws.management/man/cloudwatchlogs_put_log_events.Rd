@@ -24,9 +24,7 @@ narrow time period using the same value for \code{sequenceToken}, both calls
 might be successful or one might be rejected.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   nextSequenceToken = "string",
   rejectedLogEventsInfo = list(
     tooNewLogEventStartIndex = 123,
@@ -34,7 +32,7 @@ A list with the following syntax:
     expiredLogEventEndIndex = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Uploads a batch of log events to the specified log stream.
@@ -74,9 +72,7 @@ If a call to \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} return
 access key ID or secret key.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_log_events(
+\preformatted{svc$put_log_events(
   logGroupName = "string",
   logStreamName = "string",
   logEvents = list(
@@ -87,7 +83,7 @@ access key ID or secret key.
   ),
   sequenceToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

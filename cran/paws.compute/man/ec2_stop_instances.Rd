@@ -29,9 +29,7 @@ option is not recommended for Windows instances.
 Default: \code{false}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StoppingInstances = list(
     list(
       CurrentState = list(
@@ -46,7 +44,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops an Amazon EBS-backed instance.
@@ -97,9 +95,7 @@ computer. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/lat
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_instances(
+\preformatted{svc$stop_instances(
   InstanceIds = list(
     "string"
   ),
@@ -107,7 +103,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   DryRun = TRUE|FALSE,
   Force = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -16,9 +16,7 @@ includes all TagOptions.}
 results, use null.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TagOptionDetails = list(
     list(
       Key = "string",
@@ -30,15 +28,13 @@ A list with the following syntax:
   ),
   PageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the specified TagOptions or all TagOptions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tag_options(
+\preformatted{svc$list_tag_options(
   Filters = list(
     Key = "string",
     Value = "string",
@@ -47,7 +43,7 @@ Lists the specified TagOptions or all TagOptions.
   PageSize = 123,
   PageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

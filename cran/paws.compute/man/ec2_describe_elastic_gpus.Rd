@@ -37,9 +37,7 @@ value. This value can be between 5 and 1000.}
 \item{NextToken}{The token to request the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ElasticGpuSet = list(
     list(
       ElasticGpuId = "string",
@@ -61,16 +59,14 @@ A list with the following syntax:
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the Elastic Graphics accelerator associated with your
 instances. For more information about Elastic Graphics, see \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html}{Amazon Elastic Graphics}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_elastic_gpus(
+\preformatted{svc$describe_elastic_gpus(
   ElasticGpuIds = list(
     "string"
   ),
@@ -86,7 +82,7 @@ instances. For more information about Elastic Graphics, see \href{https://docs.a
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

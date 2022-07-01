@@ -87,9 +87,7 @@ Specify the \code{Rules} property. For more information, see \href{https://docs.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConstraintDetail = list(
     ConstraintId = "string",
     Type = "string",
@@ -101,21 +99,19 @@ A list with the following syntax:
   ConstraintParameters = "string",
   Status = "AVAILABLE"|"CREATING"|"FAILED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified constraint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_constraint(
+\preformatted{svc$update_constraint(
   AcceptLanguage = "string",
   Id = "string",
   Description = "string",
   Parameters = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -14,9 +14,7 @@ mq_update_configuration(ConfigurationId, Data, Description)
 \item{Description}{The description of the configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   Created = as.POSIXct(
     "2015-01-01"
@@ -38,20 +36,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_configuration(
+\preformatted{svc$update_configuration(
   ConfigurationId = "string",
   Data = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -22,9 +22,7 @@ time and end time can't be more than six hours.}
 the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InsightId = "string",
   StartTime = as.POSIXct(
     "2015-01-01"
@@ -56,7 +54,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a service graph structure filtered by the specified insight.
@@ -64,9 +62,7 @@ The service graph is limited to only structural information. For a
 complete service graph, use this API with the GetServiceGraph API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_insight_impact_graph(
+\preformatted{svc$get_insight_impact_graph(
   InsightId = "string",
   StartTime = as.POSIXct(
     "2015-01-01"
@@ -76,7 +72,7 @@ complete service graph, use this API with the GetServiceGraph API.
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

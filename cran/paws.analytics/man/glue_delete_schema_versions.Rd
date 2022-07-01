@@ -17,9 +17,7 @@ Resource Name (ARN).}
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SchemaVersionErrors = list(
     list(
       VersionNumber = 123,
@@ -30,7 +28,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Remove versions from the specified schema. A version number or range may
@@ -55,9 +53,7 @@ If the compatibility mode forbids deleting of a version that is
 necessary, such as BACKWARDS_FULL, an error is returned.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_schema_versions(
+\preformatted{svc$delete_schema_versions(
   SchemaId = list(
     SchemaArn = "string",
     SchemaName = "string",
@@ -65,7 +61,7 @@ necessary, such as BACKWARDS_FULL, an error is returned.
   ),
   Versions = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

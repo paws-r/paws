@@ -19,9 +19,7 @@ list.}
 \item{maxResults}{The maximum number of results you want the request to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   resolvers = list(
     list(
       typeName = "string",
@@ -53,21 +51,19 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List the resolvers that are associated with a specific function.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resolvers_by_function(
+\preformatted{svc$list_resolvers_by_function(
   apiId = "string",
   functionId = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

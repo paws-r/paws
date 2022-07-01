@@ -55,9 +55,7 @@ network (outbound queries), from your network to your VPCs (inbound
 queries), or both.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- route53resolver(
+\preformatted{svc <- route53resolver(
   config = list(
     credentials = list(
       creds = list(
@@ -71,7 +69,7 @@ queries), or both.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

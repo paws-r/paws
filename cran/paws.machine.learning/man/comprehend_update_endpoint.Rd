@@ -20,13 +20,11 @@ An empty list.
 Updates information about the specified endpoint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_endpoint(
+\preformatted{svc$update_endpoint(
   EndpointArn = "string",
   DesiredInferenceUnits = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

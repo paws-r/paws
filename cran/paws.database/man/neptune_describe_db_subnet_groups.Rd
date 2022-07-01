@@ -27,9 +27,7 @@ response includes only records beyond the marker, up to the value
 specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   DBSubnetGroups = list(
     list(
@@ -50,7 +48,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is
@@ -60,9 +58,7 @@ DBSubnetGroup.
 For an overview of CIDR ranges, go to the \href{https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Wikipedia Tutorial}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_subnet_groups(
+\preformatted{svc$describe_db_subnet_groups(
   DBSubnetGroupName = "string",
   Filters = list(
     list(
@@ -75,7 +71,7 @@ For an overview of CIDR ranges, go to the \href{https://en.wikipedia.org/wiki/Cl
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

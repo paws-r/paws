@@ -13,12 +13,10 @@ directoryservice_create_snapshot(DirectoryId, Name)
 \item{Name}{The descriptive name to apply to the snapshot.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SnapshotId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS
@@ -27,13 +25,11 @@ cloud.
 You cannot take snapshots of AD Connector directories.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_snapshot(
+\preformatted{svc$create_snapshot(
   DirectoryId = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -32,9 +32,7 @@ parameter to get the next set of results.}
 \item{StackInstanceRegion}{The name of the Region where you want to list stack instances.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Summaries = list(
     list(
       StackSetId = "string",
@@ -55,7 +53,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns summary information about stack instances that are associated
@@ -64,9 +62,7 @@ are associated with a specific AWS account name or Region, or that have
 a specific status.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_stack_instances(
+\preformatted{svc$list_stack_instances(
   StackSetName = "string",
   NextToken = "string",
   MaxResults = 123,
@@ -79,7 +75,7 @@ a specific status.
   StackInstanceAccount = "string",
   StackInstanceRegion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

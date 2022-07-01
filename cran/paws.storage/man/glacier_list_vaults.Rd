@@ -22,9 +22,7 @@ The number of vaults returned might be fewer than the specified limit,
 but the number of returned vaults never exceeds the limit.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VaultList = list(
     list(
       VaultARN = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation lists all vaults owned by the calling user's account. The
@@ -62,14 +60,12 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vaults-get.ht
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_vaults(
+\preformatted{svc$list_vaults(
   accountId = "string",
   marker = "string",
   limit = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

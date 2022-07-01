@@ -23,9 +23,7 @@ against streaming sources to perform time series analytics, feed
 real-time dashboards, and create real-time metrics.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- kinesisanalyticsv2(
+\preformatted{svc <- kinesisanalyticsv2(
   config = list(
     credentials = list(
       creds = list(
@@ -39,7 +37,7 @@ real-time dashboards, and create real-time metrics.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -13,14 +13,12 @@ environments, jobs, job definitions, and job queues. ARNs for child jobs
 of array and multi-node parallel (MNP) jobs are not supported.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the tags for an AWS Batch resource. AWS Batch resources that
@@ -29,12 +27,10 @@ queues. ARNs for child jobs of array and multi-node parallel (MNP) jobs
 are not supported.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   resourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -23,9 +23,7 @@ the function name, it is limited to 64 characters in length.}
 \item{Name}{[required] The name of the alias.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AliasArn = "string",
   Name = "string",
   FunctionVersion = "string",
@@ -37,20 +35,18 @@ A list with the following syntax:
   ),
   RevisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns details about a Lambda function
 \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_alias(
+\preformatted{svc$get_alias(
   FunctionName = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

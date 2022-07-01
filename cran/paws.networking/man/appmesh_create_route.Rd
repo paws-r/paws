@@ -34,9 +34,7 @@ virtual router is in a shared mesh, then you must be the owner of the
 virtual router resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   route = list(
     meshName = "string",
     metadata = list(
@@ -242,7 +240,7 @@ A list with the following syntax:
     virtualRouterName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a route that is associated with a virtual router.
@@ -254,9 +252,7 @@ For more information about routes, see
 \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/routes.html}{Routes}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_route(
+\preformatted{svc$create_route(
   clientToken = "string",
   meshName = "string",
   meshOwner = "string",
@@ -452,7 +448,7 @@ For more information about routes, see
   ),
   virtualRouterName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

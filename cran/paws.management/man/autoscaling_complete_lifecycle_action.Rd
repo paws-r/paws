@@ -53,16 +53,14 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$complete_lifecycle_action(
+\preformatted{svc$complete_lifecycle_action(
   LifecycleHookName = "string",
   AutoScalingGroupName = "string",
   LifecycleActionToken = "string",
   LifecycleActionResult = "string",
   InstanceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

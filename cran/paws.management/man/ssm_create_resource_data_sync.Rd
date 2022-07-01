@@ -58,9 +58,7 @@ We also recommend that you secure access to the Amazon S3 bucket by
 creating a restrictive bucket policy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_resource_data_sync(
+\preformatted{svc$create_resource_data_sync(
   SyncName = "string",
   S3Destination = list(
     BucketName = "string",
@@ -89,7 +87,7 @@ creating a restrictive bucket policy.
     IncludeFutureRegions = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

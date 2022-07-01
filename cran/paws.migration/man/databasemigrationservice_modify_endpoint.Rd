@@ -146,9 +146,7 @@ properties section in \href{https://docs.aws.amazon.com/dms/latest/userguide/CHA
 in the \emph{AWS Database Migration Service User Guide.}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Endpoint = list(
     EndpointIdentifier = "string",
     EndpointType = "source"|"target",
@@ -407,15 +405,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the specified endpoint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_endpoint(
+\preformatted{svc$modify_endpoint(
   EndpointArn = "string",
   EndpointIdentifier = "string",
   EndpointType = "source"|"target",
@@ -669,7 +665,7 @@ Modifies the specified endpoint.
     SecretsManagerSecretId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

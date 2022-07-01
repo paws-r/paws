@@ -11,9 +11,7 @@ sagemaker_describe_hyper_parameter_tuning_job(
 \item{HyperParameterTuningJobName}{[required] The name of the tuning job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HyperParameterTuningJobName = "string",
   HyperParameterTuningJobArn = "string",
   HyperParameterTuningJobConfig = list(
@@ -353,18 +351,16 @@ A list with the following syntax:
   ),
   FailureReason = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a description of a hyperparameter tuning job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_hyper_parameter_tuning_job(
+\preformatted{svc$describe_hyper_parameter_tuning_job(
   HyperParameterTuningJobName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

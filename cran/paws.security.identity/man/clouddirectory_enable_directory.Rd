@@ -10,24 +10,20 @@ clouddirectory_enable_directory(DirectoryArn)
 \item{DirectoryArn}{[required] The ARN of the directory to enable.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DirectoryArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables the specified directory. Only disabled directories can be
 enabled. Once enabled, the directory can then be read and written to.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_directory(
+\preformatted{svc$enable_directory(
   DirectoryArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

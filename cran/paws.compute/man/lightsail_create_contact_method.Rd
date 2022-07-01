@@ -40,9 +40,7 @@ would be specified as +1XXX5550100. For more information, see
 \href{https://en.wikipedia.org/wiki/E.164}{E.164} on \emph{Wikipedia}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -67,7 +65,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an email or SMS text message contact method.
@@ -80,13 +78,11 @@ to some countries/regions. For more information, see Notifications in
 Amazon Lightsail.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_contact_method(
+\preformatted{svc$create_contact_method(
   protocol = "Email"|"SMS",
   contactEndpoint = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

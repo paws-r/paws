@@ -42,9 +42,7 @@ An empty list.
 Cancels the execution of a job for a given thing.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_job_execution(
+\preformatted{svc$cancel_job_execution(
   jobId = "string",
   thingName = "string",
   force = TRUE|FALSE,
@@ -53,7 +51,7 @@ Cancels the execution of a job for a given thing.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

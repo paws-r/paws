@@ -12,12 +12,10 @@ personalize_create_schema(name, schema)
 \item{schema}{[required] A schema in Avro JSON format.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   schemaArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an Amazon Personalize schema from the specified schema string.
@@ -36,13 +34,11 @@ keywords. You specify a schema when you call
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_schema(
+\preformatted{svc$create_schema(
   name = "string",
   schema = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

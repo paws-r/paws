@@ -31,15 +31,13 @@ return the same template. By default, AWS CloudFormation specifies
 \code{Original}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TemplateBody = "string",
   StagesAvailable = list(
     "Original"|"Processed"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the template body for a specified stack. You can get the
@@ -51,14 +49,12 @@ after the stack has been deleted.
 If the template does not exist, a \code{ValidationError} is returned.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_template(
+\preformatted{svc$get_template(
   StackName = "string",
   ChangeSetName = "string",
   TemplateStage = "Original"|"Processed"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

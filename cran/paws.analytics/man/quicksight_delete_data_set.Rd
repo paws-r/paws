@@ -13,27 +13,23 @@ quicksight_delete_data_set(AwsAccountId, DataSetId)
 AWS Region for each AWS account.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   DataSetId = "string",
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a dataset.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_data_set(
+\preformatted{svc$delete_data_set(
   AwsAccountId = "string",
   DataSetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

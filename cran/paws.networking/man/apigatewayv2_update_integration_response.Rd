@@ -52,9 +52,7 @@ template as the value.}
 Supported only for WebSocket APIs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
   IntegrationResponseId = "string",
   IntegrationResponseKey = "string",
@@ -66,15 +64,13 @@ A list with the following syntax:
   ),
   TemplateSelectionExpression = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an IntegrationResponses.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_integration_response(
+\preformatted{svc$update_integration_response(
   ApiId = "string",
   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
   IntegrationId = "string",
@@ -88,7 +84,7 @@ Updates an IntegrationResponses.
   ),
   TemplateSelectionExpression = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

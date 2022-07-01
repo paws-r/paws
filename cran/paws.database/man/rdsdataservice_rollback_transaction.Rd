@@ -15,26 +15,22 @@ rdsdataservice_rollback_transaction(resourceArn, secretArn,
 \item{transactionId}{[required] The identifier of the transaction to roll back.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   transactionStatus = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Performs a rollback of a transaction. Rolling back a transaction cancels
 its changes.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$rollback_transaction(
+\preformatted{svc$rollback_transaction(
   resourceArn = "string",
   secretArn = "string",
   transactionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

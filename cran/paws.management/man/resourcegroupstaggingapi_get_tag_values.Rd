@@ -17,28 +17,24 @@ additional page of data.}
 Region for the AWS account.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PaginationToken = "string",
   TagValues = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns all tag values for the specified key in the specified Region for
 the AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_tag_values(
+\preformatted{svc$get_tag_values(
   PaginationToken = "string",
   Key = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -28,9 +28,7 @@ If you specify both, AWS Elastic Beanstalk returns an
 Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConfigurationSettings = list(
     list(
       SolutionStackName = "string",
@@ -57,7 +55,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a description of the settings for the specified configuration
@@ -76,14 +74,12 @@ Related Topics
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_configuration_settings(
+\preformatted{svc$describe_configuration_settings(
   ApplicationName = "string",
   TemplateName = "string",
   EnvironmentName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -17,9 +17,7 @@ set one filter at a time.}
 is 100.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TextTranslationJobPropertiesList = list(
     list(
       JobId = "string",
@@ -59,15 +57,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of the batch translation jobs that you have submitted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_text_translation_jobs(
+\preformatted{svc$list_text_translation_jobs(
   Filter = list(
     JobName = "string",
     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERROR"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
@@ -81,7 +77,7 @@ Gets a list of the batch translation jobs that you have submitted.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

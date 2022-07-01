@@ -7,9 +7,7 @@
 iam_get_account_password_policy()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PasswordPolicy = list(
     MinimumPasswordLength = 123,
     RequireSymbols = TRUE|FALSE,
@@ -23,7 +21,7 @@ A list with the following syntax:
     HardExpiry = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the password policy for the AWS account. For more information

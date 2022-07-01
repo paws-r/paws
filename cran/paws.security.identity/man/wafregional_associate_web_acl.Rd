@@ -37,13 +37,11 @@ Associates a web ACL with a resource, either an application load
 balancer or Amazon API Gateway stage.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_web_acl(
+\preformatted{svc$associate_web_acl(
   WebACLId = "string",
   ResourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

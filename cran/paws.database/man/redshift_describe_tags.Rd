@@ -58,9 +58,7 @@ request, Amazon Redshift returns a response with all resources that have
 either or both of these tag values associated with them.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TaggedResources = list(
     list(
       Tag = list(
@@ -73,7 +71,7 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of tags. You can return tags from a specific resource by
@@ -102,9 +100,7 @@ returned regardless of whether they have tag keys or values associated
 with them.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tags(
+\preformatted{svc$describe_tags(
   ResourceName = "string",
   ResourceType = "string",
   MaxRecords = 123,
@@ -116,7 +112,7 @@ with them.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

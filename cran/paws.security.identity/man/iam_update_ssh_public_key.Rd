@@ -38,14 +38,12 @@ CodeCommit repository, see \href{https://docs.aws.amazon.com/codecommit/latest/u
 in the \emph{AWS CodeCommit User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_ssh_public_key(
+\preformatted{svc$update_ssh_public_key(
   UserName = "string",
   SSHPublicKeyId = "string",
   Status = "Active"|"Inactive"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

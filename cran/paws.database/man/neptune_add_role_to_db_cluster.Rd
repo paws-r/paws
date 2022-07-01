@@ -27,14 +27,12 @@ Associates an Identity and Access Management (IAM) role from an Neptune
 DB cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_role_to_db_cluster(
+\preformatted{svc$add_role_to_db_cluster(
   DBClusterIdentifier = "string",
   RoleArn = "string",
   FeatureName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

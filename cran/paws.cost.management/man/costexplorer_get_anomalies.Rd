@@ -29,9 +29,7 @@ page size.}
 \item{MaxResults}{The number of entries a paginated response contains.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Anomalies = list(
     list(
       AnomalyId = "string",
@@ -60,16 +58,14 @@ A list with the following syntax:
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves all of the cost anomalies detected on your account, during the
 time period specified by the \code{DateInterval} object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_anomalies(
+\preformatted{svc$get_anomalies(
   MonitorArn = "string",
   DateInterval = list(
     StartDate = "string",
@@ -84,7 +80,7 @@ time period specified by the \code{DateInterval} object.
   NextPageToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

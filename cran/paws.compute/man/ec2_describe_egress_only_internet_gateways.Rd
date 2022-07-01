@@ -34,9 +34,7 @@ regardless of the tag value.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EgressOnlyInternetGateways = list(
     list(
       Attachments = list(
@@ -56,15 +54,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your egress-only internet gateways.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_egress_only_internet_gateways(
+\preformatted{svc$describe_egress_only_internet_gateways(
   DryRun = TRUE|FALSE,
   EgressOnlyInternetGatewayIds = list(
     "string"
@@ -80,7 +76,7 @@ Describes one or more of your egress-only internet gateways.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

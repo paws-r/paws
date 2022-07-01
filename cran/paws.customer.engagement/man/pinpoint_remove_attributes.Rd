@@ -28,9 +28,7 @@ such as first name, last name, and age.
 \item{UpdateAttributesRequest}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AttributesResource = list(
     ApplicationId = "string",
     AttributeType = "string",
@@ -39,16 +37,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes one or more attributes, of the same attribute type, from all the
 endpoints that are associated with an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_attributes(
+\preformatted{svc$remove_attributes(
   ApplicationId = "string",
   AttributeType = "string",
   UpdateAttributesRequest = list(
@@ -57,7 +53,7 @@ endpoints that are associated with an application.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

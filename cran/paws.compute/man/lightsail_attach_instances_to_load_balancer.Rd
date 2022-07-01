@@ -21,9 +21,7 @@ to your load balancer, aside from the limit of Lightsail instances you
 can create in your account (20).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -48,7 +46,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Attaches one or more Lightsail instances to a load balancer.
@@ -61,15 +59,13 @@ access control via resource tags applied to the resource identified by
 \verb{load balancer name}. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$attach_instances_to_load_balancer(
+\preformatted{svc$attach_instances_to_load_balancer(
   loadBalancerName = "string",
   instanceNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

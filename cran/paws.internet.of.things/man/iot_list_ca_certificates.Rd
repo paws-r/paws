@@ -14,9 +14,7 @@ iot_list_ca_certificates(pageSize, marker, ascendingOrder)
 \item{ascendingOrder}{Determines the order of the results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   certificates = list(
     list(
       certificateArn = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
   ),
   nextMarker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the CA certificates registered for your AWS account.
@@ -38,14 +36,12 @@ The results are paginated with a default page size of 25. You can use
 the returned marker to retrieve additional results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_ca_certificates(
+\preformatted{svc$list_ca_certificates(
   pageSize = 123,
   marker = "string",
   ascendingOrder = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

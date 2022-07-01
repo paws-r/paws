@@ -46,32 +46,28 @@ don't use it to provide sensitive information.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CodeDeliveryDetails = list(
     Destination = "string",
     DeliveryMedium = "SMS"|"EMAIL",
     AttributeName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the user attribute verification code for the specified attribute
 name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_user_attribute_verification_code(
+\preformatted{svc$get_user_attribute_verification_code(
   AccessToken = "string",
   AttributeName = "string",
   ClientMetadata = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -76,9 +76,7 @@ the version ID is updated, and can be retrieved using
 new version ID to set \code{CurrentDeliveryStreamVersionId} in the next call.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_destination(
+\preformatted{svc$update_destination(
   DeliveryStreamName = "string",
   CurrentDeliveryStreamVersionId = "string",
   DestinationId = "string",
@@ -468,7 +466,7 @@ new version ID to set \code{CurrentDeliveryStreamVersionId} in the next call.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

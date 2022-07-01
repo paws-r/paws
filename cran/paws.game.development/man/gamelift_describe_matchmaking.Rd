@@ -11,9 +11,7 @@ gamelift_describe_matchmaking(TicketIds)
 ID values.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TicketList = list(
     list(
       TicketId = "string",
@@ -65,7 +63,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves one or more matchmaking tickets. Use this operation to
@@ -101,14 +99,12 @@ used for games in development with low matchmaking usage.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_matchmaking(
+\preformatted{svc$describe_matchmaking(
   TicketIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

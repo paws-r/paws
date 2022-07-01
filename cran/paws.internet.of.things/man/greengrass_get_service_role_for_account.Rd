@@ -7,22 +7,18 @@
 greengrass_get_service_role_for_account()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AssociatedAt = "string",
   RoleArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the service role that is attached to your account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_service_role_for_account()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_service_role_for_account()
+}
 }
 
 \keyword{internal}

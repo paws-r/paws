@@ -20,26 +20,22 @@ verify that the calling entity is allowed access to the job and its
 details.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   status = "Created"|"Queued"|"Dispatched"|"InProgress"|"TimedOut"|"Succeeded"|"Failed"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Confirms a job worker has received the specified job. Used for partner
 actions only.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$acknowledge_third_party_job(
+\preformatted{svc$acknowledge_third_party_job(
   jobId = "string",
   nonce = "string",
   clientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,12 +16,10 @@ An empty list.
 Deletes a core definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_core_definition(
+\preformatted{svc$delete_core_definition(
   CoreDefinitionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

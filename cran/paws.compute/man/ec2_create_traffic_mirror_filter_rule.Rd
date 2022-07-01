@@ -44,9 +44,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrafficMirrorFilterRule = list(
     TrafficMirrorFilterRuleId = "string",
     TrafficMirrorFilterId = "string",
@@ -68,7 +66,7 @@ A list with the following syntax:
   ),
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Traffic Mirror filter rule.
@@ -79,9 +77,7 @@ mirror.
 You need the Traffic Mirror filter ID when you create the rule.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_traffic_mirror_filter_rule(
+\preformatted{svc$create_traffic_mirror_filter_rule(
   TrafficMirrorFilterId = "string",
   TrafficDirection = "ingress"|"egress",
   RuleNumber = 123,
@@ -101,7 +97,7 @@ You need the Traffic Mirror filter ID when you create the rule.
   DryRun = TRUE|FALSE,
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

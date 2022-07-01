@@ -26,13 +26,11 @@ an asynchronous operation. If you don't specify the channel's current
 version, the most recent version is deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_signaling_channel(
+\preformatted{svc$delete_signaling_channel(
   ChannelARN = "string",
   CurrentVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

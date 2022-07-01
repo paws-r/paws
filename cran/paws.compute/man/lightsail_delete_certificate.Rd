@@ -14,9 +14,7 @@ Use the \code{\link[=lightsail_get_certificates]{get_certificates}} action to ge
 list of certificate names that you can specify.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -41,7 +39,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an SSL/TLS certificate for your Amazon Lightsail content
@@ -53,12 +51,10 @@ deleted. Use the
 action to detach a certificate from a distribution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_certificate(
+\preformatted{svc$delete_certificate(
   certificateName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

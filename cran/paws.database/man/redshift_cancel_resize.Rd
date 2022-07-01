@@ -11,9 +11,7 @@ redshift_cancel_resize(ClusterIdentifier)
 operation for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TargetNodeType = "string",
   TargetNumberOfNodes = 123,
   TargetClusterType = "string",
@@ -37,18 +35,16 @@ A list with the following syntax:
   TargetEncryptionType = "string",
   DataTransferProgressPercent = 123.0
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Cancels a resize operation for a cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_resize(
+\preformatted{svc$cancel_resize(
   ClusterIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

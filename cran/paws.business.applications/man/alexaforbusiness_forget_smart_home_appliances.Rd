@@ -16,12 +16,10 @@ An empty list.
 Forgets smart home appliances associated to a room.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$forget_smart_home_appliances(
+\preformatted{svc$forget_smart_home_appliances(
   RoomArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

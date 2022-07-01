@@ -20,12 +20,10 @@ container. If there is no metric policy associated with the container,
 MediaStore doesn't send metrics to CloudWatch.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_metric_policy(
+\preformatted{svc$delete_metric_policy(
   ContainerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -13,9 +13,7 @@ directoryservice_describe_certificate(DirectoryId, CertificateId)
 \item{CertificateId}{[required] The identifier of the certificate.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Certificate = list(
     CertificateId = "string",
     State = "Registering"|"Registered"|"RegisterFailed"|"Deregistering"|"Deregistered"|"DeregisterFailed",
@@ -33,20 +31,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Displays information about the certificate registered for secure LDAP or
 client certificate authentication.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_certificate(
+\preformatted{svc$describe_certificate(
   DirectoryId = "string",
   CertificateId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

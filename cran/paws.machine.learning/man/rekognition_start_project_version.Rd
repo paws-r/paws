@@ -16,12 +16,10 @@ Second (TPS). Use a higher number to increase the TPS throughput of your
 model. You are charged for the number of inference units that you use.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts the running of the version of a model. Starting a model takes a
@@ -39,13 +37,11 @@ This operation requires permissions to perform the
 \code{rekognition:StartProjectVersion} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_project_version(
+\preformatted{svc$start_project_version(
   ProjectVersionArn = "string",
   MinInferenceUnits = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

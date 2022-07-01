@@ -16,12 +16,10 @@ An empty list.
 Deletes a custom language model using its name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_language_model(
+\preformatted{svc$delete_language_model(
   ModelName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -205,9 +205,7 @@ the thumbnails that it stores in your Amazon S3 bucket.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Pipeline = list(
     Id = "string",
     Arn = "string",
@@ -257,16 +255,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The CreatePipeline operation creates a pipeline with settings that you
 specify.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_pipeline(
+\preformatted{svc$create_pipeline(
   Name = "string",
   InputBucket = "string",
   OutputBucket = "string",
@@ -305,7 +301,7 @@ specify.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ workdocs_get_current_user(AuthenticationToken)
 \item{AuthenticationToken}{[required] Amazon WorkDocs authentication token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   User = list(
     Id = "string",
     Username = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves details of the current user for whom the authentication token
@@ -55,12 +53,10 @@ information, see \href{https://docs.aws.amazon.com/workdocs/latest/developerguid
 in the \emph{Amazon WorkDocs Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_current_user(
+\preformatted{svc$get_current_user(
   AuthenticationToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

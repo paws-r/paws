@@ -21,15 +21,13 @@ valid resources in AWS CodeCommit, see \href{https://docs.aws.amazon.com/codecom
 in the \emph{AWS CodeCommit User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

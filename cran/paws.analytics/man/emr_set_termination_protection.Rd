@@ -44,15 +44,13 @@ For more information, see\href{https://docs.aws.amazon.com/emr/latest/Management
 in the \emph{Amazon EMR Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_termination_protection(
+\preformatted{svc$set_termination_protection(
   JobFlowIds = list(
     "string"
   ),
   TerminationProtected = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

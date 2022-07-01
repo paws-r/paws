@@ -13,12 +13,10 @@ retrieve the recovery point.}
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TapeARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the recovery point for the specified virtual tape. This
@@ -33,13 +31,11 @@ tape is read-only. The virtual tape can be retrieved to only a tape
 gateway. There is no charge for retrieving recovery points.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$retrieve_tape_recovery_point(
+\preformatted{svc$retrieve_tape_recovery_point(
   TapeARN = "string",
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

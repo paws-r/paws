@@ -23,9 +23,7 @@ results, use null.}
 \item{PageSize}{The maximum number of items to return with this call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RecordDetail = list(
     RecordId = "string",
     ProvisionedProductName = "string",
@@ -65,7 +63,7 @@ A list with the following syntax:
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the specified request operation.
@@ -85,15 +83,13 @@ records, but will be able to use
 product's history from when he was the owner.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_record(
+\preformatted{svc$describe_record(
   AcceptLanguage = "string",
   Id = "string",
   PageToken = "string",
   PageSize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

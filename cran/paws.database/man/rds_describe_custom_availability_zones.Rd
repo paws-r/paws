@@ -28,9 +28,7 @@ request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   CustomAvailabilityZones = list(
     list(
@@ -48,7 +46,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about custom Availability Zones (AZs).
@@ -59,9 +57,7 @@ vSphere cluster.
 For more information about RDS on VMware, see the \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html}{RDS on VMware User Guide.}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_custom_availability_zones(
+\preformatted{svc$describe_custom_availability_zones(
   CustomAvailabilityZoneId = "string",
   Filters = list(
     list(
@@ -74,7 +70,7 @@ For more information about RDS on VMware, see the \href{https://docs.aws.amazon.
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

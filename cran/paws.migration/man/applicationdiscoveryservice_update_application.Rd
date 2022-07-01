@@ -21,14 +21,12 @@ An empty list.
 Updates metadata about an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_application(
+\preformatted{svc$update_application(
   configurationId = "string",
   name = "string",
   description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

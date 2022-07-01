@@ -18,13 +18,11 @@ An empty list.
 Deletes the specified retention policy from the specified organization.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_retention_policy(
+\preformatted{svc$delete_retention_policy(
   OrganizationId = "string",
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

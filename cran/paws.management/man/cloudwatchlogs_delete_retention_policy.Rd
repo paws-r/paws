@@ -19,12 +19,10 @@ Log events do not expire if they belong to log groups without a
 retention policy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_retention_policy(
+\preformatted{svc$delete_retention_policy(
   logGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

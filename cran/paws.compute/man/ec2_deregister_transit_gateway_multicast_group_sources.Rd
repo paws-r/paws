@@ -22,9 +22,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DeregisteredMulticastGroupSources = list(
     TransitGatewayMulticastDomainId = "string",
     DeregisteredNetworkInterfaceIds = list(
@@ -33,16 +31,14 @@ A list with the following syntax:
     GroupIpAddress = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deregisters the specified sources (network interfaces) from the transit
 gateway multicast group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_transit_gateway_multicast_group_sources(
+\preformatted{svc$deregister_transit_gateway_multicast_group_sources(
   TransitGatewayMulticastDomainId = "string",
   GroupIpAddress = "string",
   NetworkInterfaceIds = list(
@@ -50,7 +46,7 @@ gateway multicast group.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

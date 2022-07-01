@@ -10,9 +10,7 @@ cloudsearch_describe_domains(DomainNames)
 \item{DomainNames}{The names of the domains you want to include in the response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainStatusList = list(
     list(
       DomainId = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the search domains owned by this account. Can be
@@ -52,14 +50,12 @@ target="_blank">Getting Information about a Search Domain</a> in the
 \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_domains(
+\preformatted{svc$describe_domains(
   DomainNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

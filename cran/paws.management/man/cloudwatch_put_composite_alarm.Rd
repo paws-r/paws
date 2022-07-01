@@ -146,9 +146,7 @@ If you are an IAM user, you must have \code{iam:CreateServiceLinkedRole} to
 create a composite alarm that has Systems Manager OpsItem actions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_composite_alarm(
+\preformatted{svc$put_composite_alarm(
   ActionsEnabled = TRUE|FALSE,
   AlarmActions = list(
     "string"
@@ -169,7 +167,7 @@ create a composite alarm that has Systems Manager OpsItem actions.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

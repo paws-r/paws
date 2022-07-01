@@ -14,9 +14,7 @@ You will get an invalid parameter error if you pass more than one
 instance entry in this array.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -41,7 +39,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an AWS CloudFormation stack, which creates a new Amazon EC2
@@ -56,9 +54,7 @@ the \verb{create cloud formation stack} operation again with the same export
 snapshot record.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cloud_formation_stack(
+\preformatted{svc$create_cloud_formation_stack(
   instances = list(
     list(
       sourceName = "string",
@@ -69,7 +65,7 @@ snapshot record.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

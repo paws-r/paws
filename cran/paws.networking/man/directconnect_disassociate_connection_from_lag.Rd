@@ -12,9 +12,7 @@ directconnect_disassociate_connection_from_lag(connectionId, lagId)
 \item{lagId}{[required] The ID of the LAG.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ownerAccount = "string",
   connectionId = "string",
   connectionName = "string",
@@ -40,7 +38,7 @@ A list with the following syntax:
   ),
   providerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disassociates a connection from a link aggregation group (LAG). The
@@ -58,13 +56,11 @@ are disassociated, the LAG continues to exist as an empty LAG with no
 physical connections.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_connection_from_lag(
+\preformatted{svc$disassociate_connection_from_lag(
   connectionId = "string",
   lagId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

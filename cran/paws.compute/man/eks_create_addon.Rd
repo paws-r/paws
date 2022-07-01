@@ -42,9 +42,7 @@ organization. Each tag consists of a key and an optional value, both of
 which you define.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   addon = list(
     addonName = "string",
     clusterName = "string",
@@ -74,7 +72,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an Amazon EKS add-on.
@@ -87,9 +85,7 @@ on the Server-side Apply Kubernetes feature, which is only available in
 Kubernetes 1.18 and later.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_addon(
+\preformatted{svc$create_addon(
   clusterName = "string",
   addonName = "string",
   addonVersion = "string",
@@ -100,7 +96,7 @@ Kubernetes 1.18 and later.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

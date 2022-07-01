@@ -31,15 +31,13 @@ Disassociates the specified self-service action association from the
 specified provisioning artifact.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_service_action_from_provisioning_artifact(
+\preformatted{svc$disassociate_service_action_from_provisioning_artifact(
   ProductId = "string",
   ProvisioningArtifactId = "string",
   ServiceActionId = "string",
   AcceptLanguage = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

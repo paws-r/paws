@@ -38,15 +38,13 @@ you specify for \code{MaxResults}, the response includes a \code{NextToken} valu
 that you can use to get another batch of objects.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AdminAccountId = "string",
   ServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
   Data = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 If you created a Shield Advanced policy, returns policy-level attack
@@ -54,9 +52,7 @@ summary information in the event of a potential DDoS attack. Other
 policy types are currently unsupported.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_protection_status(
+\preformatted{svc$get_protection_status(
   PolicyId = "string",
   MemberAccountId = "string",
   StartTime = as.POSIXct(
@@ -68,7 +64,7 @@ policy types are currently unsupported.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

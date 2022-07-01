@@ -40,16 +40,14 @@ accounts or associated with any directories.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_connection_alias_permission(
+\preformatted{svc$update_connection_alias_permission(
   AliasId = "string",
   ConnectionAliasPermission = list(
     SharedAccountId = "string",
     AllowAssociation = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -27,15 +27,13 @@ Deletes the specified ingress or egress entry (rule) from the specified
 network ACL.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_network_acl_entry(
+\preformatted{svc$delete_network_acl_entry(
   DryRun = TRUE|FALSE,
   Egress = TRUE|FALSE,
   NetworkAclId = "string",
   RuleNumber = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

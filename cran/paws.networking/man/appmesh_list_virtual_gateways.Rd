@@ -32,9 +32,7 @@ Pagination continues from the end of the previous results that returned
 the \code{nextToken} value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   nextToken = "string",
   virtualGateways = list(
     list(
@@ -53,21 +51,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of existing virtual gateways in a service mesh.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_virtual_gateways(
+\preformatted{svc$list_virtual_gateways(
   limit = 123,
   meshName = "string",
   meshOwner = "string",
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

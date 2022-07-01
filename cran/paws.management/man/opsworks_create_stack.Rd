@@ -215,12 +215,10 @@ You can also specify an agent version when you create or update an
 instance, which overrides the stack's default setting.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StackId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html}{Create a New Stack}.
@@ -230,9 +228,7 @@ attached policy that explicitly grants permissions. For more information
 about user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_stack(
+\preformatted{svc$create_stack(
   Name = "string",
   Region = "string",
   VpcId = "string",
@@ -268,7 +264,7 @@ about user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/us
   DefaultRootDeviceType = "ebs"|"instance-store",
   AgentVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

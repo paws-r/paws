@@ -13,12 +13,10 @@ machinelearning_update_data_source(DataSourceId, DataSourceName)
 replace the current description.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DataSourceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the \code{DataSourceName} of a \code{DataSource}.
@@ -27,13 +25,11 @@ You can use the \code{\link[=machinelearning_get_data_source]{get_data_source}}
 operation to view the contents of the updated data element.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_data_source(
+\preformatted{svc$update_data_source(
   DataSourceId = "string",
   DataSourceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

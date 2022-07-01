@@ -30,9 +30,7 @@ algorithms, use the token in the next request.}
 \item{SortOrder}{The sort order for the results. The default is \code{Ascending}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AlgorithmSummaryList = list(
     list(
       AlgorithmName = "string",
@@ -46,15 +44,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the machine learning algorithms that have been created.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_algorithms(
+\preformatted{svc$list_algorithms(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),
@@ -67,7 +63,7 @@ Lists the machine learning algorithms that have been created.
   SortBy = "Name"|"CreationTime",
   SortOrder = "Ascending"|"Descending"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

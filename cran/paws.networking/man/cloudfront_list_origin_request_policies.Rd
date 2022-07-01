@@ -25,9 +25,7 @@ next page of the list, set this field’s value to the value of
 response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OriginRequestPolicyList = list(
     NextMarker = "string",
     MaxItems = 123,
@@ -76,7 +74,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of origin request policies.
@@ -92,14 +90,12 @@ get the next page of items, send a subsequent request that specifies the
 the subsequent request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_origin_request_policies(
+\preformatted{svc$list_origin_request_policies(
   Type = "managed"|"custom",
   Marker = "string",
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

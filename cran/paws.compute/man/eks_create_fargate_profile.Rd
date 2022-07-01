@@ -39,9 +39,7 @@ propagate to any other resources associated with the Fargate profile,
 such as the pods that are scheduled with it.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   fargateProfile = list(
     fargateProfileName = "string",
     fargateProfileArn = "string",
@@ -67,7 +65,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an AWS Fargate profile for your Amazon EKS cluster. You must
@@ -105,9 +103,7 @@ For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide
 in the \emph{Amazon EKS User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_fargate_profile(
+\preformatted{svc$create_fargate_profile(
   fargateProfileName = "string",
   clusterName = "string",
   podExecutionRoleArn = "string",
@@ -127,7 +123,7 @@ in the \emph{Amazon EKS User Guide}.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

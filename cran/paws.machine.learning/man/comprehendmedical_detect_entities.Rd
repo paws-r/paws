@@ -12,9 +12,7 @@ entities. Each string must contain fewer than 20,000 bytes of
 characters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Entities = list(
     list(
       Id = 123,
@@ -76,7 +74,7 @@ A list with the following syntax:
   PaginationToken = "string",
   ModelVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=comprehendmedical_detect_entities]{detect_entities}} operation is
@@ -89,12 +87,10 @@ specific information about them such as entity category, location, and
 confidence score on that information .
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_entities(
+\preformatted{svc$detect_entities(
   Text = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

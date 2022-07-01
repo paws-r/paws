@@ -27,9 +27,7 @@ Deleting the last subscriber to a notification also deletes the
 notification.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_subscriber(
+\preformatted{svc$delete_subscriber(
   AccountId = "string",
   BudgetName = "string",
   Notification = list(
@@ -44,7 +42,7 @@ notification.
     Address = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

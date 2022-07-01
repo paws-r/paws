@@ -21,13 +21,11 @@ Deactivates the specified user, which revokes the user's access to
 Amazon WorkDocs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deactivate_user(
+\preformatted{svc$deactivate_user(
   UserId = "string",
   AuthenticationToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

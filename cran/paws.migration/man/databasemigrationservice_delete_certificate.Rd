@@ -10,9 +10,7 @@ databasemigrationservice_delete_certificate(CertificateArn)
 \item{CertificateArn}{[required] The Amazon Resource Name (ARN) of the deleted certificate.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Certificate = list(
     CertificateIdentifier = "string",
     CertificateCreationDate = as.POSIXct(
@@ -32,18 +30,16 @@ A list with the following syntax:
     KeyLength = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified certificate.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_certificate(
+\preformatted{svc$delete_certificate(
   CertificateArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

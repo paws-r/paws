@@ -111,9 +111,7 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_instance(
+\preformatted{svc$update_instance(
   InstanceId = "string",
   LayerIds = list(
     "string"
@@ -129,7 +127,7 @@ see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-securit
   EbsOptimized = TRUE|FALSE,
   AgentVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

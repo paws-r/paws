@@ -37,9 +37,7 @@ replicated across multiple Availability Zones in an AWS region,
 providing built-in high availability and data durability.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- dynamodb(
+\preformatted{svc <- dynamodb(
   config = list(
     credentials = list(
       creds = list(
@@ -53,7 +51,7 @@ providing built-in high availability and data durability.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

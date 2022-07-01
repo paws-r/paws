@@ -18,13 +18,11 @@ An empty list.
 Deletes a resource server.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resource_server(
+\preformatted{svc$delete_resource_server(
   UserPoolId = "string",
   Identifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

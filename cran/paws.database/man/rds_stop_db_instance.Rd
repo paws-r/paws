@@ -13,9 +13,7 @@ rds_stop_db_instance(DBInstanceIdentifier, DBSnapshotIdentifier)
 immediately before the DB instance is stopped.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -201,7 +199,7 @@ A list with the following syntax:
     CustomerOwnedIpEnabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops an Amazon RDS DB instance. When you stop a DB instance, Amazon RDS
@@ -216,13 +214,11 @@ This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 Aurora clusters, use \code{\link[=rds_stop_db_cluster]{stop_db_cluster}} instead.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_db_instance(
+\preformatted{svc$stop_db_instance(
   DBInstanceIdentifier = "string",
   DBSnapshotIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

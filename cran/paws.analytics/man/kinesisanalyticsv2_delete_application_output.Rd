@@ -28,13 +28,11 @@ application configuration. You can use the
 operation to get the specific \code{OutputId}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationARN = "string",
   ApplicationVersionId = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the output destination configuration from your SQL-based Kinesis
@@ -43,14 +41,12 @@ no longer write data from the corresponding in-application stream to the
 external output destination.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_application_output(
+\preformatted{svc$delete_application_output(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   OutputId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

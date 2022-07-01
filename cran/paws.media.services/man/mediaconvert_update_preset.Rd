@@ -16,9 +16,7 @@ mediaconvert_update_preset(Category, Description, Name, Settings)
 \item{Settings}{Settings for preset}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Preset = list(
     Arn = "string",
     Category = "string",
@@ -682,15 +680,13 @@ A list with the following syntax:
     Type = "SYSTEM"|"CUSTOM"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modify one of your existing presets.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_preset(
+\preformatted{svc$update_preset(
   Category = "string",
   Description = "string",
   Name = "string",
@@ -1344,7 +1340,7 @@ Modify one of your existing presets.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

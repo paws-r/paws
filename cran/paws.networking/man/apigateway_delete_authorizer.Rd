@@ -21,13 +21,11 @@ Deletes an existing Authorizer resource.<div class="seeAlso">
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/delete-authorizer.html}{AWS CLI}</div>
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_authorizer(
+\preformatted{svc$delete_authorizer(
   restApiId = "string",
   authorizerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

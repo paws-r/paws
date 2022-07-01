@@ -10,9 +10,7 @@ codepipeline_update_pipeline(pipeline)
 \item{pipeline}{[required] The name of the pipeline to be updated.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pipeline = list(
     name = "string",
     roleArn = "string",
@@ -76,7 +74,7 @@ A list with the following syntax:
     version = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a specified pipeline with edits or changes to its structure. Use
@@ -86,9 +84,7 @@ structure of the pipeline. Updating the pipeline increases the version
 number of the pipeline by 1.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_pipeline(
+\preformatted{svc$update_pipeline(
   pipeline = list(
     name = "string",
     roleArn = "string",
@@ -152,7 +148,7 @@ number of the pipeline by 1.
     version = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

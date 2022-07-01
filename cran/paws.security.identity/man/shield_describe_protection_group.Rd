@@ -12,9 +12,7 @@ protection group in lists and to manage the protection group, for
 example to update, delete, or describe it.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProtectionGroup = list(
     ProtectionGroupId = "string",
     Aggregation = "SUM"|"MEAN"|"MAX",
@@ -25,18 +23,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the specification for the specified protection group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_protection_group(
+\preformatted{svc$describe_protection_group(
   ProtectionGroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

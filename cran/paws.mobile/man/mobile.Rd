@@ -22,9 +22,7 @@ developer desktop projects with the necessary SDKs, constants, tools and
 samples to make use of those resources.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- mobile(
+\preformatted{svc <- mobile(
   config = list(
     credentials = list(
       creds = list(
@@ -38,7 +36,7 @@ samples to make use of those resources.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

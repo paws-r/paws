@@ -10,9 +10,7 @@ connect_get_federation_token(InstanceId)
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Credentials = list(
     AccessToken = "string",
     AccessTokenExpiration = as.POSIXct(
@@ -24,18 +22,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a token for federation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_federation_token(
+\preformatted{svc$get_federation_token(
   InstanceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

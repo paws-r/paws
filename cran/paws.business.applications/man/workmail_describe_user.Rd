@@ -12,9 +12,7 @@ workmail_describe_user(OrganizationId, UserId)
 \item{UserId}{[required] The identifier for the user to be described.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserId = "string",
   Name = "string",
   Email = "string",
@@ -28,19 +26,17 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides information regarding the user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_user(
+\preformatted{svc$describe_user(
   OrganizationId = "string",
   UserId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ are shown.}
 pending changes (\code{false}). Defaults to \code{false}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Expressions = list(
     list(
       Options = list(
@@ -40,7 +38,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the expressions configured for the search domain. Can be limited to
@@ -53,16 +51,14 @@ target="_blank">Configuring Expressions</a> in the \emph{Amazon CloudSearch
 Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_expressions(
+\preformatted{svc$describe_expressions(
   DomainName = "string",
   ExpressionNames = list(
     "string"
   ),
   Deployed = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

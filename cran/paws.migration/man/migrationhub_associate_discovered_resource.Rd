@@ -27,9 +27,7 @@ Associates a discovered resource ID from Application Discovery Service
 with a migration task.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_discovered_resource(
+\preformatted{svc$associate_discovered_resource(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   DiscoveredResource = list(
@@ -38,7 +36,7 @@ with a migration task.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

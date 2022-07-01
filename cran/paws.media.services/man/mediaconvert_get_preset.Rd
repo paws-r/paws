@@ -10,9 +10,7 @@ mediaconvert_get_preset(Name)
 \item{Name}{[required] The name of the preset.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Preset = list(
     Arn = "string",
     Category = "string",
@@ -676,18 +674,16 @@ A list with the following syntax:
     Type = "SYSTEM"|"CUSTOM"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieve the JSON for a specific preset.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_preset(
+\preformatted{svc$get_preset(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

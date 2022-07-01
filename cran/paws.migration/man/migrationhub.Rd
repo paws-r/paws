@@ -25,9 +25,7 @@ call any of these APIs, or a \code{HomeRegionNotSetException} error will be
 returned. Also, you must make the API calls while in your home region.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- migrationhub(
+\preformatted{svc <- migrationhub(
   config = list(
     credentials = list(
       creds = list(
@@ -41,7 +39,7 @@ returned. Also, you must make the API calls while in your home region.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

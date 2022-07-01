@@ -21,9 +21,7 @@ response to
 \code{\link[=cloudfront_get_origin_request_policy_config]{get_origin_request_policy_config}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OriginRequestPolicy = list(
     Id = "string",
     LastModifiedTime = as.POSIXct(
@@ -63,7 +61,7 @@ A list with the following syntax:
   ),
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an origin request policy configuration.
@@ -85,9 +83,7 @@ including the fields that you modified and those that you didn’t.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_origin_request_policy(
+\preformatted{svc$update_origin_request_policy(
   OriginRequestPolicyConfig = list(
     Comment = "string",
     Name = "string",
@@ -122,7 +118,7 @@ including the fields that you modified and those that you didn’t.
   Id = "string",
   IfMatch = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -39,13 +39,11 @@ For information about versions for managed policies, see \href{https://docs.aws.
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_policy_version(
+\preformatted{svc$delete_policy_version(
   PolicyArn = "string",
   VersionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

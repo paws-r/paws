@@ -14,9 +14,7 @@ kinesisanalyticsv2_describe_application_snapshot(ApplicationName,
 using .}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SnapshotDetails = list(
     SnapshotName = "string",
     SnapshotStatus = "CREATING"|"READY"|"DELETING"|"FAILED",
@@ -26,19 +24,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a snapshot of application state data.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_application_snapshot(
+\preformatted{svc$describe_application_snapshot(
   ApplicationName = "string",
   SnapshotName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

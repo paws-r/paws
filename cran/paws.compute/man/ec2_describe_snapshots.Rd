@@ -75,9 +75,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Snapshots = list(
     list(
       DataEncryptionKeyId = "string",
@@ -105,7 +103,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified EBS snapshots available to you or all of the EBS
@@ -162,9 +160,7 @@ For more information about EBS snapshots, see \href{https://docs.aws.amazon.com/
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_snapshots(
+\preformatted{svc$describe_snapshots(
   Filters = list(
     list(
       Name = "string",
@@ -186,7 +182,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

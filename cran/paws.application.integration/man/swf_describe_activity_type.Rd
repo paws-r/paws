@@ -14,9 +14,7 @@ identified by the \code{name} and \code{version} that were supplied when the
 activity was registered.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   typeInfo = list(
     activityType = list(
       name = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
     defaultTaskScheduleToCloseTimeout = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the specified activity type. This includes
@@ -76,16 +74,14 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_activity_type(
+\preformatted{svc$describe_activity_type(
   domain = "string",
   activityType = list(
     name = "string",
     version = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

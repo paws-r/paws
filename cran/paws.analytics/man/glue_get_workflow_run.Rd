@@ -14,9 +14,7 @@ glue_get_workflow_run(Name, RunId, IncludeGraph)
 \item{IncludeGraph}{Specifies whether to include the workflow graph in response or not.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Run = list(
     Name = "string",
     WorkflowRunId = "string",
@@ -153,20 +151,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the metadata for a given workflow run.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_workflow_run(
+\preformatted{svc$get_workflow_run(
   Name = "string",
   RunId = "string",
   IncludeGraph = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -31,9 +31,7 @@ NONE, which requires any conflicts to be resolved manually before the
 merge operation is successful.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   mergeOptions = list(
     "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
   ),
@@ -41,7 +39,7 @@ A list with the following syntax:
   destinationCommitId = "string",
   baseCommitId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the merge options available for merging two
@@ -49,16 +47,14 @@ specified branches. For details about why a merge option is not
 available, use GetMergeConflicts or DescribeMergeConflicts.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_merge_options(
+\preformatted{svc$get_merge_options(
   repositoryName = "string",
   sourceCommitSpecifier = "string",
   destinationCommitSpecifier = "string",
   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

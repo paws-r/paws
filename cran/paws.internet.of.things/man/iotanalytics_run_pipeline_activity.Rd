@@ -18,24 +18,20 @@ seconds or less) can be used.}
 \item{payloads}{[required] The sample message payloads on which the pipeline activity is run.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   payloads = list(
     raw
   ),
   logResult = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Simulates the results of running a pipeline activity on a message
 payload.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$run_pipeline_activity(
+\preformatted{svc$run_pipeline_activity(
   pipelineActivity = list(
     channel = list(
       name = "string",
@@ -103,7 +99,7 @@ payload.
     raw
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

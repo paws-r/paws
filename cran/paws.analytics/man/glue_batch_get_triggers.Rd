@@ -11,9 +11,7 @@ glue_batch_get_triggers(TriggerNames)
 \code{\link[=glue_list_triggers]{list_triggers}} operation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Triggers = list(
     list(
       Name = "string",
@@ -55,7 +53,7 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of resource metadata for a given list of trigger names.
@@ -65,14 +63,12 @@ granted permissions. This operation supports all IAM permissions,
 including permission conditions that uses tags.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_triggers(
+\preformatted{svc$batch_get_triggers(
   TriggerNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

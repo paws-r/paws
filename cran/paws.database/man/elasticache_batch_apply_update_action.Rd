@@ -15,9 +15,7 @@ elasticache_batch_apply_update_action(ReplicationGroupIds,
 \item{ServiceUpdateName}{[required] The unique ID of the service update}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProcessedUpdateActions = list(
     list(
       ReplicationGroupId = "string",
@@ -36,16 +34,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Apply the service update. For more information on service updates and
 applying them, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/applying-updates.html}{Applying Service Updates}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_apply_update_action(
+\preformatted{svc$batch_apply_update_action(
   ReplicationGroupIds = list(
     "string"
   ),
@@ -54,7 +50,7 @@ applying them, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/re
   ),
   ServiceUpdateName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

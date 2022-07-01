@@ -29,12 +29,10 @@ option works with SMB clients on Microsoft Windows 8, Windows Server
 2012 or newer.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the SMB security strategy on a file gateway. This action is only
@@ -45,13 +43,11 @@ This API is called Security level in the User Guide.
 A higher security level can affect performance of the gateway.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_smb_security_strategy(
+\preformatted{svc$update_smb_security_strategy(
   GatewayARN = "string",
   SMBSecurityStrategy = "ClientSpecified"|"MandatorySigning"|"MandatoryEncryption"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

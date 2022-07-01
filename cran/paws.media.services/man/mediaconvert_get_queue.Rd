@@ -10,9 +10,7 @@ mediaconvert_get_queue(Name)
 \item{Name}{[required] The name of the queue that you want information about.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Queue = list(
     Arn = "string",
     CreatedAt = as.POSIXct(
@@ -42,18 +40,16 @@ A list with the following syntax:
     Type = "SYSTEM"|"CUSTOM"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieve the JSON for a specific queue.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_queue(
+\preformatted{svc$get_queue(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

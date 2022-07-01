@@ -13,9 +13,7 @@ apigateway_get_api_key(apiKey, includeValue)
 contains the key value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   value = "string",
   name = "string",
@@ -35,19 +33,17 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the current ApiKey resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_api_key(
+\preformatted{svc$get_api_key(
   apiKey = "string",
   includeValue = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

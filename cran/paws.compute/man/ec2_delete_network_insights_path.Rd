@@ -15,24 +15,20 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{NetworkInsightsPathId}{[required] The ID of the path.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NetworkInsightsPathId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified path.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_network_insights_path(
+\preformatted{svc$delete_network_insights_path(
   DryRun = TRUE|FALSE,
   NetworkInsightsPathId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

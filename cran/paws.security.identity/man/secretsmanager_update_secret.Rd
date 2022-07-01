@@ -118,14 +118,12 @@ double-quotes. All of the embedded double quotes are escaped:
 \verb{"[\{\\"username\\":\\"bob\\"\},\{\\"password\\":\\"abc123xyz456\\"\}]"}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ARN = "string",
   Name = "string",
   VersionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies many of the details of the specified secret. If you include a
@@ -197,9 +195,7 @@ managed CMK for Secrets Manager.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_secret(
+\preformatted{svc$update_secret(
   SecretId = "string",
   ClientRequestToken = "string",
   Description = "string",
@@ -207,7 +203,7 @@ managed CMK for Secrets Manager.
   SecretBinary = raw,
   SecretString = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

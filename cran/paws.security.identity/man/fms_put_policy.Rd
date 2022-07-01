@@ -12,9 +12,7 @@ fms_put_policy(Policy, TagList)
 \item{TagList}{The tags to add to the AWS resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Policy = list(
     PolicyId = "string",
     PolicyName = "string",
@@ -48,7 +46,7 @@ A list with the following syntax:
   ),
   PolicyArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an AWS Firewall Manager policy.
@@ -76,9 +74,7 @@ policy. For more information about subscribing to Shield Advanced, see
 \href{https://docs.aws.amazon.com/waf/latest/DDOSAPIReference/API_CreateSubscription.html}{CreateSubscription}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_policy(
+\preformatted{svc$put_policy(
   Policy = list(
     PolicyId = "string",
     PolicyName = "string",
@@ -117,7 +113,7 @@ policy. For more information about subscribing to Shield Advanced, see
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

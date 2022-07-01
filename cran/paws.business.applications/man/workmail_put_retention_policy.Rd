@@ -25,9 +25,7 @@ An empty list.
 Puts a retention policy to the specified organization.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_retention_policy(
+\preformatted{svc$put_retention_policy(
   OrganizationId = "string",
   Id = "string",
   Name = "string",
@@ -40,7 +38,7 @@ Puts a retention policy to the specified organization.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -37,14 +37,12 @@ carriage return (\verb{\\u000D})
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContextKeyNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of all of the context keys referenced in all the IAM
@@ -73,15 +71,13 @@ to understand what key names and values you must supply when you call
 \code{\link[=iam_simulate_principal_policy]{simulate_principal_policy}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_context_keys_for_principal_policy(
+\preformatted{svc$get_context_keys_for_principal_policy(
   PolicySourceArn = "string",
   PolicyInputList = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

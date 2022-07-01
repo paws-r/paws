@@ -23,9 +23,7 @@ idempotency of application creation.}
 \item{tags}{The tags to be associated with the application.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   appSummary = list(
     appId = "string",
     importedAppId = "string",
@@ -90,16 +88,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an application. An application consists of one or more server
 groups. Each server group contain one or more servers.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_app(
+\preformatted{svc$create_app(
   name = "string",
   description = "string",
   roleName = "string",
@@ -135,7 +131,7 @@ groups. Each server group contain one or more servers.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

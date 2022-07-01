@@ -15,9 +15,7 @@ credentials used to sign the request. If you use an account ID, don't
 include any hyphens ('-') in the ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProvisionedCapacityList = list(
     list(
       CapacityId = "string",
@@ -26,19 +24,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation lists the provisioned capacity units for the specified
 AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_provisioned_capacity(
+\preformatted{svc$list_provisioned_capacity(
   accountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

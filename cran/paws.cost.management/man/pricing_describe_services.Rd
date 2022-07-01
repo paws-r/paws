@@ -24,9 +24,7 @@ want to retrieve.}
 \item{MaxResults}{The maximum number of results that you want returned in the response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Services = list(
     list(
       ServiceCode = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
   FormatVersion = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the metadata for one service or a list of the metadata for all
@@ -50,15 +48,13 @@ available for EC2 are \code{volumeType}, \code{maxIopsVolume}, \code{operation},
 \code{locationType}, and \code{instanceCapacity10xlarge}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_services(
+\preformatted{svc$describe_services(
   ServiceCode = "string",
   FormatVersion = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

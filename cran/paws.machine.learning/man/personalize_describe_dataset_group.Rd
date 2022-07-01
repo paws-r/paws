@@ -10,9 +10,7 @@ personalize_describe_dataset_group(datasetGroupArn)
 \item{datasetGroupArn}{[required] The Amazon Resource Name (ARN) of the dataset group to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   datasetGroup = list(
     name = "string",
     datasetGroupArn = "string",
@@ -28,19 +26,17 @@ A list with the following syntax:
     failureReason = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the given dataset group. For more information on dataset
 groups, see \code{\link[=personalize_create_dataset_group]{create_dataset_group}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_dataset_group(
+\preformatted{svc$describe_dataset_group(
   datasetGroupArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

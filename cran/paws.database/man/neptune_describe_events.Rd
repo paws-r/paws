@@ -62,9 +62,7 @@ request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   Events = list(
     list(
@@ -81,7 +79,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns events related to DB instances, DB security groups, DB
@@ -91,9 +89,7 @@ parameter group can be obtained by providing the name as a parameter. By
 default, the past hour of events are returned.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_events(
+\preformatted{svc$describe_events(
   SourceIdentifier = "string",
   SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
   StartTime = as.POSIXct(
@@ -117,7 +113,7 @@ default, the past hour of events are returned.
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

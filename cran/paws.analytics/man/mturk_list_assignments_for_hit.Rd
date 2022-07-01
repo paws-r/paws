@@ -18,9 +18,7 @@ mturk_list_assignments_for_hit(HITId, NextToken, MaxResults,
 \item{AssignmentStatuses}{The status of the assignments to return: Submitted | Approved | Rejected}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   NumResults = 123,
   Assignments = list(
@@ -52,7 +50,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=mturk_list_assignments_for_hit]{list_assignments_for_hit}}
@@ -79,9 +77,7 @@ returns a single page of results. You can use the parameters of the
 operation to control sorting and pagination.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_assignments_for_hit(
+\preformatted{svc$list_assignments_for_hit(
   HITId = "string",
   NextToken = "string",
   MaxResults = 123,
@@ -89,7 +85,7 @@ operation to control sorting and pagination.
     "Submitted"|"Approved"|"Rejected"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

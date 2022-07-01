@@ -22,9 +22,7 @@ than the number you specify for \code{Limit}, the response includes a
 \code{RegexPatternSet} objects.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextMarker = "string",
   RegexPatternSets = list(
     list(
@@ -33,7 +31,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -48,13 +46,11 @@ regional and global use.
 Returns an array of RegexPatternSetSummary objects.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_regex_pattern_sets(
+\preformatted{svc$list_regex_pattern_sets(
   NextMarker = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

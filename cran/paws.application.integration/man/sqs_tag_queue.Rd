@@ -37,15 +37,13 @@ information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_queue(
+\preformatted{svc$tag_queue(
   QueueUrl = "string",
   Tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

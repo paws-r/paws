@@ -19,13 +19,11 @@ An empty list.
 Permanently deletes the specified document and its associated metadata.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_document(
+\preformatted{svc$delete_document(
   AuthenticationToken = "string",
   DocumentId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

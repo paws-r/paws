@@ -13,9 +13,7 @@ returned by
 \code{\link[=wafregional_list_rate_based_rules]{list_rate_based_rules}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Rule = list(
     RuleId = "string",
     Name = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
     RateLimit = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -48,12 +46,10 @@ included in the \code{\link[=wafregional_get_rate_based_rule]{get_rate_based_rul
 request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_rate_based_rule(
+\preformatted{svc$get_rate_based_rule(
   RuleId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

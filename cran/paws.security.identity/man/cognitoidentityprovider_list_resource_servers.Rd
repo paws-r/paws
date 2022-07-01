@@ -15,9 +15,7 @@ cognitoidentityprovider_list_resource_servers(UserPoolId, MaxResults,
 \item{NextToken}{A pagination token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourceServers = list(
     list(
       UserPoolId = "string",
@@ -33,20 +31,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the resource servers for a user pool.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resource_servers(
+\preformatted{svc$list_resource_servers(
   UserPoolId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

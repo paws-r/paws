@@ -15,9 +15,7 @@ elasticache_modify_user_group(UserGroupId, UserIdsToAdd,
 \item{UserIdsToRemove}{The list of user IDs to remove from the user group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserGroupId = "string",
   Status = "string",
   Engine = "string",
@@ -37,15 +35,13 @@ A list with the following syntax:
   ),
   ARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes the list of users that belong to the user group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_user_group(
+\preformatted{svc$modify_user_group(
   UserGroupId = "string",
   UserIdsToAdd = list(
     "string"
@@ -54,7 +50,7 @@ Changes the list of users that belong to the user group.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

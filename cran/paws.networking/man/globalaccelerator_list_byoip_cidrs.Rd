@@ -16,9 +16,7 @@ value.}
 \item{NextToken}{The token for the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ByoipCidrs = list(
     list(
       Cidr = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the IP address ranges that were specified in calls to
@@ -43,13 +41,11 @@ Lists the IP address ranges that were specified in calls to
 including the current state and a history of state changes.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_byoip_cidrs(
+\preformatted{svc$list_byoip_cidrs(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

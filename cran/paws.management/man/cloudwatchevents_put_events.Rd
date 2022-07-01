@@ -13,9 +13,7 @@ parameters for the entry such as the source and type of the event,
 resources associated with the event, and so on.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FailedEntryCount = 123,
   Entries = list(
     list(
@@ -25,16 +23,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sends custom events to Amazon EventBridge so that they can be matched to
 rules.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_events(
+\preformatted{svc$put_events(
   Entries = list(
     list(
       Time = as.POSIXct(
@@ -50,7 +46,7 @@ rules.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

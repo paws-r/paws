@@ -15,13 +15,11 @@ more information, see arns.}
 into which the schema is copied. For more information, see arns.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AppliedSchemaArn = "string",
   DirectoryArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Copies the input published schema, at the specified version, into the
@@ -29,13 +27,11 @@ Directory with the same name and version as that of the published
 schema.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$apply_schema(
+\preformatted{svc$apply_schema(
   PublishedSchemaArn = "string",
   DirectoryArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

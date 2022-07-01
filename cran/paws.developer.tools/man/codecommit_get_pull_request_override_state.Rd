@@ -18,13 +18,11 @@ retrieve the most recent revision ID, use
 \code{\link[=codecommit_get_pull_request]{get_pull_request}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   overridden = TRUE|FALSE,
   overrider = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about whether approval rules have been set aside
@@ -33,13 +31,11 @@ Returns information about whether approval rules have been set aside
 requirements for the pull request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_pull_request_override_state(
+\preformatted{svc$get_pull_request_override_state(
   pullRequestId = "string",
   revisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

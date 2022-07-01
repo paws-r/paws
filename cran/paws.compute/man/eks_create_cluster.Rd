@@ -47,9 +47,7 @@ which you define.}
 \item{encryptionConfig}{The encryption configuration for the cluster.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   cluster = list(
     name = "string",
     arn = "string",
@@ -113,7 +111,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an Amazon EKS control plane.
@@ -160,9 +158,7 @@ cluster. For more information, see \href{https://docs.aws.amazon.com/eks/latest/
 in the \emph{Amazon EKS User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cluster(
+\preformatted{svc$create_cluster(
   name = "string",
   version = "string",
   roleArn = "string",
@@ -207,7 +203,7 @@ in the \emph{Amazon EKS User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

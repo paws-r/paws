@@ -28,13 +28,11 @@ previous stack configuration.
 You can cancel only stacks that are in the UPDATE_IN_PROGRESS state.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_update_stack(
+\preformatted{svc$cancel_update_stack(
   StackName = "string",
   ClientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

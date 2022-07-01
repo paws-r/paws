@@ -8,14 +8,12 @@ call the operation}
 sts_get_caller_identity()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserId = "string",
   Account = "string",
   Arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns details about the IAM user or role whose credentials are used to
@@ -30,10 +28,8 @@ view an example response, see \href{https://docs.aws.amazon.com/IAM/latest/UserG
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_caller_identity()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_caller_identity()
+}
 }
 
 \examples{

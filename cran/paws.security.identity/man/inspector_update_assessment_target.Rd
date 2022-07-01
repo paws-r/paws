@@ -27,14 +27,12 @@ If resourceGroupArn is not specified, all EC2 instances in the current
 AWS account and region are included in the assessment target.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_assessment_target(
+\preformatted{svc$update_assessment_target(
   assessmentTargetArn = "string",
   assessmentTargetName = "string",
   resourceGroupArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

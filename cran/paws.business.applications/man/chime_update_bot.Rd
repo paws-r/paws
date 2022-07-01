@@ -15,9 +15,7 @@ chime_update_bot(AccountId, BotId, Disabled)
 \item{Disabled}{When true, stops the specified bot from running in your account.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Bot = list(
     BotId = "string",
     UserId = "string",
@@ -34,21 +32,19 @@ A list with the following syntax:
     SecurityToken = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the status of the specified bot, such as starting or stopping
 the bot from running in your Amazon Chime Enterprise account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_bot(
+\preformatted{svc$update_bot(
   AccountId = "string",
   BotId = "string",
   Disabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

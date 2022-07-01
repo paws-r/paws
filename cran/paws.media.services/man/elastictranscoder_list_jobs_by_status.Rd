@@ -21,9 +21,7 @@ enter \code{false}.}
 results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Jobs = list(
     list(
       Id = "string",
@@ -352,7 +350,7 @@ A list with the following syntax:
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The ListJobsByStatus operation gets a list of jobs that have a specified
@@ -360,14 +358,12 @@ status. The response body contains one element for each job that
 satisfies the search criteria.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_jobs_by_status(
+\preformatted{svc$list_jobs_by_status(
   Status = "string",
   Ascending = "string",
   PageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

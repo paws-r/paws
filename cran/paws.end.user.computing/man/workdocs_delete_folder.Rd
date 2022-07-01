@@ -19,13 +19,11 @@ An empty list.
 Permanently deletes the specified folder and its contents.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_folder(
+\preformatted{svc$delete_folder(
   AuthenticationToken = "string",
   FolderId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

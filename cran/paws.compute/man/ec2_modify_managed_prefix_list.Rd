@@ -24,9 +24,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{RemoveEntries}{One or more entries to remove from the prefix list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PrefixList = list(
     PrefixListId = "string",
     AddressFamily = "string",
@@ -45,7 +43,7 @@ A list with the following syntax:
     OwnerId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the specified managed prefix list.
@@ -58,9 +56,7 @@ If you specify a current version number that does not match the true
 current version number, the request fails.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_managed_prefix_list(
+\preformatted{svc$modify_managed_prefix_list(
   DryRun = TRUE|FALSE,
   PrefixListId = "string",
   CurrentVersion = 123,
@@ -77,7 +73,7 @@ current version number, the request fails.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

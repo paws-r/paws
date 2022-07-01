@@ -16,9 +16,7 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   User = list(
     Path = "string",
     UserName = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about the specified IAM user, including the user's
@@ -53,12 +51,10 @@ implicitly based on the AWS access key ID used to sign the request to
 this API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_user(
+\preformatted{svc$get_user(
   UserName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

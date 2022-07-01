@@ -21,12 +21,10 @@ Default: 1}
 value must match the current expiration date for the domain.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OperationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation renews a domain for the specified number of years. The
@@ -39,14 +37,12 @@ information about renewing domain registration, see \href{https://docs.aws.amazo
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$renew_domain(
+\preformatted{svc$renew_domain(
   DomainName = "string",
   DurationInYears = 123,
   CurrentExpiryYear = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

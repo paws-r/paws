@@ -12,9 +12,7 @@ The execution ID is returned by StartAutomationExecution when the
 execution of an Automation document is initiated.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AutomationExecution = list(
     AutomationExecutionId = "string",
     DocumentName = "string",
@@ -199,18 +197,16 @@ A list with the following syntax:
     ChangeRequestName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Get detailed information about a particular Automation execution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_automation_execution(
+\preformatted{svc$get_automation_execution(
   AutomationExecutionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

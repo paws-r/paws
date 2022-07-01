@@ -38,9 +38,7 @@ the remaining results, make another call with the returned \code{NextToken}
 value. This value can be between 1 and 200.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LaunchTemplates = list(
     list(
       LaunchTemplateId = "string",
@@ -61,15 +59,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more launch templates.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_launch_templates(
+\preformatted{svc$describe_launch_templates(
   DryRun = TRUE|FALSE,
   LaunchTemplateIds = list(
     "string"
@@ -88,7 +84,7 @@ Describes one or more launch templates.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -78,9 +78,7 @@ recommend migrating your existing Linux stacks to Chef 12 as soon as
 possible.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- opsworks(
+\preformatted{svc <- opsworks(
   config = list(
     credentials = list(
       creds = list(
@@ -94,7 +92,7 @@ possible.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

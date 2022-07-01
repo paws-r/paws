@@ -36,9 +36,7 @@ An empty list.
 Modifies the attributes of an existing license configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_license_configuration(
+\preformatted{svc$update_license_configuration(
   LicenseConfigurationArn = "string",
   LicenseConfigurationStatus = "AVAILABLE"|"DISABLED",
   LicenseRules = list(
@@ -64,7 +62,7 @@ Modifies the attributes of an existing license configuration.
   ),
   DisassociateWhenNotFound = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

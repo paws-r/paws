@@ -13,9 +13,7 @@ chime_list_voice_connectors(NextToken, MaxResults)
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VoiceConnectors = list(
     list(
       VoiceConnectorId = "string",
@@ -33,20 +31,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the Amazon Chime Voice Connectors for the administrator's AWS
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_voice_connectors(
+\preformatted{svc$list_voice_connectors(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

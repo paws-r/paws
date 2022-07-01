@@ -14,15 +14,13 @@ action to retrieve additional records that are available after the first
 page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   phoneNumbers = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of phone numbers that are opted out, meaning you cannot
@@ -38,12 +36,10 @@ using the \code{NextToken} string received from the previous call. When there
 are no more records to return, \code{NextToken} will be null.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_phone_numbers_opted_out(
+\preformatted{svc$list_phone_numbers_opted_out(
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

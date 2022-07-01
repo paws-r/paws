@@ -49,9 +49,7 @@ days in the future, the availability of forecast data has limits. AWS
 Auto Scaling only issues forecasts for periods of two days in advance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Datapoints = list(
     list(
       Timestamp = as.POSIXct(
@@ -61,7 +59,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the forecast data for a scalable resource.
@@ -71,9 +69,7 @@ that are calculated using historical data points from a specified
 CloudWatch load metric. Data points are available for up to 56 days.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_scaling_plan_resource_forecast_data(
+\preformatted{svc$get_scaling_plan_resource_forecast_data(
   ScalingPlanName = "string",
   ScalingPlanVersion = 123,
   ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
@@ -87,7 +83,7 @@ CloudWatch load metric. Data points are available for up to 56 days.
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

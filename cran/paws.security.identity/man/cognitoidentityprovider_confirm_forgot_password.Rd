@@ -69,9 +69,7 @@ Allows a user to enter a confirmation code to reset a forgotten
 password.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$confirm_forgot_password(
+\preformatted{svc$confirm_forgot_password(
   ClientId = "string",
   SecretHash = "string",
   Username = "string",
@@ -87,7 +85,7 @@ password.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ operation. To start at the beginning of the result set, do not specify a
 value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GameServerGroups = list(
     list(
       GameServerGroupName = "string",
@@ -49,7 +47,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -76,13 +74,11 @@ parameters to retrieve results in a set of sequential segments.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_game_server_groups(
+\preformatted{svc$list_game_server_groups(
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

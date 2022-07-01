@@ -11,9 +11,7 @@ elbv2_describe_tags(ResourceArns)
 20 resources in a single call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TagDescriptions = list(
     list(
       ResourceArn = "string",
@@ -26,7 +24,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the tags for the specified Elastic Load Balancing resources.
@@ -35,14 +33,12 @@ Network Load Balancers, Gateway Load Balancers, target groups,
 listeners, or rules.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tags(
+\preformatted{svc$describe_tags(
   ResourceArns = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

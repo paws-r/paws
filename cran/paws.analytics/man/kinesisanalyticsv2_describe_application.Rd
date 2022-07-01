@@ -14,9 +14,7 @@ kinesisanalyticsv2_describe_application(ApplicationName,
 including the application's job plan.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationDetail = list(
     ApplicationARN = "string",
     ApplicationDescription = "string",
@@ -217,7 +215,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a specific Kinesis Data Analytics application.
@@ -227,13 +225,11 @@ the \code{\link[=kinesisanalyticsv2_list_applications]{list_applications}}
 operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_application(
+\preformatted{svc$describe_application(
   ApplicationName = "string",
   IncludeAdditionalDetails = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

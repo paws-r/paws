@@ -15,9 +15,7 @@ datasync_list_task_executions(TaskArn, MaxResults, NextToken)
 list of the executed tasks.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TaskExecutions = list(
     list(
       TaskExecutionArn = "string",
@@ -26,20 +24,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of executed tasks.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_task_executions(
+\preformatted{svc$list_task_executions(
   TaskArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

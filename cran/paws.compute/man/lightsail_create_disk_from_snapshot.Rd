@@ -82,9 +82,7 @@ Guide.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -109,7 +107,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a block storage disk from a manual or automatic snapshot of a
@@ -122,9 +120,7 @@ identified by \verb{disk snapshot name}. For more information, see the
 Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_disk_from_snapshot(
+\preformatted{svc$create_disk_from_snapshot(
   diskName = "string",
   diskSnapshotName = "string",
   availabilityZone = "string",
@@ -147,7 +143,7 @@ Lightsail Dev Guide.
   restoreDate = "string",
   useLatestRestorableAutoSnapshot = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -77,16 +77,14 @@ number of application tags includes system tags. The maximum number of
 user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html}{Using Tagging}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationSummary = list(
     ApplicationName = "string",
     ApplicationARN = "string",
     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics
@@ -123,9 +121,7 @@ For introductory exercises to create an Amazon Kinesis Analytics
 application, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/getting-started.html}{Getting Started}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_application(
+\preformatted{svc$create_application(
   ApplicationName = "string",
   ApplicationDescription = "string",
   Inputs = list(
@@ -206,7 +202,7 @@ application, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/g
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

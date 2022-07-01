@@ -304,9 +304,7 @@ outpost or across multiple outposts.}
 \item{PreferredOutpostArns}{The outpost ARNs in which the cache cluster is created.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CacheCluster = list(
     CacheClusterId = "string",
     ConfigurationEndpoint = list(
@@ -388,7 +386,7 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a cluster. All nodes in the cluster run the same
@@ -398,9 +396,7 @@ This operation is not supported for Redis (cluster mode enabled)
 clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cache_cluster(
+\preformatted{svc$create_cache_cluster(
   CacheClusterId = "string",
   ReplicationGroupId = "string",
   AZMode = "single-az"|"cross-az",
@@ -443,7 +439,7 @@ clusters.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

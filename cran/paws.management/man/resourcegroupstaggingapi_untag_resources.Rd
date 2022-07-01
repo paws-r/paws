@@ -15,9 +15,7 @@ in the \emph{AWS General Reference}.}
 resources.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FailedResourcesMap = list(
     list(
       StatusCode = 123,
@@ -26,7 +24,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes the specified tags from the specified resources. When you
@@ -42,9 +40,7 @@ for the AWS account.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resources(
+\preformatted{svc$untag_resources(
   ResourceARNList = list(
     "string"
   ),
@@ -52,7 +48,7 @@ for the AWS account.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

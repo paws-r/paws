@@ -13,9 +13,7 @@ pipeline.}
 \item{tags}{The tags for the pipeline.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pipeline = list(
     name = "string",
     roleArn = "string",
@@ -85,7 +83,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a pipeline.
@@ -96,9 +94,7 @@ create a cross-region action in your pipeline, you must use
 \code{artifactStores}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_pipeline(
+\preformatted{svc$create_pipeline(
   pipeline = list(
     name = "string",
     roleArn = "string",
@@ -168,7 +164,7 @@ create a cross-region action in your pipeline, you must use
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

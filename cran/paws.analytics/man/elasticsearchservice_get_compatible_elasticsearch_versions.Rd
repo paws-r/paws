@@ -10,9 +10,7 @@ elasticsearchservice_get_compatible_elasticsearch_versions(DomainName)
 \item{DomainName}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CompatibleElasticsearchVersions = list(
     list(
       SourceVersion = "string",
@@ -22,7 +20,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of upgrade compatible Elastisearch versions. You can
@@ -30,12 +28,10 @@ optionally pass a \code{DomainName} to get all upgrade compatible
 Elasticsearch versions for that specific domain.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_compatible_elasticsearch_versions(
+\preformatted{svc$get_compatible_elasticsearch_versions(
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

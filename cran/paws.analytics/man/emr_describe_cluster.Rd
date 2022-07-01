@@ -11,9 +11,7 @@ emr_describe_cluster(ClusterId)
 \item{ClusterId}{[required] The identifier of the cluster to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Cluster = list(
     Id = "string",
     Name = "string",
@@ -119,19 +117,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides cluster-level details including status, hardware and software
 configuration, VPC settings, and so on.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cluster(
+\preformatted{svc$describe_cluster(
   ClusterId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

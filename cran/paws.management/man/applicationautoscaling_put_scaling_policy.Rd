@@ -133,9 +133,7 @@ This parameter is required if you are creating a policy and the policy
 type is \code{TargetTrackingScaling}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PolicyARN = "string",
   Alarms = list(
     list(
@@ -144,7 +142,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates or updates a scaling policy for an Application Auto Scaling
@@ -183,9 +181,7 @@ available to execute scaling policies. Any scaling policies that were
 specified for the scalable target are deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_scaling_policy(
+\preformatted{svc$put_scaling_policy(
   PolicyName = "string",
   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
   ResourceId = "string",
@@ -227,7 +223,7 @@ specified for the scalable target are deleted.
     DisableScaleIn = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

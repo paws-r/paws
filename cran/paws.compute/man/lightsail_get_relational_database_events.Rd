@@ -26,9 +26,7 @@ page token that you can specify as the page token in a subsequent
 request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   relationalDatabaseEvents = list(
     list(
       resource = "string",
@@ -43,20 +41,18 @@ A list with the following syntax:
   ),
   nextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of events for a specific database in Amazon Lightsail.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_relational_database_events(
+\preformatted{svc$get_relational_database_events(
   relationalDatabaseName = "string",
   durationInMinutes = 123,
   pageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

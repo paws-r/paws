@@ -13,9 +13,7 @@ codecommit_update_approval_rule_template_name(
 \item{newApprovalRuleTemplateName}{[required] The new name you want to apply to the approval rule template.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   approvalRuleTemplate = list(
     approvalRuleTemplateId = "string",
     approvalRuleTemplateName = "string",
@@ -31,19 +29,17 @@ A list with the following syntax:
     lastModifiedUser = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the name of a specified approval rule template.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_approval_rule_template_name(
+\preformatted{svc$update_approval_rule_template_name(
   oldApprovalRuleTemplateName = "string",
   newApprovalRuleTemplateName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

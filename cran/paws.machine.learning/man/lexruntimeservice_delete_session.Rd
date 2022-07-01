@@ -14,28 +14,24 @@ lexruntimeservice_delete_session(botName, botAlias, userId)
 \item{userId}{[required] The identifier of the user associated with the session data.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   botName = "string",
   botAlias = "string",
   userId = "string",
   sessionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes session information for a specified bot, alias, and user ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_session(
+\preformatted{svc$delete_session(
   botName = "string",
   botAlias = "string",
   userId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

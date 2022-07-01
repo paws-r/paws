@@ -95,9 +95,7 @@ GameLift queue to start a game session for the match.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Configuration = list(
     Name = "string",
     ConfigurationArn = "string",
@@ -127,7 +125,7 @@ A list with the following syntax:
     FlexMatchMode = "STANDALONE"|"WITH_QUEUE"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates settings for a FlexMatch matchmaking configuration. These
@@ -152,9 +150,7 @@ and provide the new settings.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_matchmaking_configuration(
+\preformatted{svc$update_matchmaking_configuration(
   Name = "string",
   Description = "string",
   GameSessionQueueArns = list(
@@ -177,7 +173,7 @@ and provide the new settings.
   BackfillMode = "AUTOMATIC"|"MANUAL",
   FlexMatchMode = "STANDALONE"|"WITH_QUEUE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

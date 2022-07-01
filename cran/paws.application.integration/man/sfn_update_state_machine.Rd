@@ -21,14 +21,12 @@ options.}
 \item{tracingConfiguration}{Selects whether AWS X-Ray tracing is enabled.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   updateDate = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing state machine by modifying its \code{definition},
@@ -44,9 +42,7 @@ immediately after calling
 state machine \code{definition} and \code{roleArn}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_state_machine(
+\preformatted{svc$update_state_machine(
   stateMachineArn = "string",
   definition = "string",
   roleArn = "string",
@@ -65,7 +61,7 @@ state machine \code{definition} and \code{roleArn}.
     enabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

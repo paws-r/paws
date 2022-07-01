@@ -18,13 +18,11 @@ An empty list.
 Forgets the specified device.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$forget_device(
+\preformatted{svc$forget_device(
   AccessToken = "string",
   DeviceKey = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

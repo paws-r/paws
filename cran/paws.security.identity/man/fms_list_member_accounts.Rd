@@ -22,15 +22,13 @@ that you specify for \code{MaxResults}, the response includes a \code{NextToken}
 value that you can use to get another batch of member account IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MemberAccounts = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a \code{MemberAccounts} object that lists the member accounts in the
@@ -40,13 +38,11 @@ The \code{\link[=fms_list_member_accounts]{list_member_accounts}} must be submit
 by the account that is set as the AWS Firewall Manager administrator.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_member_accounts(
+\preformatted{svc$list_member_accounts(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

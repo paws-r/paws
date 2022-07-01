@@ -21,9 +21,7 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContinuationToken = "string",
   InventoryConfigurationList = list(
     list(
@@ -58,7 +56,7 @@ A list with the following syntax:
   IsTruncated = TRUE|FALSE,
   NextContinuationToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of inventory configurations for the bucket. You can have
@@ -90,14 +88,12 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_bucket_inventory_configurations(
+\preformatted{svc$list_bucket_inventory_configurations(
   Bucket = "string",
   ContinuationToken = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

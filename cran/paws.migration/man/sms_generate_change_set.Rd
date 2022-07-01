@@ -13,28 +13,24 @@ sms_generate_change_set(appId, changesetFormat)
 \item{changesetFormat}{The format for the change set.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   s3Location = list(
     bucket = "string",
     key = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Generates a target change set for a currently launched stack and writes
 it to an Amazon S3 object in the customer’s Amazon S3 bucket.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$generate_change_set(
+\preformatted{svc$generate_change_set(
   appId = "string",
   changesetFormat = "JSON"|"YAML"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

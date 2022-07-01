@@ -20,9 +20,7 @@ Maximum: Ten CIDR values}
 configuration for a workforce made using your own IdP.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Workforce = list(
     WorkforceName = "string",
     WorkforceArn = "string",
@@ -53,7 +51,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Use this operation to update your workforce. You can use this operation
@@ -84,9 +82,7 @@ your update workforce using the operation.
 This operation only applies to private workforces.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_workforce(
+\preformatted{svc$update_workforce(
   WorkforceName = "string",
   SourceIpConfig = list(
     Cidrs = list(
@@ -104,7 +100,7 @@ This operation only applies to private workforces.
     JwksUri = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

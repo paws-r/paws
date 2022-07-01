@@ -30,9 +30,7 @@ passed and default values will be used for any special parameters such
 as \code{TARGET}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RecordDetail = list(
     RecordId = "string",
     ProvisionedProductName = "string",
@@ -64,15 +62,13 @@ A list with the following syntax:
     LaunchRoleArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Executes a self-service action against a provisioned product.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$execute_provisioned_product_service_action(
+\preformatted{svc$execute_provisioned_product_service_action(
   ProvisionedProductId = "string",
   ServiceActionId = "string",
   ExecuteToken = "string",
@@ -83,7 +79,7 @@ Executes a self-service action against a provisioned product.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

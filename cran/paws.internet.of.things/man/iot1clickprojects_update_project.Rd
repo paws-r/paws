@@ -28,9 +28,7 @@ values that are provided. To clear a value, pass the empty string (i.e.,
 \code{""}).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_project(
+\preformatted{svc$update_project(
   projectName = "string",
   description = "string",
   placementTemplate = list(
@@ -47,7 +45,7 @@ values that are provided. To clear a value, pass the empty string (i.e.,
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

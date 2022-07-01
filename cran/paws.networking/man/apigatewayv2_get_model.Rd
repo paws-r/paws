@@ -12,28 +12,24 @@ apigatewayv2_get_model(ApiId, ModelId)
 \item{ModelId}{[required] The model ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContentType = "string",
   Description = "string",
   ModelId = "string",
   Name = "string",
   Schema = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a Model.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_model(
+\preformatted{svc$get_model(
   ApiId = "string",
   ModelId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

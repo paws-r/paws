@@ -30,12 +30,10 @@ For more information, see \href{https://docs.aws.amazon.com/Route53/latest/Devel
 \item{IdnLangCode}{Reserved for future use.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Availability = "AVAILABLE"|"AVAILABLE_RESERVED"|"AVAILABLE_PREORDER"|"UNAVAILABLE"|"UNAVAILABLE_PREMIUM"|"UNAVAILABLE_RESTRICTED"|"RESERVED"|"DONT_KNOW"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation checks the availability of one domain name. Note that if
@@ -43,13 +41,11 @@ the availability status of a domain is pending, you must submit another
 request to determine the availability of the domain name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$check_domain_availability(
+\preformatted{svc$check_domain_availability(
   DomainName = "string",
   IdnLangCode = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

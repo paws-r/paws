@@ -21,9 +21,7 @@ resources and to identify potential security issues. For more
 information, see \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspector_introduction.html}{Amazon Inspector User Guide}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- inspector(
+\preformatted{svc <- inspector(
   config = list(
     credentials = list(
       creds = list(
@@ -37,7 +35,7 @@ information, see \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspec
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

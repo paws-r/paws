@@ -18,9 +18,7 @@ The length constraint limit is for each string in the array. The array
 itself can be empty.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   associatedRepositoryNames = list(
     "string"
   ),
@@ -32,22 +30,20 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an association between an approval rule template and one or more
 specified repositories.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_associate_approval_rule_template_with_repositories(
+\preformatted{svc$batch_associate_approval_rule_template_with_repositories(
   approvalRuleTemplateName = "string",
   repositoryNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

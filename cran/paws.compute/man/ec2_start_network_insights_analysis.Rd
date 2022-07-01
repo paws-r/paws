@@ -24,9 +24,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NetworkInsightsAnalysis = list(
     NetworkInsightsAnalysisId = "string",
     NetworkInsightsAnalysisArn = "string",
@@ -439,16 +437,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts analyzing the specified path. If the path is reachable, the
 operation returns the shortest feasible path.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_network_insights_analysis(
+\preformatted{svc$start_network_insights_analysis(
   NetworkInsightsPathId = "string",
   FilterInArns = list(
     "string"
@@ -467,7 +463,7 @@ operation returns the shortest feasible path.
   ),
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

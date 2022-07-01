@@ -16,25 +16,21 @@ dataset content, the dataset must use a
 filter.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   versionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates the content of a data set by applying a \code{queryAction} (a SQL
 query) or a \code{containerAction} (executing a containerized application).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_dataset_content(
+\preformatted{svc$create_dataset_content(
   datasetName = "string",
   versionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

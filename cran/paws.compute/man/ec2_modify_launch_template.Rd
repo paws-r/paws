@@ -27,9 +27,7 @@ template ID or launch template name in the request.}
 \item{DefaultVersion}{The version number of the launch template to set as the default version.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LaunchTemplate = list(
     LaunchTemplateId = "string",
     LaunchTemplateName = "string",
@@ -47,7 +45,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies a launch template. You can specify which version of the launch
@@ -55,16 +53,14 @@ template to set as the default version. When launching an instance, the
 default version applies when a launch template version is not specified.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_launch_template(
+\preformatted{svc$modify_launch_template(
   DryRun = TRUE|FALSE,
   ClientToken = "string",
   LaunchTemplateId = "string",
   LaunchTemplateName = "string",
   DefaultVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

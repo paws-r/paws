@@ -20,9 +20,7 @@ created.}
 created.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Errors = list(
     list(
       PartitionValues = list(
@@ -35,15 +33,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates one or more partitions in a batch operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_create_partition(
+\preformatted{svc$batch_create_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -121,7 +117,7 @@ Creates one or more partitions in a batch operation.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

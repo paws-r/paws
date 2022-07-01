@@ -40,9 +40,7 @@ date/time stamp.}
 query logging configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResolverQueryLogConfig = list(
     Id = "string",
     OwnerId = "string",
@@ -56,7 +54,7 @@ A list with the following syntax:
     CreationTime = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Resolver query logging configuration, which defines where you
@@ -76,9 +74,7 @@ Resolver creates for a configuration include all DNS queries that
 originate in all VPCs that are associated with the configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_resolver_query_log_config(
+\preformatted{svc$create_resolver_query_log_config(
   Name = "string",
   DestinationArn = "string",
   CreatorRequestId = "string",
@@ -89,7 +85,7 @@ originate in all VPCs that are associated with the configuration.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,13 +19,11 @@ An empty list.
 Deactivates LDAP secure calls for the specified directory.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_ldaps(
+\preformatted{svc$disable_ldaps(
   DirectoryId = "string",
   Type = "Client"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

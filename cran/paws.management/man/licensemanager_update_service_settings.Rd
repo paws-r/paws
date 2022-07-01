@@ -25,9 +25,7 @@ An empty list.
 Updates License Manager settings for the current Region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_service_settings(
+\preformatted{svc$update_service_settings(
   S3BucketArn = "string",
   SnsTopicArn = "string",
   OrganizationConfiguration = list(
@@ -35,7 +33,7 @@ Updates License Manager settings for the current Region.
   ),
   EnableCrossAccountsDiscovery = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -43,9 +43,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Routes = list(
     list(
       DestinationCidrBlock = "string",
@@ -63,15 +61,13 @@ A list with the following syntax:
   ),
   AdditionalRoutesAvailable = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Searches for routes in the specified transit gateway route table.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_transit_gateway_routes(
+\preformatted{svc$search_transit_gateway_routes(
   TransitGatewayRouteTableId = "string",
   Filters = list(
     list(
@@ -84,7 +80,7 @@ Searches for routes in the specified transit gateway route table.
   MaxResults = 123,
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

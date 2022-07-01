@@ -24,12 +24,10 @@ pages for your application. Use this object to specify an SSL
 certificate that is managed by ACM.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CloudFrontDomain = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the Secure Sockets Layer (SSL) certificate for the custom domain
@@ -64,16 +62,14 @@ For more information about adding a custom domain to your user pool, see
 \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html}{Using Your Own Domain for the Hosted UI}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user_pool_domain(
+\preformatted{svc$update_user_pool_domain(
   Domain = "string",
   UserPoolId = "string",
   CustomDomainConfig = list(
     CertificateArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

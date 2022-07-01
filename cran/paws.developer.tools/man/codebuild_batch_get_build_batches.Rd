@@ -10,9 +10,7 @@ codebuild_batch_get_build_batches(ids)
 \item{ids}{[required] An array that contains the batch build identifiers to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   buildBatches = list(
     list(
       id = "string",
@@ -242,20 +240,18 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about one or more batch builds.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_build_batches(
+\preformatted{svc$batch_get_build_batches(
   ids = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

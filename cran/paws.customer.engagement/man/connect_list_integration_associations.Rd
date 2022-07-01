@@ -17,9 +17,7 @@ results.}
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IntegrationAssociationSummaryList = list(
     list(
       IntegrationAssociationId = "string",
@@ -34,7 +32,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -44,14 +42,12 @@ Provides summary information about the AppIntegration associations for
 the specified Amazon Connect instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_integration_associations(
+\preformatted{svc$list_integration_associations(
   InstanceId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

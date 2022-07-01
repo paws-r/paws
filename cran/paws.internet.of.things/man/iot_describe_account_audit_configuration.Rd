@@ -8,9 +8,7 @@ account}
 iot_describe_account_audit_configuration()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   roleArn = "string",
   auditNotificationTargetConfigurations = list(
     list(
@@ -25,7 +23,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the Device Defender audit settings for this
@@ -33,10 +31,8 @@ account. Settings include how audit notifications are sent and which
 audit checks are enabled or disabled.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_account_audit_configuration()
-}\if{html}{\out{</div>}}
+\preformatted{svc$describe_account_audit_configuration()
+}
 }
 
 \keyword{internal}

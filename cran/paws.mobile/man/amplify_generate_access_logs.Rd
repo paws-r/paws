@@ -19,21 +19,17 @@ inclusive of the end time.}
 \item{appId}{[required] The unique ID for an Amplify app.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   logUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the website access logs for a specific time range using a
 presigned URL.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$generate_access_logs(
+\preformatted{svc$generate_access_logs(
   startTime = as.POSIXct(
     "2015-01-01"
   ),
@@ -43,7 +39,7 @@ presigned URL.
   domainName = "string",
   appId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

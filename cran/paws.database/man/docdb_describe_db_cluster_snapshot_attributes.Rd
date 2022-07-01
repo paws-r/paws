@@ -12,9 +12,7 @@ docdb_describe_db_cluster_snapshot_attributes(
 \item{DBClusterSnapshotIdentifier}{[required] The identifier for the cluster snapshot to describe the attributes for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBClusterSnapshotAttributesResult = list(
     DBClusterSnapshotIdentifier = "string",
     DBClusterSnapshotAttributes = list(
@@ -27,7 +25,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of cluster snapshot attribute names and values for a
@@ -42,12 +40,10 @@ then the manual cluster snapshot is public and can be copied or restored
 by all AWS accounts.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_cluster_snapshot_attributes(
+\preformatted{svc$describe_db_cluster_snapshot_attributes(
   DBClusterSnapshotIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

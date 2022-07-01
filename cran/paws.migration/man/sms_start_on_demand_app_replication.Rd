@@ -18,13 +18,11 @@ An empty list.
 Starts an on-demand replication run for the specified application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_on_demand_app_replication(
+\preformatted{svc$start_on_demand_app_replication(
   appId = "string",
   description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

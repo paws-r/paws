@@ -192,9 +192,7 @@ Endpoints for custom routing accelerators are virtual private cloud
 }
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- globalaccelerator(
+\preformatted{svc <- globalaccelerator(
   config = list(
     credentials = list(
       creds = list(
@@ -208,7 +206,7 @@ Endpoints for custom routing accelerators are virtual private cloud
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

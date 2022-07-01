@@ -8,9 +8,7 @@ current AWS Region}
 ses_list_receipt_filters()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Filters = list(
     list(
       Name = "string",
@@ -21,7 +19,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the IP address filters associated with your AWS account in the
@@ -32,10 +30,8 @@ For information about managing IP address filters, see the \href{https://docs.aw
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_receipt_filters()
-}\if{html}{\out{</div>}}
+\preformatted{svc$list_receipt_filters()
+}
 }
 
 \examples{

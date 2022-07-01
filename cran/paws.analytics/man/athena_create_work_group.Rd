@@ -29,9 +29,7 @@ An empty list.
 Creates a workgroup with the specified name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_work_group(
+\preformatted{svc$create_work_group(
   Name = "string",
   Configuration = list(
     ResultConfiguration = list(
@@ -54,7 +52,7 @@ Creates a workgroup with the specified name.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,15 +15,13 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{EndpointBatchRequest}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MessageBody = list(
     Message = "string",
     RequestID = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new batch of endpoints for an application or updates the
@@ -34,9 +32,7 @@ custom attribute, Amazon Pinpoint replaces (overwrites) any existing
 values with the new values.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_endpoints_batch(
+\preformatted{svc$update_endpoints_batch(
   ApplicationId = "string",
   EndpointBatchRequest = list(
     Item = list(
@@ -86,7 +82,7 @@ values with the new values.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

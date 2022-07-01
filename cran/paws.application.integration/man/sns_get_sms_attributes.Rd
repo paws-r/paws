@@ -16,14 +16,12 @@ For all attribute names, see
 If you don't use this parameter, Amazon SNS returns all SMS attributes.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   attributes = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the settings for sending SMS messages from your account.
@@ -32,14 +30,12 @@ These settings are set with the
 \code{\link[=sns_set_sms_attributes]{set_sms_attributes}} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_sms_attributes(
+\preformatted{svc$get_sms_attributes(
   attributes = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

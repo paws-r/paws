@@ -12,9 +12,7 @@ worklink_describe_device(FleetArn, DeviceId)
 \item{DeviceId}{[required] A unique identifier for a registered user's device.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = "ACTIVE"|"SIGNED_OUT",
   Model = "string",
   Manufacturer = "string",
@@ -29,19 +27,17 @@ A list with the following syntax:
   ),
   Username = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides information about a user's device.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_device(
+\preformatted{svc$describe_device(
   FleetArn = "string",
   DeviceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

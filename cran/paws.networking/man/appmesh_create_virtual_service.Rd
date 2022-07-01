@@ -30,9 +30,7 @@ length of 256 characters.}
 \item{virtualServiceName}{[required] The name to use for the virtual service.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   virtualService = list(
     meshName = "string",
     metadata = list(
@@ -64,7 +62,7 @@ A list with the following syntax:
     virtualServiceName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a virtual service within a service mesh.
@@ -79,9 +77,7 @@ service.
 For more information about virtual services, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_services.html}{Virtual services}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_virtual_service(
+\preformatted{svc$create_virtual_service(
   clientToken = "string",
   meshName = "string",
   meshOwner = "string",
@@ -103,7 +99,7 @@ For more information about virtual services, see \href{https://docs.aws.amazon.c
   ),
   virtualServiceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

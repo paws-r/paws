@@ -30,9 +30,7 @@ medialive_list_reservations(ChannelClass, Codec, MaxResults,
 \item{VideoQuality}{Filter by video quality, 'STANDARD', 'ENHANCED', or 'PREMIUM'}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Reservations = list(
     list(
@@ -68,15 +66,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List purchased reservations.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_reservations(
+\preformatted{svc$list_reservations(
   ChannelClass = "string",
   Codec = "string",
   MaxResults = 123,
@@ -88,7 +84,7 @@ List purchased reservations.
   SpecialFeature = "string",
   VideoQuality = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -46,9 +46,7 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:AddApplicationInput} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_application_input(
+\preformatted{svc$add_application_input(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   Input = list(
@@ -94,7 +92,7 @@ This operation requires permissions to perform the
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

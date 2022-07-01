@@ -31,12 +31,10 @@ bucket.}
 bucket.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Location = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new S3 bucket. To create a bucket, you must register with
@@ -124,9 +122,7 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_bucket(
+\preformatted{svc$create_bucket(
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read",
   Bucket = "string",
   CreateBucketConfiguration = list(
@@ -139,7 +135,7 @@ The following operations are related to
   GrantWriteACP = "string",
   ObjectLockEnabledForBucket = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -24,13 +24,11 @@ the virtual private gateway if you plan to delete and recreate the VPN
 connection between your VPC and your network.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vpn_gateway(
+\preformatted{svc$delete_vpn_gateway(
   VpnGatewayId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

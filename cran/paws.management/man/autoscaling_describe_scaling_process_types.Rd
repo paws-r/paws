@@ -8,16 +8,14 @@ SuspendProcesses APIs}
 autoscaling_describe_scaling_process_types()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Processes = list(
     list(
       ProcessName = "string"
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the scaling process types for use with the

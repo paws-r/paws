@@ -27,14 +27,12 @@ An empty list.
 Deletes the specified plan.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_provisioned_product_plan(
+\preformatted{svc$delete_provisioned_product_plan(
   AcceptLanguage = "string",
   PlanId = "string",
   IgnoreErrors = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

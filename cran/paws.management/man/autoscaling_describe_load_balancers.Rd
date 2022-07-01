@@ -17,9 +17,7 @@ from a previous call.)}
 is \code{100} and the maximum value is \code{100}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LoadBalancers = list(
     list(
       LoadBalancerName = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the load balancers for the specified Auto Scaling group.
@@ -40,14 +38,12 @@ Balancers, use the
 API instead.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_load_balancers(
+\preformatted{svc$describe_load_balancers(
   AutoScalingGroupName = "string",
   NextToken = "string",
   MaxRecords = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

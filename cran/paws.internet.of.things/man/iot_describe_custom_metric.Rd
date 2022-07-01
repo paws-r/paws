@@ -10,9 +10,7 @@ iot_describe_custom_metric(metricName)
 \item{metricName}{[required] The name of the custom metric.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   metricName = "string",
   metricArn = "string",
   metricType = "string-list"|"ip-address-list"|"number-list"|"number",
@@ -24,18 +22,16 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a Device Defender detect custom metric.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_custom_metric(
+\preformatted{svc$describe_custom_metric(
   metricName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

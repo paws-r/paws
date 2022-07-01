@@ -13,9 +13,7 @@ paginated response.}
 \item{MaxResults}{The maximum number of parallel data resources returned for each request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ParallelDataPropertiesList = list(
     list(
       Name = "string",
@@ -53,19 +51,17 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides a list of your parallel data resources in Amazon Translate.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_parallel_data(
+\preformatted{svc$list_parallel_data(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

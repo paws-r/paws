@@ -55,16 +55,14 @@ deleted immediately.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_data_retention(
+\preformatted{svc$update_data_retention(
   StreamName = "string",
   StreamARN = "string",
   CurrentVersion = "string",
   Operation = "INCREASE_DATA_RETENTION"|"DECREASE_DATA_RETENTION",
   DataRetentionChangeInHours = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

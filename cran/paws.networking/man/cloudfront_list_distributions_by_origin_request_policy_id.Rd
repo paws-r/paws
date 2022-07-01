@@ -21,9 +21,7 @@ page’s response.}
 you want to list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DistributionIdList = list(
     Marker = "string",
     NextMarker = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of distribution IDs for distributions that have a cache
@@ -49,14 +47,12 @@ get the next page of items, send a subsequent request that specifies the
 the subsequent request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_distributions_by_origin_request_policy_id(
+\preformatted{svc$list_distributions_by_origin_request_policy_id(
   Marker = "string",
   MaxItems = "string",
   OriginRequestPolicyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

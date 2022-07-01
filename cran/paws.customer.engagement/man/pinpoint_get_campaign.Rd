@@ -14,9 +14,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{CampaignId}{[required] The unique identifier for the campaign.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CampaignResponse = list(
     AdditionalTreatments = list(
       list(
@@ -357,20 +355,18 @@ A list with the following syntax:
     Version = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about the status, configuration, and other
 settings for a campaign.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_campaign(
+\preformatted{svc$get_campaign(
   ApplicationId = "string",
   CampaignId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

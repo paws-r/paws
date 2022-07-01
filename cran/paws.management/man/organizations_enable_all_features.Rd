@@ -7,9 +7,7 @@
 organizations_enable_all_features()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Handshake = list(
     Id = "string",
     Arn = "string",
@@ -36,7 +34,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables all features in an organization. This enables the use of
@@ -76,10 +74,8 @@ This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_all_features()
-}\if{html}{\out{</div>}}
+\preformatted{svc$enable_all_features()
+}
 }
 
 \examples{

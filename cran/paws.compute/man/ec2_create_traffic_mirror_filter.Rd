@@ -21,9 +21,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrafficMirrorFilter = list(
     TrafficMirrorFilterId = "string",
     IngressFilterRules = list(
@@ -81,7 +79,7 @@ A list with the following syntax:
   ),
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Traffic Mirror filter.
@@ -97,9 +95,7 @@ traffic gets mirrored. You can also use
 to mirror supported network services.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_traffic_mirror_filter(
+\preformatted{svc$create_traffic_mirror_filter(
   Description = "string",
   TagSpecifications = list(
     list(
@@ -115,7 +111,7 @@ to mirror supported network services.
   DryRun = TRUE|FALSE,
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -22,12 +22,10 @@ specified address.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$verify_email_identity(
+\preformatted{svc$verify_email_identity(
   EmailAddress = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -53,9 +53,7 @@ tasks such as the following automatically:
 }
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- sqs(
+\preformatted{svc <- sqs(
   config = list(
     credentials = list(
       creds = list(
@@ -69,7 +67,7 @@ tasks such as the following automatically:
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

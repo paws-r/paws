@@ -14,9 +14,7 @@ cloudsearch_describe_service_access_policies(DomainName, Deployed)
 pending changes (\code{false}). Defaults to \code{false}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccessPolicies = list(
     Options = "string",
     Status = list(
@@ -32,7 +30,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the access policies that control access to the
@@ -45,13 +43,11 @@ target="_blank">Configuring Access for a Search Domain</a> in the
 \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_service_access_policies(
+\preformatted{svc$describe_service_access_policies(
   DomainName = "string",
   Deployed = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

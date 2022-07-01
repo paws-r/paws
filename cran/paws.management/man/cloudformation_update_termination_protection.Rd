@@ -14,12 +14,10 @@ cloudformation_update_termination_protection(
 protection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StackId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates termination protection for the specified stack. If a user
@@ -33,13 +31,11 @@ termination protection is set on the root stack and cannot be changed
 directly on the nested stack.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_termination_protection(
+\preformatted{svc$update_termination_protection(
   EnableTerminationProtection = TRUE|FALSE,
   StackName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

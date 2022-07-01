@@ -24,9 +24,7 @@ For information about requesting a rule limit increase, see \href{https://docs.a
 in the \emph{AWS General Reference Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConfigRulesEvaluationStatus = list(
     list(
       ConfigRuleName = "string",
@@ -57,7 +55,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns status information for each of your AWS managed Config rules.
@@ -66,16 +64,14 @@ the rule, the last time AWS Config failed to invoke the rule, and the
 related error for the last failure.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_config_rule_evaluation_status(
+\preformatted{svc$describe_config_rule_evaluation_status(
   ConfigRuleNames = list(
     "string"
   ),
   NextToken = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

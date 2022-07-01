@@ -23,14 +23,12 @@ is mapped to the amr claim of the JWT token.}
 \item{ClientToken}{[required] Idempotency token, valid for 10 minutes.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TokenId = "string",
   TokenType = "REFRESH_TOKEN",
   Token = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a long-lived token.
@@ -41,9 +39,7 @@ credentials that you can use to call License Manager to manage the
 specified license.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_token(
+\preformatted{svc$create_token(
   LicenseArn = "string",
   RoleArns = list(
     "string"
@@ -54,7 +50,7 @@ specified license.
   ),
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

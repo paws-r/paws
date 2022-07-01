@@ -15,9 +15,7 @@ iot1clickprojects_list_placements(projectName, nextToken, maxResults)
 default value of 100 is used.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   placements = list(
     list(
       projectName = "string",
@@ -32,20 +30,18 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the placement(s) of a project.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_placements(
+\preformatted{svc$list_placements(
   projectName = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

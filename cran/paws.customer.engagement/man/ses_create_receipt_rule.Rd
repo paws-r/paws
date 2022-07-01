@@ -27,9 +27,7 @@ For information about setting up receipt rules, see the \href{https://docs.aws.a
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_receipt_rule(
+\preformatted{svc$create_receipt_rule(
   RuleSetName = "string",
   After = "string",
   Rule = list(
@@ -80,7 +78,7 @@ You can execute this operation no more than once per second.
     ScanEnabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -11,9 +11,7 @@ gamelift_describe_game_session_placement(PlacementId)
 \item{PlacementId}{[required] A unique identifier for a game session placement to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GameSessionPlacement = list(
     PlacementId = "string",
     GameSessionQueueName = "string",
@@ -55,7 +53,7 @@ A list with the following syntax:
     MatchmakerData = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves properties and current status of a game session placement
@@ -77,12 +75,10 @@ ID. If successful, a GameSessionPlacement object is returned.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_game_session_placement(
+\preformatted{svc$describe_game_session_placement(
   PlacementId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

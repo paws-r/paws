@@ -36,16 +36,14 @@ If you exceed your maximum limit of SNS topics, which is 10 per Auto
 Scaling group, the call fails.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_notification_configuration(
+\preformatted{svc$put_notification_configuration(
   AutoScalingGroupName = "string",
   TopicARN = "string",
   NotificationTypes = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

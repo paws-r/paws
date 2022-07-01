@@ -18,9 +18,7 @@ from a previous call.)}
 default is up to 50 items.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   destinations = list(
     list(
       destinationName = "string",
@@ -33,21 +31,19 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all your destinations. The results are ASCII-sorted by destination
 name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_destinations(
+\preformatted{svc$describe_destinations(
   DestinationNamePrefix = "string",
   nextToken = "string",
   limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

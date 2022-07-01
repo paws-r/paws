@@ -37,13 +37,11 @@ calling \code{\link[=glue_delete_database]{delete_database}}, use
 that belong to the database.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_database(
+\preformatted{svc$delete_database(
   CatalogId = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

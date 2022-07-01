@@ -24,12 +24,10 @@ Deletes a specified DB cluster parameter group. The DB cluster parameter
 group to be deleted can't be associated with any DB clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_db_cluster_parameter_group(
+\preformatted{svc$delete_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

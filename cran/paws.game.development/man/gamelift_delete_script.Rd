@@ -38,12 +38,10 @@ state and be unable to host game sessions.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_script(
+\preformatted{svc$delete_script(
   ScriptId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

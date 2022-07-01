@@ -24,9 +24,7 @@ response.}
 \item{MaxItems}{The maximum number of cache policies that you want in the response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CachePolicyList = list(
     NextMarker = "string",
     MaxItems = 123,
@@ -82,7 +80,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of cache policies.
@@ -98,14 +96,12 @@ get the next page of items, send a subsequent request that specifies the
 the subsequent request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_cache_policies(
+\preformatted{svc$list_cache_policies(
   Type = "managed"|"custom",
   Marker = "string",
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

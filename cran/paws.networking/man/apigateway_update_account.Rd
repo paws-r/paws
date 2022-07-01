@@ -11,9 +11,7 @@ apigateway_update_account(patchOperations)
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   cloudwatchRoleArn = "string",
   throttleSettings = list(
     burstLimit = 123,
@@ -24,15 +22,13 @@ A list with the following syntax:
   ),
   apiKeyVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes information about the current Account resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_account(
+\preformatted{svc$update_account(
   patchOperations = list(
     list(
       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
@@ -42,7 +38,7 @@ Changes information about the current Account resource.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

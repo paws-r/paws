@@ -14,9 +14,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{SMSChannelRequest}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SMSChannelResponse = list(
     ApplicationId = "string",
     CreationDate = "string",
@@ -34,16 +32,14 @@ A list with the following syntax:
     Version = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables the SMS channel for an application or updates the status and
 settings of the SMS channel for an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_sms_channel(
+\preformatted{svc$update_sms_channel(
   ApplicationId = "string",
   SMSChannelRequest = list(
     Enabled = TRUE|FALSE,
@@ -51,7 +47,7 @@ settings of the SMS channel for an application.
     ShortCode = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

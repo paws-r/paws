@@ -21,9 +21,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{CurrentVersion}{[required] The current version number for the prefix list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PrefixList = list(
     PrefixListId = "string",
     AddressFamily = "string",
@@ -42,22 +40,20 @@ A list with the following syntax:
     OwnerId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Restores the entries from a previous version of a managed prefix list to
 a new version of the prefix list.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_managed_prefix_list_version(
+\preformatted{svc$restore_managed_prefix_list_version(
   DryRun = TRUE|FALSE,
   PrefixListId = "string",
   PreviousVersion = 123,
   CurrentVersion = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -29,9 +29,7 @@ version compatible with that DB parameter group family.}
 \item{Tags}{The tags to be assigned to the new DB parameter group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBParameterGroup = list(
     DBParameterGroupName = "string",
     DBParameterGroupFamily = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
     DBParameterGroupArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new DB parameter group.
@@ -66,9 +64,7 @@ the \emph{Parameter Groups} option of the Amazon Neptune console or the
 has been created or modified.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_parameter_group(
+\preformatted{svc$create_db_parameter_group(
   DBParameterGroupName = "string",
   DBParameterGroupFamily = "string",
   Description = "string",
@@ -79,7 +75,7 @@ has been created or modified.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

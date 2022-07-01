@@ -21,12 +21,10 @@ currently in use, \code{\link[=elastictranscoder_delete_pipeline]{delete_pipelin
 returns an error.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_pipeline(
+\preformatted{svc$delete_pipeline(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

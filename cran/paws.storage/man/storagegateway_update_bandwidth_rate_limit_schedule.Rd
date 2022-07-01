@@ -15,12 +15,10 @@ gateway. When no bandwidth rate limit intervals have been scheduled, the
 array is empty.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the bandwidth rate limit schedule for a specified gateway. By
@@ -30,9 +28,7 @@ update a gateway's bandwidth rate limit schedule. This operation is
 supported in the volume and tape gateway types.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_bandwidth_rate_limit_schedule(
+\preformatted{svc$update_bandwidth_rate_limit_schedule(
   GatewayARN = "string",
   BandwidthRateLimitIntervals = list(
     list(
@@ -48,7 +44,7 @@ supported in the volume and tape gateway types.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

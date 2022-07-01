@@ -11,12 +11,10 @@ route53domains_disable_domain_transfer_lock(DomainName)
 \item{DomainName}{[required] The name of the domain that you want to remove the transfer lock for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OperationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation removes the transfer lock on the domain (specifically the
@@ -28,12 +26,10 @@ completion of the action. If the request is not completed successfully,
 the domain registrant will be notified by email.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_domain_transfer_lock(
+\preformatted{svc$disable_domain_transfer_lock(
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

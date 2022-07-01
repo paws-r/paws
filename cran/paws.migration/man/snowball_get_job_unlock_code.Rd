@@ -11,12 +11,10 @@ snowball_get_job_unlock_code(JobId)
 example \verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UnlockCode = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the \code{UnlockCode} code value for the specified job. A particular
@@ -34,12 +32,10 @@ Saving these separately helps prevent unauthorized parties from gaining
 access to the Snow device associated with that job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_job_unlock_code(
+\preformatted{svc$get_job_unlock_code(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

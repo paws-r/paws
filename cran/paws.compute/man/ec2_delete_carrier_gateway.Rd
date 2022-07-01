@@ -15,9 +15,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CarrierGateway = list(
     CarrierGatewayId = "string",
     VpcId = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a carrier gateway.
@@ -41,13 +39,11 @@ Target, the route is a blackhole route. For information about how to
 delete a route, see \code{\link[=ec2_delete_route]{delete_route}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_carrier_gateway(
+\preformatted{svc$delete_carrier_gateway(
   CarrierGatewayId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

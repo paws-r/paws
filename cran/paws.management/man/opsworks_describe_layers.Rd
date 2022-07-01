@@ -14,9 +14,7 @@ omit this parameter, \code{\link[=opsworks_describe_layers]{describe_layers}}
 returns a description of every layer in the specified stack.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Layers = list(
     list(
       Arn = "string",
@@ -117,7 +115,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Requests a description of one or more layers in a specified stack.
@@ -130,15 +128,13 @@ policy that explicitly grants permissions. For more information about
 user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_layers(
+\preformatted{svc$describe_layers(
   StackId = "string",
   LayerIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -27,9 +27,7 @@ An empty list.
 Updates the specified lifecycle policy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_lifecycle_policy(
+\preformatted{svc$update_lifecycle_policy(
   PolicyId = "string",
   ExecutionRoleArn = "string",
   State = "ENABLED"|"DISABLED",
@@ -139,7 +137,7 @@ Updates the specified lifecycle policy.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

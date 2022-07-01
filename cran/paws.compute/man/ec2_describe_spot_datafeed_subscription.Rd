@@ -13,9 +13,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SpotDatafeedSubscription = list(
     Bucket = "string",
     Fault = list(
@@ -27,7 +25,7 @@ A list with the following syntax:
     State = "Active"|"Inactive"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the data feed for Spot Instances. For more information, see
@@ -35,12 +33,10 @@ Describes the data feed for Spot Instances. For more information, see
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_spot_datafeed_subscription(
+\preformatted{svc$describe_spot_datafeed_subscription(
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

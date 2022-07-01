@@ -20,9 +20,7 @@ Adds one or more items to an Items dataset. For more information see
 importing-items.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_items(
+\preformatted{svc$put_items(
   datasetArn = "string",
   items = list(
     list(
@@ -31,7 +29,7 @@ importing-items.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

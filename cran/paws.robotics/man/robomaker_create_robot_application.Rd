@@ -19,9 +19,7 @@ application.}
 robot application.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   arn = "string",
   name = "string",
   version = "string",
@@ -45,15 +43,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a robot application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_robot_application(
+\preformatted{svc$create_robot_application(
   name = "string",
   sources = list(
     list(
@@ -70,7 +66,7 @@ Creates a robot application.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

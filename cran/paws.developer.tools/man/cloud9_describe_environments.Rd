@@ -10,9 +10,7 @@ cloud9_describe_environments(environmentIds)
 \item{environmentIds}{[required] The IDs of individual environments to get information about.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   environments = list(
     list(
       id = "string",
@@ -30,20 +28,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about AWS Cloud9 development environments.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_environments(
+\preformatted{svc$describe_environments(
   environmentIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

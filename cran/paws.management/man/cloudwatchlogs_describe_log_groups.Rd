@@ -16,9 +16,7 @@ from a previous call.)}
 default is up to 50 items.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   logGroups = list(
     list(
       logGroupName = "string",
@@ -32,7 +30,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the specified log groups. You can list all your log groups or
@@ -40,14 +38,12 @@ filter the results by prefix. The results are ASCII-sorted by log group
 name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_log_groups(
+\preformatted{svc$describe_log_groups(
   logGroupNamePrefix = "string",
   nextToken = "string",
   limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

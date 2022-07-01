@@ -43,9 +43,7 @@ Constraints: The number of days must be either -1 or an integer between
 manual snapshots instead of automated snapshots.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Cluster = list(
     ClusterIdentifier = "string",
     NodeType = "string",
@@ -202,7 +200,7 @@ A list with the following syntax:
     ClusterNamespaceArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the number of days to retain snapshots in the destination AWS
@@ -215,14 +213,12 @@ manual snapshots. If you set this option, only newly copied manual
 snapshots have the new retention period.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_snapshot_copy_retention_period(
+\preformatted{svc$modify_snapshot_copy_retention_period(
   ClusterIdentifier = "string",
   RetentionPeriod = 123,
   Manual = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

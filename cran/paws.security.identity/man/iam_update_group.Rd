@@ -50,14 +50,12 @@ then the update fails. For more information about permissions, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Access Management}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_group(
+\preformatted{svc$update_group(
   GroupName = "string",
   NewPath = "string",
   NewGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

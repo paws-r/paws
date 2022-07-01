@@ -14,9 +14,7 @@ quicksight_describe_ingestion(AwsAccountId, DataSetId, IngestionId)
 \item{IngestionId}{[required] An ID for the ingestion.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Ingestion = list(
     Arn = "string",
     IngestionId = "string",
@@ -44,20 +42,18 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a SPICE ingestion.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_ingestion(
+\preformatted{svc$describe_ingestion(
   AwsAccountId = "string",
   DataSetId = "string",
   IngestionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

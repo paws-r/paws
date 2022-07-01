@@ -22,9 +22,7 @@ index during a request. For more information, see \href{https://docs.aws.amazon.
 \item{ConsistencyLevel}{The consistency level to execute the request at.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IndexAttachments = list(
     list(
       IndexedAttributes = list(
@@ -50,15 +48,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists objects attached to the specified index.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_index(
+\preformatted{svc$list_index(
   DirectoryArn = "string",
   RangesOnIndexedValues = list(
     list(
@@ -98,7 +94,7 @@ Lists objects attached to the specified index.
   NextToken = "string",
   ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

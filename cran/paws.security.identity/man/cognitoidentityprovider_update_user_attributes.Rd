@@ -45,9 +45,7 @@ don't use it to provide sensitive information.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CodeDeliveryDetailsList = list(
     list(
       Destination = "string",
@@ -56,15 +54,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Allows a user to update a specific attribute (one at a time).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user_attributes(
+\preformatted{svc$update_user_attributes(
   UserAttributes = list(
     list(
       Name = "string",
@@ -76,7 +72,7 @@ Allows a user to update a specific attribute (one at a time).
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

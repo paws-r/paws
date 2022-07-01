@@ -15,13 +15,11 @@ Amazon Resource Name (ARN).}
 field will not be updated.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RegistryName = "string",
   RegistryArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing registry which is used to hold a collection of
@@ -29,16 +27,14 @@ schemas. The updated properties relate to the registry, and do not
 modify any of the schemas within the registry.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_registry(
+\preformatted{svc$update_registry(
   RegistryId = list(
     RegistryName = "string",
     RegistryArn = "string"
   ),
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

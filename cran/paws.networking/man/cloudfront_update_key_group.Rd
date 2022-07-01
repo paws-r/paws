@@ -15,9 +15,7 @@ cloudfront_update_key_group(KeyGroupConfig, Id, IfMatch)
 key group’s \code{ETag} value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   KeyGroup = list(
     Id = "string",
     LastModifiedTime = as.POSIXct(
@@ -33,7 +31,7 @@ A list with the following syntax:
   ),
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a key group.
@@ -53,9 +51,7 @@ those that you didn’t.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_key_group(
+\preformatted{svc$update_key_group(
   KeyGroupConfig = list(
     Name = "string",
     Items = list(
@@ -66,7 +62,7 @@ those that you didn’t.
   Id = "string",
   IfMatch = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

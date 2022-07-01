@@ -20,9 +20,7 @@ This section provides documentation for the AWS RoboMaker API
 operations.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- robomaker(
+\preformatted{svc <- robomaker(
   config = list(
     credentials = list(
       creds = list(
@@ -36,7 +34,7 @@ operations.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

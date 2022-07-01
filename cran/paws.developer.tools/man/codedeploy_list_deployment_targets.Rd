@@ -24,23 +24,19 @@ can be used to return the next set of deployment targets in the list.}
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   targetIds = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns an array of target IDs that are associated a deployment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_deployment_targets(
+\preformatted{svc$list_deployment_targets(
   deploymentId = "string",
   nextToken = "string",
   targetFilters = list(
@@ -49,7 +45,7 @@ Returns an array of target IDs that are associated a deployment.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

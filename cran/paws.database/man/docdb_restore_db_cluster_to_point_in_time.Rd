@@ -103,9 +103,7 @@ is enabled, the cluster cannot be deleted unless it is modified and
 from being accidentally deleted.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBCluster = list(
     AvailabilityZones = list(
       "string"
@@ -165,7 +163,7 @@ A list with the following syntax:
     DeletionProtection = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Restores a cluster to an arbitrary point in time. Users can restore to
@@ -175,9 +173,7 @@ source cluster with the same configuration as the original cluster,
 except that the new cluster is created with the default security group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_db_cluster_to_point_in_time(
+\preformatted{svc$restore_db_cluster_to_point_in_time(
   DBClusterIdentifier = "string",
   SourceDBClusterIdentifier = "string",
   RestoreToTime = as.POSIXct(
@@ -201,7 +197,7 @@ except that the new cluster is created with the default security group.
   ),
   DeletionProtection = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

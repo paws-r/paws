@@ -20,16 +20,14 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{GatewayId}{The ID of the internet gateway or virtual private gateway.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AssociationId = "string",
   AssociationState = list(
     State = "associating"|"associated"|"disassociating"|"disassociated"|"failed",
     StatusMessage = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Associates a subnet in your VPC or an internet gateway or virtual
@@ -43,15 +41,13 @@ For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_route_table(
+\preformatted{svc$associate_route_table(
   DryRun = TRUE|FALSE,
   RouteTableId = "string",
   SubnetId = "string",
   GatewayId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

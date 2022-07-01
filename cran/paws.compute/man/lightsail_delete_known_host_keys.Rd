@@ -12,9 +12,7 @@ lightsail_delete_known_host_keys(instanceName)
 certificate.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the known host key or certificate used by the Amazon Lightsail
@@ -54,12 +52,10 @@ connection issues when using the Amazon Lightsail browser-based SSH or
 RDP client.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_known_host_keys(
+\preformatted{svc$delete_known_host_keys(
   instanceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

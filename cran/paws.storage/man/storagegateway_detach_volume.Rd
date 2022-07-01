@@ -18,12 +18,10 @@ the target volume.
 Valid Values: \code{true} | \code{false}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VolumeARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disconnects a volume from an iSCSI connection and then detaches the
@@ -34,13 +32,11 @@ volumes from an on-premises gateway to a gateway hosted on an Amazon EC2
 instance. This operation is only supported in the volume gateway type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_volume(
+\preformatted{svc$detach_volume(
   VolumeARN = "string",
   ForceDetach = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

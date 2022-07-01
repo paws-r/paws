@@ -20,9 +20,7 @@ token that you can use in the subsequent request to retrieve the next
 set of text.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
   StatusMessage = "string",
   VideoMetadata = list(
@@ -70,7 +68,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the segment detection results of a Amazon Rekognition Video
@@ -117,14 +115,12 @@ For more information, see Detecting Video Segments in Stored Video in
 the Amazon Rekognition Developer Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_segment_detection(
+\preformatted{svc$get_segment_detection(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

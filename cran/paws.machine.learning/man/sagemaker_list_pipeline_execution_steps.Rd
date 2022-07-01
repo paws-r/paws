@@ -22,9 +22,7 @@ response.}
 \item{SortOrder}{The field by which to sort results. The default is \code{CreatedTime}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PipelineExecutionSteps = list(
     list(
       StepName = "string",
@@ -63,21 +61,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of \code{PipeLineExecutionStep} objects.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_pipeline_execution_steps(
+\preformatted{svc$list_pipeline_execution_steps(
   PipelineExecutionArn = "string",
   NextToken = "string",
   MaxResults = 123,
   SortOrder = "Ascending"|"Descending"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

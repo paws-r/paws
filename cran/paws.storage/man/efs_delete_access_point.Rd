@@ -22,12 +22,10 @@ This operation requires permissions for the
 \code{elasticfilesystem:DeleteAccessPoint} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_access_point(
+\preformatted{svc$delete_access_point(
   AccessPointId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

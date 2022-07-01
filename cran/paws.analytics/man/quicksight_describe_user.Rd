@@ -15,9 +15,7 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   User = list(
     Arn = "string",
     UserName = "string",
@@ -31,20 +29,18 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a user, given the user name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_user(
+\preformatted{svc$describe_user(
   UserName = "string",
   AwsAccountId = "string",
   Namespace = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

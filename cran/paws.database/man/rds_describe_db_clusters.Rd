@@ -44,9 +44,7 @@ marker, up to the value specified by \code{MaxRecords}.}
 information about clusters shared from other AWS accounts.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   DBClusters = list(
     list(
@@ -179,7 +177,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about provisioned Aurora DB clusters. This API
@@ -192,9 +190,7 @@ This operation can also return information for Amazon Neptune DB
 instances and Amazon DocumentDB instances.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_clusters(
+\preformatted{svc$describe_db_clusters(
   DBClusterIdentifier = "string",
   Filters = list(
     list(
@@ -208,7 +204,7 @@ instances and Amazon DocumentDB instances.
   Marker = "string",
   IncludeShared = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

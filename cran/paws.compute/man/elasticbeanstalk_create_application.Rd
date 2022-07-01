@@ -22,9 +22,7 @@ Elastic Beanstalk applies these tags only to the application.
 Environments that you create in the application don't inherit the tags.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Application = list(
     ApplicationArn = "string",
     ApplicationName = "string",
@@ -58,16 +56,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an application that has one configuration template named
 \code{default} and no application versions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_application(
+\preformatted{svc$create_application(
   ApplicationName = "string",
   Description = "string",
   ResourceLifecycleConfig = list(
@@ -92,7 +88,7 @@ Creates an application that has one configuration template named
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

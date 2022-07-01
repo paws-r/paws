@@ -224,9 +224,7 @@ in an Aurora global database. By default, Aurora disallows write
 operations for secondary clusters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBCluster = list(
     AllocatedStorage = 123,
     AvailabilityZones = list(
@@ -356,7 +354,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modify a setting for an Amazon Aurora DB cluster. You can change one or
@@ -368,9 +366,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_cluster(
+\preformatted{svc$modify_db_cluster(
   DBClusterIdentifier = "string",
   NewDBClusterIdentifier = "string",
   ApplyImmediately = TRUE|FALSE,
@@ -411,7 +407,7 @@ This action only applies to Aurora DB clusters.
   CopyTagsToSnapshot = TRUE|FALSE,
   EnableGlobalWriteForwarding = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

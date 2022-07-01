@@ -22,9 +22,7 @@ The value you specify has to be at least 0, and can be no more than
 1000.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EmailIdentities = list(
     list(
       IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
@@ -34,7 +32,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of all of the email identities that are associated with
@@ -43,13 +41,11 @@ or a domain. This operation returns identities that are verified as well
 as those that aren't.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_email_identities(
+\preformatted{svc$list_email_identities(
   NextToken = "string",
   PageSize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

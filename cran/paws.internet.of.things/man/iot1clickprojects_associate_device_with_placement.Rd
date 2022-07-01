@@ -26,15 +26,13 @@ An empty list.
 Associates a physical device with a placement.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_device_with_placement(
+\preformatted{svc$associate_device_with_placement(
   projectName = "string",
   placementName = "string",
   deviceId = "string",
   deviceTemplateName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

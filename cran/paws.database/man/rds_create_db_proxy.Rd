@@ -49,9 +49,7 @@ safeguard any sensitive information that appears in the logs.}
 choosing with the proxy.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBProxy = list(
     DBProxyName = "string",
     DBProxyArn = "string",
@@ -85,15 +83,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new DB proxy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_proxy(
+\preformatted{svc$create_db_proxy(
   DBProxyName = "string",
   EngineFamily = "MYSQL"|"POSTGRESQL",
   Auth = list(
@@ -122,7 +118,7 @@ Creates a new DB proxy.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

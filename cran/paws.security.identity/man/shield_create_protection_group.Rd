@@ -52,9 +52,7 @@ collective. This resource grouping improves the accuracy of detection
 and reduces false positives.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_protection_group(
+\preformatted{svc$create_protection_group(
   ProtectionGroupId = "string",
   Aggregation = "SUM"|"MEAN"|"MAX",
   Pattern = "ALL"|"ARBITRARY"|"BY_RESOURCE_TYPE",
@@ -63,7 +61,7 @@ and reduces false positives.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

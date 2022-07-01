@@ -11,15 +11,13 @@ chime_get_account_settings(AccountId)
 \item{AccountId}{[required] The Amazon Chime account ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccountSettings = list(
     DisableRemoteControl = TRUE|FALSE,
     EnableDialOut = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves account settings for the specified Amazon Chime account ID,
@@ -28,12 +26,10 @@ these settings, see \href{https://docs.aws.amazon.com/chime/latest/ag/mtg-settin
 the \emph{Amazon Chime Administration Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_account_settings(
+\preformatted{svc$get_account_settings(
   AccountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

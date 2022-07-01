@@ -19,12 +19,10 @@ objects in the container or in any folders in the container. You can
 delete only empty containers.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_container(
+\preformatted{svc$delete_container(
   ContainerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

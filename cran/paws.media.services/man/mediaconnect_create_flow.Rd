@@ -26,9 +26,7 @@ are limited to the Availability Zones within the current AWS Region.}
 \item{VpcInterfaces}{The VPC interfaces you want on the flow.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Flow = list(
     AvailabilityZone = "string",
     Description = "string",
@@ -183,16 +181,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new flow. The request must include one source. The request
 optionally can include outputs (up to 50) and entitlements (up to 50).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_flow(
+\preformatted{svc$create_flow(
   AvailabilityZone = "string",
   Entitlements = list(
     list(
@@ -310,7 +306,7 @@ optionally can include outputs (up to 50) and entitlements (up to 50).
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

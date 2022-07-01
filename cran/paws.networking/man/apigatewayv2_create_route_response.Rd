@@ -22,9 +22,7 @@ for WebSocket APIs.}
 \item{RouteResponseKey}{[required] The route response key.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ModelSelectionExpression = "string",
   ResponseModels = list(
     "string"
@@ -37,15 +35,13 @@ A list with the following syntax:
   RouteResponseId = "string",
   RouteResponseKey = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a RouteResponse for a Route.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_route_response(
+\preformatted{svc$create_route_response(
   ApiId = "string",
   ModelSelectionExpression = "string",
   ResponseModels = list(
@@ -59,7 +55,7 @@ Creates a RouteResponse for a Route.
   RouteId = "string",
   RouteResponseKey = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -13,10 +13,8 @@ An empty list.
 Disables usage report generation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_usage_report_subscription()
-}\if{html}{\out{</div>}}
+\preformatted{svc$delete_usage_report_subscription()
+}
 }
 
 \keyword{internal}

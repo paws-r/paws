@@ -10,9 +10,7 @@ codebuild_stop_build_batch(id)
 \item{id}{[required] The identifier of the batch build to stop.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   buildBatch = list(
     id = "string",
     arn = "string",
@@ -237,18 +235,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops a running batch build.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_build_batch(
+\preformatted{svc$stop_build_batch(
   id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

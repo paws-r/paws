@@ -27,16 +27,14 @@ relationship with another domain. The conditional forwarder points to
 the trusted domain.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_conditional_forwarder(
+\preformatted{svc$create_conditional_forwarder(
   DirectoryId = "string",
   RemoteDomainName = "string",
   DnsIpAddrs = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

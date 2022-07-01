@@ -24,13 +24,11 @@ explicitly grants permissions. For more information on user permissions,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_elastic_load_balancer(
+\preformatted{svc$detach_elastic_load_balancer(
   ElasticLoadBalancerName = "string",
   LayerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

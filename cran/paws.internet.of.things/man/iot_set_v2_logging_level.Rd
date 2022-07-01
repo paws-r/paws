@@ -18,16 +18,14 @@ An empty list.
 Sets the logging level.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_v2_logging_level(
+\preformatted{svc$set_v2_logging_level(
   logTarget = list(
     targetType = "DEFAULT"|"THING_GROUP",
     targetName = "string"
   ),
   logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

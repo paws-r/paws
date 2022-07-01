@@ -44,9 +44,7 @@ about to fail or which customers are at risk of abandoning their
 wearable devices.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- iotanalytics(
+\preformatted{svc <- iotanalytics(
   config = list(
     credentials = list(
       creds = list(
@@ -60,7 +58,7 @@ wearable devices.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -58,9 +58,7 @@ branches that are part of this app.}
 \item{autoBranchCreationConfig}{The automated branch creation configuration for an Amplify app.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   app = list(
     appId = "string",
     appArn = "string",
@@ -124,15 +122,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Amplify app.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_app(
+\preformatted{svc$create_app(
   name = "string",
   description = "string",
   repository = "string",
@@ -179,7 +175,7 @@ Creates a new Amplify app.
     pullRequestEnvironmentName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

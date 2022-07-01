@@ -11,9 +11,7 @@ glue_get_catalog_import_status(CatalogId)
 account ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ImportStatus = list(
     ImportCompleted = TRUE|FALSE,
     ImportTime = as.POSIXct(
@@ -22,18 +20,16 @@ A list with the following syntax:
     ImportedBy = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the status of a migration operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_catalog_import_status(
+\preformatted{svc$get_catalog_import_status(
   CatalogId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

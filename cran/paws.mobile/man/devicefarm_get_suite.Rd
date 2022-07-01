@@ -10,9 +10,7 @@ devicefarm_get_suite(arn)
 \item{arn}{[required] The suite's ARN.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   suite = list(
     arn = "string",
     name = "string",
@@ -45,18 +43,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a suite.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_suite(
+\preformatted{svc$get_suite(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

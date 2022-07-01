@@ -52,12 +52,10 @@ specified. Use this option to avoid modifying a policy that has changed
 since you last read it.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Statement = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Grants an AWS service or another account permission to use a function.
@@ -79,9 +77,7 @@ This action adds a statement to a resource-based permissions policy for
 the function. For more information about function policies, see \href{https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{Lambda Function Policies}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_permission(
+\preformatted{svc$add_permission(
   FunctionName = "string",
   StatementId = "string",
   Action = "string",
@@ -92,7 +88,7 @@ the function. For more information about function policies, see \href{https://do
   Qualifier = "string",
   RevisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

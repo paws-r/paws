@@ -16,12 +16,10 @@ An empty list.
 Deletes the playback configuration for the specified name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_playback_configuration(
+\preformatted{svc$delete_playback_configuration(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

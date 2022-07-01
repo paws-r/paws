@@ -23,12 +23,10 @@ This operation requires permissions for the
 \code{elasticfilesystem:DeleteFileSystemPolicy} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_file_system_policy(
+\preformatted{svc$delete_file_system_policy(
   FileSystemId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

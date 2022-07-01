@@ -22,13 +22,11 @@ change.
 Associates an approved origin to an Amazon Connect instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_approved_origin(
+\preformatted{svc$associate_approved_origin(
   InstanceId = "string",
   Origin = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

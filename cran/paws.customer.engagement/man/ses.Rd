@@ -24,9 +24,7 @@ For a list of Amazon SES endpoints to use in service requests, see
 \href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Amazon SES Developer Guide}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- ses(
+\preformatted{svc <- ses(
   config = list(
     credentials = list(
       creds = list(
@@ -40,7 +38,7 @@ For a list of Amazon SES endpoints to use in service requests, see
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

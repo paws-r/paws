@@ -14,9 +14,7 @@ IAM user or AWS account.}
 \item{deploymentGroupNames}{[required] The names of the deployment groups.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   deploymentGroupsInfo = list(
     list(
       applicationName = "string",
@@ -191,21 +189,19 @@ A list with the following syntax:
   ),
   errorMessage = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about one or more deployment groups.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_deployment_groups(
+\preformatted{svc$batch_get_deployment_groups(
   applicationName = "string",
   deploymentGroupNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

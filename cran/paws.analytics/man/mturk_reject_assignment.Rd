@@ -31,13 +31,11 @@ Only the Requester who created the HIT can reject an assignment for the
 HIT.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reject_assignment(
+\preformatted{svc$reject_assignment(
   AssignmentId = "string",
   RequesterFeedback = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

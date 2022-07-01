@@ -21,16 +21,14 @@ An empty list.
 Assigns the specified security profiles to the specified user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user_security_profiles(
+\preformatted{svc$update_user_security_profiles(
   SecurityProfileIds = list(
     "string"
   ),
   UserId = "string",
   InstanceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

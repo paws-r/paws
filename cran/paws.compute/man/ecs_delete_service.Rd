@@ -18,9 +18,7 @@ down to zero tasks. It is only necessary to use this if the service is
 using the \code{REPLICA} scheduling strategy.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   service = list(
     serviceArn = "string",
     serviceName = "string",
@@ -225,7 +223,7 @@ A list with the following syntax:
     propagateTags = "TASK_DEFINITION"|"SERVICE"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a specified service within a cluster. You can delete a service
@@ -250,14 +248,12 @@ If you attempt to create a new service with the same name as an existing
 service in either \code{ACTIVE} or \code{DRAINING} status, you receive an error.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_service(
+\preformatted{svc$delete_service(
   cluster = "string",
   service = "string",
   force = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

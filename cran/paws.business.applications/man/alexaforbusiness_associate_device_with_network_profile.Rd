@@ -19,13 +19,11 @@ An empty list.
 Associates a device with the specified network profile.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_device_with_network_profile(
+\preformatted{svc$associate_device_with_network_profile(
   DeviceArn = "string",
   NetworkProfileArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

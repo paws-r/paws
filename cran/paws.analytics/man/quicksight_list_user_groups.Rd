@@ -22,9 +22,7 @@ the AWS account that contains your Amazon QuickSight account.}
 \item{MaxResults}{The maximum number of results to return from this request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GroupList = list(
     list(
       Arn = "string",
@@ -37,23 +35,21 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the Amazon QuickSight groups that an Amazon QuickSight user is a
 member of.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_user_groups(
+\preformatted{svc$list_user_groups(
   UserName = "string",
   AwsAccountId = "string",
   Namespace = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

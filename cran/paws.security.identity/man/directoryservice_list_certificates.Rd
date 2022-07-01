@@ -18,9 +18,7 @@ token comes back as \code{null}. Pass \code{null} if this is the first call.}
 \item{Limit}{The number of items that should show up on one page}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   CertificatesInfo = list(
     list(
@@ -34,21 +32,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 For the specified directory, lists all the certificates registered for a
 secure LDAP or client certificate authentication.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_certificates(
+\preformatted{svc$list_certificates(
   DirectoryId = "string",
   NextToken = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

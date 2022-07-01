@@ -10,9 +10,7 @@ elasticache_delete_user_group(UserGroupId)
 \item{UserGroupId}{[required] The ID of the user group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserGroupId = "string",
   Status = "string",
   Engine = "string",
@@ -32,7 +30,7 @@ A list with the following syntax:
   ),
   ARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 For Redis engine version 6.x onwards: Deletes a ser group. The user
@@ -40,12 +38,10 @@ group must first be disassociated from the replcation group before it
 can be deleted. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user_group(
+\preformatted{svc$delete_user_group(
   UserGroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

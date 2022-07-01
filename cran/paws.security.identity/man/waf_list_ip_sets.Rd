@@ -19,9 +19,7 @@ specify for \code{Limit}, the response includes a \code{NextMarker} value that y
 can use to get another batch of \code{IPSet} objects.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextMarker = "string",
   IPSets = list(
     list(
@@ -30,7 +28,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -45,13 +43,11 @@ regional and global use.
 Returns an array of IPSetSummary objects in the response.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_ip_sets(
+\preformatted{svc$list_ip_sets(
   NextMarker = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

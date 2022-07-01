@@ -12,9 +12,7 @@ guardduty_describe_organization_configuration(DetectorId)
 administrator from.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AutoEnable = TRUE|FALSE,
   MemberAccountLimitReached = TRUE|FALSE,
   DataSources = list(
@@ -23,19 +21,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the account selected as the delegated
 administrator for GuardDuty.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_organization_configuration(
+\preformatted{svc$describe_organization_configuration(
   DetectorId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

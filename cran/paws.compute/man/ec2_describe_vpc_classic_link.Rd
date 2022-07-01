@@ -29,9 +29,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcIds}{One or more VPCs for which you want to describe the ClassicLink status.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Vpcs = list(
     list(
       ClassicLinkEnabled = TRUE|FALSE,
@@ -45,15 +43,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the ClassicLink status of one or more VPCs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vpc_classic_link(
+\preformatted{svc$describe_vpc_classic_link(
   Filters = list(
     list(
       Name = "string",
@@ -67,7 +63,7 @@ Describes the ClassicLink status of one or more VPCs.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

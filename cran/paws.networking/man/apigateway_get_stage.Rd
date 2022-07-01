@@ -12,9 +12,7 @@ apigateway_get_stage(restApiId, stageName)
 \item{stageName}{[required] [Required] The name of the Stage resource to get information about.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   deploymentId = "string",
   clientCertificateId = "string",
   stageName = "string",
@@ -64,19 +62,17 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a Stage resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_stage(
+\preformatted{svc$get_stage(
   restApiId = "string",
   stageName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

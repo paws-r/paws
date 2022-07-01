@@ -11,9 +11,7 @@ chime_get_voice_connector_origination(VoiceConnectorId)
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Origination = list(
     Routes = list(
       list(
@@ -27,19 +25,17 @@ A list with the following syntax:
     Disabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves origination setting details for the specified Amazon Chime
 Voice Connector.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_voice_connector_origination(
+\preformatted{svc$get_voice_connector_origination(
   VoiceConnectorId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

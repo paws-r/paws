@@ -15,9 +15,7 @@ want to disassociate from the administrator account.}
 disassociate from the administrator account.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UnprocessedAccounts = list(
     list(
       AccountId = "string",
@@ -25,22 +23,20 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disassociates GuardDuty member accounts (to the current GuardDuty
 administrator account) specified by the account IDs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_members(
+\preformatted{svc$disassociate_members(
   DetectorId = "string",
   AccountIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

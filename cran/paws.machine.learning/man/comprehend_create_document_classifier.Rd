@@ -55,12 +55,10 @@ labels for an individual document are separated by a delimiter. The
 default delimiter between labels is a pipe (|).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DocumentClassifierArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new document classifier that you can use to categorize
@@ -71,9 +69,7 @@ documents into the categories. For more information, see
 how-document-classification.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_document_classifier(
+\preformatted{svc$create_document_classifier(
   DocumentClassifierName = "string",
   DataAccessRoleArn = "string",
   Tags = list(
@@ -112,7 +108,7 @@ how-document-classification.
   ),
   Mode = "MULTI_CLASS"|"MULTI_LABEL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

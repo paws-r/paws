@@ -24,9 +24,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Routes = list(
     list(
       DestinationCidrBlock = "string",
@@ -40,15 +38,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Searches for routes in the specified local gateway route table.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_local_gateway_routes(
+\preformatted{svc$search_local_gateway_routes(
   LocalGatewayRouteTableId = "string",
   Filters = list(
     list(
@@ -62,7 +58,7 @@ Searches for routes in the specified local gateway route table.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

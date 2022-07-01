@@ -62,9 +62,7 @@ created but not active.}
 \item{Tags}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventSubscription = list(
     CustomerAwsId = "string",
     CustSubscriptionId = "string",
@@ -82,7 +80,7 @@ A list with the following syntax:
     EventSubscriptionArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an RDS event notification subscription. This action requires a
@@ -113,9 +111,7 @@ you specify an encrypted SNS topic, event notifications aren't sent for
 the topic.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_event_subscription(
+\preformatted{svc$create_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",
@@ -133,7 +129,7 @@ the topic.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

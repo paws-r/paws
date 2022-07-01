@@ -28,9 +28,7 @@ a token is included in the response so that the remaining results can be
 retrieved.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DeviceEvents = list(
     list(
       Type = "CONNECTION_STATUS"|"DEVICE_STATUS",
@@ -42,22 +40,20 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the device event history, including device connection status, for
 up to 30 days.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_device_events(
+\preformatted{svc$list_device_events(
   DeviceArn = "string",
   EventType = "CONNECTION_STATUS"|"DEVICE_STATUS",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

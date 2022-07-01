@@ -34,9 +34,7 @@ need tokening.}
 \item{SortOrder}{What direction to sort by.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EdgePackagingJobSummaries = list(
     list(
       EdgePackagingJobArn = "string",
@@ -55,15 +53,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of edge packaging jobs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_edge_packaging_jobs(
+\preformatted{svc$list_edge_packaging_jobs(
   NextToken = "string",
   MaxResults = 123,
   CreationTimeAfter = as.POSIXct(
@@ -84,7 +80,7 @@ Returns a list of edge packaging jobs.
   SortBy = "NAME"|"MODEL_NAME"|"CREATION_TIME"|"LAST_MODIFIED_TIME"|"STATUS",
   SortOrder = "Ascending"|"Descending"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

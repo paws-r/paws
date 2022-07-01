@@ -17,10 +17,8 @@ account, you must submit an
 \code{\link[=fms_associate_admin_account]{associate_admin_account}} request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_admin_account()
-}\if{html}{\out{</div>}}
+\preformatted{svc$disassociate_admin_account()
+}
 }
 
 \keyword{internal}

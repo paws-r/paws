@@ -19,16 +19,14 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AssociationId = "string",
   Status = list(
     Code = "associating"|"associated"|"association-failed"|"disassociating"|"disassociated",
     Message = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disassociates a target network from the specified Client VPN endpoint.
@@ -42,14 +40,12 @@ following happens:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_client_vpn_target_network(
+\preformatted{svc$disassociate_client_vpn_target_network(
   ClientVpnEndpointId = "string",
   AssociationId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

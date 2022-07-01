@@ -27,9 +27,7 @@ retrieve the next set of celebrities.}
 the time the celebrity was recognized.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
   StatusMessage = "string",
   VideoMetadata = list(
@@ -128,7 +126,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the celebrity recognition results for a Amazon Rekognition Video
@@ -186,15 +184,13 @@ with the token value returned from the previous call to
 \code{\link[=rekognition_get_celebrity_recognition]{get_celebrity_recognition}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_celebrity_recognition(
+\preformatted{svc$get_celebrity_recognition(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string",
   SortBy = "ID"|"TIMESTAMP"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

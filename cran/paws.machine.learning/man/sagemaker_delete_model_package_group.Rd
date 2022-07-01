@@ -16,12 +16,10 @@ An empty list.
 Deletes the specified model group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_model_package_group(
+\preformatted{svc$delete_model_package_group(
   ModelPackageGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

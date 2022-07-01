@@ -48,9 +48,7 @@ The value must be either -1 or an integer between 1 and 3,653.
 The default value is -1.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Cluster = list(
     ClusterIdentifier = "string",
     NodeType = "string",
@@ -207,7 +205,7 @@ A list with the following syntax:
     ClusterNamespaceArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a previously provisioned cluster without its final snapshot
@@ -231,15 +229,13 @@ For more information about managing clusters, go to \href{https://docs.aws.amazo
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cluster(
+\preformatted{svc$delete_cluster(
   ClusterIdentifier = "string",
   SkipFinalClusterSnapshot = TRUE|FALSE,
   FinalClusterSnapshotIdentifier = "string",
   FinalClusterSnapshotRetentionPeriod = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

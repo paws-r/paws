@@ -31,9 +31,7 @@ category for more specific tag values. A tag value acts as a descriptor
 within a tag key.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(
@@ -42,7 +40,7 @@ within a tag key.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

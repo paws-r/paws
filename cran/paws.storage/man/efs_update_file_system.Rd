@@ -24,9 +24,7 @@ updating the amount of provisioned throughput for your file system, you
 don't need to provide this value in your request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OwnerId = "string",
   CreationToken = "string",
   FileSystemId = "string",
@@ -57,21 +55,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the throughput mode or the amount of provisioned throughput of
 an existing file system.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_file_system(
+\preformatted{svc$update_file_system(
   FileSystemId = "string",
   ThroughputMode = "bursting"|"provisioned",
   ProvisionedThroughputInMibps = 123.0
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

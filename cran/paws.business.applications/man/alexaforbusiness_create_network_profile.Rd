@@ -38,20 +38,16 @@ negotiation.}
 \item{ClientRequestToken}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NetworkProfileArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a network profile with the specified details.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_network_profile(
+\preformatted{svc$create_network_profile(
   NetworkProfileName = "string",
   Description = "string",
   Ssid = "string",
@@ -65,7 +61,7 @@ Creates a network profile with the specified details.
   ),
   ClientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

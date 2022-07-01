@@ -26,15 +26,13 @@ accepts the following data in JSON format. At least \code{Name} or
 \code{Description} must be provided.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_routing_profile_name(
+\preformatted{svc$update_routing_profile_name(
   InstanceId = "string",
   RoutingProfileId = "string",
   Name = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

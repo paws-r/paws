@@ -19,9 +19,7 @@ Operations section.
 The operations for managing an Amazon MSK cluster.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- kafka(
+\preformatted{svc <- kafka(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +33,7 @@ The operations for managing an Amazon MSK cluster.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

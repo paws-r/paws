@@ -17,9 +17,7 @@ response (which is also the ID of the last identity on that page).}
 body.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CloudFrontOriginAccessIdentityList = list(
     Marker = "string",
     NextMarker = "string",
@@ -35,19 +33,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists origin access identities.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_cloud_front_origin_access_identities(
+\preformatted{svc$list_cloud_front_origin_access_identities(
   Marker = "string",
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

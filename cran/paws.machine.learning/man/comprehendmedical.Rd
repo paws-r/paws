@@ -21,9 +21,7 @@ unstructured clinical text. Use these actions to gain insight in your
 documents.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- comprehendmedical(
+\preformatted{svc <- comprehendmedical(
   config = list(
     credentials = list(
       creds = list(
@@ -37,7 +35,7 @@ documents.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -10,9 +10,7 @@ iot_create_provisioning_claim(templateName)
 \item{templateName}{[required] The name of the provisioning template to use.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   certificateId = "string",
   certificatePem = "string",
   keyPair = list(
@@ -23,18 +21,16 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a provisioning claim.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_provisioning_claim(
+\preformatted{svc$create_provisioning_claim(
   templateName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

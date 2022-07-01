@@ -19,9 +19,7 @@ operation to find the current application version.}
 \item{Input}{[required] The Input to add.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationARN = "string",
   ApplicationVersionId = 123,
   InputDescriptions = list(
@@ -76,7 +74,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a streaming source to your SQL-based Kinesis Data Analytics
@@ -93,9 +91,7 @@ operation, results in a new version of the application. You can use the
 operation to find the current application version.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_application_input(
+\preformatted{svc$add_application_input(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   Input = list(
@@ -138,7 +134,7 @@ operation to find the current application version.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

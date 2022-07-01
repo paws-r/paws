@@ -20,9 +20,7 @@ query parameter value must be a single-valued list and contain the
 \code{GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   parentId = "string",
   pathPart = "string",
@@ -95,22 +93,20 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists information about a resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resource(
+\preformatted{svc$get_resource(
   restApiId = "string",
   resourceId = "string",
   embed = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

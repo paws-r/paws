@@ -22,13 +22,11 @@ Deletes the specified network ACL. You can't delete the ACL if it's
 associated with any subnets. You can't delete the default network ACL.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_network_acl(
+\preformatted{svc$delete_network_acl(
   DryRun = TRUE|FALSE,
   NetworkAclId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

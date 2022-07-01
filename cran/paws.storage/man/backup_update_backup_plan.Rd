@@ -14,9 +14,7 @@ backup_update_backup_plan(BackupPlanId, BackupPlan)
 or more sets of \code{Rules}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BackupPlanId = "string",
   BackupPlanArn = "string",
   CreationDate = as.POSIXct(
@@ -32,7 +30,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing backup plan identified by its \code{backupPlanId} with
@@ -40,9 +38,7 @@ the input document in JSON format. The new version is uniquely
 identified by a \code{VersionId}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_backup_plan(
+\preformatted{svc$update_backup_plan(
   BackupPlanId = "string",
   BackupPlan = list(
     BackupPlanName = "string",
@@ -81,7 +77,7 @@ identified by a \code{VersionId}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

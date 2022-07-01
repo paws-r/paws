@@ -22,9 +22,7 @@ next set of results.}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tasks = list(
     list(
       WindowId = "string",
@@ -61,7 +59,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the tasks in a maintenance window.
@@ -73,9 +71,7 @@ response to this command. These values do not affect the running of your
 task and can be ignored.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_maintenance_window_tasks(
+\preformatted{svc$describe_maintenance_window_tasks(
   WindowId = "string",
   Filters = list(
     list(
@@ -88,7 +84,7 @@ task and can be ignored.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

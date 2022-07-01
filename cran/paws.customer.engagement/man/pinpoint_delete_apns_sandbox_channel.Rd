@@ -12,9 +12,7 @@ pinpoint_delete_apns_sandbox_channel(ApplicationId)
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   APNSSandboxChannelResponse = list(
     ApplicationId = "string",
     CreationDate = "string",
@@ -30,19 +28,17 @@ A list with the following syntax:
     Version = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disables the APNs sandbox channel for an application and deletes any
 existing settings for the channel.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_apns_sandbox_channel(
+\preformatted{svc$delete_apns_sandbox_channel(
   ApplicationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

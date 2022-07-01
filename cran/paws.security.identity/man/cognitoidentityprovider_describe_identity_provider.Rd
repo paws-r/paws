@@ -13,9 +13,7 @@ cognitoidentityprovider_describe_identity_provider(UserPoolId,
 \item{ProviderName}{[required] The identity provider name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IdentityProvider = list(
     UserPoolId = "string",
     ProviderName = "string",
@@ -37,19 +35,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a specific identity provider.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_identity_provider(
+\preformatted{svc$describe_identity_provider(
   UserPoolId = "string",
   ProviderName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

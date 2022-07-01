@@ -10,9 +10,7 @@ sagemaker_describe_notebook_instance(NotebookInstanceName)
 \item{NotebookInstanceName}{[required] The name of the notebook instance that you want information about.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NotebookInstanceArn = "string",
   NotebookInstanceName = "string",
   NotebookInstanceStatus = "Pending"|"InService"|"Stopping"|"Stopped"|"Failed"|"Deleting"|"Updating",
@@ -44,18 +42,16 @@ A list with the following syntax:
   ),
   RootAccess = "Enabled"|"Disabled"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a notebook instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_notebook_instance(
+\preformatted{svc$describe_notebook_instance(
   NotebookInstanceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -14,9 +14,7 @@ When omitted, the response includes all of your container services in
 the AWS Region where the request is made.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   containerServices = list(
     list(
       containerServiceName = "string",
@@ -117,19 +115,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about one or more of your Amazon Lightsail container
 services.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_container_services(
+\preformatted{svc$get_container_services(
   serviceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

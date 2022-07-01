@@ -19,16 +19,14 @@ JSON-encoded messages using HTTPS POST.}
 \item{SubscriptionType}{[required] The notification type.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Subscription = list(
     SubscriptionId = "string",
     EndPoint = "string",
     Protocol = "HTTPS"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint
@@ -38,15 +36,13 @@ For more information, see \href{https://docs.aws.amazon.com/workdocs/latest/deve
 in the \emph{Amazon WorkDocs Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_notification_subscription(
+\preformatted{svc$create_notification_subscription(
   OrganizationId = "string",
   Endpoint = "string",
   Protocol = "HTTPS",
   SubscriptionType = "ALL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

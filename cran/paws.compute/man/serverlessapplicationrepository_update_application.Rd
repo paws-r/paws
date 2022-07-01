@@ -40,9 +40,7 @@ detailed description of the application and how it works.
 Maximum size 5 MB}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationId = "string",
   Author = "string",
   CreationTime = "string",
@@ -91,15 +89,13 @@ A list with the following syntax:
     TemplateUrl = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_application(
+\preformatted{svc$update_application(
   ApplicationId = "string",
   Author = "string",
   Description = "string",
@@ -110,7 +106,7 @@ Updates the specified application.
   ReadmeBody = "string",
   ReadmeUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -20,9 +20,7 @@ both.}
 are returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   tasks = list(
     list(
       taskId = "string",
@@ -90,15 +88,13 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List of Device Defender ML Detect mitigation actions tasks.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_detect_mitigation_actions_tasks(
+\preformatted{svc$list_detect_mitigation_actions_tasks(
   maxResults = 123,
   nextToken = "string",
   startTime = as.POSIXct(
@@ -108,7 +104,7 @@ List of Device Defender ML Detect mitigation actions tasks.
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,23 +15,19 @@ greengrass_create_device_definition_version(AmznClientToken,
 \item{Devices}{A list of devices in the definition version.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a version of a device definition that has already been defined.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_device_definition_version(
+\preformatted{svc$create_device_definition_version(
   AmznClientToken = "string",
   DeviceDefinitionId = "string",
   Devices = list(
@@ -43,7 +39,7 @@ Creates a version of a device definition that has already been defined.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

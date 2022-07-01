@@ -10,12 +10,10 @@ sagemaker_delete_trial(TrialName)
 \item{TrialName}{[required] The name of the trial to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrialArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified trial. All trial components that make up the trial
@@ -24,12 +22,10 @@ must be deleted first. Use the
 get the list of trial components.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_trial(
+\preformatted{svc$delete_trial(
   TrialName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

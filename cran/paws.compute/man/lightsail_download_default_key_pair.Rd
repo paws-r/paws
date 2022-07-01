@@ -7,22 +7,18 @@
 lightsail_download_default_key_pair()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   publicKeyBase64 = "string",
   privateKeyBase64 = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Downloads the default SSH key pair from the user's account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$download_default_key_pair()
-}\if{html}{\out{</div>}}
+\preformatted{svc$download_default_key_pair()
+}
 }
 
 \keyword{internal}

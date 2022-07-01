@@ -11,12 +11,10 @@ storagegateway_reset_cache(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Resets all cache disks that have encountered an error and makes the
@@ -35,12 +33,10 @@ you must configure at least one new cache disk for your gateway to
 function properly.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_cache(
+\preformatted{svc$reset_cache(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

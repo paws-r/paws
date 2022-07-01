@@ -11,9 +11,7 @@ cloudfront_create_public_key(PublicKeyConfig)
 \item{PublicKeyConfig}{[required] A CloudFront public key configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PublicKey = list(
     Id = "string",
     CreatedTime = as.POSIXct(
@@ -29,16 +27,14 @@ A list with the following syntax:
   Location = "string",
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Uploads a public key to CloudFront that you can use with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html}{signed URLs and signed cookies},
 or with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html}{field-level encryption}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_public_key(
+\preformatted{svc$create_public_key(
   PublicKeyConfig = list(
     CallerReference = "string",
     Name = "string",
@@ -46,7 +42,7 @@ or with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide
     Comment = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

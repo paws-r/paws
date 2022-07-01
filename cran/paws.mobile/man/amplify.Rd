@@ -25,9 +25,7 @@ and documentation for client app development. For more information, see
 the \href{https://docs.amplify.aws/}{Amplify Framework.}
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- amplify(
+\preformatted{svc <- amplify(
   config = list(
     credentials = list(
       creds = list(
@@ -41,7 +39,7 @@ the \href{https://docs.amplify.aws/}{Amplify Framework.}
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

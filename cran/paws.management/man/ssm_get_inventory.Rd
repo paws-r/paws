@@ -26,9 +26,7 @@ returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Entities = list(
     list(
       Id = "string",
@@ -49,15 +47,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Query inventory information.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_inventory(
+\preformatted{svc$get_inventory(
   Filters = list(
     list(
       Key = "string",
@@ -95,7 +91,7 @@ Query inventory information.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

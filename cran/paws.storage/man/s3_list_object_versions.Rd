@@ -42,9 +42,7 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IsTruncated = TRUE|FALSE,
   KeyMarker = "string",
   VersionIdMarker = "string",
@@ -92,7 +90,7 @@ A list with the following syntax:
   ),
   EncodingType = "url"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns metadata about all versions of the objects in a bucket. You can
@@ -117,9 +115,7 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_object_versions(
+\preformatted{svc$list_object_versions(
   Bucket = "string",
   Delimiter = "string",
   EncodingType = "url",
@@ -129,7 +125,7 @@ The following operations are related to
   VersionIdMarker = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

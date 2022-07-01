@@ -23,9 +23,7 @@ retrieve additional items.}
 based on their owner. The default is SELF.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CertificateAuthorities = list(
     list(
       Arn = "string",
@@ -133,7 +131,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the private certificate authorities that you created by using the
@@ -141,14 +139,12 @@ Lists the private certificate authorities that you created by using the
 action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_certificate_authorities(
+\preformatted{svc$list_certificate_authorities(
   NextToken = "string",
   MaxResults = 123,
   ResourceOwner = "SELF"|"OTHER_ACCOUNTS"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

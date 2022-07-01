@@ -15,9 +15,7 @@ cloudfront_update_public_key(PublicKeyConfig, Id, IfMatch)
 public key to update. For example: \code{E2QWRUHAPOMQZL}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PublicKey = list(
     Id = "string",
     CreatedTime = as.POSIXct(
@@ -32,16 +30,14 @@ A list with the following syntax:
   ),
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Update public key information. Note that the only value you can change
 is the comment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_public_key(
+\preformatted{svc$update_public_key(
   PublicKeyConfig = list(
     CallerReference = "string",
     Name = "string",
@@ -51,7 +47,7 @@ is the comment.
   Id = "string",
   IfMatch = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

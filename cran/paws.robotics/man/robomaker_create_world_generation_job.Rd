@@ -23,9 +23,7 @@ world generator job.}
 generated worlds.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   arn = "string",
   status = "Pending"|"Running"|"Completed"|"Failed"|"PartialFailed"|"Canceling"|"Canceled",
   createdAt = as.POSIXct(
@@ -45,15 +43,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates worlds using the specified template.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_world_generation_job(
+\preformatted{svc$create_world_generation_job(
   clientRequestToken = "string",
   template = "string",
   worldCount = list(
@@ -67,7 +63,7 @@ Creates worlds using the specified template.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

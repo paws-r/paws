@@ -19,9 +19,7 @@ get the count of all indexed things in your AWS account.}
 \item{queryVersion}{The version of the query used to search.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   statistics = list(
     count = 123,
     average = 123.0,
@@ -33,7 +31,7 @@ A list with the following syntax:
     stdDeviation = 123.0
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the count, average, sum, minimum, maximum, sum of squares,
@@ -42,15 +40,13 @@ the aggregation field is of type \code{String}, only the count statistic is
 returned.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_statistics(
+\preformatted{svc$get_statistics(
   indexName = "string",
   queryString = "string",
   aggregationField = "string",
   queryVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

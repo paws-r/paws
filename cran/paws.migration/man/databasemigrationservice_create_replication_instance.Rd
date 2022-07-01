@@ -106,9 +106,7 @@ specify a \code{ResourceIdentifier} value, AWS DMS generates a default
 identifier value for the end of \code{EndpointArn}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationInstance = list(
     ReplicationInstanceIdentifier = "string",
     ReplicationInstanceClass = "string",
@@ -167,7 +165,7 @@ A list with the following syntax:
     DnsNameServers = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates the replication instance using the specified parameters.
@@ -178,9 +176,7 @@ information on the required roles, see \href{https://docs.aws.amazon.com/dms/lat
 For information on the required permissions, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.IAMPermissions}{IAM Permissions Needed to Use AWS DMS}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_replication_instance(
+\preformatted{svc$create_replication_instance(
   ReplicationInstanceIdentifier = "string",
   AllocatedStorage = 123,
   ReplicationInstanceClass = "string",
@@ -204,7 +200,7 @@ For information on the required permissions, see \href{https://docs.aws.amazon.c
   DnsNameServers = "string",
   ResourceIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

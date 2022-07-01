@@ -21,9 +21,7 @@ parameter is required.
 For more information about the syntax, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html}{Dashboard Body Structure and Syntax}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DashboardValidationMessages = list(
     list(
       DataPath = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a dashboard if it does not already exist, or updates an existing
@@ -59,13 +57,11 @@ the \code{DashboardBody} script or the CloudFormation template used to create
 the dashboard.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_dashboard(
+\preformatted{svc$put_dashboard(
   DashboardName = "string",
   DashboardBody = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

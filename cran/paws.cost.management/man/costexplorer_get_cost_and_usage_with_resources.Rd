@@ -61,9 +61,7 @@ when the response from a previous call has more results than the maximum
 page size.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextPageToken = "string",
   GroupDefinitions = list(
     list(
@@ -108,7 +106,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves cost and usage metrics with resources for your account. You
@@ -127,9 +125,7 @@ Settings page, see \href{https://docs.aws.amazon.com/cost-management/latest/user
 in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_cost_and_usage_with_resources(
+\preformatted{svc$get_cost_and_usage_with_resources(
   TimePeriod = list(
     Start = "string",
     End = "string"
@@ -182,7 +178,7 @@ in the \emph{AWS Billing and Cost Management User Guide}.
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

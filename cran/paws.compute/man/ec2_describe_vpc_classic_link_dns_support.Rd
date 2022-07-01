@@ -16,9 +16,7 @@ value.}
 \item{VpcIds}{One or more VPC IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Vpcs = list(
     list(
@@ -27,7 +25,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the ClassicLink DNS support status of one or more VPCs. If
@@ -40,16 +38,14 @@ EC2-Classic instance. For more information, see
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vpc_classic_link_dns_support(
+\preformatted{svc$describe_vpc_classic_link_dns_support(
   MaxResults = 123,
   NextToken = "string",
   VpcIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,9 +16,7 @@ page token that you can specify as the page token in a subsequent
 request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   blueprints = list(
     list(
       blueprintId = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
   ),
   nextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of available database blueprints in Amazon Lightsail. A
@@ -41,12 +39,10 @@ You can use a blueprint ID to create a new database that runs a specific
 database engine.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_relational_database_blueprints(
+\preformatted{svc$get_relational_database_blueprints(
   pageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -25,15 +25,13 @@ For more information, see \href{https://docs.aws.amazon.com/global-accelerator/l
 in the \emph{AWS Global Accelerator Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

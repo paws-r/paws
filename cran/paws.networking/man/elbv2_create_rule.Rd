@@ -19,9 +19,7 @@ priority.}
 \item{Tags}{The tags to assign to the rule.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Rules = list(
     list(
       RuleArn = "string",
@@ -132,7 +130,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a rule for the specified listener. The listener must be
@@ -147,9 +145,7 @@ actions for the default rule are performed. For more information, see
 in the \emph{Application Load Balancers Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_rule(
+\preformatted{svc$create_rule(
   ListenerArn = "string",
   Conditions = list(
     list(
@@ -261,7 +257,7 @@ in the \emph{Application Load Balancers Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

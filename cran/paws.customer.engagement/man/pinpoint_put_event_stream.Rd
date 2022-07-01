@@ -14,9 +14,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{WriteEventStream}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventStream = list(
     ApplicationId = "string",
     DestinationStreamArn = "string",
@@ -26,23 +24,21 @@ A list with the following syntax:
     RoleArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new event stream for an application or updates the settings of
 an existing event stream for an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_event_stream(
+\preformatted{svc$put_event_stream(
   ApplicationId = "string",
   WriteEventStream = list(
     DestinationStreamArn = "string",
     RoleArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

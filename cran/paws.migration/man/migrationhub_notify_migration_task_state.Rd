@@ -43,9 +43,7 @@ namespace for each migration tool.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$notify_migration_task_state(
+\preformatted{svc$notify_migration_task_state(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   Task = list(
@@ -59,7 +57,7 @@ namespace for each migration tool.
   NextUpdateSeconds = 123,
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

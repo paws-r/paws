@@ -25,14 +25,12 @@ format.
 The \code{namespaceId} feature is in public preview.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   jobArn = "string",
   jobId = "string",
   description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Associates a group with a continuous job. The following criteria must be
@@ -46,9 +44,7 @@ to "CONTINUOUS".
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_targets_with_job(
+\preformatted{svc$associate_targets_with_job(
   targets = list(
     "string"
   ),
@@ -56,7 +52,7 @@ to "CONTINUOUS".
   comment = "string",
   namespaceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

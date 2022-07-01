@@ -12,9 +12,7 @@ snowball_describe_job(JobId)
 \verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobMetadata = list(
     JobId = "string",
     JobState = "New"|"PreparingAppliance"|"PreparingShipment"|"InTransitToCustomer"|"WithCustomer"|"InTransitToAWS"|"WithAWSSortingFacility"|"WithAWS"|"InProgress"|"Complete"|"Cancelled"|"Listing"|"Pending",
@@ -186,19 +184,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a specific job including shipping information,
 job status, and other important metadata.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_job(
+\preformatted{svc$describe_job(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

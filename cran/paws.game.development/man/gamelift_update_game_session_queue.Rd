@@ -34,9 +34,7 @@ fleet alias ARN. Destinations are listed in default preference order.
 When updating this list, provide a complete list of destinations.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GameSessionQueue = list(
     Name = "string",
     GameSessionQueueArn = "string",
@@ -54,7 +52,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates settings for a game session queue, which determines how new game
@@ -75,9 +73,7 @@ destinations, provide a complete list of destinations.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_game_session_queue(
+\preformatted{svc$update_game_session_queue(
   Name = "string",
   TimeoutInSeconds = 123,
   PlayerLatencyPolicies = list(
@@ -92,7 +88,7 @@ destinations, provide a complete list of destinations.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

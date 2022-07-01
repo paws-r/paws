@@ -10,9 +10,7 @@ glue_get_classifier(Name)
 \item{Name}{[required] Name of the classifier to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Classifier = list(
     GrokClassifier = list(
       Name = "string",
@@ -70,18 +68,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieve a classifier by name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_classifier(
+\preformatted{svc$get_classifier(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

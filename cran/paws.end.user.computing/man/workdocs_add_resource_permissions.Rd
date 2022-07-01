@@ -18,9 +18,7 @@ administrator credentials to access the API.}
 \item{NotificationOptions}{The notification options.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ShareResults = list(
     list(
       PrincipalId = "string",
@@ -32,7 +30,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a set of permissions for the specified folder or document. The
@@ -40,9 +38,7 @@ resource permissions are overwritten if the principals already have
 different permissions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_resource_permissions(
+\preformatted{svc$add_resource_permissions(
   AuthenticationToken = "string",
   ResourceId = "string",
   Principals = list(
@@ -57,7 +53,7 @@ different permissions.
     EmailMessage = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

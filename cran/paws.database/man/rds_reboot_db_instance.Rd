@@ -23,9 +23,7 @@ Constraint: You can't enable force failover if the instance isn't
 configured for Multi-AZ.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -211,7 +209,7 @@ A list with the following syntax:
     CustomerOwnedIpEnabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 You might need to reboot your DB instance, usually for maintenance
@@ -227,13 +225,11 @@ For more information about rebooting, see \href{https://docs.aws.amazon.com/Amaz
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reboot_db_instance(
+\preformatted{svc$reboot_db_instance(
   DBInstanceIdentifier = "string",
   ForceFailover = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

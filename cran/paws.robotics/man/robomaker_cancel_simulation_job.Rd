@@ -16,12 +16,10 @@ An empty list.
 Cancels the specified simulation job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_simulation_job(
+\preformatted{svc$cancel_simulation_job(
   job = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

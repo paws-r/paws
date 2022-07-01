@@ -18,12 +18,10 @@ Starts replicating the specified application by creating replication
 jobs for each server in the application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_app_replication(
+\preformatted{svc$start_app_replication(
   appId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

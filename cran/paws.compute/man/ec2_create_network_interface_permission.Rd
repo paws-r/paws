@@ -23,9 +23,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InterfacePermission = list(
     NetworkInterfacePermissionId = "string",
     NetworkInterfaceId = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Grants an AWS-authorized account permission to attach the specified
@@ -48,16 +46,14 @@ You can grant permission to a single AWS account only, and only one
 account at a time.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_network_interface_permission(
+\preformatted{svc$create_network_interface_permission(
   NetworkInterfaceId = "string",
   AwsAccountId = "string",
   AwsService = "string",
   Permission = "INSTANCE-ATTACH"|"EIP-ASSOCIATE",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,9 +16,7 @@ lightsail_update_load_balancer_attribute(loadBalancerName,
 \item{attributeValue}{[required] The value that you want to specify for the attribute name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -43,7 +41,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified attribute for a load balancer. You can only update
@@ -54,14 +52,12 @@ control via resource tags applied to the resource identified by
 \verb{load balancer name}. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_load_balancer_attribute(
+\preformatted{svc$update_load_balancer_attribute(
   loadBalancerName = "string",
   attributeName = "HealthCheckPath"|"SessionStickinessEnabled"|"SessionStickiness_LB_CookieDurationSeconds",
   attributeValue = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

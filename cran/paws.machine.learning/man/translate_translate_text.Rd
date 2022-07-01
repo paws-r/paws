@@ -30,9 +30,7 @@ to determine the source language.}
 language must be a language supported by Amazon Translate.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TranslatedText = "string",
   SourceLanguageCode = "string",
   TargetLanguageCode = "string",
@@ -48,7 +46,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Translates input text from the source language to the target language.
@@ -56,9 +54,7 @@ For a list of available languages and language codes, see
 what-is-languages.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$translate_text(
+\preformatted{svc$translate_text(
   Text = "string",
   TerminologyNames = list(
     "string"
@@ -66,7 +62,7 @@ what-is-languages.
   SourceLanguageCode = "string",
   TargetLanguageCode = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

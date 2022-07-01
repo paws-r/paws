@@ -22,12 +22,10 @@ event source that the new event bus will be matched with.}
 \item{Tags}{Tags to associate with the event bus.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventBusArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new event bus within your account. This can be a custom event
@@ -36,9 +34,7 @@ and services, or it can be a partner event bus which can be matched to a
 partner event source.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_event_bus(
+\preformatted{svc$create_event_bus(
   Name = "string",
   EventSourceName = "string",
   Tags = list(
@@ -48,7 +44,7 @@ partner event source.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

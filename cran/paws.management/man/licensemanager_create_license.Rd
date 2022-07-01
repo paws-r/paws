@@ -36,22 +36,18 @@ a borrow configuration for workloads with offline usage.}
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LicenseArn = "string",
   Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a license.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_license(
+\preformatted{svc$create_license(
   LicenseName = "string",
   ProductName = "string",
   ProductSKU = "string",
@@ -93,7 +89,7 @@ Creates a license.
   ),
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

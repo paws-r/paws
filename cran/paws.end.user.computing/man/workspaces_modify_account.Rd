@@ -27,13 +27,11 @@ Modifies the configuration of Bring Your Own License (BYOL) for the
 specified account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_account(
+\preformatted{svc$modify_account(
   DedicatedTenancySupport = "ENABLED",
   DedicatedTenancyManagementCidrRange = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

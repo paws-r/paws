@@ -11,9 +11,7 @@ datasync_describe_location_object_storage(LocationArn)
 location that was described.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LocationArn = "string",
   LocationUri = "string",
   AccessKey = "string",
@@ -26,7 +24,7 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns metadata about a self-managed object storage server location.
@@ -34,12 +32,10 @@ For more information about self-managed object storage locations, see
 create-object-location.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_location_object_storage(
+\preformatted{svc$describe_location_object_storage(
   LocationArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

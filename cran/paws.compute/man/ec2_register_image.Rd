@@ -65,12 +65,10 @@ a PV AMI can make instances launched from the AMI unreachable.}
 Default: \code{paravirtual}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ImageId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Registers an AMI. When you're creating an AMI, this is the final step
@@ -120,9 +118,7 @@ registration. If you make changes to an image, deregister the previous
 image and register the new image.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_image(
+\preformatted{svc$register_image(
   ImageLocation = "string",
   Architecture = "i386"|"x86_64"|"arm64",
   BlockDeviceMappings = list(
@@ -155,7 +151,7 @@ image and register the new image.
   SriovNetSupport = "string",
   VirtualizationType = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -34,9 +34,7 @@ Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ScalingPolicies = list(
     list(
       FleetId = "string",
@@ -56,7 +54,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves all scaling policies applied to a fleet.
@@ -95,15 +93,13 @@ check the stopped actions.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_scaling_policies(
+\preformatted{svc$describe_scaling_policies(
   FleetId = "string",
   StatusFilter = "ACTIVE"|"UPDATE_REQUESTED"|"UPDATING"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"ERROR",
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

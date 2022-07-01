@@ -10,9 +10,7 @@ apigateway_get_rest_api(restApiId)
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   name = "string",
   description = "string",
@@ -42,18 +40,16 @@ A list with the following syntax:
   ),
   disableExecuteApiEndpoint = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the RestApi resource in the collection.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_rest_api(
+\preformatted{svc$get_rest_api(
   restApiId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

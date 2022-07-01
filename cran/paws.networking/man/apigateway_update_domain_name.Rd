@@ -13,9 +13,7 @@ apigateway_update_domain_name(domainName, patchOperations)
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   domainName = "string",
   certificateName = "string",
   certificateArn = "string",
@@ -50,15 +48,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes information about the DomainName resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_domain_name(
+\preformatted{svc$update_domain_name(
   domainName = "string",
   patchOperations = list(
     list(
@@ -69,7 +65,7 @@ Changes information about the DomainName resource.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

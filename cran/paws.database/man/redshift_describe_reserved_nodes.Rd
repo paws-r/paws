@@ -28,9 +28,7 @@ response records by providing the returned marker value in the \code{Marker}
 parameter and retrying the request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   ReservedNodes = list(
     list(
@@ -57,20 +55,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the descriptions of the reserved nodes.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_reserved_nodes(
+\preformatted{svc$describe_reserved_nodes(
   ReservedNodeId = "string",
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,9 +15,7 @@ limit of 20 ARNs. The format of a trail ARN is:
 \item{NextToken}{Reserved for future use.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourceTagList = list(
     list(
       ResourceId = "string",
@@ -31,21 +29,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the tags for the trail in the current region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags(
+\preformatted{svc$list_tags(
   ResourceIdList = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

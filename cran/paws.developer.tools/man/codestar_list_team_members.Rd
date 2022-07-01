@@ -15,9 +15,7 @@ cannot be returned in one response.}
 \item{maxResults}{The maximum number of team members you want returned in a response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   teamMembers = list(
     list(
       userArn = "string",
@@ -27,20 +25,18 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all team members associated with a project.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_team_members(
+\preformatted{svc$list_team_members(
   projectId = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

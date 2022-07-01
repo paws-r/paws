@@ -10,9 +10,7 @@ elbv2_set_rule_priorities(RulePriorities)
 \item{RulePriorities}{[required] The rule priorities.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Rules = list(
     list(
       RuleArn = "string",
@@ -123,7 +121,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sets the priorities of the specified rules.
@@ -133,9 +131,7 @@ the new order. Any existing rules that you do not specify retain their
 current priority.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_rule_priorities(
+\preformatted{svc$set_rule_priorities(
   RulePriorities = list(
     list(
       RuleArn = "string",
@@ -143,7 +139,7 @@ current priority.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

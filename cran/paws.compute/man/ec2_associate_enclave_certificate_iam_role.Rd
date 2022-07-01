@@ -20,14 +20,12 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CertificateS3BucketName = "string",
   CertificateS3ObjectKey = "string",
   EncryptionKmsKeyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Associates an AWS Identity and Access Management (IAM) role with an AWS
@@ -50,14 +48,12 @@ command. For more information, see \href{https://docs.aws.amazon.com/enclaves/la
 in the \emph{AWS Nitro Enclaves User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_enclave_certificate_iam_role(
+\preformatted{svc$associate_enclave_certificate_iam_role(
   CertificateArn = "string",
   RoleArn = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

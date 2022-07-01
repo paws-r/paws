@@ -26,12 +26,10 @@ One of the following (case insensitive) values:
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   datasetArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an empty dataset and adds it to the specified dataset group. Use
@@ -67,15 +65,13 @@ To get the status of the dataset, call
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_dataset(
+\preformatted{svc$create_dataset(
   name = "string",
   schemaArn = "string",
   datasetGroupArn = "string",
   datasetType = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -21,13 +21,11 @@ predictive inbox placement test.}
 to associate with the predictive inbox placement test.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReportId = "string",
   DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create a new predictive inbox placement test. Predictive inbox placement
@@ -42,9 +40,7 @@ the
 operation to view the results of the test.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_deliverability_test_report(
+\preformatted{svc$create_deliverability_test_report(
   ReportName = "string",
   FromEmailAddress = "string",
   Content = list(
@@ -79,7 +75,7 @@ operation to view the results of the test.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

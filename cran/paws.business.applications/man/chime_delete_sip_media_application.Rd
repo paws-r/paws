@@ -16,12 +16,10 @@ An empty list.
 Deletes a SIP media application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_sip_media_application(
+\preformatted{svc$delete_sip_media_application(
   SipMediaApplicationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

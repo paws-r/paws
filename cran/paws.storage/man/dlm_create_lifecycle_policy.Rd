@@ -21,21 +21,17 @@ _-]+$ are supported.}
 \item{Tags}{The tags to apply to the lifecycle policy during creation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PolicyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a policy to manage the lifecycle of the specified AWS resources.
 You can create up to 100 lifecycle policies.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_lifecycle_policy(
+\preformatted{svc$create_lifecycle_policy(
   ExecutionRoleArn = "string",
   Description = "string",
   State = "ENABLED"|"DISABLED",
@@ -147,7 +143,7 @@ You can create up to 100 lifecycle policies.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

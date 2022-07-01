@@ -49,13 +49,11 @@ policies. For more information, see \href{https://docs.aws.amazon.com/acm-pca/la
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_policy(
+\preformatted{svc$put_policy(
   ResourceArn = "string",
   Policy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

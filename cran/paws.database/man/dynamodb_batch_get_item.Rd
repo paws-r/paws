@@ -82,9 +82,7 @@ in the \emph{Amazon DynamoDB Developer Guide}.
 \item{ReturnConsumedCapacity}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Responses = list(
     list(
       list(
@@ -179,7 +177,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=dynamodb_batch_get_item]{batch_get_item}} operation returns the
@@ -243,9 +241,7 @@ according to the type of read. For more information, see \href{https://docs.aws.
 in the \emph{Amazon DynamoDB Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_item(
+\preformatted{svc$batch_get_item(
   RequestItems = list(
     list(
       Keys = list(
@@ -286,7 +282,7 @@ in the \emph{Amazon DynamoDB Developer Guide}.
   ),
   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

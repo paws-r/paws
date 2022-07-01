@@ -59,9 +59,7 @@ return more results.
 }
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- health(
+\preformatted{svc <- health(
   config = list(
     credentials = list(
       creds = list(
@@ -75,7 +73,7 @@ return more results.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

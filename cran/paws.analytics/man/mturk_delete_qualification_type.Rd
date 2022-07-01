@@ -31,12 +31,10 @@ the Qualification type is available for reuse with
 CreateQualificationType.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_qualification_type(
+\preformatted{svc$delete_qualification_type(
   QualificationTypeId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

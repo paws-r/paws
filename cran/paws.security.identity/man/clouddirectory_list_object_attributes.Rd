@@ -27,9 +27,7 @@ object.}
 certain facet.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attributes = list(
     list(
       Key = list(
@@ -50,15 +48,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all attributes that are associated with an object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_object_attributes(
+\preformatted{svc$list_object_attributes(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"
@@ -71,7 +67,7 @@ Lists all attributes that are associated with an object.
     FacetName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

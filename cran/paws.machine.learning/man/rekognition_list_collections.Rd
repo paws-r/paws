@@ -12,9 +12,7 @@ rekognition_list_collections(NextToken, MaxResults)
 \item{MaxResults}{Maximum number of collection IDs to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CollectionIds = list(
     "string"
   ),
@@ -23,7 +21,7 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns list of collection IDs in your account. If the result is
@@ -37,13 +35,11 @@ This operation requires permissions to perform the
 \code{rekognition:ListCollections} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_collections(
+\preformatted{svc$list_collections(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

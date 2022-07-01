@@ -39,9 +39,7 @@ create.}
 assigned to the dataset.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   DataSetId = "string",
   IngestionArn = "string",
@@ -49,15 +47,13 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a dataset.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_data_set(
+\preformatted{svc$create_data_set(
   AwsAccountId = "string",
   DataSetId = "string",
   Name = "string",
@@ -207,7 +203,7 @@ Creates a dataset.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

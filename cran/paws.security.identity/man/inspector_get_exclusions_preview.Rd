@@ -28,9 +28,7 @@ want in the response. The default value is 100. The maximum value is
 description, and recommendation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   previewStatus = "WORK_IN_PROGRESS"|"COMPLETED",
   exclusionPreviews = list(
     list(
@@ -53,7 +51,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the exclusions preview (a list of ExclusionPreview objects)
@@ -61,16 +59,14 @@ specified by the preview token. You can obtain the preview token by
 running the CreateExclusionsPreview API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_exclusions_preview(
+\preformatted{svc$get_exclusions_preview(
   assessmentTemplateArn = "string",
   previewToken = "string",
   nextToken = "string",
   maxResults = 123,
   locale = "EN_US"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

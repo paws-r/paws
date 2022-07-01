@@ -50,9 +50,7 @@ through from the integration response to the method response without
 modification.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   statusCode = "string",
   selectionPattern = "string",
   responseParameters = list(
@@ -63,15 +61,13 @@ A list with the following syntax:
   ),
   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Represents a put integration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_integration_response(
+\preformatted{svc$put_integration_response(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",
@@ -85,7 +81,7 @@ Represents a put integration.
   ),
   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,25 +16,21 @@ alexaforbusiness_create_gateway_group(Name, Description,
 idempotency.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayGroupArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a gateway group with the specified details.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_gateway_group(
+\preformatted{svc$create_gateway_group(
   Name = "string",
   Description = "string",
   ClientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

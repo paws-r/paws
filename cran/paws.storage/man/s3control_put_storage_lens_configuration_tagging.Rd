@@ -30,9 +30,7 @@ see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.htm
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_storage_lens_configuration_tagging(
+\preformatted{svc$put_storage_lens_configuration_tagging(
   ConfigId = "string",
   AccountId = "string",
   Tags = list(
@@ -42,7 +40,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

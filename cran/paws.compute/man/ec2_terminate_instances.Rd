@@ -18,9 +18,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TerminatingInstances = list(
     list(
       CurrentState = list(
@@ -35,7 +33,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Shuts down the specified instances. This operation is idempotent; if you
@@ -66,15 +64,13 @@ For more information about troubleshooting, see \href{https://docs.aws.amazon.co
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$terminate_instances(
+\preformatted{svc$terminate_instances(
   InstanceIds = list(
     "string"
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

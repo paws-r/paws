@@ -12,9 +12,7 @@ cloudsearch_define_index_field(DomainName, IndexField)
 \item{IndexField}{[required] The index field and field options you want to configure.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IndexField = list(
     Options = list(
       IndexFieldName = "string",
@@ -116,7 +114,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Configures an \code{IndexField} for the search domain. Used to create new
@@ -131,9 +129,7 @@ target="_blank">Configuring Index Fields</a> in the \emph{Amazon CloudSearch
 Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$define_index_field(
+\preformatted{svc$define_index_field(
   DomainName = "string",
   IndexField = list(
     IndexFieldName = "string",
@@ -223,7 +219,7 @@ Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

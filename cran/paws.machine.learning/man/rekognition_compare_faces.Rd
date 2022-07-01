@@ -42,9 +42,7 @@ To use quality filtering, the collection you are using must be
 associated with version 3 of the face model or higher.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SourceImageFace = list(
     BoundingBox = list(
       Width = 123.0,
@@ -114,7 +112,7 @@ A list with the following syntax:
   SourceImageOrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270",
   TargetImageOrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Compares a face in the \emph{source} input image with each of the 100 largest
@@ -172,9 +170,7 @@ This operation requires permissions to perform the
 \code{rekognition:CompareFaces} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$compare_faces(
+\preformatted{svc$compare_faces(
   SourceImage = list(
     Bytes = raw,
     S3Object = list(
@@ -194,7 +190,7 @@ This operation requires permissions to perform the
   SimilarityThreshold = 123.0,
   QualityFilter = "NONE"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

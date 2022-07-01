@@ -29,9 +29,7 @@ that queue won't begin.}
 with a key-value pair or with only a key.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Queue = list(
     Arn = "string",
     CreatedAt = as.POSIXct(
@@ -61,7 +59,7 @@ A list with the following syntax:
     Type = "SYSTEM"|"CUSTOM"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create a new transcoding queue. For information about queues, see
@@ -69,9 +67,7 @@ Working With Queues in the User Guide at
 https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_queue(
+\preformatted{svc$create_queue(
   Description = "string",
   Name = "string",
   PricingPlan = "ON_DEMAND"|"RESERVED",
@@ -85,7 +81,7 @@ https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

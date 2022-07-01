@@ -29,9 +29,7 @@ Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
 resource after it's created.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   certificate = list(
     certificateArn = "string",
     certificateName = "string",
@@ -132,7 +130,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an SSL/TLS certificate for a Amazon Lightsail content delivery
@@ -149,9 +147,7 @@ content globally. However, all distributions are located in the
 \code{us-east-1} Region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_certificate(
+\preformatted{svc$create_certificate(
   certificateName = "string",
   domainName = "string",
   subjectAlternativeNames = list(
@@ -164,7 +160,7 @@ content globally. However, all distributions are located in the
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

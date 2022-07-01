@@ -18,12 +18,10 @@ An empty list.
 Removes the specified protection group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_protection_group(
+\preformatted{svc$delete_protection_group(
   ProtectionGroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

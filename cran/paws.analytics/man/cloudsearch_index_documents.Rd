@@ -11,14 +11,12 @@ cloudsearch_index_documents(DomainName)
 \item{DomainName}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FieldNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Tells the search domain to start indexing its documents using the latest
@@ -26,12 +24,10 @@ indexing options. This operation must be invoked to activate options
 whose OptionStatus is \code{RequiresIndexDocuments}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$index_documents(
+\preformatted{svc$index_documents(
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

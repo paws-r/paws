@@ -31,9 +31,7 @@ console. You submit suggest requests to the search endpoint.
 For more information, see the \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/}{Amazon CloudSearch Developer Guide}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloudsearchdomain(
+\preformatted{svc <- cloudsearchdomain(
   config = list(
     credentials = list(
       creds = list(
@@ -47,7 +45,7 @@ For more information, see the \href{https://docs.aws.amazon.com/cloudsearch/late
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

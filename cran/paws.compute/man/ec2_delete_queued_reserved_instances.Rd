@@ -15,9 +15,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ReservedInstancesIds}{[required] The IDs of the Reserved Instances.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SuccessfulQueuedPurchaseDeletions = list(
     list(
       ReservedInstancesId = "string"
@@ -33,21 +31,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the queued purchases for the specified Reserved Instances.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_queued_reserved_instances(
+\preformatted{svc$delete_queued_reserved_instances(
   DryRun = TRUE|FALSE,
   ReservedInstancesIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

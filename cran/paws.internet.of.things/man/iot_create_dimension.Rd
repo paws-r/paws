@@ -25,13 +25,11 @@ exists, an exception occurs. If you omit this value, AWS SDKs will
 automatically generate a unique client request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   name = "string",
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create a dimension that you can use to limit the scope of a metric used
@@ -41,9 +39,7 @@ only to MQTT topics whose name match the pattern specified in the
 dimension.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_dimension(
+\preformatted{svc$create_dimension(
   name = "string",
   type = "TOPIC_FILTER",
   stringValues = list(
@@ -57,7 +53,7 @@ dimension.
   ),
   clientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

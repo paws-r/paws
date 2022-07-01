@@ -338,9 +338,7 @@ of the DB instance.}
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -526,7 +524,7 @@ A list with the following syntax:
     CustomerOwnedIpEnabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new DB instance that acts as a read replica for an existing
@@ -547,9 +545,7 @@ specified.
 Your source DB instance must have backup retention enabled.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_instance_read_replica(
+\preformatted{svc$create_db_instance_read_replica(
   DBInstanceIdentifier = "string",
   SourceDBInstanceIdentifier = "string",
   DBInstanceClass = "string",
@@ -598,7 +594,7 @@ Your source DB instance must have backup retention enabled.
   MaxAllocatedStorage = 123,
   SourceRegion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

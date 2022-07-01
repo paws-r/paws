@@ -21,12 +21,10 @@ SageMaker to perform tasks on your behalf.}
 \item{Tags}{A list of tags to apply to the image.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ImageArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a custom SageMaker image. A SageMaker image is a set of image
@@ -34,9 +32,7 @@ versions. Each image version represents a container image stored in
 Amazon Container Registry (ECR). For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html}{Bring your own SageMaker image}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_image(
+\preformatted{svc$create_image(
   Description = "string",
   DisplayName = "string",
   ImageName = "string",
@@ -48,7 +44,7 @@ Amazon Container Registry (ECR). For more information, see \href{https://docs.aw
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

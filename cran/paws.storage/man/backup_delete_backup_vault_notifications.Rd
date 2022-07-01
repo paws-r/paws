@@ -19,12 +19,10 @@ An empty list.
 Deletes event notifications for the specified backup vault.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_backup_vault_notifications(
+\preformatted{svc$delete_backup_vault_notifications(
   BackupVaultName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

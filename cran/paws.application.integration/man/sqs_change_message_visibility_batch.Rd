@@ -15,9 +15,7 @@ Queue URLs and names are case-sensitive.}
 timeout must be changed.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Successful = list(
     list(
       Id = "string"
@@ -32,7 +30,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes the visibility timeout of multiple messages. This is a batch
@@ -56,9 +54,7 @@ example, a parameter list with two elements looks like this:
 \verb{&AttributeName.2=second}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$change_message_visibility_batch(
+\preformatted{svc$change_message_visibility_batch(
   QueueUrl = "string",
   Entries = list(
     list(
@@ -68,7 +64,7 @@ example, a parameter list with two elements looks like this:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

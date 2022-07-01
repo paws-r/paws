@@ -19,9 +19,7 @@ licensemanager_list_tokens(TokenIds, Filters, NextToken, MaxResults)
 \item{MaxResults}{Maximum number of results to return in a single call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tokens = list(
     list(
       TokenId = "string",
@@ -39,15 +37,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists your tokens.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tokens(
+\preformatted{svc$list_tokens(
   TokenIds = list(
     "string"
   ),
@@ -62,7 +58,7 @@ Lists your tokens.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

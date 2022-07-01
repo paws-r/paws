@@ -37,9 +37,7 @@ the full set of components, the call returns a token for getting the
 next set of components.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrialComponentSummaries = list(
     list(
       TrialComponentName = "string",
@@ -79,7 +77,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the trial components in your account. You can sort the list by
@@ -93,9 +91,7 @@ filter on one of the following:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_trial_components(
+\preformatted{svc$list_trial_components(
   ExperimentName = "string",
   TrialName = "string",
   SourceArn = "string",
@@ -110,7 +106,7 @@ filter on one of the following:
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

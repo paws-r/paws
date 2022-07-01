@@ -10,9 +10,7 @@ devicefarm_get_project(arn)
 \item{arn}{[required] The project's ARN.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   project = list(
     arn = "string",
     name = "string",
@@ -22,18 +20,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a project.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_project(
+\preformatted{svc$get_project(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

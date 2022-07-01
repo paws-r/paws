@@ -42,12 +42,10 @@ operation on each object in the manifest.}
 optional parameter.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 S3 Batch Operations performs large-scale Batch Operations on Amazon S3
@@ -66,9 +64,7 @@ Related actions include:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_job(
+\preformatted{svc$create_job(
   AccountId = "string",
   ConfirmationRequired = TRUE|FALSE,
   Operation = list(
@@ -208,7 +204,7 @@ Related actions include:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

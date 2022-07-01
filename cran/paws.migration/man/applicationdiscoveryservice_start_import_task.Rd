@@ -31,9 +31,7 @@ If you're using the AWS CLI, this URL is structured as follows:
 \verb{s3://BucketName/ImportFileName.CSV}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   task = list(
     importTaskId = "string",
     clientRequestToken = "string",
@@ -56,7 +54,7 @@ A list with the following syntax:
     errorsAndFailedEntriesZip = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts an import task, which allows you to import details of your
@@ -89,14 +87,12 @@ delete) in an AWS account. For more information, see \href{https://docs.aws.amaz
 in the \emph{AWS Application Discovery Service User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_import_task(
+\preformatted{svc$start_import_task(
   clientRequestToken = "string",
   name = "string",
   importUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

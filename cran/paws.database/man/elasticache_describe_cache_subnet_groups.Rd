@@ -24,9 +24,7 @@ specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   CacheSubnetGroups = list(
     list(
@@ -48,7 +46,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of cache subnet group descriptions. If a subnet group
@@ -57,14 +55,12 @@ This is applicable only when you have ElastiCache in VPC setup. All
 ElastiCache clusters now launch in VPC by default.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cache_subnet_groups(
+\preformatted{svc$describe_cache_subnet_groups(
   CacheSubnetGroupName = "string",
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ iot_describe_audit_mitigation_actions_task(taskId)
 \item{taskId}{[required] The unique identifier for the audit mitigation task.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   taskStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED",
   startTime = as.POSIXct(
     "2015-01-01"
@@ -78,7 +76,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about an audit mitigation task that is used to apply
@@ -87,12 +85,10 @@ actions being applied, the audit checks to which they're being applied,
 the task status, and aggregated task statistics.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_audit_mitigation_actions_task(
+\preformatted{svc$describe_audit_mitigation_actions_task(
   taskId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

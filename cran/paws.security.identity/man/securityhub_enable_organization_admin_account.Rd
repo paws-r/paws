@@ -18,12 +18,10 @@ Designates the Security Hub administrator account for an organization.
 Can only be called by the organization management account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_organization_admin_account(
+\preformatted{svc$enable_organization_admin_account(
   AdminAccountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -30,12 +30,10 @@ This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_organizational_unit(
+\preformatted{svc$delete_organizational_unit(
   OrganizationalUnitId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

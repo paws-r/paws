@@ -169,9 +169,7 @@ enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is enabled.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBCluster = list(
     AllocatedStorage = 123,
     AvailabilityZones = list(
@@ -247,7 +245,7 @@ A list with the following syntax:
     DeletionProtection = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Amazon Neptune DB cluster.
@@ -264,9 +262,7 @@ can only delete a DB cluster if its \code{DeletionProtection} field is set to
 \code{false}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_cluster(
+\preformatted{svc$create_db_cluster(
   AvailabilityZones = list(
     "string"
   ),
@@ -303,7 +299,7 @@ can only delete a DB cluster if its \code{DeletionProtection} field is set to
   ),
   DeletionProtection = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,9 +16,7 @@ export descriptions returned.}
 \item{nextToken}{The token from the previous call to describe-export-tasks.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   exportsInfo = list(
     list(
       exportId = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 \code{\link[=applicationdiscoveryservice_describe_export_configurations]{describe_export_configurations}}
@@ -48,16 +46,14 @@ is deprecated. Use
 instead.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_export_configurations(
+\preformatted{svc$describe_export_configurations(
   exportIds = list(
     "string"
   ),
   maxResults = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

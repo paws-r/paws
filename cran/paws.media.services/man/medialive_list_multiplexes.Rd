@@ -12,9 +12,7 @@ medialive_list_multiplexes(MaxResults, NextToken)
 \item{NextToken}{The token to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Multiplexes = list(
     list(
       Arn = "string",
@@ -36,19 +34,17 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieve a list of the existing multiplexes.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_multiplexes(
+\preformatted{svc$list_multiplexes(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

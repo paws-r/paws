@@ -19,20 +19,16 @@ sagemaker_update_action(ActionName, Description, Status, Properties,
 \item{PropertiesToRemove}{A list of properties to remove.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ActionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_action(
+\preformatted{svc$update_action(
   ActionName = "string",
   Description = "string",
   Status = "Unknown"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
@@ -43,7 +39,7 @@ Updates an action.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

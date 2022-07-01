@@ -60,9 +60,7 @@ this balancing strategy is in force.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GameServerGroup = list(
     GameServerGroupName = "string",
     GameServerGroupArn = "string",
@@ -89,7 +87,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -123,9 +121,7 @@ returned.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_game_server_group(
+\preformatted{svc$update_game_server_group(
   GameServerGroupName = "string",
   RoleArn = "string",
   InstanceDefinitions = list(
@@ -137,7 +133,7 @@ returned.
   GameServerProtectionPolicy = "NO_PROTECTION"|"FULL_PROTECTION",
   BalancingStrategy = "SPOT_ONLY"|"SPOT_PREFERRED"|"ON_DEMAND_ONLY"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

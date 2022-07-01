@@ -23,9 +23,7 @@ part of its name matches the substring. For example, "xyz" matches both
 "xyzabc" and "abcxyz."}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BotAliases = list(
     list(
       name = "string",
@@ -55,7 +53,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of aliases for a specified Amazon Lex bot.
@@ -63,15 +61,13 @@ Returns a list of aliases for a specified Amazon Lex bot.
 This operation requires permissions for the \code{lex:GetBotAliases} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bot_aliases(
+\preformatted{svc$get_bot_aliases(
   botName = "string",
   nextToken = "string",
   maxResults = 123,
   nameContains = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

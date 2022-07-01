@@ -17,14 +17,12 @@ activity stream. For example,
 as possible, regardless of the maintenance window for the database.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   KmsKeyId = "string",
   KinesisStreamName = "string",
   Status = "stopped"|"starting"|"started"|"stopping"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops a database activity stream that was started using the AWS console,
@@ -35,13 +33,11 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Aur
 in the \emph{Amazon Aurora User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_activity_stream(
+\preformatted{svc$stop_activity_stream(
   ResourceArn = "string",
   ApplyImmediately = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

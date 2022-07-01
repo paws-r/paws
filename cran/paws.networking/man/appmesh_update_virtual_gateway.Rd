@@ -24,9 +24,7 @@ existing data.}
 \item{virtualGatewayName}{[required] The name of the virtual gateway to update.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   virtualGateway = list(
     meshName = "string",
     metadata = list(
@@ -120,15 +118,13 @@ A list with the following syntax:
     virtualGatewayName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing virtual gateway in a specified service mesh.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_virtual_gateway(
+\preformatted{svc$update_virtual_gateway(
   clientToken = "string",
   meshName = "string",
   meshOwner = "string",
@@ -206,7 +202,7 @@ Updates an existing virtual gateway in a specified service mesh.
   ),
   virtualGatewayName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

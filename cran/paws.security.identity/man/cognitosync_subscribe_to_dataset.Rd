@@ -30,15 +30,13 @@ This API can only be called with temporary credentials provided by
 Cognito Identity. You cannot call this API with developer credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$subscribe_to_dataset(
+\preformatted{svc$subscribe_to_dataset(
   IdentityPoolId = "string",
   IdentityId = "string",
   DatasetName = "string",
   DeviceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

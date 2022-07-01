@@ -210,12 +210,10 @@ following format:
 \verb{Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StackId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a stack as specified in the template. After the call completes
@@ -230,9 +228,7 @@ For more information about creating an update template, updating a
 stack, and monitoring the progress of the update, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html}{Updating a Stack}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_stack(
+\preformatted{svc$update_stack(
   StackName = "string",
   TemplateBody = "string",
   TemplateURL = "string",
@@ -276,7 +272,7 @@ stack, and monitoring the progress of the update, see \href{https://docs.aws.ama
   ),
   ClientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -28,15 +28,13 @@ For more information, see
 \code{\link[=lambda_add_layer_version_permission]{add_layer_version_permission}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_layer_version_permission(
+\preformatted{svc$remove_layer_version_permission(
   LayerName = "string",
   VersionNumber = 123,
   StatementId = "string",
   RevisionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

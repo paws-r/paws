@@ -40,9 +40,7 @@ values must match \verb{[A-Za-z0-9-._~:/?#&=,]+}.}
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   deploymentId = "string",
   clientCertificateId = "string",
   stageName = "string",
@@ -92,16 +90,14 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Stage resource that references a pre-existing Deployment
 for the API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_stage(
+\preformatted{svc$create_stage(
   restApiId = "string",
   stageName = "string",
   deploymentId = "string",
@@ -125,7 +121,7 @@ for the API.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

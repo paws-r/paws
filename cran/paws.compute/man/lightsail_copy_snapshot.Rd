@@ -60,9 +60,7 @@ manual snapshot. For more information, see the Lightsail Dev Guide.
 \item{sourceRegion}{[required] The AWS Region where the source manual or automatic snapshot is located.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -87,7 +85,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Copies a manual snapshot of an instance or disk as another manual
@@ -105,9 +103,7 @@ either the \verb{restore date} or the \verb{use latest restorable auto snapshot}
 parameters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_snapshot(
+\preformatted{svc$copy_snapshot(
   sourceSnapshotName = "string",
   sourceResourceName = "string",
   restoreDate = "string",
@@ -115,7 +111,7 @@ parameters.
   targetSnapshotName = "string",
   sourceRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,12 +16,10 @@ An empty list.
 Deletes a resource policy that is identified by its resource ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resource_policy(
+\preformatted{svc$delete_resource_policy(
   resourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

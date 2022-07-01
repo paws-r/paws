@@ -13,9 +13,7 @@ ec2_describe_export_tasks(ExportTaskIds, Filters)
 \item{Filters}{the filters for the export tasks.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ExportTasks = list(
     list(
       Description = "string",
@@ -41,16 +39,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified export instance tasks or all of your export
 instance tasks.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_export_tasks(
+\preformatted{svc$describe_export_tasks(
   ExportTaskIds = list(
     "string"
   ),
@@ -63,7 +59,7 @@ instance tasks.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

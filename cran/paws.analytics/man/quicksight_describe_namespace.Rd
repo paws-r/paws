@@ -13,9 +13,7 @@ you want to describe.}
 \item{Namespace}{[required] The namespace that you want to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Namespace = list(
     Name = "string",
     Arn = "string",
@@ -30,19 +28,17 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the current namespace.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_namespace(
+\preformatted{svc$describe_namespace(
   AwsAccountId = "string",
   Namespace = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

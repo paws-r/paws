@@ -7,9 +7,7 @@
 directconnect_describe_virtual_gateways()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   virtualGateways = list(
     list(
       virtualGatewayId = "string",
@@ -17,7 +15,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the virtual private gateways owned by the AWS account.

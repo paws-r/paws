@@ -96,9 +96,7 @@ Guide.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -123,7 +121,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates one or more new instances from a manual or automatic snapshot of
@@ -135,9 +133,7 @@ identified by \verb{instance snapshot name}. For more information, see the
 Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_instances_from_snapshot(
+\preformatted{svc$create_instances_from_snapshot(
   instanceNames = list(
     "string"
   ),
@@ -172,7 +168,7 @@ Lightsail Dev Guide.
   restoreDate = "string",
   useLatestRestorableAutoSnapshot = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

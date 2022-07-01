@@ -23,9 +23,7 @@ request and include the returned token. When all results have been
 returned, the response does not contain a pagination token value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   eventAggregates = list(
     list(
       aggregateValue = "string",
@@ -34,7 +32,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the number of events of each event type (issue, scheduled
@@ -45,9 +43,7 @@ This API operation uses pagination. Specify the \code{nextToken} parameter in
 the next request to return more results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_aggregates(
+\preformatted{svc$describe_event_aggregates(
   filter = list(
     eventArns = list(
       "string"
@@ -116,7 +112,7 @@ the next request to return more results.
   maxResults = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -14,9 +14,7 @@ medialive_update_multiplex(MultiplexId, MultiplexSettings, Name)
 \item{Name}{Name of the multiplex.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Multiplex = list(
     Arn = "string",
     AvailabilityZones = list(
@@ -45,15 +43,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a multiplex.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_multiplex(
+\preformatted{svc$update_multiplex(
   MultiplexId = "string",
   MultiplexSettings = list(
     MaximumVideoBufferDelayMilliseconds = 123,
@@ -63,7 +59,7 @@ Updates a multiplex.
   ),
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

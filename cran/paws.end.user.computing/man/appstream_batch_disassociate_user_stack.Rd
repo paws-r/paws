@@ -10,9 +10,7 @@ appstream_batch_disassociate_user_stack(UserStackAssociations)
 \item{UserStackAssociations}{[required] The list of UserStackAssociation objects.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   errors = list(
     list(
       UserStackAssociation = list(
@@ -26,15 +24,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disassociates the specified users from the specified stacks.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_disassociate_user_stack(
+\preformatted{svc$batch_disassociate_user_stack(
   UserStackAssociations = list(
     list(
       StackName = "string",
@@ -44,7 +40,7 @@ Disassociates the specified users from the specified stacks.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

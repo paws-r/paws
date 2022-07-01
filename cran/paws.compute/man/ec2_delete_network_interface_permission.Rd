@@ -19,12 +19,10 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a permission for a network interface. By default, you cannot
@@ -33,14 +31,12 @@ permission has attached the network interface to an instance. However,
 you can force delete the permission, regardless of any attachment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_network_interface_permission(
+\preformatted{svc$delete_network_interface_permission(
   NetworkInterfacePermissionId = "string",
   Force = TRUE|FALSE,
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

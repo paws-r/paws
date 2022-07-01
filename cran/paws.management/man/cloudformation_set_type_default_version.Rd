@@ -32,15 +32,13 @@ Specify the default version of a type. The default version of a type
 will be used in CloudFormation operations.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_type_default_version(
+\preformatted{svc$set_type_default_version(
   Arn = "string",
   Type = "RESOURCE"|"MODULE",
   TypeName = "string",
   VersionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

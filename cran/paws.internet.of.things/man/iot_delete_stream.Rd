@@ -16,12 +16,10 @@ An empty list.
 Deletes a stream.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_stream(
+\preformatted{svc$delete_stream(
   streamId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

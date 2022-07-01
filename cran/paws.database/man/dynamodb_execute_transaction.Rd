@@ -14,9 +14,7 @@ dynamodb_execute_transaction(TransactStatements, ClientRequestToken)
 the statement response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Responses = list(
     list(
       Item = list(
@@ -46,16 +44,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation allows you to perform transactional reads or writes on
 data stored in DynamoDB, using PartiQL.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$execute_transaction(
+\preformatted{svc$execute_transaction(
   TransactStatements = list(
     list(
       Statement = "string",
@@ -87,7 +83,7 @@ data stored in DynamoDB, using PartiQL.
   ),
   ClientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

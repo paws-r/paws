@@ -19,13 +19,11 @@ For example,
 which the container instance belongs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   endpoint = "string",
   telemetryEndpoint = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended
@@ -34,13 +32,11 @@ for use outside of the agent.
 Returns an endpoint for the Amazon ECS agent to poll for updates.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$discover_poll_endpoint(
+\preformatted{svc$discover_poll_endpoint(
   containerInstance = "string",
   cluster = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -21,9 +21,7 @@ SchemaFacet for details.}
 \item{AttributeNames}{[required] List of attribute names whose values will be retrieved.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attributes = list(
     list(
       Key = list(
@@ -43,15 +41,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves attributes within a facet that are associated with an object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_object_attributes(
+\preformatted{svc$get_object_attributes(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"
@@ -65,7 +61,7 @@ Retrieves attributes within a facet that are associated with an object.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

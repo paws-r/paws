@@ -46,14 +46,12 @@ within the previous 30 days and only if the assignment's related HIT has
 not been deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$approve_assignment(
+\preformatted{svc$approve_assignment(
   AssignmentId = "string",
   RequesterFeedback = "string",
   OverrideRejection = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

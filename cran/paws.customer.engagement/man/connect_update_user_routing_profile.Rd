@@ -21,14 +21,12 @@ An empty list.
 Assigns the specified routing profile to the specified user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user_routing_profile(
+\preformatted{svc$update_user_routing_profile(
   RoutingProfileId = "string",
   UserId = "string",
   InstanceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,9 +16,7 @@ chime_list_rooms(AccountId, MemberId, MaxResults, NextToken)
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Rooms = list(
     list(
       RoomId = "string",
@@ -35,7 +33,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the room details for the specified Amazon Chime Enterprise
@@ -43,15 +41,13 @@ account. Optionally, filter the results by a member ID (user ID or bot
 ID) to see a list of rooms that the member belongs to.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_rooms(
+\preformatted{svc$list_rooms(
   AccountId = "string",
   MemberId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

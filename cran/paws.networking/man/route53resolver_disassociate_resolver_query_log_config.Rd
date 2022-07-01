@@ -15,9 +15,7 @@ a specified VPC from.}
 query logging configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResolverQueryLogConfigAssociation = list(
     Id = "string",
     ResolverQueryLogConfigId = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
     CreationTime = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disassociates a VPC from a query logging configuration.
@@ -45,13 +43,11 @@ VPCs from the configuration.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_resolver_query_log_config(
+\preformatted{svc$disassociate_resolver_query_log_config(
   ResolverQueryLogConfigId = "string",
   ResourceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

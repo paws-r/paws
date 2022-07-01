@@ -102,9 +102,7 @@ next set of results. You cannot specify this parameter and the network
 interface IDs parameter in the same request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NetworkInterfaces = list(
     list(
       Association = list(
@@ -180,15 +178,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your network interfaces.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_network_interfaces(
+\preformatted{svc$describe_network_interfaces(
   Filters = list(
     list(
       Name = "string",
@@ -204,7 +200,7 @@ Describes one or more of your network interfaces.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

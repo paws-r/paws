@@ -19,13 +19,11 @@ An empty list.
 Deletes the specified subscription from the specified organization.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_notification_subscription(
+\preformatted{svc$delete_notification_subscription(
   SubscriptionId = "string",
   OrganizationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

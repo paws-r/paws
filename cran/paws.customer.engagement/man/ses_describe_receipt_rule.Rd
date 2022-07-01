@@ -12,9 +12,7 @@ ses_describe_receipt_rule(RuleSetName, RuleName)
 \item{RuleName}{[required] The name of the receipt rule.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Rule = list(
     Name = "string",
     Enabled = TRUE|FALSE,
@@ -63,7 +61,7 @@ A list with the following syntax:
     ScanEnabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the details of the specified receipt rule.
@@ -73,13 +71,11 @@ For information about setting up receipt rules, see the \href{https://docs.aws.a
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_receipt_rule(
+\preformatted{svc$describe_receipt_rule(
   RuleSetName = "string",
   RuleName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -22,12 +22,10 @@ For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/lat
 \emph{AWS Elastic Beanstalk Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_environment_operations_role(
+\preformatted{svc$disassociate_environment_operations_role(
   EnvironmentName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

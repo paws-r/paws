@@ -21,9 +21,7 @@ Modifies the self-service WorkSpace management capabilities for your
 users. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html}{Enable Self-Service WorkSpace Management Capabilities for Your Users}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_selfservice_permissions(
+\preformatted{svc$modify_selfservice_permissions(
   ResourceId = "string",
   SelfservicePermissions = list(
     RestartWorkspace = "ENABLED"|"DISABLED",
@@ -33,7 +31,7 @@ users. For more information, see \href{https://docs.aws.amazon.com/workspaces/la
     RebuildWorkspace = "ENABLED"|"DISABLED"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

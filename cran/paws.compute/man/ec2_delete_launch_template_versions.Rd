@@ -22,9 +22,7 @@ template ID or launch template name in the request.}
 \item{Versions}{[required] The version numbers of one or more launch template versions to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SuccessfullyDeletedLaunchTemplateVersions = list(
     list(
       LaunchTemplateId = "string",
@@ -44,7 +42,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes one or more versions of a launch template. You cannot delete the
@@ -54,9 +52,7 @@ the launch template, you must delete the entire launch template using
 \code{\link[=ec2_delete_launch_template]{delete_launch_template}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_launch_template_versions(
+\preformatted{svc$delete_launch_template_versions(
   DryRun = TRUE|FALSE,
   LaunchTemplateId = "string",
   LaunchTemplateName = "string",
@@ -64,7 +60,7 @@ the launch template, you must delete the entire launch template using
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

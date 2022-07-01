@@ -7,9 +7,7 @@
 iot_describe_default_authorizer()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   authorizerDescription = list(
     authorizerName = "string",
     authorizerArn = "string",
@@ -28,16 +26,14 @@ A list with the following syntax:
     signingDisabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the default authorizer.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_default_authorizer()
-}\if{html}{\out{</div>}}
+\preformatted{svc$describe_default_authorizer()
+}
 }
 
 \keyword{internal}

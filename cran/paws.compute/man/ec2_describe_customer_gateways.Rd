@@ -38,9 +38,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CustomerGateways = list(
     list(
       BgpAsn = "string",
@@ -59,7 +57,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your VPN customer gateways.
@@ -68,9 +66,7 @@ For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VP
 \emph{AWS Site-to-Site VPN User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_customer_gateways(
+\preformatted{svc$describe_customer_gateways(
   CustomerGatewayIds = list(
     "string"
   ),
@@ -84,7 +80,7 @@ For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VP
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

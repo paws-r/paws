@@ -38,12 +38,10 @@ and \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html}{Protec
 be made to or from the model container.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ModelArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a model in Amazon SageMaker. In the request, you name the model
@@ -81,9 +79,7 @@ For example, if the inference code access any other AWS resources, you
 grant necessary permissions via this role.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_model(
+\preformatted{svc$create_model(
   ModelName = "string",
   PrimaryContainer = list(
     ContainerHostname = "string",
@@ -130,7 +126,7 @@ grant necessary permissions via this role.
   ),
   EnableNetworkIsolation = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,9 +16,7 @@ getting the next set of solution versions (if they exist).}
 \item{maxResults}{The maximum number of solution versions to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   solutionVersions = list(
     list(
       solutionVersionArn = "string",
@@ -34,7 +32,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of solution versions for the given solution. When a
@@ -45,14 +43,12 @@ information on solutions, see
 \code{\link[=personalize_create_solution]{create_solution}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_solution_versions(
+\preformatted{svc$list_solution_versions(
   solutionArn = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

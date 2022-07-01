@@ -25,9 +25,7 @@ WAF and AWS Shield Advanced features and an overview of how to use the
 AWS WAF and AWS Shield Advanced APIs, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF and AWS Shield Developer Guide}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- shield(
+\preformatted{svc <- shield(
   config = list(
     credentials = list(
       creds = list(
@@ -41,7 +39,7 @@ AWS WAF and AWS Shield Advanced APIs, see the \href{https://docs.aws.amazon.com/
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

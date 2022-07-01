@@ -34,14 +34,12 @@ For more information, see
 \href{https://docs.aws.amazon.com/cloud-map/latest/api/API_HealthCheckCustomConfig.html}{HealthCheckCustomConfig}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_instance_custom_health_status(
+\preformatted{svc$update_instance_custom_health_status(
   ServiceId = "string",
   InstanceId = "string",
   Status = "HEALTHY"|"UNHEALTHY"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

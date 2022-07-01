@@ -19,12 +19,10 @@ associated with it.
 When you delete a project, all associated data becomes irretrievable.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_project(
+\preformatted{svc$delete_project(
   projectName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

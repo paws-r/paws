@@ -101,9 +101,7 @@ commands.}
 Logs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Command = list(
     CommandId = "string",
     DocumentName = "string",
@@ -157,15 +155,13 @@ A list with the following syntax:
     TimeoutSeconds = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Runs commands on one or more managed instances.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_command(
+\preformatted{svc$send_command(
   InstanceIds = list(
     "string"
   ),
@@ -206,7 +202,7 @@ Runs commands on one or more managed instances.
     CloudWatchOutputEnabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

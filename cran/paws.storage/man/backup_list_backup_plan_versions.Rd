@@ -19,9 +19,7 @@ pointed to by the next token.}
 \item{MaxResults}{The maximum number of items to be returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   BackupPlanVersionsList = list(
     list(
@@ -50,7 +48,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns version metadata of your backup plans, including Amazon Resource
@@ -58,14 +56,12 @@ Names (ARNs), backup plan IDs, creation and deletion dates, plan names,
 and version IDs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_backup_plan_versions(
+\preformatted{svc$list_backup_plan_versions(
   BackupPlanId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

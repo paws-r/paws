@@ -17,32 +17,28 @@ will generate a unique upload URL per file. Otherwise, the service will
 only generate a single upload URL for the zipped files.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   jobId = "string",
   fileUploadUrls = list(
     "string"
   ),
   zipUploadUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a deployment for a manually deployed Amplify app. Manually
 deployed apps are not connected to a repository.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_deployment(
+\preformatted{svc$create_deployment(
   appId = "string",
   branchName = "string",
   fileMap = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

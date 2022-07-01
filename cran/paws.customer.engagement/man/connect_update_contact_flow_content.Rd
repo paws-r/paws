@@ -24,14 +24,12 @@ Updates the specified contact flow.
 You can also create and update contact flows using the \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html}{Amazon Connect Flow language}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_contact_flow_content(
+\preformatted{svc$update_contact_flow_content(
   InstanceId = "string",
   ContactFlowId = "string",
   Content = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

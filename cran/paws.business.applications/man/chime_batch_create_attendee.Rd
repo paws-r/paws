@@ -12,9 +12,7 @@ chime_batch_create_attendee(MeetingId, Attendees)
 \item{Attendees}{[required] The request containing the attendees to create.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attendees = list(
     list(
       ExternalUserId = "string",
@@ -30,7 +28,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates up to 100 new attendees for an active Amazon Chime SDK meeting.
@@ -38,9 +36,7 @@ For more information about the Amazon Chime SDK, see \href{https://docs.aws.amaz
 in the \emph{Amazon Chime Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_create_attendee(
+\preformatted{svc$batch_create_attendee(
   MeetingId = "string",
   Attendees = list(
     list(
@@ -54,7 +50,7 @@ in the \emph{Amazon Chime Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

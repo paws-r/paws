@@ -14,9 +14,7 @@ Amazon Resource Name (ARN). For information about creating an ARN, see
 \item{Filters}{This parameter is not currently supported.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TagList = list(
     list(
       Key = "string",
@@ -24,15 +22,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all tags on an Amazon Neptune resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceName = "string",
   Filters = list(
     list(
@@ -43,7 +39,7 @@ Lists all tags on an Amazon Neptune resource.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

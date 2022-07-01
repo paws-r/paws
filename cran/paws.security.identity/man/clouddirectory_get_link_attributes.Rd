@@ -19,9 +19,7 @@ where the typed link resides. For more information, see arns or \href{https://do
 link.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attributes = list(
     list(
       Key = list(
@@ -41,15 +39,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves attributes that are associated with a typed link.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_link_attributes(
+\preformatted{svc$get_link_attributes(
   DirectoryArn = "string",
   TypedLinkSpecifier = list(
     TypedLinkFacet = list(
@@ -82,7 +78,7 @@ Retrieves attributes that are associated with a typed link.
   ),
   ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

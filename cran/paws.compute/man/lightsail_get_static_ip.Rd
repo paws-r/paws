@@ -10,9 +10,7 @@ lightsail_get_static_ip(staticIpName)
 \item{staticIpName}{[required] The name of the static IP in Lightsail.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   staticIp = list(
     name = "string",
     arn = "string",
@@ -30,18 +28,16 @@ A list with the following syntax:
     isAttached = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a specific static IP.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_static_ip(
+\preformatted{svc$get_static_ip(
   staticIpName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

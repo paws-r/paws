@@ -16,9 +16,7 @@ or
 \item{content}{[required] The updated content to replace the existing content of the comment.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   comment = list(
     commentId = "string",
     content = "string",
@@ -40,19 +38,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Replaces the contents of a comment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_comment(
+\preformatted{svc$update_comment(
   commentId = "string",
   content = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

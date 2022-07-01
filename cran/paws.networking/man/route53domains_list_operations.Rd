@@ -26,9 +26,7 @@ previous response, and submit another request that includes the value of
 Default: 20}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Operations = list(
     list(
       OperationId = "string",
@@ -41,7 +39,7 @@ A list with the following syntax:
   ),
   NextPageMarker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about all of the operations that return an operation
@@ -49,16 +47,14 @@ ID and that have ever been performed on domains that were registered by
 the current account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_operations(
+\preformatted{svc$list_operations(
   SubmittedSince = as.POSIXct(
     "2015-01-01"
   ),
   Marker = "string",
   MaxItems = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

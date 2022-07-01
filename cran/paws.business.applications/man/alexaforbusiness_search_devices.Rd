@@ -29,9 +29,7 @@ DeviceSerialNumber, ConnectionStatus, NetworkProfileName,
 NetworkProfileArn, Feature, and FailureCode.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Devices = list(
     list(
       DeviceArn = "string",
@@ -65,15 +63,13 @@ A list with the following syntax:
   NextToken = "string",
   TotalCount = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Searches devices and lists the ones that meet a set of filter criteria.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_devices(
+\preformatted{svc$search_devices(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(
@@ -91,7 +87,7 @@ Searches devices and lists the ones that meet a set of filter criteria.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

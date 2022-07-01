@@ -19,9 +19,7 @@ from a previous call.)}
 is \code{50} and the maximum value is \code{100}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceRefreshes = list(
     list(
       InstanceRefreshId = "string",
@@ -40,7 +38,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more instance refreshes.
@@ -63,9 +61,7 @@ completed, but it prevents new replacements from being started.
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html}{Replacing Auto Scaling Instances Based on an Instance Refresh}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instance_refreshes(
+\preformatted{svc$describe_instance_refreshes(
   AutoScalingGroupName = "string",
   InstanceRefreshIds = list(
     "string"
@@ -73,7 +69,7 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
   NextToken = "string",
   MaxRecords = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -158,9 +158,7 @@ identifier value for the end of \code{EndpointArn}.}
 \item{DocDbSettings}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Endpoint = list(
     EndpointIdentifier = "string",
     EndpointType = "source"|"target",
@@ -419,15 +417,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an endpoint using the provided settings.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_endpoint(
+\preformatted{svc$create_endpoint(
   EndpointIdentifier = "string",
   EndpointType = "source"|"target",
   EngineName = "string",
@@ -688,7 +684,7 @@ Creates an endpoint using the provided settings.
     SecretsManagerSecretId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

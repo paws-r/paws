@@ -10,9 +10,7 @@ personalize_describe_solution(solutionArn)
 \item{solutionArn}{[required] The Amazon Resource Name (ARN) of the solution to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   solution = list(
     name = "string",
     solutionArn = "string",
@@ -94,19 +92,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a solution. For more information on solutions, see
 \code{\link[=personalize_create_solution]{create_solution}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_solution(
+\preformatted{svc$describe_solution(
   solutionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

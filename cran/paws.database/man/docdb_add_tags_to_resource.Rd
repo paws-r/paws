@@ -22,9 +22,7 @@ with Amazon DocumentDB resources. or in a \code{Condition} statement in an
 AWS Identity and Access Management (IAM) policy for Amazon DocumentDB.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags_to_resource(
+\preformatted{svc$add_tags_to_resource(
   ResourceName = "string",
   Tags = list(
     list(
@@ -33,7 +31,7 @@ AWS Identity and Access Management (IAM) policy for Amazon DocumentDB.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

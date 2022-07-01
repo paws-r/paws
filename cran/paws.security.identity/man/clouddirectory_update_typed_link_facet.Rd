@@ -32,9 +32,7 @@ An empty list.
 Updates a TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_typed_link_facet(
+\preformatted{svc$update_typed_link_facet(
   SchemaArn = "string",
   Name = "string",
   AttributeUpdates = list(
@@ -69,7 +67,7 @@ Updates a TypedLinkFacet. For more information, see \href{https://docs.aws.amazo
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

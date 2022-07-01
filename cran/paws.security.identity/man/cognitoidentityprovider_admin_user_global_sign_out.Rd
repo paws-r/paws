@@ -23,13 +23,11 @@ tokens expire one hour after they are issued.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_user_global_sign_out(
+\preformatted{svc$admin_user_global_sign_out(
   UserPoolId = "string",
   Username = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

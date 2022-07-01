@@ -33,20 +33,16 @@ and organize a flow definition. Each tag consists of a key and a value,
 both of which you define.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FlowDefinitionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a flow definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_flow_definition(
+\preformatted{svc$create_flow_definition(
   FlowDefinitionName = "string",
   HumanLoopRequestSource = list(
     AwsManagedHumanLoopRequestSource = "AWS/Rekognition/DetectModerationLabels/Image/V3"|"AWS/Textract/AnalyzeDocument/Forms/V1"
@@ -87,7 +83,7 @@ Creates a flow definition.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

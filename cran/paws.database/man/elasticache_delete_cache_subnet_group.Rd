@@ -22,12 +22,10 @@ You cannot delete a cache subnet group if it is associated with any
 clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cache_subnet_group(
+\preformatted{svc$delete_cache_subnet_group(
   CacheSubnetGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

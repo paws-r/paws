@@ -38,9 +38,7 @@ If you are using \code{nextToken} in this operation, you must specify \code{true
 for \code{startFromHead}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   events = list(
     list(
       timestamp = 123,
@@ -51,7 +49,7 @@ A list with the following syntax:
   nextForwardToken = "string",
   nextBackwardToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists log events from the specified log stream. You can list all of the
@@ -64,9 +62,7 @@ operation can return empty results while there are more log events
 available through the token.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_log_events(
+\preformatted{svc$get_log_events(
   logGroupName = "string",
   logStreamName = "string",
   startTime = 123,
@@ -75,7 +71,7 @@ available through the token.
   limit = 123,
   startFromHead = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

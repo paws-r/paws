@@ -11,9 +11,7 @@ kafka_describe_cluster_operation(ClusterOperationArn)
 operation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClusterOperationInfo = list(
     ClientRequestId = "string",
     ClusterArn = "string",
@@ -124,18 +122,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a description of the cluster operation specified by the ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cluster_operation(
+\preformatted{svc$describe_cluster_operation(
   ClusterOperationArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

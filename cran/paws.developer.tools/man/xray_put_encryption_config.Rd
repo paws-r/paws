@@ -25,28 +25,24 @@ Omit this key if you set \code{Type} to \code{NONE}.}
 Set to \code{NONE} for default encryption.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EncryptionConfig = list(
     KeyId = "string",
     Status = "UPDATING"|"ACTIVE",
     Type = "NONE"|"KMS"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the encryption configuration for X-Ray data.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_encryption_config(
+\preformatted{svc$put_encryption_config(
   KeyId = "string",
   Type = "NONE"|"KMS"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

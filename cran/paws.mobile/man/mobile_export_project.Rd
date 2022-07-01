@@ -11,14 +11,12 @@ mobile_export_project(projectId)
 \item{projectId}{[required] Unique project identifier.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   downloadUrl = "string",
   shareUrl = "string",
   snapshotId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Exports project configuration to a snapshot which can be downloaded and
@@ -27,12 +25,10 @@ projects, so they can only be shared successfully within the same AWS
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$export_project(
+\preformatted{svc$export_project(
   projectId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

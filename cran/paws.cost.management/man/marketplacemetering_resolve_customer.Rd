@@ -13,13 +13,11 @@ buyer submits a registration token through the browser. The registration
 token is resolved to obtain a CustomerIdentifier and product code.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CustomerIdentifier = "string",
   ProductCode = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 ResolveCustomer is called by a SaaS application during the registration
@@ -29,12 +27,10 @@ The registration token is resolved through this API to obtain a
 CustomerIdentifier and product code.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$resolve_customer(
+\preformatted{svc$resolve_customer(
   RegistrationToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ snowball_describe_address(AddressId)
 \item{AddressId}{[required] The automatically generated ID for a specific address.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Address = list(
     AddressId = "string",
     Name = "string",
@@ -31,19 +29,17 @@ A list with the following syntax:
     IsRestricted = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Takes an \code{AddressId} and returns specific details about that address in
 the form of an \code{Address} object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_address(
+\preformatted{svc$describe_address(
   AddressId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

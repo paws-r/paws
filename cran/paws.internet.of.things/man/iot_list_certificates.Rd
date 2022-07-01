@@ -15,9 +15,7 @@ iot_list_certificates(pageSize, marker, ascendingOrder)
 ascending order, based on the creation date.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   certificates = list(
     list(
       certificateArn = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
   ),
   nextMarker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the certificates registered in your AWS account.
@@ -40,14 +38,12 @@ The results are paginated with a default page size of 25. You can use
 the returned marker to retrieve additional results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_certificates(
+\preformatted{svc$list_certificates(
   pageSize = 123,
   marker = "string",
   ascendingOrder = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

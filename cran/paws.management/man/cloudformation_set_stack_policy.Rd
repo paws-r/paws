@@ -27,14 +27,12 @@ An empty list.
 Sets a stack policy for a specified stack.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_stack_policy(
+\preformatted{svc$set_stack_policy(
   StackName = "string",
   StackPolicyBody = "string",
   StackPolicyURL = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

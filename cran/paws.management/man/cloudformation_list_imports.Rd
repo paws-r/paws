@@ -15,15 +15,13 @@ response output) that identifies the next page of stacks that are
 importing the specified exported output value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Imports = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all stacks that are importing an exported output value. To modify
@@ -36,13 +34,11 @@ For more information about importing an exported output value, see the
 function.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_imports(
+\preformatted{svc$list_imports(
   ExportName = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

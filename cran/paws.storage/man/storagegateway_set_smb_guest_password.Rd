@@ -13,12 +13,10 @@ associated with.}
 \item{Password}{[required] The password that you want to set for your SMB server.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sets the password for the guest user \code{smbguest}. The \code{smbguest} user is
@@ -26,13 +24,11 @@ the user when the authentication method for the file share is set to
 \code{GuestAccess}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_smb_guest_password(
+\preformatted{svc$set_smb_guest_password(
   GatewayARN = "string",
   Password = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

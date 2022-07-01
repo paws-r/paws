@@ -19,13 +19,11 @@ An empty list.
 Associates a skill with a skill group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_skill_with_skill_group(
+\preformatted{svc$associate_skill_with_skill_group(
   SkillGroupArn = "string",
   SkillId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

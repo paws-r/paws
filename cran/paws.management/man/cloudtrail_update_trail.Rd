@@ -92,9 +92,7 @@ this is set to false, the trail will remain in the current AWS account
 but be deleted from all member accounts in the organization.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Name = "string",
   S3BucketName = "string",
   S3KeyPrefix = "string",
@@ -109,7 +107,7 @@ A list with the following syntax:
   KmsKeyId = "string",
   IsOrganizationTrail = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the settings that specify delivery of log files. Changes to a
@@ -121,9 +119,7 @@ called from the region in which the trail was created; otherwise, an
 \code{InvalidHomeRegionException} is thrown.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_trail(
+\preformatted{svc$update_trail(
   Name = "string",
   S3BucketName = "string",
   S3KeyPrefix = "string",
@@ -136,7 +132,7 @@ called from the region in which the trail was created; otherwise, an
   KmsKeyId = "string",
   IsOrganizationTrail = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

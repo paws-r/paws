@@ -36,9 +36,7 @@ Do not attempt to construct this value. Use only the value of
 \code{NextMarker} from the truncated response you just received.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     list(
       TagKey = "string",
@@ -48,7 +46,7 @@ A list with the following syntax:
   NextMarker = "string",
   Truncated = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns all tags on the specified customer master key (CMK).
@@ -72,14 +70,12 @@ a different AWS account.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resource_tags(
+\preformatted{svc$list_resource_tags(
   KeyId = "string",
   Limit = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

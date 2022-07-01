@@ -36,14 +36,12 @@ For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_dhcp_options(
+\preformatted{svc$associate_dhcp_options(
   DhcpOptionsId = "string",
   VpcId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

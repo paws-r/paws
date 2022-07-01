@@ -16,12 +16,10 @@ Supplying an IAM role is only valid when also specifying a KMS key.}
 datasets.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   datasetGroupArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an empty dataset group. A dataset group contains related
@@ -72,14 +70,12 @@ access the key.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_dataset_group(
+\preformatted{svc$create_dataset_group(
   name = "string",
   roleArn = "string",
   kmsKeyArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

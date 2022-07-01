@@ -11,9 +11,7 @@ sfn_describe_state_machine_for_execution(executionArn)
 information for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   stateMachineArn = "string",
   name = "string",
   definition = "string",
@@ -36,7 +34,7 @@ A list with the following syntax:
     enabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the state machine associated with a specific execution.
@@ -47,12 +45,10 @@ may not reflect very recent updates and changes.
 This API action is not supported by \code{EXPRESS} state machines.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_state_machine_for_execution(
+\preformatted{svc$describe_state_machine_for_execution(
   executionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

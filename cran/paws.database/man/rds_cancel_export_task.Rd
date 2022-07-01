@@ -11,9 +11,7 @@ rds_cancel_export_task(ExportTaskIdentifier)
 \item{ExportTaskIdentifier}{[required] The identifier of the snapshot export task to cancel.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ExportTaskIdentifier = "string",
   SourceArn = "string",
   ExportOnly = list(
@@ -38,7 +36,7 @@ A list with the following syntax:
   FailureCause = "string",
   WarningMessage = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Cancels an export task in progress that is exporting a snapshot to
@@ -46,12 +44,10 @@ Amazon S3. Any data that has already been written to the S3 bucket isn't
 removed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_export_task(
+\preformatted{svc$cancel_export_task(
   ExportTaskIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

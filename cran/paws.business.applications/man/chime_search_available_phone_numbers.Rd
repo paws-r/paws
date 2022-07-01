@@ -23,22 +23,18 @@ chime_search_available_phone_numbers(AreaCode, City, Country, State,
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   E164PhoneNumbers = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Searches phone numbers that can be ordered.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_available_phone_numbers(
+\preformatted{svc$search_available_phone_numbers(
   AreaCode = "string",
   City = "string",
   Country = "string",
@@ -47,7 +43,7 @@ Searches phone numbers that can be ordered.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

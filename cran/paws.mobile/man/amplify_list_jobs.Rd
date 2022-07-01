@@ -18,9 +18,7 @@ in here to list more steps.}
 \item{maxResults}{The maximum number of records to list in a single response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   jobSummaries = list(
     list(
       jobArn = "string",
@@ -42,21 +40,19 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the jobs for a branch of an Amplify app.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_jobs(
+\preformatted{svc$list_jobs(
   appId = "string",
   branchName = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

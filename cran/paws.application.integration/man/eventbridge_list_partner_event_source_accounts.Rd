@@ -20,9 +20,7 @@ The operation also returns a NextToken which you can use in a subsequent
 operation to retrieve the next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PartnerEventSourceAccounts = list(
     list(
       Account = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 An SaaS partner can use this operation to display the AWS account ID
@@ -45,14 +43,12 @@ that a particular partner event source name is associated with. This
 operation is not used by AWS customers.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_partner_event_source_accounts(
+\preformatted{svc$list_partner_event_source_accounts(
   EventSourceName = "string",
   NextToken = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

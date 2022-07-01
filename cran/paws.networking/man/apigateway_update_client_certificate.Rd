@@ -15,9 +15,7 @@ updated.}
 in the order specified in this list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   clientCertificateId = "string",
   description = "string",
   pemEncodedCertificate = "string",
@@ -31,15 +29,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Changes information about an ClientCertificate resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_client_certificate(
+\preformatted{svc$update_client_certificate(
   clientCertificateId = "string",
   patchOperations = list(
     list(
@@ -50,7 +46,7 @@ Changes information about an ClientCertificate resource.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

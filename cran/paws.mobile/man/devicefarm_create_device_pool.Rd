@@ -26,9 +26,7 @@ By specifying the maximum number of devices, you can control the costs
 that you incur by running tests.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   devicePool = list(
     arn = "string",
     name = "string",
@@ -44,15 +42,13 @@ A list with the following syntax:
     maxDevices = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a device pool.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_device_pool(
+\preformatted{svc$create_device_pool(
   projectArn = "string",
   name = "string",
   description = "string",
@@ -65,7 +61,7 @@ Creates a device pool.
   ),
   maxDevices = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

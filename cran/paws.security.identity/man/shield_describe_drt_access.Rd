@@ -9,15 +9,13 @@ attack mitigation}
 shield_describe_drt_access()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RoleArn = "string",
   LogBucketList = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the current role and list of Amazon S3 log buckets used by the
@@ -25,10 +23,8 @@ DDoS Response Team (DRT) to access your AWS account while assisting with
 attack mitigation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_drt_access()
-}\if{html}{\out{</div>}}
+\preformatted{svc$describe_drt_access()
+}
 }
 
 \keyword{internal}

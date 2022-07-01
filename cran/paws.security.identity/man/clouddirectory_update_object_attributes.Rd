@@ -16,20 +16,16 @@ where the object resides. For more information, see arns.}
 \item{AttributeUpdates}{[required] The attributes update structure.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ObjectIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a given object's attributes.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_object_attributes(
+\preformatted{svc$update_object_attributes(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"
@@ -56,7 +52,7 @@ Updates a given object's attributes.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

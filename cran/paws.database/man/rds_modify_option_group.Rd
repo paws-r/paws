@@ -25,9 +25,7 @@ the next maintenance window for each instance associated with the option
 group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OptionGroup = list(
     OptionGroupName = "string",
     OptionGroupDescription = "string",
@@ -73,15 +71,13 @@ A list with the following syntax:
     OptionGroupArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies an existing option group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_option_group(
+\preformatted{svc$modify_option_group(
   OptionGroupName = "string",
   OptionsToInclude = list(
     list(
@@ -114,7 +110,7 @@ Modifies an existing option group.
   ),
   ApplyImmediately = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

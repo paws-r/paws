@@ -16,12 +16,10 @@ An empty list.
 Stops a notebook execution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_notebook_execution(
+\preformatted{svc$stop_notebook_execution(
   NotebookExecutionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

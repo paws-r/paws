@@ -22,15 +22,13 @@ associate with the image layer.}
 \item{layerDigests}{[required] The \code{sha256} digest of the image layer.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   registryId = "string",
   repositoryName = "string",
   uploadId = "string",
   layerDigest = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Informs Amazon ECR that the image layer upload has completed for a
@@ -46,9 +44,7 @@ by customers for pulling and pushing images. In most cases, you should
 use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$complete_layer_upload(
+\preformatted{svc$complete_layer_upload(
   registryId = "string",
   repositoryName = "string",
   uploadId = "string",
@@ -56,7 +52,7 @@ use the \code{docker} CLI to pull, tag, and push images.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -8,9 +8,7 @@ to the Docker process on your local machine}
 lightsail_create_container_service_registry_login()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   registryLogin = list(
     username = "string",
     password = "string",
@@ -20,7 +18,7 @@ A list with the following syntax:
     registry = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a temporary set of log in credentials that you can use to log in
@@ -48,10 +46,8 @@ container images on your Amazon Lightsail container services in the
 \emph{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_container_service_registry_login()
-}\if{html}{\out{</div>}}
+\preformatted{svc$create_container_service_registry_login()
+}
 }
 
 \keyword{internal}

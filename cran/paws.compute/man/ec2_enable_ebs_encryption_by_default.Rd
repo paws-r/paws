@@ -13,12 +13,10 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EbsEncryptionByDefault = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables EBS encryption by default for your account in the current
@@ -42,12 +40,10 @@ instances using instance types that do not support encryption. For more
 information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances}{Supported instance types}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_ebs_encryption_by_default(
+\preformatted{svc$enable_ebs_encryption_by_default(
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,9 +15,7 @@ chime_list_app_instance_users(AppInstanceArn, MaxResults, NextToken)
 returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AppInstanceArn = "string",
   AppInstanceUsers = list(
     list(
@@ -28,20 +26,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List all \code{AppInstanceUsers} created under a single app instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_app_instance_users(
+\preformatted{svc$list_app_instance_users(
   AppInstanceArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

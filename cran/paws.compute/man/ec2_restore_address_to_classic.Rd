@@ -16,13 +16,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{PublicIp}{[required] The Elastic IP address.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PublicIp = "string",
   Status = "MoveInProgress"|"InVpc"|"InClassic"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Restores an Elastic IP address that was previously moved to the EC2-VPC
@@ -31,13 +29,11 @@ address that was originally allocated for use in EC2-VPC. The Elastic IP
 address must not be associated with an instance or network interface.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_address_to_classic(
+\preformatted{svc$restore_address_to_classic(
   DryRun = TRUE|FALSE,
   PublicIp = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

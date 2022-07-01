@@ -12,9 +12,7 @@ chime_update_account(AccountId, Name)
 \item{Name}{The new name for the specified Amazon Chime account.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Account = list(
     AwsAccountId = "string",
     AccountId = "string",
@@ -34,20 +32,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates account details for the specified Amazon Chime account.
 Currently, only account name updates are supported for this action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_account(
+\preformatted{svc$update_account(
   AccountId = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

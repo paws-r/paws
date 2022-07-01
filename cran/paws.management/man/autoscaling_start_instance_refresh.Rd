@@ -34,12 +34,10 @@ For more information, see
 in the \emph{Amazon EC2 Auto Scaling API Reference}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceRefreshId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a new instance refresh operation, which triggers a rolling
@@ -58,9 +56,7 @@ API. To cancel an instance refresh operation in progress, use the
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html}{Replacing Auto Scaling Instances Based on an Instance Refresh}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_instance_refresh(
+\preformatted{svc$start_instance_refresh(
   AutoScalingGroupName = "string",
   Strategy = "Rolling",
   Preferences = list(
@@ -68,7 +64,7 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
     InstanceWarmup = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

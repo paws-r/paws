@@ -13,9 +13,7 @@ cognitoidentityprovider_describe_user_pool_client(UserPoolId, ClientId)
 \item{ClientId}{[required] The app client ID of the app associated with the user pool.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserPoolClient = list(
     UserPoolId = "string",
     ClientName = "string",
@@ -71,20 +69,18 @@ A list with the following syntax:
     PreventUserExistenceErrors = "LEGACY"|"ENABLED"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Client method for returning the configuration information and metadata
 of the specified user pool app client.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_user_pool_client(
+\preformatted{svc$describe_user_pool_client(
   UserPoolId = "string",
   ClientId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

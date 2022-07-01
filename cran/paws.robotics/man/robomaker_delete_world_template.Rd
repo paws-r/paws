@@ -16,12 +16,10 @@ An empty list.
 Deletes a world template.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_world_template(
+\preformatted{svc$delete_world_template(
   template = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

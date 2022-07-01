@@ -44,13 +44,11 @@ to check the state of the stream, which is returned in \code{StreamStatus}.
 transactions per second per account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_stream(
+\preformatted{svc$delete_stream(
   StreamName = "string",
   EnforceConsumerDeletion = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

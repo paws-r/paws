@@ -16,12 +16,10 @@ An empty list.
 Permanently delete a job template you have created.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_job_template(
+\preformatted{svc$delete_job_template(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

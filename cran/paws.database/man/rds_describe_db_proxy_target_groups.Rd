@@ -29,9 +29,7 @@ Default: 100
 Constraints: Minimum 20, maximum 100.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TargetGroups = list(
     list(
       DBProxyName = "string",
@@ -58,16 +56,14 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about DB proxy target groups, represented by
 \code{DBProxyTargetGroup} data structures.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_proxy_target_groups(
+\preformatted{svc$describe_db_proxy_target_groups(
   DBProxyName = "string",
   TargetGroupName = "string",
   Filters = list(
@@ -81,7 +77,7 @@ Returns information about DB proxy target groups, represented by
   Marker = "string",
   MaxRecords = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

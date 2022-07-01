@@ -20,9 +20,7 @@ from a previous call.)}
 default is up to 50 items.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   subscriptionFilters = list(
     list(
       filterName = "string",
@@ -36,7 +34,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the subscription filters for the specified log group. You can list
@@ -44,15 +42,13 @@ all the subscription filters or filter the results by prefix. The
 results are ASCII-sorted by filter name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_subscription_filters(
+\preformatted{svc$describe_subscription_filters(
   logGroupName = "string",
   filterNamePrefix = "string",
   nextToken = "string",
   limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

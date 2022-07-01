@@ -108,12 +108,10 @@ user data. Machine learning transforms can access user data encrypted in
 Amazon S3 using KMS.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TransformId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an AWS Glue machine learning transform. This operation creates
@@ -132,9 +130,7 @@ high-quality machine learning transform. These parameters include
 \href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-jobs-job.html}{Jobs}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_ml_transform(
+\preformatted{svc$create_ml_transform(
   Name = "string",
   Description = "string",
   InputRecordTables = list(
@@ -172,7 +168,7 @@ high-quality machine learning transform. These parameters include
     TaskRunSecurityConfigurationName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

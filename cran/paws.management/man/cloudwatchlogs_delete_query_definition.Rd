@@ -12,12 +12,10 @@ cloudwatchlogs_delete_query_definition(queryDefinitionId)
 to retrieve the IDs of your saved query definitions.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   success = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a saved CloudWatch Logs Insights query definition. A query
@@ -31,12 +29,10 @@ You must have the \code{logs:DeleteQueryDefinition} permission to be able to
 perform this operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_query_definition(
+\preformatted{svc$delete_query_definition(
   queryDefinitionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

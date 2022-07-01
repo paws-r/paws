@@ -10,9 +10,7 @@ dynamodb_describe_export(ExportArn)
 \item{ExportArn}{[required] The Amazon Resource Name (ARN) associated with the export.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ExportDescription = list(
     ExportArn = "string",
     ExportStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
@@ -41,18 +39,16 @@ A list with the following syntax:
     ItemCount = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes an existing table export.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_export(
+\preformatted{svc$describe_export(
   ExportArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

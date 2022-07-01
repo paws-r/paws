@@ -10,9 +10,7 @@ iot_describe_security_profile(securityProfileName)
 \item{securityProfileName}{[required] The name of the security profile whose information you want to get.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   securityProfileName = "string",
   securityProfileArn = "string",
   securityProfileDescription = "string",
@@ -81,18 +79,16 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a Device Defender security profile.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_security_profile(
+\preformatted{svc$describe_security_profile(
   securityProfileName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -49,9 +49,7 @@ search results
 }
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- resourcegroups(
+\preformatted{svc <- resourcegroups(
   config = list(
     credentials = list(
       creds = list(
@@ -65,7 +63,7 @@ search results
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

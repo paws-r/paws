@@ -93,9 +93,7 @@ your event source.}
 source mapping.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UUID = "string",
   StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
   StartingPositionTimestamp = as.POSIXct(
@@ -147,7 +145,7 @@ A list with the following syntax:
     "ReportBatchItemFailures"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a mapping between an event source and an AWS Lambda function.
@@ -181,9 +179,7 @@ concurrently.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_event_source_mapping(
+\preformatted{svc$create_event_source_mapping(
   EventSourceArn = "string",
   FunctionName = "string",
   Enabled = TRUE|FALSE,
@@ -229,7 +225,7 @@ concurrently.
     "ReportBatchItemFailures"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

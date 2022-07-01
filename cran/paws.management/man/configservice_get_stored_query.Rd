@@ -10,9 +10,7 @@ configservice_get_stored_query(QueryName)
 \item{QueryName}{[required] The name of the query.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StoredQuery = list(
     QueryId = "string",
     QueryArn = "string",
@@ -21,18 +19,16 @@ A list with the following syntax:
     Expression = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the details of a specific stored query.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_stored_query(
+\preformatted{svc$get_stored_query(
   QueryName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

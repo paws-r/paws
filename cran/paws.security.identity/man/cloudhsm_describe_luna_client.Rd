@@ -12,16 +12,14 @@ cloudhsm_describe_luna_client(ClientArn, CertificateFingerprint)
 \item{CertificateFingerprint}{The certificate fingerprint.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClientArn = "string",
   Certificate = "string",
   CertificateFingerprint = "string",
   LastModifiedTimestamp = "string",
   Label = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -34,13 +32,11 @@ and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS Cl
 Retrieves information about an HSM client.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_luna_client(
+\preformatted{svc$describe_luna_client(
   ClientArn = "string",
   CertificateFingerprint = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

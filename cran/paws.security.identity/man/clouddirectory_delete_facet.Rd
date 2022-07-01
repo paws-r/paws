@@ -21,13 +21,11 @@ the facet will be deleted. Only development schema facets are allowed
 deletion.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_facet(
+\preformatted{svc$delete_facet(
   SchemaArn = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

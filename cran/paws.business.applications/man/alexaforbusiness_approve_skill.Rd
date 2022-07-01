@@ -19,12 +19,10 @@ account. If a skill is private, the user implicitly accepts access to
 this skill during enablement.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$approve_skill(
+\preformatted{svc$approve_skill(
   SkillId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

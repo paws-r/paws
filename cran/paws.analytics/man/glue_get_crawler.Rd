@@ -10,9 +10,7 @@ glue_get_crawler(Name)
 \item{Name}{[required] The name of the crawler to retrieve metadata for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Crawler = list(
     Name = "string",
     Role = "string",
@@ -101,18 +99,16 @@ A list with the following syntax:
     CrawlerSecurityConfiguration = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves metadata for a specified crawler.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_crawler(
+\preformatted{svc$get_crawler(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

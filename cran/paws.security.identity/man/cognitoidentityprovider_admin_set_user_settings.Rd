@@ -27,9 +27,7 @@ configure either type of MFA, use
 instead.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_set_user_settings(
+\preformatted{svc$admin_set_user_settings(
   UserPoolId = "string",
   Username = "string",
   MFAOptions = list(
@@ -39,7 +37,7 @@ instead.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

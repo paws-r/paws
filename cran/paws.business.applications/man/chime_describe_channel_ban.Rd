@@ -12,9 +12,7 @@ chime_describe_channel_ban(ChannelArn, MemberArn)
 \item{MemberArn}{[required] The ARN of the member being banned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelBan = list(
     Member = list(
       Arn = "string",
@@ -30,19 +28,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the full details of a channel ban.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_channel_ban(
+\preformatted{svc$describe_channel_ban(
   ChannelArn = "string",
   MemberArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

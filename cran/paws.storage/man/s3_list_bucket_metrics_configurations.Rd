@@ -21,9 +21,7 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IsTruncated = TRUE|FALSE,
   ContinuationToken = "string",
   NextContinuationToken = "string",
@@ -49,7 +47,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the metrics configurations for the bucket. The metrics
@@ -84,14 +82,12 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_bucket_metrics_configurations(
+\preformatted{svc$list_bucket_metrics_configurations(
   Bucket = "string",
   ContinuationToken = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

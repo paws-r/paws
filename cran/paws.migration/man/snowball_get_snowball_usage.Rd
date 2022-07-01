@@ -8,13 +8,11 @@ account, and also the number of Snow devices your account has in use}
 snowball_get_snowball_usage()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SnowballLimit = 123,
   SnowballsInUse = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the Snow Family service limit for your
@@ -25,10 +23,8 @@ have at one time is 1. If you want to increase your service limit,
 contact AWS Support.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_snowball_usage()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_snowball_usage()
+}
 }
 
 \examples{

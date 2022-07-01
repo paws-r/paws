@@ -18,9 +18,7 @@ cognitoidentityprovider_admin_list_user_auth_events(UserPoolId,
 \item{NextToken}{A pagination token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AuthEvents = list(
     list(
       EventId = "string",
@@ -58,22 +56,20 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists a history of user activity and any risks detected as part of
 Amazon Cognito advanced security.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_list_user_auth_events(
+\preformatted{svc$admin_list_user_auth_events(
   UserPoolId = "string",
   Username = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

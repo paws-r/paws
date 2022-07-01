@@ -19,13 +19,11 @@ An empty list.
 Disassociates the specified TagOption from the specified resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_tag_option_from_resource(
+\preformatted{svc$disassociate_tag_option_from_resource(
   ResourceId = "string",
   TagOptionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -63,12 +63,10 @@ be set to \code{true} if the \code{DataSource} needs to be used for \code{MLMode
 training.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DataSourceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a \code{DataSource} object from an \href{https://aws.amazon.com/rds/}{Amazon Relational Database Service} (Amazon RDS). A \code{DataSource}
@@ -96,9 +94,7 @@ attribute of the \code{\link[=machinelearning_get_data_source]{get_data_source}}
 operation response.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_data_source_from_rds(
+\preformatted{svc$create_data_source_from_rds(
   DataSourceId = "string",
   DataSourceName = "string",
   RDSData = list(
@@ -125,7 +121,7 @@ operation response.
   RoleARN = "string",
   ComputeStatistics = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -24,13 +24,11 @@ Remove the Lambda function from the drop-down options available in the
 relevant contact flow blocks.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_lambda_function(
+\preformatted{svc$disassociate_lambda_function(
   InstanceId = "string",
   FunctionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

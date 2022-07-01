@@ -92,9 +92,7 @@ specify a \code{ResourceIdentifier} value, AWS DMS generates a default
 identifier value for the end of \code{EndpointArn}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationTask = list(
     ReplicationTaskIdentifier = "string",
     SourceEndpointArn = "string",
@@ -143,15 +141,13 @@ A list with the following syntax:
     TargetReplicationInstanceArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a replication task using the specified parameters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_replication_task(
+\preformatted{svc$create_replication_task(
   ReplicationTaskIdentifier = "string",
   SourceEndpointArn = "string",
   TargetEndpointArn = "string",
@@ -173,7 +169,7 @@ Creates a replication task using the specified parameters.
   TaskData = "string",
   ResourceIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

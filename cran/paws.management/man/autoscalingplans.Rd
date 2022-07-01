@@ -42,9 +42,7 @@ granting IAM users required permissions for AWS Auto Scaling actions,
 see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-a-scaling-plan.html}{AWS Auto Scaling User Guide}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- autoscalingplans(
+\preformatted{svc <- autoscalingplans(
   config = list(
     credentials = list(
       creds = list(
@@ -58,7 +56,7 @@ see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-a-
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

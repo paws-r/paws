@@ -30,9 +30,7 @@ co-owners, and contributors.}
 collaborators after the comment is created.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Comment = list(
     CommentId = "string",
     ParentId = "string",
@@ -73,15 +71,13 @@ A list with the following syntax:
     RecipientId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a new comment to the specified document version.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_comment(
+\preformatted{svc$create_comment(
   AuthenticationToken = "string",
   DocumentId = "string",
   VersionId = "string",
@@ -91,7 +87,7 @@ Adds a new comment to the specified document version.
   Visibility = "PUBLIC"|"PRIVATE",
   NotifyCollaborators = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

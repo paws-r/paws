@@ -14,9 +14,7 @@ assumed.}
 \item{repositoryName}{[required] The name of the repository.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   registryId = "string",
   repositoryName = "string",
   lifecyclePolicyText = "string",
@@ -24,19 +22,17 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the lifecycle policy for the specified repository.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_lifecycle_policy(
+\preformatted{svc$get_lifecycle_policy(
   registryId = "string",
   repositoryName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

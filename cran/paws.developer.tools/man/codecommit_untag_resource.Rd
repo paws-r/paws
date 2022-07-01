@@ -21,15 +21,13 @@ resources in AWS CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/la
 in the \emph{AWS CodeCommit User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$untag_resource(
+\preformatted{svc$untag_resource(
   resourceArn = "string",
   tagKeys = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -25,9 +25,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Route = list(
     DestinationCidrBlock = "string",
     PrefixListId = "string",
@@ -42,23 +40,21 @@ A list with the following syntax:
     State = "pending"|"active"|"blackhole"|"deleting"|"deleted"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Replaces the specified route in the specified transit gateway route
 table.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$replace_transit_gateway_route(
+\preformatted{svc$replace_transit_gateway_route(
   DestinationCidrBlock = "string",
   TransitGatewayRouteTableId = "string",
   TransitGatewayAttachmentId = "string",
   Blackhole = TRUE|FALSE,
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

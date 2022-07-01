@@ -10,9 +10,7 @@ mediastore_describe_container(ContainerName)
 \item{ContainerName}{The name of the container to query.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Container = list(
     Endpoint = "string",
     CreationTime = as.POSIXct(
@@ -24,7 +22,7 @@ A list with the following syntax:
     AccessLoggingEnabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the properties of the requested container. This request is
@@ -37,12 +35,10 @@ single \code{Container} object based on \code{ContainerName}. To return all
 use \code{\link[=mediastore_list_containers]{list_containers}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_container(
+\preformatted{svc$describe_container(
   ContainerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

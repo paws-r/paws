@@ -10,9 +10,7 @@ neptune_delete_event_subscription(SubscriptionName)
 \item{SubscriptionName}{[required] The name of the event notification subscription you want to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventSubscription = list(
     CustomerAwsId = "string",
     CustSubscriptionId = "string",
@@ -30,18 +28,16 @@ A list with the following syntax:
     EventSubscriptionArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an event notification subscription.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_event_subscription(
+\preformatted{svc$delete_event_subscription(
   SubscriptionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

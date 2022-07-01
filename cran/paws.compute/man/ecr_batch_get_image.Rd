@@ -25,9 +25,7 @@ Valid values: \code{application/vnd.docker.distribution.manifest.v1+json} |
 \code{application/vnd.oci.image.manifest.v1+json}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   images = list(
     list(
       registryId = "string",
@@ -51,7 +49,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets detailed information for an image. Images are specified with either
@@ -61,9 +59,7 @@ When an image is pulled, the BatchGetImage API is called once to
 retrieve the image manifest.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_image(
+\preformatted{svc$batch_get_image(
   registryId = "string",
   repositoryName = "string",
   imageIds = list(
@@ -76,7 +72,7 @@ retrieve the image manifest.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

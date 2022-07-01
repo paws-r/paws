@@ -34,12 +34,10 @@ control access to pipelines. For more information, see \href{https://docs.aws.am
 in the \emph{AWS Data Pipeline Developer Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pipelineId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new, empty pipeline. Use
@@ -47,9 +45,7 @@ Creates a new, empty pipeline. Use
 populate the pipeline.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_pipeline(
+\preformatted{svc$create_pipeline(
   name = "string",
   uniqueId = "string",
   description = "string",
@@ -60,7 +56,7 @@ populate the pipeline.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

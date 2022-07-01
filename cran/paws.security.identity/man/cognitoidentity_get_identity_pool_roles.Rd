@@ -10,9 +10,7 @@ cognitoidentity_get_identity_pool_roles(IdentityPoolId)
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IdentityPoolId = "string",
   Roles = list(
     "string"
@@ -34,7 +32,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the roles for an identity pool.
@@ -42,12 +40,10 @@ Gets the roles for an identity pool.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_identity_pool_roles(
+\preformatted{svc$get_identity_pool_roles(
   IdentityPoolId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

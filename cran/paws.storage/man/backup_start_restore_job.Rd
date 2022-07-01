@@ -65,20 +65,16 @@ resources:
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RestoreJobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Recovers the saved resource identified by an Amazon Resource Name (ARN).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_restore_job(
+\preformatted{svc$start_restore_job(
   RecoveryPointArn = "string",
   Metadata = list(
     "string"
@@ -87,7 +83,7 @@ Recovers the saved resource identified by an Amazon Resource Name (ARN).
   IdempotencyToken = "string",
   ResourceType = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

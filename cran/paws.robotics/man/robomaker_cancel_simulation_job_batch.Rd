@@ -18,12 +18,10 @@ you are also cancelling all of the active simulation jobs created as
 part of the batch.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_simulation_job_batch(
+\preformatted{svc$cancel_simulation_job_batch(
   batch = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

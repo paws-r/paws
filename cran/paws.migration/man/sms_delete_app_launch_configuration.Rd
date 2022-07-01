@@ -16,12 +16,10 @@ An empty list.
 Deletes the launch configuration for the specified application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_app_launch_configuration(
+\preformatted{svc$delete_app_launch_configuration(
   appId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

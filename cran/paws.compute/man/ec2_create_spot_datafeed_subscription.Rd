@@ -20,9 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Prefix}{The prefix for the data feed file names.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SpotDatafeedSubscription = list(
     Bucket = "string",
     Fault = list(
@@ -34,7 +32,7 @@ A list with the following syntax:
     State = "Active"|"Inactive"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a data feed for Spot Instances, enabling you to view Spot
@@ -43,14 +41,12 @@ more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_spot_datafeed_subscription(
+\preformatted{svc$create_spot_datafeed_subscription(
   Bucket = "string",
   DryRun = TRUE|FALSE,
   Prefix = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

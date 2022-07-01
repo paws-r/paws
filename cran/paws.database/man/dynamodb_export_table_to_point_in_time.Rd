@@ -50,9 +50,7 @@ export data will be stored (if applicable).}
 \code{DYNAMODB_JSON} or \code{ION}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ExportDescription = list(
     ExportArn = "string",
     ExportStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
@@ -81,7 +79,7 @@ A list with the following syntax:
     ItemCount = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Exports table data to an S3 bucket. The table must have point in time
@@ -89,9 +87,7 @@ recovery enabled, and you can export data from any time within the point
 in time recovery window.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$export_table_to_point_in_time(
+\preformatted{svc$export_table_to_point_in_time(
   TableArn = "string",
   ExportTime = as.POSIXct(
     "2015-01-01"
@@ -104,7 +100,7 @@ in time recovery window.
   S3SseKmsKeyId = "string",
   ExportFormat = "DYNAMODB_JSON"|"ION"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

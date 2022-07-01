@@ -40,9 +40,7 @@ value.
 The default value is \code{NONE}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Listener = list(
     ListenerArn = "string",
     PortRanges = list(
@@ -55,15 +53,13 @@ A list with the following syntax:
     ClientAffinity = "NONE"|"SOURCE_IP"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Update a listener.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_listener(
+\preformatted{svc$update_listener(
   ListenerArn = "string",
   PortRanges = list(
     list(
@@ -74,7 +70,7 @@ Update a listener.
   Protocol = "TCP"|"UDP",
   ClientAffinity = "NONE"|"SOURCE_IP"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

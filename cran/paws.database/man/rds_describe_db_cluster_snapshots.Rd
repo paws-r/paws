@@ -100,9 +100,7 @@ You can share a manual DB cluster snapshot as public by using the
 API action.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   DBClusterSnapshots = list(
     list(
@@ -141,7 +139,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about DB cluster snapshots. This API action supports
@@ -153,9 +151,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_cluster_snapshots(
+\preformatted{svc$describe_db_cluster_snapshots(
   DBClusterIdentifier = "string",
   DBClusterSnapshotIdentifier = "string",
   SnapshotType = "string",
@@ -172,7 +168,7 @@ This action only applies to Aurora DB clusters.
   IncludeShared = TRUE|FALSE,
   IncludePublic = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

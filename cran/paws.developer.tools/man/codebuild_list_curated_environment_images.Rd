@@ -7,9 +7,7 @@
 codebuild_list_curated_environment_images()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   platforms = list(
     list(
       platform = "DEBIAN"|"AMAZON_LINUX"|"UBUNTU"|"WINDOWS_SERVER",
@@ -30,16 +28,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about Docker images that are managed by AWS CodeBuild.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_curated_environment_images()
-}\if{html}{\out{</div>}}
+\preformatted{svc$list_curated_environment_images()
+}
 }
 
 \keyword{internal}

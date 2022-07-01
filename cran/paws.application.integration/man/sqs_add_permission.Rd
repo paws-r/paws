@@ -75,9 +75,7 @@ information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_permission(
+\preformatted{svc$add_permission(
   QueueUrl = "string",
   Label = "string",
   AWSAccountIds = list(
@@ -87,7 +85,7 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

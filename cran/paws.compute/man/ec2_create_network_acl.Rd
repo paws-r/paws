@@ -17,9 +17,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TagSpecifications}{The tags to assign to the network ACL.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NetworkAcl = list(
     Associations = list(
       list(
@@ -58,7 +56,7 @@ A list with the following syntax:
     OwnerId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a network ACL in a VPC. Network ACLs provide an optional layer
@@ -69,9 +67,7 @@ For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide
 Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_network_acl(
+\preformatted{svc$create_network_acl(
   DryRun = TRUE|FALSE,
   VpcId = "string",
   TagSpecifications = list(
@@ -86,7 +82,7 @@ Virtual Private Cloud User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

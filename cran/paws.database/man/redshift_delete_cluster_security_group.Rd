@@ -22,12 +22,10 @@ For information about managing security groups, go to \href{https://docs.aws.ama
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_cluster_security_group(
+\preformatted{svc$delete_cluster_security_group(
   ClusterSecurityGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

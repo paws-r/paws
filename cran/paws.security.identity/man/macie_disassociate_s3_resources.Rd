@@ -15,9 +15,7 @@ want to remove from being monitored by Amazon Macie Classic.}
 being monitored and classified by Amazon Macie Classic.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   failedS3Resources = list(
     list(
       failedItem = list(
@@ -29,7 +27,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes specified S3 resources from being monitored by Amazon Macie
@@ -39,9 +37,7 @@ account. If memberAccountId is specified, the action removes specified
 S3 resources from Macie Classic for the specified member account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_s3_resources(
+\preformatted{svc$disassociate_s3_resources(
   memberAccountId = "string",
   associatedS3Resources = list(
     list(
@@ -50,7 +46,7 @@ S3 resources from Macie Classic for the specified member account.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

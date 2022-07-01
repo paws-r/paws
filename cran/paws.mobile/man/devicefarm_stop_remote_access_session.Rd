@@ -10,9 +10,7 @@ devicefarm_stop_remote_access_session(arn)
 \item{arn}{[required] The Amazon Resource Name (ARN) of the remote access session to stop.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   remoteAccessSession = list(
     arn = "string",
     name = "string",
@@ -96,18 +94,16 @@ A list with the following syntax:
     skipAppResign = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Ends a specified remote access session.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_remote_access_session(
+\preformatted{svc$stop_remote_access_session(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

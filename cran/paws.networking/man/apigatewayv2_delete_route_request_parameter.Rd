@@ -21,14 +21,12 @@ An empty list.
 Deletes a route request parameter.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_route_request_parameter(
+\preformatted{svc$delete_route_request_parameter(
   ApiId = "string",
   RequestParameterKey = "string",
   RouteId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

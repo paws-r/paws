@@ -11,9 +11,7 @@ cognitoidentityprovider_describe_user_pool(UserPoolId)
 \item{UserPoolId}{[required] The user pool ID for the user pool you want to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserPool = list(
     Id = "string",
     Name = "string",
@@ -143,19 +141,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the configuration information and metadata of the specified user
 pool.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_user_pool(
+\preformatted{svc$describe_user_pool(
   UserPoolId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

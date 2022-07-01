@@ -15,24 +15,20 @@ idempotency of the operation. An idempotent operation completes no more
 than one time.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PipelineExecutionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops a pipeline execution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_pipeline_execution(
+\preformatted{svc$stop_pipeline_execution(
   PipelineExecutionArn = "string",
   ClientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -13,9 +13,7 @@ chime_get_user(AccountId, UserId)
 \item{UserId}{[required] The user ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   User = list(
     UserId = "string",
     AccountId = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
     PersonalPIN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves details for the specified user ID, such as primary email
@@ -50,13 +48,11 @@ the \code{\link[=chime_list_users]{list_users}} action, and then filter by email
 address.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_user(
+\preformatted{svc$get_user(
   AccountId = "string",
   UserId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

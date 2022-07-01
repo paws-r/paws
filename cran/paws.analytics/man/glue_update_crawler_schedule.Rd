@@ -21,13 +21,11 @@ An empty list.
 Updates the schedule of a crawler using a \code{cron} expression.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_crawler_schedule(
+\preformatted{svc$update_crawler_schedule(
   CrawlerName = "string",
   Schedule = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

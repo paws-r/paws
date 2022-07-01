@@ -55,9 +55,7 @@ properties. Catalogs created are visible to all users of the same AWS
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_data_catalog(
+\preformatted{svc$create_data_catalog(
   Name = "string",
   Type = "LAMBDA"|"GLUE"|"HIVE",
   Description = "string",
@@ -71,7 +69,7 @@ account.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

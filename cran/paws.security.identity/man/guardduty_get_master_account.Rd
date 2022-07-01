@@ -11,9 +11,7 @@ guardduty_get_master_account(DetectorId)
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Master = list(
     AccountId = "string",
     InvitationId = "string",
@@ -21,19 +19,17 @@ A list with the following syntax:
     InvitedAt = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides the details for the GuardDuty administrator account associated
 with the current GuardDuty member account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_master_account(
+\preformatted{svc$get_master_account(
   DetectorId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

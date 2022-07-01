@@ -27,15 +27,13 @@ layer.}
 \item{layerPartBlob}{[required] The base64-encoded layer part payload.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   registryId = "string",
   repositoryName = "string",
   uploadId = "string",
   lastByteReceived = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Uploads an image layer part to Amazon ECR.
@@ -50,9 +48,7 @@ by customers for pulling and pushing images. In most cases, you should
 use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$upload_layer_part(
+\preformatted{svc$upload_layer_part(
   registryId = "string",
   repositoryName = "string",
   uploadId = "string",
@@ -60,7 +56,7 @@ use the \code{docker} CLI to pull, tag, and push images.
   partLastByte = 123,
   layerPartBlob = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

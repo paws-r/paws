@@ -14,9 +14,7 @@ ssm_get_maintenance_window_execution_task(WindowExecutionId, TaskId)
 that should be retrieved.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   WindowExecutionId = "string",
   TaskExecutionId = "string",
   TaskArn = "string",
@@ -43,20 +41,18 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the details about a specific task run as part of a maintenance
 window execution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_maintenance_window_execution_task(
+\preformatted{svc$get_maintenance_window_execution_task(
   WindowExecutionId = "string",
   TaskId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,14 +15,12 @@ value to use as \code{logRecordPointer} to retrieve that complete log event
 record.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   logRecord = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves all of the fields and values of a single log event. All fields
@@ -33,12 +31,10 @@ returned as field name/field value pairs.
 The full unparsed log event is returned within \verb{@message}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_log_record(
+\preformatted{svc$get_log_record(
   logRecordPointer = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

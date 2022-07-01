@@ -10,12 +10,10 @@ sagemaker_get_model_package_group_policy(ModelPackageGroupName)
 \item{ModelPackageGroupName}{[required] The name of the model group for which to get the resource policy.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourcePolicy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a resource policy that manages access for a model group. For
@@ -23,12 +21,10 @@ information about resource policies, see \href{https://docs.aws.amazon.com/IAM/l
 in the \emph{AWS Identity and Access Management User Guide.}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_model_package_group_policy(
+\preformatted{svc$get_model_package_group_policy(
   ModelPackageGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

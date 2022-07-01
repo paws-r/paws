@@ -19,9 +19,7 @@ the previous response to continue listing data.}
 in the response. The default value is 250.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   s3Resources = list(
     list(
       bucketName = "string",
@@ -34,7 +32,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all the S3 resources associated with Amazon Macie Classic. If
@@ -44,14 +42,12 @@ memberAccountId is specified, the action lists the S3 resources
 associated with Amazon Macie Classic for the specified member account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_s3_resources(
+\preformatted{svc$list_s3_resources(
   memberAccountId = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

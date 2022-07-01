@@ -11,9 +11,7 @@ glue_batch_get_crawlers(CrawlerNames)
 \code{\link[=glue_list_crawlers]{list_crawlers}} operation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Crawlers = list(
     list(
       Name = "string",
@@ -107,7 +105,7 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of resource metadata for a given list of crawler names.
@@ -117,14 +115,12 @@ granted permissions. This operation supports all IAM permissions,
 including permission conditions that uses tags.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_crawlers(
+\preformatted{svc$batch_get_crawlers(
   CrawlerNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

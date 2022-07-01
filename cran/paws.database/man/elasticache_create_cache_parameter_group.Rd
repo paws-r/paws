@@ -20,9 +20,7 @@ Valid values are: \code{memcached1.4} | \code{memcached1.5} | \code{memcached1.6
 \item{Description}{[required] A user-specified description for the cache parameter group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CacheParameterGroup = list(
     CacheParameterGroupName = "string",
     CacheParameterGroupFamily = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Amazon ElastiCache cache parameter group. An ElastiCache
@@ -51,14 +49,12 @@ in the ElastiCache User Guide.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cache_parameter_group(
+\preformatted{svc$create_cache_parameter_group(
   CacheParameterGroupName = "string",
   CacheParameterGroupFamily = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

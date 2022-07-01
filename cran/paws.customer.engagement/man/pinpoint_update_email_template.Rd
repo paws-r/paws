@@ -49,24 +49,20 @@ of the template.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MessageBody = list(
     Message = "string",
     RequestID = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing message template for messages that are sent through
 the email channel.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_email_template(
+\preformatted{svc$update_email_template(
   CreateNewVersion = TRUE|FALSE,
   EmailTemplateRequest = list(
     DefaultSubstitutions = "string",
@@ -82,7 +78,7 @@ the email channel.
   TemplateName = "string",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

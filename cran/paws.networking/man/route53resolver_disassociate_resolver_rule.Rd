@@ -14,9 +14,7 @@ route53resolver_disassociate_resolver_rule(VPCId, ResolverRuleId)
 specified VPC.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResolverRuleAssociation = list(
     Id = "string",
     ResolverRuleId = "string",
@@ -26,7 +24,7 @@ A list with the following syntax:
     StatusMessage = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes the association between a specified Resolver rule and a
@@ -37,13 +35,11 @@ forwarding DNS queries for the domain name that you specified in the
 Resolver rule.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_resolver_rule(
+\preformatted{svc$disassociate_resolver_rule(
   VPCId = "string",
   ResolverRuleId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

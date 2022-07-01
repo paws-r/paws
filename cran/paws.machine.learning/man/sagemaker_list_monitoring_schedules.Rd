@@ -48,9 +48,7 @@ definition.}
 monitoring type.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MonitoringScheduleSummaries = list(
     list(
       MonitoringScheduleName = "string",
@@ -69,15 +67,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns list of all monitoring schedules.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_monitoring_schedules(
+\preformatted{svc$list_monitoring_schedules(
   EndpointName = "string",
   SortBy = "Name"|"CreationTime"|"Status",
   SortOrder = "Ascending"|"Descending",
@@ -100,7 +96,7 @@ Returns list of all monitoring schedules.
   MonitoringJobDefinitionName = "string",
   MonitoringTypeEquals = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -24,12 +24,10 @@ before submitting a \code{\link[=batch_delete_job_queue]{delete_job_queue}}
 request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_job_queue(
+\preformatted{svc$delete_job_queue(
   jobQueue = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

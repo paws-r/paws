@@ -46,16 +46,14 @@ An empty list.
 Deletes a job execution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_job_execution(
+\preformatted{svc$delete_job_execution(
   jobId = "string",
   thingName = "string",
   executionNumber = 123,
   force = TRUE|FALSE,
   namespaceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

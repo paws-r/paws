@@ -17,9 +17,7 @@ value of nextToken from the previous response to continue listing data.}
 in the response. The default value is 250.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   memberAccounts = list(
     list(
       accountId = "string"
@@ -27,20 +25,18 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all Amazon Macie Classic member accounts for the current Amazon
 Macie Classic master account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_member_accounts(
+\preformatted{svc$list_member_accounts(
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,9 +10,7 @@ robomaker_describe_deployment_job(job)
 \item{job}{[required] The Amazon Resource Name (ARN) of the deployment job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   arn = "string",
   fleet = "string",
   status = "Pending"|"Preparing"|"InProgress"|"Failed"|"Succeeded"|"Canceled",
@@ -70,18 +68,16 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a deployment job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_deployment_job(
+\preformatted{svc$describe_deployment_job(
   job = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

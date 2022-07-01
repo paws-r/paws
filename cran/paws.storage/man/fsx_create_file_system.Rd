@@ -75,9 +75,7 @@ later requests to describe the file system.}
 \item{LustreConfiguration}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FileSystem = list(
     OwnerId = "string",
     CreationTime = as.POSIXct(
@@ -173,7 +171,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new, empty Amazon FSx file system.
@@ -210,9 +208,7 @@ file-system creation status by calling the
 returns the file system state along with other information.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_file_system(
+\preformatted{svc$create_file_system(
   ClientRequestToken = "string",
   FileSystemType = "WINDOWS"|"LUSTRE",
   StorageCapacity = 123,
@@ -267,7 +263,7 @@ returns the file system state along with other information.
     DriveCacheType = "NONE"|"READ"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

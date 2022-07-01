@@ -27,9 +27,7 @@ null. You can tag a trail that applies to all AWS Regions only from the
 Region in which the trail was created (also known as its home region).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags(
+\preformatted{svc$add_tags(
   ResourceId = "string",
   TagsList = list(
     list(
@@ -38,7 +36,7 @@ Region in which the trail was created (also known as its home region).
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

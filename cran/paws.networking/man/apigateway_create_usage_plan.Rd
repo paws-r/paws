@@ -24,9 +24,7 @@ apigateway_create_usage_plan(name, description, apiStages, throttle,
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   name = "string",
   description = "string",
@@ -56,16 +54,14 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a usage plan with the throttle and quota limits, as well as the
 associated API stages, specified in the payload.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_usage_plan(
+\preformatted{svc$create_usage_plan(
   name = "string",
   description = "string",
   apiStages = list(
@@ -93,7 +89,7 @@ associated API stages, specified in the payload.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

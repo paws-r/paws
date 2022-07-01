@@ -21,9 +21,7 @@ determine the alarm state.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -48,7 +46,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Tests an alarm by displaying a banner on the Amazon Lightsail console.
@@ -62,13 +60,11 @@ text message, and a banner displayed on the Amazon Lightsail console.
 For more information, see Alarms in Amazon Lightsail.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$test_alarm(
+\preformatted{svc$test_alarm(
   alarmName = "string",
   state = "OK"|"ALARM"|"INSUFFICIENT_DATA"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

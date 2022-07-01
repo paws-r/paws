@@ -16,28 +16,24 @@ results.}
 \item{status}{The status of the bulk thing provisioning task.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   taskIds = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List bulk thing provisioning tasks.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_thing_registration_tasks(
+\preformatted{svc$list_thing_registration_tasks(
   nextToken = "string",
   maxResults = 123,
   status = "InProgress"|"Completed"|"Failed"|"Cancelled"|"Cancelling"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

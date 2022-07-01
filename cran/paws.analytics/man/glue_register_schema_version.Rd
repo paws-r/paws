@@ -21,14 +21,12 @@ provided.
 \code{SchemaName}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SchemaVersionId = "string",
   VersionNumber = 123,
   Status = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a new version to the existing schema. Returns an error if new
@@ -48,9 +46,7 @@ If the same schema definition is already stored in Schema Registry as a
 version, the schema ID of the existing schema is returned to the caller.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_schema_version(
+\preformatted{svc$register_schema_version(
   SchemaId = list(
     SchemaArn = "string",
     SchemaName = "string",
@@ -58,7 +54,7 @@ version, the schema ID of the existing schema is returned to the caller.
   ),
   SchemaDefinition = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,9 +15,7 @@ eks_update_cluster_version(name, version, clientRequestToken)
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   update = list(
     id = "string",
     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
@@ -42,7 +40,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an Amazon EKS cluster to the specified Kubernetes version. Your
@@ -61,14 +59,12 @@ groups’ Kubernetes versions must match the cluster’s Kubernetes version
 in order to update the cluster to a new Kubernetes version.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_cluster_version(
+\preformatted{svc$update_cluster_version(
   name = "string",
   version = "string",
   clientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

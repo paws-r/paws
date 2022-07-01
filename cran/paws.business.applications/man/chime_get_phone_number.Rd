@@ -11,9 +11,7 @@ chime_get_phone_number(PhoneNumberId)
 \item{PhoneNumberId}{[required] The phone number ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PhoneNumber = list(
     PhoneNumberId = "string",
     E164PhoneNumber = "string",
@@ -50,19 +48,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves details for the specified phone number ID, such as
 associations, capabilities, and product type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_phone_number(
+\preformatted{svc$get_phone_number(
   PhoneNumberId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

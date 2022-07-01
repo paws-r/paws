@@ -10,14 +10,12 @@ lambda_list_tags(Resource)
 \item{Resource}{[required] The function's Amazon Resource Name (ARN).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a function's
@@ -25,12 +23,10 @@ Returns a function's
 You can also view tags with \code{\link[=lambda_get_function]{get_function}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags(
+\preformatted{svc$list_tags(
   Resource = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

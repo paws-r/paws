@@ -15,25 +15,21 @@ actually making the request. Provides an error response if you do not
 have the required permissions.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LicenseConsumptionToken = "string",
   Expiration = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Extends the expiration date for license consumption.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$extend_license_consumption(
+\preformatted{svc$extend_license_consumption(
   LicenseConsumptionToken = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

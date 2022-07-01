@@ -37,9 +37,7 @@ and 1000. If this parameter is not used, then
 returns up to 100 results and a \code{nextToken} value, if applicable.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   registryId = "string",
   repositoryName = "string",
   imageId = list(
@@ -77,15 +75,13 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the scan findings for the specified image.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_image_scan_findings(
+\preformatted{svc$describe_image_scan_findings(
   registryId = "string",
   repositoryName = "string",
   imageId = list(
@@ -95,7 +91,7 @@ Returns the scan findings for the specified image.
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

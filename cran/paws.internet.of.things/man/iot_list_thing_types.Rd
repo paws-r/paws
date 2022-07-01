@@ -16,9 +16,7 @@ results.}
 \item{thingTypeName}{The name of the thing type.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   thingTypes = list(
     list(
       thingTypeName = "string",
@@ -42,20 +40,18 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the existing thing types.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_thing_types(
+\preformatted{svc$list_thing_types(
   nextToken = "string",
   maxResults = 123,
   thingTypeName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

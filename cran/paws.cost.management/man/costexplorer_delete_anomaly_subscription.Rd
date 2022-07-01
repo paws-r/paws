@@ -17,12 +17,10 @@ An empty list.
 Deletes a cost anomaly subscription.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_anomaly_subscription(
+\preformatted{svc$delete_anomaly_subscription(
   SubscriptionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

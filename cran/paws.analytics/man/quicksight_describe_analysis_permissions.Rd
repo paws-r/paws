@@ -15,9 +15,7 @@ is in.}
 part of the analysis URL.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AnalysisId = "string",
   AnalysisArn = "string",
   Permissions = list(
@@ -31,19 +29,17 @@ A list with the following syntax:
   Status = 123,
   RequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides the read and write permissions for an analysis.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_analysis_permissions(
+\preformatted{svc$describe_analysis_permissions(
   AwsAccountId = "string",
   AnalysisId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

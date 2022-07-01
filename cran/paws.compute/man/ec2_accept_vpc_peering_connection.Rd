@@ -16,9 +16,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 the request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VpcPeeringConnection = list(
     AccepterVpcInfo = list(
       CidrBlock = "string",
@@ -78,7 +76,7 @@ A list with the following syntax:
     VpcPeeringConnectionId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Accept a VPC peering connection request. To accept a request, the VPC
@@ -91,13 +89,11 @@ For an inter-Region VPC peering connection request, you must accept the
 VPC peering connection in the Region of the accepter VPC.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$accept_vpc_peering_connection(
+\preformatted{svc$accept_vpc_peering_connection(
   DryRun = TRUE|FALSE,
   VpcPeeringConnectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

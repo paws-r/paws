@@ -26,21 +26,17 @@ For the cli-input-json file use format: "tags":
 "key1=value1&key2=value2..."}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   roleAlias = "string",
   roleAliasArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a role alias.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_role_alias(
+\preformatted{svc$create_role_alias(
   roleAlias = "string",
   roleArn = "string",
   credentialDurationSeconds = 123,
@@ -51,7 +47,7 @@ Creates a role alias.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

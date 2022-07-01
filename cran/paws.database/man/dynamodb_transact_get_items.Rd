@@ -17,9 +17,7 @@ and a value of \code{NONE} prevents that information from being returned. No
 other value is valid.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConsumedCapacity = list(
     list(
       TableName = "string",
@@ -76,7 +74,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 \code{\link[=dynamodb_transact_get_items]{transact_get_items}} is a synchronous
@@ -104,9 +102,7 @@ MB.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$transact_get_items(
+\preformatted{svc$transact_get_items(
   TransactItems = list(
     list(
       Get = list(
@@ -144,7 +140,7 @@ MB.
   ),
   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

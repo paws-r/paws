@@ -11,9 +11,7 @@ cloudfront_create_cloud_front_origin_access_identity(
 \item{CloudFrontOriginAccessIdentityConfig}{[required] The current configuration information for the identity.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CloudFrontOriginAccessIdentity = list(
     Id = "string",
     S3CanonicalUserId = "string",
@@ -25,7 +23,7 @@ A list with the following syntax:
   Location = "string",
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new origin access identity. If you're using Amazon S3 for your
@@ -35,15 +33,13 @@ more information about how to use origin access identities, see \href{https://do
 in the \emph{Amazon CloudFront Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cloud_front_origin_access_identity(
+\preformatted{svc$create_cloud_front_origin_access_identity(
   CloudFrontOriginAccessIdentityConfig = list(
     CallerReference = "string",
     Comment = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

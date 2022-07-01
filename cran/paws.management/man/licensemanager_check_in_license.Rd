@@ -19,13 +19,11 @@ Checks in the specified license. Check in a license when it is no longer
 in use.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$check_in_license(
+\preformatted{svc$check_in_license(
   LicenseConsumptionToken = "string",
   Beneficiary = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

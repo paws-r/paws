@@ -15,9 +15,7 @@ up of schedule expressions, for example, "cron(30 12 *)" or "rate(12
 hours)".}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ScheduleDefinitions = list(
     "string"
   ),
@@ -42,22 +40,20 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies a snapshot schedule. Any schedule associated with a cluster is
 modified asynchronously.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_snapshot_schedule(
+\preformatted{svc$modify_snapshot_schedule(
   ScheduleIdentifier = "string",
   ScheduleDefinitions = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

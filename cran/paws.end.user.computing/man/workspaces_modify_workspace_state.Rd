@@ -24,13 +24,11 @@ WorkSpace in this state is not stopped. Users cannot log into a
 WorkSpace in the \code{ADMIN_MAINTENANCE} state.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_workspace_state(
+\preformatted{svc$modify_workspace_state(
   WorkspaceId = "string",
   WorkspaceState = "AVAILABLE"|"ADMIN_MAINTENANCE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ configservice_put_remediation_configurations(RemediationConfigurations)
 \item{RemediationConfigurations}{[required] A list of remediation configuration objects.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FailedBatches = list(
     list(
       FailureMessage = "string",
@@ -52,7 +50,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds or updates the remediation configuration with a specific AWS Config
@@ -71,9 +69,7 @@ rules deployed by conformance packs, and rules deployed by AWS Security
 Hub.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_remediation_configurations(
+\preformatted{svc$put_remediation_configurations(
   RemediationConfigurations = list(
     list(
       ConfigRuleName = "string",
@@ -107,7 +103,7 @@ Hub.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

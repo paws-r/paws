@@ -21,13 +21,11 @@ Resets all authorizer cache entries on a stage. Supported only for HTTP
 APIs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reset_authorizers_cache(
+\preformatted{svc$reset_authorizers_cache(
   ApiId = "string",
   StageName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

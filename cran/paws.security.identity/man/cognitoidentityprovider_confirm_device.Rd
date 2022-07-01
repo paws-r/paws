@@ -17,21 +17,17 @@ cognitoidentityprovider_confirm_device(AccessToken, DeviceKey,
 \item{DeviceName}{The device name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserConfirmationNecessary = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Confirms tracking of the device. This API call is the call that begins
 device tracking.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$confirm_device(
+\preformatted{svc$confirm_device(
   AccessToken = "string",
   DeviceKey = "string",
   DeviceSecretVerifierConfig = list(
@@ -40,7 +36,7 @@ device tracking.
   ),
   DeviceName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ comprehend_describe_document_classification_job(JobId)
 operation returns this identifier in its response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DocumentClassificationJobProperties = list(
     JobId = "string",
     JobName = "string",
@@ -46,19 +44,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the properties associated with a document classification job. Use
 this operation to get the status of a classification job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_document_classification_job(
+\preformatted{svc$describe_document_classification_job(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

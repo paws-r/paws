@@ -66,9 +66,7 @@ object versions.) For more information, see \href{https://docs.aws.amazon.com/Am
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_versioning(
+\preformatted{svc$put_bucket_versioning(
   Bucket = "string",
   ContentMD5 = "string",
   MFA = "string",
@@ -78,7 +76,7 @@ object versions.) For more information, see \href{https://docs.aws.amazon.com/Am
   ),
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

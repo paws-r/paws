@@ -12,9 +12,7 @@ emr_list_instance_fleets(ClusterId, Marker)
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceFleets = list(
     list(
       Id = "string",
@@ -85,7 +83,7 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all available details about the instance fleets in a cluster.
@@ -94,13 +92,11 @@ The instance fleet configuration is available only in Amazon EMR
 versions 4.8.0 and later, excluding 5.0.x versions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_instance_fleets(
+\preformatted{svc$list_instance_fleets(
   ClusterId = "string",
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

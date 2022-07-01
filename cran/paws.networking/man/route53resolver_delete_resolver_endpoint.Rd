@@ -10,9 +10,7 @@ route53resolver_delete_resolver_endpoint(ResolverEndpointId)
 \item{ResolverEndpointId}{[required] The ID of the Resolver endpoint that you want to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResolverEndpoint = list(
     Id = "string",
     CreatorRequestId = "string",
@@ -30,7 +28,7 @@ A list with the following syntax:
     ModificationTime = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a Resolver endpoint. The effect of deleting a Resolver endpoint
@@ -43,12 +41,10 @@ network.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resolver_endpoint(
+\preformatted{svc$delete_resolver_endpoint(
   ResolverEndpointId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

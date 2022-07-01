@@ -18,14 +18,12 @@ Deletes a list of applications and their associations with configuration
 items.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_applications(
+\preformatted{svc$delete_applications(
   configurationIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

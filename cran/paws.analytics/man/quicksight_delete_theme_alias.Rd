@@ -15,16 +15,14 @@ quicksight_delete_theme_alias(AwsAccountId, ThemeId, AliasName)
 \item{AliasName}{[required] The unique name for the theme alias to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AliasName = "string",
   Arn = "string",
   RequestId = "string",
   Status = 123,
   ThemeId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the version of the theme that the specified theme alias points
@@ -32,14 +30,12 @@ to. If you provide a specific alias, you delete the version of the theme
 that the alias points to.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_theme_alias(
+\preformatted{svc$delete_theme_alias(
   AwsAccountId = "string",
   ThemeId = "string",
   AliasName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

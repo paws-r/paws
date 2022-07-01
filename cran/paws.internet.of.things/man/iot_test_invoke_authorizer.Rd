@@ -23,9 +23,7 @@ service's private key. This value must be Base-64-encoded.}
 \item{tlsContext}{Specifies a test TLS authorization request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   isAuthenticated = TRUE|FALSE,
   principalId = "string",
   policyDocuments = list(
@@ -34,7 +32,7 @@ A list with the following syntax:
   refreshAfterInSeconds = 123,
   disconnectAfterInSeconds = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Tests a custom authorization behavior by invoking a specified custom
@@ -42,9 +40,7 @@ authorizer. Use this to test and debug the custom authorization behavior
 of devices that connect to the AWS IoT device gateway.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$test_invoke_authorizer(
+\preformatted{svc$test_invoke_authorizer(
   authorizerName = "string",
   token = "string",
   tokenSignature = "string",
@@ -63,7 +59,7 @@ of devices that connect to the AWS IoT device gateway.
     serverName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

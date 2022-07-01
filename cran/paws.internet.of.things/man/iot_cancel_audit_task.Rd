@@ -19,12 +19,10 @@ or on demand. If the audit isn't in progress, an
 "InvalidRequestException" occurs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_audit_task(
+\preformatted{svc$cancel_audit_task(
   taskId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,25 +16,21 @@ is created.}
 \code{room}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Amazon WorkMail resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_resource(
+\preformatted{svc$create_resource(
   OrganizationId = "string",
   Name = "string",
   Type = "ROOM"|"EQUIPMENT"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

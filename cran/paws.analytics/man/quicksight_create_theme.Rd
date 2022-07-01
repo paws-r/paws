@@ -34,9 +34,7 @@ version in the \code{VersionDescription} field.}
 to add to the resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   VersionArn = "string",
   ThemeId = "string",
@@ -44,7 +42,7 @@ A list with the following syntax:
   Status = 123,
   RequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a theme.
@@ -54,9 +52,7 @@ apply to analyses and dashboards. For more information, see \href{https://docs.a
 in the \emph{Amazon QuickSight User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_theme(
+\preformatted{svc$create_theme(
   AwsAccountId = "string",
   ThemeId = "string",
   Name = "string",
@@ -121,7 +117,7 @@ in the \emph{Amazon QuickSight User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -35,15 +35,13 @@ Once the user has set a new password, or the password is permanent, the
 user status will be set to \code{Confirmed}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_set_user_password(
+\preformatted{svc$admin_set_user_password(
   UserPoolId = "string",
   Username = "string",
   Password = "string",
   Permanent = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -28,9 +28,7 @@ Currently, only OpenAPI definition JSON/YAML files are supported. The
 maximum size of the API definition file is 6MB.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   name = "string",
   description = "string",
@@ -60,7 +58,7 @@ A list with the following syntax:
   ),
   disableExecuteApiEndpoint = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 A feature of the API Gateway control service for updating an existing
@@ -69,9 +67,7 @@ form of merging the supplied definition into the existing API or
 overwriting the existing API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_rest_api(
+\preformatted{svc$put_rest_api(
   restApiId = "string",
   mode = "merge"|"overwrite",
   failOnWarnings = TRUE|FALSE,
@@ -80,7 +76,7 @@ overwriting the existing API.
   ),
   body = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

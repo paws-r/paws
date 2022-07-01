@@ -35,9 +35,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LocalGateways = list(
     list(
       LocalGatewayId = "string",
@@ -54,16 +52,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more local gateways. By default, all local gateways are
 described. Alternatively, you can filter the results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_local_gateways(
+\preformatted{svc$describe_local_gateways(
   LocalGatewayIds = list(
     "string"
   ),
@@ -79,7 +75,7 @@ described. Alternatively, you can filter the results.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

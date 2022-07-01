@@ -33,9 +33,7 @@ key, the results are returned in alphabetical order. If you choose the
 time key, the results are sorted numerically by the date and time.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
   JobCreationDate = as.POSIXct(
     "2015-01-01"
@@ -64,7 +62,7 @@ A list with the following syntax:
     Code = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the service last accessed data report for AWS Organizations
@@ -94,15 +92,13 @@ it failed.
 By default, the list is sorted by service namespace.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_organizations_access_report(
+\preformatted{svc$get_organizations_access_report(
   JobId = "string",
   MaxItems = 123,
   Marker = "string",
   SortKey = "SERVICE_NAMESPACE_ASCENDING"|"SERVICE_NAMESPACE_DESCENDING"|"LAST_AUTHENTICATED_TIME_ASCENDING"|"LAST_AUTHENTICATED_TIME_DESCENDING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

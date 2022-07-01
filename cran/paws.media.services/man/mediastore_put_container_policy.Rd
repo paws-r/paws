@@ -30,13 +30,11 @@ container. If you enter
 second command modifies the existing policy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_container_policy(
+\preformatted{svc$put_container_policy(
   ContainerName = "string",
   Policy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

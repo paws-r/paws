@@ -10,9 +10,7 @@ configservice_describe_delivery_channel_status(DeliveryChannelNames)
 \item{DeliveryChannelNames}{A list of delivery channel names.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DeliveryChannelsStatus = list(
     list(
       name = "string",
@@ -55,7 +53,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the current status of the specified delivery channel. If a
@@ -66,14 +64,12 @@ Currently, you can specify only one delivery channel per region in your
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_delivery_channel_status(
+\preformatted{svc$describe_delivery_channel_status(
   DeliveryChannelNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

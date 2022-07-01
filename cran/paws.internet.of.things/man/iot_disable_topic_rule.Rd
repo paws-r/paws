@@ -16,12 +16,10 @@ An empty list.
 Disables the rule.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_topic_rule(
+\preformatted{svc$disable_topic_rule(
   ruleName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

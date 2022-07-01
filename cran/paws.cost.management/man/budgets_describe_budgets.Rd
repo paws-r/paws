@@ -17,9 +17,7 @@ response contains. The maximum is 100.}
 next set of results that you want to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Budgets = list(
     list(
       BudgetName = "string",
@@ -78,7 +76,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the budgets that are associated with an account.
@@ -89,14 +87,12 @@ The Request Syntax section shows the \code{BudgetLimit} syntax. For
 section.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_budgets(
+\preformatted{svc$describe_budgets(
   AccountId = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

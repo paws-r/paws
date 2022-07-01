@@ -21,9 +21,7 @@ An empty list.
 Updates a connection definition in the Data Catalog.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_connection(
+\preformatted{svc$update_connection(
   CatalogId = "string",
   Name = "string",
   ConnectionInput = list(
@@ -45,7 +43,7 @@ Updates a connection definition in the Data Catalog.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

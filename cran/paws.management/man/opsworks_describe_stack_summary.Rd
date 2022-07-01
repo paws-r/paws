@@ -11,9 +11,7 @@ opsworks_describe_stack_summary(StackId)
 \item{StackId}{[required] The stack ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StackSummary = list(
     StackId = "string",
     Name = "string",
@@ -44,7 +42,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the number of layers and apps in a specified stack, and the
@@ -56,12 +54,10 @@ policy that explicitly grants permissions. For more information about
 user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_stack_summary(
+\preformatted{svc$describe_stack_summary(
   StackId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,26 +15,22 @@ elasticsearchservice_purchase_reserved_elasticsearch_instance_offering(
 \item{InstanceCount}{The number of Elasticsearch instances to reserve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReservedElasticsearchInstanceId = "string",
   ReservationName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Allows you to purchase reserved Elasticsearch instances.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$purchase_reserved_elasticsearch_instance_offering(
+\preformatted{svc$purchase_reserved_elasticsearch_instance_offering(
   ReservedElasticsearchInstanceOfferingId = "string",
   ReservationName = "string",
   InstanceCount = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

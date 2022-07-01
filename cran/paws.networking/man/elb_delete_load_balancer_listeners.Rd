@@ -18,15 +18,13 @@ An empty list.
 Deletes the specified listeners from the specified load balancer.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_load_balancer_listeners(
+\preformatted{svc$delete_load_balancer_listeners(
   LoadBalancerName = "string",
   LoadBalancerPorts = list(
     123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

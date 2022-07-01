@@ -11,9 +11,7 @@ elbv2_describe_load_balancer_attributes(LoadBalancerArn)
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attributes = list(
     list(
       Key = "string",
@@ -21,7 +19,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the attributes for the specified Application Load Balancer,
@@ -38,12 +36,10 @@ in the \emph{Gateway Load Balancers Guide}
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_load_balancer_attributes(
+\preformatted{svc$describe_load_balancer_attributes(
   LoadBalancerArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

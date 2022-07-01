@@ -36,13 +36,11 @@ certificate to connect. Devices cannot use a certificate that is not in
 the ACTIVE state to reconnect.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_certificate(
+\preformatted{svc$update_certificate(
   certificateId = "string",
   newStatus = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,9 +10,7 @@ iot_describe_audit_task(taskId)
 \item{taskId}{[required] The ID of the audit whose information you want to get.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   taskStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED",
   taskType = "ON_DEMAND_AUDIT_TASK"|"SCHEDULED_AUDIT_TASK",
   taskStartTime = as.POSIXct(
@@ -40,18 +38,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a Device Defender audit.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_audit_task(
+\preformatted{svc$describe_audit_task(
   taskId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

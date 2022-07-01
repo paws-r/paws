@@ -27,9 +27,7 @@ confidence values greater than or equal to 50 percent.}
 FlowDefinition the image will be sent to.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ModerationLabels = list(
     list(
       Confidence = 123.0,
@@ -46,7 +44,7 @@ A list with the following syntax:
     HumanLoopActivationConditionsEvaluationResults = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Detects unsafe content in a specified JPEG or PNG format image. Use
@@ -68,9 +66,7 @@ call Amazon Rekognition operations, passing image bytes is not
 supported. The image must be either a PNG or JPEG formatted file.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detect_moderation_labels(
+\preformatted{svc$detect_moderation_labels(
   Image = list(
     Bytes = raw,
     S3Object = list(
@@ -90,7 +86,7 @@ supported. The image must be either a PNG or JPEG formatted file.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

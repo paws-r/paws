@@ -14,28 +14,24 @@ to retrieve information.}
 \item{branchName}{The name of the branch for which you want to retrieve information.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   branch = list(
     branchName = "string",
     commitId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a repository branch, including its name and
 the last commit ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_branch(
+\preformatted{svc$get_branch(
   repositoryName = "string",
   branchName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

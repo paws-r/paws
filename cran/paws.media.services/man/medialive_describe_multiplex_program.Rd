@@ -12,9 +12,7 @@ medialive_describe_multiplex_program(MultiplexId, ProgramName)
 \item{ProgramName}{[required] The name of the program.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelId = "string",
   MultiplexProgramSettings = list(
     PreferredChannelPipeline = "CURRENTLY_ACTIVE"|"PIPELINE_0"|"PIPELINE_1",
@@ -63,19 +61,17 @@ A list with the following syntax:
   ),
   ProgramName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Get the details for a program in a multiplex.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_multiplex_program(
+\preformatted{svc$describe_multiplex_program(
   MultiplexId = "string",
   ProgramName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

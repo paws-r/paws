@@ -14,26 +14,22 @@ assumed.}
 \item{repositoryName}{[required] The name of the repository with the policy to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   registryId = "string",
   repositoryName = "string",
   policyText = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the repository policy for the specified repository.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_repository_policy(
+\preformatted{svc$get_repository_policy(
   registryId = "string",
   repositoryName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

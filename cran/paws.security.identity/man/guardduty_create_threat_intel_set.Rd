@@ -28,12 +28,10 @@ uploaded ThreatIntelSet.}
 \item{Tags}{The tags to be added to a new threat list resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ThreatIntelSetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious
@@ -41,9 +39,7 @@ IP addresses. GuardDuty generates findings based on ThreatIntelSets.
 Only users of the administrator account can use this operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_threat_intel_set(
+\preformatted{svc$create_threat_intel_set(
   DetectorId = "string",
   Name = "string",
   Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
@@ -54,7 +50,7 @@ Only users of the administrator account can use this operation.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

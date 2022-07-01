@@ -11,24 +11,20 @@ chime_update_channel_read_marker(ChannelArn)
 \item{ChannelArn}{[required] The ARN of the channel.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sets the timestamp to the point when a user last read messages in a
 channel.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_channel_read_marker(
+\preformatted{svc$update_channel_read_marker(
   ChannelArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

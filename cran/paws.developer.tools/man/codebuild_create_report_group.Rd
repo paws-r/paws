@@ -20,9 +20,7 @@ These tags are available for use by AWS services that support AWS
 CodeBuild report group tags.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   reportGroup = list(
     arn = "string",
     name = "string",
@@ -52,15 +50,13 @@ A list with the following syntax:
     status = "ACTIVE"|"DELETING"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a report group. A report group contains a collection of reports.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_report_group(
+\preformatted{svc$create_report_group(
   name = "string",
   type = "TEST"|"CODE_COVERAGE",
   exportConfig = list(
@@ -80,7 +76,7 @@ Creates a report group. A report group contains a collection of reports.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

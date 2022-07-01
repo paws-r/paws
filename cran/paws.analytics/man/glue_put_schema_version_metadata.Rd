@@ -17,9 +17,7 @@ glue_put_schema_version_metadata(SchemaId, SchemaVersionNumber,
 \item{MetadataKeyValue}{[required] The metadata key's corresponding value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SchemaArn = "string",
   SchemaName = "string",
   RegistryName = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
   MetadataKey = "string",
   MetadataValue = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Puts the metadata key value pair for a specified schema version ID. A
@@ -37,9 +35,7 @@ maximum of 10 key value pairs will be allowed per schema version. They
 can be added over one or more calls.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_schema_version_metadata(
+\preformatted{svc$put_schema_version_metadata(
   SchemaId = list(
     SchemaArn = "string",
     SchemaName = "string",
@@ -55,7 +51,7 @@ can be added over one or more calls.
     MetadataValue = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

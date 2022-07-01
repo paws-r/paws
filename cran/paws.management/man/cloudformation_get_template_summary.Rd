@@ -38,9 +38,7 @@ Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Parameters = list(
     list(
       ParameterKey = "string",
@@ -80,7 +78,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a new or existing template. The
@@ -101,15 +99,13 @@ deleted. If the template does not exist, a \code{ValidationError} is
 returned.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_template_summary(
+\preformatted{svc$get_template_summary(
   TemplateBody = "string",
   TemplateURL = "string",
   StackName = "string",
   StackSetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,12 +17,10 @@ An empty list.
 Deletes a subnet group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_replication_subnet_group(
+\preformatted{svc$delete_replication_subnet_group(
   ReplicationSubnetGroupIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

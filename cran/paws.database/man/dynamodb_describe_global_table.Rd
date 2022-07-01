@@ -10,9 +10,7 @@ dynamodb_describe_global_table(GlobalTableName)
 \item{GlobalTableName}{[required] The name of the global table.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GlobalTableDescription = list(
     ReplicationGroup = list(
       list(
@@ -45,7 +43,7 @@ A list with the following syntax:
     GlobalTableName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the specified global table.
@@ -55,12 +53,10 @@ of global tables. If you are using global tables \href{https://docs.aws.amazon.c
 you can use \code{\link[=dynamodb_describe_table]{describe_table}} instead.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_global_table(
+\preformatted{svc$describe_global_table(
   GlobalTableName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,14 +10,12 @@ ses_verify_domain_dkim(Domain)
 \item{Domain}{[required] The name of the domain to be verified for Easy DKIM signing.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DkimTokens = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a set of DKIM tokens for a domain identity.
@@ -55,12 +53,10 @@ this operation.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$verify_domain_dkim(
+\preformatted{svc$verify_domain_dkim(
   Domain = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

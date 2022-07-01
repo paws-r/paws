@@ -47,9 +47,7 @@ percent.}
 percent.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   networkProfile = list(
     arn = "string",
     name = "string",
@@ -65,15 +63,13 @@ A list with the following syntax:
     downlinkLossPercent = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the network profile.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_network_profile(
+\preformatted{svc$update_network_profile(
   arn = "string",
   name = "string",
   description = "string",
@@ -87,7 +83,7 @@ Updates the network profile.
   uplinkLossPercent = 123,
   downlinkLossPercent = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

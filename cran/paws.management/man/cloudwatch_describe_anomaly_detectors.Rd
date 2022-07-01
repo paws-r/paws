@@ -31,9 +31,7 @@ metrics that have these dimensions and have anomaly detection models
 associated, they're all returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AnomalyDetectors = list(
     list(
       Namespace = "string",
@@ -63,7 +61,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the anomaly detection models that you have created in your
@@ -72,9 +70,7 @@ to only the models that are related to a certain namespace, metric name,
 or metric dimension.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_anomaly_detectors(
+\preformatted{svc$describe_anomaly_detectors(
   NextToken = "string",
   MaxResults = 123,
   Namespace = "string",
@@ -86,7 +82,7 @@ or metric dimension.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

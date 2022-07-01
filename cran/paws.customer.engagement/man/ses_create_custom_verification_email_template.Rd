@@ -39,9 +39,7 @@ the \emph{Amazon SES Developer Guide}.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_custom_verification_email_template(
+\preformatted{svc$create_custom_verification_email_template(
   TemplateName = "string",
   FromEmailAddress = "string",
   TemplateSubject = "string",
@@ -49,7 +47,7 @@ You can execute this operation no more than once per second.
   SuccessRedirectionURL = "string",
   FailureRedirectionURL = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

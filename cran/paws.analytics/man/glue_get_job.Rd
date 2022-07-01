@@ -10,9 +10,7 @@ glue_get_job(JobName)
 \item{JobName}{[required] The name of the job definition to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Job = list(
     Name = "string",
     Description = "string",
@@ -56,18 +54,16 @@ A list with the following syntax:
     GlueVersion = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves an existing job definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_job(
+\preformatted{svc$get_job(
   JobName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

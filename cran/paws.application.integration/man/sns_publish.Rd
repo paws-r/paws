@@ -128,13 +128,11 @@ groups might be processed out of order). Every message must include a
 []: R:\%5C}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MessageId = "string",
   SequenceNumber = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sends a message to an Amazon SNS topic, a text message (SMS message)
@@ -160,9 +158,7 @@ You can publish messages only to topics and endpoints in the same AWS
 Region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$publish(
+\preformatted{svc$publish(
   TopicArn = "string",
   TargetArn = "string",
   PhoneNumber = "string",
@@ -179,7 +175,7 @@ Region.
   MessageDeduplicationId = "string",
   MessageGroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

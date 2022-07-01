@@ -72,9 +72,7 @@ For more information, see Announcement: Heads-up – Longer AWS Storage
 Gateway volume and snapshot IDs coming in 2016.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- storagegateway(
+\preformatted{svc <- storagegateway(
   config = list(
     credentials = list(
       creds = list(
@@ -88,7 +86,7 @@ Gateway volume and snapshot IDs coming in 2016.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -148,20 +148,16 @@ If you don't specify an operation ID, the SDK generates one
 automatically.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StackSetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a stack set.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_stack_set(
+\preformatted{svc$create_stack_set(
   StackSetName = "string",
   Description = "string",
   TemplateBody = "string",
@@ -192,7 +188,7 @@ Creates a stack set.
   ),
   ClientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

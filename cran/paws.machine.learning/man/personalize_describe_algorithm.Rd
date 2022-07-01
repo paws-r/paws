@@ -10,9 +10,7 @@ personalize_describe_algorithm(algorithmArn)
 \item{algorithmArn}{[required] The Amazon Resource Name (ARN) of the algorithm to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   algorithm = list(
     name = "string",
     algorithmArn = "string",
@@ -63,18 +61,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the given algorithm.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_algorithm(
+\preformatted{svc$describe_algorithm(
   algorithmArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

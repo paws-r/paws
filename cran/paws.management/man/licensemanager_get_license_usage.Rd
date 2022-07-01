@@ -10,9 +10,7 @@ licensemanager_get_license_usage(LicenseArn)
 \item{LicenseArn}{[required] Amazon Resource Name (ARN) of the license.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LicenseUsage = list(
     EntitlementUsages = list(
       list(
@@ -24,18 +22,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets detailed information about the usage of the specified license.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_license_usage(
+\preformatted{svc$get_license_usage(
   LicenseArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -14,14 +14,12 @@ chime_put_voice_connector_logging_configuration(VoiceConnectorId,
 \item{LoggingConfiguration}{[required] The logging configuration details to add.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LoggingConfiguration = list(
     EnableSIPLogs = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a logging configuration for the specified Amazon Chime Voice
@@ -29,15 +27,13 @@ Connector. The logging configuration specifies whether SIP message logs
 are enabled for sending to Amazon CloudWatch Logs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_voice_connector_logging_configuration(
+\preformatted{svc$put_voice_connector_logging_configuration(
   VoiceConnectorId = "string",
   LoggingConfiguration = list(
     EnableSIPLogs = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

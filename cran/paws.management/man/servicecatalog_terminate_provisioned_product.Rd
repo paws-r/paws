@@ -38,9 +38,7 @@ resources of the deleted provisioned product. The default value is
 false.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RecordDetail = list(
     RecordId = "string",
     ProvisionedProductName = "string",
@@ -72,7 +70,7 @@ A list with the following syntax:
     LaunchRoleArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Terminates the specified provisioned product.
@@ -84,9 +82,7 @@ You can check the status of this request using
 \code{\link[=servicecatalog_describe_record]{describe_record}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$terminate_provisioned_product(
+\preformatted{svc$terminate_provisioned_product(
   ProvisionedProductName = "string",
   ProvisionedProductId = "string",
   TerminateToken = "string",
@@ -94,7 +90,7 @@ You can check the status of this request using
   AcceptLanguage = "string",
   RetainPhysicalResources = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

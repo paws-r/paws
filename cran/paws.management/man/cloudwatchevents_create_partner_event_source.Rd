@@ -17,12 +17,10 @@ source.}
 bus for this partner event source.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EventSourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Called by an SaaS partner to create a partner event source. This
@@ -53,13 +51,11 @@ of \emph{event_namespace} and \emph{event_name} should help AWS customers decide
 whether to create an event bus to receive these events.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_partner_event_source(
+\preformatted{svc$create_partner_event_source(
   Name = "string",
   Account = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

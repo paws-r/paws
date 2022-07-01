@@ -11,9 +11,7 @@ lightsail_send_contact_method_verification(protocol)
 \item{protocol}{[required] The protocol to verify, such as \code{Email} or \code{SMS} (text messaging).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sends a verification request to an email contact method to ensure it's
@@ -59,12 +57,10 @@ Notifications are not sent to an email contact method until after it is
 verified, and confirmed as valid.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_contact_method_verification(
+\preformatted{svc$send_contact_method_verification(
   protocol = "Email"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

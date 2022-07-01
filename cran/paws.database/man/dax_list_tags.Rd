@@ -14,9 +14,7 @@ pagination of results from this action. If this parameter is specified,
 the response includes only results beyond the token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     list(
       Key = "string",
@@ -25,20 +23,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List all of the tags for a DAX cluster. You can call
 \code{\link[=dax_list_tags]{list_tags}} up to 10 times per second, per account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags(
+\preformatted{svc$list_tags(
   ResourceName = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

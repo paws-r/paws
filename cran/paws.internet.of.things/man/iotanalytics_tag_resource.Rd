@@ -19,9 +19,7 @@ Adds to or modifies the tags of the given resource. Tags are metadata
 that can be used to manage a resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     list(
@@ -30,7 +28,7 @@ that can be used to manage a resource.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

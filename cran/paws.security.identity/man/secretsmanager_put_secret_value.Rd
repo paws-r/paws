@@ -109,9 +109,7 @@ If you do not specify a value for \code{VersionStages} then Secrets Manager
 automatically moves the staging label \code{AWSCURRENT} to this new version.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ARN = "string",
   Name = "string",
   VersionId = "string",
@@ -119,7 +117,7 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stores a new encrypted secret value in the specified secret. To do this,
@@ -196,9 +194,7 @@ secret, use \code{\link[=secretsmanager_get_secret_value]{get_secret_value}}.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_secret_value(
+\preformatted{svc$put_secret_value(
   SecretId = "string",
   ClientRequestToken = "string",
   SecretBinary = raw,
@@ -207,7 +203,7 @@ secret, use \code{\link[=secretsmanager_get_secret_value]{get_secret_value}}.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

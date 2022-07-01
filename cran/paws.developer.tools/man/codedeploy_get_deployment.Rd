@@ -11,9 +11,7 @@ codedeploy_get_deployment(deploymentId)
 account.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   deploymentInfo = list(
     applicationName = "string",
     deploymentGroupName = "string",
@@ -181,7 +179,7 @@ A list with the following syntax:
     externalId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a deployment.
@@ -193,12 +191,10 @@ the \code{sha256} property of the returned \code{appSpecContent} object to get t
 content of the deployment’s AppSpec file.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_deployment(
+\preformatted{svc$get_deployment(
   deploymentId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

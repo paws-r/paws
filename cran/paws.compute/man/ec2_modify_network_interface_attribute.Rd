@@ -41,9 +41,7 @@ one attribute at a time. You can use this action to attach and detach
 security groups from an existing EC2 instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_network_interface_attribute(
+\preformatted{svc$modify_network_interface_attribute(
   Attachment = list(
     AttachmentId = "string",
     DeleteOnTermination = TRUE|FALSE
@@ -60,7 +58,7 @@ security groups from an existing EC2 instance.
     Value = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

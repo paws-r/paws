@@ -68,9 +68,7 @@ pattern.}
 \item{SchemaDefinition}{The schema definition using the \code{DataFormat} setting for \code{SchemaName}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RegistryName = "string",
   RegistryArn = "string",
   SchemaName = "string",
@@ -88,7 +86,7 @@ A list with the following syntax:
   SchemaVersionId = "string",
   SchemaVersionStatus = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new schema set and registers the schema definition. Returns an
@@ -107,9 +105,7 @@ entry for a "default-registry" in the registry database tables, if it is
 not already present.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_schema(
+\preformatted{svc$create_schema(
   RegistryId = list(
     RegistryName = "string",
     RegistryArn = "string"
@@ -123,7 +119,7 @@ not already present.
   ),
   SchemaDefinition = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

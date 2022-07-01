@@ -18,13 +18,11 @@ An empty list.
 Updates the name of an agent.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_agent(
+\preformatted{svc$update_agent(
   AgentArn = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

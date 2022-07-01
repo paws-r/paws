@@ -34,9 +34,7 @@ is the ARN that Amazon SNS returned when you created the topic.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Pipeline = list(
     Id = "string",
     Arn = "string",
@@ -80,7 +78,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 With the UpdatePipelineNotifications operation, you can update Amazon
@@ -90,9 +88,7 @@ When you update notifications for a pipeline, Elastic Transcoder returns
 the values that you specified in the request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_pipeline_notifications(
+\preformatted{svc$update_pipeline_notifications(
   Id = "string",
   Notifications = list(
     Progressing = "string",
@@ -101,7 +97,7 @@ the values that you specified in the request.
     Error = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

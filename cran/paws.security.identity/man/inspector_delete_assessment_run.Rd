@@ -18,12 +18,10 @@ Deletes the assessment run that is specified by the ARN of the
 assessment run.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_assessment_run(
+\preformatted{svc$delete_assessment_run(
   assessmentRunArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

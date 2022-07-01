@@ -90,9 +90,7 @@ specified for an existing cluster, no snapshots are returned.
 \item{SortingEntities}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   Snapshots = list(
     list(
@@ -151,7 +149,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns one or more snapshot objects, which contain metadata about your
@@ -173,9 +171,7 @@ returned regardless of whether they have tag keys or values associated
 with them.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_cluster_snapshots(
+\preformatted{svc$describe_cluster_snapshots(
   ClusterIdentifier = "string",
   SnapshotIdentifier = "string",
   SnapshotType = "string",
@@ -202,7 +198,7 @@ with them.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

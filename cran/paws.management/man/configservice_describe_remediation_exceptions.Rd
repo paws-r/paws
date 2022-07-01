@@ -21,9 +21,7 @@ page. The default is 25. If you specify 0, AWS Config uses the default.}
 request the next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RemediationExceptions = list(
     list(
       ConfigRuleName = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the details of one or more remediation exceptions. A detailed
@@ -57,9 +55,7 @@ Limit and next token are not applicable if you request resources in
 batch. It is only applicable, when you request all resources.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_remediation_exceptions(
+\preformatted{svc$describe_remediation_exceptions(
   ConfigRuleName = "string",
   ResourceKeys = list(
     list(
@@ -70,7 +66,7 @@ batch. It is only applicable, when you request all resources.
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

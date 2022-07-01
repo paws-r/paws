@@ -10,9 +10,7 @@ lightsail_allocate_static_ip(staticIpName)
 \item{staticIpName}{[required] The name of the static IP address.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -37,18 +35,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Allocates a static IP address.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$allocate_static_ip(
+\preformatted{svc$allocate_static_ip(
   staticIpName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

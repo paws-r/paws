@@ -43,9 +43,7 @@ Default: 100
 Constraints: Minimum 20, maximum 100.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   ExportTasks = list(
     list(
@@ -75,16 +73,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a snapshot export to Amazon S3. This API
 operation supports pagination.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_export_tasks(
+\preformatted{svc$describe_export_tasks(
   ExportTaskIdentifier = "string",
   SourceArn = "string",
   Filters = list(
@@ -98,7 +94,7 @@ operation supports pagination.
   Marker = "string",
   MaxRecords = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

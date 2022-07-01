@@ -13,9 +13,7 @@ describing.}
 \item{ThemeId}{[required] The ID for the theme that you want to describe permissions for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ThemeId = "string",
   ThemeArn = "string",
   Permissions = list(
@@ -29,19 +27,17 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the read and write permissions for a theme.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_theme_permissions(
+\preformatted{svc$describe_theme_permissions(
   AwsAccountId = "string",
   ThemeId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

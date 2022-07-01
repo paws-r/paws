@@ -14,9 +14,7 @@ default). This value must be an integer from 5 to 100.}
 return. To request the first page, leave nextToken empty.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BrokerSummaries = list(
     list(
       BrokerArn = "string",
@@ -33,19 +31,17 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of all brokers.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_brokers(
+\preformatted{svc$list_brokers(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

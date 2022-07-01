@@ -29,13 +29,11 @@ at least one. If you provide both, CloudFront uses the name to identify
 the real-time log configuration to delete.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_realtime_log_config(
+\preformatted{svc$delete_realtime_log_config(
   Name = "string",
   ARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

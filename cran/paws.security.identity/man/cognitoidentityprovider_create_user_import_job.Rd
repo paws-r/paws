@@ -17,9 +17,7 @@ into.}
 job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserImportJob = list(
     JobName = "string",
     JobId = "string",
@@ -42,20 +40,18 @@ A list with the following syntax:
     CompletionMessage = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates the user import job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user_import_job(
+\preformatted{svc$create_user_import_job(
   JobName = "string",
   UserPoolId = "string",
   CloudWatchLogsRoleArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

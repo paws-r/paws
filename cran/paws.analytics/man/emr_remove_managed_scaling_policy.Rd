@@ -17,12 +17,10 @@ An empty list.
 Removes a managed scaling policy from a specified EMR cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_managed_scaling_policy(
+\preformatted{svc$remove_managed_scaling_policy(
   ClusterId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

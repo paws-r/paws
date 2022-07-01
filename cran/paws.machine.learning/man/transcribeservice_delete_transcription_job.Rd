@@ -18,12 +18,10 @@ Deletes a previously submitted transcription job along with any other
 generated results such as the transcription, models, and so on.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_transcription_job(
+\preformatted{svc$delete_transcription_job(
   TranscriptionJobName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

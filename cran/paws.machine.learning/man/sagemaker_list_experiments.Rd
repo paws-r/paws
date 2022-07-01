@@ -25,9 +25,7 @@ getting the next set of experiments.}
 value is 10.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ExperimentSummaries = list(
     list(
       ExperimentArn = "string",
@@ -47,7 +45,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all the experiments in your account. The list can be filtered to
@@ -55,9 +53,7 @@ show only experiments that were created in a specific time range. The
 list can be sorted by experiment name or creation time.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_experiments(
+\preformatted{svc$list_experiments(
   CreatedAfter = as.POSIXct(
     "2015-01-01"
   ),
@@ -69,7 +65,7 @@ list can be sorted by experiment name or creation time.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

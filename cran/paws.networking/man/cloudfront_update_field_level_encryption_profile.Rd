@@ -16,9 +16,7 @@ cloudfront_update_field_level_encryption_profile(
 profile identity to update. For example: \code{E2QWRUHAPOMQZL}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FieldLevelEncryptionProfile = list(
     Id = "string",
     LastModifiedTime = as.POSIXct(
@@ -47,15 +45,13 @@ A list with the following syntax:
   ),
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Update a field-level encryption profile.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_field_level_encryption_profile(
+\preformatted{svc$update_field_level_encryption_profile(
   FieldLevelEncryptionProfileConfig = list(
     Name = "string",
     CallerReference = "string",
@@ -79,7 +75,7 @@ Update a field-level encryption profile.
   Id = "string",
   IfMatch = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

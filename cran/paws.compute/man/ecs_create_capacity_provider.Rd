@@ -39,9 +39,7 @@ limit.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   capacityProvider = list(
     capacityProviderArn = "string",
     name = "string",
@@ -67,7 +65,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new capacity provider. Capacity providers are associated with
@@ -80,9 +78,7 @@ capacity providers which are already created and available to all
 accounts in Regions supported by AWS Fargate.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_capacity_provider(
+\preformatted{svc$create_capacity_provider(
   name = "string",
   autoScalingGroupProvider = list(
     autoScalingGroupArn = "string",
@@ -102,7 +98,7 @@ accounts in Regions supported by AWS Fargate.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

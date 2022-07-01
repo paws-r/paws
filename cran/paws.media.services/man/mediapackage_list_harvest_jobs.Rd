@@ -19,9 +19,7 @@ status.}
 \item{NextToken}{A token used to resume pagination from the end of a previous request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HarvestJobs = list(
     list(
       Arn = "string",
@@ -41,21 +39,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a collection of HarvestJob records.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_harvest_jobs(
+\preformatted{svc$list_harvest_jobs(
   IncludeChannelId = "string",
   IncludeStatus = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

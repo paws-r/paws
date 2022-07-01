@@ -18,12 +18,10 @@ Deletes an Amazon GuardDuty detector that is specified by the detector
 ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_detector(
+\preformatted{svc$delete_detector(
   DetectorId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

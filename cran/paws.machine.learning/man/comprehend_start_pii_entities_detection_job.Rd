@@ -35,22 +35,18 @@ definition that includes the \code{PiiEntityTypes} parameter.}
 token, Amazon Comprehend generates one.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobId = "string",
   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts an asynchronous PII entity detection job for a collection of
 documents.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_pii_entities_detection_job(
+\preformatted{svc$start_pii_entities_detection_job(
   InputDataConfig = list(
     S3Uri = "string",
     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
@@ -72,7 +68,7 @@ documents.
   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
   ClientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

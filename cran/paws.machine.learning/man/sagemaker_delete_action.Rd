@@ -10,23 +10,19 @@ sagemaker_delete_action(ActionName)
 \item{ActionName}{[required] The name of the action to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ActionArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_action(
+\preformatted{svc$delete_action(
   ActionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

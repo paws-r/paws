@@ -29,9 +29,7 @@ Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GameSessionDetails = list(
     list(
       GameSession = list(
@@ -68,7 +66,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves properties, including the protection policy in force, for one
@@ -98,9 +96,7 @@ returned for each session matching the request.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_game_session_details(
+\preformatted{svc$describe_game_session_details(
   FleetId = "string",
   GameSessionId = "string",
   AliasId = "string",
@@ -108,7 +104,7 @@ returned for each session matching the request.
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

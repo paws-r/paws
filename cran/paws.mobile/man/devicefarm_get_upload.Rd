@@ -10,9 +10,7 @@ devicefarm_get_upload(arn)
 \item{arn}{[required] The upload's ARN.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   upload = list(
     arn = "string",
     name = "string",
@@ -28,18 +26,16 @@ A list with the following syntax:
     category = "CURATED"|"PRIVATE"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about an upload.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_upload(
+\preformatted{svc$get_upload(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

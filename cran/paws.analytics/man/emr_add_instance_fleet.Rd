@@ -12,14 +12,12 @@ emr_add_instance_fleet(ClusterId, InstanceFleet)
 \item{InstanceFleet}{[required] Specifies the configuration of the instance fleet.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClusterId = "string",
   InstanceFleetId = "string",
   ClusterArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds an instance fleet to a running cluster.
@@ -28,9 +26,7 @@ The instance fleet configuration is available only in Amazon EMR
 versions 4.8.0 and later, excluding 5.0.x.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_instance_fleet(
+\preformatted{svc$add_instance_fleet(
   ClusterId = "string",
   InstanceFleet = list(
     Name = "string",
@@ -80,7 +76,7 @@ versions 4.8.0 and later, excluding 5.0.x.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

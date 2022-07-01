@@ -14,9 +14,7 @@ databasemigrationservice_test_connection(ReplicationInstanceArn,
 endpoint.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Connection = list(
     ReplicationInstanceArn = "string",
     EndpointArn = "string",
@@ -26,19 +24,17 @@ A list with the following syntax:
     ReplicationInstanceIdentifier = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Tests the connection between the replication instance and the endpoint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$test_connection(
+\preformatted{svc$test_connection(
   ReplicationInstanceArn = "string",
   EndpointArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

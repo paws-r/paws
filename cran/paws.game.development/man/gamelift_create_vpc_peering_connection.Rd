@@ -62,14 +62,12 @@ or by monitoring fleet events for success or failure using
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vpc_peering_connection(
+\preformatted{svc$create_vpc_peering_connection(
   FleetId = "string",
   PeerVpcAwsAccountId = "string",
   PeerVpcId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

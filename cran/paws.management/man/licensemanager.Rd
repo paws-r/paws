@@ -20,9 +20,7 @@ AWS License Manager makes it easier to manage licenses from software
 vendors across multiple AWS accounts and on-premises servers.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- licensemanager(
+\preformatted{svc <- licensemanager(
   config = list(
     credentials = list(
       creds = list(
@@ -36,7 +34,7 @@ vendors across multiple AWS accounts and on-premises servers.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

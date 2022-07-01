@@ -10,9 +10,7 @@ lambda_get_event_source_mapping(UUID)
 \item{UUID}{[required] The identifier of the event source mapping.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UUID = "string",
   StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
   StartingPositionTimestamp = as.POSIXct(
@@ -64,7 +62,7 @@ A list with the following syntax:
     "ReportBatchItemFailures"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns details about an event source mapping. You can get the
@@ -72,12 +70,10 @@ identifier of a mapping from the output of
 \code{\link[=lambda_list_event_source_mappings]{list_event_source_mappings}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_event_source_mapping(
+\preformatted{svc$get_event_source_mapping(
   UUID = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

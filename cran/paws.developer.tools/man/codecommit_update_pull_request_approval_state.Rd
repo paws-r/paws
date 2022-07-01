@@ -22,14 +22,12 @@ Updates the state of a user's approval on a pull request. The user is
 derived from the signed-in account when the request is made.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_pull_request_approval_state(
+\preformatted{svc$update_pull_request_approval_state(
   pullRequestId = "string",
   revisionId = "string",
   approvalState = "APPROVE"|"REVOKE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

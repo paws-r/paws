@@ -11,9 +11,7 @@ directconnect_describe_hosted_connections(connectionId)
 \item{connectionId}{[required] The ID of the interconnect or LAG.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   connections = list(
     list(
       ownerAccount = "string",
@@ -43,7 +41,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the hosted connections that have been provisioned on the specified
@@ -52,12 +50,10 @@ interconnect or link aggregation group (LAG).
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_hosted_connections(
+\preformatted{svc$describe_hosted_connections(
   connectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AssociatedRoles = list(
     list(
       AssociatedRoleArn = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the IAM roles that are associated with the specified AWS
@@ -40,13 +38,11 @@ ARN of the AWS Key Management Service (KMS) customer master key (CMK)
 that's used to encrypt the private key.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_associated_enclave_certificate_iam_roles(
+\preformatted{svc$get_associated_enclave_certificate_iam_roles(
   CertificateArn = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

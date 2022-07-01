@@ -23,9 +23,7 @@ name.}
 \item{EncryptionKey}{The encryption key for the custom terminology being imported.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TerminologyProperties = list(
     Name = "string",
     Description = "string",
@@ -48,7 +46,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates or updates a custom terminology, depending on whether or not one
@@ -64,9 +62,7 @@ for use in a translation due to cache policies with the DataPlane
 service that performs the translations.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_terminology(
+\preformatted{svc$import_terminology(
   Name = "string",
   MergeStrategy = "OVERWRITE",
   Description = "string",
@@ -79,7 +75,7 @@ service that performs the translations.
     Id = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

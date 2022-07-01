@@ -20,9 +20,7 @@ next set of results.}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Parameters = list(
     list(
       Name = "string",
@@ -48,7 +46,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Get information about a parameter.
@@ -62,9 +60,7 @@ the matching values up to that point and a \code{NextToken}. You can specify
 the \code{NextToken} in a subsequent call to get the next set of results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_parameters(
+\preformatted{svc$describe_parameters(
   Filters = list(
     list(
       Key = "Name"|"Type"|"KeyId",
@@ -85,7 +81,7 @@ the \code{NextToken} in a subsequent call to get the next set of results.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

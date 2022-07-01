@@ -11,9 +11,7 @@ personalize_describe_dataset_import_job(datasetImportJobArn)
 \item{datasetImportJobArn}{[required] The Amazon Resource Name (ARN) of the dataset import job to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   datasetImportJob = list(
     jobName = "string",
     datasetImportJobArn = "string",
@@ -32,7 +30,7 @@ A list with the following syntax:
     failureReason = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the dataset import job created by
@@ -40,12 +38,10 @@ Describes the dataset import job created by
 including the import job status.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_dataset_import_job(
+\preformatted{svc$describe_dataset_import_job(
   datasetImportJobArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

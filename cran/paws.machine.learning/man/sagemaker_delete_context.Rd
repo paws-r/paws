@@ -10,23 +10,19 @@ sagemaker_delete_context(ContextName)
 \item{ContextName}{[required] The name of the context to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContextArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an context.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_context(
+\preformatted{svc$delete_context(
   ContextName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

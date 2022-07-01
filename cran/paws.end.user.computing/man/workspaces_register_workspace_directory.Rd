@@ -48,9 +48,7 @@ workspaces_DefaultRole role before you can register a directory. For
 more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role}{Creating the workspaces_DefaultRole Role}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_workspace_directory(
+\preformatted{svc$register_workspace_directory(
   DirectoryId = "string",
   SubnetIds = list(
     "string"
@@ -65,7 +63,7 @@ more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adming
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

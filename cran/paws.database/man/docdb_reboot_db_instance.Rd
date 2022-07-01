@@ -20,9 +20,7 @@ Constraint: You can't specify \code{true} if the instance is not configured
 for Multi-AZ.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBInstance = list(
     DBInstanceIdentifier = "string",
     DBInstanceClass = "string",
@@ -111,7 +109,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 You might need to reboot your instance, usually for maintenance reasons.
@@ -124,13 +122,11 @@ instance results in a momentary outage, during which the instance status
 is set to \emph{rebooting}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reboot_db_instance(
+\preformatted{svc$reboot_db_instance(
   DBInstanceIdentifier = "string",
   ForceFailover = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

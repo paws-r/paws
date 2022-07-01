@@ -27,15 +27,13 @@ For information about managing receipt rule sets, see the \href{https://docs.aws
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reorder_receipt_rule_set(
+\preformatted{svc$reorder_receipt_rule_set(
   RuleSetName = "string",
   RuleNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -19,15 +19,13 @@ publishing of a new product.}
 instance and guard against replay attacks.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PublicKeyRotationTimestamp = as.POSIXct(
     "2015-01-01"
   ),
   Signature = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Paid container software products sold through AWS Marketplace must
@@ -68,14 +66,12 @@ runtime.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_usage(
+\preformatted{svc$register_usage(
   ProductCode = "string",
   PublicKeyVersion = 123,
   Nonce = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,15 +23,13 @@ An empty list.
 Removes the given thing from the billing group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_thing_from_billing_group(
+\preformatted{svc$remove_thing_from_billing_group(
   billingGroupName = "string",
   billingGroupArn = "string",
   thingName = "string",
   thingArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

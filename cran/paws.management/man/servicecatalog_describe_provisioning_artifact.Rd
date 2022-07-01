@@ -28,9 +28,7 @@ servicecatalog_describe_provisioning_artifact(AcceptLanguage,
 \item{Verbose}{Indicates whether a verbose level of detail is enabled.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProvisioningArtifactDetail = list(
     Id = "string",
     Name = "string",
@@ -47,16 +45,14 @@ A list with the following syntax:
   ),
   Status = "AVAILABLE"|"CREATING"|"FAILED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the specified provisioning artifact (also known
 as a version) for the specified product.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_provisioning_artifact(
+\preformatted{svc$describe_provisioning_artifact(
   AcceptLanguage = "string",
   ProvisioningArtifactId = "string",
   ProductId = "string",
@@ -64,7 +60,7 @@ as a version) for the specified product.
   ProductName = "string",
   Verbose = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

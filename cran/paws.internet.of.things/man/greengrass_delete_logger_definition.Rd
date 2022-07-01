@@ -16,12 +16,10 @@ An empty list.
 Deletes a logger definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_logger_definition(
+\preformatted{svc$delete_logger_definition(
   LoggerDefinitionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

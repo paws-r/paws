@@ -22,22 +22,18 @@ idempotency of the request.}
 \item{SourceVersion}{Current version of the grant.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GrantArn = "string",
   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new version of the specified grant.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_grant_version(
+\preformatted{svc$create_grant_version(
   ClientToken = "string",
   GrantArn = "string",
   GrantName = "string",
@@ -47,7 +43,7 @@ Creates a new version of the specified grant.
   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
   SourceVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

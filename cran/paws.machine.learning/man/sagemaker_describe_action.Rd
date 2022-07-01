@@ -10,9 +10,7 @@ sagemaker_describe_action(ActionName)
 \item{ActionName}{[required] The name of the action to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ActionName = "string",
   ActionArn = "string",
   Source = list(
@@ -49,18 +47,16 @@ A list with the following syntax:
     ProjectId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes an action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_action(
+\preformatted{svc$describe_action(
   ActionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

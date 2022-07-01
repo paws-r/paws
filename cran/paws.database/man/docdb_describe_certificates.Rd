@@ -40,9 +40,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Certificates = list(
     list(
       CertificateIdentifier = "string",
@@ -59,16 +57,14 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of certificate authority (CA) certificates provided by
 Amazon DocumentDB for this AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_certificates(
+\preformatted{svc$describe_certificates(
   CertificateIdentifier = "string",
   Filters = list(
     list(
@@ -81,7 +77,7 @@ Amazon DocumentDB for this AWS account.
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,14 +23,12 @@ Forgets the device, as an administrator.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_forget_device(
+\preformatted{svc$admin_forget_device(
   UserPoolId = "string",
   Username = "string",
   DeviceKey = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

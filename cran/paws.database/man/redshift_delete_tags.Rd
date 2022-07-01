@@ -20,15 +20,13 @@ Deletes tags from a resource. You must provide the ARN of the resource
 from which you want to delete the tag or tags.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_tags(
+\preformatted{svc$delete_tags(
   ResourceName = "string",
   TagKeys = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

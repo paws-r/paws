@@ -12,9 +12,7 @@ elasticsearchservice_describe_elasticsearch_domains(DomainNames)
 \item{DomainNames}{[required] The Elasticsearch domains for which you want information.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainStatusList = list(
     list(
       DomainId = "string",
@@ -123,7 +121,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns domain configuration information about the specified
@@ -131,14 +129,12 @@ Elasticsearch domains, including the domain ID, domain endpoint, and
 domain ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_elasticsearch_domains(
+\preformatted{svc$describe_elasticsearch_domains(
   DomainNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

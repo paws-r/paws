@@ -12,9 +12,7 @@ of your rules, use
 \code{\link[=cloudwatch_describe_insight_rules]{describe_insight_rules}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Failures = list(
     list(
       FailureResource = "string",
@@ -24,7 +22,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Permanently deletes the specified Contributor Insights rules.
@@ -34,14 +32,12 @@ name, historical data from the first time the rule was created might not
 be available.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_insight_rules(
+\preformatted{svc$delete_insight_rules(
   RuleNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

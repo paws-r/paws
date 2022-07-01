@@ -30,9 +30,7 @@ files that Amazon FSx processed that meet the criteria specified by the
 \item{Tags}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DataRepositoryTask = list(
     TaskId = "string",
     Lifecycle = "PENDING"|"EXECUTING"|"FAILED"|"SUCCEEDED"|"CANCELED"|"CANCELING",
@@ -76,7 +74,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an Amazon FSx for Lustre data repository task. You use data
@@ -92,9 +90,7 @@ To learn more about linking a data repository to your file system, see
 \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/}{Linking your file system to an S3 bucket}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_data_repository_task(
+\preformatted{svc$create_data_repository_task(
   Type = "EXPORT_TO_REPOSITORY",
   Paths = list(
     "string"
@@ -114,7 +110,7 @@ To learn more about linking a data repository to your file system, see
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

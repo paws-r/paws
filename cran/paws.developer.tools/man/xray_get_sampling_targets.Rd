@@ -11,9 +11,7 @@ xray_get_sampling_targets(SamplingStatisticsDocuments)
 \item{SamplingStatisticsDocuments}{[required] Information about rules that the service is using to sample requests.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SamplingTargetDocuments = list(
     list(
       RuleName = "string",
@@ -36,16 +34,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Requests a sampling quota for rules that the service is using to sample
 requests.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_sampling_targets(
+\preformatted{svc$get_sampling_targets(
   SamplingStatisticsDocuments = list(
     list(
       RuleName = "string",
@@ -59,7 +55,7 @@ requests.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

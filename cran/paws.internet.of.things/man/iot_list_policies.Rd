@@ -15,9 +15,7 @@ iot_list_policies(marker, pageSize, ascendingOrder)
 ascending creation order.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   policies = list(
     list(
       policyName = "string",
@@ -26,20 +24,18 @@ A list with the following syntax:
   ),
   nextMarker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists your policies.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_policies(
+\preformatted{svc$list_policies(
   marker = "string",
   pageSize = 123,
   ascendingOrder = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

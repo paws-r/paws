@@ -14,9 +14,7 @@ apigateway_get_integration(restApiId, resourceId, httpMethod)
 \item{httpMethod}{[required] [Required] Specifies a get integration request's HTTP method.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
   httpMethod = "string",
   uri = "string",
@@ -53,20 +51,18 @@ A list with the following syntax:
     insecureSkipVerification = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Get the integration settings.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_integration(
+\preformatted{svc$get_integration(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

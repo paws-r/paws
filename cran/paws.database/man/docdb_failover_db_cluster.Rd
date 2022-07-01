@@ -22,9 +22,7 @@ You must specify the instance identifier for an Amazon DocumentDB
 replica in the cluster. For example, \code{mydbcluster-replica1}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBCluster = list(
     AvailabilityZones = list(
       "string"
@@ -84,7 +82,7 @@ A list with the following syntax:
     DeletionProtection = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Forces a failover for a cluster.
@@ -99,13 +97,11 @@ failover when you want to simulate a failure of a primary instance for
 testing.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$failover_db_cluster(
+\preformatted{svc$failover_db_cluster(
   DBClusterIdentifier = "string",
   TargetDBInstanceIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

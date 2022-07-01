@@ -16,9 +16,7 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DataSetSummaries = list(
     list(
       Arn = "string",
@@ -43,7 +41,7 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all of the datasets belonging to the current AWS account in an AWS
@@ -53,14 +51,12 @@ The permissions resource is
 \verb{arn:aws:quicksight:region:aws-account-id:dataset/*}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_data_sets(
+\preformatted{svc$list_data_sets(
   AwsAccountId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

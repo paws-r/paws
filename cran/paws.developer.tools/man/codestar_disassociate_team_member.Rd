@@ -24,13 +24,11 @@ that user's profile from AWS CodeStar. It does not remove the user from
 IAM.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_team_member(
+\preformatted{svc$disassociate_team_member(
   projectId = "string",
   userArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

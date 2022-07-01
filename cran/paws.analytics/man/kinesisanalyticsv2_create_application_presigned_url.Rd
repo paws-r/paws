@@ -17,12 +17,10 @@ Currently, the only valid extension URL type is \code{FLINK_DASHBOARD_URL}.}
 \item{SessionExpirationDurationInSeconds}{The duration in seconds for which the returned URL will be valid.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AuthorizedUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates and returns a URL that you can use to connect to an
@@ -41,14 +39,12 @@ after the 3-minute limit expires, the service returns an HTTP 403
 Forbidden error.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_application_presigned_url(
+\preformatted{svc$create_application_presigned_url(
   ApplicationName = "string",
   UrlType = "FLINK_DASHBOARD_URL",
   SessionExpirationDurationInSeconds = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,9 +23,7 @@ an MFA factor enabled.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SmsMfaConfiguration = list(
     SmsAuthenticationMessage = "string",
     SmsConfiguration = list(
@@ -38,15 +36,13 @@ A list with the following syntax:
   ),
   MfaConfiguration = "OFF"|"ON"|"OPTIONAL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Set the user pool multi-factor authentication (MFA) configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_user_pool_mfa_config(
+\preformatted{svc$set_user_pool_mfa_config(
   UserPoolId = "string",
   SmsMfaConfiguration = list(
     SmsAuthenticationMessage = "string",
@@ -60,7 +56,7 @@ Set the user pool multi-factor authentication (MFA) configuration.
   ),
   MfaConfiguration = "OFF"|"ON"|"OPTIONAL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

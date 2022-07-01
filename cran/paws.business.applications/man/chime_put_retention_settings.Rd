@@ -13,9 +13,7 @@ chime_put_retention_settings(AccountId, RetentionSettings)
 \item{RetentionSettings}{[required] The retention settings.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RetentionSettings = list(
     RoomRetentionSettings = list(
       RetentionDays = 123
@@ -28,7 +26,7 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Puts retention settings for the specified Amazon Chime Enterprise
@@ -42,9 +40,7 @@ object. For more information about retention settings, see \href{https://docs.aw
 in the \emph{Amazon Chime Administration Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_retention_settings(
+\preformatted{svc$put_retention_settings(
   AccountId = "string",
   RetentionSettings = list(
     RoomRetentionSettings = list(
@@ -55,7 +51,7 @@ in the \emph{Amazon Chime Administration Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

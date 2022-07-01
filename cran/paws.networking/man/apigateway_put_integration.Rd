@@ -121,9 +121,7 @@ support payload pass-through.}
 \item{tlsConfig}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
   httpMethod = "string",
   uri = "string",
@@ -160,15 +158,13 @@ A list with the following syntax:
     insecureSkipVerification = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sets up a method's integration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_integration(
+\preformatted{svc$put_integration(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",
@@ -195,7 +191,7 @@ Sets up a method's integration.
     insecureSkipVerification = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

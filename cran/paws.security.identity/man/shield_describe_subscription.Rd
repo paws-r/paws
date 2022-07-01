@@ -8,9 +8,7 @@ account}
 shield_describe_subscription()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Subscription = list(
     StartTime = as.POSIXct(
       "2015-01-01"
@@ -47,17 +45,15 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides details about the AWS Shield Advanced subscription for an
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_subscription()
-}\if{html}{\out{</div>}}
+\preformatted{svc$describe_subscription()
+}
 }
 
 \keyword{internal}

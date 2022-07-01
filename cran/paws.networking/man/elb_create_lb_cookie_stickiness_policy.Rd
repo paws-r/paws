@@ -46,14 +46,12 @@ For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_lb_cookie_stickiness_policy(
+\preformatted{svc$create_lb_cookie_stickiness_policy(
   LoadBalancerName = "string",
   PolicyName = "string",
   CookieExpirationPeriod = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

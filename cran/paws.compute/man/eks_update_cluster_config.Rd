@@ -24,9 +24,7 @@ apply to exported control plane logs. For more information, see \href{https://aw
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   update = list(
     id = "string",
     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
@@ -51,7 +49,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an Amazon EKS cluster configuration. Your cluster continues to
@@ -83,9 +81,7 @@ status transition is eventually consistent). When the update is complete
 (either \code{Failed} or \code{Successful}), the cluster status moves to \code{Active}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_cluster_config(
+\preformatted{svc$update_cluster_config(
   name = "string",
   resourcesVpcConfig = list(
     subnetIds = list(
@@ -112,7 +108,7 @@ status transition is eventually consistent). When the update is complete
   ),
   clientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

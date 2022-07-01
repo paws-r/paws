@@ -25,12 +25,10 @@ In the Route 53 console, traffic policy instances are known as policy
 records.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_traffic_policy_instance(
+\preformatted{svc$delete_traffic_policy_instance(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

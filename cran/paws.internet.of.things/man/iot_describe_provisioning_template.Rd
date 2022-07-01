@@ -10,9 +10,7 @@ iot_describe_provisioning_template(templateName)
 \item{templateName}{[required] The name of the fleet provisioning template.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   templateArn = "string",
   templateName = "string",
   description = "string",
@@ -31,18 +29,16 @@ A list with the following syntax:
     targetArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a fleet provisioning template.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_provisioning_template(
+\preformatted{svc$describe_provisioning_template(
   templateName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

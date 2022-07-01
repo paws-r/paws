@@ -56,9 +56,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AvailabilityZones = list(
     list(
       State = "available"|"information"|"impaired"|"unavailable",
@@ -79,7 +77,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the Availability Zones, Local Zones, and Wavelength Zones that
@@ -91,9 +89,7 @@ Wavelength Zones, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_availability_zones(
+\preformatted{svc$describe_availability_zones(
   Filters = list(
     list(
       Name = "string",
@@ -111,7 +107,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   AllAvailabilityZones = TRUE|FALSE,
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -20,15 +20,13 @@ Associates the specified IP access control group with the specified
 directory.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_ip_groups(
+\preformatted{svc$associate_ip_groups(
   DirectoryId = "string",
   GroupIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

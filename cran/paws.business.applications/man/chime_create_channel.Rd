@@ -28,12 +28,10 @@ discoverable by anyone in the app instance.}
 \item{Tags}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a channel to which you can add users and send messages.
@@ -41,9 +39,7 @@ Creates a channel to which you can add users and send messages.
 \strong{Restriction}: You can't change a channel's privacy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_channel(
+\preformatted{svc$create_channel(
   AppInstanceArn = "string",
   Name = "string",
   Mode = "UNRESTRICTED"|"RESTRICTED",
@@ -57,7 +53,7 @@ Creates a channel to which you can add users and send messages.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

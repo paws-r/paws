@@ -28,16 +28,14 @@ IAM user or role explicitly overrides these settings. If this field is
 omitted, the setting is changed only for the authenticated user.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   setting = list(
     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
     value = "string",
     principalArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies an account setting. Account settings are set on a per-Region
@@ -74,14 +72,12 @@ during cluster creation. For more information, see \href{https://docs.aws.amazon
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_account_setting(
+\preformatted{svc$put_account_setting(
   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
   value = "string",
   principalArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

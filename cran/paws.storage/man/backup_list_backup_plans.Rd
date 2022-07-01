@@ -18,9 +18,7 @@ pointed to by the next token.}
 backup plans when set to \code{TRUE}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   BackupPlansList = list(
     list(
@@ -49,7 +47,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of existing backup plans for an authenticated account.
@@ -59,14 +57,12 @@ plan. The list contains information such as Amazon Resource Names
 and creator request IDs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_backup_plans(
+\preformatted{svc$list_backup_plans(
   NextToken = "string",
   MaxResults = 123,
   IncludeDeleted = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

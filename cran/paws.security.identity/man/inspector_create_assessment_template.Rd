@@ -29,12 +29,10 @@ attribute is a key and value pair (an Attribute object). Within an
 assessment template, each key must be unique.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   assessmentTemplateArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an assessment template for the assessment target that is
@@ -44,9 +42,7 @@ service-linked role to grant Amazon Inspector access to AWS Services
 needed to perform security assessments.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_assessment_template(
+\preformatted{svc$create_assessment_template(
   assessmentTargetArn = "string",
   assessmentTemplateName = "string",
   durationInSeconds = 123,
@@ -60,7 +56,7 @@ needed to perform security assessments.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

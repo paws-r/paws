@@ -20,12 +20,10 @@ that is already deleted. If a deleted webhook is re-created by calling
 PutWebhook with the same name, it will have a different URL.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_webhook(
+\preformatted{svc$delete_webhook(
   name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

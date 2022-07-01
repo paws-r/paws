@@ -15,9 +15,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{SpotInstanceRequestIds}{[required] One or more Spot Instance request IDs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CancelledSpotInstanceRequests = list(
     list(
       SpotInstanceRequestId = "string",
@@ -25,7 +23,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Cancels one or more Spot Instance requests.
@@ -34,15 +32,13 @@ Canceling a Spot Instance request does not terminate running Spot
 Instances associated with the request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_spot_instance_requests(
+\preformatted{svc$cancel_spot_instance_requests(
   DryRun = TRUE|FALSE,
   SpotInstanceRequestIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

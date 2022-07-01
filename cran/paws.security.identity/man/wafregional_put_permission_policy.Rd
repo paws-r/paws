@@ -53,13 +53,11 @@ An example of a valid policy parameter is shown in the Examples section
 below.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_permission_policy(
+\preformatted{svc$put_permission_policy(
   ResourceArn = "string",
   Policy = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

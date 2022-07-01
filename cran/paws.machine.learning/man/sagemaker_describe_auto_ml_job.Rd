@@ -10,9 +10,7 @@ sagemaker_describe_auto_ml_job(AutoMLJobName)
 \item{AutoMLJobName}{[required] Request information about a job using that job's unique name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AutoMLJobName = "string",
   AutoMLJobArn = "string",
   InputDataConfig = list(
@@ -120,18 +118,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about an Amazon SageMaker job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_auto_ml_job(
+\preformatted{svc$describe_auto_ml_job(
   AutoMLJobName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

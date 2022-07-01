@@ -22,9 +22,7 @@ they are sorted in ASCENDING or DESCENDING order. Default varies by
 resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   Queues = list(
     list(
@@ -57,7 +55,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieve a JSON array of up to twenty of your queues. This will return
@@ -65,15 +63,13 @@ the queues themselves, not just a list of them. To retrieve the next
 twenty queues, use the nextToken string returned with the array.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_queues(
+\preformatted{svc$list_queues(
   ListBy = "NAME"|"CREATION_DATE",
   MaxResults = 123,
   NextToken = "string",
   Order = "ASCENDING"|"DESCENDING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

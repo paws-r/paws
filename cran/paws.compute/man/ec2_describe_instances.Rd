@@ -214,9 +214,7 @@ parameter and the instance IDs parameter in the same call.}
 \item{NextToken}{The token to request the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Reservations = list(
     list(
       Groups = list(
@@ -425,7 +423,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified instances or all instances.
@@ -452,9 +450,7 @@ call fails. If you describe instances and specify only instance IDs that
 are in an unaffected zone, the call works normally.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_instances(
+\preformatted{svc$describe_instances(
   Filters = list(
     list(
       Name = "string",
@@ -470,7 +466,7 @@ are in an unaffected zone, the call works normally.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -74,9 +74,7 @@ the \code{NextToken} value. This value is \code{null} when there are no more
 results to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Volumes = list(
     list(
       Attachments = list(
@@ -117,7 +115,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified EBS volumes or all of your EBS volumes.
@@ -134,9 +132,7 @@ For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AW
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_volumes(
+\preformatted{svc$describe_volumes(
   Filters = list(
     list(
       Name = "string",
@@ -152,7 +148,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

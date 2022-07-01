@@ -12,9 +12,7 @@ datasync_describe_location_fsx_windows(LocationArn)
 describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LocationArn = "string",
   LocationUri = "string",
   SecurityGroupArns = list(
@@ -26,19 +24,17 @@ A list with the following syntax:
   User = "string",
   Domain = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns metadata, such as the path information about an Amazon FSx for
 Windows location.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_location_fsx_windows(
+\preformatted{svc$describe_location_fsx_windows(
   LocationArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

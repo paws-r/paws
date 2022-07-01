@@ -24,9 +24,7 @@ scheduled before the given time. See the field \code{triggers.schedule} in
 the \code{\link[=iotanalytics_create_dataset]{create_dataset}} request. (timestamp)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   datasetContentSummaries = list(
     list(
       version = "string",
@@ -47,15 +45,13 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists information about data set contents that have been created.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_dataset_contents(
+\preformatted{svc$list_dataset_contents(
   datasetName = "string",
   nextToken = "string",
   maxResults = 123,
@@ -66,7 +62,7 @@ Lists information about data set contents that have been created.
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

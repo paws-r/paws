@@ -19,13 +19,11 @@ An empty list.
 Remove a public key you previously added to CloudFront.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_public_key(
+\preformatted{svc$delete_public_key(
   Id = "string",
   IfMatch = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

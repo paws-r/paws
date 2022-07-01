@@ -69,9 +69,7 @@ that topic.}
 data available.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CompositeAlarms = list(
     list(
       ActionsEnabled = TRUE|FALSE,
@@ -170,7 +168,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the specified alarms. You can filter the results by specifying
@@ -178,9 +176,7 @@ a prefix for the alarm name, the alarm state, or a prefix for any
 action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_alarms(
+\preformatted{svc$describe_alarms(
   AlarmNames = list(
     "string"
   ),
@@ -195,7 +191,7 @@ action.
   MaxRecords = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

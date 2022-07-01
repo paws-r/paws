@@ -55,12 +55,10 @@ associated with a Wavelength Zone.}
 \item{VpcPeeringConnectionId}{The ID of a VPC peering connection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a route in a route table within a VPC.
@@ -87,9 +85,7 @@ For more information about route tables, see \href{https://docs.aws.amazon.com/v
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_route(
+\preformatted{svc$create_route(
   DestinationCidrBlock = "string",
   DestinationIpv6CidrBlock = "string",
   DestinationPrefixListId = "string",
@@ -106,7 +102,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   RouteTableId = "string",
   VpcPeeringConnectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

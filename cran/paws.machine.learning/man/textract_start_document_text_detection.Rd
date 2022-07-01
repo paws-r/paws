@@ -36,12 +36,10 @@ bucket. When this parameter is not enabled, the result will be encrypted
 server side,using SSE-S3.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts the asynchronous detection of text in a document. Amazon Textract
@@ -66,9 +64,7 @@ and pass the job identifier (\code{JobId}) from the initial call to
 For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html}{Document Text Detection}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_document_text_detection(
+\preformatted{svc$start_document_text_detection(
   DocumentLocation = list(
     S3Object = list(
       Bucket = "string",
@@ -88,7 +84,7 @@ For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/h
   ),
   KMSKeyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

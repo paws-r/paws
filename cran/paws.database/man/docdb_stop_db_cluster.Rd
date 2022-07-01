@@ -11,9 +11,7 @@ docdb_stop_db_cluster(DBClusterIdentifier)
 \code{docdb-2019-05-28-15-24-52}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBCluster = list(
     AvailabilityZones = list(
       "string"
@@ -73,7 +71,7 @@ A list with the following syntax:
     DeletionProtection = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops the running cluster that is specified by \code{DBClusterIdentifier}.
@@ -81,12 +79,10 @@ The cluster must be in the \emph{available} state. For more information, see
 \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html}{Stopping and Starting an Amazon DocumentDB Cluster}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_db_cluster(
+\preformatted{svc$stop_db_cluster(
   DBClusterIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

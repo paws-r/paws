@@ -11,9 +11,7 @@ devicefarm_stop_job(arn)
 stop.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   job = list(
     arn = "string",
     name = "string",
@@ -99,7 +97,7 @@ A list with the following syntax:
     videoCapture = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Initiates a stop request for the current job. AWS Device Farm
@@ -110,12 +108,10 @@ device. You are billed for setup, teardown, and any tests that were in
 progress or already completed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_job(
+\preformatted{svc$stop_job(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

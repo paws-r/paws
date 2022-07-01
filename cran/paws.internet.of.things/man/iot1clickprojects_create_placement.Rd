@@ -22,16 +22,14 @@ An empty list.
 Creates an empty placement.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_placement(
+\preformatted{svc$create_placement(
   placementName = "string",
   projectName = "string",
   attributes = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

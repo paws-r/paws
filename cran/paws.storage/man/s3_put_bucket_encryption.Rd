@@ -60,9 +60,7 @@ in the Amazon Simple Storage Service Developer Guide.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_encryption(
+\preformatted{svc$put_bucket_encryption(
   Bucket = "string",
   ContentMD5 = "string",
   ServerSideEncryptionConfiguration = list(
@@ -78,7 +76,7 @@ in the Amazon Simple Storage Service Developer Guide.
   ),
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

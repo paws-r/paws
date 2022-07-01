@@ -11,24 +11,20 @@ clouddirectory_get_applied_schema_version(SchemaArn)
 \item{SchemaArn}{[required] The ARN of the applied schema.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AppliedSchemaArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns current applied schema version ARN, including the minor version
 in use.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_applied_schema_version(
+\preformatted{svc$get_applied_schema_version(
   SchemaArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

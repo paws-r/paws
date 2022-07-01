@@ -36,9 +36,7 @@ have alphanumeric and underscore characters, and the values must match
 [A-Za-z0-9-._~:/?#&=,]+.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccessLogSettings = list(
     DestinationArn = "string",
     Format = "string"
@@ -79,15 +77,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a Stage.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_stage(
+\preformatted{svc$update_stage(
   AccessLogSettings = list(
     DestinationArn = "string",
     Format = "string"
@@ -118,7 +114,7 @@ Updates a Stage.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

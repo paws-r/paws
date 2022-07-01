@@ -20,9 +20,7 @@ returned in the output. You can then pass in a subsequent command to the
 to it.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   ServerId = "string",
   Users = list(
@@ -36,21 +34,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the users for a file transfer protocol-enabled server that you
 specify by passing the \code{ServerId} parameter.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_users(
+\preformatted{svc$list_users(
   MaxResults = 123,
   NextToken = "string",
   ServerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

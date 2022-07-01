@@ -29,9 +29,7 @@ The Identity and Access Management (IAM) permission required for this
 operation is \code{\link[=glue_delete_partition]{delete_partition}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_column_statistics_for_partition(
+\preformatted{svc$delete_column_statistics_for_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -40,7 +38,7 @@ operation is \code{\link[=glue_delete_partition]{delete_partition}}.
   ),
   ColumnName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

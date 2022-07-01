@@ -27,9 +27,7 @@ Snowball Edge client or the Amazon S3 API Interface for Snowball or AWS
 OpsHub for Snow Family. For more information, see the \href{https://aws.amazon.com/snowball/}{User Guide}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- snowball(
+\preformatted{svc <- snowball(
   config = list(
     credentials = list(
       creds = list(
@@ -43,7 +41,7 @@ OpsHub for Snow Family. For more information, see the \href{https://aws.amazon.c
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

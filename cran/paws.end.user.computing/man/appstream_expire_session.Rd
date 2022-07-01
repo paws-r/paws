@@ -16,12 +16,10 @@ An empty list.
 Immediately stops the specified streaming session.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$expire_session(
+\preformatted{svc$expire_session(
   SessionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

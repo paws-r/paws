@@ -21,9 +21,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 exchange for your current Convertible Reserved Instances.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CurrencyCode = "string",
   IsValidExchange = TRUE|FALSE,
   OutputReservedInstancesWillExpireAt = as.POSIXct(
@@ -65,7 +63,7 @@ A list with the following syntax:
   ),
   ValidationFailureReason = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a quote and exchange information for exchanging one or more
@@ -76,9 +74,7 @@ the response. Use
 to perform the exchange.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_reserved_instances_exchange_quote(
+\preformatted{svc$get_reserved_instances_exchange_quote(
   DryRun = TRUE|FALSE,
   ReservedInstanceIds = list(
     "string"
@@ -90,7 +86,7 @@ to perform the exchange.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

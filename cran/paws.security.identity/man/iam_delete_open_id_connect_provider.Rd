@@ -28,12 +28,10 @@ This operation is idempotent; it does not fail or return an error if you
 call the operation for a provider that does not exist.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_open_id_connect_provider(
+\preformatted{svc$delete_open_id_connect_provider(
   OpenIDConnectProviderArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

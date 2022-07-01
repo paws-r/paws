@@ -18,9 +18,7 @@ domain.}
 this connection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SourceDomainInfo = list(
     OwnerId = "string",
     DomainName = "string",
@@ -38,16 +36,14 @@ A list with the following syntax:
   ),
   CrossClusterSearchConnectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new cross-cluster search connection from a source domain to a
 destination domain.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_outbound_cross_cluster_search_connection(
+\preformatted{svc$create_outbound_cross_cluster_search_connection(
   SourceDomainInfo = list(
     OwnerId = "string",
     DomainName = "string",
@@ -60,7 +56,7 @@ destination domain.
   ),
   ConnectionAlias = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

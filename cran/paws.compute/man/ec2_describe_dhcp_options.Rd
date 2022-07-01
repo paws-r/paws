@@ -41,9 +41,7 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DhcpOptions = list(
     list(
       DhcpConfigurations = list(
@@ -68,7 +66,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your DHCP options sets.
@@ -77,9 +75,7 @@ For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_dhcp_options(
+\preformatted{svc$describe_dhcp_options(
   DhcpOptionsIds = list(
     "string"
   ),
@@ -95,7 +91,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

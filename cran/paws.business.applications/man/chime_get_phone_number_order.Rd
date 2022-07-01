@@ -11,9 +11,7 @@ chime_get_phone_number_order(PhoneNumberOrderId)
 \item{PhoneNumberOrderId}{[required] The ID for the phone number order.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PhoneNumberOrder = list(
     PhoneNumberOrderId = "string",
     ProductType = "BusinessCalling"|"VoiceConnector",
@@ -32,7 +30,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves details for the specified phone number order, such as order
@@ -40,12 +38,10 @@ creation timestamp, phone numbers in E.164 format, product type, and
 order status.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_phone_number_order(
+\preformatted{svc$get_phone_number_order(
   PhoneNumberOrderId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

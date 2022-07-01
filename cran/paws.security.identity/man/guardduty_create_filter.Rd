@@ -94,20 +94,16 @@ milliseconds.
 \item{Tags}{The tags to be added to a new filter resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a filter using the specified finding criteria.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_filter(
+\preformatted{svc$create_filter(
   DetectorId = "string",
   Name = "string",
   Description = "string",
@@ -144,7 +140,7 @@ Creates a filter using the specified finding criteria.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

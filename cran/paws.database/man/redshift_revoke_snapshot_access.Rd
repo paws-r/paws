@@ -20,9 +20,7 @@ cluster name.}
 the specified snapshot.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Snapshot = list(
     SnapshotIdentifier = "string",
     ClusterIdentifier = "string",
@@ -78,7 +76,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes the ability of the specified AWS customer account to restore the
@@ -89,14 +87,12 @@ For more information about working with snapshots, go to \href{https://docs.aws.
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$revoke_snapshot_access(
+\preformatted{svc$revoke_snapshot_access(
   SnapshotIdentifier = "string",
   SnapshotClusterIdentifier = "string",
   AccountWithRestoreAccess = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

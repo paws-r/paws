@@ -35,9 +35,7 @@ the remaining results, make another request with the returned
 \item{NextToken}{The token to request the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConnectionNotificationSet = list(
     list(
       ConnectionNotificationId = "string",
@@ -53,16 +51,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the connection notifications for VPC endpoints and VPC
 endpoint services.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vpc_endpoint_connection_notifications(
+\preformatted{svc$describe_vpc_endpoint_connection_notifications(
   DryRun = TRUE|FALSE,
   ConnectionNotificationId = "string",
   Filters = list(
@@ -76,7 +72,7 @@ endpoint services.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

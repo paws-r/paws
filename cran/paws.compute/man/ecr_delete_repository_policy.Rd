@@ -15,26 +15,22 @@ default registry is assumed.}
 to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   registryId = "string",
   repositoryName = "string",
   policyText = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the repository policy associated with the specified repository.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_repository_policy(
+\preformatted{svc$delete_repository_policy(
   registryId = "string",
   repositoryName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -26,12 +26,10 @@ For information about setting up receipt rule sets, see the \href{https://docs.a
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_receipt_rule_set(
+\preformatted{svc$create_receipt_rule_set(
   RuleSetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

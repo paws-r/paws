@@ -25,12 +25,10 @@ unexpected prices.}
 example, \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReservedInstancesId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Purchases a Reserved Instance for use with your account. With Reserved
@@ -52,9 +50,7 @@ and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$purchase_reserved_instances_offering(
+\preformatted{svc$purchase_reserved_instances_offering(
   InstanceCount = 123,
   ReservedInstancesOfferingId = "string",
   DryRun = TRUE|FALSE,
@@ -66,7 +62,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

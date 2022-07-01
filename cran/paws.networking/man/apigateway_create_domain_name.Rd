@@ -54,9 +54,7 @@ DomainName. The valid values are \code{TLS_1_0} and \code{TLS_1_2}.}
 \item{mutualTlsAuthentication}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   domainName = "string",
   certificateName = "string",
   certificateArn = "string",
@@ -91,15 +89,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new domain name.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_domain_name(
+\preformatted{svc$create_domain_name(
   domainName = "string",
   certificateName = "string",
   certificateBody = "string",
@@ -125,7 +121,7 @@ Creates a new domain name.
     truststoreVersion = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

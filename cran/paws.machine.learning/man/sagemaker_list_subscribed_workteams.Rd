@@ -19,9 +19,7 @@ the next set of labeling jobs, use the token in the next request.}
 \item{MaxResults}{The maximum number of work teams to return in each page of the response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SubscribedWorkteams = list(
     list(
       WorkteamArn = "string",
@@ -33,7 +31,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of the work teams that you are subscribed to in the AWS
@@ -41,14 +39,12 @@ Marketplace. The list may be empty if no work team satisfies the filter
 specified in the \code{NameContains} parameter.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_subscribed_workteams(
+\preformatted{svc$list_subscribed_workteams(
   NameContains = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,9 +16,7 @@ chime_batch_create_room_membership(AccountId, RoomId,
 \item{MembershipItemList}{[required] The list of membership items.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Errors = list(
     list(
       MemberId = "string",
@@ -27,7 +25,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds up to 50 members to a chat room in an Amazon Chime Enterprise
@@ -36,9 +34,7 @@ whether the member is a chat room administrator or a general chat room
 member.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_create_room_membership(
+\preformatted{svc$batch_create_room_membership(
   AccountId = "string",
   RoomId = "string",
   MembershipItemList = list(
@@ -48,7 +44,7 @@ member.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

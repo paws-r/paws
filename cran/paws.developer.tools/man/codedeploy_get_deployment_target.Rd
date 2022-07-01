@@ -12,9 +12,7 @@ codedeploy_get_deployment_target(deploymentId, targetId)
 \item{targetId}{The unique ID of a deployment target.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   deploymentTarget = list(
     deploymentTargetType = "InstanceTarget"|"LambdaTarget"|"ECSTarget"|"CloudFormationTarget",
     instanceTarget = list(
@@ -150,19 +148,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a deployment target.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_deployment_target(
+\preformatted{svc$get_deployment_target(
   deploymentId = "string",
   targetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

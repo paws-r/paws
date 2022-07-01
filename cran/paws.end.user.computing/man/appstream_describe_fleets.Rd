@@ -14,9 +14,7 @@ appstream_describe_fleets(Names, NextToken)
 this operation. If this value is null, it retrieves the first page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Fleets = list(
     list(
       Arn = "string",
@@ -65,7 +63,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list that describes one or more specified fleets, if the
@@ -73,15 +71,13 @@ fleet names are provided. Otherwise, all fleets in the account are
 described.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_fleets(
+\preformatted{svc$describe_fleets(
   Names = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

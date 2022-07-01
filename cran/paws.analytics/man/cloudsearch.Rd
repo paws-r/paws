@@ -32,9 +32,7 @@ href="https://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_regio
 target="_blank">Regions and Endpoints</a>.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloudsearch(
+\preformatted{svc <- cloudsearch(
   config = list(
     credentials = list(
       creds = list(
@@ -48,7 +46,7 @@ target="_blank">Regions and Endpoints</a>.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

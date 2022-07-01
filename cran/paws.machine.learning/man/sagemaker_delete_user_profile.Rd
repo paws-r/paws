@@ -20,13 +20,11 @@ access to their EFS volume, including data, notebooks, and other
 artifacts.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user_profile(
+\preformatted{svc$delete_user_profile(
   DomainId = "string",
   UserProfileName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

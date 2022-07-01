@@ -11,12 +11,10 @@ clouddirectory_create_schema(Name)
 account and in each region.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SchemaArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new schema in a development state. A schema can exist in three
@@ -34,12 +32,10 @@ directories.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_schema(
+\preformatted{svc$create_schema(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

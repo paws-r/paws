@@ -72,9 +72,7 @@ certain source and target endpoints. For more information, see
 in the \emph{AWS Database Migration Service User Guide.}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationTask = list(
     ReplicationTaskIdentifier = "string",
     SourceEndpointArn = "string",
@@ -123,7 +121,7 @@ A list with the following syntax:
     TargetReplicationInstanceArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the specified replication task.
@@ -135,9 +133,7 @@ For more information about AWS DMS tasks, see \href{https://docs.aws.amazon.com/
 in the \emph{AWS Database Migration Service User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_replication_task(
+\preformatted{svc$modify_replication_task(
   ReplicationTaskArn = "string",
   ReplicationTaskIdentifier = "string",
   MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
@@ -150,7 +146,7 @@ in the \emph{AWS Database Migration Service User Guide}.
   CdcStopPosition = "string",
   TaskData = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

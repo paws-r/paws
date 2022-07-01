@@ -14,9 +14,7 @@ apigateway_get_method(restApiId, resourceId, httpMethod)
 \item{httpMethod}{[required] [Required] Specifies the method request's HTTP method type.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   httpMethod = "string",
   authorizationType = "string",
   authorizerId = "string",
@@ -81,20 +79,18 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describe an existing Method resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_method(
+\preformatted{svc$get_method(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

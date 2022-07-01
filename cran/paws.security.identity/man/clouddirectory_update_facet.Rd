@@ -32,9 +32,7 @@ Does the following:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_facet(
+\preformatted{svc$update_facet(
   SchemaArn = "string",
   Name = "string",
   AttributeUpdates = list(
@@ -73,7 +71,7 @@ Does the following:
   ),
   ObjectType = "NODE"|"LEAF_NODE"|"POLICY"|"INDEX"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

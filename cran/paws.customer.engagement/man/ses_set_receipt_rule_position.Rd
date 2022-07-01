@@ -26,14 +26,12 @@ For information about managing receipt rules, see the \href{https://docs.aws.ama
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_receipt_rule_position(
+\preformatted{svc$set_receipt_rule_position(
   RuleSetName = "string",
   RuleName = "string",
   After = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

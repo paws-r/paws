@@ -59,9 +59,7 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_scheduled_update_group_action(
+\preformatted{svc$put_scheduled_update_group_action(
   AutoScalingGroupName = "string",
   ScheduledActionName = "string",
   Time = as.POSIXct(
@@ -78,7 +76,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
   MaxSize = 123,
   DesiredCapacity = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -44,9 +44,7 @@ iframe. You must approve the domains that you want to host embedded
 AppStream 2.0 streaming sessions.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Stack = list(
     Arn = "string",
     Name = "string",
@@ -94,15 +92,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified fields for the specified stack.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_stack(
+\preformatted{svc$update_stack(
   DisplayName = "string",
   Description = "string",
   Name = "string",
@@ -141,7 +137,7 @@ Updates the specified fields for the specified stack.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -144,9 +144,7 @@ ReceiveRequestAttemptId Request
 Parameter]: R:Using\%20the\%0AReceiveRequestAttemptId\%20Request\%0AParameter}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Messages = list(
     list(
       MessageId = "string",
@@ -173,7 +171,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves one or more messages (up to 10), from the specified queue.
@@ -223,9 +221,7 @@ calls this action, we recommend that you structure your code so that it
 can handle new attributes gracefully.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$receive_message(
+\preformatted{svc$receive_message(
   QueueUrl = "string",
   AttributeNames = list(
     "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"|"DeduplicationScope"|"FifoThroughputLimit"
@@ -238,7 +234,7 @@ can handle new attributes gracefully.
   WaitTimeSeconds = 123,
   ReceiveRequestAttemptId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

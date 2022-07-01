@@ -12,9 +12,7 @@ swf_describe_workflow_type(domain, workflowType)
 \item{workflowType}{[required] The workflow type to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   typeInfo = list(
     workflowType = list(
       name = "string",
@@ -40,7 +38,7 @@ A list with the following syntax:
     defaultLambdaRole = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the specified \emph{workflow type}. This includes
@@ -74,16 +72,14 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_workflow_type(
+\preformatted{svc$describe_workflow_type(
   domain = "string",
   workflowType = list(
     name = "string",
     version = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

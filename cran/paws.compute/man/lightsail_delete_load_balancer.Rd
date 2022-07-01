@@ -11,9 +11,7 @@ lightsail_delete_load_balancer(loadBalancerName)
 \item{loadBalancerName}{[required] The name of the load balancer you want to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a Lightsail load balancer and all its associated SSL/TLS
@@ -51,12 +49,10 @@ via resource tags applied to the resource identified by
 \verb{load balancer name}. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_load_balancer(
+\preformatted{svc$delete_load_balancer(
   loadBalancerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

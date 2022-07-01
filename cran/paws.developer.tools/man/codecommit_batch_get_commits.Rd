@@ -16,9 +16,7 @@ shortened SHA IDs.}
 \item{repositoryName}{[required] The name of the repository that contains the commits.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   commits = list(
     list(
       commitId = "string",
@@ -48,22 +46,20 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the contents of one or more commits in a
 repository.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_commits(
+\preformatted{svc$batch_get_commits(
   commitIds = list(
     "string"
   ),
   repositoryName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

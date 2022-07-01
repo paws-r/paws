@@ -16,9 +16,7 @@ want to get an endpoint.}
 \code{SINGLE_MASTER} channel type.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourceEndpointList = list(
     list(
       Protocol = "WSS"|"HTTPS",
@@ -26,7 +24,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides an endpoint for the specified signaling channel to send and
@@ -46,9 +44,7 @@ API generating an endpoint that a client can use to communicate only
 with a \code{MASTER}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_signaling_channel_endpoint(
+\preformatted{svc$get_signaling_channel_endpoint(
   ChannelARN = "string",
   SingleMasterChannelEndpointConfiguration = list(
     Protocols = list(
@@ -57,7 +53,7 @@ with a \code{MASTER}.
     Role = "MASTER"|"VIEWER"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

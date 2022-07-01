@@ -30,9 +30,7 @@ in the Example ARNs section of the \emph{Amazon Web Services General
 Reference}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Grants = list(
     list(
       KeyId = "string",
@@ -60,7 +58,7 @@ A list with the following syntax:
   NextMarker = "string",
   Truncated = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns all grants in which the specified principal is the
@@ -91,14 +89,12 @@ permission) in any AWS account other than your own.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_retirable_grants(
+\preformatted{svc$list_retirable_grants(
   Limit = 123,
   Marker = "string",
   RetiringPrincipal = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

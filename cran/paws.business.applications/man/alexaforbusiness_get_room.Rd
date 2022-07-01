@@ -10,9 +10,7 @@ alexaforbusiness_get_room(RoomArn)
 \item{RoomArn}{The ARN of the room for which to request details. Required.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Room = list(
     RoomArn = "string",
     RoomName = "string",
@@ -21,18 +19,16 @@ A list with the following syntax:
     ProfileArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets room details by room ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_room(
+\preformatted{svc$get_room(
   RoomArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

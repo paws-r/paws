@@ -18,9 +18,7 @@ Datastore}
 Datastore}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GlobalReplicationGroup = list(
     GlobalReplicationGroupId = "string",
     GlobalReplicationGroupDescription = "string",
@@ -50,7 +48,7 @@ A list with the following syntax:
     ARN = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Remove a secondary cluster from the Global Datastore using the Global
@@ -59,14 +57,12 @@ from the primary cluster, but will remain as a standalone cluster in
 that AWS region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_global_replication_group(
+\preformatted{svc$disassociate_global_replication_group(
   GlobalReplicationGroupId = "string",
   ReplicationGroupId = "string",
   ReplicationGroupRegion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

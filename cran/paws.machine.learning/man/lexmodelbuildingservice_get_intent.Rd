@@ -12,9 +12,7 @@ lexmodelbuildingservice_get_intent(name, version)
 \item{version}{[required] The version of the intent.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   name = "string",
   description = "string",
   slots = list(
@@ -145,7 +143,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about an intent. In addition to the intent name, you
@@ -155,13 +153,11 @@ This operation requires permissions to perform the \code{lex:GetIntent}
 action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_intent(
+\preformatted{svc$get_intent(
   name = "string",
   version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

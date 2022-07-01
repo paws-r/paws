@@ -23,9 +23,7 @@ Updates the Security Hub insight identified by the specified insight
 ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_insight(
+\preformatted{svc$update_insight(
   InsightArn = "string",
   Name = "string",
   Filters = list(
@@ -585,7 +583,7 @@ ARN.
   ),
   GroupByAttribute = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

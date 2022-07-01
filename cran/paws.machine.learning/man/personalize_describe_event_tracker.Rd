@@ -10,9 +10,7 @@ personalize_describe_event_tracker(eventTrackerArn)
 \item{eventTrackerArn}{[required] The Amazon Resource Name (ARN) of the event tracker to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   eventTracker = list(
     name = "string",
     eventTrackerArn = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes an event tracker. The response includes the \code{trackingId} and
@@ -36,12 +34,10 @@ Describes an event tracker. The response includes the \code{trackingId} and
 see \code{\link[=personalize_create_event_tracker]{create_event_tracker}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_tracker(
+\preformatted{svc$describe_event_tracker(
   eventTrackerArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

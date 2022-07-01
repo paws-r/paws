@@ -30,9 +30,7 @@ response records by providing the returned marker value in the \code{Marker}
 parameter and retrying the request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DefaultClusterParameters = list(
     ParameterGroupFamily = "string",
     Marker = "string",
@@ -51,7 +49,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of parameter settings for the specified parameter group
@@ -62,14 +60,12 @@ For more information about parameters and parameter groups, go to
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_default_cluster_parameters(
+\preformatted{svc$describe_default_cluster_parameters(
   ParameterGroupFamily = "string",
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

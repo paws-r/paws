@@ -67,9 +67,7 @@ To use quality filtering, the collection you are using must be
 associated with version 3 of the face model or higher.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FaceRecords = list(
     list(
       Face = list(
@@ -230,7 +228,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Detects faces in the input image and adds them to the specified
@@ -336,9 +334,7 @@ This operation requires permissions to perform the
 \code{rekognition:IndexFaces} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$index_faces(
+\preformatted{svc$index_faces(
   CollectionId = "string",
   Image = list(
     Bytes = raw,
@@ -355,7 +351,7 @@ This operation requires permissions to perform the
   MaxFaces = 123,
   QualityFilter = "NONE"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

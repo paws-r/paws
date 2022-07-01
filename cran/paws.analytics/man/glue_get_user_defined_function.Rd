@@ -15,9 +15,7 @@ located. If none is provided, the AWS account ID is used by default.}
 \item{FunctionName}{[required] The name of the function.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserDefinedFunction = list(
     FunctionName = "string",
     DatabaseName = "string",
@@ -36,20 +34,18 @@ A list with the following syntax:
     CatalogId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a specified function definition from the Data Catalog.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_user_defined_function(
+\preformatted{svc$get_user_defined_function(
   CatalogId = "string",
   DatabaseName = "string",
   FunctionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

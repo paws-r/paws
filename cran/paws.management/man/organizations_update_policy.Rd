@@ -27,9 +27,7 @@ more information, see \href{https://docs.aws.amazon.com/organizations/latest/use
 in the \emph{AWS Organizations User Guide.}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Policy = list(
     PolicySummary = list(
       Id = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
     Content = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an existing policy with a new name, description, or content. If
@@ -53,15 +51,13 @@ This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_policy(
+\preformatted{svc$update_policy(
   PolicyId = "string",
   Name = "string",
   Description = "string",
   Content = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

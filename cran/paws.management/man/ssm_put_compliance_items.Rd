@@ -81,9 +81,7 @@ following format: yyyy-MM-dd'T'HH:mm:ss'Z'
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_compliance_items(
+\preformatted{svc$put_compliance_items(
   ResourceId = "string",
   ResourceType = "string",
   ComplianceType = "string",
@@ -108,7 +106,7 @@ following format: yyyy-MM-dd'T'HH:mm:ss'Z'
   ItemContentHash = "string",
   UploadType = "COMPLETE"|"PARTIAL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

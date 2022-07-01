@@ -7,23 +7,19 @@
 alexaforbusiness_get_conference_preference()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Preference = list(
     DefaultConferenceProviderArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the existing conference preferences.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_conference_preference()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_conference_preference()
+}
 }
 
 \keyword{internal}

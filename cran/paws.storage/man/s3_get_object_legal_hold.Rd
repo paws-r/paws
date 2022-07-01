@@ -32,14 +32,12 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LegalHold = list(
     Status = "ON"|"OFF"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets an object's current Legal Hold status. For more information, see
@@ -48,16 +46,14 @@ Gets an object's current Legal Hold status. For more information, see
 This action is not supported by Amazon S3 on Outposts.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_object_legal_hold(
+\preformatted{svc$get_object_legal_hold(
   Bucket = "string",
   Key = "string",
   VersionId = "string",
   RequestPayer = "requester",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

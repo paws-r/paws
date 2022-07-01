@@ -22,9 +22,7 @@ the default. The default is 100.}
 next page of results in a paginated response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OrganizationConformancePackDetailedStatuses = list(
     list(
       AccountId = "string",
@@ -39,16 +37,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns detailed status for each member account within an organization
 for a given organization conformance pack.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_organization_conformance_pack_detailed_status(
+\preformatted{svc$get_organization_conformance_pack_detailed_status(
   OrganizationConformancePackName = "string",
   Filters = list(
     AccountId = "string",
@@ -57,7 +53,7 @@ for a given organization conformance pack.
   Limit = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

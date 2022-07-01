@@ -237,12 +237,10 @@ stack instances in the specified accounts and Regions, while leaving all
 other stack instances with their existing stack instance status.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OperationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the stack set, and associated stack instances in the specified
@@ -255,9 +253,7 @@ the stack set is updated with your changes. Subsequent
 on the specified stack set use the updated stack set.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_stack_set(
+\preformatted{svc$update_stack_set(
   StackSetName = "string",
   Description = "string",
   TemplateBody = "string",
@@ -312,7 +308,7 @@ on the specified stack set use the updated stack set.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

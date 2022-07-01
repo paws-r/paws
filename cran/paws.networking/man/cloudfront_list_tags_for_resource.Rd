@@ -10,9 +10,7 @@ cloudfront_list_tags_for_resource(Resource)
 \item{Resource}{[required] An ARN of a CloudFront resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tags = list(
     Items = list(
       list(
@@ -22,18 +20,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List tags for a CloudFront resource.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   Resource = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

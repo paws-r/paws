@@ -11,24 +11,20 @@ kafka_delete_configuration(Arn)
 configuration.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   State = "ACTIVE"|"DELETING"|"DELETE_FAILED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an MSK Configuration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_configuration(
+\preformatted{svc$delete_configuration(
   Arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

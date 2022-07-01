@@ -42,9 +42,7 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_ownership_controls(
+\preformatted{svc$put_bucket_ownership_controls(
   Bucket = "string",
   ContentMD5 = "string",
   ExpectedBucketOwner = "string",
@@ -56,7 +54,7 @@ The following operations are related to
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

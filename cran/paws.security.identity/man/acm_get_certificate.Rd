@@ -14,13 +14,11 @@ acm_get_certificate(CertificateArn)
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Certificate = "string",
   CertificateChain = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves an Amazon-issued certificate and its certificate chain. The
@@ -31,12 +29,10 @@ base64 encoded. You can use
 decode the certificates and inspect individual fields.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_certificate(
+\preformatted{svc$get_certificate(
   CertificateArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

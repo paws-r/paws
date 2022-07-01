@@ -14,9 +14,7 @@ dynamodb_update_continuous_backups(TableName,
 \item{PointInTimeRecoverySpecification}{[required] Represents the settings used to enable point in time recovery.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContinuousBackupsDescription = list(
     ContinuousBackupsStatus = "ENABLED"|"DISABLED",
     PointInTimeRecoveryDescription = list(
@@ -30,7 +28,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 \code{\link[=dynamodb_update_continuous_backups]{update_continuous_backups}}
@@ -50,15 +48,13 @@ time. You can restore your table to any point in time during the last 35
 days.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_continuous_backups(
+\preformatted{svc$update_continuous_backups(
   TableName = "string",
   PointInTimeRecoverySpecification = list(
     PointInTimeRecoveryEnabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

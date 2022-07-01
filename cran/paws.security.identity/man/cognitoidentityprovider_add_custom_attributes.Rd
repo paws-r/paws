@@ -20,9 +20,7 @@ An empty list.
 Adds additional user attributes to the user pool schema.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_custom_attributes(
+\preformatted{svc$add_custom_attributes(
   UserPoolId = "string",
   CustomAttributes = list(
     list(
@@ -42,7 +40,7 @@ Adds additional user attributes to the user pool schema.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -25,16 +25,14 @@ An empty list.
 Updates room details by room ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_room(
+\preformatted{svc$update_room(
   RoomArn = "string",
   RoomName = "string",
   Description = "string",
   ProviderCalendarId = "string",
   ProfileArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

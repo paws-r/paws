@@ -8,26 +8,22 @@ template}
 alexaforbusiness_get_invitation_configuration()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OrganizationName = "string",
   ContactEmail = "string",
   PrivateSkillIds = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the configured values for the user enrollment invitation email
 template.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_invitation_configuration()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_invitation_configuration()
+}
 }
 
 \keyword{internal}

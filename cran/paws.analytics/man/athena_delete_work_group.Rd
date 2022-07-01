@@ -20,13 +20,11 @@ Deletes the workgroup with the specified name. The primary workgroup
 cannot be deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_work_group(
+\preformatted{svc$delete_work_group(
   WorkGroup = "string",
   RecursiveDeleteOption = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

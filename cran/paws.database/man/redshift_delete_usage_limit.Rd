@@ -16,12 +16,10 @@ An empty list.
 Deletes a usage limit from a cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_usage_limit(
+\preformatted{svc$delete_usage_limit(
   UsageLimitId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

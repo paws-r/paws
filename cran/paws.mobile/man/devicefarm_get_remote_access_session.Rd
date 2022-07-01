@@ -11,9 +11,7 @@ devicefarm_get_remote_access_session(arn)
 you want to get session information.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   remoteAccessSession = list(
     arn = "string",
     name = "string",
@@ -97,18 +95,16 @@ A list with the following syntax:
     skipAppResign = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a link to a currently running remote access session.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_remote_access_session(
+\preformatted{svc$get_remote_access_session(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

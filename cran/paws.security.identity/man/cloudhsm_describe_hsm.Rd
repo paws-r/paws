@@ -14,9 +14,7 @@ must be specified.}
 \code{HsmSerialNumber} parameter must be specified.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HsmArn = "string",
   Status = "PENDING"|"RUNNING"|"UPDATING"|"SUSPENDED"|"TERMINATING"|"TERMINATED"|"DEGRADED",
   StatusDetails = "string",
@@ -41,7 +39,7 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -55,13 +53,11 @@ Retrieves information about an HSM. You can identify the HSM by its ARN
 or its serial number.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_hsm(
+\preformatted{svc$describe_hsm(
   HsmArn = "string",
   HsmSerialNumber = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

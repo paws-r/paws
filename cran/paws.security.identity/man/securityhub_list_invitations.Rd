@@ -19,9 +19,7 @@ value of this parameter to the value returned from the previous
 response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Invitations = list(
     list(
       AccountId = "string",
@@ -34,7 +32,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all Security Hub membership invitations that were sent to the
@@ -44,13 +42,11 @@ This operation is only used by accounts that do not belong to an
 organization. Organization accounts do not receive invitations.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_invitations(
+\preformatted{svc$list_invitations(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

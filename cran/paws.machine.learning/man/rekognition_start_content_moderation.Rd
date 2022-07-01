@@ -36,12 +36,10 @@ example, you can use \code{JobTag} to group related jobs and identify them in
 the completion notification.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts asynchronous detection of unsafe content in a stored video.
@@ -65,9 +63,7 @@ For more information, see Detecting Unsafe Content in the Amazon
 Rekognition Developer Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_content_moderation(
+\preformatted{svc$start_content_moderation(
   Video = list(
     S3Object = list(
       Bucket = "string",
@@ -83,7 +79,7 @@ Rekognition Developer Guide.
   ),
   JobTag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

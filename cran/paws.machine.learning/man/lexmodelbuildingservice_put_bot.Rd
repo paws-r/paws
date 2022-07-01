@@ -217,9 +217,7 @@ operation to update the tags on a bot. To update tags, use the
 \code{\link[=lexmodelbuildingservice_tag_resource]{tag_resource}} operation.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   name = "string",
   description = "string",
   intents = list(
@@ -274,7 +272,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an Amazon Lex conversational bot or replaces an existing bot.
@@ -297,9 +295,7 @@ This operation requires permissions for the \code{lex:PutBot} action. For
 more information, see security-iam.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bot(
+\preformatted{svc$put_bot(
   name = "string",
   description = "string",
   intents = list(
@@ -346,7 +342,7 @@ more information, see security-iam.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

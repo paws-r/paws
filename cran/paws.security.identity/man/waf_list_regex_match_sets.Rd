@@ -21,9 +21,7 @@ the number you specify for \code{Limit}, the response includes a \code{NextMarke
 value that you can use to get another batch of \code{RegexMatchSet} objects.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextMarker = "string",
   RegexMatchSets = list(
     list(
@@ -32,7 +30,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -47,13 +45,11 @@ regional and global use.
 Returns an array of RegexMatchSetSummary objects.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_regex_match_sets(
+\preformatted{svc$list_regex_match_sets(
   NextMarker = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,9 +10,7 @@ iot_describe_thing_group(thingGroupName)
 \item{thingGroupName}{[required] The name of the thing group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   thingGroupName = "string",
   thingGroupId = "string",
   thingGroupArn = "string",
@@ -43,18 +41,16 @@ A list with the following syntax:
   queryVersion = "string",
   status = "ACTIVE"|"BUILDING"|"REBUILDING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describe a thing group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_thing_group(
+\preformatted{svc$describe_thing_group(
   thingGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -83,9 +83,7 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$terminate_workflow_execution(
+\preformatted{svc$terminate_workflow_execution(
   domain = "string",
   workflowId = "string",
   runId = "string",
@@ -93,7 +91,7 @@ in the \emph{Amazon SWF Developer Guide}.
   details = "string",
   childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

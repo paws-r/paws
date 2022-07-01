@@ -38,12 +38,10 @@ new name to create a new metric group. A fleet can only be included in
 one metric group at a time.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FleetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates fleet properties, including name and description, for a fleet.
@@ -73,9 +71,7 @@ returned.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_fleet_attributes(
+\preformatted{svc$update_fleet_attributes(
   FleetId = "string",
   Name = "string",
   Description = "string",
@@ -88,7 +84,7 @@ returned.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -33,9 +33,7 @@ results, use null.}
 \item{ProductSource}{Access level of the source of the product.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProductViewDetails = list(
     list(
       ProductViewSummary = list(
@@ -60,16 +58,14 @@ A list with the following syntax:
   ),
   NextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the products for the specified portfolio or all
 products.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search_products_as_admin(
+\preformatted{svc$search_products_as_admin(
   AcceptLanguage = "string",
   PortfolioId = "string",
   Filters = list(
@@ -83,7 +79,7 @@ products.
   PageSize = 123,
   ProductSource = "ACCOUNT"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

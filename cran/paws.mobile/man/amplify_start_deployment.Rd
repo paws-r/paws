@@ -19,9 +19,7 @@ without create deployment. The source URL can be any HTTP GET URL that
 is publicly accessible and downloads a single .zip file.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   jobSummary = list(
     jobArn = "string",
     jobId = "string",
@@ -40,22 +38,20 @@ A list with the following syntax:
     jobType = "RELEASE"|"RETRY"|"MANUAL"|"WEB_HOOK"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a deployment for a manually deployed app. Manually deployed apps
 are not connected to a repository.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_deployment(
+\preformatted{svc$start_deployment(
   appId = "string",
   branchName = "string",
   jobId = "string",
   sourceUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

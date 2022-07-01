@@ -18,9 +18,7 @@ apigatewayv2_get_integration_responses(ApiId, IntegrationId, MaxResults,
 element of the collection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Items = list(
     list(
       ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
@@ -37,21 +35,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the IntegrationResponses for an Integration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_integration_responses(
+\preformatted{svc$get_integration_responses(
   ApiId = "string",
   IntegrationId = "string",
   MaxResults = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

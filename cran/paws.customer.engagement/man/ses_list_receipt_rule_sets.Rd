@@ -13,9 +13,7 @@ ses_list_receipt_rule_sets(NextToken)
 position in the receipt rule set list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RuleSets = list(
     list(
       Name = "string",
@@ -26,7 +24,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the receipt rule sets that exist under your AWS account in the
@@ -40,12 +38,10 @@ For information about managing receipt rule sets, see the \href{https://docs.aws
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_receipt_rule_sets(
+\preformatted{svc$list_receipt_rule_sets(
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

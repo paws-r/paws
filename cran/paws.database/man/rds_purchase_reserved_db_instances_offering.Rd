@@ -24,9 +24,7 @@ Default: \code{1}}
 \item{Tags}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReservedDBInstance = list(
     ReservedDBInstanceId = "string",
     ReservedDBInstancesOfferingId = "string",
@@ -53,15 +51,13 @@ A list with the following syntax:
     LeaseId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Purchases a reserved DB instance offering.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$purchase_reserved_db_instances_offering(
+\preformatted{svc$purchase_reserved_db_instances_offering(
   ReservedDBInstancesOfferingId = "string",
   ReservedDBInstanceId = "string",
   DBInstanceCount = 123,
@@ -72,7 +68,7 @@ Purchases a reserved DB instance offering.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

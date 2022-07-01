@@ -11,9 +11,7 @@ iot_describe_certificate(certificateId)
 contains the certificate ID.)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   certificateDescription = list(
     certificateArn = "string",
     certificateId = "string",
@@ -54,18 +52,16 @@ A list with the following syntax:
     certificateMode = "DEFAULT"|"SNI_ONLY"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the specified certificate.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_certificate(
+\preformatted{svc$describe_certificate(
   certificateId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

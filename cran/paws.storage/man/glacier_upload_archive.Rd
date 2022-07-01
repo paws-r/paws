@@ -23,14 +23,12 @@ account ID, do not include any hyphens ('-') in the ID.}
 \item{body}{The data to upload.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   location = "string",
   checksum = "string",
   archiveId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation adds an archive to a vault. This is a synchronous
@@ -72,16 +70,14 @@ and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$upload_archive(
+\preformatted{svc$upload_archive(
   vaultName = "string",
   accountId = "string",
   archiveDescription = "string",
   checksum = "string",
   body = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

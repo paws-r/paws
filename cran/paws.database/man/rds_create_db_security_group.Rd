@@ -26,9 +26,7 @@ Example: \code{mysecuritygroup}}
 \item{Tags}{Tags to assign to the DB security group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBSecurityGroup = list(
     OwnerId = "string",
     DBSecurityGroupName = "string",
@@ -51,7 +49,7 @@ A list with the following syntax:
     DBSecurityGroupArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new DB security group. DB security groups control access to a
@@ -61,9 +59,7 @@ A DB security group controls access to EC2-Classic DB instances that are
 not in a VPC.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_security_group(
+\preformatted{svc$create_db_security_group(
   DBSecurityGroupName = "string",
   DBSecurityGroupDescription = "string",
   Tags = list(
@@ -73,7 +69,7 @@ not in a VPC.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

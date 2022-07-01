@@ -19,13 +19,11 @@ An empty list.
 Associates a contact with a given address book.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_contact_with_address_book(
+\preformatted{svc$associate_contact_with_address_book(
   ContactArn = "string",
   AddressBookArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

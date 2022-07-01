@@ -29,9 +29,7 @@ in the DAX cluster. If this parameter is not specified, DAX assigns the
 default VPC security group to each node.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Cluster = list(
     ClusterName = "string",
     Description = "string",
@@ -87,7 +85,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the settings for a DAX cluster. You can use this action to
@@ -95,9 +93,7 @@ change one or more cluster configuration parameters by specifying the
 parameters and the new values.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_cluster(
+\preformatted{svc$update_cluster(
   ClusterName = "string",
   Description = "string",
   PreferredMaintenanceWindow = "string",
@@ -108,7 +104,7 @@ parameters and the new values.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

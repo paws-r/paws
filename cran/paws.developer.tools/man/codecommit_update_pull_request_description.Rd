@@ -14,9 +14,7 @@ codecommit_update_pull_request_description(pullRequestId, description)
 content replaces the existing description.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pullRequest = list(
     pullRequestId = "string",
     title = "string",
@@ -68,19 +66,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Replaces the contents of the description of a pull request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_pull_request_description(
+\preformatted{svc$update_pull_request_description(
   pullRequestId = "string",
   description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

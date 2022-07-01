@@ -22,24 +22,20 @@ apigatewayv2_update_model(ApiId, ContentType, Description, ModelId,
 JSON schema draft 4 model.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContentType = "string",
   Description = "string",
   ModelId = "string",
   Name = "string",
   Schema = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a Model.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_model(
+\preformatted{svc$update_model(
   ApiId = "string",
   ContentType = "string",
   Description = "string",
@@ -47,7 +43,7 @@ Updates a Model.
   Name = "string",
   Schema = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

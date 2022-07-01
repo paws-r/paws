@@ -23,9 +23,7 @@ Associates the list of tags in the input \code{Tags} parameter with the
 resource identified by the \code{ResourceArn} input parameter.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(
@@ -34,7 +32,7 @@ resource identified by the \code{ResourceArn} input parameter.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -30,9 +30,7 @@ user who has permission to create rules will be able to access data
 processed by the rule.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_topic_rule(
+\preformatted{svc$create_topic_rule(
   ruleName = "string",
   topicRulePayload = list(
     sql = "string",
@@ -380,7 +378,7 @@ processed by the rule.
   ),
   tags = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

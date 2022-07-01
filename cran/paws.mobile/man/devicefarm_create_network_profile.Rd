@@ -44,9 +44,7 @@ percent.}
 percent.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   networkProfile = list(
     arn = "string",
     name = "string",
@@ -62,15 +60,13 @@ A list with the following syntax:
     downlinkLossPercent = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a network profile.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_network_profile(
+\preformatted{svc$create_network_profile(
   projectArn = "string",
   name = "string",
   description = "string",
@@ -84,7 +80,7 @@ Creates a network profile.
   uplinkLossPercent = 123,
   downlinkLossPercent = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

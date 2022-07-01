@@ -18,15 +18,13 @@ An empty list.
 Removes tags for a resource
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_tags(
+\preformatted{svc$delete_tags(
   ResourceArn = "string",
   TagKeys = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

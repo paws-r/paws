@@ -26,9 +26,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BundleTask = list(
     BundleId = "string",
     BundleTaskError = list(
@@ -55,7 +53,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Bundles an Amazon instance store-backed Windows instance.
@@ -67,9 +65,7 @@ This action is not applicable for Linux/Unix instances or Windows
 instances that are backed by Amazon EBS.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$bundle_instance(
+\preformatted{svc$bundle_instance(
   InstanceId = "string",
   Storage = list(
     S3 = list(
@@ -82,7 +78,7 @@ instances that are backed by Amazon EBS.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

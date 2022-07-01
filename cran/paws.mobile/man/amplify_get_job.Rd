@@ -14,9 +14,7 @@ amplify_get_job(appId, branchName, jobId)
 \item{jobId}{[required] The unique ID for the job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   job = list(
     summary = list(
       jobArn = "string",
@@ -58,20 +56,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a job for a branch of an Amplify app.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_job(
+\preformatted{svc$get_job(
   appId = "string",
   branchName = "string",
   jobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

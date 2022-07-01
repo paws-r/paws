@@ -24,9 +24,7 @@ custom AZ receives the network traffic.
 Specify this parameter only if \code{ExistingVpnId} isn't specified.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CustomAvailabilityZone = list(
     CustomAvailabilityZoneId = "string",
     CustomAvailabilityZoneName = "string",
@@ -41,7 +39,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a custom Availability Zone (AZ).
@@ -52,15 +50,13 @@ vSphere cluster.
 For more information about RDS on VMware, see the \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html}{RDS on VMware User Guide.}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_custom_availability_zone(
+\preformatted{svc$create_custom_availability_zone(
   CustomAvailabilityZoneName = "string",
   ExistingVpnId = "string",
   NewVpnTunnelName = "string",
   VpnTunnelOriginatorIP = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

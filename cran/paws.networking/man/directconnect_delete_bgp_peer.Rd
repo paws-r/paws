@@ -19,9 +19,7 @@ configuration.}
 \item{bgpPeerId}{The ID of the BGP peer.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   virtualInterface = list(
     ownerAccount = "string",
     virtualInterfaceId = "string",
@@ -70,7 +68,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified BGP peer on the specified virtual interface with
@@ -79,15 +77,13 @@ the specified customer address and ASN.
 You cannot delete the last BGP peer from a virtual interface.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bgp_peer(
+\preformatted{svc$delete_bgp_peer(
   virtualInterfaceId = "string",
   asn = 123,
   customerAddress = "string",
   bgpPeerId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

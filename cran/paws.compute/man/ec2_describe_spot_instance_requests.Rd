@@ -103,9 +103,7 @@ value between 5 and 1000. To retrieve the remaining results, make
 another call with the returned \code{NextToken} value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SpotInstanceRequests = list(
     list(
       ActualBlockHourlyPrice = "string",
@@ -226,7 +224,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified Spot Instance requests.
@@ -252,9 +250,7 @@ Spot Instance requests are deleted four hours after they are canceled
 and their instances are terminated.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_spot_instance_requests(
+\preformatted{svc$describe_spot_instance_requests(
   Filters = list(
     list(
       Name = "string",
@@ -270,7 +266,7 @@ and their instances are terminated.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

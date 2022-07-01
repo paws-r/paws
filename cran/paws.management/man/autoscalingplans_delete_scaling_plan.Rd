@@ -26,13 +26,11 @@ If the plan has launched resources or has scaling activities in
 progress, you must delete those resources separately.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_scaling_plan(
+\preformatted{svc$delete_scaling_plan(
   ScalingPlanName = "string",
   ScalingPlanVersion = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

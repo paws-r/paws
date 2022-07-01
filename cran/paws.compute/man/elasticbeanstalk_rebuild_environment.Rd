@@ -29,13 +29,11 @@ Scaling group, load balancer, etc.) for a specified environment and
 forces a restart.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$rebuild_environment(
+\preformatted{svc$rebuild_environment(
   EnvironmentId = "string",
   EnvironmentName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

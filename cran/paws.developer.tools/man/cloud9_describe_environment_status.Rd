@@ -10,24 +10,20 @@ cloud9_describe_environment_status(environmentId)
 \item{environmentId}{[required] The ID of the environment to get status information about.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   status = "error"|"creating"|"connecting"|"ready"|"stopping"|"stopped"|"deleting",
   message = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets status information for an AWS Cloud9 development environment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_environment_status(
+\preformatted{svc$describe_environment_status(
   environmentId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -16,9 +16,7 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 in the \emph{AWS General Reference}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Policy = list(
     PolicyName = "string",
     PolicyId = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about the specified managed policy, including the
@@ -59,12 +57,10 @@ For more information about policies, see \href{https://docs.aws.amazon.com/IAM/l
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_policy(
+\preformatted{svc$get_policy(
   PolicyArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

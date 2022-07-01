@@ -53,14 +53,12 @@ This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$move_account(
+\preformatted{svc$move_account(
   AccountId = "string",
   SourceParentId = "string",
   DestinationParentId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

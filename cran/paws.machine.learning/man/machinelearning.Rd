@@ -19,9 +19,7 @@ Operations section.
 Definition of the public APIs exposed by Amazon Machine Learning
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- machinelearning(
+\preformatted{svc <- machinelearning(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +33,7 @@ Definition of the public APIs exposed by Amazon Machine Learning
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

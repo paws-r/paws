@@ -16,15 +16,13 @@ minor version ARNs for a major version are listed.}
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SchemaArns = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the major version families of each managed schema. If a major
@@ -32,14 +30,12 @@ version ARN is provided as SchemaArn, the minor version revisions in
 that family are listed instead.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_managed_schema_arns(
+\preformatted{svc$list_managed_schema_arns(
   SchemaArn = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -15,9 +15,7 @@ findings you want to retrieve.}
 \item{SortCriteria}{Represents the criteria used for sorting findings.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Findings = list(
     list(
       AccountId = "string",
@@ -275,15 +273,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes Amazon GuardDuty findings specified by finding IDs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_findings(
+\preformatted{svc$get_findings(
   DetectorId = "string",
   FindingIds = list(
     "string"
@@ -293,7 +289,7 @@ Describes Amazon GuardDuty findings specified by finding IDs.
     OrderBy = "ASC"|"DESC"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

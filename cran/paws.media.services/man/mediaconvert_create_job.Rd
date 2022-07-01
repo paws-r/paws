@@ -73,9 +73,7 @@ existing integrations or workflows that rely on job metadata tags.
 Otherwise, we recommend that you use standard AWS tags.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Job = list(
     AccelerationSettings = list(
       Mode = "DISABLED"|"ENABLED"|"PREFERRED"
@@ -1276,7 +1274,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create a new transcoding job. For information about jobs and job
@@ -1284,9 +1282,7 @@ settings, see the User Guide at
 http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_job(
+\preformatted{svc$create_job(
   AccelerationSettings = list(
     Mode = "DISABLED"|"ENABLED"|"PREFERRED"
   ),
@@ -2436,7 +2432,7 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

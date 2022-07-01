@@ -14,9 +14,7 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TopicConfiguration = list(
     Id = "string",
     Events = list(
@@ -43,20 +41,18 @@ A list with the following syntax:
     InvocationRole = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 No longer used, see
 \code{\link[=s3_get_bucket_notification_configuration]{get_bucket_notification_configuration}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bucket_notification(
+\preformatted{svc$get_bucket_notification(
   Bucket = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -11,12 +11,10 @@ directconnect_confirm_connection(connectionId)
 \item{connectionId}{[required] The ID of the hosted connection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Confirms the creation of the specified hosted connection on an
@@ -27,12 +25,10 @@ state, and remains in this state until the owner confirms creation of
 the hosted connection.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$confirm_connection(
+\preformatted{svc$confirm_connection(
   connectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -26,9 +26,7 @@ sample rate that is less than 16 kHz, choose \code{Narrowband}.}
 required input files to create a custom language model.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LanguageCode = "en-US",
   BaseModelName = "NarrowBand"|"WideBand",
   ModelName = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
   ),
   ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new custom language model. Use Amazon S3 prefixes to provide
@@ -47,9 +45,7 @@ the location of your input files. The time it takes to create your model
 depends on the size of your training data.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_language_model(
+\preformatted{svc$create_language_model(
   LanguageCode = "en-US",
   BaseModelName = "NarrowBand"|"WideBand",
   ModelName = "string",
@@ -59,7 +55,7 @@ depends on the size of your training data.
     DataAccessRoleArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -14,9 +14,7 @@ chime_disassociate_phone_numbers_from_voice_connector_group(
 \item{E164PhoneNumbers}{[required] List of phone numbers, in E.164 format.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PhoneNumberErrors = list(
     list(
       PhoneNumberId = "string",
@@ -25,22 +23,20 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disassociates the specified phone numbers from the specified Amazon
 Chime Voice Connector group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_phone_numbers_from_voice_connector_group(
+\preformatted{svc$disassociate_phone_numbers_from_voice_connector_group(
   VoiceConnectorGroupId = "string",
   E164PhoneNumbers = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

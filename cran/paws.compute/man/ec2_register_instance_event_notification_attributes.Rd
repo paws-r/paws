@@ -17,9 +17,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{InstanceTagAttribute}{Information about the tag keys to register.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceTagAttribute = list(
     InstanceTagKeys = list(
       "string"
@@ -27,7 +25,7 @@ A list with the following syntax:
     IncludeAllTagsOfInstance = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Registers a set of tag keys to include in scheduled event notifications
@@ -36,9 +34,7 @@ for your resources.
 To remove tags, use .
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_instance_event_notification_attributes(
+\preformatted{svc$register_instance_event_notification_attributes(
   DryRun = TRUE|FALSE,
   InstanceTagAttribute = list(
     IncludeAllTagsOfInstance = TRUE|FALSE,
@@ -47,7 +43,7 @@ To remove tags, use .
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

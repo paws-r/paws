@@ -17,9 +17,7 @@ none is provided, the AWS account ID is used by default.}
 \item{PartitionValues}{[required] The values that define the partition.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Partition = list(
     Values = list(
       "string"
@@ -98,15 +96,13 @@ A list with the following syntax:
     CatalogId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about a specified partition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_partition(
+\preformatted{svc$get_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -114,7 +110,7 @@ Retrieves information about a specified partition.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

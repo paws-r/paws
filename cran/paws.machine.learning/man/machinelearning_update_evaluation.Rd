@@ -13,12 +13,10 @@ machinelearning_update_evaluation(EvaluationId, EvaluationName)
 replace the current content.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EvaluationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the \code{EvaluationName} of an \code{Evaluation}.
@@ -27,13 +25,11 @@ You can use the \code{\link[=machinelearning_get_evaluation]{get_evaluation}}
 operation to view the contents of the updated data element.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_evaluation(
+\preformatted{svc$update_evaluation(
   EvaluationId = "string",
   EvaluationName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

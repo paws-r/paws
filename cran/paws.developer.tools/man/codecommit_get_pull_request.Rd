@@ -11,9 +11,7 @@ codecommit_get_pull_request(pullRequestId)
 \code{\link[=codecommit_list_pull_requests]{list_pull_requests}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pullRequest = list(
     pullRequestId = "string",
     title = "string",
@@ -65,18 +63,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a pull request in a specified repository.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_pull_request(
+\preformatted{svc$get_pull_request(
   pullRequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

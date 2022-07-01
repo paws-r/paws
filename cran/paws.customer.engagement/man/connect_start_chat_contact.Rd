@@ -35,14 +35,12 @@ underscore characters.}
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContactId = "string",
   ParticipantId = "string",
   ParticipantToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Initiates a contact flow to start a new chat for the customer. Response
@@ -70,9 +68,7 @@ For more information about how chat works, see
 in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_chat_contact(
+\preformatted{svc$start_chat_contact(
   InstanceId = "string",
   ContactFlowId = "string",
   Attributes = list(
@@ -87,7 +83,7 @@ in the \emph{Amazon Connect Administrator Guide}.
   ),
   ClientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -12,9 +12,7 @@ cloudsearch_define_expression(DomainName, Expression)
 \item{Expression}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Expression = list(
     Options = list(
       ExpressionName = "string",
@@ -33,7 +31,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Configures an \code{Expression} for the search domain. Used to create new
@@ -44,16 +42,14 @@ target="_blank">Configuring Expressions</a> in the \emph{Amazon CloudSearch
 Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$define_expression(
+\preformatted{svc$define_expression(
   DomainName = "string",
   Expression = list(
     ExpressionName = "string",
     ExpressionValue = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

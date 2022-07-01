@@ -13,9 +13,7 @@ codecommit_test_repository_triggers(repositoryName, triggers)
 \item{triggers}{[required] The list of triggers to test.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   successfulExecutions = list(
     "string"
   ),
@@ -26,7 +24,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Tests the functionality of repository triggers by sending information to
@@ -35,9 +33,7 @@ test sends data from the last commit. If no data is available, sample
 data is generated.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$test_repository_triggers(
+\preformatted{svc$test_repository_triggers(
   repositoryName = "string",
   triggers = list(
     list(
@@ -53,7 +49,7 @@ data is generated.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

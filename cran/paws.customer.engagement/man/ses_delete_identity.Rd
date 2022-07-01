@@ -21,12 +21,10 @@ list of verified identities.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_identity(
+\preformatted{svc$delete_identity(
   Identity = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

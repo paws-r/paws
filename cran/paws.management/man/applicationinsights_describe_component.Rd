@@ -13,9 +13,7 @@ applicationinsights_describe_component(ResourceGroupName, ComponentName)
 \item{ComponentName}{[required] The name of the component.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationComponent = list(
     ComponentName = "string",
     ComponentRemarks = "string",
@@ -33,20 +31,18 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a component and lists the resources that are grouped together
 in a component.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_component(
+\preformatted{svc$describe_component(
   ResourceGroupName = "string",
   ComponentName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

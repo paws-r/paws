@@ -21,12 +21,10 @@ resources in different ways, for example, by purpose, owner, or
 environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EndpointArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an endpoint using the endpoint configuration specified in the
@@ -106,19 +104,15 @@ role:
 For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/api-permissions-reference.html}{Amazon SageMaker API Permissions: Actions, Permissions, and Resources Reference}.
 }
 
-[`
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{`"arn:aws:sagemaker:region:account-id:endpoint/endpointName"`
+[`\preformatted{`"arn:aws:sagemaker:region:account-id:endpoint/endpointName"`
 
 `"arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName"`
 
 `]: R:\%60\%0A\%0A\%20\%20\%20\%20\%60\%22arn:aws:sagemaker:region:account-id:endpoint/endpointName\%22\%60\%0A\%0A\%20\%20\%20\%20\%60\%22arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName\%22\%60\%0A\%0A\%20\%20\%20\%20\%60
-}\if{html}{\out{</div>}}
+}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_endpoint(
+\preformatted{svc$create_endpoint(
   EndpointName = "string",
   EndpointConfigName = "string",
   Tags = list(
@@ -128,7 +122,7 @@ For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

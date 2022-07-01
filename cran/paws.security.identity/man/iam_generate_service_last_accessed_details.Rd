@@ -21,12 +21,10 @@ granularity, it generates service and action data. If you don't include
 this optional parameter, the operation generates service data.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Generates a report that includes details about when an IAM resource
@@ -89,13 +87,11 @@ For more information about service and action last accessed data, see
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$generate_service_last_accessed_details(
+\preformatted{svc$generate_service_last_accessed_details(
   Arn = "string",
   Granularity = "SERVICE_LEVEL"|"ACTION_LEVEL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

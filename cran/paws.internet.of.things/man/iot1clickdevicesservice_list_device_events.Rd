@@ -23,9 +23,7 @@ default value of 100 is used.}
 2018-03-28T15:45:12.880Z}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Events = list(
     list(
       Device = list(
@@ -38,16 +36,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Using a device ID, returns a DeviceEventsResponse object containing an
 array of events for the device.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_device_events(
+\preformatted{svc$list_device_events(
   DeviceId = "string",
   FromTimeStamp = as.POSIXct(
     "2015-01-01"
@@ -58,7 +54,7 @@ array of events for the device.
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

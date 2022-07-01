@@ -23,9 +23,7 @@ ListFragmentsOutput$NextToken from a previously truncated response.}
 fragments to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Fragments = list(
     list(
       FragmentNumber = "string",
@@ -41,7 +39,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of Fragment objects from the specified stream and
@@ -78,9 +76,7 @@ For more information, see the \strong{Errors} section at the bottom of this
 topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html}{Common Errors}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_fragments(
+\preformatted{svc$list_fragments(
   StreamName = "string",
   MaxResults = 123,
   NextToken = "string",
@@ -96,7 +92,7 @@ topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/d
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -36,9 +36,7 @@ specified time.}
 \item{SortOrder}{The sort order. The default value is \code{Descending}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   AppImageConfigs = list(
     list(
@@ -66,7 +64,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the AppImageConfigs in your account and their properties. The list
@@ -74,9 +72,7 @@ can be filtered by creation time or modified time, and whether the
 AppImageConfig name contains a specified string.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_app_image_configs(
+\preformatted{svc$list_app_image_configs(
   MaxResults = 123,
   NextToken = "string",
   NameContains = "string",
@@ -95,7 +91,7 @@ AppImageConfig name contains a specified string.
   SortBy = "CreationTime"|"LastModifiedTime"|"Name",
   SortOrder = "Ascending"|"Descending"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

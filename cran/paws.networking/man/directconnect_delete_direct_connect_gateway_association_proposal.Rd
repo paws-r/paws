@@ -12,9 +12,7 @@ directconnect_delete_direct_connect_gateway_association_proposal(
 \item{proposalId}{[required] The ID of the proposal.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   directConnectGatewayAssociationProposal = list(
     proposalId = "string",
     directConnectGatewayId = "string",
@@ -38,19 +36,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the association proposal request between the specified Direct
 Connect gateway and virtual private gateway or transit gateway.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_direct_connect_gateway_association_proposal(
+\preformatted{svc$delete_direct_connect_gateway_association_proposal(
   proposalId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ chime_get_voice_connector(VoiceConnectorId)
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VoiceConnector = list(
     VoiceConnectorId = "string",
     AwsRegion = "us-east-1"|"us-west-2",
@@ -28,19 +26,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves details for the specified Amazon Chime Voice Connector, such
 as timestamps, name, outbound host, and encryption requirements.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_voice_connector(
+\preformatted{svc$get_voice_connector(
   VoiceConnectorId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -34,12 +34,10 @@ successful.
 This operation requires permission for the \code{lex:DeleteSlotType} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_slot_type(
+\preformatted{svc$delete_slot_type(
   name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

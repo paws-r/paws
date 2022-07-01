@@ -28,9 +28,7 @@ the function name, it is limited to 64 characters in length.}
 alias.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RequestedProvisionedConcurrentExecutions = 123,
   AvailableProvisionedConcurrentExecutions = 123,
   AllocatedProvisionedConcurrentExecutions = 123,
@@ -38,21 +36,19 @@ A list with the following syntax:
   StatusReason = "string",
   LastModified = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a provisioned concurrency configuration to a function's alias or
 version.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_provisioned_concurrency_config(
+\preformatted{svc$put_provisioned_concurrency_config(
   FunctionName = "string",
   Qualifier = "string",
   ProvisionedConcurrentExecutions = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

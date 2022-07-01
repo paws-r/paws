@@ -19,9 +19,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DataEncryptionKeyId = "string",
   Description = "string",
   Encrypted = TRUE|FALSE,
@@ -44,7 +42,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a snapshot of an EBS volume and stores it in Amazon S3. You can
@@ -82,9 +80,7 @@ and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_snapshot(
+\preformatted{svc$create_snapshot(
   Description = "string",
   VolumeId = "string",
   TagSpecifications = list(
@@ -100,7 +96,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

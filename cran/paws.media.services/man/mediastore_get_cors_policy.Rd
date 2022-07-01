@@ -11,9 +11,7 @@ mediastore_get_cors_policy(ContainerName)
 \item{ContainerName}{[required] The name of the container that the policy is assigned to.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CorsPolicy = list(
     list(
       AllowedOrigins = list(
@@ -32,7 +30,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the cross-origin resource sharing (CORS) configuration
@@ -43,12 +41,10 @@ To use this operation, you must have permission to perform the
 this permission and can grant it to others.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_cors_policy(
+\preformatted{svc$get_cors_policy(
   ContainerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

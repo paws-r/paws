@@ -16,9 +16,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TransitGatewayPeeringAttachment = list(
     TransitGatewayAttachmentId = "string",
     RequesterTgwInfo = list(
@@ -47,20 +45,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Accepts a transit gateway peering attachment request. The peering
 attachment must be in the \code{pendingAcceptance} state.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$accept_transit_gateway_peering_attachment(
+\preformatted{svc$accept_transit_gateway_peering_attachment(
   TransitGatewayAttachmentId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

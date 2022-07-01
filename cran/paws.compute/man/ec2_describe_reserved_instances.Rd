@@ -69,9 +69,7 @@ the 2011-11-01 API version, you only have access to the
 \verb{Medium Utilization} Reserved Instance offering type.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReservedInstances = list(
     list(
       AvailabilityZone = "string",
@@ -109,7 +107,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of the Reserved Instances that you purchased.
@@ -118,9 +116,7 @@ For more information about Reserved Instances, see \href{https://docs.aws.amazon
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_reserved_instances(
+\preformatted{svc$describe_reserved_instances(
   Filters = list(
     list(
       Name = "string",
@@ -136,7 +132,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   DryRun = TRUE|FALSE,
   OfferingType = "Heavy Utilization"|"Medium Utilization"|"Light Utilization"|"No Upfront"|"Partial Upfront"|"All Upfront"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

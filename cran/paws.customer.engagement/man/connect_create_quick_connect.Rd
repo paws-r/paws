@@ -20,13 +20,11 @@ connect_create_quick_connect(InstanceId, Name, Description,
 \item{Tags}{One or more tags.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   QuickConnectARN = "string",
   QuickConnectId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to
@@ -35,9 +33,7 @@ change.
 Creates a quick connect for the specified Amazon Connect instance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_quick_connect(
+\preformatted{svc$create_quick_connect(
   InstanceId = "string",
   Name = "string",
   Description = "string",
@@ -59,7 +55,7 @@ Creates a quick connect for the specified Amazon Connect instance.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -18,12 +18,10 @@ connected to the Wi-Fi network and is still registered to the account.
 The device settings and skills are removed from the room.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_device_from_room(
+\preformatted{svc$disassociate_device_from_room(
   DeviceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

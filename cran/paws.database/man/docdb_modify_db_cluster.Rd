@@ -118,9 +118,7 @@ is enabled, the cluster cannot be deleted unless it is modified and
 from being accidentally deleted.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBCluster = list(
     AvailabilityZones = list(
       "string"
@@ -180,7 +178,7 @@ A list with the following syntax:
     DeletionProtection = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies a setting for an Amazon DocumentDB cluster. You can change one
@@ -188,9 +186,7 @@ or more database configuration parameters by specifying these parameters
 and the new values in the request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_db_cluster(
+\preformatted{svc$modify_db_cluster(
   DBClusterIdentifier = "string",
   NewDBClusterIdentifier = "string",
   ApplyImmediately = TRUE|FALSE,
@@ -214,7 +210,7 @@ and the new values in the request.
   EngineVersion = "string",
   DeletionProtection = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

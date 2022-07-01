@@ -43,14 +43,12 @@ Allows a subscription owner to set an attribute of the subscription to a
 new value.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_subscription_attributes(
+\preformatted{svc$set_subscription_attributes(
   SubscriptionArn = "string",
   AttributeName = "string",
   AttributeValue = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

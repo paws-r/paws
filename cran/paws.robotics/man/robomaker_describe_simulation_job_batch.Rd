@@ -10,9 +10,7 @@ robomaker_describe_simulation_job_batch(batch)
 \item{batch}{[required] The id of the batch to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   arn = "string",
   status = "Pending"|"InProgress"|"Failed"|"Completed"|"Canceled"|"Canceling"|"Completing"|"TimingOut"|"TimedOut",
   lastUpdatedAt = as.POSIXct(
@@ -238,18 +236,16 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a simulation job batch.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_simulation_job_batch(
+\preformatted{svc$describe_simulation_job_batch(
   batch = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

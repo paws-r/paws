@@ -21,21 +21,17 @@ or not.}
 \item{LinkName}{The name of the link between the parent object and the index object.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ObjectIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an index object. See \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.html}{Indexing and search}
 for more information.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_index(
+\preformatted{svc$create_index(
   DirectoryArn = "string",
   OrderedIndexedAttributeList = list(
     list(
@@ -50,7 +46,7 @@ for more information.
   ),
   LinkName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

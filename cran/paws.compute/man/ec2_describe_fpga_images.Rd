@@ -47,9 +47,7 @@ regardless of the tag value.
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FpgaImages = list(
     list(
       FpgaImageId = "string",
@@ -93,7 +91,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the Amazon FPGA Images (AFIs) available to you. These include
@@ -101,9 +99,7 @@ public AFIs, private AFIs that you own, and AFIs owned by other AWS
 accounts for which you have load permissions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_fpga_images(
+\preformatted{svc$describe_fpga_images(
   DryRun = TRUE|FALSE,
   FpgaImageIds = list(
     "string"
@@ -122,7 +118,7 @@ accounts for which you have load permissions.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

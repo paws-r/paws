@@ -17,9 +17,7 @@ results.}
 \item{maxResults}{The maximum number of results to return at one time.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   logTargetConfigurations = list(
     list(
       logTarget = list(
@@ -31,20 +29,18 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists logging levels.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_v2_logging_levels(
+\preformatted{svc$list_v2_logging_levels(
   targetType = "DEFAULT"|"THING_GROUP",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

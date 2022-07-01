@@ -15,9 +15,7 @@ globalaccelerator_add_custom_routing_endpoints(EndpointConfigurations,
 routing endpoint.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EndpointDescriptions = list(
     list(
       EndpointId = "string"
@@ -25,7 +23,7 @@ A list with the following syntax:
   ),
   EndpointGroupArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Associate a virtual private cloud (VPC) subnet endpoint with your custom
@@ -47,9 +45,7 @@ or to specify individual port mappings that can receive traffic, see the
 operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_custom_routing_endpoints(
+\preformatted{svc$add_custom_routing_endpoints(
   EndpointConfigurations = list(
     list(
       EndpointId = "string"
@@ -57,7 +53,7 @@ operation.
   ),
   EndpointGroupArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -37,12 +37,10 @@ requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CopyProductToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Copies the specified source product to the specified target product or a
@@ -56,9 +54,7 @@ operation, use
 \code{\link[=servicecatalog_describe_copy_product_status]{describe_copy_product_status}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_product(
+\preformatted{svc$copy_product(
   AcceptLanguage = "string",
   SourceProductArn = "string",
   TargetProductId = "string",
@@ -73,7 +69,7 @@ operation, use
   ),
   IdempotencyToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

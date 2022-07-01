@@ -28,9 +28,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 disabled for your account.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Regions = list(
     list(
       Endpoint = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the Regions that are enabled for your account, or all Regions.
@@ -51,9 +49,7 @@ see \href{https://docs.aws.amazon.com/general/latest/gr/rande-manage.html}{Manag
 in the \emph{AWS General Reference}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_regions(
+\preformatted{svc$describe_regions(
   Filters = list(
     list(
       Name = "string",
@@ -68,7 +64,7 @@ in the \emph{AWS General Reference}.
   DryRun = TRUE|FALSE,
   AllRegions = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

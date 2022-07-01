@@ -10,12 +10,10 @@ snowball_create_address(Address)
 \item{Address}{[required] The address that you want the Snow device shipped to.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AddressId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an address for a Snow device to be shipped to. In most regions,
@@ -24,9 +22,7 @@ must be located within the serviceable area of your region. If the
 address is invalid or unsupported, then an exception is thrown.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_address(
+\preformatted{svc$create_address(
   Address = list(
     AddressId = "string",
     Name = "string",
@@ -44,7 +40,7 @@ address is invalid or unsupported, then an exception is thrown.
     IsRestricted = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

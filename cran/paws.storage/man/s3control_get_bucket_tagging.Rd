@@ -24,9 +24,7 @@ encoding of
 The value must be URL encoded.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TagSet = list(
     list(
       Key = "string",
@@ -34,7 +32,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation gets an Amazon S3 on Outposts bucket's tags. To get an S3
@@ -76,13 +74,11 @@ The following actions are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bucket_tagging(
+\preformatted{svc$get_bucket_tagging(
   AccountId = "string",
   Bucket = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

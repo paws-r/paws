@@ -16,21 +16,17 @@ see
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html}{CostCategoryRule}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CostCategoryArn = "string",
   EffectiveStart = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Cost Category with the requested name and rules.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_cost_category_definition(
+\preformatted{svc$create_cost_category_definition(
   Name = "string",
   RuleVersion = "CostCategoryExpression.v1",
   Rules = list(
@@ -75,7 +71,7 @@ Creates a new Cost Category with the requested name and rules.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

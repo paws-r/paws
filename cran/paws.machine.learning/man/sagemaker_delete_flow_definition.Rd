@@ -16,12 +16,10 @@ An empty list.
 Deletes the specified flow definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_flow_definition(
+\preformatted{svc$delete_flow_definition(
   FlowDefinitionName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -18,9 +18,7 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GroupMember = list(
     Arn = "string",
     MemberName = "string"
@@ -28,21 +26,19 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds an Amazon QuickSight user to an Amazon QuickSight group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_group_membership(
+\preformatted{svc$create_group_membership(
   MemberName = "string",
   GroupName = "string",
   AwsAccountId = "string",
   Namespace = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,9 +23,7 @@ amplify_create_domain_association(appId, domainName,
 the Amazon Resource Name (ARN) for automatically creating subdomains.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   domainAssociation = list(
     domainAssociationArn = "string",
     domainName = "string",
@@ -49,16 +47,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new domain association for an Amplify app. This action
 associates a custom domain with the Amplify app
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_domain_association(
+\preformatted{svc$create_domain_association(
   appId = "string",
   domainName = "string",
   enableAutoSubDomain = TRUE|FALSE,
@@ -73,7 +69,7 @@ associates a custom domain with the Amplify app
   ),
   autoSubDomainIAMRole = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,9 +10,7 @@ xray_get_sampling_rules(NextToken)
 \item{NextToken}{Pagination token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SamplingRuleRecords = list(
     list(
       SamplingRule = list(
@@ -42,18 +40,16 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves all sampling rules.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_sampling_rules(
+\preformatted{svc$get_sampling_rules(
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -31,12 +31,10 @@ If you delete your Simple AD or AD Connector directory, you can always
 create a new one when you want to start using WorkSpaces again.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_workspace_directory(
+\preformatted{svc$deregister_workspace_directory(
   DirectoryId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

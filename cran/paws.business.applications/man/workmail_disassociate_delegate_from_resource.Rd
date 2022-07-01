@@ -23,14 +23,12 @@ An empty list.
 Removes a member from the resource's set of delegates.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_delegate_from_resource(
+\preformatted{svc$disassociate_delegate_from_resource(
   OrganizationId = "string",
   ResourceId = "string",
   EntityId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

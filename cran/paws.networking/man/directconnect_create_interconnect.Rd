@@ -22,9 +22,7 @@ directconnect_create_interconnect(interconnectName, bandwidth, location,
 \item{providerName}{The name of the service provider associated with the interconnect.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   interconnectId = "string",
   interconnectName = "string",
   interconnectState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown",
@@ -47,7 +45,7 @@ A list with the following syntax:
   ),
   providerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an interconnect between an AWS Direct Connect Partner's network
@@ -77,9 +75,7 @@ AWS Direct Connect Partner.
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_interconnect(
+\preformatted{svc$create_interconnect(
   interconnectName = "string",
   bandwidth = "string",
   location = "string",
@@ -92,7 +88,7 @@ Intended for use by AWS Direct Connect Partners only.
   ),
   providerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

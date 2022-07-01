@@ -40,12 +40,10 @@ can be activated. You cannot restore a CA after the restoration period
 has ended.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_certificate_authority(
+\preformatted{svc$restore_certificate_authority(
   CertificateAuthorityArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

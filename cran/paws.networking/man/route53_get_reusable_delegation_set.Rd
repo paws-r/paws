@@ -12,9 +12,7 @@ route53_get_reusable_delegation_set(Id)
 name servers for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DelegationSet = list(
     Id = "string",
     CallerReference = "string",
@@ -23,19 +21,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about a specified reusable delegation set,
 including the four name servers that are assigned to the delegation set.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_reusable_delegation_set(
+\preformatted{svc$get_reusable_delegation_set(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

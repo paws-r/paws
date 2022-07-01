@@ -10,24 +10,20 @@ translate_delete_parallel_data(Name)
 \item{Name}{[required] The name of the parallel data resource that is being deleted.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Name = "string",
   Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a parallel data resource in Amazon Translate.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_parallel_data(
+\preformatted{svc$delete_parallel_data(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

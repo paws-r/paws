@@ -27,9 +27,7 @@ specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords} .}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   EventSubscriptionsList = list(
     list(
@@ -50,7 +48,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all the subscription descriptions for a customer account. The
@@ -61,9 +59,7 @@ If you specify a SubscriptionName, lists the description for that
 subscription.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_subscriptions(
+\preformatted{svc$describe_event_subscriptions(
   SubscriptionName = "string",
   Filters = list(
     list(
@@ -76,7 +72,7 @@ subscription.
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

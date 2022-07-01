@@ -28,9 +28,7 @@ the results are returned in ascending alphabetical order by \code{name} of
 the domains.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   domainInfos = list(
     list(
       name = "string",
@@ -41,7 +39,7 @@ A list with the following syntax:
   ),
   nextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the list of domains registered in the account. The results may
@@ -73,15 +71,13 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_domains(
+\preformatted{svc$list_domains(
   nextPageToken = "string",
   registrationStatus = "REGISTERED"|"DEPRECATED",
   maximumPageSize = 123,
   reverseOrder = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

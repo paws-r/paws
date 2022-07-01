@@ -7,22 +7,18 @@
 appstream_create_usage_report_subscription()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   S3BucketName = "string",
   Schedule = "DAILY"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a usage report subscription. Usage reports are generated daily.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_usage_report_subscription()
-}\if{html}{\out{</div>}}
+\preformatted{svc$create_usage_report_subscription()
+}
 }
 
 \keyword{internal}

@@ -27,9 +27,7 @@ action. For subsequent calls, use the NextToken value returned from the
 previous request to continue listing results after the first page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UsageStatistics = list(
     SumByAccount = list(
       list(
@@ -70,7 +68,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists Amazon GuardDuty usage statistics over the last 30 days for the
@@ -81,9 +79,7 @@ differ from the cost metrics in the console, which projects usage over
 \href{https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations}{Understanding How Usage Costs are Calculated}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_usage_statistics(
+\preformatted{svc$get_usage_statistics(
   DetectorId = "string",
   UsageStatisticType = "SUM_BY_ACCOUNT"|"SUM_BY_DATA_SOURCE"|"SUM_BY_RESOURCE"|"TOP_RESOURCES",
   UsageCriteria = list(
@@ -101,7 +97,7 @@ differ from the cost metrics in the console, which projects usage over
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

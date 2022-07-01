@@ -43,9 +43,7 @@ certificate, use the
 \code{\link[=acm_list_tags_for_certificate]{list_tags_for_certificate}} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags_to_certificate(
+\preformatted{svc$add_tags_to_certificate(
   CertificateArn = "string",
   Tags = list(
     list(
@@ -54,7 +52,7 @@ certificate, use the
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

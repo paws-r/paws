@@ -12,9 +12,7 @@ chime_create_phone_number_order(ProductType, E164PhoneNumbers)
 \item{E164PhoneNumbers}{[required] List of phone numbers, in E.164 format.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PhoneNumberOrder = list(
     PhoneNumberOrderId = "string",
     ProductType = "BusinessCalling"|"VoiceConnector",
@@ -33,7 +31,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an order for phone numbers to be provisioned. Choose from Amazon
@@ -42,15 +40,13 @@ For toll-free numbers, you must use the Amazon Chime Voice Connector
 product type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_phone_number_order(
+\preformatted{svc$create_phone_number_order(
   ProductType = "BusinessCalling"|"VoiceConnector",
   E164PhoneNumbers = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

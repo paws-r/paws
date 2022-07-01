@@ -116,9 +116,7 @@ not copied.}
 \item{SourceRegion}{The ID of the region that contains the snapshot to be copied.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBClusterSnapshot = list(
     AvailabilityZones = list(
       "string"
@@ -154,7 +152,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Copies a snapshot of a DB cluster.
@@ -236,9 +234,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$copy_db_cluster_snapshot(
+\preformatted{svc$copy_db_cluster_snapshot(
   SourceDBClusterSnapshotIdentifier = "string",
   TargetDBClusterSnapshotIdentifier = "string",
   KmsKeyId = "string",
@@ -252,7 +248,7 @@ This action only applies to Aurora DB clusters.
   ),
   SourceRegion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -27,15 +27,13 @@ The Identity and Access Management (IAM) permission required for this
 operation is \code{\link[=glue_delete_table]{delete_table}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_column_statistics_for_table(
+\preformatted{svc$delete_column_statistics_for_table(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
   ColumnName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

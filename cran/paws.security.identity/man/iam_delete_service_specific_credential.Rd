@@ -30,13 +30,11 @@ An empty list.
 Deletes the specified service-specific credential.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_service_specific_credential(
+\preformatted{svc$delete_service_specific_credential(
   UserName = "string",
   ServiceSpecificCredentialId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

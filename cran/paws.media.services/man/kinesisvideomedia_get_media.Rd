@@ -17,13 +17,11 @@ you don't specify the \code{streamARN}, you must specify the \code{streamName}.}
 \item{StartSelector}{[required] Identifies the starting chunk to get from the specified stream.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContentType = "string",
   Payload = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Use this API to retrieve media content from a Kinesis video stream. In
@@ -73,9 +71,7 @@ For more information, see the \strong{Errors} section at the bottom of this
 topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html}{Common Errors}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_media(
+\preformatted{svc$get_media(
   StreamName = "string",
   StreamARN = "string",
   StartSelector = list(
@@ -87,7 +83,7 @@ topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/d
     ContinuationToken = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

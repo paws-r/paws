@@ -10,9 +10,7 @@ cloudfront_create_distribution_with_tags(DistributionConfigWithTags)
 \item{DistributionConfigWithTags}{[required] The distribution's configuration information.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Distribution = list(
     Id = "string",
     ARN = "string",
@@ -330,15 +328,13 @@ A list with the following syntax:
   Location = "string",
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create a new distribution with tags.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_distribution_with_tags(
+\preformatted{svc$create_distribution_with_tags(
   DistributionConfigWithTags = list(
     DistributionConfig = list(
       CallerReference = "string",
@@ -618,7 +614,7 @@ Create a new distribution with tags.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

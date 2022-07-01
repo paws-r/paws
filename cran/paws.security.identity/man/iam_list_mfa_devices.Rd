@@ -29,9 +29,7 @@ returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   MFADevices = list(
     list(
       UserName = "string",
@@ -44,7 +42,7 @@ A list with the following syntax:
   IsTruncated = TRUE|FALSE,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the MFA devices for an IAM user. If the request includes a IAM
@@ -57,14 +55,12 @@ You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_mfa_devices(
+\preformatted{svc$list_mfa_devices(
   UserName = "string",
   Marker = "string",
   MaxItems = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

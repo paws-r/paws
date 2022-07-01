@@ -22,14 +22,12 @@ Updates the details of a gateway group. If any optional field is not
 provided, the existing corresponding value is left unmodified.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_gateway_group(
+\preformatted{svc$update_gateway_group(
   GatewayGroupArn = "string",
   Name = "string",
   Description = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

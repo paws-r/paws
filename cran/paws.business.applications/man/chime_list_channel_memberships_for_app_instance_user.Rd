@@ -16,9 +16,7 @@ chime_list_channel_memberships_for_app_instance_user(AppInstanceUserArn,
 channel memberships is reached.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelMemberships = list(
     list(
       ChannelSummary = list(
@@ -41,7 +39,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all channels that a particular \code{AppInstanceUser} is a part of.
@@ -49,14 +47,12 @@ Only an \code{AppInstanceAdmin} can call the API with a user ARN that is not
 their own.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_channel_memberships_for_app_instance_user(
+\preformatted{svc$list_channel_memberships_for_app_instance_user(
   AppInstanceUserArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

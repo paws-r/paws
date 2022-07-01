@@ -25,13 +25,11 @@ to AppStream 2.0 and open applications from the stacks to which they are
 assigned.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_user(
+\preformatted{svc$enable_user(
   UserName = "string",
   AuthenticationType = "API"|"SAML"|"USERPOOL"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

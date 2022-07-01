@@ -24,31 +24,27 @@ previous response to continue listing data.}
 want in the response. The default value is 10. The maximum value is 500.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   assessmentTargetArns = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the ARNs of the assessment targets within this AWS account. For
 more information about assessment targets, see \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspector_applications.html}{Amazon Inspector Assessment Targets}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_assessment_targets(
+\preformatted{svc$list_assessment_targets(
   filter = list(
     assessmentTargetNamePattern = "string"
   ),
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

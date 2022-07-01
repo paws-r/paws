@@ -12,16 +12,14 @@ chime_create_channel_ban(ChannelArn, MemberArn)
 \item{MemberArn}{[required] The ARN of the member being banned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelArn = "string",
   Member = list(
     Arn = "string",
     Name = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Permanently bans a member from a channel. Moderators can't add banned
@@ -34,13 +32,11 @@ If you ban a user who is already part of a channel, that user is
 automatically kicked from the channel.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_channel_ban(
+\preformatted{svc$create_channel_ban(
   ChannelArn = "string",
   MemberArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

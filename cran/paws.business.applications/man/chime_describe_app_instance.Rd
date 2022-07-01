@@ -10,9 +10,7 @@ chime_describe_app_instance(AppInstanceArn)
 \item{AppInstanceArn}{[required] The ARN of the app instance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AppInstance = list(
     AppInstanceArn = "string",
     Name = "string",
@@ -25,18 +23,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the full details of an \code{AppInstance}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_app_instance(
+\preformatted{svc$describe_app_instance(
   AppInstanceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

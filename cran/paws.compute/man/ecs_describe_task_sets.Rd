@@ -20,9 +20,7 @@ is specified, the tags are included in the response. If this field is
 omitted, tags are not included in the response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   taskSets = list(
     list(
       id = "string",
@@ -102,7 +100,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the task sets in the specified cluster and service. This is
@@ -111,9 +109,7 @@ more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/develop
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_task_sets(
+\preformatted{svc$describe_task_sets(
   cluster = "string",
   service = "string",
   taskSets = list(
@@ -123,7 +119,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
     "TAGS"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

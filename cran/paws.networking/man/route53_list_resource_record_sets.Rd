@@ -54,9 +54,7 @@ in the response is \code{true}, and the values of the \code{NextRecordName} and
 record set in the next group of \code{maxitems} resource record sets.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourceRecordSets = list(
     list(
       Name = "string",
@@ -92,7 +90,7 @@ A list with the following syntax:
   NextRecordIdentifier = "string",
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the resource record sets in a specified hosted zone.
@@ -173,16 +171,14 @@ request, and specify those values for \code{StartRecordName},
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_resource_record_sets(
+\preformatted{svc$list_resource_record_sets(
   HostedZoneId = "string",
   StartRecordName = "string",
   StartRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
   StartRecordIdentifier = "string",
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

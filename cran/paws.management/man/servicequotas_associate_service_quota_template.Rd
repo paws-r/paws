@@ -16,10 +16,8 @@ in the template are automatically applied to the account. You can add a
 quota increase request for any adjustable quota to your template.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_service_quota_template()
-}\if{html}{\out{</div>}}
+\preformatted{svc$associate_service_quota_template()
+}
 }
 
 \keyword{internal}

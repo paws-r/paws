@@ -10,9 +10,7 @@ appstream_delete_image(Name)
 \item{Name}{[required] The name of the image.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Image = list(
     Name = "string",
     Arn = "string",
@@ -54,7 +52,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified image. You cannot delete an image when it is in
@@ -62,12 +60,10 @@ use. After you delete an image, you cannot provision new capacity using
 the image.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_image(
+\preformatted{svc$delete_image(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

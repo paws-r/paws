@@ -20,9 +20,7 @@ Adds one or more users to a Users dataset. For more information see
 importing-users.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_users(
+\preformatted{svc$put_users(
   datasetArn = "string",
   users = list(
     list(
@@ -31,7 +29,7 @@ importing-users.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

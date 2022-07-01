@@ -50,9 +50,7 @@ longer be used in CloudFormation operations.
 The default is \code{LIVE}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TypeVersionSummaries = list(
     list(
       Type = "RESOURCE"|"MODULE",
@@ -68,15 +66,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns summary information about the versions of a type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_type_versions(
+\preformatted{svc$list_type_versions(
   Type = "RESOURCE"|"MODULE",
   TypeName = "string",
   Arn = "string",
@@ -84,7 +80,7 @@ Returns summary information about the versions of a type.
   NextToken = "string",
   DeprecatedStatus = "LIVE"|"DEPRECATED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

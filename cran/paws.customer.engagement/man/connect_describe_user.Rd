@@ -12,9 +12,7 @@ connect_describe_user(UserId, InstanceId)
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   User = list(
     Id = "string",
     Arn = "string",
@@ -41,7 +39,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified user account. You can find the instance ID in
@@ -50,13 +48,11 @@ display the user IDs. Instead, list the users and note the IDs provided
 in the output.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_user(
+\preformatted{svc$describe_user(
   UserId = "string",
   InstanceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

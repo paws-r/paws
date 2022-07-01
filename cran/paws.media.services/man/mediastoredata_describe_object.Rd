@@ -11,9 +11,7 @@ mediastoredata_describe_object(Path)
 container. Format: \<folder name\>/\<folder name\>/\<file name\>}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ETag = "string",
   ContentType = "string",
   ContentLength = 123,
@@ -22,18 +20,16 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the headers for an object at the specified path.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_object(
+\preformatted{svc$describe_object(
   Path = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -21,13 +21,11 @@ After the disassociation, users can't load any associated websites that
 require this authorization provider.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_website_authorization_provider(
+\preformatted{svc$disassociate_website_authorization_provider(
   FleetArn = "string",
   AuthorizationProviderId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -38,20 +38,16 @@ in the \emph{AWS Billing and Cost Management User Guide}.}
 \item{ExperimentConfig}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProcessingJobArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a processing job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_processing_job(
+\preformatted{svc$create_processing_job(
   ProcessingInputs = list(
     list(
       InputName = "string",
@@ -158,7 +154,7 @@ Creates a processing job.
     TrialComponentDisplayName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,16 +17,14 @@ existing record.}
 \item{Tags}{The tag key-value pairs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attendee = list(
     ExternalUserId = "string",
     AttendeeId = "string",
     JoinToken = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new attendee for an active Amazon Chime SDK meeting. For more
@@ -34,9 +32,7 @@ information about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/ch
 in the \emph{Amazon Chime Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_attendee(
+\preformatted{svc$create_attendee(
   MeetingId = "string",
   ExternalUserId = "string",
   Tags = list(
@@ -46,7 +42,7 @@ in the \emph{Amazon Chime Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

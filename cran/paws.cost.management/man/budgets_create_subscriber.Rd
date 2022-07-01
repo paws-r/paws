@@ -26,9 +26,7 @@ Creates a subscriber. You must create the associated budget and
 notification before you create the subscriber.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_subscriber(
+\preformatted{svc$create_subscriber(
   AccountId = "string",
   BudgetName = "string",
   Notification = list(
@@ -43,7 +41,7 @@ notification before you create the subscriber.
     Address = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

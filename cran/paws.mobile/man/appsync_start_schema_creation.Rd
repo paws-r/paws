@@ -12,12 +12,10 @@ appsync_start_schema_creation(apiId, definition)
 \item{definition}{[required] The schema definition, in GraphQL schema language format.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   status = "PROCESSING"|"ACTIVE"|"DELETING"|"FAILED"|"SUCCESS"|"NOT_APPLICABLE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Adds a new schema to your GraphQL API.
@@ -25,13 +23,11 @@ Adds a new schema to your GraphQL API.
 This operation is asynchronous. Use to determine when it has completed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_schema_creation(
+\preformatted{svc$start_schema_creation(
   apiId = "string",
   definition = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

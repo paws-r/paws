@@ -49,15 +49,13 @@ If you do not specify this parameter, the default is to include
 container instances set to all states other than \code{INACTIVE}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   containerInstanceArns = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of container instances in a specified cluster. You can
@@ -68,16 +66,14 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/dev
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_container_instances(
+\preformatted{svc$list_container_instances(
   cluster = "string",
   filter = "string",
   nextToken = "string",
   maxResults = 123,
   status = "ACTIVE"|"DRAINING"|"REGISTERING"|"DEREGISTERING"|"REGISTRATION_FAILED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

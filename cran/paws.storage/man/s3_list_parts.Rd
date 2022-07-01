@@ -43,9 +43,7 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AbortDate = as.POSIXct(
     "2015-01-01"
   ),
@@ -78,7 +76,7 @@ A list with the following syntax:
   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
   RequestCharged = "requester"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the parts that have been uploaded for a specific multipart upload.
@@ -109,9 +107,7 @@ The following operations are related to \code{\link[=s3_list_parts]{list_parts}}
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_parts(
+\preformatted{svc$list_parts(
   Bucket = "string",
   Key = "string",
   MaxParts = 123,
@@ -120,7 +116,7 @@ The following operations are related to \code{\link[=s3_list_parts]{list_parts}}
   RequestPayer = "requester",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

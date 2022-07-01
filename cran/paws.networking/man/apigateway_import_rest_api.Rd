@@ -29,24 +29,18 @@ To handle imported \code{basepath}, set \code{parameters} as \code{basepath=igno
 \code{basepath=prepend} or \code{basepath=split}.
 
 For example, the AWS CLI command to exclude documentation from the
-imported API is:
+imported API is:\preformatted{aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'
+}
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'
-}\if{html}{\out{</div>}}
-
-The AWS CLI command to set the regional endpoint on the imported API is:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'
-}\if{html}{\out{</div>}}}
+The AWS CLI command to set the regional endpoint on the imported API is:\preformatted{aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'
+}}
 
 \item{body}{[required] [Required] The POST request body containing external API definitions.
 Currently, only OpenAPI definition JSON/YAML files are supported. The
 maximum size of the API definition file is 6MB.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   id = "string",
   name = "string",
   description = "string",
@@ -76,23 +70,21 @@ A list with the following syntax:
   ),
   disableExecuteApiEndpoint = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 A feature of the API Gateway control service for creating a new API from
 an external API definition file.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_rest_api(
+\preformatted{svc$import_rest_api(
   failOnWarnings = TRUE|FALSE,
   parameters = list(
     "string"
   ),
   body = raw
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ servicecatalog_describe_service_action(Id, AcceptLanguage)
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ServiceActionDetail = list(
     ServiceActionSummary = list(
       Id = "string",
@@ -32,19 +30,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a self-service action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_service_action(
+\preformatted{svc$describe_service_action(
   Id = "string",
   AcceptLanguage = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

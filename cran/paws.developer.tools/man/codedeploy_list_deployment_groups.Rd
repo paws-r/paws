@@ -15,29 +15,25 @@ or AWS account.}
 can be used to return the next set of deployment groups in the list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   applicationName = "string",
   deploymentGroups = list(
     "string"
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the deployment groups for an application registered with the IAM
 user or AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_deployment_groups(
+\preformatted{svc$list_deployment_groups(
   applicationName = "string",
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

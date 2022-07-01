@@ -12,9 +12,7 @@ medialive_delete_multiplex_program(MultiplexId, ProgramName)
 \item{ProgramName}{[required] The multiplex program name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelId = "string",
   MultiplexProgramSettings = list(
     PreferredChannelPipeline = "CURRENTLY_ACTIVE"|"PIPELINE_0"|"PIPELINE_1",
@@ -63,19 +61,17 @@ A list with the following syntax:
   ),
   ProgramName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Delete a program from a multiplex.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_multiplex_program(
+\preformatted{svc$delete_multiplex_program(
   MultiplexId = "string",
   ProgramName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,9 +23,7 @@ directconnect_create_connection(location, bandwidth, connectionName,
 connection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ownerAccount = "string",
   connectionId = "string",
   connectionName = "string",
@@ -51,7 +49,7 @@ A list with the following syntax:
   ),
   providerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a connection between a customer network and a specific AWS
@@ -72,9 +70,7 @@ hosts the specified LAG. If there are no available ports on the
 endpoint, the request fails and no connection is created.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_connection(
+\preformatted{svc$create_connection(
   location = "string",
   bandwidth = "string",
   connectionName = "string",
@@ -87,7 +83,7 @@ endpoint, the request fails and no connection is created.
   ),
   providerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

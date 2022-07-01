@@ -31,12 +31,10 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:StopApplication} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_application(
+\preformatted{svc$stop_application(
   ApplicationName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

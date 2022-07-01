@@ -49,9 +49,7 @@ the usage limit objects that have either or both of these tag values
 associated with them.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UsageLimits = list(
     list(
       UsageLimitId = "string",
@@ -71,7 +69,7 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Shows usage limits on a cluster. Results are filtered based on the
@@ -91,9 +89,7 @@ returned.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_usage_limits(
+\preformatted{svc$describe_usage_limits(
   UsageLimitId = "string",
   ClusterIdentifier = "string",
   FeatureType = "spectrum"|"concurrency-scaling",
@@ -106,7 +102,7 @@ returned.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,9 +19,7 @@ Value: (array of strings, exactly 1 entry, between 1 and 255 characters)}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BaselineIdentities = list(
     list(
       BaselineId = "string",
@@ -33,15 +31,13 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the patch baselines in your AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_patch_baselines(
+\preformatted{svc$describe_patch_baselines(
   Filters = list(
     list(
       Key = "string",
@@ -53,7 +49,7 @@ Lists the patch baselines in your AWS account.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

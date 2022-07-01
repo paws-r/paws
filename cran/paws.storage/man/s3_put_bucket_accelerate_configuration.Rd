@@ -58,16 +58,14 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_accelerate_configuration(
+\preformatted{svc$put_bucket_accelerate_configuration(
   Bucket = "string",
   AccelerateConfiguration = list(
     Status = "Enabled"|"Suspended"
   ),
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

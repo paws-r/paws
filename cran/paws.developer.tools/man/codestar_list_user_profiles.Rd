@@ -14,9 +14,7 @@ cannot be returned in one response.}
 \item{maxResults}{The maximum number of results to return in a response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   userProfiles = list(
     list(
       userArn = "string",
@@ -27,20 +25,18 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all the user profiles configured for your AWS account in AWS
 CodeStar.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_user_profiles(
+\preformatted{svc$list_user_profiles(
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

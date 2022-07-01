@@ -14,9 +14,7 @@ to.}
 \item{attributes}{[required] The array of attributes that you want to assign to specified findings.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   failedItems = list(
     list(
       failureCode = "INVALID_ARN"|"DUPLICATE_ARN"|"ITEM_DOES_NOT_EXIST"|"ACCESS_DENIED"|"LIMIT_EXCEEDED"|"INTERNAL_ERROR",
@@ -24,16 +22,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Assigns attributes (key and value pairs) to the findings that are
 specified by the ARNs of the findings.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_attributes_to_findings(
+\preformatted{svc$add_attributes_to_findings(
   findingArns = list(
     "string"
   ),
@@ -44,7 +40,7 @@ specified by the ARNs of the findings.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

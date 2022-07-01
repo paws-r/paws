@@ -23,15 +23,13 @@ An empty list.
 Deletes the attributes for a user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user_attributes(
+\preformatted{svc$delete_user_attributes(
   UserAttributeNames = list(
     "string"
   ),
   AccessToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

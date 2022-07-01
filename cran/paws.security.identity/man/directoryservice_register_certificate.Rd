@@ -21,21 +21,17 @@ include \code{ClientLDAPS} or \code{ClientCertAuth}. The default value is
 authentication settings.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CertificateId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Registers a certificate for a secure LDAP or client certificate
 authentication.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$register_certificate(
+\preformatted{svc$register_certificate(
   DirectoryId = "string",
   CertificateData = "string",
   Type = "ClientCertAuth"|"ClientLDAPS",
@@ -43,7 +39,7 @@ authentication.
     OCSPUrl = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

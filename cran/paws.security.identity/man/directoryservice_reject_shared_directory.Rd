@@ -12,24 +12,20 @@ directoryservice_reject_shared_directory(SharedDirectoryId)
 This identifier is different for each directory owner account.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SharedDirectoryId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Rejects a directory sharing request that was sent from the directory
 owner account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reject_shared_directory(
+\preformatted{svc$reject_shared_directory(
   SharedDirectoryId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

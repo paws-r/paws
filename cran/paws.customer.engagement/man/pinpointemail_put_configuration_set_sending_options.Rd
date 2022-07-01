@@ -23,13 +23,11 @@ Enable or disable email sending for messages that use a particular
 configuration set in a specific AWS Region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_configuration_set_sending_options(
+\preformatted{svc$put_configuration_set_sending_options(
   ConfigurationSetName = "string",
   SendingEnabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

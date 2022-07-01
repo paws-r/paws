@@ -14,9 +14,7 @@ glue_get_mapping(Source, Sinks, Location)
 \item{Location}{Parameters for the mapping.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Mapping = list(
     list(
       SourceTable = "string",
@@ -28,15 +26,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates mappings.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_mapping(
+\preformatted{svc$get_mapping(
   Source = list(
     DatabaseName = "string",
     TableName = "string"
@@ -71,7 +67,7 @@ Creates mappings.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

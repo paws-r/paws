@@ -18,9 +18,7 @@ An empty list.
 Updates one or more devices in a fleet.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_devices(
+\preformatted{svc$update_devices(
   DeviceFleetName = "string",
   Devices = list(
     list(
@@ -30,7 +28,7 @@ Updates one or more devices in a fleet.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

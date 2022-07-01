@@ -13,9 +13,7 @@ sagemaker_describe_feature_group(FeatureGroupName, NextToken)
 (\code{FeatureDefinitions}). 2,500 \code{Features} are returned by default.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FeatureGroupArn = "string",
   FeatureGroupName = "string",
   RecordIdentifierFeatureName = "string",
@@ -57,7 +55,7 @@ A list with the following syntax:
   Description = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Use this operation to describe a \code{FeatureGroup}. The response includes
@@ -65,13 +63,11 @@ information on the creation time, \code{FeatureGroup} name, the unique
 identifier for each \code{FeatureGroup}, and more.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_feature_group(
+\preformatted{svc$describe_feature_group(
   FeatureGroupName = "string",
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

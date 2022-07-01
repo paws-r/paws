@@ -24,9 +24,7 @@ to call \code{\link[=datapipeline_describe_objects]{describe_objects}} with the
 marker value from the previous call to retrieve the next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pipelineObjects = list(
     list(
       id = "string",
@@ -43,7 +41,7 @@ A list with the following syntax:
   marker = "string",
   hasMoreResults = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the object definitions for a set of objects associated with the
@@ -51,9 +49,7 @@ pipeline. Object definitions are composed of a set of fields that define
 the properties of the object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_objects(
+\preformatted{svc$describe_objects(
   pipelineId = "string",
   objectIds = list(
     "string"
@@ -61,7 +57,7 @@ the properties of the object.
   evaluateExpressions = TRUE|FALSE,
   marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

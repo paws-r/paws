@@ -23,14 +23,12 @@ Adds the specified user to the specified group.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_add_user_to_group(
+\preformatted{svc$admin_add_user_to_group(
   UserPoolId = "string",
   Username = "string",
   GroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

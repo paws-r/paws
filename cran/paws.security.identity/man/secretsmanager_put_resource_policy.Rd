@@ -42,13 +42,11 @@ in the \emph{AWS CLI User Guide}.}
 prevent broad access to your secret.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ARN = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Attaches the contents of the specified resource-based permission policy
@@ -81,14 +79,12 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_resource_policy(
+\preformatted{svc$put_resource_policy(
   SecretId = "string",
   ResourcePolicy = "string",
   BlockPublicPolicy = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

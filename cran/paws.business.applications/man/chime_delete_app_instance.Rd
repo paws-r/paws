@@ -16,12 +16,10 @@ An empty list.
 Deletes an \code{AppInstance} and all associated data asynchronously.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_app_instance(
+\preformatted{svc$delete_app_instance(
   AppInstanceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

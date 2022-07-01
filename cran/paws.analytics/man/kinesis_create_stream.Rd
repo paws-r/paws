@@ -67,13 +67,11 @@ stream status, which is returned in \code{StreamStatus}.
 transactions per second per account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_stream(
+\preformatted{svc$create_stream(
   StreamName = "string",
   ShardCount = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

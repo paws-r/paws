@@ -30,9 +30,7 @@ hosted zones that are associated with a reusable delegation set, specify
 the ID of that reusable delegation set.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HostedZones = list(
     list(
       Id = "string",
@@ -54,7 +52,7 @@ A list with the following syntax:
   NextMarker = "string",
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list of the public and private hosted zones that are
@@ -66,14 +64,12 @@ have a lot of hosted zones, you can use the \code{maxitems} parameter to list
 them in groups of up to 100.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_hosted_zones(
+\preformatted{svc$list_hosted_zones(
   Marker = "string",
   MaxItems = "string",
   DelegationSetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

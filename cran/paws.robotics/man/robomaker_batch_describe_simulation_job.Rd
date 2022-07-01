@@ -10,9 +10,7 @@ robomaker_batch_describe_simulation_job(jobs)
 \item{jobs}{[required] A list of Amazon Resource Names (ARNs) of simulation jobs to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   jobs = list(
     list(
       arn = "string",
@@ -128,20 +126,18 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more simulation jobs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_describe_simulation_job(
+\preformatted{svc$batch_describe_simulation_job(
   jobs = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

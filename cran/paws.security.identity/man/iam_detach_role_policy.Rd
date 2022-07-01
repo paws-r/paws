@@ -31,13 +31,11 @@ API. For information about policies, see \href{https://docs.aws.amazon.com/IAM/l
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_role_policy(
+\preformatted{svc$detach_role_policy(
   RoleName = "string",
   PolicyArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

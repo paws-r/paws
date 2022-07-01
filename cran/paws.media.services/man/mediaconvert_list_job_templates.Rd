@@ -26,9 +26,7 @@ they are sorted in ASCENDING or DESCENDING order. Default varies by
 resource.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobTemplates = list(
     list(
       AccelerationSettings = list(
@@ -1173,7 +1171,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieve a JSON array of up to twenty of your job templates. This will
@@ -1182,16 +1180,14 @@ the next twenty templates, use the nextToken string returned with the
 array
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_job_templates(
+\preformatted{svc$list_job_templates(
   Category = "string",
   ListBy = "NAME"|"CREATION_DATE"|"SYSTEM",
   MaxResults = 123,
   NextToken = "string",
   Order = "ASCENDING"|"DESCENDING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

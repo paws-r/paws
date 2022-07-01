@@ -10,9 +10,7 @@ devicefarm_get_job(arn)
 \item{arn}{[required] The job's ARN.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   job = list(
     arn = "string",
     name = "string",
@@ -98,18 +96,16 @@ A list with the following syntax:
     videoCapture = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_job(
+\preformatted{svc$get_job(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

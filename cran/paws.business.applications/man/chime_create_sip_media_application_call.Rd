@@ -17,14 +17,12 @@ chime_create_sip_media_application_call(FromPhoneNumber, ToPhoneNumber,
 \item{SipMediaApplicationId}{[required] The ID of the SIP media application.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SipMediaApplicationCall = list(
     TransactionId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an outbound call to a phone number from the phone number
@@ -32,14 +30,12 @@ specified in the request, and it invokes the endpoint of the specified
 \code{sipMediaApplicationId}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_sip_media_application_call(
+\preformatted{svc$create_sip_media_application_call(
   FromPhoneNumber = "string",
   ToPhoneNumber = "string",
   SipMediaApplicationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

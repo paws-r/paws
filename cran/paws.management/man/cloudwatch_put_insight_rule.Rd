@@ -43,9 +43,7 @@ name, historical data from the first time the rule was created might not
 be available.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_insight_rule(
+\preformatted{svc$put_insight_rule(
   RuleName = "string",
   RuleState = "string",
   RuleDefinition = "string",
@@ -56,7 +54,7 @@ be available.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

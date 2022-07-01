@@ -19,9 +19,7 @@ updated.}
 update.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Errors = list(
     list(
       PartitionValueList = list(
@@ -34,15 +32,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates one or more partitions in a batch operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_update_partition(
+\preformatted{svc$batch_update_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -125,7 +121,7 @@ Updates one or more partitions in a batch operation.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

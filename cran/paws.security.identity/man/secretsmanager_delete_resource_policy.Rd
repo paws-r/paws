@@ -31,13 +31,11 @@ receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ARN = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the resource-based permission policy attached to the secret.
@@ -61,12 +59,10 @@ secret, use
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resource_policy(
+\preformatted{svc$delete_resource_policy(
   SecretId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

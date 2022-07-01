@@ -86,9 +86,7 @@ The following are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_lifecycle_configuration(
+\preformatted{svc$put_bucket_lifecycle_configuration(
   Bucket = "string",
   LifecycleConfiguration = list(
     Rules = list(
@@ -145,7 +143,7 @@ The following are related to
   ),
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

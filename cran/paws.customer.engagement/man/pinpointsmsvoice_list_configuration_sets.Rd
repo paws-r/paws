@@ -15,28 +15,24 @@ position in the list of results.}
 response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ConfigurationSets = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List all of the configuration sets associated with your Amazon Pinpoint
 account in the current region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_configuration_sets(
+\preformatted{svc$list_configuration_sets(
   NextToken = "string",
   PageSize = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

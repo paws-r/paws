@@ -15,9 +15,7 @@ apigatewayv2_get_integration_response(ApiId, IntegrationId,
 \item{IntegrationResponseId}{[required] The integration response ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
   IntegrationResponseId = "string",
   IntegrationResponseKey = "string",
@@ -29,20 +27,18 @@ A list with the following syntax:
   ),
   TemplateSelectionExpression = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets an IntegrationResponses.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_integration_response(
+\preformatted{svc$get_integration_response(
   ApiId = "string",
   IntegrationId = "string",
   IntegrationResponseId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

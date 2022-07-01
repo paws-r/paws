@@ -29,9 +29,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CoipPoolId = "string",
   CoipAddressUsages = list(
     list(
@@ -43,16 +41,14 @@ A list with the following syntax:
   ),
   LocalGatewayRouteTableId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the allocations from the specified customer-owned address
 pool.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_coip_pool_usage(
+\preformatted{svc$get_coip_pool_usage(
   PoolId = "string",
   Filters = list(
     list(
@@ -66,7 +62,7 @@ pool.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

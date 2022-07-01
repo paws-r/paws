@@ -48,9 +48,7 @@ file is created for empty folders. The default is false.}
 use when resolving conflicts during a merge.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pullRequest = list(
     pullRequestId = "string",
     title = "string",
@@ -102,7 +100,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Attempts to merge the source commit of a pull request into the specified
@@ -111,9 +109,7 @@ the squash merge strategy. If the merge is successful, it closes the
 pull request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$merge_pull_request_by_squash(
+\preformatted{svc$merge_pull_request_by_squash(
   pullRequestId = "string",
   repositoryName = "string",
   sourceCommitId = "string",
@@ -145,7 +141,7 @@ pull request.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

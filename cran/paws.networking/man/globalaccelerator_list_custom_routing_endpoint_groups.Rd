@@ -19,9 +19,7 @@ call. The default value is 10.}
 previous call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EndpointGroups = list(
     list(
       EndpointGroupArn = "string",
@@ -44,21 +42,19 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 List the endpoint groups that are associated with a listener for a
 custom routing accelerator.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_custom_routing_endpoint_groups(
+\preformatted{svc$list_custom_routing_endpoint_groups(
   ListenerArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

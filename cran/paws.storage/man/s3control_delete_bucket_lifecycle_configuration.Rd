@@ -64,13 +64,11 @@ Related actions include:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bucket_lifecycle_configuration(
+\preformatted{svc$delete_bucket_lifecycle_configuration(
   AccountId = "string",
   Bucket = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

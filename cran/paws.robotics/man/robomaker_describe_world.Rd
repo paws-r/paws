@@ -10,9 +10,7 @@ robomaker_describe_world(world)
 \item{world}{[required] The Amazon Resource Name (arn) of the world you want to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   arn = "string",
   generationJob = "string",
   template = "string",
@@ -23,18 +21,16 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a world.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_world(
+\preformatted{svc$describe_world(
   world = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

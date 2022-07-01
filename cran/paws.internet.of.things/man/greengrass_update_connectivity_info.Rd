@@ -12,13 +12,11 @@ greengrass_update_connectivity_info(ConnectivityInfo, ThingName)
 \item{ThingName}{[required] The thing name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Message = "string",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the connectivity information for the core. Any devices that
@@ -26,9 +24,7 @@ belong to the group which has this core will receive this information in
 order to find the location of the core and connect to it.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_connectivity_info(
+\preformatted{svc$update_connectivity_info(
   ConnectivityInfo = list(
     list(
       HostAddress = "string",
@@ -39,7 +35,7 @@ order to find the location of the core and connect to it.
   ),
   ThingName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

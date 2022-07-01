@@ -34,9 +34,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BundleTasks = list(
     list(
       BundleId = "string",
@@ -65,7 +63,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified bundle tasks or all of your bundle tasks.
@@ -76,9 +74,7 @@ it. Just use \code{\link[=ec2_register_image]{register_image}} with the Amazon S
 bucket name and image manifest name you provided to the bundle task.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_bundle_tasks(
+\preformatted{svc$describe_bundle_tasks(
   BundleIds = list(
     "string"
   ),
@@ -92,7 +88,7 @@ bucket name and image manifest name you provided to the bundle task.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

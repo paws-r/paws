@@ -11,9 +11,7 @@ kinesisanalytics_describe_application(ApplicationName)
 \item{ApplicationName}{[required] Name of the application.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationDetail = list(
     ApplicationName = "string",
     ApplicationDescription = "string",
@@ -141,7 +139,7 @@ A list with the following syntax:
     ApplicationVersionId = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics
@@ -162,12 +160,10 @@ the current application versionId, which you need to call other
 operations such as \code{Update}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_application(
+\preformatted{svc$describe_application(
   ApplicationName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

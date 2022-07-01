@@ -30,12 +30,10 @@ service. To delete a certificate that is in use, the certificate
 association must first be removed.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_certificate(
+\preformatted{svc$delete_certificate(
   CertificateArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

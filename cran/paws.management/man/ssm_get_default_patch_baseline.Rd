@@ -10,13 +10,11 @@ ssm_get_default_patch_baseline(OperatingSystem)
 \item{OperatingSystem}{Returns the default patch baseline for the specified operating system.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BaselineId = "string",
   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the default patch baseline. Note that Systems Manager supports
@@ -27,12 +25,10 @@ If you do not specify an operating system value, the default patch
 baseline for Windows is returned.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_default_patch_baseline(
+\preformatted{svc$get_default_patch_baseline(
   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

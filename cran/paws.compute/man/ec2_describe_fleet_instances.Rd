@@ -28,9 +28,7 @@ value.}
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ActiveInstances = list(
     list(
       InstanceId = "string",
@@ -42,15 +40,13 @@ A list with the following syntax:
   NextToken = "string",
   FleetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the running instances for the specified EC2 Fleet.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_fleet_instances(
+\preformatted{svc$describe_fleet_instances(
   DryRun = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string",
@@ -64,7 +60,7 @@ Describes the running instances for the specified EC2 Fleet.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

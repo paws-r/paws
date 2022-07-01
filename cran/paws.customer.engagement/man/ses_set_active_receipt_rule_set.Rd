@@ -24,12 +24,10 @@ For information about managing receipt rule sets, see the \href{https://docs.aws
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_active_receipt_rule_set(
+\preformatted{svc$set_active_receipt_rule_set(
   RuleSetName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

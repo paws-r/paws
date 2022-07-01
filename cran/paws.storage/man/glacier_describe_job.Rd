@@ -21,9 +21,7 @@ account ID, do not include any hyphens ('-') in the ID.}
 \item{jobId}{[required] The ID of the job to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobId = "string",
   JobDescription = "string",
   Action = "ArchiveRetrieval"|"InventoryRetrieval"|"Select",
@@ -104,7 +102,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation returns information about a job you previously initiated,
@@ -131,14 +129,12 @@ for the underlying REST API \href{https://docs.aws.amazon.com/amazonglacier/late
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_job(
+\preformatted{svc$describe_job(
   accountId = "string",
   vaultName = "string",
   jobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -11,9 +11,7 @@ servicecatalog_describe_portfolio_share_status(PortfolioShareToken)
 either by CreatePortfolioShare or by DeletePortfolioShare.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PortfolioShareToken = "string",
   PortfolioId = "string",
   OrganizationNodeValue = "string",
@@ -33,7 +31,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the status of the specified portfolio share operation. This API can
@@ -41,12 +39,10 @@ only be called by the management account in the organization or by a
 delegated admin.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_portfolio_share_status(
+\preformatted{svc$describe_portfolio_share_status(
   PortfolioShareToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -40,9 +40,7 @@ option cannot be used when you specify images with \code{imageIds}.}
 all tags, if tagged.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   registryId = "string",
   repositoryName = "string",
   lifecyclePolicyText = "string",
@@ -67,16 +65,14 @@ A list with the following syntax:
     expiringImageTotalCount = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the results of the lifecycle policy preview request for the
 specified repository.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_lifecycle_policy_preview(
+\preformatted{svc$get_lifecycle_policy_preview(
   registryId = "string",
   repositoryName = "string",
   imageIds = list(
@@ -91,7 +87,7 @@ specified repository.
     tagStatus = "TAGGED"|"UNTAGGED"|"ANY"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

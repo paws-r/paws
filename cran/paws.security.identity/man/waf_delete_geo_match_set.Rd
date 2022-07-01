@@ -16,12 +16,10 @@ waf_delete_geo_match_set(GeoMatchSetId, ChangeToken)
 \code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChangeToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -51,13 +49,11 @@ token that you provide in the \code{ChangeToken} parameter of a
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_geo_match_set(
+\preformatted{svc$delete_geo_match_set(
   GeoMatchSetId = "string",
   ChangeToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

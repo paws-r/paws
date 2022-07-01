@@ -18,27 +18,23 @@ length of 64. All others have a maximum length of 20.}
 \item{Password}{[required] The password for the new user.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a user who can be used in Amazon WorkMail by calling the
 \code{\link[=workmail_register_to_work_mail]{register_to_work_mail}} operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user(
+\preformatted{svc$create_user(
   OrganizationId = "string",
   Name = "string",
   DisplayName = "string",
   Password = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

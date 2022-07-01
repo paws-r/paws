@@ -17,20 +17,16 @@ sagemaker_update_context(ContextName, Description, Properties,
 \item{PropertiesToRemove}{A list of properties to remove.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContextArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates a context.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_context(
+\preformatted{svc$update_context(
   ContextName = "string",
   Description = "string",
   Properties = list(
@@ -40,7 +36,7 @@ Updates a context.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

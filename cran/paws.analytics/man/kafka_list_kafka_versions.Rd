@@ -15,9 +15,7 @@ truncated, the call returns NextToken in the response. To get the next
 batch, provide this token in your next request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   KafkaVersions = list(
     list(
       Version = "string",
@@ -26,19 +24,17 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of Kafka versions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_kafka_versions(
+\preformatted{svc$list_kafka_versions(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -12,9 +12,7 @@ workmail_describe_mailbox_export_job(JobId, OrganizationId)
 \item{OrganizationId}{[required] The organization ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EntityId = "string",
   Description = "string",
   RoleArn = "string",
@@ -32,19 +30,17 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the current status of a mailbox export job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_mailbox_export_job(
+\preformatted{svc$describe_mailbox_export_job(
   JobId = "string",
   OrganizationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

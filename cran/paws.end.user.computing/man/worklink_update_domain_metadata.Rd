@@ -20,14 +20,12 @@ An empty list.
 Updates domain metadata, such as DisplayName.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_domain_metadata(
+\preformatted{svc$update_domain_metadata(
   FleetArn = "string",
   DomainName = "string",
   DisplayName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

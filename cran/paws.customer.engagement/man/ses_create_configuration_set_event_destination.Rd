@@ -31,9 +31,7 @@ information about using configuration sets, see the \href{https://docs.aws.amazo
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_configuration_set_event_destination(
+\preformatted{svc$create_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestination = list(
     Name = "string",
@@ -59,7 +57,7 @@ You can execute this operation no more than once per second.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

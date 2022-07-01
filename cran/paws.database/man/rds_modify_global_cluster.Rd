@@ -34,9 +34,7 @@ enabled. The global database cluster can't be deleted when deletion
 protection is enabled.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GlobalCluster = list(
     GlobalClusterIdentifier = "string",
     GlobalClusterResourceId = "string",
@@ -59,7 +57,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modify a setting for an Amazon Aurora global cluster. You can change one
@@ -71,14 +69,12 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_global_cluster(
+\preformatted{svc$modify_global_cluster(
   GlobalClusterIdentifier = "string",
   NewGlobalClusterIdentifier = "string",
   DeletionProtection = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,9 +16,7 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ServerCertificate = list(
     ServerCertificateMetadata = list(
       Path = "string",
@@ -36,7 +34,7 @@ A list with the following syntax:
     CertificateChain = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves information about the specified server certificate stored in
@@ -48,12 +46,10 @@ in the \emph{IAM User Guide}. This topic includes a list of AWS services that
 can use the server certificates that you manage with IAM.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_server_certificate(
+\preformatted{svc$get_server_certificate(
   ServerCertificateName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

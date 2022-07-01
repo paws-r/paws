@@ -32,13 +32,11 @@ filter are counted.
 You can specify at most one of these in a request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   count = 123,
   truncated = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the number of open workflow executions within the given domain
@@ -76,9 +74,7 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$count_open_workflow_executions(
+\preformatted{svc$count_open_workflow_executions(
   domain = "string",
   startTimeFilter = list(
     oldestDate = as.POSIXct(
@@ -99,7 +95,7 @@ in the \emph{Amazon SWF Developer Guide}.
     workflowId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

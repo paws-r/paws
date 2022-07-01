@@ -10,9 +10,7 @@ cloudfront_get_field_level_encryption_profile(Id)
 \item{Id}{[required] Get the ID for the field-level encryption profile information.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   FieldLevelEncryptionProfile = list(
     Id = "string",
     LastModifiedTime = as.POSIXct(
@@ -41,18 +39,16 @@ A list with the following syntax:
   ),
   ETag = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Get the field-level encryption profile information.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_field_level_encryption_profile(
+\preformatted{svc$get_field_level_encryption_profile(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

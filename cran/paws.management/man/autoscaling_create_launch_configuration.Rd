@@ -181,9 +181,7 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_launch_configuration(
+\preformatted{svc$create_launch_configuration(
   LaunchConfigurationName = "string",
   ImageId = "string",
   KeyName = "string",
@@ -228,7 +226,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
     HttpEndpoint = "disabled"|"enabled"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -19,21 +19,17 @@ iot_update_authorizer(authorizerName, authorizerFunctionArn,
 \item{status}{The status of the update authorizer request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   authorizerName = "string",
   authorizerArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates an authorizer.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_authorizer(
+\preformatted{svc$update_authorizer(
   authorizerName = "string",
   authorizerFunctionArn = "string",
   tokenKeyName = "string",
@@ -42,7 +38,7 @@ Updates an authorizer.
   ),
   status = "ACTIVE"|"INACTIVE"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

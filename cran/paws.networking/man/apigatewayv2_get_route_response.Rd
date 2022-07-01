@@ -14,9 +14,7 @@ apigatewayv2_get_route_response(ApiId, RouteId, RouteResponseId)
 \item{RouteResponseId}{[required] The route response ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ModelSelectionExpression = "string",
   ResponseModels = list(
     "string"
@@ -29,20 +27,18 @@ A list with the following syntax:
   RouteResponseId = "string",
   RouteResponseKey = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a RouteResponse.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_route_response(
+\preformatted{svc$get_route_response(
   ApiId = "string",
   RouteId = "string",
   RouteResponseId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

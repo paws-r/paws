@@ -22,14 +22,12 @@ An empty list.
 Delete an OTA update.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_ota_update(
+\preformatted{svc$delete_ota_update(
   otaUpdateId = "string",
   deleteStream = TRUE|FALSE,
   forceDeleteAWSJob = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

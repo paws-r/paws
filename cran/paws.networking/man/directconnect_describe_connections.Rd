@@ -10,9 +10,7 @@ directconnect_describe_connections(connectionId)
 \item{connectionId}{The ID of the connection.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   connections = list(
     list(
       ownerAccount = "string",
@@ -42,18 +40,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Displays the specified connection or all connections in this Region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_connections(
+\preformatted{svc$describe_connections(
   connectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

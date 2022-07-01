@@ -72,20 +72,16 @@ To add tags to an existing patch baseline, use the
 \code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AutomationExecutionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Initiates execution of an Automation document.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_automation_execution(
+\preformatted{svc$start_automation_execution(
   DocumentName = "string",
   DocumentVersion = "string",
   Parameters = list(
@@ -133,7 +129,7 @@ Initiates execution of an Automation document.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

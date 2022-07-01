@@ -13,27 +13,23 @@ greengrass_get_group_certificate_authority(CertificateAuthorityId,
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GroupCertificateAuthorityArn = "string",
   GroupCertificateAuthorityId = "string",
   PemEncodedCertificate = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retreives the CA associated with a group. Returns the public key of the
 CA.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_group_certificate_authority(
+\preformatted{svc$get_group_certificate_authority(
   CertificateAuthorityId = "string",
   GroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

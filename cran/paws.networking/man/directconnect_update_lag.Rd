@@ -15,9 +15,7 @@ directconnect_update_lag(lagId, lagName, minimumLinks)
 the LAG itself to be operational.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   connectionsBandwidth = "string",
   numberOfConnections = 123,
   lagId = "string",
@@ -68,7 +66,7 @@ A list with the following syntax:
   ),
   providerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the attributes of the specified link aggregation group (LAG).
@@ -88,14 +86,12 @@ connections. Adjust this value with care, as it could force the LAG down
 if it is set higher than the current number of operational connections.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_lag(
+\preformatted{svc$update_lag(
   lagId = "string",
   lagName = "string",
   minimumLinks = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

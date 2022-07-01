@@ -10,9 +10,7 @@ servicediscovery_get_service(Id)
 \item{Id}{[required] The ID of the service that you want to get settings for.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Service = list(
     Id = "string",
     Arn = "string",
@@ -44,18 +42,16 @@ A list with the following syntax:
     CreatorRequestId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the settings for a specified service.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_service(
+\preformatted{svc$get_service(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

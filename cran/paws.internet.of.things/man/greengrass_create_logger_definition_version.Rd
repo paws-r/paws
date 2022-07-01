@@ -15,23 +15,19 @@ greengrass_create_logger_definition_version(AmznClientToken,
 \item{Loggers}{A list of loggers.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   CreationTimestamp = "string",
   Id = "string",
   Version = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a version of a logger definition that has already been defined.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_logger_definition_version(
+\preformatted{svc$create_logger_definition_version(
   AmznClientToken = "string",
   LoggerDefinitionId = "string",
   Loggers = list(
@@ -44,7 +40,7 @@ Creates a version of a logger definition that has already been defined.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

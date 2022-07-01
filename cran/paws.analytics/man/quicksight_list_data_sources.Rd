@@ -15,9 +15,7 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DataSources = list(
     list(
       Arn = "string",
@@ -231,21 +229,19 @@ A list with the following syntax:
   RequestId = "string",
   Status = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists data sources in current AWS Region that belong to this AWS
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_data_sources(
+\preformatted{svc$list_data_sources(
   AwsAccountId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

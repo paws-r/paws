@@ -14,24 +14,20 @@ idempotency of the operation. An idempotent operation completes no more
 than one time.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PipelineArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a pipeline if there are no in-progress executions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_pipeline(
+\preformatted{svc$delete_pipeline(
   PipelineName = "string",
   ClientRequestToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ elasticsearchservice_create_package(PackageName, PackageType,
 \item{PackageSource}{[required] The customer S3 location \code{PackageSource} for importing the package.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PackageDetails = list(
     PackageID = "string",
     PackageName = "string",
@@ -39,15 +37,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Create a package for use with Amazon ES domains.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_package(
+\preformatted{svc$create_package(
   PackageName = "string",
   PackageType = "TXT-DICTIONARY",
   PackageDescription = "string",
@@ -56,7 +52,7 @@ Create a package for use with Amazon ES domains.
     S3Key = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

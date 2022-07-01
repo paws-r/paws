@@ -18,9 +18,7 @@ the next set of parameters, use the token in the next request.}
 \item{MaxResults}{The maximum number of parameters to return in the response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PipelineParameters = list(
     list(
       Name = "string",
@@ -29,20 +27,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of parameters for a pipeline execution.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_pipeline_parameters_for_execution(
+\preformatted{svc$list_pipeline_parameters_for_execution(
   PipelineExecutionArn = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

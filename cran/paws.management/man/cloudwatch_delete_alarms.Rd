@@ -37,14 +37,12 @@ Additionally, the evaluation of composite alarms stops if CloudWatch
 detects a cycle in the evaluation path.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_alarms(
+\preformatted{svc$delete_alarms(
   AlarmNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

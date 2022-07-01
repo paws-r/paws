@@ -43,12 +43,10 @@ deleted, you can no longer use any of the resource in that fleet.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_fleet(
+\preformatted{svc$delete_fleet(
   FleetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

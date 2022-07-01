@@ -19,9 +19,7 @@ An empty list.
 Creates a new database in a Data Catalog.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_database(
+\preformatted{svc$create_database(
   CatalogId = "string",
   DatabaseInput = list(
     Name = "string",
@@ -46,7 +44,7 @@ Creates a new database in a Data Catalog.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

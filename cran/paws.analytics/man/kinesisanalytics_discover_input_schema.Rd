@@ -27,9 +27,7 @@ to use to preprocess the records before discovering the schema of the
 records.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InputSchema = list(
     RecordFormat = list(
       RecordFormatType = "JSON"|"CSV",
@@ -64,7 +62,7 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics
@@ -88,9 +86,7 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:DiscoverInputSchema} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$discover_input_schema(
+\preformatted{svc$discover_input_schema(
   ResourceARN = "string",
   RoleARN = "string",
   InputStartingPositionConfiguration = list(
@@ -108,7 +104,7 @@ This operation requires permissions to perform the
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

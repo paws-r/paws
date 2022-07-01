@@ -16,9 +16,7 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DashboardSummaryList = list(
     list(
       Arn = "string",
@@ -40,20 +38,18 @@ A list with the following syntax:
   Status = 123,
   RequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists dashboards in an AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_dashboards(
+\preformatted{svc$list_dashboards(
   AwsAccountId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -191,9 +191,7 @@ server.
 the backup represented by BackupId.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Server = list(
     AssociatePublicIpAddress = TRUE|FALSE,
     BackupRetentionCount = 123,
@@ -232,7 +230,7 @@ A list with the following syntax:
     ServerArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates and immedately starts a new server. The server is ready to use
@@ -270,9 +268,7 @@ self-signed or CA-signed certificate and private key, specify values for
 \code{CustomDomain}, \code{CustomCertificate}, and \code{CustomPrivateKey}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_server(
+\preformatted{svc$create_server(
   AssociatePublicIpAddress = TRUE|FALSE,
   CustomDomain = "string",
   CustomCertificate = "string",
@@ -309,7 +305,7 @@ self-signed or CA-signed certificate and private key, specify values for
   ),
   BackupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

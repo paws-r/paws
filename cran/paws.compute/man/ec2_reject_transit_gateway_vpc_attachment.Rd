@@ -16,9 +16,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TransitGatewayVpcAttachment = list(
     TransitGatewayAttachmentId = "string",
     TransitGatewayId = "string",
@@ -44,7 +42,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Rejects a request to attach a VPC to a transit gateway.
@@ -56,13 +54,11 @@ to view your pending VPC attachment requests. Use
 to accept a VPC attachment request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reject_transit_gateway_vpc_attachment(
+\preformatted{svc$reject_transit_gateway_vpc_attachment(
   TransitGatewayAttachmentId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

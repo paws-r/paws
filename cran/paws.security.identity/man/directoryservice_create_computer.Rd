@@ -22,9 +22,7 @@ place the computer account in.}
 to the computer account.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Computer = list(
     ComputerId = "string",
     ComputerName = "string",
@@ -36,15 +34,13 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an Active Directory computer object in the specified directory.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_computer(
+\preformatted{svc$create_computer(
   DirectoryId = "string",
   ComputerName = "string",
   Password = "string",
@@ -56,7 +52,7 @@ Creates an Active Directory computer object in the specified directory.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,14 +10,12 @@ rekognition_create_collection(CollectionId)
 \item{CollectionId}{[required] ID for the collection that you are creating.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StatusCode = 123,
   CollectionArn = "string",
   FaceModelVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a collection in an AWS Region. You can add faces to the
@@ -38,12 +36,10 @@ This operation requires permissions to perform the
 \code{rekognition:CreateCollection} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_collection(
+\preformatted{svc$create_collection(
   CollectionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

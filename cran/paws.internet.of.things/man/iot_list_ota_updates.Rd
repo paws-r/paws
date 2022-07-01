@@ -14,9 +14,7 @@ iot_list_ota_updates(maxResults, nextToken, otaUpdateStatus)
 \item{otaUpdateStatus}{The OTA update job status.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   otaUpdates = list(
     list(
       otaUpdateId = "string",
@@ -28,20 +26,18 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists OTA updates.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_ota_updates(
+\preformatted{svc$list_ota_updates(
   maxResults = 123,
   nextToken = "string",
   otaUpdateStatus = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -12,27 +12,23 @@ snowball_describe_return_shipping_label(JobId)
 \verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = "InProgress"|"TimedOut"|"Succeeded"|"Failed",
   ExpirationDate = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Information on the shipping label of a Snow device that is being
 returned to AWS.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_return_shipping_label(
+\preformatted{svc$describe_return_shipping_label(
   JobId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

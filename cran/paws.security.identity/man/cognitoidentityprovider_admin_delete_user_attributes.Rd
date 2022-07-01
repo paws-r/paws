@@ -30,16 +30,14 @@ any user.
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_delete_user_attributes(
+\preformatted{svc$admin_delete_user_attributes(
   UserPoolId = "string",
   Username = "string",
   UserAttributeNames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

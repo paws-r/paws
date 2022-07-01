@@ -21,9 +21,7 @@ from a previous call.)}
 default is up to 50 items.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   exportTasks = list(
     list(
       taskId = "string",
@@ -45,22 +43,20 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the specified export tasks. You can list all your export tasks or
 filter the results based on task ID or task status.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_export_tasks(
+\preformatted{svc$describe_export_tasks(
   taskId = "string",
   statusCode = "CANCELLED"|"COMPLETED"|"FAILED"|"PENDING"|"PENDING_CANCEL"|"RUNNING",
   nextToken = "string",
   limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

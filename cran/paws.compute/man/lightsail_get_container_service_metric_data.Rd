@@ -68,9 +68,7 @@ statistical calculation.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   metricName = "CPUUtilization"|"MemoryUtilization",
   metricData = list(
     list(
@@ -86,7 +84,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the data points of a specific metric of your Amazon Lightsail
@@ -97,9 +95,7 @@ metric data regularly to maintain the reliability, availability, and
 performance of your resources.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_container_service_metric_data(
+\preformatted{svc$get_container_service_metric_data(
   serviceName = "string",
   metricName = "CPUUtilization"|"MemoryUtilization",
   startTime = as.POSIXct(
@@ -113,7 +109,7 @@ performance of your resources.
     "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -99,9 +99,7 @@ of this setting, Cognito uses the legacy behavior to determine the
 recovery method where SMS is preferred over email.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserPool = list(
     Id = "string",
     Name = "string",
@@ -231,16 +229,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new Amazon Cognito user pool and sets the password policy for
 the pool.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user_pool(
+\preformatted{svc$create_user_pool(
   PoolName = "string",
   Policies = list(
     PasswordPolicy = list(
@@ -354,7 +350,7 @@ the pool.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

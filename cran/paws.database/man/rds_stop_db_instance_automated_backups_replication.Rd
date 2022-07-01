@@ -12,9 +12,7 @@ stop replicating automated backups, for example,
 \code{arn:aws:rds:us-west-2:123456789012:db:mydatabase}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBInstanceAutomatedBackup = list(
     DBInstanceArn = "string",
     DbiResourceId = "string",
@@ -57,7 +55,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops automated backup replication for a DB instance.
@@ -66,12 +64,10 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Use
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_db_instance_automated_backups_replication(
+\preformatted{svc$stop_db_instance_automated_backups_replication(
   SourceDBInstanceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -22,13 +22,11 @@ Deletes the specified thing. Returns successfully with no error if the
 deletion is successful or you specify a thing that doesn't exist.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_thing(
+\preformatted{svc$delete_thing(
   thingName = "string",
   expectedVersion = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

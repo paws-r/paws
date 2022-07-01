@@ -16,9 +16,7 @@ page token that you can specify as the page token in a subsequent
 request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   bundles = list(
     list(
       bundleId = "string",
@@ -34,7 +32,7 @@ A list with the following syntax:
   ),
   nextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the list of bundles that are available in Amazon Lightsail. A
@@ -44,12 +42,10 @@ You can use a bundle ID to create a new database with explicit
 performance specifications.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_relational_database_bundles(
+\preformatted{svc$get_relational_database_bundles(
   pageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

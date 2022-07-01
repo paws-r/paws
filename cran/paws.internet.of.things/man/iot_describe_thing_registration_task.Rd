@@ -10,9 +10,7 @@ iot_describe_thing_registration_task(taskId)
 \item{taskId}{[required] The task ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   taskId = "string",
   creationDate = as.POSIXct(
     "2015-01-01"
@@ -30,18 +28,16 @@ A list with the following syntax:
   failureCount = 123,
   percentageProgress = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a bulk thing provisioning task.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_thing_registration_task(
+\preformatted{svc$describe_thing_registration_task(
   taskId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,9 +10,7 @@ codebuild_batch_get_reports(reportArns)
 \item{reportArns}{[required] An array of ARNs that identify the \code{Report} objects to return.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   reports = list(
     list(
       arn = "string",
@@ -59,20 +57,18 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns an array of reports.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$batch_get_reports(
+\preformatted{svc$batch_get_reports(
   reportArns = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

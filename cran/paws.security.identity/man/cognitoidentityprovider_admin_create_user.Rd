@@ -130,9 +130,7 @@ don't use it to provide sensitive information.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   User = list(
     Username = "string",
     Attributes = list(
@@ -157,7 +155,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new user in the specified user pool.
@@ -181,9 +179,7 @@ until they sign in and change their password.
 requires developer credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$admin_create_user(
+\preformatted{svc$admin_create_user(
   UserPoolId = "string",
   Username = "string",
   UserAttributes = list(
@@ -208,7 +204,7 @@ requires developer credentials.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

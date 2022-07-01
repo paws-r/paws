@@ -26,14 +26,12 @@ the internet and the VPC. The VPC must not contain any running instances
 with Elastic IP addresses or public IPv4 addresses.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$detach_internet_gateway(
+\preformatted{svc$detach_internet_gateway(
   DryRun = TRUE|FALSE,
   InternetGatewayId = "string",
   VpcId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

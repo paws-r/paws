@@ -53,15 +53,13 @@ you might be able to recover it. For more information, see
 \code{\link[=ec2_allocate_address]{allocate_address}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$release_address(
+\preformatted{svc$release_address(
   AllocationId = "string",
   PublicIp = "string",
   NetworkBorderGroup = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

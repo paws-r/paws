@@ -28,9 +28,7 @@ each label group, the array element are sorted by detection confidence.
 The default sort is by \code{TIMESTAMP}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
   StatusMessage = "string",
   VideoMetadata = list(
@@ -54,7 +52,7 @@ A list with the following syntax:
   NextToken = "string",
   ModerationModelVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the unsafe content analysis results for a Amazon Rekognition Video
@@ -101,15 +99,13 @@ For more information, see Detecting Unsafe Content in the Amazon
 Rekognition Developer Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_content_moderation(
+\preformatted{svc$get_content_moderation(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string",
   SortBy = "NAME"|"TIMESTAMP"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

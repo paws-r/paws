@@ -95,9 +95,7 @@ value that you specify.
 Default: 600}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClientToken = "string",
   FlowLogIds = list(
     "string"
@@ -112,7 +110,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates one or more flow logs to capture information about IP traffic
@@ -133,9 +131,7 @@ For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_flow_logs(
+\preformatted{svc$create_flow_logs(
   DryRun = TRUE|FALSE,
   ClientToken = "string",
   DeliverLogsPermissionArn = "string",
@@ -161,7 +157,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   ),
   MaxAggregationInterval = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

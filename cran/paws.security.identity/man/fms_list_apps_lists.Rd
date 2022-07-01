@@ -25,9 +25,7 @@ If you don't specify this, AWS Firewall Manager returns all available
 objects.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AppsLists = list(
     list(
       ListArn = "string",
@@ -44,20 +42,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns an array of \code{AppsListDataSummary} objects.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_apps_lists(
+\preformatted{svc$list_apps_lists(
   DefaultLists = TRUE|FALSE,
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

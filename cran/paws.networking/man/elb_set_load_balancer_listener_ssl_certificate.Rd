@@ -27,14 +27,12 @@ For more information about updating your SSL certificate, see \href{https://docs
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_load_balancer_listener_ssl_certificate(
+\preformatted{svc$set_load_balancer_listener_ssl_certificate(
   LoadBalancerName = "string",
   LoadBalancerPort = 123,
   SSLCertificateId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

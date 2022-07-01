@@ -9,15 +9,13 @@ that you create there}
 dynamodb_describe_limits()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AccountMaxReadCapacityUnits = 123,
   AccountMaxWriteCapacityUnits = 123,
   TableMaxReadCapacityUnits = 123,
   TableMaxWriteCapacityUnits = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the current provisioned-capacity quotas for your AWS account in
@@ -86,10 +84,8 @@ The \code{\link[=dynamodb_describe_limits]{describe_limits}} Request element has
 content.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_limits()
-}\if{html}{\out{</div>}}
+\preformatted{svc$describe_limits()
+}
 }
 
 \examples{

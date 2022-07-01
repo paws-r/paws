@@ -22,15 +22,13 @@ Deletes the specified SIP credentials used by your equipment to
 authenticate during call termination.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_voice_connector_termination_credentials(
+\preformatted{svc$delete_voice_connector_termination_credentials(
   VoiceConnectorId = "string",
   Usernames = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

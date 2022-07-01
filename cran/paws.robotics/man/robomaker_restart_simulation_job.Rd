@@ -16,12 +16,10 @@ An empty list.
 Restarts a running simulation job.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restart_simulation_job(
+\preformatted{svc$restart_simulation_job(
   job = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

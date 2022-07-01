@@ -16,12 +16,10 @@ An empty list.
 Starts the specified fleet.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_fleet(
+\preformatted{svc$start_fleet(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,12 +16,10 @@ waf_delete_regex_pattern_set(RegexPatternSetId, ChangeToken)
 \code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChangeToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -38,13 +36,11 @@ Permanently deletes a RegexPatternSet. You can't delete a
 \code{RegexPatternSet} is not empty.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_regex_pattern_set(
+\preformatted{svc$delete_regex_pattern_set(
   RegexPatternSetId = "string",
   ChangeToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

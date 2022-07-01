@@ -27,9 +27,7 @@ specified number.
 Amazon Web Services may impose its own limit, if this field is not set.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Tapes = list(
     list(
       TapeARN = "string",
@@ -55,7 +53,7 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a description of the specified Amazon Resource Name (ARN) of
@@ -64,9 +62,7 @@ all virtual tapes associated with the specified gateway. This operation
 is only supported in the tape gateway type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_tapes(
+\preformatted{svc$describe_tapes(
   GatewayARN = "string",
   TapeARNs = list(
     "string"
@@ -74,7 +70,7 @@ is only supported in the tape gateway type.
   Marker = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

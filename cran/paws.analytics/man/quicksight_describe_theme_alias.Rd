@@ -15,9 +15,7 @@ describing.}
 \item{AliasName}{[required] The name of the theme alias that you want to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ThemeAlias = list(
     Arn = "string",
     AliasName = "string",
@@ -26,20 +24,18 @@ A list with the following syntax:
   Status = 123,
   RequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the alias for a theme.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_theme_alias(
+\preformatted{svc$describe_theme_alias(
   AwsAccountId = "string",
   ThemeId = "string",
   AliasName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

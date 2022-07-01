@@ -10,9 +10,7 @@ amplify_delete_app(appId)
 \item{appId}{[required] The unique ID for an Amplify app.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   app = list(
     appId = "string",
     appArn = "string",
@@ -76,18 +74,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an existing Amplify app specified by an app ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_app(
+\preformatted{svc$delete_app(
   appId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

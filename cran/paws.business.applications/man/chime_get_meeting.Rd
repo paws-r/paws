@@ -10,9 +10,7 @@ chime_get_meeting(MeetingId)
 \item{MeetingId}{[required] The Amazon Chime SDK meeting ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Meeting = list(
     MeetingId = "string",
     ExternalMeetingId = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
     MediaRegion = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the Amazon Chime SDK meeting details for the specified meeting ID.
@@ -36,12 +34,10 @@ For more information about the Amazon Chime SDK, see \href{https://docs.aws.amaz
 in the \emph{Amazon Chime Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_meeting(
+\preformatted{svc$get_meeting(
   MeetingId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

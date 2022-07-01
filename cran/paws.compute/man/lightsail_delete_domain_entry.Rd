@@ -13,9 +13,7 @@ lightsail_delete_domain_entry(domainName, domainEntry)
 entries.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operation = list(
     id = "string",
     resourceName = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
     errorDetails = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a specific domain entry.
@@ -48,9 +46,7 @@ via resource tags applied to the resource identified by \verb{domain name}.
 For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_domain_entry(
+\preformatted{svc$delete_domain_entry(
   domainName = "string",
   domainEntry = list(
     id = "string",
@@ -63,7 +59,7 @@ For more information, see the Lightsail Dev Guide.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

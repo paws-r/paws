@@ -11,9 +11,7 @@ gamelift_describe_runtime_configuration(FleetId)
 You can use either the fleet ID or ARN value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RuntimeConfiguration = list(
     ServerProcesses = list(
       list(
@@ -26,7 +24,7 @@ A list with the following syntax:
     GameSessionActivationTimeoutSeconds = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a fleet's runtime configuration settings. The runtime
@@ -65,12 +63,10 @@ is empty.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_runtime_configuration(
+\preformatted{svc$describe_runtime_configuration(
   FleetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

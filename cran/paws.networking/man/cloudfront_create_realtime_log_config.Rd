@@ -24,9 +24,7 @@ in the real-time log data. You must provide an integer between 1 and
 100, inclusive.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RealtimeLogConfig = list(
     ARN = "string",
     Name = "string",
@@ -45,7 +43,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a real-time log configuration.
@@ -58,9 +56,7 @@ For more information about real-time log configurations, see \href{https://docs.
 in the \emph{Amazon CloudFront Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_realtime_log_config(
+\preformatted{svc$create_realtime_log_config(
   EndPoints = list(
     list(
       StreamType = "string",
@@ -76,7 +72,7 @@ in the \emph{Amazon CloudFront Developer Guide}.
   Name = "string",
   SamplingRate = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

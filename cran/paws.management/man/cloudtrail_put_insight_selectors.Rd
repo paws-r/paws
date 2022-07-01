@@ -16,9 +16,7 @@ trail. In this release, only \code{ApiCallRateInsight} is supported as an
 insight type.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrailARN = "string",
   InsightSelectors = list(
     list(
@@ -26,7 +24,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lets you enable Insights event logging by specifying the Insights
@@ -37,9 +35,7 @@ this release, only \code{ApiCallRateInsight} is supported as an Insights
 selector.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_insight_selectors(
+\preformatted{svc$put_insight_selectors(
   TrailName = "string",
   InsightSelectors = list(
     list(
@@ -47,7 +43,7 @@ selector.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

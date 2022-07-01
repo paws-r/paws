@@ -19,9 +19,7 @@ pass its value in here to list more backend environments.}
 \item{maxResults}{The maximum number of records to list in a single response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   backendEnvironments = list(
     list(
       backendEnvironmentArn = "string",
@@ -38,21 +36,19 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the backend environments for an Amplify app.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_backend_environments(
+\preformatted{svc$list_backend_environments(
   appId = "string",
   environmentName = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

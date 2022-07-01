@@ -10,9 +10,7 @@ elasticbeanstalk_describe_platform_version(PlatformArn)
 \item{PlatformArn}{The ARN of the platform version.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PlatformDescription = list(
     PlatformArn = "string",
     PlatformOwner = "string",
@@ -60,7 +58,7 @@ A list with the following syntax:
     PlatformBranchLifecycleState = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a platform version. Provides full details. Compare to
@@ -71,12 +69,10 @@ For definitions of platform version and other platform-related terms,
 see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html}{AWS Elastic Beanstalk Platforms Glossary}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_platform_version(
+\preformatted{svc$describe_platform_version(
   PlatformArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -20,14 +20,12 @@ An empty list.
 Deletes a \code{Resolver} object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resolver(
+\preformatted{svc$delete_resolver(
   apiId = "string",
   typeName = "string",
   fieldName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

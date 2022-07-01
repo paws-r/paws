@@ -142,9 +142,7 @@ For more information on expression attribute values, see \href{https://docs.aws.
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attributes = list(
     list(
       S = "string",
@@ -224,7 +222,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new item, or replaces an old item with a new item. If an item
@@ -274,9 +272,7 @@ For more information about \code{\link[=dynamodb_put_item]{put_item}}, see \href
 in the \emph{Amazon DynamoDB Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_item(
+\preformatted{svc$put_item(
   TableName = "string",
   Item = list(
     list(
@@ -387,7 +383,7 @@ in the \emph{Amazon DynamoDB Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

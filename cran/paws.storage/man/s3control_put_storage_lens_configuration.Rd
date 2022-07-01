@@ -32,9 +32,7 @@ To use this action, you must have permission to perform the
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_storage_lens_configuration(
+\preformatted{svc$put_storage_lens_configuration(
   ConfigId = "string",
   AccountId = "string",
   StorageLensConfiguration = list(
@@ -103,7 +101,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

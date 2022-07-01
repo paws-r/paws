@@ -19,9 +19,7 @@ Operations section.
 AWS Organizations
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- organizations(
+\preformatted{svc <- organizations(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +33,7 @@ AWS Organizations
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

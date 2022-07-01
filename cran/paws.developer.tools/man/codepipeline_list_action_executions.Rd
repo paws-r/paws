@@ -27,9 +27,7 @@ which can be used to return the next set of action executions in the
 list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   actionExecutionDetails = list(
     list(
       pipelineExecutionId = "string",
@@ -93,15 +91,13 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the action executions that have occurred in a pipeline.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_action_executions(
+\preformatted{svc$list_action_executions(
   pipelineName = "string",
   filter = list(
     pipelineExecutionId = "string"
@@ -109,7 +105,7 @@ Lists the action executions that have occurred in a pipeline.
   maxResults = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

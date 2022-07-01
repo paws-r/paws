@@ -13,12 +13,10 @@ storagegateway_set_local_console_password(GatewayARN,
 \item{LocalConsolePassword}{[required] The password you want to set for your VM local console.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sets the password for your VM local console. When you log in to the
@@ -27,13 +25,11 @@ credentials. We recommend that you set a new password. You don't need to
 know the default password to set a new password.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_local_console_password(
+\preformatted{svc$set_local_console_password(
   GatewayARN = "string",
   LocalConsolePassword = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

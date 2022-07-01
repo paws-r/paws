@@ -18,13 +18,11 @@ An empty list.
 Deletes a specified policy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_resource_policy(
+\preformatted{svc$delete_resource_policy(
   PolicyHashCondition = "string",
   ResourceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

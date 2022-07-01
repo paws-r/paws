@@ -20,9 +20,7 @@ Updates global settings for the administrator's AWS account, such as
 Amazon Chime Business Calling and Amazon Chime Voice Connector settings.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_global_settings(
+\preformatted{svc$update_global_settings(
   BusinessCalling = list(
     CdrBucket = "string"
   ),
@@ -30,7 +28,7 @@ Amazon Chime Business Calling and Amazon Chime Voice Connector settings.
     CdrBucket = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ list of compatible images, you can specify a value for \code{NextToken} as
 the starting point for your list of returned images.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CompatibleImages = list(
     list(
       AmiId = "string",
@@ -28,7 +26,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This action returns a list of the different Amazon EC2 Amazon Machine
@@ -39,13 +37,11 @@ Ubuntu 16.04 LTS - Xenial (HVM) images, available on the AWS
 Marketplace.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_compatible_images(
+\preformatted{svc$list_compatible_images(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

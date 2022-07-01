@@ -10,9 +10,7 @@ globalaccelerator_describe_custom_routing_listener(ListenerArn)
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Listener = list(
     ListenerArn = "string",
     PortRanges = list(
@@ -23,18 +21,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The description of a listener for a custom routing accelerator.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_custom_routing_listener(
+\preformatted{svc$describe_custom_routing_listener(
   ListenerArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

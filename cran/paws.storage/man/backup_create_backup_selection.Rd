@@ -19,16 +19,14 @@ plan.}
 to be retried without the risk of running the operation twice.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SelectionId = "string",
   BackupPlanId = "string",
   CreationDate = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a JSON document that specifies a set of resources to assign to a
@@ -62,9 +60,7 @@ together using the OR operator. In other words, all patterns that match
 are selected for backup.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_backup_selection(
+\preformatted{svc$create_backup_selection(
   BackupPlanId = "string",
   BackupSelection = list(
     SelectionName = "string",
@@ -82,7 +78,7 @@ are selected for backup.
   ),
   CreatorRequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

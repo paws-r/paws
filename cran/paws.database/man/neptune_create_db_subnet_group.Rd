@@ -23,9 +23,7 @@ Example: \code{mySubnetgroup}}
 \item{Tags}{The tags to be assigned to the new DB subnet group.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBSubnetGroup = list(
     DBSubnetGroupName = "string",
     DBSubnetGroupDescription = "string",
@@ -43,16 +41,14 @@ A list with the following syntax:
     DBSubnetGroupArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new DB subnet group. DB subnet groups must contain at least
 one subnet in at least two AZs in the AWS Region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_db_subnet_group(
+\preformatted{svc$create_db_subnet_group(
   DBSubnetGroupName = "string",
   DBSubnetGroupDescription = "string",
   SubnetIds = list(
@@ -65,7 +61,7 @@ one subnet in at least two AZs in the AWS Region.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

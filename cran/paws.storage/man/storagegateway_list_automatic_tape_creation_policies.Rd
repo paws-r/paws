@@ -10,9 +10,7 @@ storagegateway_list_automatic_tape_creation_policies(GatewayARN)
 \item{GatewayARN}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AutomaticTapeCreationPolicyInfos = list(
     list(
       AutomaticTapeCreationRules = list(
@@ -28,7 +26,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the automatic tape creation policies for a gateway. If there are
@@ -38,12 +36,10 @@ list.
 This operation is only supported for tape gateways.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_automatic_tape_creation_policies(
+\preformatted{svc$list_automatic_tape_creation_policies(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

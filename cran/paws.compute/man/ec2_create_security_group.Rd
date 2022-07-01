@@ -36,9 +36,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GroupId = "string",
   Tags = list(
     list(
@@ -47,7 +45,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a security group.
@@ -79,9 +77,7 @@ and \code{\link[=ec2_revoke_security_group_egress]{revoke_security_group_egress}
 For more information about VPC security group limits, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html}{Amazon VPC Limits}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_security_group(
+\preformatted{svc$create_security_group(
   Description = "string",
   GroupName = "string",
   VpcId = "string",
@@ -98,7 +94,7 @@ For more information about VPC security group limits, see \href{https://docs.aws
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

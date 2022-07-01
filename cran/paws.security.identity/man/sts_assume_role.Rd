@@ -186,9 +186,7 @@ The format for this parameter, as described by its regex pattern, is a
 sequence of six numeric digits.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Credentials = list(
     AccessKeyId = "string",
     SecretAccessKey = "string",
@@ -203,7 +201,7 @@ A list with the following syntax:
   ),
   PackedPolicySize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a set of temporary security credentials that you can use to
@@ -331,9 +329,7 @@ identifies the user's hardware or virtual MFA device. The \code{TokenCode} is
 the time-based one-time password (TOTP) that the MFA device produces.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$assume_role(
+\preformatted{svc$assume_role(
   RoleArn = "string",
   RoleSessionName = "string",
   PolicyArns = list(
@@ -356,7 +352,7 @@ the time-based one-time password (TOTP) that the MFA device produces.
   SerialNumber = "string",
   TokenCode = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

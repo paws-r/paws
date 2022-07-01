@@ -19,9 +19,7 @@ version. If you don't specify a checksum, Amazon Lex publishes the
 \verb{$LATEST} version.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   name = "string",
   description = "string",
   enumerationValues = list(
@@ -50,7 +48,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new version of a slot type based on the \verb{$LATEST} version of
@@ -71,13 +69,11 @@ This operation requires permissions for the \code{lex:CreateSlotTypeVersion}
 action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_slot_type_version(
+\preformatted{svc$create_slot_type_version(
   name = "string",
   checksum = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

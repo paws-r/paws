@@ -67,9 +67,7 @@ The following values are supported for \code{Key}:
 Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SavingsPlansCoverages = list(
     list(
       Attributes = list(
@@ -89,7 +87,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the Savings Plans covered for your account. This enables you
@@ -109,9 +107,7 @@ To determine valid values for a dimension, use the
 \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_savings_plans_coverage(
+\preformatted{svc$get_savings_plans_coverage(
   TimePeriod = list(
     Start = "string",
     End = "string"
@@ -169,7 +165,7 @@ To determine valid values for a dimension, use the
     SortOrder = "ASCENDING"|"DESCENDING"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -28,13 +28,11 @@ Shield Advanced protection. For more information, see \href{https://docs.aws.ama
 in the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF and AWS Shield Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_health_check(
+\preformatted{svc$associate_health_check(
   ProtectionId = "string",
   HealthCheckArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

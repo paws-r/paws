@@ -43,12 +43,10 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VersionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Sets the supplied tag-set to an object that already exists in a bucket.
@@ -106,9 +104,7 @@ object.}
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_object_tagging(
+\preformatted{svc$put_object_tagging(
   Bucket = "string",
   Key = "string",
   VersionId = "string",
@@ -123,7 +119,7 @@ object.}
   ),
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

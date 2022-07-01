@@ -10,9 +10,7 @@ cognitoidentityprovider_describe_user_pool_domain(Domain)
 \item{Domain}{[required] The domain string.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DomainDescription = list(
     UserPoolId = "string",
     AWSAccountId = "string",
@@ -26,18 +24,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a domain.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_user_pool_domain(
+\preformatted{svc$describe_user_pool_domain(
   Domain = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

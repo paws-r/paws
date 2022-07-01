@@ -18,12 +18,10 @@ Deletes the assessment template that is specified by the ARN of the
 assessment template.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_assessment_template(
+\preformatted{svc$delete_assessment_template(
   assessmentTemplateArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

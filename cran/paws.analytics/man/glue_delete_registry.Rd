@@ -11,14 +11,12 @@ glue_delete_registry(RegistryId)
 Amazon Resource Name (ARN).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RegistryName = "string",
   RegistryArn = "string",
   Status = "AVAILABLE"|"DELETING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Delete the entire registry including schema and all of its versions. To
@@ -31,15 +29,13 @@ such as the \code{\link[=glue_update_registry]{update_registry}},
 \code{\link[=glue_register_schema_version]{register_schema_version}} APIs.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_registry(
+\preformatted{svc$delete_registry(
   RegistryId = list(
     RegistryName = "string",
     RegistryArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

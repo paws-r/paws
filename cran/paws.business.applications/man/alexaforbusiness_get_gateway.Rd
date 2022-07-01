@@ -10,9 +10,7 @@ alexaforbusiness_get_gateway(GatewayArn)
 \item{GatewayArn}{[required] The ARN of the gateway to get.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Gateway = list(
     Arn = "string",
     Name = "string",
@@ -21,18 +19,16 @@ A list with the following syntax:
     SoftwareVersion = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the details of a gateway.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_gateway(
+\preformatted{svc$get_gateway(
   GatewayArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -23,9 +23,7 @@ Neptune resources, or used in a Condition statement in an IAM policy for
 Amazon Neptune.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$add_tags_to_resource(
+\preformatted{svc$add_tags_to_resource(
   ResourceName = "string",
   Tags = list(
     list(
@@ -34,7 +32,7 @@ Amazon Neptune.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

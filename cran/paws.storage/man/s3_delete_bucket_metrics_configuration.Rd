@@ -43,14 +43,12 @@ The following operations are related to
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bucket_metrics_configuration(
+\preformatted{svc$delete_bucket_metrics_configuration(
   Bucket = "string",
   Id = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,9 +19,7 @@ Name (ARN).}
 \item{MetadataKeyValue}{[required] The value of the metadata key.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SchemaArn = "string",
   SchemaName = "string",
   RegistryName = "string",
@@ -31,16 +29,14 @@ A list with the following syntax:
   MetadataKey = "string",
   MetadataValue = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Removes a key value pair from the schema version metadata for the
 specified schema version ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_schema_version_metadata(
+\preformatted{svc$remove_schema_version_metadata(
   SchemaId = list(
     SchemaArn = "string",
     SchemaName = "string",
@@ -56,7 +52,7 @@ specified schema version ID.
     MetadataValue = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

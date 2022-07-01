@@ -24,12 +24,10 @@ the EC2 Fleet.}
 \item{TargetCapacitySpecification}{The size of the EC2 Fleet.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the specified EC2 Fleet.
@@ -65,9 +63,7 @@ If you are finished with your EC2 Fleet for now, but will use it again
 later, you can set the target capacity to 0.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_fleet(
+\preformatted{svc$modify_fleet(
   DryRun = TRUE|FALSE,
   ExcessCapacityTerminationPolicy = "no-termination"|"termination",
   LaunchTemplateConfigs = list(
@@ -107,7 +103,7 @@ later, you can set the target capacity to 0.
     DefaultTargetCapacityType = "spot"|"on-demand"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

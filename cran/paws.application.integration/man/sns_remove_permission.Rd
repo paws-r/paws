@@ -18,13 +18,11 @@ An empty list.
 Removes a statement from a topic's access control policy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_permission(
+\preformatted{svc$remove_permission(
   TopicArn = "string",
   Label = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

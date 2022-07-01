@@ -43,14 +43,12 @@ You can execute this operation no more than once per second.
 For more information about feedback notification, see the \href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_identity_notification_topic(
+\preformatted{svc$set_identity_notification_topic(
   Identity = "string",
   NotificationType = "Bounce"|"Complaint"|"Delivery",
   SnsTopic = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

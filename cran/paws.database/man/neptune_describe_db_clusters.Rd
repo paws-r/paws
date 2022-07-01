@@ -47,9 +47,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   DBClusters = list(
     list(
@@ -128,7 +126,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about provisioned DB clusters, and supports
@@ -138,9 +136,7 @@ This operation can also return information for Amazon RDS clusters and
 Amazon DocDB clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_clusters(
+\preformatted{svc$describe_db_clusters(
   DBClusterIdentifier = "string",
   Filters = list(
     list(
@@ -153,7 +149,7 @@ Amazon DocDB clusters.
   MaxRecords = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

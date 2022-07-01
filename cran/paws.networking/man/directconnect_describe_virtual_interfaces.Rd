@@ -13,9 +13,7 @@ directconnect_describe_virtual_interfaces(connectionId,
 \item{virtualInterfaceId}{The ID of the virtual interface.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   virtualInterfaces = list(
     list(
       ownerAccount = "string",
@@ -66,7 +64,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Displays all virtual interfaces for an AWS account. Virtual interfaces
@@ -79,13 +77,11 @@ A virtual interface (VLAN) transmits the traffic between the AWS Direct
 Connect location and the customer network.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_virtual_interfaces(
+\preformatted{svc$describe_virtual_interfaces(
   connectionId = "string",
   virtualInterfaceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

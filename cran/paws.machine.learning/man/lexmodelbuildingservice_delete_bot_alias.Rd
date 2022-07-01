@@ -28,13 +28,11 @@ exception again, delete the referring association until the
 is successful.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_bot_alias(
+\preformatted{svc$delete_bot_alias(
   name = "string",
   botName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

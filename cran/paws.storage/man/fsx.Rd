@@ -20,9 +20,7 @@ Amazon FSx is a fully managed service that makes it easy for storage and
 application administrators to launch and use shared file storage.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- fsx(
+\preformatted{svc <- fsx(
   config = list(
     credentials = list(
       creds = list(
@@ -36,7 +34,7 @@ application administrators to launch and use shared file storage.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

@@ -16,9 +16,7 @@ UsageLimit.}
 more information about this parameter, see UsageLimit.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UsageLimitId = "string",
   ClusterIdentifier = "string",
   FeatureType = "spectrum"|"concurrency-scaling",
@@ -33,21 +31,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies a usage limit in a cluster. You can't modify the feature type
 or period of a usage limit.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_usage_limit(
+\preformatted{svc$modify_usage_limit(
   UsageLimitId = "string",
   Amount = 123,
   BreachAction = "log"|"emit-metric"|"disable"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

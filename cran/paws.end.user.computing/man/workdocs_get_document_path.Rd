@@ -22,9 +22,7 @@ the parent folders.}
 \item{Marker}{This value is not supported.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Path = list(
     Components = list(
       list(
@@ -34,7 +32,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the path information (the hierarchy from the root folder) for
@@ -46,16 +44,14 @@ in the path. You can limit the maximum number of levels. You can also
 request the names of the parent folders.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_document_path(
+\preformatted{svc$get_document_path(
   AuthenticationToken = "string",
   DocumentId = "string",
   Limit = 123,
   Fields = "string",
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

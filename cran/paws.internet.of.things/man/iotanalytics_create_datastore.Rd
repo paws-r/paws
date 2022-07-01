@@ -29,9 +29,7 @@ The default file format is JSON. You can specify only one format.
 You can't change the file format after you create the data store.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   datastoreName = "string",
   datastoreArn = "string",
   retentionPeriod = list(
@@ -39,15 +37,13 @@ A list with the following syntax:
     numberOfDays = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a data store, which is a repository for messages.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_datastore(
+\preformatted{svc$create_datastore(
   datastoreName = "string",
   datastoreStorage = list(
     serviceManagedS3 = list(),
@@ -81,7 +77,7 @@ Creates a data store, which is a repository for messages.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

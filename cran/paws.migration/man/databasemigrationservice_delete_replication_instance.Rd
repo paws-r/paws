@@ -12,9 +12,7 @@ databasemigrationservice_delete_replication_instance(
 deleted.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationInstance = list(
     ReplicationInstanceIdentifier = "string",
     ReplicationInstanceClass = "string",
@@ -73,7 +71,7 @@ A list with the following syntax:
     DnsNameServers = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes the specified replication instance.
@@ -82,12 +80,10 @@ You must delete any migration tasks that are associated with the
 replication instance before you can delete it.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_replication_instance(
+\preformatted{svc$delete_replication_instance(
   ReplicationInstanceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

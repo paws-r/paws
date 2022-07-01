@@ -22,9 +22,7 @@ Adds or overwrites one or more tags for the specified AWS CloudHSM
 cluster.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceId = "string",
   TagList = list(
     list(
@@ -33,7 +31,7 @@ cluster.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

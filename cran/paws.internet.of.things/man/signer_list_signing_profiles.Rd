@@ -24,9 +24,7 @@ signing platform.}
 specified list.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   profiles = list(
     list(
       profileName = "string",
@@ -53,7 +51,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists all available signing profiles in your AWS account. Returns only
@@ -67,9 +65,7 @@ parameter and with new values that code signing returns in the
 \code{nextToken} parameter until all of your signing jobs have been returned.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_signing_profiles(
+\preformatted{svc$list_signing_profiles(
   includeCanceled = TRUE|FALSE,
   maxResults = 123,
   nextToken = "string",
@@ -78,7 +74,7 @@ parameter and with new values that code signing returns in the
     "Active"|"Canceled"|"Revoked"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

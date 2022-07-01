@@ -20,9 +20,7 @@ Currently, you can specify only the prefix of a stream name as a
 condition.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   StreamInfoList = list(
     list(
       DeviceName = "string",
@@ -40,7 +38,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns an array of \code{StreamInfo} objects. Each object describes a
@@ -48,9 +46,7 @@ stream. To retrieve only streams that satisfy a specific condition, you
 can specify a \code{StreamNameCondition}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_streams(
+\preformatted{svc$list_streams(
   MaxResults = 123,
   NextToken = "string",
   StreamNameCondition = list(
@@ -58,7 +54,7 @@ can specify a \code{StreamNameCondition}.
     ComparisonValue = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

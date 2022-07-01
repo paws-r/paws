@@ -40,9 +40,7 @@ Valid Values: \code{true} | \code{false}}
 same group is dependent on it.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EnvironmentName = "string",
   EnvironmentId = "string",
   ApplicationName = "string",
@@ -89,21 +87,19 @@ A list with the following syntax:
   EnvironmentArn = "string",
   OperationsRole = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Terminates the specified environment.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$terminate_environment(
+\preformatted{svc$terminate_environment(
   EnvironmentId = "string",
   EnvironmentName = "string",
   TerminateResources = TRUE|FALSE,
   ForceTerminate = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

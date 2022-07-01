@@ -17,12 +17,10 @@ An empty list.
 Imports an existing Amazon Athena Data Catalog to AWS Glue
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$import_catalog_to_glue(
+\preformatted{svc$import_catalog_to_glue(
   CatalogId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

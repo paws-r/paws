@@ -28,9 +28,7 @@ voice will be included if you specify \code{yes} but not if you specify \code{no
 indicates where to continue the listing.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Voices = list(
     list(
       Gender = "Female"|"Male",
@@ -48,7 +46,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the list of voices that are available for use when requesting
@@ -74,15 +72,13 @@ This operation requires permissions to perform the
 \code{polly:DescribeVoices} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_voices(
+\preformatted{svc$describe_voices(
   Engine = "standard"|"neural",
   LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
   IncludeAdditionalLanguageCodes = TRUE|FALSE,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -49,13 +49,11 @@ If the staging label is already attached to a different version of the
 secret, then you must also specify the \code{RemoveFromVersionId} parameter.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ARN = "string",
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the staging labels attached to a version of a secret. Staging
@@ -96,15 +94,13 @@ a version of a secret, use
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_secret_version_stage(
+\preformatted{svc$update_secret_version_stage(
   SecretId = "string",
   VersionStage = "string",
   RemoveFromVersionId = "string",
   MoveToVersionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

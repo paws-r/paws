@@ -9,9 +9,7 @@ for escalations to the DRT and to initiate proactive customer support}
 shield_describe_emergency_contact_settings()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EmergencyContactList = list(
     list(
       EmailAddress = "string",
@@ -20,7 +18,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 A list of email addresses and phone numbers that the DDoS Response Team
@@ -28,10 +26,8 @@ A list of email addresses and phone numbers that the DDoS Response Team
 for escalations to the DRT and to initiate proactive customer support.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_emergency_contact_settings()
-}\if{html}{\out{</div>}}
+\preformatted{svc$describe_emergency_contact_settings()
+}
 }
 
 \keyword{internal}

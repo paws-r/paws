@@ -15,9 +15,7 @@ using the returned token in \code{NextToken}.}
 \item{MaxResults}{Filter to limit the maximum number of results to list per page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ProgressUpdateStreamSummaryList = list(
     list(
       ProgressUpdateStreamName = "string"
@@ -25,20 +23,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists progress update streams associated with the user account making
 this call.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_progress_update_streams(
+\preformatted{svc$list_progress_update_streams(
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

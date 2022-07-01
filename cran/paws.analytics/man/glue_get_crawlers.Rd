@@ -12,9 +12,7 @@ glue_get_crawlers(MaxResults, NextToken)
 \item{NextToken}{A continuation token, if this is a continuation request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Crawlers = list(
     list(
       Name = "string",
@@ -106,19 +104,17 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves metadata for all crawlers defined in the customer account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_crawlers(
+\preformatted{svc$get_crawlers(
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -17,9 +17,7 @@ previous call.)}
 \item{PageSize}{The maximum number of results to return with this call.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Rules = list(
     list(
       RuleArn = "string",
@@ -131,16 +129,14 @@ A list with the following syntax:
   ),
   NextMarker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified rules or the rules for the specified listener.
 You must specify either a listener or one or more rules.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_rules(
+\preformatted{svc$describe_rules(
   ListenerArn = "string",
   RuleArns = list(
     "string"
@@ -148,7 +144,7 @@ You must specify either a listener or one or more rules.
   Marker = "string",
   PageSize = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

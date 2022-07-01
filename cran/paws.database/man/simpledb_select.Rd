@@ -20,9 +20,7 @@ eventually, and the client may not see data that was written immediately
 before your read.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Items = list(
     list(
       Name = "string",
@@ -39,7 +37,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The \code{\link[=simpledb_select]{select}} operation returns a set of attributes
@@ -58,14 +56,12 @@ For information on how to construct select expressions, see Using Select
 to Create Amazon SimpleDB Queries in the Developer Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$select(
+\preformatted{svc$select(
   SelectExpression = "string",
   NextToken = "string",
   ConsistentRead = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

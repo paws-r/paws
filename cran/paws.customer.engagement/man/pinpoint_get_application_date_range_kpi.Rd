@@ -39,9 +39,7 @@ example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value
 should also be fewer than 90 days from the current day.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApplicationDateRangeKpiResponse = list(
     ApplicationId = "string",
     EndTime = as.POSIXct(
@@ -74,16 +72,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves (queries) pre-aggregated data for a standard metric that
 applies to an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_application_date_range_kpi(
+\preformatted{svc$get_application_date_range_kpi(
   ApplicationId = "string",
   EndTime = as.POSIXct(
     "2015-01-01"
@@ -95,7 +91,7 @@ applies to an application.
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

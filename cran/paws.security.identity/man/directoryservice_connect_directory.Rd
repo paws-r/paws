@@ -25,12 +25,10 @@ for the operation.}
 \item{Tags}{The tags to be assigned to AD Connector.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DirectoryId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an AD Connector to connect to an on-premises directory.
@@ -43,9 +41,7 @@ policy. For details about what permissions are required to run the
 \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$connect_directory(
+\preformatted{svc$connect_directory(
   Name = "string",
   ShortName = "string",
   Password = "string",
@@ -68,7 +64,7 @@ policy. For details about what permissions are required to run the
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

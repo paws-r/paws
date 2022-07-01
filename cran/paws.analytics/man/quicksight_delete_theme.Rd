@@ -18,28 +18,24 @@ to \code{\link[=quicksight_delete_theme]{delete_theme}} to delete all versions o
 the theme.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   RequestId = "string",
   Status = 123,
   ThemeId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a theme.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_theme(
+\preformatted{svc$delete_theme(
   AwsAccountId = "string",
   ThemeId = "string",
   VersionNumber = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

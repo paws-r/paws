@@ -319,9 +319,7 @@ The fields are specified in JSON using the form:
 There are currently no options supported for statistics.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   status = list(
     timems = 123,
     rid = "string"
@@ -370,7 +368,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a list of documents that match the specified search criteria.
@@ -401,9 +399,7 @@ domain's endpoints are also displayed on the domain dashboard in the
 Amazon CloudSearch console.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$search(
+\preformatted{svc$search(
   cursor = "string",
   expr = "string",
   facet = "string",
@@ -419,7 +415,7 @@ Amazon CloudSearch console.
   start = 123,
   stats = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

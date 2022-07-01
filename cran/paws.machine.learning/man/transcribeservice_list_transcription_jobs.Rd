@@ -24,9 +24,7 @@ was truncated, include the \code{NextToken} to fetch the next set of jobs.}
 results in the list, this response contains only the actual results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
   NextToken = "string",
   TranscriptionJobSummaries = list(
@@ -57,21 +55,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists transcription jobs with the specified status.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_transcription_jobs(
+\preformatted{svc$list_transcription_jobs(
   Status = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
   JobNameContains = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

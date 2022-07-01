@@ -11,9 +11,7 @@ iot1clickdevicesservice_describe_device(DeviceId)
 \item{DeviceId}{[required] The unique identifier of the device.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DeviceDescription = list(
     Arn = "string",
     Attributes = list(
@@ -28,19 +26,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Given a device ID, returns a DescribeDeviceResponse object describing
 the details of the device.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_device(
+\preformatted{svc$describe_device(
   DeviceId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

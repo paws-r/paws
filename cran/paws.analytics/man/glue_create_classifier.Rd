@@ -25,9 +25,7 @@ Creates a classifier in the user's account. This can be a
 \code{CsvClassifier}, depending on which field of the request is present.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_classifier(
+\preformatted{svc$create_classifier(
   GrokClassifier = list(
     Classification = "string",
     Name = "string",
@@ -55,7 +53,7 @@ Creates a classifier in the user's account. This can be a
     AllowSingleColumn = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

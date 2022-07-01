@@ -20,9 +20,7 @@ importexport_update_job(JobId, Manifest, JobType, ValidateOnly,
 \item{APIVersion}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Success = TRUE|FALSE,
   WarningMessage = "string",
   ArtifactList = list(
@@ -32,7 +30,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 You use this operation to change the parameters specified in the
@@ -42,16 +40,14 @@ can only use the operation after a CreateJob request but before the data
 transfer starts and you can only use it on jobs you own.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_job(
+\preformatted{svc$update_job(
   JobId = "string",
   Manifest = "string",
   JobType = "Import"|"Export",
   ValidateOnly = TRUE|FALSE,
   APIVersion = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,9 +10,7 @@ lightsail_delete_alarm(alarmName)
 \item{alarmName}{[required] The name of the alarm to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes an alarm.
@@ -48,12 +46,10 @@ text message, and a banner displayed on the Amazon Lightsail console.
 For more information, see Alarms in Amazon Lightsail.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_alarm(
+\preformatted{svc$delete_alarm(
   alarmName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

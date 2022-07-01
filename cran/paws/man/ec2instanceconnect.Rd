@@ -22,9 +22,7 @@ establish connections to their instances without leaving a permanent
 authentication option.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- ec2instanceconnect(
+\preformatted{svc <- ec2instanceconnect(
   config = list(
     credentials = list(
       creds = list(
@@ -38,7 +36,7 @@ authentication option.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

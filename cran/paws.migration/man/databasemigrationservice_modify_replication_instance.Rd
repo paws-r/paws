@@ -80,9 +80,7 @@ An outage does result if these factors apply:
 lowercase string.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationInstance = list(
     ReplicationInstanceIdentifier = "string",
     ReplicationInstanceClass = "string",
@@ -141,7 +139,7 @@ A list with the following syntax:
     DnsNameServers = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the replication instance to apply new settings. You can change
@@ -151,9 +149,7 @@ in the request.
 Some settings are applied during the maintenance window.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_replication_instance(
+\preformatted{svc$modify_replication_instance(
   ReplicationInstanceArn = "string",
   AllocatedStorage = 123,
   ApplyImmediately = TRUE|FALSE,
@@ -168,7 +164,7 @@ Some settings are applied during the maintenance window.
   AutoMinorVersionUpgrade = TRUE|FALSE,
   ReplicationInstanceIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

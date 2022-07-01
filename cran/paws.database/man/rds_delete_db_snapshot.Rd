@@ -13,9 +13,7 @@ Constraints: Must be the name of an existing DB snapshot in the
 \code{available} state.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DBSnapshot = list(
     DBSnapshotIdentifier = "string",
     DBInstanceIdentifier = "string",
@@ -62,7 +60,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a DB snapshot. If the snapshot is being copied, the copy
@@ -71,12 +69,10 @@ operation is terminated.
 The DB snapshot must be in the \code{available} state to be deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_db_snapshot(
+\preformatted{svc$delete_db_snapshot(
   DBSnapshotIdentifier = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

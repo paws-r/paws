@@ -23,9 +23,7 @@ the number that you specify for \code{Limit}, the response includes a
 \code{LoggingConfigurations}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LoggingConfigurations = list(
     list(
       ResourceArn = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
   ),
   NextMarker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -57,13 +55,11 @@ regional and global use.
 Returns an array of LoggingConfiguration objects.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_logging_configurations(
+\preformatted{svc$list_logging_configurations(
   NextMarker = "string",
   Limit = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

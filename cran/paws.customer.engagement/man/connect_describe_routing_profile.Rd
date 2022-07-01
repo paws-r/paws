@@ -12,9 +12,7 @@ connect_describe_routing_profile(InstanceId, RoutingProfileId)
 \item{RoutingProfileId}{[required] The identifier of the routing profile.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RoutingProfile = list(
     InstanceId = "string",
     Name = "string",
@@ -33,19 +31,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified routing profile.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_routing_profile(
+\preformatted{svc$describe_routing_profile(
   InstanceId = "string",
   RoutingProfileId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

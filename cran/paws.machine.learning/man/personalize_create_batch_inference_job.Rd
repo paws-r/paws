@@ -31,12 +31,10 @@ respectively.}
 \item{batchInferenceJobConfig}{The configuration details of a batch inference job.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   batchInferenceJobArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a batch inference job. The operation can handle up to 50 million
@@ -44,9 +42,7 @@ records and the input file must be in JSON format. For more information,
 see recommendations-batch.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_batch_inference_job(
+\preformatted{svc$create_batch_inference_job(
   jobName = "string",
   solutionVersionArn = "string",
   filterArn = "string",
@@ -70,7 +66,7 @@ see recommendations-batch.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

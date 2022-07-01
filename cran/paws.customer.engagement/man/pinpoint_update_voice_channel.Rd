@@ -14,9 +14,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{VoiceChannelRequest}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VoiceChannelResponse = list(
     ApplicationId = "string",
     CreationDate = "string",
@@ -30,22 +28,20 @@ A list with the following syntax:
     Version = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables the voice channel for an application or updates the status and
 settings of the voice channel for an application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_voice_channel(
+\preformatted{svc$update_voice_channel(
   ApplicationId = "string",
   VoiceChannelRequest = list(
     Enabled = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

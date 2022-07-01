@@ -17,9 +17,7 @@ us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IdentityUsage = list(
     IdentityId = "string",
     IdentityPoolId = "string",
@@ -30,7 +28,7 @@ A list with the following syntax:
     DataStorage = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets usage information for an identity, including number of datasets and
@@ -40,13 +38,11 @@ This API can be called with temporary user credentials provided by
 Cognito Identity or with developer credentials.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_identity_usage(
+\preformatted{svc$describe_identity_usage(
   IdentityPoolId = "string",
   IdentityId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

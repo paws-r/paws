@@ -19,9 +19,7 @@ is \code{50} and the maximum value is \code{50}.}
 from a previous call.)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AutoScalingInstances = list(
     list(
       InstanceId = "string",
@@ -42,22 +40,20 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more Auto Scaling instances.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_auto_scaling_instances(
+\preformatted{svc$describe_auto_scaling_instances(
   InstanceIds = list(
     "string"
   ),
   MaxRecords = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -10,9 +10,7 @@ workmail_list_access_control_rules(OrganizationId)
 \item{OrganizationId}{[required] The identifier for the organization.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Rules = list(
     list(
       Name = "string",
@@ -45,18 +43,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the access control rules for the specified organization.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_access_control_rules(
+\preformatted{svc$list_access_control_rules(
   OrganizationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

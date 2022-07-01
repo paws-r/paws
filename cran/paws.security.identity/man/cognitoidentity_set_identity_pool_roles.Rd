@@ -33,9 +33,7 @@ action.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_identity_pool_roles(
+\preformatted{svc$set_identity_pool_roles(
   IdentityPoolId = "string",
   Roles = list(
     "string"
@@ -57,7 +55,7 @@ You must use AWS Developer credentials to call this API.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

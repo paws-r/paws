@@ -16,9 +16,7 @@ workdocs_describe_root_folders(AuthenticationToken, Limit, Marker)
 previous call.)}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Folders = list(
     list(
       Id = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
   ),
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the current user's special folders; the \code{RootFolder} and the
@@ -56,14 +54,12 @@ information, see \href{https://docs.aws.amazon.com/workdocs/latest/developerguid
 in the \emph{Amazon WorkDocs Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_root_folders(
+\preformatted{svc$describe_root_folders(
   AuthenticationToken = "string",
   Limit = 123,
   Marker = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

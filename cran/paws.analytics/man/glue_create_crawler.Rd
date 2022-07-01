@@ -62,9 +62,7 @@ optional schedule. At least one crawl target must be specified, in the
 field.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_crawler(
+\preformatted{svc$create_crawler(
   Name = "string",
   Role = "string",
   DatabaseName = "string",
@@ -132,7 +130,7 @@ field.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

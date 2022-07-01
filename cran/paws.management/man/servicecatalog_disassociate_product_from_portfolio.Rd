@@ -28,14 +28,12 @@ Disassociates the specified product from the specified portfolio.
 A delegated admin is authorized to invoke this command.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_product_from_portfolio(
+\preformatted{svc$disassociate_product_from_portfolio(
   AcceptLanguage = "string",
   ProductId = "string",
   PortfolioId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

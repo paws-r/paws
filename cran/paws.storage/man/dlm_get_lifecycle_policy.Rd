@@ -10,9 +10,7 @@ dlm_get_lifecycle_policy(PolicyId)
 \item{PolicyId}{[required] The identifier of the lifecycle policy.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Policy = list(
     PolicyId = "string",
     Description = "string",
@@ -135,18 +133,16 @@ A list with the following syntax:
     PolicyArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets detailed information about the specified lifecycle policy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_lifecycle_policy(
+\preformatted{svc$get_lifecycle_policy(
   PolicyId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

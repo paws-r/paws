@@ -14,9 +14,7 @@ endpoint.}
 \item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RefreshSchemasStatus = list(
     EndpointArn = "string",
     ReplicationInstanceArn = "string",
@@ -27,7 +25,7 @@ A list with the following syntax:
     LastFailureMessage = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Populates the schema for the specified endpoint. This is an asynchronous
@@ -35,13 +33,11 @@ operation and can take several minutes. You can check the status of this
 operation by calling the DescribeRefreshSchemasStatus operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$refresh_schemas(
+\preformatted{svc$refresh_schemas(
   EndpointArn = "string",
   ReplicationInstanceArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

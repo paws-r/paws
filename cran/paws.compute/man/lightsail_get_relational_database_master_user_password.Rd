@@ -22,15 +22,13 @@ available.
 Default: \code{CURRENT}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   masterUserPassword = "string",
   createdAt = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the current, previous, or pending versions of the master user
@@ -42,13 +40,11 @@ operation supports tag-based access control via resource tags applied to
 the resource identified by relationalDatabaseName.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_relational_database_master_user_password(
+\preformatted{svc$get_relational_database_master_user_password(
   relationalDatabaseName = "string",
   passwordVersion = "CURRENT"|"PREVIOUS"|"PENDING"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

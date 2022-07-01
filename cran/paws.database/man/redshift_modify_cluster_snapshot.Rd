@@ -22,9 +22,7 @@ The value must be either -1 or an integer between 1 and 3,653.}
 already passed.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Snapshot = list(
     SnapshotIdentifier = "string",
     ClusterIdentifier = "string",
@@ -80,7 +78,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the settings for a snapshot.
@@ -89,14 +87,12 @@ This exanmple modifies the manual retention period setting for a cluster
 snapshot.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_cluster_snapshot(
+\preformatted{svc$modify_cluster_snapshot(
   SnapshotIdentifier = "string",
   ManualSnapshotRetentionPeriod = 123,
   Force = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

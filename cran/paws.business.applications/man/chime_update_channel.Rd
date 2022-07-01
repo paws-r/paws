@@ -16,12 +16,10 @@ chime_update_channel(ChannelArn, Name, Mode, Metadata)
 \item{Metadata}{The metadata of the channel.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ChannelArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Update a channel's attributes.
@@ -29,15 +27,13 @@ Update a channel's attributes.
 \strong{Restriction}: You can't change a channel's privacy.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_channel(
+\preformatted{svc$update_channel(
   ChannelArn = "string",
   Name = "string",
   Mode = "UNRESTRICTED"|"RESTRICTED",
   Metadata = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

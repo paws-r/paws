@@ -36,9 +36,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LocalGatewayRouteTableVirtualInterfaceGroupAssociations = list(
     list(
       LocalGatewayRouteTableVirtualInterfaceGroupAssociationId = "string",
@@ -58,16 +56,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the associations between virtual interface groups and local
 gateway route tables.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_local_gateway_route_table_virtual_interface_group_associations(
+\preformatted{svc$describe_local_gateway_route_table_virtual_interface_group_associations(
   LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds = list(
     "string"
   ),
@@ -83,7 +79,7 @@ gateway route tables.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

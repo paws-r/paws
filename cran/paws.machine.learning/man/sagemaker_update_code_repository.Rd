@@ -18,26 +18,22 @@ format:
 \verb{\{"username": UserName, "password": Password\}}}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CodeRepositoryArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified Git repository with the specified values.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_code_repository(
+\preformatted{svc$update_code_repository(
   CodeRepositoryName = "string",
   GitConfig = list(
     SecretArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

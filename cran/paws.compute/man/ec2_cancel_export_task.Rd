@@ -20,12 +20,10 @@ task is complete or is in the process of transferring the final disk
 image, the command fails and returns an error.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_export_task(
+\preformatted{svc$cancel_export_task(
   ExportTaskId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

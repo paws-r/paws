@@ -15,9 +15,7 @@ chime_update_phone_number(PhoneNumberId, ProductType, CallingName)
 \item{CallingName}{The outbound calling name associated with the phone number.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   PhoneNumber = list(
     PhoneNumberId = "string",
     E164PhoneNumber = "string",
@@ -54,7 +52,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates phone number details, such as product type or calling name, for
@@ -70,14 +68,12 @@ Pending updates to outbound calling names must be complete before you
 can request another update.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_phone_number(
+\preformatted{svc$update_phone_number(
   PhoneNumberId = "string",
   ProductType = "BusinessCalling"|"VoiceConnector",
   CallingName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -10,9 +10,7 @@ cloudwatchlogs_get_query_results(queryId)
 \item{queryId}{[required] The ID number of the query.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   results = list(
     list(
       list(
@@ -28,7 +26,7 @@ A list with the following syntax:
   ),
   status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the results from the specified query.
@@ -48,12 +46,10 @@ operation returns only partial results. If you see a value of
 later to see the final results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_query_results(
+\preformatted{svc$get_query_results(
   queryId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

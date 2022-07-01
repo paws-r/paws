@@ -16,12 +16,10 @@ An empty list.
 Resets the cache for a project.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$invalidate_project_cache(
+\preformatted{svc$invalidate_project_cache(
   projectName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

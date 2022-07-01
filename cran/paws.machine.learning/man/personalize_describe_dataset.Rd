@@ -10,9 +10,7 @@ personalize_describe_dataset(datasetArn)
 \item{datasetArn}{[required] The Amazon Resource Name (ARN) of the dataset to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   dataset = list(
     name = "string",
     datasetArn = "string",
@@ -28,19 +26,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the given dataset. For more information on datasets, see
 \code{\link[=personalize_create_dataset]{create_dataset}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_dataset(
+\preformatted{svc$describe_dataset(
   datasetArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

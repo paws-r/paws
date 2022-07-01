@@ -20,12 +20,10 @@ unless the crawler is already running or the schedule state is already
 \code{SCHEDULED}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_crawler_schedule(
+\preformatted{svc$start_crawler_schedule(
   CrawlerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

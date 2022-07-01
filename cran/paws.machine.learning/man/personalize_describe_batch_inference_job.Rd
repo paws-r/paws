@@ -12,9 +12,7 @@ personalize_describe_batch_inference_job(batchInferenceJobArn)
 \item{batchInferenceJobArn}{[required] The ARN of the batch inference job to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   batchInferenceJob = list(
     jobName = "string",
     batchInferenceJobArn = "string",
@@ -49,7 +47,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the properties of a batch inference job including name, Amazon
@@ -57,12 +55,10 @@ Resource Name (ARN), status, input and output configurations, and the
 ARN of the solution version used to generate the recommendations.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_batch_inference_job(
+\preformatted{svc$describe_batch_inference_job(
   batchInferenceJobArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

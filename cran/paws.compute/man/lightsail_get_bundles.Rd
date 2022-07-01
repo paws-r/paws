@@ -18,9 +18,7 @@ paginated, the response will return a next page token that you can
 specify as the page token in a subsequent request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   bundles = list(
     list(
       price = 123.0,
@@ -40,20 +38,18 @@ A list with the following syntax:
   ),
   nextPageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the list of bundles that are available for purchase. A bundle
 describes the specs for your virtual private server (or \emph{instance}).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bundles(
+\preformatted{svc$get_bundles(
   includeInactive = TRUE|FALSE,
   pageToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

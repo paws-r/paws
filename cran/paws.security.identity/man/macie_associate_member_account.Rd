@@ -19,12 +19,10 @@ Associates a specified AWS account with Amazon Macie Classic as a member
 account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_member_account(
+\preformatted{svc$associate_member_account(
   memberAccountId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -22,20 +22,16 @@ Valid values: data-reload, validate-only
 Default value is data-reload.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationTaskArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Reloads the target database table with the source data.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$reload_tables(
+\preformatted{svc$reload_tables(
   ReplicationTaskArn = "string",
   TablesToReload = list(
     list(
@@ -45,7 +41,7 @@ Reloads the target database table with the source data.
   ),
   ReloadOption = "data-reload"|"validate-only"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

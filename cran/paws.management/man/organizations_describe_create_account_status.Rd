@@ -20,9 +20,7 @@ account request ID string requires "car-" followed by from 8 to 32
 lowercase letters or digits.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CreateAccountStatus = list(
     Id = "string",
     AccountName = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
     FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the current status of an asynchronous request to create an
@@ -49,12 +47,10 @@ account or by a member account that is a delegated administrator for an
 AWS service.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_create_account_status(
+\preformatted{svc$describe_create_account_status(
   CreateAccountRequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

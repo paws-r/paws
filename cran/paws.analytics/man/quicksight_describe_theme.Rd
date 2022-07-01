@@ -24,9 +24,7 @@ specify the latest version of the theme by providing the keyword
 apply to themes.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Theme = list(
     Arn = "string",
     Name = "string",
@@ -102,21 +100,19 @@ A list with the following syntax:
   Status = 123,
   RequestId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a theme.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_theme(
+\preformatted{svc$describe_theme(
   AwsAccountId = "string",
   ThemeId = "string",
   VersionNumber = 123,
   AliasName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

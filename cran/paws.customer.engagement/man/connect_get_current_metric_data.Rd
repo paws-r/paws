@@ -147,9 +147,7 @@ parameters as the request that generated the token.}
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   MetricResults = list(
     list(
@@ -175,7 +173,7 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the real-time metric data from the specified Amazon Connect
@@ -185,9 +183,7 @@ For a description of each metric, see \href{https://docs.aws.amazon.com/connect/
 in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_current_metric_data(
+\preformatted{svc$get_current_metric_data(
   InstanceId = "string",
   Filters = list(
     Queues = list(
@@ -209,7 +205,7 @@ in the \emph{Amazon Connect Administrator Guide}.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

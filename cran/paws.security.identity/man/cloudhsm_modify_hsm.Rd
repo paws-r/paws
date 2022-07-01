@@ -28,12 +28,10 @@ the new subnet.}
 service only supports one syslog monitoring server.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HsmArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -52,9 +50,7 @@ configured for high availability, and consider executing this operation
 during a maintenance window.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_hsm(
+\preformatted{svc$modify_hsm(
   HsmArn = "string",
   SubnetId = "string",
   EniIp = "string",
@@ -62,7 +58,7 @@ during a maintenance window.
   ExternalId = "string",
   SyslogIp = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

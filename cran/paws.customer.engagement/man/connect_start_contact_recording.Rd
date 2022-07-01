@@ -36,9 +36,7 @@ block.
 Only voice recordings are supported at this time.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_contact_recording(
+\preformatted{svc$start_contact_recording(
   InstanceId = "string",
   ContactId = "string",
   InitialContactId = "string",
@@ -46,7 +44,7 @@ Only voice recordings are supported at this time.
     VoiceRecordingTrack = "FROM_AGENT"|"TO_AGENT"|"ALL"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

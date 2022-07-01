@@ -26,13 +26,11 @@ No response returns from this operation.
 When you delete a user from a server, the user's information is lost.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_user(
+\preformatted{svc$delete_user(
   ServerId = "string",
   UserName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

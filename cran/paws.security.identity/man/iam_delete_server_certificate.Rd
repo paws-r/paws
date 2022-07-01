@@ -36,12 +36,10 @@ information, go to
 in the \emph{Elastic Load Balancing API Reference}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_server_certificate(
+\preformatted{svc$delete_server_certificate(
   ServerCertificateName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

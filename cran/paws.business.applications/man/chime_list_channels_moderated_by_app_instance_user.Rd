@@ -16,9 +16,7 @@ chime_list_channels_moderated_by_app_instance_user(AppInstanceUserArn,
 channels moderated by the user is reached.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Channels = list(
     list(
       ChannelSummary = list(
@@ -35,20 +33,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 A list of the channels moderated by an app instance user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_channels_moderated_by_app_instance_user(
+\preformatted{svc$list_channels_moderated_by_app_instance_user(
   AppInstanceUserArn = "string",
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

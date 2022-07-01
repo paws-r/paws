@@ -23,9 +23,7 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_or_update_tags(
+\preformatted{svc$create_or_update_tags(
   Tags = list(
     list(
       ResourceId = "string",
@@ -36,7 +34,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

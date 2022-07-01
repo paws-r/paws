@@ -57,9 +57,7 @@ for a successful response from a target.
 With Network Load Balancers, you can't modify this setting.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TargetGroups = list(
     list(
       TargetGroupArn = "string",
@@ -87,16 +85,14 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the health checks used when evaluating the health state of the
 targets in the specified target group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_target_group(
+\preformatted{svc$modify_target_group(
   TargetGroupArn = "string",
   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
   HealthCheckPort = "string",
@@ -111,7 +107,7 @@ targets in the specified target group.
     GrpcCode = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -19,9 +19,7 @@ across all versions of a document and can't be changed.}
 either JSON or YAML. JSON is the default format.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Name = "string",
   VersionName = "string",
   DocumentVersion = "string",
@@ -47,21 +45,19 @@ A list with the following syntax:
   ),
   ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the contents of the specified Systems Manager document.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_document(
+\preformatted{svc$get_document(
   Name = "string",
   VersionName = "string",
   DocumentVersion = "string",
   DocumentFormat = "YAML"|"JSON"|"TEXT"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -12,9 +12,7 @@ devicefarm_get_vpce_configuration(arn)
 want to describe.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   vpceConfiguration = list(
     arn = "string",
     vpceConfigurationName = "string",
@@ -23,19 +21,17 @@ A list with the following syntax:
     vpceConfigurationDescription = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the configuration settings for your Amazon
 Virtual Private Cloud (VPC) endpoint.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_vpce_configuration(
+\preformatted{svc$get_vpce_configuration(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

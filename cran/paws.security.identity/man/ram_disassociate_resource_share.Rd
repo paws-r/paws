@@ -19,9 +19,7 @@ ram_disassociate_resource_share(resourceShareArn, resourceArns,
 idempotency of the request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   resourceShareAssociations = list(
     list(
       resourceShareArn = "string",
@@ -41,16 +39,14 @@ A list with the following syntax:
   ),
   clientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disassociates the specified principals or resources from the specified
 resource share.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_resource_share(
+\preformatted{svc$disassociate_resource_share(
   resourceShareArn = "string",
   resourceArns = list(
     "string"
@@ -60,7 +56,7 @@ resource share.
   ),
   clientToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

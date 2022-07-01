@@ -33,9 +33,7 @@ block.}
 To let Amazon choose the IPv6 CIDR block for you, omit this parameter.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Ipv6CidrBlockAssociation = list(
     AssociationId = "string",
     Ipv6CidrBlock = "string",
@@ -56,7 +54,7 @@ A list with the following syntax:
   ),
   VpcId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Associates a CIDR block with your VPC. You can associate a secondary
@@ -74,9 +72,7 @@ applicable restrictions, see \href{https://docs.aws.amazon.com/vpc/latest/usergu
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$associate_vpc_cidr_block(
+\preformatted{svc$associate_vpc_cidr_block(
   AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
   CidrBlock = "string",
   VpcId = "string",
@@ -84,7 +80,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   Ipv6Pool = "string",
   Ipv6CidrBlock = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

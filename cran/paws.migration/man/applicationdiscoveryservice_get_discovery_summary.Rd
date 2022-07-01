@@ -7,9 +7,7 @@
 applicationdiscoveryservice_get_discovery_summary()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   servers = 123,
   applications = 123,
   serversMappedToApplications = 123,
@@ -33,7 +31,7 @@ A list with the following syntax:
     unknownConnectors = 123
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a short summary of discovered assets.
@@ -42,10 +40,8 @@ This API operation takes no request parameters and is called as is at
 the command prompt as shown in the example.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_discovery_summary()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_discovery_summary()
+}
 }
 
 \keyword{internal}

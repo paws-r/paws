@@ -14,9 +14,7 @@ appsync_get_resolver(apiId, typeName, fieldName)
 \item{fieldName}{[required] The resolver field name.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   resolver = list(
     typeName = "string",
     fieldName = "string",
@@ -45,20 +43,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves a \code{Resolver} object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_resolver(
+\preformatted{svc$get_resolver(
   apiId = "string",
   typeName = "string",
   fieldName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

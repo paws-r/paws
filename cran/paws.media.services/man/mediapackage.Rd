@@ -19,9 +19,7 @@ Operations section.
 AWS Elemental MediaPackage
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- mediapackage(
+\preformatted{svc <- mediapackage(
   config = list(
     credentials = list(
       creds = list(
@@ -35,7 +33,7 @@ AWS Elemental MediaPackage
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

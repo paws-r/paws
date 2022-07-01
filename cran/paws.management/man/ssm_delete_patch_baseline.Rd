@@ -10,23 +10,19 @@ ssm_delete_patch_baseline(BaselineId)
 \item{BaselineId}{[required] The ID of the patch baseline to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   BaselineId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a patch baseline.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_patch_baseline(
+\preformatted{svc$delete_patch_baseline(
   BaselineId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

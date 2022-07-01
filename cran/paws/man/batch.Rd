@@ -35,9 +35,7 @@ batch computing software. This means that you can focus your time and
 energy on analyzing results and solving your specific problems.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- batch(
+\preformatted{svc <- batch(
   config = list(
     credentials = list(
       creds = list(
@@ -51,7 +49,7 @@ energy on analyzing results and solving your specific problems.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

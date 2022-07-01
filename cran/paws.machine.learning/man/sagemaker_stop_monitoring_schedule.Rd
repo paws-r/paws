@@ -16,12 +16,10 @@ An empty list.
 Stops a previously started monitoring schedule.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_monitoring_schedule(
+\preformatted{svc$stop_monitoring_schedule(
   MonitoringScheduleName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -11,9 +11,7 @@ eventbridge_describe_event_source(Name)
 \item{Name}{[required] The name of the partner event source to display the details of.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   CreatedBy = "string",
   CreationTime = as.POSIXct(
@@ -25,19 +23,17 @@ A list with the following syntax:
   Name = "string",
   State = "PENDING"|"ACTIVE"|"DELETED"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This operation lists details about a partner event source that is shared
 with your account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_source(
+\preformatted{svc$describe_event_source(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

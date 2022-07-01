@@ -46,12 +46,10 @@ To view the current session token version, see the
 \code{\link[=iam_get_account_summary]{get_account_summary}} operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$set_security_token_service_preferences(
+\preformatted{svc$set_security_token_service_preferences(
   GlobalEndpointTokenVersion = "v1Token"|"v2Token"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

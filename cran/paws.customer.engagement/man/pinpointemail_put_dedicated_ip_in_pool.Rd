@@ -29,13 +29,11 @@ new pool by using the
 operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_dedicated_ip_in_pool(
+\preformatted{svc$put_dedicated_ip_in_pool(
   Ip = "string",
   DestinationPoolName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

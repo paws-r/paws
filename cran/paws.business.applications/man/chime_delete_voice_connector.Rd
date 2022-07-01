@@ -18,12 +18,10 @@ associated with the Amazon Chime Voice Connector must be disassociated
 from it before it can be deleted.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_voice_connector(
+\preformatted{svc$delete_voice_connector(
   VoiceConnectorId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

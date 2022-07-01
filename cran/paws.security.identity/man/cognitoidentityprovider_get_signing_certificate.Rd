@@ -10,23 +10,19 @@ cognitoidentityprovider_get_signing_certificate(UserPoolId)
 \item{UserPoolId}{[required] The user pool ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Certificate = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This method takes a user pool ID, and returns the signing certificate.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_signing_certificate(
+\preformatted{svc$get_signing_certificate(
   UserPoolId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

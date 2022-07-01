@@ -80,13 +80,11 @@ at sign '@'. The user name can't start with a hyphen, period, or at
 sign.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ServerId = "string",
   UserName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Assigns new properties to a user. Parameters you pass modify any or all
@@ -97,9 +95,7 @@ The response returns the \code{ServerId} and the \code{UserName} for the updated
 user.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user(
+\preformatted{svc$update_user(
   HomeDirectory = "string",
   HomeDirectoryType = "PATH"|"LOGICAL",
   HomeDirectoryMappings = list(
@@ -120,7 +116,7 @@ user.
   ServerId = "string",
   UserName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

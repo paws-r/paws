@@ -19,12 +19,10 @@ resources in different ways, for example, by purpose, owner, or
 environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   CodeRepositoryArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Git repository as a resource in your Amazon SageMaker account.
@@ -38,9 +36,7 @@ The repository can be hosted either in \href{https://docs.aws.amazon.com/codecom
 or in any other Git repository.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_code_repository(
+\preformatted{svc$create_code_repository(
   CodeRepositoryName = "string",
   GitConfig = list(
     RepositoryUrl = "string",
@@ -54,7 +50,7 @@ or in any other Git repository.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

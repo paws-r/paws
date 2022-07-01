@@ -49,14 +49,12 @@ and Robert, or must have permission on all (*). For more information
 about permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Permissions and Policies}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_user(
+\preformatted{svc$update_user(
   UserName = "string",
   NewPath = "string",
   NewUserName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

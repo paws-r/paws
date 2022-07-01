@@ -19,12 +19,10 @@ the \code{AwaitingQuorum} status. You'll have at least an hour after creating
 a cluster job to cancel it.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_cluster(
+\preformatted{svc$cancel_cluster(
   ClusterId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

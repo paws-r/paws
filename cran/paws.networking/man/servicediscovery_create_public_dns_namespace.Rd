@@ -25,12 +25,10 @@ character length of 128 characters, and tag values can have a maximum
 length of 256 characters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OperationId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a public namespace based on DNS, which will be visible on the
@@ -42,9 +40,7 @@ that you can create using the same AWS account, see \href{https://docs.aws.amazo
 in the \emph{AWS Cloud Map Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_public_dns_namespace(
+\preformatted{svc$create_public_dns_namespace(
   Name = "string",
   CreatorRequestId = "string",
   Description = "string",
@@ -55,7 +51,7 @@ in the \emph{AWS Cloud Map Developer Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

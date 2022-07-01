@@ -10,9 +10,7 @@ glue_get_dataflow_graph(PythonScript)
 \item{PythonScript}{The Python script to transform.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DagNodes = list(
     list(
       Id = "string",
@@ -35,18 +33,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Transforms a Python script into a directed acyclic graph (DAG).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_dataflow_graph(
+\preformatted{svc$get_dataflow_graph(
   PythonScript = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

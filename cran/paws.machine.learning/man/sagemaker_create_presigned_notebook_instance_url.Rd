@@ -14,12 +14,10 @@ sagemaker_create_presigned_notebook_instance_url(NotebookInstanceName,
 \item{SessionExpirationDurationInSeconds}{The duration of the session, in seconds. The default is 12 hours.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AuthorizedUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a URL that you can use to connect to the Jupyter server from a
@@ -47,13 +45,11 @@ is valid only for 5 minutes. If you try to use the URL after the
 page.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_presigned_notebook_instance_url(
+\preformatted{svc$create_presigned_notebook_instance_url(
   NotebookInstanceName = "string",
   SessionExpirationDurationInSeconds = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

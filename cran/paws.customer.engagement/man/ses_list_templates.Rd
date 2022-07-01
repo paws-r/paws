@@ -18,9 +18,7 @@ specify a value less than 1 or greater than 10, the operation will
 return up to 10 results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TemplatesMetadata = list(
     list(
       Name = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists the email templates present in your Amazon SES account in the
@@ -40,13 +38,11 @@ current AWS Region.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_templates(
+\preformatted{svc$list_templates(
   NextToken = "string",
   MaxItems = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

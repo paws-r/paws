@@ -82,12 +82,10 @@ in the \emph{AWS Billing and Cost Management User Guide}.}
 \item{ExperimentConfig}{}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TransformJobArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a transform job. A transform job uses a trained model to get
@@ -116,9 +114,7 @@ transform job.
 For more information about how batch transformation works, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html}{Batch Transform}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_transform_job(
+\preformatted{svc$create_transform_job(
   TransformJobName = "string",
   ModelName = "string",
   MaxConcurrentTransforms = 123,
@@ -170,7 +166,7 @@ For more information about how batch transformation works, see \href{https://doc
     TrialComponentDisplayName = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

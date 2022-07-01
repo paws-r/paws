@@ -20,13 +20,11 @@ Logs out the specified user from all of the devices they are currently
 logged into.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$logout_user(
+\preformatted{svc$logout_user(
   AccountId = "string",
   UserId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

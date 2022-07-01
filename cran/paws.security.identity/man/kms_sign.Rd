@@ -53,14 +53,12 @@ Choose an algorithm that is compatible with the type and size of the
 specified asymmetric CMK.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   KeyId = "string",
   Signature = raw,
   SigningAlgorithm = "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a \href{https://en.wikipedia.org/wiki/Digital_signature}{digital signature} for a
@@ -117,9 +115,7 @@ the \code{KeyId} parameter.
 \strong{Related operations}: \code{\link[=kms_verify]{verify}}
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$sign(
+\preformatted{svc$sign(
   KeyId = "string",
   Message = raw,
   MessageType = "RAW"|"DIGEST",
@@ -128,7 +124,7 @@ the \code{KeyId} parameter.
   ),
   SigningAlgorithm = "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -8,9 +8,7 @@ have been purchased by the account}
 devicefarm_get_account_settings()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   accountSettings = list(
     awsAccountNumber = "string",
     unmeteredDevices = list(
@@ -31,17 +29,15 @@ A list with the following syntax:
     skipAppResign = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the number of unmetered iOS or unmetered Android devices that
 have been purchased by the account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_account_settings()
-}\if{html}{\out{</div>}}
+\preformatted{svc$get_account_settings()
+}
 }
 
 \examples{

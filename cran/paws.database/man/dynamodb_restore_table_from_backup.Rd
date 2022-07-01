@@ -29,9 +29,7 @@ exclude some or all of the indexes at the time of restore.}
 \item{SSESpecificationOverride}{The new server-side encryption settings for the restored table.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TableDescription = list(
     AttributeDefinitions = list(
       list(
@@ -179,7 +177,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new table from an existing backup. Any number of users can
@@ -201,9 +199,7 @@ You must manually set up the following on the restored table:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$restore_table_from_backup(
+\preformatted{svc$restore_table_from_backup(
   TargetTableName = "string",
   BackupArn = "string",
   BillingModeOverride = "PROVISIONED"|"PAY_PER_REQUEST",
@@ -255,7 +251,7 @@ You must manually set up the following on the restored table:
     KMSMasterKeyId = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

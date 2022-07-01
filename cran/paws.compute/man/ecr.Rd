@@ -27,9 +27,7 @@ repositories with resource-based permissions using IAM so that specific
 users or Amazon EC2 instances can access repositories and images.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- ecr(
+\preformatted{svc <- ecr(
   config = list(
     credentials = list(
       creds = list(
@@ -43,7 +41,7 @@ users or Amazon EC2 instances can access repositories and images.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

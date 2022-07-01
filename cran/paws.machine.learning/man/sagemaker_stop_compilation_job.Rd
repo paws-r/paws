@@ -26,12 +26,10 @@ job to \code{Stopping}. After Amazon SageMaker stops the job, it sets the
 CompilationJobSummary$CompilationJobStatus to \code{Stopped}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_compilation_job(
+\preformatted{svc$stop_compilation_job(
   CompilationJobName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

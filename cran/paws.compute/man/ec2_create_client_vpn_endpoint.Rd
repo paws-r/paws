@@ -87,9 +87,7 @@ Default Value: \code{enabled}}
 connections.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ClientVpnEndpointId = "string",
   Status = list(
     Code = "pending-associate"|"available"|"deleting"|"deleted",
@@ -97,7 +95,7 @@ A list with the following syntax:
   ),
   DnsName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a Client VPN endpoint. A Client VPN endpoint is the resource you
@@ -105,9 +103,7 @@ create and configure to enable and manage client VPN sessions. It is the
 destination endpoint at which all client VPN sessions are terminated.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_client_vpn_endpoint(
+\preformatted{svc$create_client_vpn_endpoint(
   ClientCidrBlock = "string",
   ServerCertificateArn = "string",
   AuthenticationOptions = list(
@@ -160,7 +156,7 @@ destination endpoint at which all client VPN sessions are terminated.
     LambdaFunctionArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

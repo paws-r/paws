@@ -19,13 +19,11 @@ Disassociates a domain from Amazon WorkLink. End users lose the ability
 to access the domain with Amazon WorkLink.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disassociate_domain(
+\preformatted{svc$disassociate_domain(
   FleetArn = "string",
   DomainName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

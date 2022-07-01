@@ -14,14 +14,12 @@ sfn_stop_execution(executionArn, error, cause)
 \item{cause}{A more detailed explanation of the cause of the failure.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   stopDate = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Stops an execution.
@@ -29,14 +27,12 @@ Stops an execution.
 This API action is not supported by \code{EXPRESS} state machines.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$stop_execution(
+\preformatted{svc$stop_execution(
   executionArn = "string",
   error = "string",
   cause = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

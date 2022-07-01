@@ -52,9 +52,7 @@ parameter.}
 \item{TagSpecifications}{The tags to assign to the VPC.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Vpc = list(
     CidrBlock = "string",
     DhcpOptionsId = "string",
@@ -93,7 +91,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you
@@ -119,9 +117,7 @@ more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_vpc(
+\preformatted{svc$create_vpc(
   CidrBlock = "string",
   AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
   Ipv6Pool = "string",
@@ -141,7 +137,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -195,9 +195,7 @@ following AWS services.
 }
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- resourcegroupstaggingapi(
+\preformatted{svc <- resourcegroupstaggingapi(
   config = list(
     credentials = list(
       creds = list(
@@ -211,7 +209,7 @@ following AWS services.
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

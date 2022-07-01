@@ -56,9 +56,7 @@ discouraged:
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   apiCache = list(
     ttl = 123,
     apiCachingBehavior = "FULL_REQUEST_CACHING"|"PER_RESOLVER_CACHING",
@@ -68,15 +66,13 @@ A list with the following syntax:
     status = "AVAILABLE"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a cache for the GraphQL API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_api_cache(
+\preformatted{svc$create_api_cache(
   apiId = "string",
   ttl = 123,
   transitEncryptionEnabled = TRUE|FALSE,
@@ -84,7 +80,7 @@ Creates a cache for the GraphQL API.
   apiCachingBehavior = "FULL_REQUEST_CACHING"|"PER_RESOLVER_CACHING",
   type = "T2_SMALL"|"T2_MEDIUM"|"R4_LARGE"|"R4_XLARGE"|"R4_2XLARGE"|"R4_4XLARGE"|"R4_8XLARGE"|"SMALL"|"MEDIUM"|"LARGE"|"XLARGE"|"LARGE_2X"|"LARGE_4X"|"LARGE_8X"|"LARGE_12X"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

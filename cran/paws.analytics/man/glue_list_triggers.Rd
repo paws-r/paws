@@ -19,15 +19,13 @@ are returned.}
 \item{Tags}{Specifies to return only these tagged resources.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TriggerNames = list(
     "string"
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the names of all trigger resources in this AWS account, or the
@@ -40,9 +38,7 @@ group. If you choose to use tags filtering, only resources with the tag
 are retrieved.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_triggers(
+\preformatted{svc$list_triggers(
   NextToken = "string",
   DependentJobName = "string",
   MaxResults = 123,
@@ -50,7 +46,7 @@ are retrieved.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

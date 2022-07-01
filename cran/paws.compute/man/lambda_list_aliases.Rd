@@ -29,9 +29,7 @@ retrieve the next page of results.}
 \item{MaxItems}{Limit the number of aliases returned.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextMarker = "string",
   Aliases = list(
     list(
@@ -48,7 +46,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns a list of
@@ -56,15 +54,13 @@ Returns a list of
 for a Lambda function.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_aliases(
+\preformatted{svc$list_aliases(
   FunctionName = "string",
   FunctionVersion = "string",
   Marker = "string",
   MaxItems = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

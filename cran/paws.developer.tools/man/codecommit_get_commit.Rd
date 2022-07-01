@@ -13,9 +13,7 @@ codecommit_get_commit(repositoryName, commitId)
 \item{commitId}{[required] The commit ID. Commit IDs are the full SHA ID of the commit.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   commit = list(
     commitId = "string",
     treeId = "string",
@@ -36,20 +34,18 @@ A list with the following syntax:
     additionalData = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about a commit, including commit message and
 committer information.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_commit(
+\preformatted{svc$get_commit(
   repositoryName = "string",
   commitId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

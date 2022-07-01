@@ -49,12 +49,10 @@ either of the following formats:
 recognizer. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{Amazon VPC}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   EntityRecognizerArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an entity recognizer using submitted files. After your
@@ -62,9 +60,7 @@ Creates an entity recognizer using submitted files. After your
 request is submitted, you can check job status using the API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_entity_recognizer(
+\preformatted{svc$create_entity_recognizer(
   RecognizerName = "string",
   DataAccessRoleArn = "string",
   Tags = list(
@@ -110,7 +106,7 @@ request is submitted, you can check job status using the API.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

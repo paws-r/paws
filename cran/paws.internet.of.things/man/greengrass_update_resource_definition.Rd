@@ -18,13 +18,11 @@ An empty list.
 Updates a resource definition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_resource_definition(
+\preformatted{svc$update_resource_definition(
   Name = "string",
   ResourceDefinitionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

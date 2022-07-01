@@ -16,12 +16,10 @@ An empty list.
 Removes the specified dimension from your AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_dimension(
+\preformatted{svc$delete_dimension(
   name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -16,12 +16,10 @@ An empty list.
 Deletes an activity.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_activity(
+\preformatted{svc$delete_activity(
   activityArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

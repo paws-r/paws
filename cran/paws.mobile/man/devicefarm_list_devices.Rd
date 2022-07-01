@@ -67,9 +67,7 @@ TEMPORARY_NOT_AVAILABLE.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   devices = list(
     list(
       arn = "string",
@@ -124,15 +122,13 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about unique device types.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_devices(
+\preformatted{svc$list_devices(
   arn = "string",
   nextToken = "string",
   filters = list(
@@ -145,7 +141,7 @@ Gets information about unique device types.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

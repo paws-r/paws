@@ -54,12 +54,10 @@ For more information about obtaining the OIDC provider's thumbprint, see
 in the \emph{IAM User Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   OpenIDConnectProviderArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an IAM entity to describe an identity provider (IdP) that
@@ -88,9 +86,7 @@ this operation creates. Therefore, it is best to limit access to the
 operation to highly privileged users.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_open_id_connect_provider(
+\preformatted{svc$create_open_id_connect_provider(
   Url = "string",
   ClientIDList = list(
     "string"
@@ -99,7 +95,7 @@ operation to highly privileged users.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

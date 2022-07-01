@@ -22,12 +22,10 @@ OpsWorks Stacks generates one from the IAM user name.}
 Settings page. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html}{Setting an IAM User's Public SSH Key}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IamUserArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new user profile.
@@ -37,15 +35,13 @@ attached policy that explicitly grants permissions. For more information
 about user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_user_profile(
+\preformatted{svc$create_user_profile(
   IamUserArn = "string",
   SshUsername = "string",
   SshPublicKey = "string",
   AllowSelfManagement = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -35,9 +35,7 @@ If you specify more than one filter, a namespace must match all filters
 to be returned by \code{\link[=servicediscovery_list_namespaces]{list_namespaces}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Namespaces = list(
     list(
       Id = "string",
@@ -61,16 +59,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists summary information about the namespaces that were created by the
 current AWS account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_namespaces(
+\preformatted{svc$list_namespaces(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(
@@ -83,7 +79,7 @@ current AWS account.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

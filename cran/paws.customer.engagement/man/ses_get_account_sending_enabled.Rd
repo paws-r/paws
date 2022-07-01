@@ -8,12 +8,10 @@ current region}
 ses_get_account_sending_enabled()
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Enabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the email sending status of the Amazon SES account for the

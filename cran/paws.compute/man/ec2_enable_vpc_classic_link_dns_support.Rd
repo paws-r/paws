@@ -10,12 +10,10 @@ ec2_enable_vpc_classic_link_dns_support(VpcId)
 \item{VpcId}{The ID of the VPC.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Return = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Enables a VPC to support DNS hostname resolution for ClassicLink. If
@@ -30,12 +28,10 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 You must specify a VPC ID in the request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$enable_vpc_classic_link_dns_support(
+\preformatted{svc$enable_vpc_classic_link_dns_support(
   VpcId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

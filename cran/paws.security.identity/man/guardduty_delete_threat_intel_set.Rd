@@ -19,13 +19,11 @@ An empty list.
 Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_threat_intel_set(
+\preformatted{svc$delete_threat_intel_set(
   DetectorId = "string",
   ThreatIntelSetId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

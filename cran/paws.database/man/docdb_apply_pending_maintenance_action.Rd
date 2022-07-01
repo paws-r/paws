@@ -29,9 +29,7 @@ requests.
 }}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ResourcePendingMaintenanceActions = list(
     ResourceIdentifier = "string",
     PendingMaintenanceActionDetails = list(
@@ -52,21 +50,19 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Applies a pending maintenance action to a resource (for example, to an
 Amazon DocumentDB instance).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$apply_pending_maintenance_action(
+\preformatted{svc$apply_pending_maintenance_action(
   ResourceIdentifier = "string",
   ApplyAction = "string",
   OptInType = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

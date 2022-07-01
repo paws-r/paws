@@ -46,9 +46,7 @@ represent the first traffic policy instance that Amazon Route 53 will
 return if you submit another request.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TrafficPolicyInstances = list(
     list(
       Id = "string",
@@ -67,7 +65,7 @@ A list with the following syntax:
   IsTruncated = TRUE|FALSE,
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about the traffic policy instances that you created in
@@ -86,15 +84,13 @@ lot of traffic policy instances, you can use the \code{MaxItems} parameter to
 list them in groups of up to 100.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_traffic_policy_instances_by_hosted_zone(
+\preformatted{svc$list_traffic_policy_instances_by_hosted_zone(
   HostedZoneId = "string",
   TrafficPolicyInstanceNameMarker = "string",
   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
   MaxItems = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

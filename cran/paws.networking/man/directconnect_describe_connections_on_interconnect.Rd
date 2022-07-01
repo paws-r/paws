@@ -10,9 +10,7 @@ directconnect_describe_connections_on_interconnect(interconnectId)
 \item{interconnectId}{[required] The ID of the interconnect.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   connections = list(
     list(
       ownerAccount = "string",
@@ -42,7 +40,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deprecated. Use
@@ -55,12 +53,10 @@ interconnect.
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_connections_on_interconnect(
+\preformatted{svc$describe_connections_on_interconnect(
   interconnectId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

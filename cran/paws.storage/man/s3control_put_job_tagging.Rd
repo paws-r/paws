@@ -62,9 +62,7 @@ Related actions include:
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_job_tagging(
+\preformatted{svc$put_job_tagging(
   AccountId = "string",
   JobId = "string",
   Tags = list(
@@ -74,7 +72,7 @@ Related actions include:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

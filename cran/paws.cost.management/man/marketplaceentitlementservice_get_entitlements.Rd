@@ -25,9 +25,7 @@ operation. For pagination, use the NextToken field in subsequent calls
 to GetEntitlements.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Entitlements = list(
     list(
       ProductCode = "string",
@@ -46,7 +44,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 GetEntitlements retrieves entitlement values for a given product. The
@@ -54,9 +52,7 @@ results can be filtered based on customer identifier or product
 dimensions.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_entitlements(
+\preformatted{svc$get_entitlements(
   ProductCode = "string",
   Filter = list(
     list(
@@ -66,7 +62,7 @@ dimensions.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

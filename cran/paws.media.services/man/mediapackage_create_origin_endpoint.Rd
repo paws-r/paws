@@ -51,9 +51,7 @@ OriginEndpoint.}
 OriginEndpoint.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Arn = "string",
   Authorization = list(
     CdnIdentifierSecret = "string",
@@ -196,15 +194,13 @@ A list with the following syntax:
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new OriginEndpoint record.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_origin_endpoint(
+\preformatted{svc$create_origin_endpoint(
   Authorization = list(
     CdnIdentifierSecret = "string",
     SecretsRoleArn = "string"
@@ -348,7 +344,7 @@ Creates a new OriginEndpoint record.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

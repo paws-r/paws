@@ -159,9 +159,7 @@ configuration, private integration traffic uses the HTTPS protocol.
 Supported only for HTTP APIs.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ApiGatewayManaged = TRUE|FALSE,
   ConnectionId = "string",
   ConnectionType = "INTERNET"|"VPC_LINK",
@@ -193,15 +191,13 @@ A list with the following syntax:
     ServerNameToVerify = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates an Integration.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_integration(
+\preformatted{svc$create_integration(
   ApiId = "string",
   ConnectionId = "string",
   ConnectionType = "INTERNET"|"VPC_LINK",
@@ -231,7 +227,7 @@ Creates an Integration.
     ServerNameToVerify = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

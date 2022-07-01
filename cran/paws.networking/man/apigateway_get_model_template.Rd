@@ -13,25 +13,21 @@ apigateway_get_model_template(restApiId, modelName)
 \item{modelName}{[required] [Required] The name of the model for which to generate a template.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   value = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Generates a sample mapping template that can be used to transform a
 payload into the structure of a model.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_model_template(
+\preformatted{svc$get_model_template(
   restApiId = "string",
   modelName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

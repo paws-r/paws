@@ -23,9 +23,7 @@ definitions returned.}
 \item{MaxResults}{The maximum number of functions to return in one response.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   UserDefinedFunctions = list(
     list(
       FunctionName = "string",
@@ -47,22 +45,20 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves multiple function definitions from the Data Catalog.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_user_defined_functions(
+\preformatted{svc$get_user_defined_functions(
   CatalogId = "string",
   DatabaseName = "string",
   Pattern = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

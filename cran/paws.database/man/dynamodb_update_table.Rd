@@ -63,9 +63,7 @@ This property only applies to \href{https://docs.aws.amazon.com/amazondynamodb/l
 of global tables.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TableDescription = list(
     AttributeDefinitions = list(
       list(
@@ -213,7 +211,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Modifies the provisioned throughput settings, global secondary indexes,
@@ -237,9 +235,7 @@ to the \code{ACTIVE} state, the \code{\link[=dynamodb_update_table]{update_table
 operation is complete.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_table(
+\preformatted{svc$update_table(
   AttributeDefinitions = list(
     list(
       AttributeName = "string",
@@ -332,7 +328,7 @@ operation is complete.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

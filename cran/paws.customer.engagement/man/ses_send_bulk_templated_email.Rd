@@ -95,9 +95,7 @@ template.}
 specify up to 50 \code{Destination} objects within a \code{Destinations} array.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Status = list(
     list(
       Status = "Success"|"MessageRejected"|"MailFromDomainNotVerified"|"ConfigurationSetDoesNotExist"|"TemplateDoesNotExist"|"AccountSuspended"|"AccountThrottled"|"AccountDailyQuotaExceeded"|"InvalidSendingPoolName"|"AccountSendingPaused"|"ConfigurationSetSendingPaused"|"InvalidParameterValue"|"TransientFailure"|"Failed",
@@ -106,7 +104,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Composes an email message to multiple destinations. The message body is
@@ -144,9 +142,7 @@ API may be limited by your account's maximum sending rate.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$send_bulk_templated_email(
+\preformatted{svc$send_bulk_templated_email(
   Source = "string",
   SourceArn = "string",
   ReplyToAddresses = list(
@@ -187,7 +183,7 @@ API may be limited by your account's maximum sending rate.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

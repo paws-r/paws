@@ -12,9 +12,7 @@ mediaconnect_grant_flow_entitlements(Entitlements, FlowArn)
 \item{FlowArn}{[required] The flow that you want to grant entitlements on.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Entitlements = list(
     list(
       DataTransferSubscriberFeePercent = 123,
@@ -40,15 +38,13 @@ A list with the following syntax:
   ),
   FlowArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Grants entitlements to an existing flow.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$grant_flow_entitlements(
+\preformatted{svc$grant_flow_entitlements(
   Entitlements = list(
     list(
       DataTransferSubscriberFeePercent = 123,
@@ -73,7 +69,7 @@ Grants entitlements to an existing flow.
   ),
   FlowArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -19,12 +19,10 @@ subscription filters that publish to it. This operation does not delete
 the physical resource encapsulated by the destination.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_destination(
+\preformatted{svc$delete_destination(
   destinationName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

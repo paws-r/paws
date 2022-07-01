@@ -12,9 +12,7 @@ amplify_delete_backend_environment(appId, environmentName)
 \item{environmentName}{[required] The name of a backend environment of an Amplify app.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   backendEnvironment = list(
     backendEnvironmentArn = "string",
     environmentName = "string",
@@ -28,19 +26,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a backend environment for an Amplify app.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_backend_environment(
+\preformatted{svc$delete_backend_environment(
   appId = "string",
   environmentName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -14,9 +14,7 @@ chime_describe_channel_moderated_by_app_instance_user(ChannelArn,
 \item{AppInstanceUserArn}{[required] The ARN of the app instance user in the moderated channel.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Channel = list(
     ChannelSummary = list(
       Name = "string",
@@ -30,20 +28,18 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the full details of a channel moderated by the specified
 \code{AppInstanceUser}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_channel_moderated_by_app_instance_user(
+\preformatted{svc$describe_channel_moderated_by_app_instance_user(
   ChannelArn = "string",
   AppInstanceUserArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

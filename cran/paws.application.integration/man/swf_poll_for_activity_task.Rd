@@ -23,9 +23,7 @@ diagnostic tracing when problems arise. The form of this identity is
 user defined.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   taskToken = "string",
   activityId = "string",
   startedEventId = 123,
@@ -39,7 +37,7 @@ A list with the following syntax:
   ),
   input = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Used by workers to get an ActivityTask from the specified activity
@@ -78,16 +76,14 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$poll_for_activity_task(
+\preformatted{svc$poll_for_activity_task(
   domain = "string",
   taskList = list(
     name = "string"
   ),
   identity = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

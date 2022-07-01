@@ -19,9 +19,7 @@ form:
 action.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   AuditReportStatus = "CREATING"|"SUCCESS"|"FAILED",
   S3BucketName = "string",
   S3Key = "string",
@@ -29,7 +27,7 @@ A list with the following syntax:
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Lists information about a specific audit report created by calling the
@@ -40,13 +38,11 @@ call the \code{\link[=acmpca_issue_certificate]{issue_certificate}} action or th
 \code{\link[=acmpca_revoke_certificate]{revoke_certificate}} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_certificate_authority_audit_report(
+\preformatted{svc$describe_certificate_authority_audit_report(
   CertificateAuthorityArn = "string",
   AuditReportId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

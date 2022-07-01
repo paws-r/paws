@@ -19,14 +19,12 @@ name is provided, a shell to the instance is launched by default.}
 \item{Parameters}{Reserved for future use.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   SessionId = "string",
   TokenValue = "string",
   StreamUrl = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Initiates a connection to a target (for example, an instance) for a
@@ -42,9 +40,7 @@ AWS Tools for PowerShell usage: Start-SSMSession is not currently
 supported by AWS Tools for PowerShell on Windows local machines.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_session(
+\preformatted{svc$start_session(
   Target = "string",
   DocumentName = "string",
   Parameters = list(
@@ -53,7 +49,7 @@ supported by AWS Tools for PowerShell on Windows local machines.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

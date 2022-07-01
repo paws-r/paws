@@ -10,9 +10,7 @@ devicefarm_get_test(arn)
 \item{arn}{[required] The test's ARN.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   test = list(
     arn = "string",
     name = "string",
@@ -45,18 +43,16 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about a test.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_test(
+\preformatted{svc$get_test(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

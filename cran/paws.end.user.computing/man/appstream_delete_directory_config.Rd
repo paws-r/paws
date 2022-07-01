@@ -18,12 +18,10 @@ object includes the information required to join streaming instances to
 an Active Directory domain.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_directory_config(
+\preformatted{svc$delete_directory_config(
   DirectoryName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

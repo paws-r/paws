@@ -19,9 +19,7 @@ results.}
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   QueueSummaryList = list(
     list(
       Id = "string",
@@ -32,7 +30,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Provides information about the queues for the specified Amazon Connect
@@ -42,9 +40,7 @@ For more information about queues, see \href{https://docs.aws.amazon.com/connect
 in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_queues(
+\preformatted{svc$list_queues(
   InstanceId = "string",
   QueueTypes = list(
     "STANDARD"|"AGENT"
@@ -52,7 +48,7 @@ in the \emph{Amazon Connect Administrator Guide}.
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

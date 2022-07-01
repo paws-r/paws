@@ -29,9 +29,7 @@ An empty list.
 Updates a partition.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_partition(
+\preformatted{svc$update_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",
@@ -110,7 +108,7 @@ Updates a partition.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

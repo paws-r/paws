@@ -17,12 +17,10 @@ Permanently cancel a job. Once you have canceled a job, you can't start
 it again.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$cancel_job(
+\preformatted{svc$cancel_job(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

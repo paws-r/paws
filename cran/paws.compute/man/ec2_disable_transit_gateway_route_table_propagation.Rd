@@ -19,9 +19,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Propagation = list(
     TransitGatewayAttachmentId = "string",
     ResourceId = "string",
@@ -30,21 +28,19 @@ A list with the following syntax:
     State = "enabling"|"enabled"|"disabling"|"disabled"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Disables the specified resource attachment from propagating routes to
 the specified propagation route table.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$disable_transit_gateway_route_table_propagation(
+\preformatted{svc$disable_transit_gateway_route_table_propagation(
   TransitGatewayRouteTableId = "string",
   TransitGatewayAttachmentId = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

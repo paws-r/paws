@@ -12,9 +12,7 @@ devicefarm_list_test_grid_projects(maxResult, nextToken)
 \item{nextToken}{From a response, used to continue a paginated listing.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   testGridProjects = list(
     list(
       arn = "string",
@@ -27,19 +25,17 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets a list of all Selenium testing projects in your account.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$list_test_grid_projects(
+\preformatted{svc$list_test_grid_projects(
   maxResult = 123,
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

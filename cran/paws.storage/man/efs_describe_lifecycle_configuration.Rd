@@ -12,16 +12,14 @@ efs_describe_lifecycle_configuration(FileSystemId)
 to retrieve (String).}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LifecyclePolicies = list(
     list(
       TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the current \code{LifecycleConfiguration} object for the specified
@@ -35,12 +33,10 @@ This operation requires permissions for the
 \code{elasticfilesystem:DescribeLifecycleConfiguration} operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_lifecycle_configuration(
+\preformatted{svc$describe_lifecycle_configuration(
   FileSystemId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

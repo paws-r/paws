@@ -26,9 +26,7 @@ a \code{JsonClassifier}, or a \code{CsvClassifier}, depending on which field is
 present).
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_classifier(
+\preformatted{svc$update_classifier(
   GrokClassifier = list(
     Name = "string",
     Classification = "string",
@@ -56,7 +54,7 @@ present).
     AllowSingleColumn = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

@@ -28,9 +28,7 @@ ASCII character from the ! (\verb{\\u0021}) through the DEL character
 lowercased letters.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceProfile = list(
     Path = "string",
     InstanceProfileName = "string",
@@ -71,7 +69,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new instance profile. For information about instance profiles,
@@ -82,13 +80,11 @@ more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/ref
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_instance_profile(
+\preformatted{svc$create_instance_profile(
   InstanceProfileName = "string",
   Path = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

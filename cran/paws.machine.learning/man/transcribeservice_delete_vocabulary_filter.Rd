@@ -16,12 +16,10 @@ An empty list.
 Removes a vocabulary filter.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_vocabulary_filter(
+\preformatted{svc$delete_vocabulary_filter(
   VocabularyFilterName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

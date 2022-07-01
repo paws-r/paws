@@ -11,16 +11,14 @@ storagegateway_describe_availability_monitor_test(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   GatewayARN = "string",
   Status = "COMPLETE"|"FAILED"|"PENDING",
   StartTime = as.POSIXct(
     "2015-01-01"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns information about the most recent High Availability monitoring
@@ -28,12 +26,10 @@ test that was performed on the host in a cluster. If a test isn't
 performed, the status and start time in the response would be null.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_availability_monitor_test(
+\preformatted{svc$describe_availability_monitor_test(
   GatewayARN = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

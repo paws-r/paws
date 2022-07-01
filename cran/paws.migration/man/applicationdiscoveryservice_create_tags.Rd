@@ -24,9 +24,7 @@ help you categorize IT assets. This API accepts a list of multiple
 configuration items.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_tags(
+\preformatted{svc$create_tags(
   configurationIds = list(
     "string"
   ),
@@ -37,7 +35,7 @@ configuration items.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

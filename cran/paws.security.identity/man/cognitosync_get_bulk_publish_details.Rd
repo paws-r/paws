@@ -12,9 +12,7 @@ us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   IdentityPoolId = "string",
   BulkPublishStartTime = as.POSIXct(
     "2015-01-01"
@@ -25,7 +23,7 @@ A list with the following syntax:
   BulkPublishStatus = "NOT_STARTED"|"IN_PROGRESS"|"FAILED"|"SUCCEEDED",
   FailureMessage = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Get the status of the last BulkPublish operation for an identity pool.
@@ -35,12 +33,10 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_bulk_publish_details(
+\preformatted{svc$get_bulk_publish_details(
   IdentityPoolId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

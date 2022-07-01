@@ -24,12 +24,10 @@ deletion is complete. You cannot update a conformance pack while it is
 in this state.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_conformance_pack(
+\preformatted{svc$delete_conformance_pack(
   ConformancePackName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

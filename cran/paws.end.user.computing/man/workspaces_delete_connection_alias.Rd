@@ -29,12 +29,10 @@ only after it is no longer shared with any accounts or associated with
 any directories.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_connection_alias(
+\preformatted{svc$delete_connection_alias(
   AliasId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

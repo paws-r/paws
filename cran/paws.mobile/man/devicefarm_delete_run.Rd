@@ -18,12 +18,10 @@ Deletes the run, given the run ARN.
 Deleting this resource does not stop an in-progress run.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_run(
+\preformatted{svc$delete_run(
   arn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

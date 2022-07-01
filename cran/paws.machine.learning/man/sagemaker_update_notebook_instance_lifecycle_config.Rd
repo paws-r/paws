@@ -27,9 +27,7 @@ Updates a notebook instance lifecycle configuration created with the
 API.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_notebook_instance_lifecycle_config(
+\preformatted{svc$update_notebook_instance_lifecycle_config(
   NotebookInstanceLifecycleConfigName = "string",
   OnCreate = list(
     list(
@@ -42,7 +40,7 @@ API.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

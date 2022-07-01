@@ -16,12 +16,10 @@ An empty list.
 Flushes an \code{ApiCache} object.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$flush_api_cache(
+\preformatted{svc$flush_api_cache(
   apiId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

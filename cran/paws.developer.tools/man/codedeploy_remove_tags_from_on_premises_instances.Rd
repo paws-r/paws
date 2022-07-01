@@ -18,9 +18,7 @@ An empty list.
 Removes one or more tags from one or more on-premises instances.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags_from_on_premises_instances(
+\preformatted{svc$remove_tags_from_on_premises_instances(
   tags = list(
     list(
       Key = "string",
@@ -31,7 +29,7 @@ Removes one or more tags from one or more on-premises instances.
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

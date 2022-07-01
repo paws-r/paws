@@ -18,15 +18,13 @@ An empty list.
 Removes existing tags from the specified pipeline.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags(
+\preformatted{svc$remove_tags(
   pipelineId = "string",
   tagKeys = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

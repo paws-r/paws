@@ -16,12 +16,10 @@ An empty list.
 Deletes a group.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_group(
+\preformatted{svc$delete_group(
   GroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

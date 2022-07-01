@@ -10,24 +10,20 @@ glue_start_trigger(Name)
 \item{Name}{[required] The name of the trigger to start.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts an existing trigger. See \href{https://docs.aws.amazon.com/glue/latest/dg/trigger-job.html}{Triggering Jobs} for
 information about how different types of trigger are started.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_trigger(
+\preformatted{svc$start_trigger(
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

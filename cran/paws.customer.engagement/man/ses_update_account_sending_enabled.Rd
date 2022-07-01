@@ -24,12 +24,10 @@ your Amazon SES account in a given AWS Region when reputation metrics
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_account_sending_enabled(
+\preformatted{svc$update_account_sending_enabled(
   Enabled = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

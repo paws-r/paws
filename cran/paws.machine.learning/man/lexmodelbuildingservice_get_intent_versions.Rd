@@ -18,9 +18,7 @@ pagination token in the next request.}
 default is 10.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   intents = list(
     list(
       name = "string",
@@ -36,7 +34,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets information about all of the versions of an intent.
@@ -55,14 +53,12 @@ This operation requires permissions for the \code{lex:GetIntentVersions}
 action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_intent_versions(
+\preformatted{svc$get_intent_versions(
   name = "string",
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

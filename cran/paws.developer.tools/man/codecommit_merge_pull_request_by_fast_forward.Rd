@@ -21,9 +21,7 @@ current commit ID of the tip of the source branch does not match this
 commit ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   pullRequest = list(
     pullRequestId = "string",
     title = "string",
@@ -75,7 +73,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Attempts to merge the source commit of a pull request into the specified
@@ -84,14 +82,12 @@ the fast-forward merge strategy. If the merge is successful, it closes
 the pull request.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$merge_pull_request_by_fast_forward(
+\preformatted{svc$merge_pull_request_by_fast_forward(
   pullRequestId = "string",
   repositoryName = "string",
   sourceCommitId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

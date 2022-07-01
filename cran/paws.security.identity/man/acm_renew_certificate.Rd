@@ -25,12 +25,10 @@ information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/}{Testin
 User Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$renew_certificate(
+\preformatted{svc$renew_certificate(
   CertificateArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

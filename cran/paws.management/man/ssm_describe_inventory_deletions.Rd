@@ -18,9 +18,7 @@ returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InventoryDeletions = list(
     list(
       DeletionId = "string",
@@ -48,20 +46,18 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes a specific delete inventory operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_inventory_deletions(
+\preformatted{svc$describe_inventory_deletions(
   DeletionId = "string",
   NextToken = "string",
   MaxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

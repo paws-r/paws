@@ -27,9 +27,7 @@ administrator credentials to access the API.}
 \item{ParentFolderId}{[required] The ID of the parent folder.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Metadata = list(
     Id = "string",
     CreatorId = "string",
@@ -79,7 +77,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a new document object and version object.
@@ -94,9 +92,7 @@ To cancel the document upload, call
 \code{\link[=workdocs_abort_document_version_upload]{abort_document_version_upload}}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$initiate_document_version_upload(
+\preformatted{svc$initiate_document_version_upload(
   AuthenticationToken = "string",
   Id = "string",
   Name = "string",
@@ -110,7 +106,7 @@ To cancel the document upload, call
   DocumentSizeInBytes = 123,
   ParentFolderId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

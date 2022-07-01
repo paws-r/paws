@@ -34,9 +34,7 @@ can be between 5 and 1,000; if \code{MaxResults} is given a value larger than
 \item{NextToken}{The token to retrieve the next page of results.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VpcEndpointConnections = list(
     list(
       ServiceId = "string",
@@ -62,16 +60,14 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the VPC endpoint connections to your VPC endpoint services,
 including any endpoints that are pending your acceptance.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_vpc_endpoint_connections(
+\preformatted{svc$describe_vpc_endpoint_connections(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(
@@ -84,7 +80,7 @@ including any endpoints that are pending your acceptance.
   MaxResults = 123,
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

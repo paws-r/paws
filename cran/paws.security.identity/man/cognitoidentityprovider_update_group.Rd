@@ -21,9 +21,7 @@ cognitoidentityprovider_update_group(GroupName, UserPoolId, Description,
 parameter, see \code{\link[=cognitoidentityprovider_create_group]{create_group}}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Group = list(
     GroupName = "string",
     UserPoolId = "string",
@@ -38,7 +36,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Updates the specified group with the specified attributes.
@@ -49,16 +47,14 @@ If you don't provide a value for an attribute, it will be set to the
 default value.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$update_group(
+\preformatted{svc$update_group(
   GroupName = "string",
   UserPoolId = "string",
   Description = "string",
   RoleArn = "string",
   Precedence = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

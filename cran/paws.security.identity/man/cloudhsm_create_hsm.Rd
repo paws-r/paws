@@ -31,12 +31,10 @@ operation with the same token will be ignored.}
 service only supports one syslog monitoring server.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   HsmArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -61,9 +59,7 @@ monitor the status of the HSM with the
 be initialized when the status changes to \code{RUNNING}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_hsm(
+\preformatted{svc$create_hsm(
   SubnetId = "string",
   SshKey = "string",
   EniIp = "string",
@@ -73,7 +69,7 @@ be initialized when the status changes to \code{RUNNING}.
   ClientToken = "string",
   SyslogIp = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

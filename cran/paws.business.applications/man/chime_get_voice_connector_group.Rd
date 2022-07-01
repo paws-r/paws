@@ -11,9 +11,7 @@ chime_get_voice_connector_group(VoiceConnectorGroupId)
 \item{VoiceConnectorGroupId}{[required] The Amazon Chime Voice Connector group ID.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   VoiceConnectorGroup = list(
     VoiceConnectorGroupId = "string",
     Name = "string",
@@ -31,19 +29,17 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves details for the specified Amazon Chime Voice Connector group,
 such as timestamps, name, and associated \code{VoiceConnectorItems}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_voice_connector_group(
+\preformatted{svc$get_voice_connector_group(
   VoiceConnectorGroupId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

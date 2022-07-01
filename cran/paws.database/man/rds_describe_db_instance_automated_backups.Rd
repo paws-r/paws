@@ -54,9 +54,7 @@ example,
 \code{arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Marker = "string",
   DBInstanceAutomatedBackups = list(
     list(
@@ -102,7 +100,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Displays backups for both current and deleted instances. For example,
@@ -115,9 +113,7 @@ and \code{\link[=rds_describe_db_instances]{describe_db_instances}} operations.
 All parameters are optional.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_db_instance_automated_backups(
+\preformatted{svc$describe_db_instance_automated_backups(
   DbiResourceId = "string",
   DBInstanceIdentifier = "string",
   Filters = list(
@@ -132,7 +128,7 @@ All parameters are optional.
   Marker = "string",
   DBInstanceAutomatedBackupsArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

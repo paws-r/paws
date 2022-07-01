@@ -16,28 +16,24 @@ Required.}
 \item{ParameterKey}{[required] The room skill parameter key for which to get details. Required.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RoomSkillParameter = list(
     ParameterKey = "string",
     ParameterValue = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets room skill parameter details by room, skill, and parameter key ARN.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_room_skill_parameter(
+\preformatted{svc$get_room_skill_parameter(
   RoomArn = "string",
   SkillId = "string",
   ParameterKey = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

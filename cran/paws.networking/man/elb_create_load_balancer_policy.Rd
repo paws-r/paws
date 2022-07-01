@@ -31,9 +31,7 @@ be applied to the listener or the application server, depending on the
 policy type.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_load_balancer_policy(
+\preformatted{svc$create_load_balancer_policy(
   LoadBalancerName = "string",
   PolicyName = "string",
   PolicyTypeName = "string",
@@ -44,7 +42,7 @@ policy type.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

@@ -10,9 +10,7 @@ lightsail_start_relational_database(relationalDatabaseName)
 \item{relationalDatabaseName}{[required] The name of your database to start.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   operations = list(
     list(
       id = "string",
@@ -37,7 +35,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts a specific database from a stopped state in Amazon Lightsail. To
@@ -49,12 +47,10 @@ relationalDatabaseName. For more information, see the Lightsail Dev
 Guide.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_relational_database(
+\preformatted{svc$start_relational_database(
   relationalDatabaseName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

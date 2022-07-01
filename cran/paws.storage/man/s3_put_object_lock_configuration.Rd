@@ -28,12 +28,10 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   RequestCharged = "requester"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Places an Object Lock configuration on the specified bucket. The rule
@@ -49,9 +47,7 @@ at the same time.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_object_lock_configuration(
+\preformatted{svc$put_object_lock_configuration(
   Bucket = "string",
   ObjectLockConfiguration = list(
     ObjectLockEnabled = "Enabled",
@@ -68,7 +64,7 @@ at the same time.
   ContentMD5 = "string",
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

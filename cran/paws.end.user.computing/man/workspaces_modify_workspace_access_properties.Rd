@@ -21,9 +21,7 @@ Specifies which devices and operating systems users can use to access
 their WorkSpaces. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access}{Control Device Access}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$modify_workspace_access_properties(
+\preformatted{svc$modify_workspace_access_properties(
   ResourceId = "string",
   WorkspaceAccessProperties = list(
     DeviceTypeWindows = "ALLOW"|"DENY",
@@ -35,7 +33,7 @@ their WorkSpaces. For more information, see \href{https://docs.aws.amazon.com/wo
     DeviceTypeZeroClient = "ALLOW"|"DENY"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

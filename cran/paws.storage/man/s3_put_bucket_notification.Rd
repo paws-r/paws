@@ -31,9 +31,7 @@ No longer used, see the
 operation.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$put_bucket_notification(
+\preformatted{svc$put_bucket_notification(
   Bucket = "string",
   ContentMD5 = "string",
   NotificationConfiguration = list(
@@ -65,7 +63,7 @@ operation.
   ),
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

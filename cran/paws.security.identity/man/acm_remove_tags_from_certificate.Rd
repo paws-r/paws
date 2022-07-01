@@ -33,9 +33,7 @@ use the \code{\link[=acm_list_tags_for_certificate]{list_tags_for_certificate}}
 action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_tags_from_certificate(
+\preformatted{svc$remove_tags_from_certificate(
   CertificateArn = "string",
   Tags = list(
     list(
@@ -44,7 +42,7 @@ action.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

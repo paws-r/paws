@@ -78,9 +78,7 @@ different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DeleteMarker = TRUE|FALSE,
   AcceptRanges = "string",
   Expiration = "string",
@@ -120,7 +118,7 @@ A list with the following syntax:
   ),
   ObjectLockLegalHoldStatus = "ON"|"OFF"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 The HEAD operation retrieves metadata from an object without returning
@@ -194,9 +192,7 @@ The following operation is related to \code{\link[=s3_head_object]{head_object}}
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$head_object(
+\preformatted{svc$head_object(
   Bucket = "string",
   IfMatch = "string",
   IfModifiedSince = as.POSIXct(
@@ -216,7 +212,7 @@ The following operation is related to \code{\link[=s3_head_object]{head_object}}
   PartNumber = 123,
   ExpectedBucketOwner = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

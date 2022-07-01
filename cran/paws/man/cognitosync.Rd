@@ -37,9 +37,7 @@ more, see the \href{https://docs.aws.amazon.com/amplify/?id=docs_gateway}{Develo
 \href{https://docs.aws.amazon.com/mobile/sdkforios/developerguide/}{Developer Guide for iOS}.
 }
 \section{Service syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cognitosync(
+\preformatted{svc <- cognitosync(
   config = list(
     credentials = list(
       creds = list(
@@ -53,7 +51,7 @@ more, see the \href{https://docs.aws.amazon.com/amplify/?id=docs_gateway}{Develo
     region = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \section{Operations}{

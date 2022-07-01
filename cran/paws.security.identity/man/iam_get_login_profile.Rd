@@ -15,9 +15,7 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LoginProfile = list(
     UserName = "string",
     CreateDate = as.POSIXct(
@@ -26,7 +24,7 @@ A list with the following syntax:
     PasswordResetRequired = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves the user name and password-creation date for the specified IAM
@@ -34,12 +32,10 @@ user. If the user has not been assigned a password, the operation
 returns a 404 (\code{NoSuchEntity}) error.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_login_profile(
+\preformatted{svc$get_login_profile(
   UserName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \examples{

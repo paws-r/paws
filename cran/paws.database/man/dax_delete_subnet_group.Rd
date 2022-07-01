@@ -10,12 +10,10 @@ dax_delete_subnet_group(SubnetGroupName)
 \item{SubnetGroupName}{[required] The name of the subnet group to delete.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   DeletionMessage = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deletes a subnet group.
@@ -24,12 +22,10 @@ You cannot delete a subnet group if it is associated with any DAX
 clusters.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_subnet_group(
+\preformatted{svc$delete_subnet_group(
   SubnetGroupName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

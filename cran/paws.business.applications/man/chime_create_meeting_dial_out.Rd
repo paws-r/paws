@@ -28,12 +28,10 @@ call.}
 to get a join token.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TransactionId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Uses the join token and call metadata in a meeting request (From number,
@@ -47,15 +45,13 @@ use the
 API with the corresponding SIP media application ID.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_meeting_dial_out(
+\preformatted{svc$create_meeting_dial_out(
   MeetingId = "string",
   FromPhoneNumber = "string",
   ToPhoneNumber = "string",
   JoinToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

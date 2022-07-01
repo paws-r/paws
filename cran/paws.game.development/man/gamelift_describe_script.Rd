@@ -11,9 +11,7 @@ gamelift_describe_script(ScriptId)
 You can use either the script ID or ARN value.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Script = list(
     ScriptId = "string",
     ScriptArn = "string",
@@ -31,7 +29,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Retrieves properties for a Realtime script.
@@ -53,12 +51,10 @@ object containing the script properties is returned.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_script(
+\preformatted{svc$describe_script(
   ScriptId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

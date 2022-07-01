@@ -18,9 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{InstanceTagAttribute}{Information about the tag keys to deregister.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   InstanceTagAttribute = list(
     InstanceTagKeys = list(
       "string"
@@ -28,7 +26,7 @@ A list with the following syntax:
     IncludeAllTagsOfInstance = TRUE|FALSE
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Deregisters tag keys to prevent tags that have the specified tag keys
@@ -36,9 +34,7 @@ from being included in scheduled event notifications for resources in
 the Region.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$deregister_instance_event_notification_attributes(
+\preformatted{svc$deregister_instance_event_notification_attributes(
   DryRun = TRUE|FALSE,
   InstanceTagAttribute = list(
     IncludeAllTagsOfInstance = TRUE|FALSE,
@@ -47,7 +43,7 @@ the Region.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

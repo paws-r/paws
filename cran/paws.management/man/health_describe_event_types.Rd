@@ -22,9 +22,7 @@ returned, the response does not contain a pagination token value.}
 inclusive.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   eventTypes = list(
     list(
       service = "string",
@@ -34,7 +32,7 @@ A list with the following syntax:
   ),
   nextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Returns the event types that meet the specified filter criteria. If no
@@ -45,9 +43,7 @@ This API operation uses pagination. Specify the \code{nextToken} parameter in
 the next request to return more results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_event_types(
+\preformatted{svc$describe_event_types(
   filter = list(
     eventTypeCodes = list(
       "string"
@@ -63,7 +59,7 @@ the next request to return more results.
   nextToken = "string",
   maxResults = 123
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

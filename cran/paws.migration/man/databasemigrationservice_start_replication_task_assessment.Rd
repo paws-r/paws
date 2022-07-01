@@ -12,9 +12,7 @@ databasemigrationservice_start_replication_task_assessment(
 \item{ReplicationTaskArn}{[required] The Amazon Resource Name (ARN) of the replication task.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ReplicationTask = list(
     ReplicationTaskIdentifier = "string",
     SourceEndpointArn = "string",
@@ -63,19 +61,17 @@ A list with the following syntax:
     TargetReplicationInstanceArn = "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Starts the replication task assessment for unsupported data types in the
 source database.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_replication_task_assessment(
+\preformatted{svc$start_replication_task_assessment(
   ReplicationTaskArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

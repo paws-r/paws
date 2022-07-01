@@ -42,12 +42,10 @@ For more information, see task-scheduling.}
 resource. The value can be an empty string.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   TaskArn = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a task. A task is a set of two locations (source and
@@ -70,9 +68,7 @@ are often caused by either a misconfigured firewall or a mistyped NFS
 server hostname.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_task(
+\preformatted{svc$create_task(
   SourceLocationArn = "string",
   DestinationLocationArn = "string",
   CloudWatchLogGroupArn = "string",
@@ -108,7 +104,7 @@ server hostname.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

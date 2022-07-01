@@ -34,13 +34,11 @@ IAM policy.
 }
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$remove_permission(
+\preformatted{svc$remove_permission(
   QueueUrl = "string",
   Label = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

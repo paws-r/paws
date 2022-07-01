@@ -16,12 +16,10 @@ An empty list.
 Deletes the specified snapshot copy grant.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_snapshot_copy_grant(
+\preformatted{svc$delete_snapshot_copy_grant(
   SnapshotCopyGrantName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

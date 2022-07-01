@@ -19,9 +19,7 @@ pipeline.}
 \item{parameterValues}{The parameter values used with the pipeline.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   validationErrors = list(
     list(
       id = "string",
@@ -40,16 +38,14 @@ A list with the following syntax:
   ),
   errored = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Validates the specified pipeline definition to ensure that it is well
 formed and can be run without error.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$validate_pipeline_definition(
+\preformatted{svc$validate_pipeline_definition(
   pipelineId = "string",
   pipelineObjects = list(
     list(
@@ -82,7 +78,7 @@ formed and can be run without error.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

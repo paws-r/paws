@@ -30,9 +30,7 @@ by the LAG. The possible values are 1Gbps and 10Gbps.}
 \item{providerName}{The name of the service provider associated with the LAG.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   connectionsBandwidth = "string",
   numberOfConnections = 123,
   lagId = "string",
@@ -83,7 +81,7 @@ A list with the following syntax:
   ),
   providerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Creates a link aggregation group (LAG) with the specified number of
@@ -114,9 +112,7 @@ sub-connections. For a LAG owned by a partner, any associated virtual
 interfaces cannot be directly configured.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$create_lag(
+\preformatted{svc$create_lag(
   numberOfConnections = 123,
   location = "string",
   connectionsBandwidth = "string",
@@ -136,7 +132,7 @@ interfaces cannot be directly configured.
   ),
   providerName = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

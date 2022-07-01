@@ -142,14 +142,12 @@ For more information about high throughput for FIFO queues, see
 in the \emph{Amazon Simple Queue Service Developer Guide}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Attributes = list(
     "string"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets attributes for the specified queue.
@@ -159,15 +157,13 @@ To determine whether a queue is
 you can check whether \code{QueueName} ends with the \code{.fifo} suffix.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_queue_attributes(
+\preformatted{svc$get_queue_attributes(
   QueueUrl = "string",
   AttributeNames = list(
     "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"|"DeduplicationScope"|"FifoThroughputLimit"
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

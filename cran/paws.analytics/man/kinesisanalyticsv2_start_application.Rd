@@ -21,9 +21,7 @@ an application, you must exclusively call this operation to start your
 application.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$start_application(
+\preformatted{svc$start_application(
   ApplicationName = "string",
   RunConfiguration = list(
     FlinkRunConfiguration = list(
@@ -43,7 +41,7 @@ application.
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

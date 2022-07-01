@@ -13,15 +13,13 @@ rekognition_get_celebrity_info(Id)
 which recognizes celebrities in an image.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   Urls = list(
     "string"
   ),
   Name = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Gets the name and additional information about a celebrity based on his
@@ -36,12 +34,10 @@ This operation requires permissions to perform the
 \code{rekognition:GetCelebrityInfo} action.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$get_celebrity_info(
+\preformatted{svc$get_celebrity_info(
   Id = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

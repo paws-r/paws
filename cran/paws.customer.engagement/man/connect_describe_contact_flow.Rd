@@ -12,9 +12,7 @@ connect_describe_contact_flow(InstanceId, ContactFlowId)
 \item{ContactFlowId}{[required] The identifier of the contact flow.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   ContactFlow = list(
     Arn = "string",
     Id = "string",
@@ -27,7 +25,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes the specified contact flow.
@@ -35,13 +33,11 @@ Describes the specified contact flow.
 You can also create and update contact flows using the \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html}{Amazon Connect Flow language}.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_contact_flow(
+\preformatted{svc$describe_contact_flow(
   InstanceId = "string",
   ContactFlowId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

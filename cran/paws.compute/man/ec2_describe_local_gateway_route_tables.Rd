@@ -31,9 +31,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   LocalGatewayRouteTables = list(
     list(
       LocalGatewayRouteTableId = "string",
@@ -52,7 +50,7 @@ A list with the following syntax:
   ),
   NextToken = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more local gateway route tables. By default, all local
@@ -60,9 +58,7 @@ gateway route tables are described. Alternatively, you can filter the
 results.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_local_gateway_route_tables(
+\preformatted{svc$describe_local_gateway_route_tables(
   LocalGatewayRouteTableIds = list(
     "string"
   ),
@@ -78,7 +74,7 @@ results.
   NextToken = "string",
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

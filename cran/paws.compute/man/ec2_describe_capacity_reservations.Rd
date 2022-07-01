@@ -91,9 +91,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \value{
-A list with the following syntax:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
+A list with the following syntax:\preformatted{list(
   NextToken = "string",
   CapacityReservations = list(
     list(
@@ -127,7 +125,7 @@ A list with the following syntax:
     )
   )
 )
-}\if{html}{\out{</div>}}
+}
 }
 \description{
 Describes one or more of your Capacity Reservations. The results
@@ -135,9 +133,7 @@ describe only the Capacity Reservations in the AWS Region that you're
 currently using.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$describe_capacity_reservations(
+\preformatted{svc$describe_capacity_reservations(
   CapacityReservationIds = list(
     "string"
   ),
@@ -153,7 +149,7 @@ currently using.
   ),
   DryRun = TRUE|FALSE
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}

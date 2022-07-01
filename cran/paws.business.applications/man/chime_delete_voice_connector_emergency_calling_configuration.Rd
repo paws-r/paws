@@ -19,12 +19,10 @@ Deletes the emergency calling configuration details from the specified
 Amazon Chime Voice Connector.
 }
 \section{Request syntax}{
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{svc$delete_voice_connector_emergency_calling_configuration(
+\preformatted{svc$delete_voice_connector_emergency_calling_configuration(
   VoiceConnectorId = "string"
 )
-}\if{html}{\out{</div>}}
+}
 }
 
 \keyword{internal}
