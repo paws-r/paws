@@ -155,7 +155,7 @@ gluedatabrew_create_dataset <- function(Name, FormatOptions = NULL, Input, Tags 
 #' protect the job.
 #' @param EncryptionMode The encryption mode for the job, which can be one of the following:
 #' 
-#' -   `SSE-KMS` - para\>`SSE-KMS` - server-side encryption with AWS
+#' -   `SSE-KMS` - para&gt;`SSE-KMS` - server-side encryption with AWS
 #'     KMS-managed keys.
 #' 
 #' -   `SSE-S3` - Server-side encryption with keys managed by Amazon S3.

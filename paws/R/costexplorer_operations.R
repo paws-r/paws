@@ -977,7 +977,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity = NULL, Filt
 #' This is an opt-in only feature. You can enable this feature from the
 #' Cost Explorer Settings page. For information on how to access the
 #' Settings page, see [Controlling Access for Cost
-#' Explorer](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-access.html)
+#' Explorer](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-access.html)
 #' in the *AWS Billing and Cost Management User Guide*.
 #'
 #' @usage
@@ -1484,8 +1484,8 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #' -   INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
 #'     `m4.xlarge`.
 #' 
-#' -   LEGAL_ENTITY_NAME - The name of the organization that sells you AWS
-#'     services, such as Amazon Web Services.
+#' -   LEGAL_ENTITY_NAME - The name of the organization that sells you
+#'     AWS services, such as Amazon Web Services.
 #' 
 #' -   LINKED_ACCOUNT - The description in the attribute map that includes
 #'     the full name of the member account. The value field contains the
@@ -1506,13 +1506,13 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #' 
 #' -   SERVICE - The AWS service such as Amazon DynamoDB.
 #' 
-#' -   USAGE_TYPE - The type of usage. An example is DataTransfer-In-Bytes.
-#'     The response for the
+#' -   USAGE_TYPE - The type of usage. An example is
+#'     DataTransfer-In-Bytes. The response for the
 #'     [`get_dimension_values`][costexplorer_get_dimension_values]
 #'     operation includes a unit attribute. Examples include GB and Hrs.
 #' 
-#' -   USAGE_TYPE_GROUP - The grouping of common usage types. An example is
-#'     Amazon EC2: CloudWatch – Alarms. The response for this operation
+#' -   USAGE_TYPE_GROUP - The grouping of common usage types. An example
+#'     is Amazon EC2: CloudWatch – Alarms. The response for this operation
 #'     includes a unit attribute.
 #' 
 #' -   REGION - The AWS Region.
@@ -1529,8 +1529,8 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #' 
 #' -   AZ - The Availability Zone. An example is `us-east-1a`.
 #' 
-#' -   CACHE_ENGINE - The Amazon ElastiCache operating system. Examples are
-#'     Windows or Linux.
+#' -   CACHE_ENGINE - The Amazon ElastiCache operating system. Examples
+#'     are Windows or Linux.
 #' 
 #' -   DEPLOYMENT_OPTION - The scope of Amazon Relational Database Service
 #'     deployments. Valid values are `SingleAZ` and `MultiAZ`.
@@ -1559,7 +1559,8 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #' If you set the context to `SAVINGS_PLANS`, you can use the following
 #' dimensions for searching:
 #' 
-#' -   SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
+#' -   SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or
+#'     Compute)
 #' 
 #' -   PAYMENT_OPTION - Payment option for the given Savings Plans (for
 #'     example, All Upfront)
@@ -2509,7 +2510,7 @@ costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL,
 #' Recommendations are generated to either downsize or terminate instances,
 #' along with providing savings detail and metrics. For details on
 #' calculation and function, see [Optimizing Your Cost with Rightsizing
-#' Recommendations](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-rightsizing.html)
+#' Recommendations](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-rightsizing.html)
 #' in the *AWS Billing and Cost Management User Guide*.
 #'
 #' @usage

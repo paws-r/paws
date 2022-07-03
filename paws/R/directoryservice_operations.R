@@ -628,16 +628,16 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' Directory:
 #' 
 #' -   Numbers and upper case and lowercase
-#'     (?=.*\d)(?=.*\[A-Z\])(?=.*\[a-z\])
+#'     (?=.*\\d)(?=.*\[A-Z\])(?=.*\[a-z\])
 #' 
 #' -   Numbers and special characters and lower case
-#'     (?=.*\d)(?=.*\[^A-Za-z0-9\s\])(?=.*\[a-z\])
+#'     (?=.*\\d)(?=.*\[^A-Za-z0-9\\s\])(?=.*\[a-z\])
 #' 
 #' -   Special characters and upper case and lower case
-#'     (?=.*\[^A-Za-z0-9\s\])(?=.*\[A-Z\])(?=.*\[a-z\])
+#'     (?=.*\[^A-Za-z0-9\\s\])(?=.*\[A-Z\])(?=.*\[a-z\])
 #' 
 #' -   Numbers and upper case and special characters
-#'     (?=.*\d)(?=.*\[A-Z\])(?=.*\[^A-Za-z0-9\s\])
+#'     (?=.*\\d)(?=.*\[A-Z\])(?=.*\[^A-Za-z0-9\\s\])
 #' 
 #' For additional information about how Active Directory passwords are
 #' enforced, see [Password must meet complexity
@@ -3424,8 +3424,8 @@ directoryservice_share_directory <- function(DirectoryId, ShareNotes = NULL, Sha
 #' extension.
 #' @param LdifContent &#91;required&#93; The LDIF file represented as a string. To construct the LdifContent
 #' string, precede each line as it would be formatted in an ldif file with
-#' \n. See the example request below for more details. The file size can be
-#' no larger than 1MB.
+#' \\n. See the example request below for more details. The file size can
+#' be no larger than 1MB.
 #' @param Description &#91;required&#93; A description of the schema extension.
 #'
 #' @return

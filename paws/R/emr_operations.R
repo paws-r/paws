@@ -233,8 +233,8 @@ emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
 #' to connect to the master node and submitting queries directly to the
 #' software running on the master node, such as Hive and Hadoop. For more
 #' information on how to do this, see [Add More than 256 Steps to a
-#' Cluster](https://docs.aws.amazon.com/emr/latest/ManagementGuide/) in the
-#' *Amazon EMR Management Guide*.
+#' Cluster](https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html)
+#' in the *Amazon EMR Management Guide*.
 #' 
 #' A step specifies the location of a JAR file stored either on the master
 #' node of the cluster or in Amazon S3. Each step is performed by the main
@@ -3175,8 +3175,8 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' SSH shell to connect to the master node and submitting queries directly
 #' to the software running on the master node, such as Hive and Hadoop. For
 #' more information on how to do this, see [Add More than 256 Steps to a
-#' Cluster](https://docs.aws.amazon.com/emr/latest/ManagementGuide/) in the
-#' *Amazon EMR Management Guide*.
+#' Cluster](https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html)
+#' in the *Amazon EMR Management Guide*.
 #' 
 #' For long running clusters, we recommend that you periodically store your
 #' results.

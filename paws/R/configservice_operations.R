@@ -3066,8 +3066,8 @@ configservice_get_aggregate_config_rule_compliance_summary <- function(Configura
 #' 
 #' For example, if the input contains accountID 12345678910 and region
 #' us-east-1 in filters, the API returns the count of resources in account
-#' ID 12345678910 and region us-east-1. If the input contains ACCOUNT_ID as
-#' a GroupByKey, the API returns resource counts for all source accounts
+#' ID 12345678910 and region us-east-1. If the input contains ACCOUNT_ID
+#' as a GroupByKey, the API returns resource counts for all source accounts
 #' that are present in your aggregator.
 #'
 #' @usage
@@ -5187,8 +5187,8 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #' `TemplateS3Uri` parameter and ignores the `TemplateBody` parameter.
 #' 
 #' AWS Config sets the state of a conformance pack to CREATE_IN_PROGRESS
-#' and UPDATE_IN_PROGRESS until the conformance pack is created or updated.
-#' You cannot update a conformance pack while it is in this state.
+#' and UPDATE_IN_PROGRESS until the conformance pack is created or
+#' updated. You cannot update a conformance pack while it is in this state.
 #' 
 #' You can create 6 conformance packs with 25 AWS Config rules in each pack
 #' and 3 delegated administrator per organization.

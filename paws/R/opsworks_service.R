@@ -27,9 +27,11 @@ NULL
 #' -   [AWS SDK for
 #'     Java](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html)
 #' 
-#' -   AWS SDK for .NET
+#' -   [AWS SDK for
+#'     .NET](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/Index.html)
 #' 
-#' -   AWS SDK for PHP 2
+#' -   [AWS SDK for PHP
+#'     2](https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.OpsWorks.OpsWorksClient.html)
 #' 
 #' -   [AWS SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/)
 #' 

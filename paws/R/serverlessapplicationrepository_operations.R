@@ -33,7 +33,7 @@ NULL
 #' Pattern: "^\[a-zA-Z0-9+\\\\-_:\\\\/@@\]+$";
 #' @param LicenseBody A local text file that contains the license of the app that matches the
 #' spdxLicenseID value of your application. The file has the format
-#' file://\<path\>/\<filename\>.
+#' file://&lt;path&gt;/&lt;filename&gt;.
 #' 
 #' Maximum size 5 MB
 #' 
@@ -53,7 +53,7 @@ NULL
 #' Pattern: "\[a-zA-Z0-9\\\\-\]+";
 #' @param ReadmeBody A local text readme file in Markdown language that contains a more
 #' detailed description of the application and how it works. The file has
-#' the format file://\<path\>/\<filename\>.
+#' the format file://&lt;path&gt;/&lt;filename&gt;.
 #' 
 #' Maximum size 5 MB
 #' 
@@ -77,7 +77,7 @@ NULL
 #' for example the URL of a specific GitHub commit.
 #' @param SpdxLicenseId A valid identifier from <https://spdx.org/licenses/>.
 #' @param TemplateBody The local raw packaged AWS SAM template file of your application. The
-#' file has the format file://\<path\>/\<filename\>.
+#' file has the format file://&lt;path&gt;/&lt;filename&gt;.
 #' 
 #' You can specify only one of templateBody and templateUrl; otherwise an
 #' error results.
@@ -305,8 +305,9 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' and
 #' [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html).
 #' If the application contains IAM resources, you can specify either
-#' CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains IAM
-#' resources with custom names, you must specify CAPABILITY_NAMED_IAM.
+#' CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains
+#' IAM resources with custom names, you must specify
+#' CAPABILITY_NAMED_IAM.
 #' 
 #' The following resources require you to specify
 #' CAPABILITY_RESOURCE_POLICY:

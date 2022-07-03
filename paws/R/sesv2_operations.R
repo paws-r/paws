@@ -289,8 +289,8 @@ sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' 
 #' For more information about custom verification email templates, see
 #' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
-#' SES Developer Guide*.
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+#' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -306,7 +306,7 @@ sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' email must be less than 10 MB. The message body may contain HTML, with
 #' some limitations. For more information, see [Custom Verification Email
 #' Frequently Asked
-#' Questions](https://docs.aws.amazon.com/ses/latest/dg/#custom-verification-emails-faq)
+#' Questions](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html#custom-verification-emails-faq)
 #' in the *Amazon SES Developer Guide*.
 #' @param SuccessRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
 #' or her address is successfully verified.
@@ -516,7 +516,7 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #' configuration for your domain. Your domain is verified when Amazon SES
 #' detects these records in the DNS configuration for your domain. This
 #' verification method is known as [Easy
-#' DKIM](https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html).
+#' DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html).
 #' 
 #' Alternatively, you can perform the verification process by providing
 #' your own public-private key pair. This verification method is known as
@@ -536,7 +536,7 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #' @param DkimSigningAttributes If your request includes this object, Amazon SES configures the identity
 #' to use Bring Your Own DKIM (BYODKIM) for DKIM authentication purposes,
 #' as opposed to the default method, [Easy
-#' DKIM](https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html).
+#' DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html).
 #' 
 #' You can only specify this object if the email identity is a domain, as
 #' opposed to an address.
@@ -608,7 +608,7 @@ sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningA
 #' Sending authorization is a feature that enables an identity owner to
 #' authorize other senders to use its identities. For information about
 #' using sending authorization, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -624,7 +624,7 @@ sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningA
 #' 
 #' For information about the syntax of sending authorization policies, see
 #' the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization-policies.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
 #'
 #' @return
 #' An empty list.
@@ -664,7 +664,7 @@ sesv2_create_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
 #' Creates an email template. Email templates enable you to send
 #' personalized email to one or more destinations in a single API
 #' operation. For more information, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -1090,7 +1090,7 @@ sesv2_delete_email_identity <- function(EmailIdentity) {
 #' Sending authorization is a feature that enables an identity owner to
 #' authorize other senders to use its identities. For information about
 #' using sending authorization, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -1655,8 +1655,8 @@ sesv2_get_contact_list <- function(ContactListName) {
 #' 
 #' For more information about custom verification email templates, see
 #' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
-#' SES Developer Guide*.
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+#' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -2247,7 +2247,7 @@ sesv2_get_email_identity <- function(EmailIdentity) {
 #' Sending authorization is a feature that enables an identity owner to
 #' authorize other senders to use its identities. For information about
 #' using sending authorization, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -2695,8 +2695,8 @@ sesv2_list_contacts <- function(ContactListName, Filter = NULL, PageSize = NULL,
 #' 
 #' For more information about custom verification email templates, see
 #' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
-#' SES Developer Guide*.
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+#' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -4036,7 +4036,7 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
 #' There are two possible values:
 #' 
 #' -   `AWS_SES` – Configure DKIM for the identity by using [Easy
-#'     DKIM](https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html).
+#'     DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html).
 #' 
 #' -   `EXTERNAL` – Configure DKIM for the identity by using Bring Your Own
 #'     DKIM (BYODKIM).
@@ -4289,7 +4289,7 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' @param ReplyToAddresses The "Reply-to" email addresses for the message. When the recipient
 #' replies to the message, each Reply-to address receives the reply.
 #' @param FeedbackForwardingEmailAddress The address that you want bounce and complaint notifications to be sent
@@ -4308,7 +4308,7 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' @param DefaultEmailTags A list of tags, in the form of name/value pairs, to apply to an email
 #' that you send using the [`send_email`][sesv2_send_email] operation. Tags
 #' correspond to characteristics of the email that you define, so that you
@@ -4418,8 +4418,8 @@ sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdent
 #' To use this operation, you must first create a custom verification email
 #' template. For more information about creating and using custom
 #' verification email templates, see [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
-#' SES Developer Guide*.
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+#' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -4511,7 +4511,7 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' 
 #' For Raw emails, the `FromEmailAddressIdentityArn` value overrides the
 #' X-SES-SOURCE-ARN and X-SES-FROM-ARN headers specified in raw email
@@ -4535,7 +4535,7 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' @param Content &#91;required&#93; An object that contains the body of the message. You can send either a
 #' Simple message Raw message or a template Message.
 #' @param EmailTags A list of tags, in the form of name/value pairs, to apply to an email
@@ -4996,8 +4996,8 @@ sesv2_update_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' 
 #' For more information about custom verification email templates, see
 #' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
-#' SES Developer Guide*.
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+#' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -5014,7 +5014,7 @@ sesv2_update_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' email must be less than 10 MB. The message body may contain HTML, with
 #' some limitations. For more information, see [Custom Verification Email
 #' Frequently Asked
-#' Questions](https://docs.aws.amazon.com/ses/latest/dg/#custom-verification-emails-faq)
+#' Questions](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html#custom-verification-emails-faq)
 #' in the *Amazon SES Developer Guide*.
 #' @param SuccessRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
 #' or her address is successfully verified.
@@ -5070,7 +5070,7 @@ sesv2_update_custom_verification_email_template <- function(TemplateName, FromEm
 #' Sending authorization is a feature that enables an identity owner to
 #' authorize other senders to use its identities. For information about
 #' using sending authorization, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -5086,7 +5086,7 @@ sesv2_update_custom_verification_email_template <- function(TemplateName, FromEm
 #' 
 #' For information about the syntax of sending authorization policies, see
 #' the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization-policies.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
 #'
 #' @return
 #' An empty list.
@@ -5126,7 +5126,7 @@ sesv2_update_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
 #' Updates an email template. Email templates enable you to send
 #' personalized email to one or more destinations in a single API
 #' operation. For more information, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
 #' 
 #' You can execute this operation no more than once per second.
 #'

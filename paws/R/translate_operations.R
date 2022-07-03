@@ -932,7 +932,7 @@ translate_stop_text_translation_job <- function(JobId) {
 #' To have Amazon Translate determine the source language of your text, you
 #' can specify `auto` in the `SourceLanguageCode` field. If you specify
 #' `auto`, Amazon Translate will call [Amazon
-#' Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html)
+#' Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html)
 #' to determine the source language.
 #' @param TargetLanguageCode &#91;required&#93; The language code requested for the language of the target text. The
 #' language must be a language supported by Amazon Translate.

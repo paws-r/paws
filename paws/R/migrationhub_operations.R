@@ -503,7 +503,7 @@ migrationhub_disassociate_discovered_resource <- function(ProgressUpdateStream, 
 #' migrationhub_import_migration_task(ProgressUpdateStream,
 #'   MigrationTaskName, DryRun)
 #'
-#' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream. \>
+#' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream. &gt;
 #' @param MigrationTaskName &#91;required&#93; Unique identifier that references the migration task. *Do not store
 #' personal data in this field.*
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.

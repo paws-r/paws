@@ -569,9 +569,9 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #' Amazon Simple Storage Service (Amazon S3) bucket. The forecast file name
 #' will match the following conventions:
 #' 
-#' \<ForecastExportJobName\>_\<ExportTimestamp\>_\<PartNumber\>
+#' &lt;ForecastExportJobName&gt;_&lt;ExportTimestamp&gt;_&lt;PartNumber&gt;
 #' 
-#' where the \<ExportTimestamp\> component is in Java SimpleDateFormat
+#' where the &lt;ExportTimestamp&gt; component is in Java SimpleDateFormat
 #' (yyyy-MM-ddTHH-mm-ssZ).
 #' 
 #' You must specify a DataDestination object that includes an AWS Identity
@@ -989,7 +989,7 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 #' 
 #' `<ExportJobName>_<ExportTimestamp>_<PartNumber>.csv`
 #' 
-#' The \<ExportTimestamp\> component is in Java SimpleDate format
+#' The &lt;ExportTimestamp&gt; component is in Java SimpleDate format
 #' (yyyy-MM-ddTHH-mm-ssZ).
 #' 
 #' You must specify a DataDestination object that includes an Amazon S3

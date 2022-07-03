@@ -2698,21 +2698,21 @@ route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
 #'
 #' @param Type &#91;required&#93; The limit that you want to get. Valid values include the following:
 #' 
-#' -   **MAX_HEALTH_CHECKS_BY_OWNER**: The maximum number of health checks
-#'     that you can create using the current account.
+#' -   **MAX_HEALTH_CHECKS_BY_OWNER**: The maximum number of health
+#'     checks that you can create using the current account.
 #' 
-#' -   **MAX_HOSTED_ZONES_BY_OWNER**: The maximum number of hosted zones
-#'     that you can create using the current account.
+#' -   **MAX_HOSTED_ZONES_BY_OWNER**: The maximum number of hosted
+#'     zones that you can create using the current account.
 #' 
-#' -   **MAX_REUSABLE_DELEGATION_SETS_BY_OWNER**: The maximum number of
-#'     reusable delegation sets that you can create using the current
+#' -   **MAX_REUSABLE_DELEGATION_SETS_BY_OWNER**: The maximum number
+#'     of reusable delegation sets that you can create using the current
 #'     account.
 #' 
 #' -   **MAX_TRAFFIC_POLICIES_BY_OWNER**: The maximum number of traffic
 #'     policies that you can create using the current account.
 #' 
-#' -   **MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER**: The maximum number of
-#'     traffic policy instances that you can create using the current
+#' -   **MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER**: The maximum number
+#'     of traffic policy instances that you can create using the current
 #'     account. (Traffic policy instances are referred to as traffic flow
 #'     policy records in the Amazon Route 53 console.)
 #'
@@ -3451,11 +3451,11 @@ route53_get_hosted_zone_count <- function() {
 #'
 #' @param Type &#91;required&#93; The limit that you want to get. Valid values include the following:
 #' 
-#' -   **MAX_RRSETS_BY_ZONE**: The maximum number of records that you can
-#'     create in the specified hosted zone.
+#' -   **MAX_RRSETS_BY_ZONE**: The maximum number of records that you
+#'     can create in the specified hosted zone.
 #' 
-#' -   **MAX_VPCS_ASSOCIATED_BY_ZONE**: The maximum number of Amazon VPCs
-#'     that you can associate with the specified private hosted zone.
+#' -   **MAX_VPCS_ASSOCIATED_BY_ZONE**: The maximum number of Amazon
+#'     VPCs that you can associate with the specified private hosted zone.
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that you want to get a limit for.
 #'
 #' @return
@@ -4160,7 +4160,7 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name]
 #' alphabetizes the domain name using the escaped or Punycoded value, which
 #' is the format that Amazon Route 53 saves in its database. For example,
-#' to create a hosted zone for exämple.com, you specify ex\344mple.com for
+#' to create a hosted zone for exämple.com, you specify ex\\344mple.com for
 #' the domain name.
 #' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name]
 #' alphabetizes it as:

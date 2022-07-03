@@ -1275,7 +1275,8 @@ locationservice_get_device_position <- function(DeviceId, TrackerName) {
 #'   NextToken, StartTimeInclusive, TrackerName)
 #'
 #' @param DeviceId &#91;required&#93; The device whose position history you want to retrieve.
-#' @param EndTimeExclusive Specify the end time for the position history in ISO 8601 format:
+#' @param EndTimeExclusive Specify the end time for the position history in [ISO
+#' 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format:
 #' `YYYY-MM-DDThh:mm:ss.sssZ`.
 #' 
 #' -   The given time for `EndTimeExclusive` must be after the time for
@@ -1284,7 +1285,8 @@ locationservice_get_device_position <- function(DeviceId, TrackerName) {
 #' response. If no token is provided, the default page is the first page.
 #' 
 #' Default value: `null`
-#' @param StartTimeInclusive Specify the start time for the position history in ISO 8601 format:
+#' @param StartTimeInclusive Specify the start time for the position history in [ISO
+#' 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format:
 #' `YYYY-MM-DDThh:mm:ss.sssZ`.
 #' 
 #' -   The given time for `EndTimeExclusive` must be after the time for
@@ -2255,8 +2257,9 @@ locationservice_search_place_index_for_position <- function(IndexName, MaxResult
 #' @param FilterCountries Limits the search to the given a list of countries/regions. An optional
 #' parameter.
 #' 
-#' -   Use the ISO 3166 3-digit country code. For example, Australia uses
-#'     three upper-case characters: `AUS`.
+#' -   Use the [ISO 3166](https://www.iso.org/iso-3166-country-codes.html)
+#'     3-digit country code. For example, Australia uses three upper-case
+#'     characters: `AUS`.
 #' @param IndexName &#91;required&#93; The name of the Place index resource you want to use for the search.
 #' @param MaxResults An optional parameter. The maximum number of results returned per
 #' request.

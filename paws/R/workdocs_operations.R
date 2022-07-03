@@ -482,7 +482,7 @@ workdocs_create_labels <- function(ResourceId, Labels, AuthenticationToken = NUL
 #' receives a confirmation message, and must confirm the subscription.
 #' 
 #' For more information, see [Subscribe to
-#' Notifications](https://docs.aws.amazon.com/workdocs/latest/developerguide/)
+#' Notifications](https://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html)
 #' in the *Amazon WorkDocs Developer Guide*.
 #'
 #' @usage

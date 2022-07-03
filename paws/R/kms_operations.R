@@ -839,7 +839,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' `SYMMETRIC_DEFAULT`, creates a CMK with a 256-bit symmetric key for
 #' encryption and decryption. For help choosing a key spec for your CMK,
 #' see [How to Choose Your CMK
-#' Configuration](https://docs.aws.amazon.com/kms/latest/developerguide/)
+#' Configuration](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html)
 #' in the *AWS Key Management Service Developer Guide*.
 #' 
 #' The `CustomerMasterKeySpec` determines whether the CMK contains a
@@ -4716,7 +4716,7 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' [`encrypt`][kms_encrypt] or
 #' [`generate_data_key`][kms_generate_data_key]. It can also decrypt
 #' ciphertext that was encrypted by using the public key of an [asymmetric
-#' CMK](https://docs.aws.amazon.com/kms/latest/developerguide/#asymmetric-cmks)
+#' CMK](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-concepts.html#asymmetric-cmks)
 #' outside of AWS KMS. However, it cannot decrypt ciphertext produced by
 #' other libraries, such as the [AWS Encryption
 #' SDK](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/)

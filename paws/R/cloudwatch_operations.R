@@ -344,12 +344,12 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
 #' parameters in the request except for `MaxRecords` and `NextToken`. If
 #' you do so, you receive a validation error.
 #' 
-#' Only the `Alarm Name`, `ARN`, `StateValue` (OK/ALARM/INSUFFICIENT_DATA),
-#' and `StateUpdatedTimestamp` information are returned by this operation
-#' when you use this parameter. To get complete information about these
-#' alarms, perform another [`describe_alarms`][cloudwatch_describe_alarms]
-#' operation and specify the parent alarm names in the `AlarmNames`
-#' parameter.
+#' Only the `Alarm Name`, `ARN`, `StateValue`
+#' (OK/ALARM/INSUFFICIENT_DATA), and `StateUpdatedTimestamp` information
+#' are returned by this operation when you use this parameter. To get
+#' complete information about these alarms, perform another
+#' [`describe_alarms`][cloudwatch_describe_alarms] operation and specify
+#' the parent alarm names in the `AlarmNames` parameter.
 #' @param ParentsOfAlarmName If you use this parameter and specify the name of a metric or composite
 #' alarm, the operation returns information about the "parent" alarms of
 #' the alarm you specify. These are the composite alarms that have

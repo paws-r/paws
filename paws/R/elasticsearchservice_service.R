@@ -12,16 +12,15 @@ NULL
 #' 
 #' For sample code that uses the Configuration API, see the [Amazon
 #' Elasticsearch Service Developer
-#' Guide](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/configuration-samples.html).
+#' Guide](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-configuration-samples.html).
 #' The guide also contains [sample code for sending signed HTTP requests to
 #' the Elasticsearch
-#' APIs](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/request-signing.html).
+#' APIs](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html).
 #' 
 #' The endpoint for configuration service requests is region-specific:
 #' es.*region*.amazonaws.com. For example, es.us-east-1.amazonaws.com. For
-#' a current list of supported regions and endpoints, see <a
-#' href="https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions"
-#' target="_blank">Regions and Endpoints</a>.
+#' a current list of supported regions and endpoints, see [Regions and
+#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions).
 #'
 #' @param
 #' config

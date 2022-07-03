@@ -304,17 +304,17 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' 
 #' -   `CHEF_AUTOMATE_PIVOTAL_KEY`: A base64-encoded RSA public key. The
 #'     corresponding private key is required to access the Chef API. When
-#'     no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
-#'     returned in the response.
+#'     no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated
+#'     and returned in the response.
 #' 
 #' -   `CHEF_AUTOMATE_ADMIN_PASSWORD`: The password for the administrative
 #'     user in the Chef Automate web-based dashboard. The password length
 #'     is a minimum of eight characters, and a maximum of 32. The password
-#'     can contain letters, numbers, and special characters (!/@@#$%^&+=_).
-#'     The password must contain at least one lower case letter, one upper
-#'     case letter, one number, and one special character. When no
-#'     CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is generated and returned
-#'     in the response.
+#'     can contain letters, numbers, and special characters
+#'     (!/@@\#$%^&+=_). The password must contain at least one lower case
+#'     letter, one upper case letter, one number, and one special
+#'     character. When no CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is
+#'     generated and returned in the response.
 #' 
 #' **Attributes accepted in a Puppet createServer request:**
 #' 

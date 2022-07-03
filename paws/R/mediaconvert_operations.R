@@ -9788,8 +9788,8 @@ mediaconvert_get_queue <- function(Name) {
 #' @param Category Optionally, specify a job template category to limit responses to only
 #' job templates from that category.
 #' @param ListBy Optional. When you request a list of job templates, you can choose to
-#' list them alphabetically by NAME or chronologically by CREATION_DATE. If
-#' you don't specify, the service will list them by name.
+#' list them alphabetically by NAME or chronologically by CREATION_DATE.
+#' If you don't specify, the service will list them by name.
 #' @param MaxResults Optional. Number of job templates, up to twenty, that will be returned
 #' at one time.
 #' @param NextToken Use this string, provided with the response to a previous request, to
@@ -12980,8 +12980,8 @@ mediaconvert_list_presets <- function(Category = NULL, ListBy = NULL, MaxResults
 #' mediaconvert_list_queues(ListBy, MaxResults, NextToken, Order)
 #'
 #' @param ListBy Optional. When you request a list of queues, you can choose to list them
-#' alphabetically by NAME or chronologically by CREATION_DATE. If you don't
-#' specify, the service will list them by creation date.
+#' alphabetically by NAME or chronologically by CREATION_DATE. If you
+#' don't specify, the service will list them by creation date.
 #' @param MaxResults Optional. Number of queues, up to twenty, that will be returned at one
 #' time.
 #' @param NextToken Use this string, provided with the response to a previous request, to
