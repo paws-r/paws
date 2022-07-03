@@ -12,8 +12,8 @@ NULL
 #' types, inputs and outputs, and error codes. It also includes some
 #' server-side API actions to use with the Amazon Chime SDK. For more
 #' information about the Amazon Chime SDK, see [Using the Amazon Chime
-#' SDK](https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html)
-#' in the *Amazon Chime Developer Guide*.
+#' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
+#' the *Amazon Chime Developer Guide*.
 #' 
 #' You can use an AWS SDK, the AWS Command Line Interface (AWS CLI), or the
 #' REST API to make API calls. We recommend using an AWS SDK or the AWS
@@ -31,7 +31,7 @@ NULL
 #' 
 #' Use your access keys with the AWS CLI to make API calls. For information
 #' about setting up the AWS CLI, see [Installing the AWS Command Line
-#' Interface](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
+#' Interface](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 #' in the *AWS Command Line Interface User Guide*. For a list of available
 #' Amazon Chime commands, see the [Amazon Chime
 #' commands](https://docs.aws.amazon.com/cli/latest/reference/chime/index.html)

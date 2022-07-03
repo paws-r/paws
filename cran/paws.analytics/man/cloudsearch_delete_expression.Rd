@@ -35,10 +35,8 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Removes an \code{Expression} from the search domain. For more information,
-see <a
-href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html"
-target="_blank">Configuring Expressions</a> in the \emph{Amazon CloudSearch
-Developer Guide}.
+see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html}{Configuring Expressions}
+in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_expression(

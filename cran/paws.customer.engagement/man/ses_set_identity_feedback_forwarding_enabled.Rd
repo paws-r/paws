@@ -36,7 +36,7 @@ notifications are only available through Amazon SNS.
 You can execute this operation no more than once per second.
 
 For more information about using notifications with Amazon SES, see the
-\href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Amazon SES Developer Guide}.
+\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$set_identity_feedback_forwarding_enabled(

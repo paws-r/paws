@@ -60,7 +60,7 @@ or \code{SIGN_VERIFY}.
 \item{CustomerMasterKeySpec}{Specifies the type of CMK to create. The default value,
 \code{SYMMETRIC_DEFAULT}, creates a CMK with a 256-bit symmetric key for
 encryption and decryption. For help choosing a key spec for your CMK,
-see \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{How to Choose Your CMK Configuration}
+see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html}{How to Choose Your CMK Configuration}
 in the \emph{AWS Key Management Service Developer Guide}.
 
 The \code{CustomerMasterKeySpec} determines whether the CMK contains a

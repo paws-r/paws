@@ -15,9 +15,9 @@ An empty list.
 \description{
 Deletes a previously created document classifier
 
-Only those classifiers that are in terminated states (IN_ERROR, TRAINED)
-will be deleted. If an active inference job is using the model, a
-\code{ResourceInUseException} will be returned.
+Only those classifiers that are in terminated states (IN_ERROR,
+TRAINED) will be deleted. If an active inference job is using the model,
+a \code{ResourceInUseException} will be returned.
 
 This is an asynchronous action that puts the classifier into a DELETING
 state, and it is then removed by a background job. Once removed, the

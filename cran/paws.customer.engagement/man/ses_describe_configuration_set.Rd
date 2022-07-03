@@ -60,7 +60,7 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Returns the details of the specified configuration set. For information
-about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html}{Amazon SES Developer Guide}.
+about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

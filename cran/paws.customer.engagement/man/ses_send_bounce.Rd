@@ -29,7 +29,7 @@ list.}
 \item{BounceSenderArn}{This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
 that permits you to use the address in the "From" header of the bounce.
-For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.}
+For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
 }
 \value{
 A list with the following syntax:\preformatted{list(
@@ -46,7 +46,7 @@ You cannot use this API to send generic bounces for mail that was not
 received by Amazon SES.
 
 For information about receiving email through Amazon SES, see the
-\href{https://docs.aws.amazon.com/ses/latest/dg/receiving-email.html}{Amazon SES Developer Guide}.
+\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

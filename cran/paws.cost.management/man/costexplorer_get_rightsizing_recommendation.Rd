@@ -149,7 +149,7 @@ underutilized Amazon EC2 instances.
 
 Recommendations are generated to either downsize or terminate instances,
 along with providing savings detail and metrics. For details on
-calculation and function, see \href{https://docs.aws.amazon.com/cost-management/latest/userguide/ce-rightsizing.html}{Optimizing Your Cost with Rightsizing Recommendations}
+calculation and function, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-rightsizing.html}{Optimizing Your Cost with Rightsizing Recommendations}
 in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{

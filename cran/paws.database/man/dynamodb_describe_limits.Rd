@@ -26,7 +26,7 @@ When you establish an AWS account, the account has initial quotas on the
 maximum read capacity units and write capacity units that you can
 provision across all of your DynamoDB tables in a given Region. Also,
 there are per-table quotas that apply when you create a table there. For
-more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ServiceQuotas.html}{Service, Account, and Table Quotas}
+more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html}{Service, Account, and Table Quotas}
 page in the \emph{Amazon DynamoDB Developer Guide}.
 
 Although you can increase these quotas by filing a case at AWS Support

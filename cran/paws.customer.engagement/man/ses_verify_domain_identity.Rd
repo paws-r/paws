@@ -19,7 +19,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Adds a domain to the list of identities for your Amazon SES account in
 the current AWS Region and attempts to verify it. For more information
-about verifying domains, see \href{https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html}{Verifying Email Addresses and Domains}
+about verifying domains, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Verifying Email Addresses and Domains}
 in the \emph{Amazon SES Developer Guide.}
 
 You can execute this operation no more than once per second.

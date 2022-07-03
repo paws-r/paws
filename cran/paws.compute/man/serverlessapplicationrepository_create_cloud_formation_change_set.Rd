@@ -30,8 +30,9 @@ CAPABILITY_NAMED_IAM:
 and
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}.
 If the application contains IAM resources, you can specify either
-CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains IAM
-resources with custom names, you must specify CAPABILITY_NAMED_IAM.
+CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains
+IAM resources with custom names, you must specify
+CAPABILITY_NAMED_IAM.
 
 The following resources require you to specify
 CAPABILITY_RESOURCE_POLICY:

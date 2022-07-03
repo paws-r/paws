@@ -26,9 +26,9 @@ other special characters are allowed.
 are considered duplicates.)
 }
 
-For example, \{"temp_01": 29\} or \{"_temp_01": 29\} are valid, but
-\{"temp-01": 29\}, \{"01_temp": 29\} or \{"__temp_01": 29\} are
-invalid in message payloads.}
+For example, \{"temp_01": 29\} or \{"_temp_01": 29\} are valid,
+but \{"temp-01": 29\}, \{"01_temp": 29\} or \{"__temp_01":
+29\} are invalid in message payloads.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

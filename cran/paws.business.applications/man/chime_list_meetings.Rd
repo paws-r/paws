@@ -35,8 +35,8 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Lists up to 100 active Amazon Chime SDK meetings. For more information
-about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK}
-in the \emph{Amazon Chime Developer Guide}.
+about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in
+the \emph{Amazon Chime Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_meetings(

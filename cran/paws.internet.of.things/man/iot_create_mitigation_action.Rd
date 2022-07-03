@@ -28,8 +28,8 @@ A list with the following syntax:\preformatted{list(
 Defines an action that can be applied to audit findings by using
 StartAuditMitigationActionsTask. Only certain types of mitigation
 actions can be applied to specific check names. For more information,
-see \href{https://docs.aws.amazon.com/iot/latest/developerguide/dd-mitigation-actions.html}{Mitigation actions}.
-Each mitigation action can apply only one type of change.
+see \href{https://docs.aws.amazon.com/iot/latest/developerguide/}{Mitigation actions}. Each
+mitigation action can apply only one type of change.
 }
 \section{Request syntax}{
 \preformatted{svc$create_mitigation_action(

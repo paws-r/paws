@@ -39,8 +39,8 @@ met:
 \item The job must have been created with the \code{targetSelection} field set
 to "CONTINUOUS".
 \item The job status must currently be "IN_PROGRESS".
-\item The total number of targets associated with a job must not exceed
-100.
+\item The total number of targets associated with a job must not
+exceed 100.
 }
 }
 \section{Request syntax}{

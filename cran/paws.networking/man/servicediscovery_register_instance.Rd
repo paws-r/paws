@@ -18,7 +18,7 @@ following:
 \item If the service that is specified by \code{ServiceId} includes settings
 for an \code{SRV} record, the value of \code{InstanceId} is automatically
 included as part of the value for the \code{SRV} record. For more
-information, see \href{https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html#cloudmap-Type-DnsRecord-Type}{DnsRecord \> Type}.
+information, see \href{https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html#cloudmap-Type-DnsRecord-Type}{DnsRecord > Type}.
 \item You can use this value to update an existing instance.
 \item To register a new instance, you must specify a value that is unique
 among instances that you register by using the same service.

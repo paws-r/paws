@@ -52,10 +52,9 @@ defines language-specific text processing options for a \code{text} field.
 Can be limited to specific analysis schemes by name. By default, shows
 all analysis schemes and includes any pending changes to the
 configuration. Set the \code{Deployed} option to \code{true} to show the active
-configuration and exclude pending changes. For more information, see <a
-href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html"
-target="_blank">Configuring Analysis Schemes</a> in the \emph{Amazon
-CloudSearch Developer Guide}.
+configuration and exclude pending changes. For more information, see
+\href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html}{Configuring Analysis Schemes}
+in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_analysis_schemes(

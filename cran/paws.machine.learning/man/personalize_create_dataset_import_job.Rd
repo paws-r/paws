@@ -38,7 +38,8 @@ The dataset import job replaces any previous data in the dataset.
 
 A dataset import job can be in one of the following states:
 \itemize{
-\item CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
+FAILED
 }
 
 To get the status of the import job, call

@@ -26,7 +26,7 @@ Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS).
 
 An event destination is the AWS service to which Amazon SES publishes
 the email sending events associated with a configuration set. For
-information about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html}{Amazon SES Developer Guide}.
+information about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

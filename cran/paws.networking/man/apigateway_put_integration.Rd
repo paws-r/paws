@@ -25,12 +25,11 @@ HTTP or AWS, this field is required.}
 \item{uri}{Specifies Uniform Resource Identifier (URI) of the integration endpoint.
 \itemize{
 \item For \code{HTTP} or \code{HTTP_PROXY} integrations, the URI must be a fully
-formed, encoded HTTP(S) URL according to the
-<a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier"
-target="_blank">RFC-3986 specification</a>, for either standard
-integration, where \code{connectionType} is not \code{VPC_LINK}, or private
-integration, where \code{connectionType} is \code{VPC_LINK}. For a private
-HTTP integration, the URI is not used for routing.
+formed, encoded HTTP(S) URL according to the \href{https://en.wikipedia.org/wiki/Uniform_Resource_Identifier}{RFC-3986 specification},
+for either standard integration, where \code{connectionType} is not
+\code{VPC_LINK}, or private integration, where \code{connectionType} is
+\code{VPC_LINK}. For a private HTTP integration, the URI is not used for
+routing.
 \item For \code{AWS} or \code{AWS_PROXY} integrations, the URI is of the form
 \code{arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}}.
 Here, \code{{Region}} is the API Gateway region (e.g., \code{us-east-1});
@@ -55,7 +54,7 @@ internet or \code{VPC_LINK} for private connections between API Gateway and a
 network load balancer in a VPC. The default value is \code{INTERNET}.}
 
 \item{connectionId}{The
-(\href{https://docs.aws.amazon.com/apigateway/latest/api/API_Operations.html#id}{\code{id}})
+(\href{https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id}{\code{id}})
 of the VpcLink used for the integration when \code{connectionType=VPC_LINK}
 and undefined, otherwise.}
 

@@ -26,7 +26,7 @@ specify \code{LaunchTemplate} in your update request, you can't specify
 
 \item{MixedInstancesPolicy}{An embedded object that specifies a mixed instances policy. When you
 make changes to an existing policy, all optional parameters are left
-unchanged if not specified. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups.html}{Auto Scaling groups with multiple instance types and purchase options}
+unchanged if not specified. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html}{Auto Scaling groups with multiple instance types and purchase options}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MinSize}{The minimum size of the Auto Scaling group.}
@@ -49,7 +49,7 @@ group and less than or equal to the maximum size of the group.}
 before another scaling activity can start. The default value is \code{300}.
 This setting applies when using simple scaling policies, but not when
 using other scaling policies or scheduled scaling. For more information,
-see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-cooldowns.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{AvailabilityZones}{One or more Availability Zones for the group.}
@@ -61,7 +61,7 @@ checks or the load balancer health checks.}
 
 \item{HealthCheckGracePeriod}{The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
 before checking the health status of an EC2 instance that has come into
-service. The default value is \code{0}. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html#health-check-grace-period}{Health check grace period}
+service. The default value is \code{0}. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html#health-check-grace-period}{Health check grace period}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 Conditional: Required if you are adding an \code{ELB} health check.}
@@ -102,7 +102,7 @@ see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{CapacityRebalance}{Enables or disables Capacity Rebalancing. For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-capacity-rebalancing.html}{Amazon EC2 Auto Scaling Capacity Rebalancing}
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/capacity-rebalance.html}{Amazon EC2 Auto Scaling Capacity Rebalancing}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \value{

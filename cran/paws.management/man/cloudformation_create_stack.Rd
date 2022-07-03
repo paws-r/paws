@@ -49,8 +49,8 @@ creation and updating operations, and for the specified monitoring
 period afterwards.}
 
 \item{TimeoutInMinutes}{The amount of time that can pass before the stack status becomes
-CREATE_FAILED; if \code{DisableRollback} is not set or is set to \code{false}, the
-stack will be rolled back.}
+CREATE_FAILED; if \code{DisableRollback} is not set or is set to \code{false},
+the stack will be rolled back.}
 
 \item{NotificationARNs}{The Simple Notification Service (SNS) topic ARNs to publish stack
 related events. You can find your SNS topic ARNs using the SNS console

@@ -37,10 +37,8 @@ Gets information about the access policies that control access to the
 domain's document and search endpoints. By default, shows the
 configuration with any pending changes. Set the \code{Deployed} option to
 \code{true} to show the active configuration and exclude pending changes. For
-more information, see <a
-href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html"
-target="_blank">Configuring Access for a Search Domain</a> in the
-\emph{Amazon CloudSearch Developer Guide}.
+more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html}{Configuring Access for a Search Domain}
+in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_service_access_policies(

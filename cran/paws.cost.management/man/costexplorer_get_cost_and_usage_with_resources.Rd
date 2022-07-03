@@ -121,7 +121,7 @@ the Amazon Elastic Compute Cloud – Compute service only.
 
 This is an opt-in only feature. You can enable this feature from the
 Cost Explorer Settings page. For information on how to access the
-Settings page, see \href{https://docs.aws.amazon.com/cost-management/latest/userguide/ce-access.html}{Controlling Access for Cost Explorer}
+Settings page, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-access.html}{Controlling Access for Cost Explorer}
 in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{

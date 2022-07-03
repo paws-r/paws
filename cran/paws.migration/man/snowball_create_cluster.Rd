@@ -153,7 +153,7 @@ svc$create_cluster(
         BucketArn = "arn:aws:s3:::MyBucket",
         KeyRange = structure(
           list(),
-          names = character(
+          .Names = character(
             0
           )
         )

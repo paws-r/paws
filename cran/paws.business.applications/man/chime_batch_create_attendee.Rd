@@ -32,8 +32,8 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Creates up to 100 new attendees for an active Amazon Chime SDK meeting.
-For more information about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK}
-in the \emph{Amazon Chime Developer Guide}.
+For more information about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in
+the \emph{Amazon Chime Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_create_attendee(

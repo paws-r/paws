@@ -55,8 +55,9 @@ Describes the given campaign, including its status.
 
 A campaign can be in one of the following states:
 \itemize{
-\item CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
-\item DELETE PENDING \> DELETE IN_PROGRESS
+\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
+FAILED
+\item DELETE PENDING > DELETE IN_PROGRESS
 }
 
 When the \code{status} is \verb{CREATE FAILED}, the response includes the

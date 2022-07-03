@@ -164,7 +164,7 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' `DataSource` status to `PENDING`. After the `DataSource` is created and
 #' ready for use, Amazon ML sets the `Status` parameter to `COMPLETED`.
 #' `DataSource` in the `COMPLETED` or `PENDING` state can be used only to
-#' perform `>CreateMLModel`\>,
+#' perform `>CreateMLModel`&gt;,
 #' [`create_evaluation`][machinelearning_create_evaluation], or
 #' [`create_batch_prediction`][machinelearning_create_batch_prediction]
 #' operations.

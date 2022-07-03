@@ -95,7 +95,8 @@ Valid properties: PRODUCT, PRIORITY
 
 \subsection{WINDOWS}{
 
-Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY
+Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION,
+MSRC_SEVERITY
 }
 }
 \section{Request syntax}{

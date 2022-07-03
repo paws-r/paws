@@ -61,7 +61,7 @@ cooldown period is specified here, it overrides the default cooldown
 period defined for the Auto Scaling group.
 
 Valid only if the policy type is \code{SimpleScaling}. For more information,
-see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-cooldowns.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MetricAggregationType}{The aggregation type for the CloudWatch metrics. The valid values are

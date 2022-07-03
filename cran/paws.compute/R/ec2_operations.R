@@ -1776,7 +1776,7 @@ ec2_associate_transit_gateway_route_table <- function(TransitGatewayRouteTableId
 #' 
 #' For more information about associating CIDR blocks with your VPC and
 #' applicable restrictions, see [VPC and Subnet
-#' Sizing](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html#VPC_Sizing)
+#' Sizing](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#VPC_Sizing)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @usage
@@ -5644,7 +5644,7 @@ ec2_create_internet_gateway <- function(TagSpecifications = NULL, DryRun = NULL)
 #' @description
 #' Creates a 2048-bit RSA key pair with the specified name. Amazon EC2
 #' stores the public key and displays the private key for you to save to a
-#' file. The private key is returned as an unencrypted PEM encoded PKCS#1
+#' file. The private key is returned as an unencrypted PEM encoded PKCS\#1
 #' private key. If a key with the specified name already exists, Amazon EC2
 #' returns an error.
 #' 
@@ -7937,7 +7937,7 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 #' Constraints for EC2-Classic: ASCII characters
 #' 
 #' Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-#' ._-:/()#,@@\[\]+=&;\{\}!$*
+#' ._-:/()\#,@@\[\]+=&;\{\}!$*
 #' @param GroupName &#91;required&#93; The name of the security group.
 #' 
 #' Constraints: Up to 255 characters in length. Cannot start with `sg-`.
@@ -7945,7 +7945,7 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 #' Constraints for EC2-Classic: ASCII characters
 #' 
 #' Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-#' ._-:/()#,@@\[\]+=&;\{\}!$*
+#' ._-:/()\#,@@\[\]+=&;\{\}!$*
 #' @param VpcId \[EC2-VPC\] The ID of the VPC. Required for EC2-VPC.
 #' @param TagSpecifications The tags to assign to the security group.
 #' @param DryRun Checks whether you have the required permissions for the action, without
@@ -8349,7 +8349,7 @@ ec2_create_spot_datafeed_subscription <- function(Bucket, DryRun = NULL, Prefix 
 #' available.
 #' 
 #' For more information about subnets, see [Your VPC and
-#' Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html)
+#' Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @usage
@@ -10165,7 +10165,7 @@ ec2_create_volume <- function(AvailabilityZone, Encrypted = NULL, Iops = NULL, K
 #' can create uses a /28 netmask (16 IPv4 addresses), and the largest uses
 #' a /16 netmask (65,536 IPv4 addresses). For more information about how
 #' large to make your VPC, see [Your VPC and
-#' Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html)
+#' Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #' 
 #' You can optionally request an IPv6 CIDR block for the VPC. You can
@@ -10329,7 +10329,7 @@ ec2_create_vpc <- function(CidrBlock, AmazonProvidedIpv6CidrBlock = NULL, Ipv6Po
 #' to create a private connection between your VPC and the service. The
 #' service may be provided by AWS, an AWS Marketplace Partner, or another
 #' AWS account. For more information, see [VPC
-#' Endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/concepts.html)
+#' Endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #' 
 #' A `gateway` endpoint serves as a target for a route in your route table
@@ -10607,14 +10607,14 @@ ec2_create_vpc_endpoint_connection_notification <- function(DryRun = NULL, Servi
 #'     Balancer endpoint.
 #' 
 #' For more information, see [VPC Endpoint
-#' Services](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html)
+#' Services](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #' 
 #' If you set the private DNS name, you must prove that you own the private
 #' DNS domain name. For more information, see [VPC Endpoint Service Private
 #' DNS Name
-#' Verification](https://docs.aws.amazon.com/vpc/latest/privatelink/) in
-#' the *Amazon Virtual Private Cloud User Guide*.
+#' Verification](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-services-dns-validation.html)
+#' in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @usage
 #' ec2_create_vpc_endpoint_service_configuration(DryRun,
@@ -15083,11 +15083,11 @@ ec2_describe_account_attributes <- function(AttributeNames = NULL, DryRun = NULL
 #' 
 #' -   `public-ip` - The Elastic IP address, or the carrier IP address.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -15806,11 +15806,11 @@ ec2_describe_capacity_reservations <- function(CapacityReservationIds = NULL, Ne
 #' 
 #' -   `owner-id` - The AWS account ID of the owner of the carrier gateway.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -15907,11 +15907,11 @@ ec2_describe_carrier_gateways <- function(CarrierGatewayIds = NULL, Filters = NU
 #' 
 #' -   `instance-id` - The ID of the instance.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -16737,11 +16737,11 @@ ec2_describe_conversion_tasks <- function(ConversionTaskIds = NULL, DryRun = NUL
 #' -   `type` - The type of customer gateway. Currently, the only supported
 #'     type is `ipsec.1`.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -16850,11 +16850,11 @@ ec2_describe_customer_gateways <- function(CustomerGatewayIds = NULL, Filters = 
 #' -   `owner-id` - The ID of the AWS account that owns the DHCP options
 #'     set.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -16968,11 +16968,11 @@ ec2_describe_dhcp_options <- function(DhcpOptionsIds = NULL, Filters = NULL, Dry
 #' @param NextToken The token for the next page of results.
 #' @param Filters One or more filters.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -17838,11 +17838,11 @@ ec2_describe_fleets <- function(DryRun = NULL, MaxResults = NULL, NextToken = NU
 #' 
 #' -   `traffic-type` - The type of traffic (`ACCEPT` | `REJECT` | `ALL`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -18037,11 +18037,11 @@ ec2_describe_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attrib
 #' -   `state` - The state of the AFI (`pending` | `failed` | `available` |
 #'     `unavailable`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -18265,11 +18265,11 @@ ec2_describe_host_reservation_offerings <- function(Filter = NULL, MaxDuration =
 #' -   `state` - The state of the reservation (`payment-pending` |
 #'     `payment-failed` | `active` | `retired`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -18976,11 +18976,11 @@ ec2_describe_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #' -   `sriov-net-support` - A value of `simple` indicates that enhanced
 #'     networking with the Intel 82599 VF interface is enabled.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -20544,11 +20544,11 @@ ec2_describe_instance_types <- function(DryRun = NULL, InstanceTypes = NULL, Fil
 #' 
 #' -   `subnet-id` - The ID of the subnet for the instance.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources that have a tag with a specific key,
@@ -20884,11 +20884,11 @@ ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = 
 #' -   `owner-id` - The ID of the AWS account that owns the internet
 #'     gateway.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -21006,11 +21006,11 @@ ec2_describe_internet_gateways <- function(Filters = NULL, DryRun = NULL, Intern
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters One or more filters.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -21105,11 +21105,11 @@ ec2_describe_ipv_6_pools <- function(PoolIds = NULL, NextToken = NULL, MaxResult
 #'     filter to find all resources assigned a tag with a specific key,
 #'     regardless of the tag value.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' @param KeyNames The key pair names.
 #' 
 #' Default: Describes all your key pairs.
@@ -21495,11 +21495,11 @@ ec2_describe_launch_template_versions <- function(DryRun = NULL, LaunchTemplateI
 #' 
 #' -   `launch-template-name` - The name of the launch template.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -22370,11 +22370,11 @@ ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResu
 #' 
 #' -   `subnet-id` - The ID of the subnet in which the NAT gateway resides.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -22545,11 +22545,11 @@ ec2_describe_nat_gateways <- function(DryRun = NULL, Filter = NULL, MaxResults =
 #' 
 #' -   `owner-id` - The ID of the AWS account that owns the network ACL.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -23567,11 +23567,11 @@ ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissio
 #' 
 #' -   `subnet-id` - The ID of the subnet for the network interface.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -23743,11 +23743,11 @@ ec2_describe_network_interfaces <- function(Filters = NULL, DryRun = NULL, Netwo
 #' -   `strategy` - The strategy of the placement group (`cluster` |
 #'     `spread` | `partition`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources that have a tag with a specific key,
@@ -24031,11 +24031,11 @@ ec2_describe_principal_id_format <- function(DryRun = NULL, Resources = NULL, Ma
 #' value.
 #' @param Filters One or more filters.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -24259,11 +24259,11 @@ ec2_describe_regions <- function(Filters = NULL, RegionNames = NULL, DryRun = NU
 #' -   `state` - The state of the Reserved Instance (`payment-pending` |
 #'     `active` | `payment-failed` | `retired`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -24901,11 +24901,11 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
 #' -   `route.vpc-peering-connection-id` - The ID of a VPC peering
 #'     connection specified in a route in the table.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -25486,11 +25486,11 @@ ec2_describe_security_group_references <- function(DryRun = NULL, GroupId) {
 #' 
 #' -   `owner-id` - The AWS account ID of the owner of the security group.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -25846,11 +25846,11 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #' -   `status` - The status of the snapshot (`pending` | `completed` |
 #'     `error`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -26627,11 +26627,11 @@ ec2_describe_spot_fleet_requests <- function(DryRun = NULL, MaxResults = NULL, N
 #' -   `status-message` - The message explaining the status of the Spot
 #'     Instance request.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -27096,7 +27096,7 @@ ec2_describe_stale_security_groups <- function(DryRun = NULL, MaxResults = NULL,
 #' Describes one or more of your subnets.
 #' 
 #' For more information, see [Your VPC and
-#' Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html)
+#' Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @usage
@@ -27139,11 +27139,11 @@ ec2_describe_stale_security_groups <- function(DryRun = NULL, MaxResults = NULL,
 #' 
 #' -   `subnet-id` - The ID of the subnet.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -27292,9 +27292,9 @@ ec2_describe_subnets <- function(Filters = NULL, SubnetIds = NULL, DryRun = NULL
 #'     `vpc-endpoint` | `vpc-endpoint-service` | `vpc-peering-connection` |
 #'     `vpn-connection` | `vpn-gateway`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of the tag. For example,
-#'     specify "tag:Owner" for the filter name and "TeamA" for the filter
-#'     value to find resources with the tag "Owner=TeamA".
+#' -   `tag`:&lt;key&gt; - The key/value combination of the tag. For
+#'     example, specify "tag:Owner" for the filter name and "TeamA" for the
+#'     filter value to find resources with the tag "Owner=TeamA".
 #' 
 #' -   `value` - The tag value.
 #' @param MaxResults The maximum number of results to return in a single call. This value can
@@ -28162,11 +28162,11 @@ ec2_describe_transit_gateway_multicast_domains <- function(TransitGatewayMultica
 #'     `initiatingRequest` | `modifying` | `pendingAcceptance` | `pending`
 #'     | `rollingBack` | `rejected` | `rejecting`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources that have a tag with a specific key,
@@ -28962,11 +28962,11 @@ ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' -   `status` - The state of the volume (`creating` | `available` |
 #'     `in-use` | `deleting` | `deleted` | `error`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -29337,11 +29337,11 @@ ec2_describe_vpc_attribute <- function(Attribute, VpcId, DryRun = NULL) {
 #' -   `is-classic-link-enabled` - Whether the VPC is enabled for
 #'     ClassicLink (`true` | `false`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -29697,11 +29697,11 @@ ec2_describe_vpc_endpoint_connections <- function(DryRun = NULL, Filters = NULL,
 #' -   `service-state` - The state of the service (`Pending` | `Available`
 #'     | `Deleting` | `Deleted` | `Failed`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -29907,11 +29907,11 @@ ec2_describe_vpc_endpoint_service_permissions <- function(DryRun = NULL, Service
 #' 
 #' -   `service-name` - The name of the service.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -30039,11 +30039,11 @@ ec2_describe_vpc_endpoint_services <- function(DryRun = NULL, ServiceNames = NUL
 #' -   `vpc-endpoint-type` - The type of VPC endpoint (`Interface` |
 #'     `Gateway` | `GatewayLoadBalancer`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -30189,11 +30189,11 @@ ec2_describe_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds = NULL, Fil
 #' -   `status-message` - A message that provides more information about
 #'     the status of the VPC peering connection, if applicable.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -30364,11 +30364,11 @@ ec2_describe_vpc_peering_connections <- function(Filters = NULL, DryRun = NULL, 
 #' 
 #' -   `state` - The state of the VPC (`pending` | `available`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -30517,11 +30517,11 @@ ec2_describe_vpcs <- function(Filters = NULL, VpcIds = NULL, DryRun = NULL, Next
 #' -   `bgp-asn` - The BGP Autonomous System Number (ASN) associated with a
 #'     BGP device.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -30716,11 +30716,11 @@ ec2_describe_vpn_connections <- function(Filters = NULL, VpnConnectionIds = NULL
 #' -   `state` - The state of the virtual private gateway (`pending` |
 #'     `available` | `deleting` | `deleted`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' -   `tag`:&lt;key&gt; - The key/value combination of a tag assigned to
+#'     the resource. Use the tag key in the filter name and the tag value
+#'     as the filter value. For example, to find all resources that have a
+#'     tag with the key `Owner` and the value `TeamA`, specify `tag:Owner`
+#'     for the filter name and `TeamA` for the filter value.
 #' 
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
@@ -38613,7 +38613,7 @@ ec2_modify_vpc_attribute <- function(EnableDnsHostnames = NULL, EnableDnsSupport
 #' Modifies attributes of a specified VPC endpoint. The attributes that you
 #' can modify depend on the type of VPC endpoint (interface, gateway, or
 #' Gateway Load Balancer). For more information, see [VPC
-#' Endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/concepts.html)
+#' Endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @usage
@@ -38777,8 +38777,8 @@ ec2_modify_vpc_endpoint_connection_notification <- function(DryRun = NULL, Conne
 #' If you set or modify the private DNS name, you must prove that you own
 #' the private DNS domain name. For more information, see [VPC Endpoint
 #' Service Private DNS Name
-#' Verification](https://docs.aws.amazon.com/vpc/latest/privatelink/) in
-#' the *Amazon Virtual Private Cloud User Guide*.
+#' Verification](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-services-dns-validation.html)
+#' in the *Amazon Virtual Private Cloud User Guide*.
 #'
 #' @usage
 #' ec2_modify_vpc_endpoint_service_configuration(DryRun, ServiceId,
@@ -38861,7 +38861,7 @@ ec2_modify_vpc_endpoint_service_configuration <- function(DryRun = NULL, Service
 #'
 #' @description
 #' Modifies the permissions for your [VPC endpoint
-#' service](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html).
+#' service](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html).
 #' You can add or remove permissions for service consumers (IAM users, IAM
 #' roles, and AWS accounts) to connect to your endpoint service.
 #' 
@@ -45438,7 +45438,7 @@ ec2_start_network_insights_analysis <- function(NetworkInsightsPathId, FilterInA
 #' Before the service provider runs this command, they must add a record to
 #' the DNS server. For more information, see [Adding a TXT Record to Your
 #' Domain's DNS
-#' Server](https://docs.aws.amazon.com/vpc/latest/privatelink/#add-dns-txt-record)
+#' Server](https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-services-dns-validation.html#add-dns-txt-record)
 #' in the *Amazon VPC User Guide*.
 #'
 #' @usage

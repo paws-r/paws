@@ -10,10 +10,10 @@ route53_get_hosted_zone_limit(Type, HostedZoneId)
 \arguments{
 \item{Type}{[required] The limit that you want to get. Valid values include the following:
 \itemize{
-\item \strong{MAX_RRSETS_BY_ZONE}: The maximum number of records that you can
-create in the specified hosted zone.
-\item \strong{MAX_VPCS_ASSOCIATED_BY_ZONE}: The maximum number of Amazon VPCs
-that you can associate with the specified private hosted zone.
+\item \strong{MAX_RRSETS_BY_ZONE}: The maximum number of records that you
+can create in the specified hosted zone.
+\item \strong{MAX_VPCS_ASSOCIATED_BY_ZONE}: The maximum number of Amazon
+VPCs that you can associate with the specified private hosted zone.
 }}
 
 \item{HostedZoneId}{[required] The ID of the hosted zone that you want to get a limit for.}

@@ -25,9 +25,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 | \code{spot-instances-request} | \code{subnet} | \code{volume} | \code{vpc} |
 \code{vpc-endpoint} | \code{vpc-endpoint-service} | \code{vpc-peering-connection} |
 \code{vpn-connection} | \code{vpn-gateway}).
-\item \code{tag}:\<key\> - The key/value combination of the tag. For example,
-specify "tag:Owner" for the filter name and "TeamA" for the filter
-value to find resources with the tag "Owner=TeamA".
+\item \code{tag}:<key> - The key/value combination of the tag. For
+example, specify "tag:Owner" for the filter name and "TeamA" for the
+filter value to find resources with the tag "Owner=TeamA".
 \item \code{value} - The tag value.
 }}
 

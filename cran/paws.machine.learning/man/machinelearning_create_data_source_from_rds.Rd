@@ -83,7 +83,7 @@ Amazon Machine Learning (Amazon ML) immediately returns and sets the
 \code{DataSource} status to \code{PENDING}. After the \code{DataSource} is created and
 ready for use, Amazon ML sets the \code{Status} parameter to \code{COMPLETED}.
 \code{DataSource} in the \code{COMPLETED} or \code{PENDING} state can be used only to
-perform \verb{>CreateMLModel}\>,
+perform \verb{>CreateMLModel}>,
 \code{\link[=machinelearning_create_evaluation]{create_evaluation}}, or
 \code{\link[=machinelearning_create_batch_prediction]{create_batch_prediction}}
 operations.

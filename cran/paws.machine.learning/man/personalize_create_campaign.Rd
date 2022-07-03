@@ -51,8 +51,9 @@ track your usage using Amazon CloudWatch metrics, and then increase the
 
 A campaign can be in one of the following states:
 \itemize{
-\item CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
-\item DELETE PENDING \> DELETE IN_PROGRESS
+\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
+FAILED
+\item DELETE PENDING > DELETE IN_PROGRESS
 }
 
 To get the campaign status, call

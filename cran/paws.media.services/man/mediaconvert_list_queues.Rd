@@ -8,8 +8,8 @@ mediaconvert_list_queues(ListBy, MaxResults, NextToken, Order)
 }
 \arguments{
 \item{ListBy}{Optional. When you request a list of queues, you can choose to list them
-alphabetically by NAME or chronologically by CREATION_DATE. If you don't
-specify, the service will list them by creation date.}
+alphabetically by NAME or chronologically by CREATION_DATE. If you
+don't specify, the service will list them by creation date.}
 
 \item{MaxResults}{Optional. Number of queues, up to twenty, that will be returned at one
 time.}

@@ -38,7 +38,8 @@ group.
 
 A dataset group can be in one of the following states:
 \itemize{
-\item CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
+FAILED
 \item DELETE PENDING
 }
 

@@ -114,7 +114,7 @@ A list with the following syntax:\preformatted{list(
 Creates a VPC endpoint for a specified service. An endpoint enables you
 to create a private connection between your VPC and the service. The
 service may be provided by AWS, an AWS Marketplace Partner, or another
-AWS account. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/concepts.html}{VPC Endpoints}
+AWS account. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html}{VPC Endpoints}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 A \code{gateway} endpoint serves as a target for a route in your route table

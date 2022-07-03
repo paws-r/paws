@@ -33,7 +33,7 @@ retrieved, you will receive a \code{NextToken} that you can provide to the
 next call to \code{\link[=ses_list_receipt_rule_sets]{list_receipt_rule_sets}} to
 retrieve the additional entries.
 
-For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html}{Amazon SES Developer Guide}.
+For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

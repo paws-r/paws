@@ -54,15 +54,15 @@ minimum of 1 minute of usage applies to tasks that are short lived.
 For example, if a customer has a 10 node Amazon ECS or Amazon EKS
 cluster and a service configured as a Daemon Set, then Amazon ECS or
 Amazon EKS will launch a task on all 10 cluster nodes and the
-customer will be charged: (10 * hourly_rate). Metering for software
-use is automatically handled by the AWS Marketplace Metering Control
-Plane -- your software is not required to perform any metering
-specific actions, other than call RegisterUsage once for metering of
-software use to commence. The AWS Marketplace Metering Control Plane
-will also continue to bill customers for running ECS tasks and
-Amazon EKS pods, regardless of the customers subscription state,
-removing the need for your software to perform entitlement checks at
-runtime.
+customer will be charged: (10 * hourly_rate). Metering for
+software use is automatically handled by the AWS Marketplace
+Metering Control Plane -- your software is not required to perform
+any metering specific actions, other than call RegisterUsage once
+for metering of software use to commence. The AWS Marketplace
+Metering Control Plane will also continue to bill customers for
+running ECS tasks and Amazon EKS pods, regardless of the customers
+subscription state, removing the need for your software to perform
+entitlement checks at runtime.
 }
 }
 \section{Request syntax}{

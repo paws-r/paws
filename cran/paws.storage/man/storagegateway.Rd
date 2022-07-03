@@ -28,13 +28,13 @@ recovery.
 Use the following links to get started using the \emph{AWS Storage Gateway
 Service API Reference}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/storagegateway/index.html#AWSStorageGatewayHTTPRequestsHeaders}{AWS Storage Gateway required request headers}:
+\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders}{AWS Storage Gateway required request headers}:
 Describes the required headers that you must send with every POST
 request to AWS Storage Gateway.
-\item \href{https://docs.aws.amazon.com/storagegateway/index.html#AWSStorageGatewaySigningRequests}{Signing requests}:
+\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests}{Signing requests}:
 AWS Storage Gateway requires that you authenticate every request you
 send; this topic describes how sign such a request.
-\item \href{https://docs.aws.amazon.com/storagegateway/index.html#APIErrorResponses}{Error responses}:
+\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses}{Error responses}:
 Provides reference information about AWS Storage Gateway errors.
 \item \href{https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html}{Operations in AWS Storage Gateway}:
 Contains detailed descriptions of all AWS Storage Gateway
@@ -68,8 +68,7 @@ ID format looks like the following:
 A snapshot ID with the longer ID format looks like the following:
 \verb{snap-78e226633445566ee}.
 
-For more information, see Announcement: Heads-up – Longer AWS Storage
-Gateway volume and snapshot IDs coming in 2016.
+For more information, see \href{https://forums.aws.amazon.com:443/ann.jspa?annID=3557}{Announcement: Heads-up – Longer AWS Storage Gateway volume and snapshot IDs coming in 2016}.
 }
 \section{Service syntax}{
 \preformatted{svc <- storagegateway(

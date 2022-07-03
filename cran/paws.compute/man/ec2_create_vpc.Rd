@@ -97,7 +97,7 @@ A list with the following syntax:\preformatted{list(
 Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you
 can create uses a /28 netmask (16 IPv4 addresses), and the largest uses
 a /16 netmask (65,536 IPv4 addresses). For more information about how
-large to make your VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html}{Your VPC and Subnets}
+large to make your VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{Your VPC and Subnets}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 You can optionally request an IPv6 CIDR block for the VPC. You can

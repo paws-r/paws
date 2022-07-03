@@ -38,10 +38,9 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Returns the domain's endpoint options, specifically whether all requests
-to the domain must arrive over HTTPS. For more information, see <a
-href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html"
-target="_blank">Configuring Domain Endpoint Options</a> in the \emph{Amazon
-CloudSearch Developer Guide}.
+to the domain must arrive over HTTPS. For more information, see
+\href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html}{Configuring Domain Endpoint Options}
+in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_domain_endpoint_options(

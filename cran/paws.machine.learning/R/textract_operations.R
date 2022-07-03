@@ -26,9 +26,9 @@ NULL
 #'     relationship with the value of `FeatureTypes`).
 #' 
 #' Selection elements such as check boxes and option buttons (radio
-#' buttons) can be detected in form data and in tables. A SELECTION_ELEMENT
-#' `Block` object contains information about a selection element, including
-#' the selection status.
+#' buttons) can be detected in form data and in tables. A
+#' SELECTION_ELEMENT `Block` object contains information about a selection
+#' element, including the selection status.
 #' 
 #' You can choose which type of analysis to perform by specifying the
 #' `FeatureTypes` list.
@@ -322,9 +322,9 @@ textract_detect_document_text <- function(Document) {
 #'     `FeatureTypes` input parameter).
 #' 
 #' Selection elements such as check boxes and option buttons (radio
-#' buttons) can be detected in form data and in tables. A SELECTION_ELEMENT
-#' `Block` object contains information about a selection element, including
-#' the selection status.
+#' buttons) can be detected in form data and in tables. A
+#' SELECTION_ELEMENT `Block` object contains information about a selection
+#' element, including the selection status.
 #' 
 #' Use the `MaxResults` parameter to limit the number of blocks that are
 #' returned. If there are more results than specified in `MaxResults`, the

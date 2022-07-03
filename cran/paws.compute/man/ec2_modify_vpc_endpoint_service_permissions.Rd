@@ -29,7 +29,7 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Modifies the permissions for your \href{https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html}{VPC endpoint service}.
+Modifies the permissions for your \href{https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html}{VPC endpoint service}.
 You can add or remove permissions for service consumers (IAM users, IAM
 roles, and AWS accounts) to connect to your endpoint service.
 

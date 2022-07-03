@@ -138,7 +138,7 @@ The \code{\link[=kms_re_encrypt]{re_encrypt}} operation can decrypt ciphertext t
 was encrypted by using an AWS KMS CMK in an AWS KMS operation, such as
 \code{\link[=kms_encrypt]{encrypt}} or
 \code{\link[=kms_generate_data_key]{generate_data_key}}. It can also decrypt
-ciphertext that was encrypted by using the public key of an \href{https://docs.aws.amazon.com/kms/latest/developerguide/#asymmetric-cmks}{asymmetric CMK}
+ciphertext that was encrypted by using the public key of an \href{https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-concepts.html#asymmetric-cmks}{asymmetric CMK}
 outside of AWS KMS. However, it cannot decrypt ciphertext produced by
 other libraries, such as the \href{https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/}{AWS Encryption SDK}
 or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html}{Amazon S3 client-side encryption}.

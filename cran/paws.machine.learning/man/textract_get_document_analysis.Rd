@@ -119,9 +119,9 @@ relationship with the value of the
 }
 
 Selection elements such as check boxes and option buttons (radio
-buttons) can be detected in form data and in tables. A SELECTION_ELEMENT
-\code{Block} object contains information about a selection element, including
-the selection status.
+buttons) can be detected in form data and in tables. A
+SELECTION_ELEMENT \code{Block} object contains information about a selection
+element, including the selection status.
 
 Use the \code{MaxResults} parameter to limit the number of blocks that are
 returned. If there are more results than specified in \code{MaxResults}, the

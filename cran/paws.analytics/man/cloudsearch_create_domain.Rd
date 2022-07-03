@@ -40,10 +40,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Creates a new search domain. For more information, see <a
-href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html"
-target="_blank">Creating a Search Domain</a> in the \emph{Amazon CloudSearch
-Developer Guide}.
+Creates a new search domain. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html}{Creating a Search Domain}
+in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_domain(

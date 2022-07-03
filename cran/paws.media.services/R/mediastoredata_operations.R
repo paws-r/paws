@@ -12,7 +12,8 @@ NULL
 #' mediastoredata_delete_object(Path)
 #'
 #' @param Path &#91;required&#93; The path (including the file name) where the object is stored in the
-#' container. Format: \<folder name\>/\<folder name\>/\<file name\>
+#' container. Format: &lt;folder name&gt;/&lt;folder name&gt;/&lt;file
+#' name&gt;
 #'
 #' @return
 #' An empty list.
@@ -53,7 +54,8 @@ mediastoredata_delete_object <- function(Path) {
 #' mediastoredata_describe_object(Path)
 #'
 #' @param Path &#91;required&#93; The path (including the file name) where the object is stored in the
-#' container. Format: \<folder name\>/\<folder name\>/\<file name\>
+#' container. Format: &lt;folder name&gt;/&lt;folder name&gt;/&lt;file
+#' name&gt;
 #'
 #' @return
 #' A list with the following syntax:
@@ -107,7 +109,8 @@ mediastoredata_describe_object <- function(Path) {
 #' mediastoredata_get_object(Path, Range)
 #'
 #' @param Path &#91;required&#93; The path (including the file name) where the object is stored in the
-#' container. Format: \<folder name\>/\<folder name\>/\<file name\>
+#' container. Format: &lt;folder name&gt;/&lt;folder name&gt;/&lt;file
+#' name&gt;
 #' 
 #' For example, to upload the file `mlaw.avi` to the folder path
 #' `premium\canada` in the container `movies`, enter the path
@@ -193,8 +196,8 @@ mediastoredata_get_object <- function(Path, Range = NULL) {
 #' @usage
 #' mediastoredata_list_items(Path, MaxResults, NextToken)
 #'
-#' @param Path The path in the container from which to retrieve items. Format: \<folder
-#' name\>/\<folder name\>/\<file name\>
+#' @param Path The path in the container from which to retrieve items. Format:
+#' &lt;folder name&gt;/&lt;folder name&gt;/&lt;file name&gt;
 #' @param MaxResults The maximum number of results to return per API request. For example,
 #' you submit a [`list_items`][mediastoredata_list_items] request with
 #' `MaxResults` set at 500. Although 2,000 items match your request, the
@@ -277,7 +280,8 @@ mediastoredata_list_items <- function(Path = NULL, MaxResults = NULL, NextToken 
 #'
 #' @param Body &#91;required&#93; The bytes to be stored.
 #' @param Path &#91;required&#93; The path (including the file name) where the object is stored in the
-#' container. Format: \<folder name\>/\<folder name\>/\<file name\>
+#' container. Format: &lt;folder name&gt;/&lt;folder name&gt;/&lt;file
+#' name&gt;
 #' 
 #' For example, to upload the file `mlaw.avi` to the folder path
 #' `premium\canada` in the container `movies`, enter the path

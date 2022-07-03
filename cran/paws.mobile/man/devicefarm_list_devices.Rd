@@ -32,8 +32,8 @@ TEMPORARY_NOT_AVAILABLE.
 \item FORM_FACTOR: The device form factor. Valid values are PHONE or
 TABLET.
 \item MANUFACTURER: The device manufacturer (for example, Apple).
-\item REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote
-access. Valid values are TRUE or FALSE.
+\item REMOTE_ACCESS_ENABLED: Whether the device is enabled for
+remote access. Valid values are TRUE or FALSE.
 \item REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote
 debugging. Valid values are TRUE or FALSE. Because remote
 debugging is \href{https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html}{no longer supported},

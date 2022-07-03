@@ -36,10 +36,9 @@ A list with the following syntax:\preformatted{list(
 \description{
 Configures an \code{Expression} for the search domain. Used to create new
 expressions and modify existing ones. If the expression exists, the new
-configuration replaces the old one. For more information, see <a
-href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html"
-target="_blank">Configuring Expressions</a> in the \emph{Amazon CloudSearch
-Developer Guide}.
+configuration replaces the old one. For more information, see
+\href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html}{Configuring Expressions}
+in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$define_expression(

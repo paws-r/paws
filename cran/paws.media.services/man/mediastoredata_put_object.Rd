@@ -11,7 +11,8 @@ mediastoredata_put_object(Body, Path, ContentType, CacheControl,
 \item{Body}{[required] The bytes to be stored.}
 
 \item{Path}{[required] The path (including the file name) where the object is stored in the
-container. Format: \<folder name\>/\<folder name\>/\<file name\>
+container. Format: <folder name>/<folder name>/<file
+name>
 
 For example, to upload the file \code{mlaw.avi} to the folder path
 \verb{premium\\canada} in the container \code{movies}, enter the path

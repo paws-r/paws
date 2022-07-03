@@ -22,8 +22,8 @@ Chime accounts, users, and Voice Connectors. This guide provides
 detailed information about the Amazon Chime API, including operations,
 types, inputs and outputs, and error codes. It also includes some
 server-side API actions to use with the Amazon Chime SDK. For more
-information about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK}
-in the \emph{Amazon Chime Developer Guide}.
+information about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in
+the \emph{Amazon Chime Developer Guide}.
 
 You can use an AWS SDK, the AWS Command Line Interface (AWS CLI), or the
 REST API to make API calls. We recommend using an AWS SDK or the AWS
@@ -40,7 +40,7 @@ the \href{https://aws.amazon.com/developer/}{AWS Developer Center}.
 \subsection{Using the AWS CLI}{
 
 Use your access keys with the AWS CLI to make API calls. For information
-about setting up the AWS CLI, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html}{Installing the AWS Command Line Interface}
+about setting up the AWS CLI, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html}{Installing the AWS Command Line Interface}
 in the \emph{AWS Command Line Interface User Guide}. For a list of available
 Amazon Chime commands, see the \href{https://docs.aws.amazon.com/cli/latest/reference/chime/index.html}{Amazon Chime commands}
 in the \emph{AWS CLI Command Reference}.

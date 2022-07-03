@@ -20,7 +20,7 @@ An empty list.
 Deletes a configuration set event destination. Configuration set event
 destinations are associated with configuration sets, which enable you to
 publish email sending events. For information about using configuration
-sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html}{Amazon SES Developer Guide}.
+sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

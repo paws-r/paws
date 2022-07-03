@@ -75,8 +75,9 @@ USER_PERSONALIZATION recipe for you.
 
 A solution can be in one of the following states:
 \itemize{
-\item CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
-\item DELETE PENDING \> DELETE IN_PROGRESS
+\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
+FAILED
+\item DELETE PENDING > DELETE IN_PROGRESS
 }
 
 To get the status of the solution, call

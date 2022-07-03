@@ -15,7 +15,7 @@ the type and value to make it easy to remember what it does.}
 
 \item{stringValues}{[required] Specifies the value or list of values for the dimension. For
 \code{TOPIC_FILTER} dimensions, this is a pattern used to match the MQTT
-topic (for example, "admin/#").}
+topic (for example, "admin/\#").}
 
 \item{tags}{Metadata that can be used to manage the dimension.}
 

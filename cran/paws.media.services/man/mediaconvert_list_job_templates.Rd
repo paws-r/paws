@@ -12,8 +12,8 @@ mediaconvert_list_job_templates(Category, ListBy, MaxResults, NextToken,
 job templates from that category.}
 
 \item{ListBy}{Optional. When you request a list of job templates, you can choose to
-list them alphabetically by NAME or chronologically by CREATION_DATE. If
-you don't specify, the service will list them by name.}
+list them alphabetically by NAME or chronologically by CREATION_DATE.
+If you don't specify, the service will list them by name.}
 
 \item{MaxResults}{Optional. Number of job templates, up to twenty, that will be returned
 at one time.}

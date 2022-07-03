@@ -11,7 +11,7 @@ sagemaker_update_workforce(WorkforceName, SourceIpConfig, OidcConfig)
 your workforce name by using the operation.}
 
 \item{SourceIpConfig}{A list of one to ten worker IP address ranges
-(\href{https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html}{CIDRs})
+(\href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{CIDRs})
 that can be used to access tasks assigned to this workforce.
 
 Maximum: Ten CIDR values}
@@ -62,7 +62,7 @@ configuration.
 Use \code{SourceIpConfig} to restrict worker access to tasks to a specific
 range of IP addresses. You specify allowed IP addresses by creating a
 list of up to ten
-\href{https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html}{CIDRs}.
+\href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{CIDRs}.
 By default, a workforce isn't restricted to specific IP addresses. If
 you specify a range of IP addresses, workers who attempt to access tasks
 using any IP address outside the specified range are denied and get a

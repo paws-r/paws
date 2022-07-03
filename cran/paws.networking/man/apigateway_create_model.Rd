@@ -16,8 +16,8 @@ created.}
 \item{description}{The description of the model.}
 
 \item{schema}{The schema for the model. For \code{application/json} models, this should be
-<a href="https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-04"
-target="_blank">JSON schema draft 4</a> model.}
+\href{https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-04}{JSON schema draft 4}
+model.}
 
 \item{contentType}{[required] [Required] The content-type for the model.}
 }

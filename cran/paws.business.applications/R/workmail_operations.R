@@ -2185,8 +2185,8 @@ workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges
 #' permissions.
 #' @param PermissionValues &#91;required&#93; The permissions granted to the grantee. SEND_AS allows the grantee to
 #' send email as the owner of the mailbox (the grantee is not mentioned on
-#' these emails). SEND_ON_BEHALF allows the grantee to send email on behalf
-#' of the owner of the mailbox (the grantee is not mentioned as the
+#' these emails). SEND_ON_BEHALF allows the grantee to send email on
+#' behalf of the owner of the mailbox (the grantee is not mentioned as the
 #' physical sender of these emails). FULL_ACCESS allows the grantee full
 #' access to the mailbox, irrespective of other folder-level permissions
 #' set on the mailbox.

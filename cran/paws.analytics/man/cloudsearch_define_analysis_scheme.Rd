@@ -44,10 +44,8 @@ A list with the following syntax:\preformatted{list(
 \description{
 Configures an analysis scheme that can be applied to a \code{text} or
 \code{text-array} field to define language-specific text processing options.
-For more information, see <a
-href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html"
-target="_blank">Configuring Analysis Schemes</a> in the \emph{Amazon
-CloudSearch Developer Guide}.
+For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html}{Configuring Analysis Schemes}
+in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$define_analysis_scheme(

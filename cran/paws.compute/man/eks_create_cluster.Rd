@@ -153,8 +153,8 @@ apply to exported control plane logs. For more information, see \href{https://aw
 Cluster creation typically takes between 10 and 15 minutes. After you
 create an Amazon EKS cluster, you must configure your Kubernetes tooling
 to communicate with the API server and launch worker nodes into your
-cluster. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/}{Managing Cluster Authentication} and
-\href{https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html}{Launching Amazon EKS Worker Nodes}
+cluster. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html}{Managing Cluster Authentication}
+and \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html}{Launching Amazon EKS Worker Nodes}
 in the \emph{Amazon EKS User Guide}.
 }
 \section{Request syntax}{

@@ -39,8 +39,8 @@ A list with the following syntax:\preformatted{list(
 \description{
 Gets a list of built-in slot types that meet the specified criteria.
 
-For a list of built-in slot types, see Slot Type Reference in the \emph{Alexa
-Skills Kit}.
+For a list of built-in slot types, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html}{Slot Type Reference}
+in the \emph{Alexa Skills Kit}.
 
 This operation requires permission for the \code{lex:GetBuiltInSlotTypes}
 action.

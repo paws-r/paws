@@ -30,13 +30,13 @@ AND any 3 of the following password complexity rules required by Active
 Directory:
 \itemize{
 \item Numbers and upper case and lowercase
-(?=.\emph{\d)(?=.}[A-Z])(?=.*[a-z])
+(?=.\emph{\\d)(?=.}[A-Z])(?=.*[a-z])
 \item Numbers and special characters and lower case
-(?=.\emph{\d)(?=.}[^A-Za-z0-9\s])(?=.*[a-z])
+(?=.\emph{\\d)(?=.}[^A-Za-z0-9\\s])(?=.*[a-z])
 \item Special characters and upper case and lower case
-(?=.\emph{[^A-Za-z0-9\s])(?=.}[A-Z])(?=.*[a-z])
+(?=.\emph{[^A-Za-z0-9\\s])(?=.}[A-Z])(?=.*[a-z])
 \item Numbers and upper case and special characters
-(?=.\emph{\d)(?=.}[A-Z])(?=.*[^A-Za-z0-9\s])
+(?=.\emph{\\d)(?=.}[A-Z])(?=.*[^A-Za-z0-9\\s])
 }
 
 For additional information about how Active Directory passwords are

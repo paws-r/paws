@@ -50,8 +50,8 @@ detail keys for each identity provider type.
 oidc_issuer key}
 \item token_url \emph{if not available from discovery URL specified by
 oidc_issuer key}
-\item attributes_url \emph{if not available from discovery URL specified by
-oidc_issuer key}
+\item attributes_url \emph{if not available from discovery URL specified
+by oidc_issuer key}
 \item jwks_uri \emph{if not available from discovery URL specified by
 oidc_issuer key}
 }

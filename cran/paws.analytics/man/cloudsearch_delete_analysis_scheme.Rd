@@ -41,10 +41,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Deletes an analysis scheme. For more information, see <a
-href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html"
-target="_blank">Configuring Analysis Schemes</a> in the \emph{Amazon
-CloudSearch Developer Guide}.
+Deletes an analysis scheme. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html}{Configuring Analysis Schemes}
+in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_analysis_scheme(

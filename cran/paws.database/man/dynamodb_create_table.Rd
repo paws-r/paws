@@ -140,7 +140,7 @@ If you set BillingMode as \code{PAY_PER_REQUEST}, you cannot specify this
 property.
 
 For current minimum and maximum provisioned throughput values, see
-\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ServiceQuotas.html}{Service, Account, and Table Quotas}
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html}{Service, Account, and Table Quotas}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{StreamSpecification}{The settings for DynamoDB Streams on the table. These settings consist

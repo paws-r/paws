@@ -16,8 +16,8 @@ Valid values are between 1 and 3600 seconds.}
 \item{apiCachingBehavior}{[required] Caching behavior.
 \itemize{
 \item \strong{FULL_REQUEST_CACHING}: All requests are fully cached.
-\item \strong{PER_RESOLVER_CACHING}: Individual resolvers that you specify are
-cached.
+\item \strong{PER_RESOLVER_CACHING}: Individual resolvers that you specify
+are cached.
 }}
 
 \item{type}{[required] The cache instance type. Valid values are

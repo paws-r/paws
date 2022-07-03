@@ -15,9 +15,9 @@ An empty list.
 \description{
 Deletes an entity recognizer.
 
-Only those recognizers that are in terminated states (IN_ERROR, TRAINED)
-will be deleted. If an active inference job is using the model, a
-\code{ResourceInUseException} will be returned.
+Only those recognizers that are in terminated states (IN_ERROR,
+TRAINED) will be deleted. If an active inference job is using the model,
+a \code{ResourceInUseException} will be returned.
 
 This is an asynchronous action that puts the recognizer into a DELETING
 state, and it is then removed by a background job. Once removed, the

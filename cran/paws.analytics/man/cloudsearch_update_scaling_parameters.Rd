@@ -41,10 +41,8 @@ count. Amazon CloudSearch will still automatically scale your domain
 based on the volume of data and traffic, but not below the desired
 instance type and replication count. If the Multi-AZ option is enabled,
 these values control the resources used per Availability Zone. For more
-information, see <a
-href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html"
-target="_blank">Configuring Scaling Options</a> in the \emph{Amazon
-CloudSearch Developer Guide}.
+information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html}{Configuring Scaling Options}
+in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_scaling_parameters(

@@ -1416,7 +1416,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' policies. The affected users and roles receive the permissions that are
 #' permitted by all of the relevant policies. For more information, see
 #' [Using Resource-Based Policies for AWS Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-policies.html).
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html).
 #' For the complete description of the AWS policy syntax and grammar, see
 #' [IAM JSON Policy
 #' Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)

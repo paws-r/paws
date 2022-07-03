@@ -71,7 +71,7 @@ A list with the following syntax:\preformatted{list(
 Returns the metadata and receipt rules for the receipt rule set that is
 currently active.
 
-For information about setting up receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html}{Amazon SES Developer Guide}.
+For information about setting up receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

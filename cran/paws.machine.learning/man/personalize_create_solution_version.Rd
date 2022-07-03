@@ -39,7 +39,8 @@ version of the solution is created every time you call this operation.
 
 A solution version can be in one of the following states:
 \itemize{
-\item CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
+FAILED
 }
 
 To get the status of the version, call

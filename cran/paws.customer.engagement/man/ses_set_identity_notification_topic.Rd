@@ -40,7 +40,7 @@ to the Amazon SNS topic that you specify.
 
 You can execute this operation no more than once per second.
 
-For more information about feedback notification, see the \href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Amazon SES Developer Guide}.
+For more information about feedback notification, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$set_identity_notification_topic(

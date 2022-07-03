@@ -23,7 +23,7 @@ codes, see what-is-languages.
 
 To have Amazon Translate determine the source language of your text, you
 can specify \code{auto} in the \code{SourceLanguageCode} field. If you specify
-\code{auto}, Amazon Translate will call \href{https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html}{Amazon Comprehend}
+\code{auto}, Amazon Translate will call \href{https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html}{Amazon Comprehend}
 to determine the source language.}
 
 \item{TargetLanguageCode}{[required] The language code requested for the language of the target text. The

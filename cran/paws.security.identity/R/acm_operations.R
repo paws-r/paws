@@ -740,8 +740,8 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' principal permission to do
 #' so](https://docs.aws.amazon.com/acm-pca/latest/userguide/). For more
 #' information, see [Testing Managed
-#' Renewal](https://docs.aws.amazon.com/acm/latest/userguide/) in the ACM
-#' User Guide.
+#' Renewal](https://docs.aws.amazon.com/acm/latest/userguide/manual-renewal.html)
+#' in the ACM User Guide.
 #'
 #' @usage
 #' acm_renew_certificate(CertificateArn)

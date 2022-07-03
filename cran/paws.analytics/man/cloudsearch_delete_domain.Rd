@@ -38,10 +38,9 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Permanently deletes a search domain and all of its data. Once a domain
-has been deleted, it cannot be recovered. For more information, see <a
-href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html"
-target="_blank">Deleting a Search Domain</a> in the \emph{Amazon CloudSearch
-Developer Guide}.
+has been deleted, it cannot be recovered. For more information, see
+\href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html}{Deleting a Search Domain}
+in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_domain(

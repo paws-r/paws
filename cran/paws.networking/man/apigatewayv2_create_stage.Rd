@@ -31,7 +31,7 @@ WebSocket APIs.}
 
 \item{StageVariables}{A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
-[A-Za-z0-9-._~:/?#&=,]+.}
+[A-Za-z0-9-._~:/?\#&=,]+.}
 
 \item{Tags}{The collection of tags. Each tag element is associated with a given
 resource.}

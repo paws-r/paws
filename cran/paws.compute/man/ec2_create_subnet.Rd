@@ -104,7 +104,7 @@ address. It's therefore possible to have a subnet with no running
 instances (they're all stopped), but no remaining IP addresses
 available.
 
-For more information about subnets, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html}{Your VPC and Subnets}
+For more information about subnets, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{Your VPC and Subnets}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{

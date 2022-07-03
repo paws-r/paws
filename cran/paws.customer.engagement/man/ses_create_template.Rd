@@ -16,7 +16,7 @@ An empty list.
 \description{
 Creates an email template. Email templates enable you to send
 personalized email to one or more destinations in a single API
-operation. For more information, see the \href{https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html}{Amazon SES Developer Guide}.
+operation. For more information, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

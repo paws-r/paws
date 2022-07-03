@@ -76,7 +76,7 @@ If you call
 \code{\link[=rds_modify_current_db_cluster_capacity]{modify_current_db_cluster_capacity}}
 with the default \code{TimeoutAction}, connections that prevent Aurora
 Serverless from finding a scaling point might be dropped. For more
-information about scaling points, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/#aurora-serverless.how-it-works.auto-scaling}{Autoscaling for Aurora Serverless}
+information about scaling points, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.auto-scaling}{Autoscaling for Aurora Serverless}
 in the \emph{Amazon Aurora User Guide}.
 
 This action only applies to Aurora DB clusters.

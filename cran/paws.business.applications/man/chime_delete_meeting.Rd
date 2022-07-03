@@ -15,8 +15,8 @@ An empty list.
 \description{
 Deletes the specified Amazon Chime SDK meeting. When a meeting is
 deleted, its attendees are also deleted and clients can no longer join
-it. For more information about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK}
-in the \emph{Amazon Chime Developer Guide}.
+it. For more information about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in
+the \emph{Amazon Chime Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_meeting(

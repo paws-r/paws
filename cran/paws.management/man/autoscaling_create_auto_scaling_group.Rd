@@ -47,7 +47,7 @@ to fulfill On-Demand and Spot capacities, but also the parameters that
 specify the instance configuration information—the launch template and
 instance types. The policy can also include a weight for each instance
 type and different launch templates for individual instance types. For
-more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups.html}{Auto Scaling groups with multiple instance types and purchase options}
+more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html}{Auto Scaling groups with multiple instance types and purchase options}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{InstanceId}{The ID of the instance used to base the launch configuration on. If
@@ -81,7 +81,7 @@ group.}
 before another scaling activity can start. The default value is \code{300}.
 This setting applies when using simple scaling policies, but not when
 using other scaling policies or scheduled scaling. For more information,
-see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-cooldowns.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{AvailabilityZones}{A list of Availability Zones where instances in the Auto Scaling group
@@ -105,13 +105,13 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 (default) and \code{ELB}. If you configure an Auto Scaling group to use load
 balancer (ELB) health checks, it considers the instance unhealthy if it
 fails either the EC2 status checks or the load balancer health checks.
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html}{Health checks for Auto Scaling instances}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html}{Health checks for Auto Scaling instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{HealthCheckGracePeriod}{The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
 before checking the health status of an EC2 instance that has come into
 service. During this time, any health check failures for the instance
-are ignored. The default value is \code{0}. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html#health-check-grace-period}{Health check grace period}
+are ignored. The default value is \code{0}. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html#health-check-grace-period}{Health check grace period}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 Conditional: Required if you are adding an \code{ELB} health check.}
@@ -147,7 +147,7 @@ Rebalancing is disabled. When you turn on Capacity Rebalancing, Amazon
 EC2 Auto Scaling attempts to launch a Spot Instance whenever Amazon EC2
 notifies that a Spot Instance is at an elevated risk of interruption.
 After launching a new instance, it then terminates an old instance. For
-more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-capacity-rebalancing.html}{Amazon EC2 Auto Scaling Capacity Rebalancing}
+more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/capacity-rebalance.html}{Amazon EC2 Auto Scaling Capacity Rebalancing}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{LifecycleHookSpecificationList}{One or more lifecycle hooks for the group, which specify actions to
@@ -160,7 +160,7 @@ in a launch template but use caution. If the launch template specifies
 an instance tag with a key that is also specified for the Auto Scaling
 group, Amazon EC2 Auto Scaling overrides the value of that instance tag
 with the value specified by the Auto Scaling group. For more
-information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-tagging.html}{Tagging Auto Scaling groups and instances}
+information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html}{Tagging Auto Scaling groups and instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{ServiceLinkedRoleARN}{The Amazon Resource Name (ARN) of the service-linked role that the Auto
@@ -189,14 +189,14 @@ Creates an Auto Scaling group with the specified name and attributes.
 If you exceed your maximum limit of Auto Scaling groups, the call fails.
 To query this limit, call the
 \code{\link[=autoscaling_describe_account_limits]{describe_account_limits}} API.
-For information about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-quotas.html}{Amazon EC2 Auto Scaling service quotas}
+For information about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling service quotas}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 For introductory exercises for creating an Auto Scaling group, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/get-started-with-ec2-auto-scaling.html}{Getting started with Amazon EC2 Auto Scaling}
-and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/tutorial-ec2-auto-scaling-load-balancer.html}{Tutorial: Set up a scaled and load-balanced application}
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/GettingStartedTutorial.html}{Getting started with Amazon EC2 Auto Scaling}
+and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-register-lbs-with-asg.html}{Tutorial: Set up a scaled and load-balanced application}
 in the \emph{Amazon EC2 Auto Scaling User Guide}. For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-groups.html}{Auto Scaling groups}
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html}{Auto Scaling groups}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 Every Auto Scaling group has three size parameters (\code{DesiredCapacity},

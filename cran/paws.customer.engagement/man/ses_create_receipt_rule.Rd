@@ -22,7 +22,7 @@ An empty list.
 \description{
 Creates a receipt rule.
 
-For information about setting up receipt rules, see the \href{https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html#receiving-email-concepts-rules}{Amazon SES Developer Guide}.
+For information about setting up receipt rules, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

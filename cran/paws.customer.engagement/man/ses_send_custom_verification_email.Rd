@@ -30,8 +30,8 @@ the specified address.
 
 To use this operation, you must first create a custom verification email
 template. For more information about creating and using custom
-verification email templates, see \href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Using Custom Verification Email Templates} in
-the \emph{Amazon SES Developer Guide}.
+verification email templates, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html}{Using Custom Verification Email Templates}
+in the \emph{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

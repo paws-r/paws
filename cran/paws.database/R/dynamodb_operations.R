@@ -1241,7 +1241,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' 
 #' For current minimum and maximum provisioned throughput values, see
 #' [Service, Account, and Table
-#' Quotas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ServiceQuotas.html)
+#' Quotas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param StreamSpecification The settings for DynamoDB Streams on the table. These settings consist
 #' of:
@@ -2953,7 +2953,7 @@ dynamodb_describe_kinesis_streaming_destination <- function(TableName) {
 #' provision across all of your DynamoDB tables in a given Region. Also,
 #' there are per-table quotas that apply when you create a table there. For
 #' more information, see [Service, Account, and Table
-#' Quotas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ServiceQuotas.html)
+#' Quotas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 #' page in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' Although you can increase these quotas by filing a case at AWS Support

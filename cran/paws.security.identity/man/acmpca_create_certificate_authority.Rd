@@ -53,7 +53,7 @@ certificates issued by the CA. If successful, this action returns the
 Amazon Resource Name (ARN) of the CA.
 
 ACM Private CAA assets that are stored in Amazon S3 can be protected
-with encryption. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/#crl-encryption}{Encrypting Your CRLs}.
+with encryption. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#crl-encryption}{Encrypting Your CRLs}.
 
 Both PCA and the IAM principal must have permission to write to the S3
 bucket that you specify. If the IAM principal making the call does not

@@ -35,10 +35,8 @@ A list with the following syntax:\preformatted{list(
 Gets the availability options configured for a domain. By default, shows
 the configuration with any pending changes. Set the \code{Deployed} option to
 \code{true} to show the active configuration and exclude pending changes. For
-more information, see <a
-href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html"
-target="_blank">Configuring Availability Options</a> in the \emph{Amazon
-CloudSearch Developer Guide}.
+more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html}{Configuring Availability Options}
+in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_availability_options(

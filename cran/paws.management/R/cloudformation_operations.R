@@ -515,8 +515,8 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' creation and updating operations, and for the specified monitoring
 #' period afterwards.
 #' @param TimeoutInMinutes The amount of time that can pass before the stack status becomes
-#' CREATE_FAILED; if `DisableRollback` is not set or is set to `false`, the
-#' stack will be rolled back.
+#' CREATE_FAILED; if `DisableRollback` is not set or is set to `false`,
+#' the stack will be rolled back.
 #' @param NotificationARNs The Simple Notification Service (SNS) topic ARNs to publish stack
 #' related events. You can find your SNS topic ARNs using the SNS console
 #' or your Command Line Interface (CLI).

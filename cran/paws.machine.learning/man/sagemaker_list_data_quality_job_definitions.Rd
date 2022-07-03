@@ -19,7 +19,7 @@ specified endpoint.}
 \item{NextToken}{If the result of the previous
 \code{\link[=sagemaker_list_data_quality_job_definitions]{list_data_quality_job_definitions}}
 request was truncated, the response includes a \code{NextToken}. To retrieve
-the next set of transform jobs, use the token in the next request.\>}
+the next set of transform jobs, use the token in the next request.>}
 
 \item{MaxResults}{The maximum number of data quality monitoring job definitions to return
 in the response.}

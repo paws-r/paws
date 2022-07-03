@@ -32,12 +32,12 @@ If you specify \code{ChildrenOfAlarmName}, you cannot specify any other
 parameters in the request except for \code{MaxRecords} and \code{NextToken}. If
 you do so, you receive a validation error.
 
-Only the \verb{Alarm Name}, \code{ARN}, \code{StateValue} (OK/ALARM/INSUFFICIENT_DATA),
-and \code{StateUpdatedTimestamp} information are returned by this operation
-when you use this parameter. To get complete information about these
-alarms, perform another \code{\link[=cloudwatch_describe_alarms]{describe_alarms}}
-operation and specify the parent alarm names in the \code{AlarmNames}
-parameter.}
+Only the \verb{Alarm Name}, \code{ARN}, \code{StateValue}
+(OK/ALARM/INSUFFICIENT_DATA), and \code{StateUpdatedTimestamp} information
+are returned by this operation when you use this parameter. To get
+complete information about these alarms, perform another
+\code{\link[=cloudwatch_describe_alarms]{describe_alarms}} operation and specify
+the parent alarm names in the \code{AlarmNames} parameter.}
 
 \item{ParentsOfAlarmName}{If you use this parameter and specify the name of a metric or composite
 alarm, the operation returns information about the "parent" alarms of

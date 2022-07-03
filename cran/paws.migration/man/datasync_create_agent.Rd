@@ -35,7 +35,7 @@ representable in UTF-8 format, and the following special characters: + -
 
 \item{VpcEndpointId}{The ID of the VPC (virtual private cloud) endpoint that the agent has
 access to. This is the client-side VPC endpoint, also called a
-PrivateLink. If you don't have a PrivateLink VPC endpoint, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html#create-endpoint-service}{Creating a VPC Endpoint Service Configuration}
+PrivateLink. If you don't have a PrivateLink VPC endpoint, see \href{https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-service.html#create-endpoint-service}{Creating a VPC Endpoint Service Configuration}
 in the Amazon VPC User Guide.
 
 VPC endpoint ID looks like this: \verb{vpce-01234d5aff67890e1}.}

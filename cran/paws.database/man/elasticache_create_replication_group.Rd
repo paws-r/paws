@@ -327,11 +327,11 @@ Password constraints:
 \item Must be at least 16 characters and no more than 128 characters in
 length.
 \item The only permitted printable special characters are !, &, \#, $, ^,
-\<, \>, and -. Other printable special characters cannot be used in
-the AUTH token.
+<, >, and -. Other printable special characters cannot be used
+in the AUTH token.
 }
 
-For more information, see \href{https://redis.io/commands/auth/}{AUTH password} at
+For more information, see AUTH password at
 http://redis.io/commands/AUTH.}
 
 \item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to \code{true}.

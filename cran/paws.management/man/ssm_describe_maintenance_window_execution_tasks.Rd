@@ -12,8 +12,8 @@ ssm_describe_maintenance_window_execution_tasks(WindowExecutionId,
 be retrieved.}
 
 \item{Filters}{Optional filters used to scope down the returned tasks. The supported
-filter key is STATUS with the corresponding values PENDING, IN_PROGRESS,
-SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.}
+filter key is STATUS with the corresponding values PENDING,
+IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the

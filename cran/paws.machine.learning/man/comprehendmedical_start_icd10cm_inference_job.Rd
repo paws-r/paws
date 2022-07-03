@@ -16,7 +16,7 @@ comprehendmedical_start_icd10cm_inference_job(InputDataConfig,
 
 \item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Access Management
 (IAM) role that grants Amazon Comprehend Medical read access to your
-input data. For more information, see \href{https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med}{Role-Based Permissions Required for Asynchronous Operations}.}
+input data. For more information, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med}{Role-Based Permissions Required for Asynchronous Operations}.}
 
 \item{JobName}{The identifier of the job.}
 

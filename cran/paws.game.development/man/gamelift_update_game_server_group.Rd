@@ -25,7 +25,7 @@ group. For more information on instance types, see \href{https://docs.aws.amazon
 in the \emph{Amazon EC2 User Guide}. You can optionally specify capacity
 weighting for each instance type. If no weight value is specified for an
 instance type, it is set to the default value "1". For more information
-about capacity weighting, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups-instance-weighting.html}{Instance Weighting for Amazon EC2 Auto Scaling}
+about capacity weighting, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-weighting.html}{Instance Weighting for Amazon EC2 Auto Scaling}
 in the Amazon EC2 Auto Scaling User Guide.}
 
 \item{GameServerProtectionPolicy}{A flag that indicates whether instances in the game server group are

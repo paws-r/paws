@@ -100,9 +100,9 @@ relationship with the value of \code{FeatureTypes}).
 }
 
 Selection elements such as check boxes and option buttons (radio
-buttons) can be detected in form data and in tables. A SELECTION_ELEMENT
-\code{Block} object contains information about a selection element, including
-the selection status.
+buttons) can be detected in form data and in tables. A
+SELECTION_ELEMENT \code{Block} object contains information about a selection
+element, including the selection status.
 
 You can choose which type of analysis to perform by specifying the
 \code{FeatureTypes} list.

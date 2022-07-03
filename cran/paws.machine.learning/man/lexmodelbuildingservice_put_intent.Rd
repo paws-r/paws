@@ -18,8 +18,8 @@ with "AMAZON." removed. For example, because there is a built-in intent
 called \code{AMAZON.HelpIntent}, you can't create a custom intent called
 \code{HelpIntent}.
 
-For a list of built-in intents, see Standard Built-in Intents in the
-\emph{Alexa Skills Kit}.}
+For a list of built-in intents, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html}{Standard Built-in Intents}
+in the \emph{Alexa Skills Kit}.}
 
 \item{description}{A description of the intent.}
 
@@ -103,8 +103,8 @@ to the client application, or direct it to invoke a Lambda function that
 can process the intent (for example, place an order with a pizzeria).}
 
 \item{parentIntentSignature}{A unique identifier for the built-in intent to base this intent on. To
-find the signature for an intent, see Standard Built-in Intents in the
-\emph{Alexa Skills Kit}.}
+find the signature for an intent, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html}{Standard Built-in Intents}
+in the \emph{Alexa Skills Kit}.}
 
 \item{checksum}{Identifies a specific revision of the \verb{$LATEST} version.
 

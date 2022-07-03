@@ -27,9 +27,9 @@ expression.}
 
 \item{ScheduleTimezone}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
-"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see
-the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA
-website.}
+"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
+see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the
+IANA website.}
 
 \item{ScheduleOffset}{The number of days to wait after the date and time specified by a CRON
 expression before running the maintenance window.

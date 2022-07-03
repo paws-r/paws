@@ -43,8 +43,8 @@ providing filters and GroupByKey.
 
 For example, if the input contains accountID 12345678910 and region
 us-east-1 in filters, the API returns the count of resources in account
-ID 12345678910 and region us-east-1. If the input contains ACCOUNT_ID as
-a GroupByKey, the API returns resource counts for all source accounts
+ID 12345678910 and region us-east-1. If the input contains ACCOUNT_ID
+as a GroupByKey, the API returns resource counts for all source accounts
 that are present in your aggregator.
 }
 \section{Request syntax}{

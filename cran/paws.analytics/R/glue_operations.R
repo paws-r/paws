@@ -4059,9 +4059,9 @@ glue_delete_schema <- function(SchemaId) {
 #' @description
 #' Remove versions from the specified schema. A version number or range may
 #' be supplied. If the compatibility mode forbids deleting of a version
-#' that is necessary, such as BACKWARDS_FULL, an error is returned. Calling
-#' the `GetSchemaVersions` API after this call will list the status of the
-#' deleted versions.
+#' that is necessary, such as BACKWARDS_FULL, an error is returned.
+#' Calling the `GetSchemaVersions` API after this call will list the status
+#' of the deleted versions.
 #' 
 #' When the range of version numbers contain check pointed version, the API
 #' will return a 409 conflict and will not proceed with the deletion. You
@@ -7109,40 +7109,40 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' 
 #' (a = b) is not true.
 #' 
-#' ### \< \>
+#' ### &lt; &gt;
 #' 
 #' Checks whether the values of two operands are equal; if the values are
 #' not equal, then the condition becomes true.
 #' 
-#' Example: (a \< \> b) is true.
+#' Example: (a &lt; &gt; b) is true.
 #' 
-#' ### \>
+#' ### &gt;
 #' 
 #' Checks whether the value of the left operand is greater than the value
 #' of the right operand; if yes, then the condition becomes true.
 #' 
-#' Example: (a \> b) is not true.
+#' Example: (a &gt; b) is not true.
 #' 
-#' ### \<
+#' ### &lt;
 #' 
 #' Checks whether the value of the left operand is less than the value of
 #' the right operand; if yes, then the condition becomes true.
 #' 
-#' Example: (a \< b) is true.
+#' Example: (a &lt; b) is true.
 #' 
-#' ### \>=
+#' ### &gt;=
 #' 
 #' Checks whether the value of the left operand is greater than or equal to
 #' the value of the right operand; if yes, then the condition becomes true.
 #' 
-#' Example: (a \>= b) is not true.
+#' Example: (a &gt;= b) is not true.
 #' 
-#' ### \<=
+#' ### &lt;=
 #' 
 #' Checks whether the value of the left operand is less than or equal to
 #' the value of the right operand; if yes, then the condition becomes true.
 #' 
-#' Example: (a \<= b) is true.
+#' Example: (a &lt;= b) is true.
 #' 
 #' ### AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL
 #' 

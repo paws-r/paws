@@ -25,8 +25,8 @@ response.}
 API returns up to 1,000 key names. The response might contain fewer keys
 but will never contain more. If additional keys satisfy the search
 criteria, but were not returned because max-keys was exceeded, the
-response contains \<isTruncated\>true\</isTruncated\>. To return the
-additional keys, see key-marker and version-id-marker.}
+response contains <isTruncated>true</isTruncated>. To return
+the additional keys, see key-marker and version-id-marker.}
 
 \item{Prefix}{Use this parameter to select only those keys that begin with the
 specified prefix. You can use prefixes to separate a bucket into

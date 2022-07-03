@@ -19,7 +19,7 @@ contains.
 
 The currently active rule set cannot be deleted.
 
-For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html}{Amazon SES Developer Guide}.
+For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

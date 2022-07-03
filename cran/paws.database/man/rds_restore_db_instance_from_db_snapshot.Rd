@@ -227,7 +227,7 @@ outside of its virtual private cloud (VPC) on your local network.
 For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on AWS Outposts}
 in the \emph{Amazon RDS User Guide}.
 
-For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing}{Customer-owned IP addresses}
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing}{Customer-owned IP addresses}
 in the \emph{AWS Outposts User Guide}.}
 }
 \value{

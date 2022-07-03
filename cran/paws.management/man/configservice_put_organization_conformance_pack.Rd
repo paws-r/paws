@@ -67,8 +67,8 @@ parameter, but not both. If you provide both AWS Config uses the
 \code{TemplateS3Uri} parameter and ignores the \code{TemplateBody} parameter.
 
 AWS Config sets the state of a conformance pack to CREATE_IN_PROGRESS
-and UPDATE_IN_PROGRESS until the conformance pack is created or updated.
-You cannot update a conformance pack while it is in this state.
+and UPDATE_IN_PROGRESS until the conformance pack is created or
+updated. You cannot update a conformance pack while it is in this state.
 
 You can create 6 conformance packs with 25 AWS Config rules in each pack
 and 3 delegated administrator per organization.

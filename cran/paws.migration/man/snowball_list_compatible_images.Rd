@@ -32,8 +32,8 @@ A list with the following syntax:\preformatted{list(
 This action returns a list of the different Amazon EC2 Amazon Machine
 Images (AMIs) that are owned by your AWS account that would be supported
 for use on a Snow device. Currently, supported AMIs are based on the
-CentOS 7 (x86_64) - with Updates HVM, Ubuntu Server 14.04 LTS (HVM), and
-Ubuntu 16.04 LTS - Xenial (HVM) images, available on the AWS
+CentOS 7 (x86_64) - with Updates HVM, Ubuntu Server 14.04 LTS (HVM),
+and Ubuntu 16.04 LTS - Xenial (HVM) images, available on the AWS
 Marketplace.
 }
 \section{Request syntax}{

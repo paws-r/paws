@@ -95,7 +95,7 @@ are found to be in a bad state, instead of after any change.
 
 An infinite loop can quickly cause higher than expected charges. We
 recommend that you use budgeting, which alerts you when charges exceed
-your specified limit. For more information, see \href{https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html}{Managing Your Costs with Budgets}.
+your specified limit. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html}{Managing Your Costs with Budgets}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_rule(

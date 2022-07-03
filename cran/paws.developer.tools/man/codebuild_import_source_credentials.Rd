@@ -10,8 +10,9 @@ codebuild_import_source_credentials(username, token, serverType,
   authType, shouldOverwrite)
 }
 \arguments{
-\item{username}{The Bitbucket username when the \code{authType} is BASIC_AUTH. This parameter
-is not valid for other types of source providers or connections.}
+\item{username}{The Bitbucket username when the \code{authType} is BASIC_AUTH. This
+parameter is not valid for other types of source providers or
+connections.}
 
 \item{token}{[required] For GitHub or GitHub Enterprise, this is the personal access token. For
 Bitbucket, this is the app password.}

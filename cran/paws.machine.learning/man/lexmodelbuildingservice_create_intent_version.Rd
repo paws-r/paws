@@ -163,9 +163,11 @@ update the numbered versions that you create with the
 \code{\link[=lexmodelbuildingservice_create_intent_version]{create_intent_version}}
 operation.
 
-When you create a version of an intent, Amazon Lex sets the version
-to 1. Subsequent versions increment by 1. For more information, see
+When you create a version of an intent, Amazon Lex sets the version to
+\enumerate{
+\item Subsequent versions increment by 1. For more information, see
 versioning-intro.
+}
 
 This operation requires permissions to perform the
 \code{lex:CreateIntentVersion} action.

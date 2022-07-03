@@ -17,10 +17,8 @@ Domain names must start with a lowercase letter and can contain the
 following characters: a-z (lowercase), 0-9, and - (hyphen).}
 
 \item{ElasticsearchVersion}{String of format X.Y to specify version for the Elasticsearch domain eg.
-"1.5" or "2.3". For more information, see <a
-href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains"
-target="_blank">Creating Elasticsearch Domains</a> in the \emph{Amazon
-Elasticsearch Service Developer Guide}.}
+"1.5" or "2.3". For more information, see \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains}{Creating Elasticsearch Domains}
+in the \emph{Amazon Elasticsearch Service Developer Guide}.}
 
 \item{ElasticsearchClusterConfig}{Configuration options for an Elasticsearch domain. Specifies the
 instance type and number of instances in the domain cluster.}
@@ -34,15 +32,11 @@ volumes.}
 Default value is 0 hours.}
 
 \item{VPCOptions}{Options to specify the subnets and security groups for VPC endpoint. For
-more information, see <a
-href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html#es-creating-vpc"
-target="_blank">Creating a VPC</a> in \emph{VPC Endpoints for Amazon
-Elasticsearch Service Domains}}
+more information, see \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc}{Creating a VPC}
+in \emph{VPC Endpoints for Amazon Elasticsearch Service Domains}}
 
 \item{CognitoOptions}{Options to specify the Cognito user and identity pools for Kibana
-authentication. For more information, see <a
-href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html"
-target="_blank">Amazon Cognito Authentication for Kibana</a>.}
+authentication. For more information, see \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html}{Amazon Cognito Authentication for Kibana}.}
 
 \item{EncryptionAtRestOptions}{Specifies the Encryption At Rest Options.}
 
@@ -50,9 +44,8 @@ target="_blank">Amazon Cognito Authentication for Kibana</a>.}
 
 \item{AdvancedOptions}{Option to allow references to indices in an HTTP request body. Must be
 \code{false} when configuring access to individual sub-resources. By default,
-the value is \code{true}. See <a
-href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomain-configure-advanced-options"
-target="_blank">Configuration Advanced Options</a> for more information.}
+the value is \code{true}. See \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options}{Configuration Advanced Options}
+for more information.}
 
 \item{LogPublishingOptions}{Map of \code{LogType} and \code{LogPublishingOption}, each containing options to
 publish a given type of Elasticsearch log.}
@@ -173,10 +166,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Creates a new Elasticsearch domain. For more information, see <a
-href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains"
-target="_blank">Creating Elasticsearch Domains</a> in the \emph{Amazon
-Elasticsearch Service Developer Guide}.
+Creates a new Elasticsearch domain. For more information, see \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains}{Creating Elasticsearch Domains}
+in the \emph{Amazon Elasticsearch Service Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_elasticsearch_domain(

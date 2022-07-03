@@ -23,7 +23,7 @@ A list with the following syntax:\preformatted{list(
 \description{
 Configures one or more gateway local disks as cache for a gateway. This
 operation is only supported in the cached volume, tape, and file gateway
-type (see \href{https://docs.aws.amazon.com/storagegateway/index.html}{How AWS Storage Gateway works (architecture)}.
+type (see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html}{How AWS Storage Gateway works (architecture)}.
 
 In the request, you specify the gateway Amazon Resource Name (ARN) to
 which you want to add cache, and one or more disk IDs that you want to

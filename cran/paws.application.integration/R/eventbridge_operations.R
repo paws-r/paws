@@ -2044,7 +2044,7 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
 #' recommend that you use budgeting, which alerts you when charges exceed
 #' your specified limit. For more information, see [Managing Your Costs
 #' with
-#' Budgets](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html).
+#' Budgets](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html).
 #'
 #' @usage
 #' eventbridge_put_rule(Name, ScheduleExpression, EventPattern, State,

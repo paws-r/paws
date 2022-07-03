@@ -36,8 +36,8 @@ Lists the existing custom verification email templates for your account
 in the current AWS Region.
 
 For more information about custom verification email templates, see
-\href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Using Custom Verification Email Templates} in
-the \emph{Amazon SES Developer Guide}.
+\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html}{Using Custom Verification Email Templates}
+in the \emph{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

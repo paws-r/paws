@@ -40,7 +40,7 @@ off-site recovery, as well as import the data to an Amazon Elastic Block
 Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can take
 snapshots of your gateway volume on a scheduled or ad hoc basis. This
 API enables you to take an ad hoc snapshot. For more information, see
-\href{https://docs.aws.amazon.com/storagegateway/index.html#SchedulingSnapshot}{Editing a snapshot schedule}.
+\href{https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot}{Editing a snapshot schedule}.
 
 In the \code{\link[=storagegateway_create_snapshot]{create_snapshot}} request, you
 identify the volume by providing its Amazon Resource Name (ARN). You

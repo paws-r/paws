@@ -24,7 +24,7 @@ for open and click event tracking.
 By default, images and links used for tracking open and click events are
 hosted on domains operated by Amazon SES. You can configure a subdomain
 of your own to handle these events. For information about using custom
-domains, see the \href{https://docs.aws.amazon.com/ses/latest/dg/configure-custom-open-click-domains.html}{Amazon SES Developer Guide}.
+domains, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_configuration_set_tracking_options(

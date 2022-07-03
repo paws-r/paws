@@ -33,9 +33,9 @@ A list with the following syntax:\preformatted{list(
 \description{
 Remove versions from the specified schema. A version number or range may
 be supplied. If the compatibility mode forbids deleting of a version
-that is necessary, such as BACKWARDS_FULL, an error is returned. Calling
-the \code{GetSchemaVersions} API after this call will list the status of the
-deleted versions.
+that is necessary, such as BACKWARDS_FULL, an error is returned.
+Calling the \code{GetSchemaVersions} API after this call will list the status
+of the deleted versions.
 
 When the range of version numbers contain check pointed version, the API
 will return a 409 conflict and will not proceed with the deletion. You
