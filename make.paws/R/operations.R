@@ -63,9 +63,13 @@ make_operation <- function(operation, api) {
 
 # Override operation name from extdata/operation_name_override.yml
 operation_name_override <- function(operation_name){
-  path <- system_file("extdata/operation_name_override.yml", package = methods::getPackageName())
+  path <- system_file(
+    "extdata/operation_name_override.yml", package = methods::getPackageName()
+  )
   out <- yaml::read_yaml(path)
-  found <- vapply(out, function(x) x$name == operation_name, FUN.VALUE = logical(1))
+  found <- vapply(
+    out, function(x) {x$name == operation_name}, FUN.VALUE = logical(1)
+  )
   override <- NULL
   if(any(found))
     override <- out[[which(found)]]$override
