@@ -52,18 +52,28 @@ build_url <- function(url) {
   return(l)
 }
 
-query_empty = function(params) {(is.null(params) || length(params) == 0)}
+# helper function to filter out empty elements within build_query_string
+query_empty <- function(params) {(is.null(params) || length(params) == 0)}
 
 # Encode a list into a query string.
 # e.g. `list(bar = "baz", foo = "qux")` -> "bar=baz&foo=qux".
 build_query_string <- function(params){
-  param_filter = Filter(Negate(query_empty), params)
+  # Remove empty elements from params
+  params_filter <- Filter(Negate(query_empty), params)
 
   # convert query elements and escape them
-  param_filter = lapply(param_filter, function(x) query_escape(query_convert(x)))
+  params_filter <- lapply(
+    params_filter, function(x) {query_escape(query_convert(x))}
+  )
+
+  # Build query string for each element
+  params <- lapply(
+    sort(names(params_filter)), function(n) {
+      paste(n, params_filter[[n]], sep = "=", collapse = "&")
+  })
 
   # build query string
-  return(paste(lapply(sort(names(param_filter)), function(n) paste(n, param_filter[[n]], sep = "=", collapse = "&")), collapse = "&"))
+  return(paste(params, collapse = "&"))
 }
 
 # Decode a query string into a list.
@@ -99,35 +109,38 @@ query_escape <- function(string) {
 # Escape strings so they can be safely included in a URL.
 escape <- function(string, mode){
   # base characters that won't be encoded
-  base_url_encode = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._~-"
+  base_url_encode <- "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._~-"
   if (mode == "encodeHost" || mode == "encodeZone") {
     # host and zone characters that won't be encoded
     host_zone_pattern = "][!$&'()*+,;=:<>\""
-    pattern = paste0(host_zone_pattern, base_url_encode)
+    pattern <- paste0(host_zone_pattern, base_url_encode)
     return(
       paws_url_encoder(
         string, paste0("[^", pattern, "]")
       ))
   }
   # path and path segment characters that won't be encoded
-  path_pattern = "$&+,/;:=?@"
-  pattern = paste0(path_pattern, base_url_encode)
+  path_pattern <- "$&+,/;:=?@"
+  pattern <- paste0(path_pattern, base_url_encode)
 
   if (mode == "encodePath") {
     # remove character ? from pattern so that it can be encoded
-    rm_pattern = "[?]"
-    pattern = gsub(rm_pattern, "", pattern)
+    rm_pattern <- "[?]"
+    pattern <- gsub(rm_pattern, "", pattern)
     return(paws_url_encoder(string, paste0("[^", pattern, "]")))
   }
   if (mode == "encodePathSegment") {
     # remove character /;,? from pattern so that it can be encoded
-    rm_pattern = "[/;,?]"
-    pattern = gsub(rm_pattern, "", pattern)
+    rm_pattern <- "[/;,?]"
+    pattern <- gsub(rm_pattern, "", pattern)
     return(paws_url_encoder(string, paste0("[^", pattern, "]")))
   }
   if (mode == "encodeQueryComponent") {
-    # change whitespace encoding from %20 to +
-    return(gsub("%20", "+", paws_url_encoder(string, paste0("[^", base_url_encode, "]")), fixed =T))
+    # escape string using base_url_encode
+    escape_string <- paws_url_encoder(string, paste0("[^", base_url_encode, "]"))
+
+    # replace whitespace encoding from %20 to +
+    return(gsub("%20", "+", escape_string, fixed =T))
   }
   if (mode == "encodeFragment") {
     return(paws_url_encoder(string, paste0("[^", pattern, "]")))
