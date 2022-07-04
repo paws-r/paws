@@ -104,3 +104,13 @@ test_that("make_operation", {
 
   expect_equal(actual, expected)
 })
+
+test_that("operation name with override", {
+  op_name <- operation_name_override("UploadPartCopy")
+  expect_equal(op_name, quoted("CopyPart"))
+})
+
+test_that("operation name with no override", {
+  op_name <- operation_name_override("Dummy")
+  expect_equal(op_name, quoted("Dummy"))
+})

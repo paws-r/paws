@@ -14,7 +14,7 @@ operation_file_template <- template(
 
 # Make all API operations.
 make_operations <- function(api) {
-  operations <- lapply(api$operations, function(op) make_operation(op, api))
+  operations <- lapply(api$operations, make_operation, api = api)
   render(
     operation_file_template,
     service = package_name(api),
@@ -51,7 +51,7 @@ make_operation <- function(operation, api) {
     operation_template,
     docs = make_docs(operation, api),
     service = package_name(api),
-    operation_name = quoted(operation$name),
+    operation_name = operation_name_override(operation$name),
     function_name = get_operation_name(operation),
     params = get_operation_params(get_operation_input_shape(operation, api)),
     operation_input = get_operation_input(operation, api),
@@ -59,6 +59,22 @@ make_operation <- function(operation, api) {
     http_method = quoted(operation$http$method),
     http_path = quoted(operation$http$requestUri)
   )
+}
+
+# Override operation name from extdata/operation_name_override.yml
+operation_name_override <- function(operation_name){
+  path <- system_file(
+    "extdata/operation_name_override.yml", package = methods::getPackageName()
+  )
+  out <- yaml::read_yaml(path)
+  found <- vapply(
+    out, function(x) {x$name == operation_name}, FUN.VALUE = logical(1)
+  )
+  override <- NULL
+  if(any(found))
+    override <- out[[which(found)]]$override
+  operation_name <- if(!is.null(override)) override else operation_name
+  return(quoted(operation_name))
 }
 
 #-------------------------------------------------------------------------------
