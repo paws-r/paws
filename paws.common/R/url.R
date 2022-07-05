@@ -63,13 +63,13 @@ build_query_string <- function(params){
 
   # convert query elements and escape them
   params_filter <- lapply(
-    params_filter, function(x) {query_escape(query_convert(x))}
+    params_filter, function(element) {query_escape(query_convert(element))}
   )
 
   # Build query string for each element
   params <- lapply(
-    sort(names(params_filter)), function(n) {
-      paste(n, params_filter[[n]], sep = "=", collapse = "&")
+    sort(names(params_filter)), function(name) {
+      paste(name, params_filter[[name]], sep = "=", collapse = "&")
   })
 
   # build query string
@@ -149,17 +149,22 @@ escape <- function(string, mode){
 }
 
 # Escape characters given a pattern
-paws_url_encoder = function(string, pattern){
+paws_url_encoder <- function(string, pattern){
   vapply(string, function(string){
-    x <- strsplit(string, "")[[1L]]
-    z <- grep(pattern, x)
-    if (length(z)) {
-      y <- vapply(x[z], function(x) {
+    # split string out into individual characters
+    chars <- strsplit(string, "")[[1L]]
+    # find characters that match pattern
+    found <- grep(pattern, chars)
+    if (length(found)) {
+      # encode found characters only
+      encode_char <- vapply(chars[found], function(x) {
         paste0("%", toupper(as.character(charToRaw(x))),collapse = "")
       }, "")
-      x[z] <- y
+      # update found characters with encoded characters
+      chars[found] <- encode_char
     }
-    paste(x, collapse = "")
+    # rebuild string with encoded characters
+    paste(chars, collapse = "")
   }, character(1), USE.NAMES = FALSE)
 }
 
@@ -197,9 +202,12 @@ valid_encoded_path <- function(path) {
 }
 
 # Convert a value to be used in a query string.
-query_convert <- function(x) {
-  ind <- as.logical(unlist(lapply(x, is.logical)))
-  x[which(ind)] <- tolower(x[which(ind)])
-  x[which(!ind)] <- as.character(x[which(!ind)])
-  return(x)
+query_convert <- function(value) {
+  # find elements that are logical
+  found <- as.logical(unlist(lapply(value, is.logical)))
+  # convert logical elements
+  value[which(found)] <- tolower(value[which(found)])
+  # convert non-logical elements
+  value[which(!found)] <- as.character(value[which(!found)])
+  return(value)
 }
