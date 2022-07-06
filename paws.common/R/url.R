@@ -164,10 +164,45 @@ paws_url_encoder <- function(string, pattern){
   }, character(1), USE.NAMES = FALSE)
 }
 
+# decode encoded url strings
+paws_url_decoder <- function(url) {
+  # split string into separate characters
+  chars <- strsplit(url, "")[[1]]
+
+  # locate % position
+  found <- grep("%", chars, fixed = TRUE)
+
+  if (length(found)) {
+    start <- found + 1
+    end <- found + 2
+
+    # get raw vector of encoded parts (character form)
+    # for example: "%20" -> "20"
+    encoded <- vapply(seq_along(start), function(i) {
+      paste0(chars[start[i]:end[i]], collapse = "")
+    }, FUN.VALUE = character(1)
+    )
+    # remove encoded parts from chars
+    rm <- c(start, end)
+
+    # update character % position
+    found <- grep("%", chars[-rm], fixed = TRUE)
+
+    # convert split url to raw
+    char_raw <- charToRaw(paste(chars[-rm], collapse=""))
+
+    # replace character % with decoded parts
+    char_raw[found] <- as.raw(as.hexmode(encoded))
+
+    return(rawToChar(char_raw))
+  }
+  return(url)
+}
+
 # Un-escape a string.
 # TODO: Complete.
 unescape <- function(string) {
-  return(utils::URLdecode(string))
+  return(paws_url_decoder(string))
 }
 
 # The inverse of query_escape: convert the encoded string back to the original,

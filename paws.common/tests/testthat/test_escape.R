@@ -17,3 +17,25 @@ test_that("check all escape modes", {
     expect_equal(escape(string, escape_mode[i]), expected_list[i])
   }
 })
+
+test_that("check if encoded url is correctly decoded", {
+  string <- "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~`!@#$%^&*()=+[{]}\\|;:'\",<>/? "
+  pattern <- "[^ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._~-]"
+
+  url = paste(sample(strsplit(string, "")[[1]], 1e6, replace = T), collapse = "")
+  url_encode = paws_url_encoder(url, pattern)
+  actual = paws_url_decoder(url_encode)
+
+  expect_equal(actual, url)
+})
+
+test_that("check if non-encoded url is correctly decoded", {
+  string <- "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~"
+  pattern <- "[^ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._~-]"
+
+  url = paste(sample(strsplit(string, "")[[1]], 1e6, replace = T), collapse = "")
+  url_encode = paws_url_encoder(url, pattern)
+  actual = paws_url_decoder(url_encode)
+
+  expect_equal(actual, url)
+})
