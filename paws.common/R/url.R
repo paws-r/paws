@@ -157,11 +157,7 @@ paws_url_encoder <- function(string, pattern){
     found <- grep(pattern, chars)
     if (length(found)) {
       # encode found characters only
-      encode_char <- vapply(chars[found], function(x) {
-        paste0("%", toupper(as.character(charToRaw(x))),collapse = "")
-      }, "")
-      # update found characters with encoded characters
-      chars[found] <- encode_char
+      chars[found] <- toupper(paste0("%", charToRaw(string)[found]))
     }
     # rebuild string with encoded characters
     paste(chars, collapse = "")
