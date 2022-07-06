@@ -179,8 +179,8 @@ paws_url_decoder <- function(url) {
     # get raw vector of encoded parts (character form)
     # for example: "%20" -> "20"
     encoded <- vapply(seq_along(start), function(i) {
-      paste0(chars[start[i]:end[i]], collapse = "")
-    }, FUN.VALUE = character(1)
+        paste0(chars[start[i]:end[i]], collapse = "")
+      }, FUN.VALUE = character(1)
     )
     # remove encoded parts from chars
     rm <- c(start, end)
