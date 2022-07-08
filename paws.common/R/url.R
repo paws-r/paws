@@ -52,24 +52,28 @@ build_url <- function(url) {
   return(l)
 }
 
+# helper function to filter out empty elements within build_query_string
+query_empty <- function(params) {(is.null(params) || length(params) == 0)}
+
 # Encode a list into a query string.
 # e.g. `list(bar = "baz", foo = "qux")` -> "bar=baz&foo=qux".
-build_query_string <- function(params) {
-  string = ""
-  if (is.null(params) || length(params) == 0) return(string)
-  for (key in sort(names(params))) {
-    k <- query_escape(key)
-    values <- params[[key]]
-    for (value in values) {
-      v <- query_escape(query_convert(value))
-      el <- paste0(k, "=", v)
-      if (string != "") {
-        string <- paste0(string, "&")
-      }
-      string <- paste0(string, el)
-    }
-  }
-  return(string)
+build_query_string <- function(params){
+  # Remove empty elements from params
+  params_filter <- Filter(Negate(query_empty), params)
+
+  # convert query elements and escape them
+  params_filter <- lapply(
+    params_filter, function(element) {query_escape(query_convert(element))}
+  )
+
+  # Build query string for each element
+  params <- lapply(
+    sort(names(params_filter)), function(name) {
+      paste(name, params_filter[[name]], sep = "=", collapse = "&")
+  })
+
+  # build query string
+  return(paste(params, collapse = "&"))
 }
 
 # Decode a query string into a list.
@@ -103,61 +107,104 @@ query_escape <- function(string) {
 }
 
 # Escape strings so they can be safely included in a URL.
-escape <- function(string, mode) {
-  t <- ""
-  for (i in 1:nchar(string)) {
-    c <- substr(string, i, i)
-    if (c == " " && mode == "encodeQueryComponent") {
-      t <- paste0(t, "+")
-    } else if (should_escape(c, mode)) {
-      t <- paste0(t, utils::URLencode(c, reserved = TRUE))
-    } else {
-      t <- paste0(t, c)
-    }
+escape <- function(string, mode){
+  # base characters that won't be encoded
+  base_url_encode <- "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._~-"
+  if (mode == "encodeHost" || mode == "encodeZone") {
+    # host and zone characters that won't be encoded
+    host_zone_pattern = "][!$&'()*+,;=:<>\""
+    pattern <- paste0(host_zone_pattern, base_url_encode)
+    return(
+      paws_url_encoder(
+        string, paste0("[^", pattern, "]")
+      ))
   }
-  return(t)
+  # path and path segment characters that won't be encoded
+  path_pattern <- "$&+,/;:=?@"
+  pattern <- paste0(path_pattern, base_url_encode)
+
+  if (mode == "encodePath") {
+    # remove character ? from pattern so that it can be encoded
+    rm_pattern <- "[?]"
+    pattern <- gsub(rm_pattern, "", pattern)
+    return(paws_url_encoder(string, paste0("[^", pattern, "]")))
+  }
+  if (mode == "encodePathSegment") {
+    # remove character /;,? from pattern so that it can be encoded
+    rm_pattern <- "[/;,?]"
+    pattern <- gsub(rm_pattern, "", pattern)
+    return(paws_url_encoder(string, paste0("[^", pattern, "]")))
+  }
+  if (mode == "encodeQueryComponent") {
+    # escape string using base_url_encode
+    escape_string <- paws_url_encoder(string, paste0("[^", base_url_encode, "]"))
+
+    # replace whitespace encoding from %20 to +
+    return(gsub("%20", "+", escape_string, fixed =T))
+  }
+  if (mode == "encodeFragment") {
+    return(paws_url_encoder(string, paste0("[^", pattern, "]")))
+  }
+  return(utils::URLencode(string, reserved = TRUE))
 }
 
-# Return whether to escape a given character.
-should_escape <- function(char, mode) {
-  if (grepl("[A-Za-z0-9]", char)) {
-    return(FALSE)
-  }
-
-  if (mode == "encodeHost" || mode == "encodeZone") {
-    if (char %in% c("!", "$", "&", "'", "(", ")", "*", "+", ",", ";", "=", ":", "[", "]", "<", ">", '"')) {
-      return(FALSE)
+# Escape characters given a pattern
+paws_url_encoder <- function(string, pattern){
+  vapply(string, function(string){
+    # split string out into individual characters
+    chars <- strsplit(string, "")[[1L]]
+    # find characters that match pattern
+    found <- grep(pattern, chars)
+    if (length(found)) {
+      # encode found characters only
+      chars[found] <- toupper(paste0("%", charToRaw(string)[found]))
     }
-  }
+    # rebuild string with encoded characters
+    paste(chars, collapse = "")
+  }, character(1), USE.NAMES = FALSE)
+}
 
-  if (char %in% c("-", "_", ".", "~")) {
-    return(FALSE)
-  }
+# decode encoded url strings
+paws_url_decoder <- function(URL) {
+  vapply(URL, function(url){
+    # split string into separate characters
+    chars <- strsplit(url, "")[[1]]
 
-  if (char %in% c("$", "&", "+", ",", "/", ":", ";", "=", "?", "@")) {
-    if (mode == "encodePath") {
-      return(char == "?")
+    # locate % position
+    found <- grep("%", chars, fixed = TRUE)
+
+    if (length(found)) {
+      start <- found + 1
+      end <- found + 2
+
+      # get raw vector of encoded parts (character form)
+      # for example: "%20" -> "20"
+      encoded <- vapply(seq_along(start), function(i) {
+          paste0(chars[start[i]:end[i]], collapse = "")
+        }, FUN.VALUE = character(1)
+      )
+      # remove encoded parts from chars
+      rm <- c(start, end)
+
+      # update character % position
+      found <- grep("%", chars[-rm], fixed = TRUE)
+
+      # convert split url to raw
+      char_raw <- charToRaw(paste(chars[-rm], collapse=""))
+
+      # replace character % with decoded parts
+      char_raw[found] <- as.raw(as.hexmode(encoded))
+
+      return(rawToChar(char_raw))
     }
-
-    if (mode == "encodePathSegment") {
-      return(char %in% c("/", ";", ",", "?"))
-    }
-
-    if (mode == "encodeQueryComponent") {
-      return(TRUE)
-    }
-
-    if (mode == "encodeFragment") {
-      return(FALSE)
-    }
-  }
-  return(TRUE)
+    return(url)
+  }, character(1),  USE.NAMES = FALSE)
 }
 
 # Un-escape a string.
 # TODO: Complete.
 unescape <- function(string) {
-  return(utils::URLdecode(string))
+  return(paws_url_decoder(string))
 }
 
 # The inverse of query_escape: convert the encoded string back to the original,
@@ -189,10 +236,11 @@ valid_encoded_path <- function(path) {
 
 # Convert a value to be used in a query string.
 query_convert <- function(value) {
-  convert_fn <- as.character
-  if (is.logical(value)) {
-    convert_fn <- convert_boolean
-  }
-  string <- convert_fn(value)
-  return(string)
+  # find elements that are logical
+  found <- as.logical(unlist(lapply(value, is.logical)))
+  # convert logical elements
+  value[which(found)] <- tolower(value[which(found)])
+  # convert non-logical elements
+  value[which(!found)] <- as.character(value[which(!found)])
+  return(value)
 }
