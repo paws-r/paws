@@ -8,14 +8,14 @@ NULL
 #' @param categories An optional list of categories to use.
 #'
 #' @export
-make_cran <- function(sdk_dir, out_dir, categories = NULL) {
+make_cran <- function(sdk_dir, out_dir, categories = NULL, only_cran = FALSE) {
   if (is.null(categories)) categories <- get_categories()
   make_categories(sdk_dir, out_dir, categories)
-  make_collection(sdk_dir, out_dir, categories)
+  make_collection(sdk_dir, out_dir, categories, only_cran)
 }
 
 # Make the package which collects all the category packages.
-make_collection <- function(sdk_dir, out_dir, categories, only_cran = TRUE) {
+make_collection <- function(sdk_dir, out_dir, categories, only_cran) {
   package <- "paws"
   version <- get_version(sdk_dir)
   package_dir <- file.path(out_dir, package)
@@ -31,6 +31,11 @@ make_collection <- function(sdk_dir, out_dir, categories, only_cran = TRUE) {
   if (only_cran) {
     cran <- row.names(utils::available.packages(repos = "https://cran.rstudio.com"))
     categories <- categories[sapply(categories, get_category_package_name) %in% cran]
+  } else {
+    active <- vapply(categories,
+      function(x){!is.null(x$services)}, FUN.VALUE = logical(1)
+    )
+    categories <- categories[active]
   }
   write_source_collection(sdk_dir, package_dir, categories)
   write_documentation(package_dir)
