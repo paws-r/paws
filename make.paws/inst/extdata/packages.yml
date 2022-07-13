@@ -2,12 +2,18 @@
 - name: compute
   services:
     - batch
+    - braket
+    - computeoptimizer
     - ec2
     - ec2instanceconnect
     - ecr
+    - ecrpublic
     - ecs
     - eks
     - elasticbeanstalk
+    - elasticinference
+    - emrcontainers
+    - imagebuilder
     - lambda
     - lightsail
     - serverlessapplicationrepository
@@ -21,11 +27,13 @@
   services:
     - backup
     - dlm
+    - ebs
     - efs
     - fsx
     - glacier
     - s3
     - s3control
+    - s3outposts
     - storagegateway
   title: "'Amazon Web Services' Storage Services"
   description: >-
@@ -39,11 +47,17 @@
     - dynamodb
     - dynamodbstreams
     - elasticache
+    - lakeformation
     - neptune
+    - qldb
+    - qldbsession
     - rds
     - rdsdataservice
     - redshift
+    - redshiftdataapiservice
     - simpledb
+    - timestreamquery
+    - timestreamwrite
   title: "'Amazon Web Services' Database Services"
   description: >-
     Interface to 'Amazon Web Services' database services, including 'Relational
@@ -52,11 +66,16 @@
 
 - name: migration
   services:
+    - appconfig
+    - appflow
     - applicationdiscoveryservice
+    - appintegrationsservice
     - databasemigrationservice
+    - dataexchange
     - datasync
     - importexport
     - migrationhub
+    - migrationhubconfig
     - sms
     - snowball
     - transfer
@@ -77,6 +96,8 @@
     - elb
     - elbv2
     - globalaccelerator
+    - networkfirewall
+    - networkmanager
     - route53
     - route53domains
     - route53resolver
@@ -91,10 +112,17 @@
   services:
     - cloud9
     - codebuild
+    - codeartifact
     - codecommit
     - codedeploy
+    - codeguruprofiler
+    - codegurureviewer
     - codepipeline
     - codestar
+    - codestarconnections
+    - codestarnotifications # need to double check this
+    - devopsguru
+    - wellarchitected
     - xray
   title: "'Amazon Web Services' Developer Tools Services"
   description: >-
@@ -113,11 +141,13 @@
 
 - name: blockchain
   services:
+    - managedblockchain
   title: "'Amazon Web Services' Blockchain Services"
   description: ""
 
 - name: satellite
   services:
+    - groundstation
   title: "'Amazon Web Services' Satellite Services"
   description: ""
 
@@ -125,6 +155,7 @@
   services:
     - applicationautoscaling
     - applicationinsights
+    - appregistry
     - autoscaling
     - autoscalingplans
     - cloudformation
@@ -139,12 +170,14 @@
     - opsworkscm
     - organizations
     - pi
+    - prometheusservice
     - resourcegroups
     - resourcegroupstaggingapi
     - servicecatalog
     - servicequotas
     - ssm
     - support
+    - synthetics
   title: "'Amazon Web Services' Management & Governance Services"
   description: >-
     Interface to 'Amazon Web Services' management and governance services,
@@ -162,6 +195,7 @@
     - mediaconvert
     - medialive
     - mediapackage
+    - mediapackagevod
     - mediastore
     - mediastoredata
     - mediatailor
@@ -173,8 +207,12 @@
 
 - name: machine.learning
   services:
+    - augmentedairuntime
     - comprehend
     - comprehendmedical
+    - forecastqueryservice
+    - forecastservice
+    - frauddetector
     - lexmodelbuildingservice
     - lexruntimeservice
     - machinelearning
@@ -184,6 +222,8 @@
     - polly
     - rekognition
     - sagemaker
+    - sagemakeredgemanager
+    - sagemakerfeaturestoreruntime
     - sagemakerruntime
     - textract
     - transcribeservice
@@ -205,10 +245,18 @@
     - emr
     - firehose
     - glue
+    - gluedatabrew
+    - healthlake
+    - ivs
     - kafka
+    - kendra
     - kinesis
     - kinesisanalytics
     - kinesisanalyticsv2
+    - kinesisvideo
+    - kinesisvideoarchivedmedia
+    - kinesisvideomedia
+    - kinesisvideosignalingchannels
     - mturk
     - quicksight
   title: "'Amazon Web Services' Analytics Services"
@@ -219,6 +267,7 @@
 
 - name: security.identity
   services:
+    - accessanalyzer
     - acm
     - acmpca
     - clouddirectory
@@ -227,21 +276,27 @@
     - cognitoidentity
     - cognitoidentityprovider
     - cognitosync
+    - detective
     - directoryservice
     - fms
     - guardduty
     - iam
+    - identitystore
     - inspector
     - kms
     - macie
+    - macie2
     - ram
     - secretsmanager
     - securityhub
     - shield
     - sts
     - sso
+    - ssoadmin
+    - ssooidc
     - waf
     - wafregional
+    - wafv2
   title: "'Amazon Web Services' Security, Identity, & Compliance Services"
   description: >-
     Interface to 'Amazon Web Services' security, identity, and compliance
@@ -252,8 +307,10 @@
 - name: mobile
   services:
     - amplify
+    - amplifybackend
     - appsync
     - devicefarm
+    - honeycode
     - mobile
     - mobileanalytics
   title: "'Amazon Web Services' Mobile Services"
@@ -270,7 +327,10 @@
 - name: application.integration
   services:
     - eventbridge
+    - locationservice
     - mq
+    - mwaa
+    - schemas
     - sfn
     - sns
     - sqs
@@ -287,10 +347,12 @@
     - budgets
     - costandusagereportservice
     - costexplorer
+    - marketplacecatalog
     - marketplacecommerceanalytics
     - marketplaceentitlementservice
     - marketplacemetering
     - pricing
+    - savingsplans
   title: "'Amazon Web Services' Cost Management Services"
   description: >-
     Interface to 'Amazon Web Services' cost management services, including
@@ -300,10 +362,14 @@
 - name: customer.engagement
   services:
     - connect
+    - connectcontactlens
+    - connectparticipant
+    - customerprofiles
     - pinpoint
     - pinpointemail
     - pinpointsmsvoice
     - ses
+    - sesv2
   title: "'Amazon Web Services' Customer Engagement Services"
   description: >-
     Interface to 'Amazon Web Services' customer engagement services, including
@@ -312,8 +378,11 @@
 
 - name: business.applications
   services:
+    - auditmanager # not sure where to put this
     - alexaforbusiness
     - chime
+    - lookoutforvision
+    - outposts
     - workmail
   title: "'Amazon Web Services' Business Applications Services"
   description: >-
@@ -326,6 +395,8 @@
     - appstream
     - workdocs
     - worklink
+    - workmail
+    - workmailmessageflow
     - workspaces
   title: "'Amazon Web Services' End User Computing Services"
   description: >-
@@ -336,12 +407,21 @@
 - name: internet.of.things
   services:
     - greengrass
+    - greengrassv2
     - iot
     - iot1clickdevicesservice
     - iot1clickprojects
     - iotanalytics
     - iotdataplane
+    - iotdeviceadvisor
+    - iotevents
+    - ioteventsdata
+    - iotfleethub
     - iotjobsdataplane
+    - iotsecuretunneling
+    - iotsitewise
+    - iotthingsgraph
+    - iotwireless
     - signer
   title: "'Amazon Web Services' Internet of Things Services"
   description: >-
