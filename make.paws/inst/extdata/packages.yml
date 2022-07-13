@@ -1,6 +1,7 @@
 ---
 - name: compute
   services:
+    - apprunner
     - batch
     - braket
     - computeoptimizer
@@ -13,9 +14,11 @@
     - elasticbeanstalk
     - elasticinference
     - emrcontainers
+    - emrserverless
     - imagebuilder
     - lambda
     - lightsail
+    - proton
     - serverlessapplicationrepository
   title: "'Amazon Web Services' Compute Services"
   description: >-
@@ -29,8 +32,10 @@
     - dlm
     - ebs
     - efs
+    - finspacedata
     - fsx
     - glacier
+    - recyclebin
     - s3
     - s3control
     - s3outposts
@@ -47,14 +52,17 @@
     - dynamodb
     - dynamodbstreams
     - elasticache
+    - keyspaces
     - lakeformation
     - neptune
+    - memorydb
     - qldb
     - qldbsession
     - rds
     - rdsdataservice
     - redshift
     - redshiftdataapiservice
+    - redshiftserverless
     - simpledb
     - timestreamquery
     - timestreamwrite
@@ -66,7 +74,6 @@
 
 - name: migration
   services:
-    - appconfig
     - appflow
     - applicationdiscoveryservice
     - appintegrationsservice
@@ -74,10 +81,15 @@
     - dataexchange
     - datasync
     - importexport
+    - mainframemodernization
+    - mgn
     - migrationhub
     - migrationhubconfig
+    - migrationhubrefactorspaces
+    - migrationhubstrategyrecommendations
     - sms
     - snowball
+    - snowdevicemanagement
     - transfer
   title: "'Amazon Web Services' Migration & Transfer Services"
   description: >-
@@ -91,6 +103,7 @@
     - apigatewaymanagementapi
     - apigatewayv2
     - appmesh
+    - backupgateway
     - cloudfront
     - directconnect
     - elb
@@ -100,6 +113,9 @@
     - networkmanager
     - route53
     - route53domains
+    - route53recoverycluster
+    - route53recoverycontrolconfig
+    - route53recoveryreadiness
     - route53resolver
     - servicediscovery
   title: "'Amazon Web Services' Networking & Content Delivery Services"
@@ -111,6 +127,7 @@
 - name: developer.tools
   services:
     - cloud9
+    - cloudcontrolapi
     - codebuild
     - codeartifact
     - codecommit
@@ -121,7 +138,9 @@
     - codestar
     - codestarconnections
     - codestarnotifications # need to double check this
+    - drs
     - devopsguru
+    - fis
     - wellarchitected
     - xray
   title: "'Amazon Web Services' Developer Tools Services"
@@ -154,6 +173,7 @@
 - name: management
   services:
     - applicationautoscaling
+    - applicationcostprofiler
     - applicationinsights
     - appregistry
     - autoscaling
@@ -162,20 +182,27 @@
     - cloudtrail
     - cloudwatch
     - cloudwatchevents
+    - cloudwatchevidently
     - cloudwatchlogs
+    - cloudwatchrum
     - configservice
+    - finspace
     - health
     - licensemanager
+    - managedgrafana
     - opsworks
     - opsworkscm
     - organizations
     - pi
     - prometheusservice
+    - resiliencehub
     - resourcegroups
     - resourcegroupstaggingapi
     - servicecatalog
     - servicequotas
     - ssm
+    - ssmcontacts
+    - ssmincidents
     - support
     - synthetics
   title: "'Amazon Web Services' Management & Governance Services"
@@ -214,8 +241,13 @@
     - forecastservice
     - frauddetector
     - lexmodelbuildingservice
+    - lexmodelsv2
     - lexruntimeservice
+    - lexruntimev2
+    - lookoutequipment
+    - lookoutmetrics
     - machinelearning
+    - panorama
     - personalize
     - personalizeevents
     - personalizeruntime
@@ -228,6 +260,7 @@
     - textract
     - transcribeservice
     - translate
+    - voiceid
   title: "'Amazon Web Services' Machine Learning Services"
   description: >-
     Interface to 'Amazon Web Services' machine learning services, including
@@ -249,6 +282,7 @@
     - healthlake
     - ivs
     - kafka
+    - kafkaconnect
     - kendra
     - kinesis
     - kinesisanalytics
@@ -258,6 +292,7 @@
     - kinesisvideomedia
     - kinesisvideosignalingchannels
     - mturk
+    - opensearchservice
     - quicksight
   title: "'Amazon Web Services' Analytics Services"
   description: >-
@@ -268,6 +303,7 @@
 - name: security.identity
   services:
     - accessanalyzer
+    - account
     - acm
     - acmpca
     - clouddirectory
@@ -281,8 +317,10 @@
     - fms
     - guardduty
     - iam
+    - iamrolesanywhere
     - identitystore
     - inspector
+    - inspector2
     - kms
     - macie
     - macie2
@@ -308,6 +346,9 @@
   services:
     - amplify
     - amplifybackend
+    - amplifyuibuilder
+    - appconfig
+    - appconfigdata
     - appsync
     - devicefarm
     - honeycode
@@ -344,6 +385,7 @@
 
 - name: cost.management
   services:
+    - billingconductor
     - budgets
     - costandusagereportservice
     - costexplorer
@@ -362,12 +404,15 @@
 - name: customer.engagement
   services:
     - connect
+    - connectcampaignservice
     - connectcontactlens
     - connectparticipant
+    - connectwisdomservice
     - customerprofiles
     - pinpoint
     - pinpointemail
     - pinpointsmsvoice
+    - pinpointsmsvoicev2
     - ses
     - sesv2
   title: "'Amazon Web Services' Customer Engagement Services"
@@ -381,6 +426,10 @@
     - auditmanager # not sure where to put this
     - alexaforbusiness
     - chime
+    - chimesdkidentity
+    - chimesdkmediapipelines
+    - chimesdkmeetings
+    - chimesdkmessaging
     - lookoutforvision
     - outposts
     - workmail
@@ -393,11 +442,14 @@
 - name: end.user.computing
   services:
     - appstream
+    - ivschat
+    - nimblestudio
     - workdocs
     - worklink
     - workmail
     - workmailmessageflow
     - workspaces
+    - workspacesweb
   title: "'Amazon Web Services' End User Computing Services"
   description: >-
     Interface to 'Amazon Web Services' end user computing services, including
@@ -421,6 +473,7 @@
     - iotsecuretunneling
     - iotsitewise
     - iotthingsgraph
+    - iottwinmaker
     - iotwireless
     - signer
   title: "'Amazon Web Services' Internet of Things Services"
@@ -433,6 +486,7 @@
 - name: game.development
   services:
     - gamelift
+    - gamesparks
   title: "'Amazon Web Services' Game Development Services"
   description: >-
     Interface to 'Amazon Web Services' game development services, including
