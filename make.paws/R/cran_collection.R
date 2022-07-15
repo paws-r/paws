@@ -32,8 +32,9 @@ make_collection <- function(sdk_dir, out_dir, categories, only_cran) {
     cran <- row.names(utils::available.packages(repos = "https://cran.rstudio.com"))
     categories <- categories[sapply(categories, get_category_package_name) %in% cran]
   } else {
+    # Create packages that contain services
     active <- vapply(categories,
-      function(x){!is.null(x$services)}, FUN.VALUE = logical(1)
+      function(cat) {!is.null(cat$services)}, FUN.VALUE = logical(1)
     )
     categories <- categories[active]
   }
