@@ -6,6 +6,7 @@ NULL
 #' @param sdk_dir Directory containing the output of `make_sdk`.
 #' @param out_dir Directory to write the packages to.
 #' @param categories An optional list of categories to use.
+#' @param only_cran Use paws packages on cran or use paws dev packages.
 #'
 #' @export
 make_cran <- function(sdk_dir, out_dir, categories = NULL, only_cran = FALSE) {
