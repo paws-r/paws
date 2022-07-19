@@ -3,6 +3,7 @@ CRAN_DIR=$2
 
 echo "build CRAN packages"
 
+# TODO: add a flag so prompt isn't needed for every build
 while true; do
     read -p "Build paws with cran packages only (y/n)? " yn
     case $yn in
