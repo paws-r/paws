@@ -137,7 +137,7 @@
     - codepipeline
     - codestar
     - codestarconnections
-    - codestarnotifications # need to double check this
+    - codestarnotifications
     - drs
     - devopsguru
     - fis
@@ -176,6 +176,7 @@
     - applicationcostprofiler
     - applicationinsights
     - appregistry
+    - auditmanager
     - autoscaling
     - autoscalingplans
     - cloudformation
@@ -379,7 +380,7 @@
   title: "'Amazon Web Services' Application Integration Services"
   description: >-
     Interface to 'Amazon Web Services' application integration services,
-    including 'Simple Queue Service' ('SQS') message queue, 'Simple Notification 
+    including 'Simple Queue Service' ('SQS') message queue, 'Simple Notification
     Service' ('SNS') publish/subscribe messaging, and more
     <https://aws.amazon.com/>.
 
@@ -423,7 +424,6 @@
 
 - name: business.applications
   services:
-    - auditmanager # not sure where to put this
     - alexaforbusiness
     - chime
     - chimesdkidentity
