@@ -162,13 +162,19 @@
   services:
     - managedblockchain
   title: "'Amazon Web Services' Blockchain Services"
-  description: ""
+  description: >-
+    Interface to 'Amazon Web Services' blockchain services, including
+    'BlockChain' API for creating and managing blockchain networks using
+    open-source frameworks <https://aws.amazon.com/blockchain/>
 
 - name: satellite
   services:
     - groundstation
   title: "'Amazon Web Services' Satellite Services"
-  description: ""
+  description: >-
+    Interface to 'Amazon Web Services' satellite services, including the
+    'groundstation' API for control satellite communications, downlink and
+    process satellite data applications <https://aws.amazon.com/>.
 
 - name: management
   services:
