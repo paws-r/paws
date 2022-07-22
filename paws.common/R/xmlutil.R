@@ -96,7 +96,7 @@ xml_build_structure <- function(params) {
 
     parsed <- xml_build(child)
 
-    if (!is_empty(parsed)) {
+    if (!is_empty_xml(parsed)) {
       location_name <- tag_get(child, "locationName")
       if (location_name == "") location_name <- name
 
