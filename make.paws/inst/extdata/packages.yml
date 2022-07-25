@@ -1,25 +1,33 @@
 ---
 - name: compute
   services:
-    - apprunner
     - batch
-    - braket
-    - computeoptimizer
     - ec2
     - ec2instanceconnect
     - ecr
-    - ecrpublic
     - ecs
     - eks
     - elasticbeanstalk
+    - lambda
+    - lightsail
+    - serverlessapplicationrepository
+  title: "'Amazon Web Services' Compute Services"
+  description: >-
+    Interface to 'Amazon Web Services' compute services, including
+    'Elastic Compute Cloud' ('EC2'), 'Lambda' functions-as-a-service,
+    containers, batch processing, and more <https://aws.amazon.com/>.
+
+- name: compute.p2
+  services:
+    - apprunner
+    - braket
+    - computeoptimizer
+    - ecrpublic
     - elasticinference
     - emrcontainers
     - emrserverless
     - imagebuilder
-    - lambda
-    - lightsail
     - proton
-    - serverlessapplicationrepository
   title: "'Amazon Web Services' Compute Services"
   description: >-
     Interface to 'Amazon Web Services' compute services, including
@@ -52,18 +60,26 @@
     - dynamodb
     - dynamodbstreams
     - elasticache
-    - keyspaces
-    - lakeformation
     - neptune
-    - memorydb
-    - qldb
-    - qldbsession
     - rds
     - rdsdataservice
     - redshift
+    - simpledb
+  title: "'Amazon Web Services' Database Services"
+  description: >-
+    Interface to 'Amazon Web Services' database services, including 'Relational
+    Database Service' ('RDS'), 'DynamoDB' 'NoSQL' database, and more
+    <https://aws.amazon.com/>.
+
+- name: database.p2
+  services:
+    - keyspaces
+    - lakeformation
+    - memorydb
+    - qldb
+    - qldbsession
     - redshiftdataapiservice
     - redshiftserverless
-    - simpledb
     - timestreamquery
     - timestreamwrite
   title: "'Amazon Web Services' Database Services"
@@ -179,38 +195,47 @@
 - name: management
   services:
     - applicationautoscaling
-    - applicationcostprofiler
     - applicationinsights
-    - appregistry
-    - auditmanager
     - autoscaling
     - autoscalingplans
     - cloudformation
     - cloudtrail
     - cloudwatch
     - cloudwatchevents
-    - cloudwatchevidently
     - cloudwatchlogs
-    - cloudwatchrum
     - configservice
-    - finspace
     - health
     - licensemanager
-    - managedgrafana
     - opsworks
     - opsworkscm
     - organizations
     - pi
-    - prometheusservice
-    - resiliencehub
     - resourcegroups
     - resourcegroupstaggingapi
     - servicecatalog
     - servicequotas
     - ssm
+    - support
+  title: "'Amazon Web Services' Management & Governance Services"
+  description: >-
+    Interface to 'Amazon Web Services' management and governance services,
+    including 'CloudWatch' application and infrastructure monitoring, 'Auto
+    Scaling' for automatically scaling resources, and more
+    <https://aws.amazon.com/>.
+
+- name: management.p2
+  services:
+    - applicationcostprofiler
+    - appregistry
+    - auditmanager
+    - cloudwatchevidently
+    - cloudwatchrum
+    - finspace
+    - managedgrafana
+    - prometheusservice
+    - resiliencehub
     - ssmcontacts
     - ssmincidents
-    - support
     - synthetics
   title: "'Amazon Web Services' Management & Governance Services"
   description: >-
@@ -241,32 +266,42 @@
 
 - name: machine.learning
   services:
-    - augmentedairuntime
     - comprehend
     - comprehendmedical
-    - forecastqueryservice
-    - forecastservice
-    - frauddetector
     - lexmodelbuildingservice
-    - lexmodelsv2
     - lexruntimeservice
-    - lexruntimev2
-    - lookoutequipment
-    - lookoutmetrics
     - machinelearning
-    - panorama
     - personalize
     - personalizeevents
     - personalizeruntime
     - polly
     - rekognition
     - sagemaker
-    - sagemakeredgemanager
-    - sagemakerfeaturestoreruntime
     - sagemakerruntime
     - textract
     - transcribeservice
     - translate
+    - voiceid
+  title: "'Amazon Web Services' Machine Learning Services"
+  description: >-
+    Interface to 'Amazon Web Services' machine learning services, including
+    'SageMaker' managed machine learning service, natural language processing,
+    speech recognition, translation, and more
+    <https://aws.amazon.com/machine-learning/>.
+
+- name: machine.learning.p2
+  services:
+    - augmentedairuntime
+    - forecastqueryservice
+    - forecastservice
+    - frauddetector
+    - lexmodelsv2
+    - lexruntimev2
+    - lookoutequipment
+    - lookoutmetrics
+    - panorama
+    - sagemakeredgemanager
+    - sagemakerfeaturestoreruntime
     - voiceid
   title: "'Amazon Web Services' Machine Learning Services"
   description: >-
@@ -309,8 +344,6 @@
 
 - name: security.identity
   services:
-    - accessanalyzer
-    - account
     - acm
     - acmpca
     - clouddirectory
@@ -319,28 +352,39 @@
     - cognitoidentity
     - cognitoidentityprovider
     - cognitosync
-    - detective
     - directoryservice
     - fms
     - guardduty
     - iam
-    - iamrolesanywhere
-    - identitystore
     - inspector
-    - inspector2
     - kms
     - macie
-    - macie2
     - ram
     - secretsmanager
     - securityhub
     - shield
     - sts
     - sso
-    - ssoadmin
-    - ssooidc
     - waf
     - wafregional
+  title: "'Amazon Web Services' Security, Identity, & Compliance Services"
+  description: >-
+    Interface to 'Amazon Web Services' security, identity, and compliance
+    services, including the 'Identity & Access Management' ('IAM') service for
+    managing access to services and resources, and more
+    <https://aws.amazon.com/>.
+
+- name: security.identity.p2
+  services:
+    - accessanalyzer
+    - account
+    - detective
+    - iamrolesanywhere
+    - identitystore
+    - inspector2
+    - macie2
+    - ssoadmin
+    - ssooidc
     - wafv2
   title: "'Amazon Web Services' Security, Identity, & Compliance Services"
   description: >-
