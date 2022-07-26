@@ -108,14 +108,10 @@ v4_sign_request_handler <- function(request) {
 sign_sdk_request_with_curr_time <- function(request,
                                             curr_time_fn = Sys.time,
                                             opts = NULL) {
-
-  # TODO: Implement anonymous access.
-  # if (request$config$credentials == CREDENTIALS$anonymous_credentials) {
-  #   return(NULL)
-  # }
-
-  region <- request$client_info$signing_region
-  if (region == "") {
+  # ensure region is not set for anonymous
+  if (isTRUE(request$config$credentials$anonymous)) {
+    region <- ""
+  } else if (request$client_info$signing_region == "") {
     region <- request$config$region
   }
 
