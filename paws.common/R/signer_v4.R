@@ -108,10 +108,8 @@ v4_sign_request_handler <- function(request) {
 sign_sdk_request_with_curr_time <- function(request,
                                             curr_time_fn = Sys.time,
                                             opts = NULL) {
-  # ensure region is not set for anonymous
-  if (isTRUE(request$config$credentials$anonymous)) {
-    region <- ""
-  } else if (request$client_info$signing_region == "") {
+  region <- request$client_info$signing_region
+  if (region == "") {
     region <- request$config$region
   }
 
