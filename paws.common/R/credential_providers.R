@@ -14,6 +14,14 @@ Creds <- struct(
   provider_name = ""
 )
 
+# Set anonymous credentials
+anonymous_provider <- function(anonymous){
+  if(!anonymous){
+    return(NULL)
+  }
+  return(Creds())
+}
+
 # Retrieve credentials stored in R or OS environment variables.
 env_provider <- function() {
   access_key_id <- get_env("AWS_ACCESS_KEY_ID")
