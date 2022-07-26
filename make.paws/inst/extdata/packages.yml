@@ -181,7 +181,7 @@
   description: >-
     Interface to 'Amazon Web Services' blockchain services, including
     'BlockChain' API for creating and managing blockchain networks using
-    open-source frameworks <https://aws.amazon.com/blockchain/>
+    open-source frameworks <https://aws.amazon.com/blockchain/>.
 
 - name: satellite
   services:
