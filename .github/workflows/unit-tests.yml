@@ -67,6 +67,7 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages('remotes')
+          install.packages('devtools')
           remotes::install_deps('paws.common', dependencies = TRUE)
           remotes::install_deps('make.paws', dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
