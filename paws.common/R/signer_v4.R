@@ -108,6 +108,7 @@ v4_sign_request_handler <- function(request) {
 sign_sdk_request_with_curr_time <- function(request,
                                             curr_time_fn = Sys.time,
                                             opts = NULL) {
+
   region <- request$client_info$signing_region
   if (region == "") {
     region <- request$config$region
@@ -135,9 +136,17 @@ sign_sdk_request_with_curr_time <- function(request,
     signing_time <- request$last_signed_at
   }
 
-  request$http_request <- sign_with_body(v4, request$http_request, request$body,
-                                         name, region, request$expire_time,
-                                         request$expire_time > 0, signing_time)
+  request$http_request <- sign_with_body(
+    v4, request$http_request, request$body,
+    name, region, request$expire_time,
+    request$expire_time > 0, signing_time)
+
+  # set headers for anonymous credentials
+  if(isTRUE(request$config$credentials$anonymous)){
+    request$http_request$header <- anonymous_headers(
+      request$http_request$header
+    )
+  }
 
   return(request)
 }
@@ -454,4 +463,13 @@ get_uri_path <- function(url) {
   }
 
   return(uri)
+}
+
+# Clear down headers for anonymous credentials
+# https://github.com/aws/aws-sdk-go/blob/a7b02935e4fefa40f175f4d2143ec9c88a5f90f5/aws/signer/v4/v4_test.go#L321-L355
+anonymous_headers <- function(headers){
+  found = grepl("X-Amz-*", names(headers))
+  headers[found] = ""
+  headers["Authorization"] = ""
+  return(headers)
 }
