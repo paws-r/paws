@@ -468,8 +468,8 @@ get_uri_path <- function(url) {
 # Clear down headers for anonymous credentials
 # https://github.com/aws/aws-sdk-go/blob/a7b02935e4fefa40f175f4d2143ec9c88a5f90f5/aws/signer/v4/v4_test.go#L321-L355
 anonymous_headers <- function(headers){
-  found = grepl("X-Amz-*", names(headers))
-  headers[found] = ""
-  headers["Authorization"] = ""
+  found <- grepl("X-Amz-*", names(headers))
+  headers[found] <- ""
+  headers["Authorization"] <- ""
   return(headers)
 }
