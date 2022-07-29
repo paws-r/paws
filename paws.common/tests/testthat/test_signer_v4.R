@@ -138,8 +138,7 @@ test_that("presign", {
   expect_equal(q[["X-Amz-Target"]], "prefix.Operation")
 })
 
-
-test_creds <- Credentials(
+anonymous_test_creds <- Credentials(
   anonymous = TRUE,
   provider = list(
     function() {
