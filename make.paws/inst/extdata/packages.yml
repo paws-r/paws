@@ -1,5 +1,5 @@
 ---
-- name: compute
+- name: compute.p1
   services:
     - batch
     - ec2
@@ -53,7 +53,7 @@
     Interface to 'Amazon Web Services' storage services, including 'Simple
     Storage Service' ('S3') and more <https://aws.amazon.com/>.
 
-- name: database
+- name: database.p1
   services:
     - dax
     - docdb
@@ -192,7 +192,7 @@
     'groundstation' API for control satellite communications, downlink and
     process satellite data applications <https://aws.amazon.com/>.
 
-- name: management
+- name: management.p1
   services:
     - applicationautoscaling
     - applicationinsights
@@ -264,7 +264,7 @@
     'Kinesis' video stream capture and processing, format conversion,
     and more <https://aws.amazon.com/media-services/>.
 
-- name: machine.learning
+- name: machine.learning.p1
   services:
     - comprehend
     - comprehendmedical
@@ -342,7 +342,7 @@
     MapReduce' 'Hadoop' and 'Spark' big data service, 'Elasticsearch'
     search engine, and more <https://aws.amazon.com/>.
 
-- name: security.identity
+- name: security.identity.p1
   services:
     - acm
     - acmpca
