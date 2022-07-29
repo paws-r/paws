@@ -1,3 +1,13 @@
+# paws.common 0.4.0
+
+* Fix `xml_build` to allow empty characters from operations.
+* Fix operations response for XML objects with elements at root.
+* Improve performance of `escape` with new helper function 
+  `paws_url_encoder` (1000x improvement).
+* Improve performance of decoding URL's with new helper function
+  `paws_url_decoder` (780x improvement).
+* Support anonymous credentials.
+
 # paws.common 0.3.17
 
 * Fix operations that take empty arguments, e.g. `s3$get_bucket_website`.
