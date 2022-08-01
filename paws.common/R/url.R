@@ -140,7 +140,7 @@ escape <- function(string, mode){
     escape_string <- paws_url_encoder(string, paste0("[^", base_url_encode, "]"))
 
     # replace whitespace encoding from %20 to +
-    return(gsub("%20", "+", escape_string, fixed =T))
+    return(gsub("%20", "+", escape_string, fixed = TRUE))
   }
   if (mode == "encodeFragment") {
     return(paws_url_encoder(string, paste0("[^", pattern, "]")))
@@ -152,9 +152,9 @@ escape <- function(string, mode){
 paws_url_encoder <- function(string, pattern){
   vapply(string, function(string){
     # split string out into individual characters
-    chars <- strsplit(string, "")[[1L]]
+    chars <- strsplit(string, "", perl = TRUE)[[1L]]
     # find characters that match pattern
-    found <- grep(pattern, chars)
+    found <- grep(pattern, chars, perl = TRUE)
     if (length(found)) {
       # encode found characters only
       chars[found] <- toupper(paste0("%", charToRaw(string)[found]))
@@ -168,29 +168,30 @@ paws_url_encoder <- function(string, pattern){
 paws_url_decoder <- function(URL) {
   vapply(URL, function(url){
     # split string into separate characters
-    chars <- strsplit(url, "")[[1]]
+    chars <- strsplit(url, "", perl = TRUE)[[1]]
 
     # locate % position
     found <- grep("%", chars, fixed = TRUE)
 
     if (length(found)) {
-      start <- found + 1
-      end <- found + 2
+      # get position of encoded part
+      encoded_pt = sort.int(c(found + 1, found + 2))
+      encoded_char = paste0(chars[encoded_pt], collapse = "")
 
       # get raw vector of encoded parts (character form)
       # for example: "%20" -> "20"
-      encoded <- vapply(seq_along(start), function(i) {
-          paste0(chars[start[i]:end[i]], collapse = "")
-        }, FUN.VALUE = character(1)
+      encoded_char_len = nchar(encoded_char)
+      encoded <- substring(
+        encoded_char,
+        seq(1, encoded_char_len, 2),
+        seq(2, encoded_char_len, 2)
       )
-      # remove encoded parts from chars
-      rm <- c(start, end)
 
       # update character % position
-      found <- grep("%", chars[-rm], fixed = TRUE)
+      found <- grep("%", chars[-encoded_pt], fixed = TRUE)
 
       # convert split url to raw
-      char_raw <- charToRaw(paste(chars[-rm], collapse=""))
+      char_raw <- charToRaw(paste(chars[-encoded_pt], collapse=""))
 
       # replace character % with decoded parts
       char_raw[found] <- as.raw(as.hexmode(encoded))
