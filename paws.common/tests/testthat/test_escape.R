@@ -30,12 +30,30 @@ test_that("check if encoded url is correctly decoded", {
 })
 
 test_that("check if non-encoded url is correctly decoded", {
-  string <- "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~"
-  pattern <- "[^ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._~-]"
+  pattern <- paste0("[^", base_url_encode, "]")
 
-  url = paste(sample(strsplit(string, "")[[1]], 1e6, replace = T), collapse = "")
+  url = paste(sample(strsplit(base_url_encode, "")[[1]], 1e6, replace = T), collapse = "")
   url_encode = paws_url_encoder(url, pattern)
   actual = paws_url_decoder(url_encode)
 
   expect_equal(actual, url)
+})
+
+test_that("check if non-ascci characters are correctly encoded", {
+  string <- "なでçãкатынü"
+  pattern <- paste0("[^", base_url_encode, "]")
+  actual = paws_url_encoder(string, pattern)
+  expect_equal(
+    actual,
+    "%E3%81%AA%E3%81%A7%C3%A7%C3%A3%D0%BA%D0%B0%D1%82%D1%8B%D0%BD%C3%BC"
+  )
+})
+
+test_that("check if non-ascci url are correctly decoded", {
+  string <- "なでçãкатынü"
+  pattern <- paste0("[^", base_url_encode, "]")
+  url_encode = paws_url_encoder(string, pattern)
+  actual = paws_url_decoder(url_encode)
+
+  expect_equal(actual, string)
 })
