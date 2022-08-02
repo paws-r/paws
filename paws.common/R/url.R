@@ -109,7 +109,6 @@ query_escape <- function(string) {
 # Escape strings so they can be safely included in a URL.
 escape <- function(string, mode){
   # base characters that won't be encoded
-  base_url_encode <- "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._~-"
   if (mode == "encodeHost" || mode == "encodeZone") {
     # host and zone characters that won't be encoded
     host_zone_pattern = "][!$&'()*+,;=:<>\""
@@ -145,7 +144,13 @@ escape <- function(string, mode){
   if (mode == "encodeFragment") {
     return(paws_url_encoder(string, paste0("[^", pattern, "]")))
   }
-  return(utils::URLencode(string, reserved = TRUE))
+  return(paws_url_encoder(string, paste0("[^", base_url_encode, "]")))
+}
+
+base_url_encode <- "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._~-"
+
+is.ascii <- function(string){
+  return(string == iconv(string, "latin1", "ASCII", sub=""))
 }
 
 # Escape characters given a pattern
@@ -156,8 +161,17 @@ paws_url_encoder <- function(string, pattern){
     # find characters that match pattern
     found <- grep(pattern, chars, perl = TRUE)
     if (length(found)) {
-      # encode found characters only
-      chars[found] <- toupper(paste0("%", charToRaw(string)[found]))
+      # check if string is ascii
+      if(is.ascii(string)){
+        # encode found characters only
+        chars[found] <- toupper(paste0("%", charToRaw(string)[found]))
+      } else {
+        # group encoded part of non-ascii character:
+        # e.g. "界" -> "%E7%95%8C"
+        chars[found] <- vapply(chars[found], function(char) {
+            toupper(paste0("%", charToRaw(char), collapse = ""))
+          }, character(1))
+      }
     }
     # rebuild string with encoded characters
     paste(chars, collapse = "")
@@ -188,13 +202,14 @@ paws_url_decoder <- function(URL) {
       )
 
       # update character % position
-      found <- grep("%", chars[-encoded_pt], fixed = TRUE)
+      chars <- chars[-encoded_pt]
+      found <- grep("%", chars, fixed = TRUE)
 
       # convert split url to raw
-      char_raw <- charToRaw(paste(chars[-encoded_pt], collapse=""))
+      char_raw <- charToRaw(paste(chars, collapse=""))
 
       # replace character % with decoded parts
-      char_raw[found] <- as.raw(as.hexmode(encoded))
+      char_raw[found] <- as.raw(strtoi(encoded, 16L))
 
       return(rawToChar(char_raw))
     }
