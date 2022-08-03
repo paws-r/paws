@@ -1,6 +1,8 @@
 #' @include struct.R
 NULL
 
+#' @importFrom curl curl_unescape
+
 # A Url object stores a parse URL.
 Url <- struct(
   scheme = "",
@@ -178,49 +180,10 @@ paws_url_encoder <- function(string, pattern){
   }, character(1), USE.NAMES = FALSE)
 }
 
-# decode encoded url strings
-paws_url_decoder <- function(URL) {
-  vapply(URL, function(url){
-    # split string into separate characters
-    chars <- strsplit(url, "", perl = TRUE)[[1]]
-
-    # locate % position
-    found <- grep("%", chars, fixed = TRUE)
-
-    if (length(found)) {
-      # get position of encoded part
-      encoded_pt = sort.int(c(found + 1, found + 2))
-      encoded_char = paste0(chars[encoded_pt], collapse = "")
-
-      # get raw vector of encoded parts (character form)
-      # for example: "%20" -> "20"
-      encoded_char_len = nchar(encoded_char)
-      encoded <- substring(
-        encoded_char,
-        seq(1, encoded_char_len, 2),
-        seq(2, encoded_char_len, 2)
-      )
-
-      # update character % position
-      chars <- chars[-encoded_pt]
-      found <- grep("%", chars, fixed = TRUE)
-
-      # convert split url to raw
-      char_raw <- charToRaw(paste(chars, collapse=""))
-
-      # replace character % with decoded parts
-      char_raw[found] <- as.raw(strtoi(encoded, 16L))
-
-      return(rawToChar(char_raw))
-    }
-    return(url)
-  }, character(1),  USE.NAMES = FALSE)
-}
-
 # Un-escape a string.
 # TODO: Complete.
 unescape <- function(string) {
-  return(paws_url_decoder(string))
+  return(curl_unescape(string))
 }
 
 # The inverse of query_escape: convert the encoded string back to the original,

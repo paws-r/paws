@@ -17,6 +17,7 @@ License: Apache License (>= 2.0)
 Encoding: UTF-8
 Imports:
     base64enc,
+    curl,
     digest,
     httr,
     jsonlite,
