@@ -229,10 +229,11 @@ clean_path <- function(url) {
 
 # Return a string with special characters escaped, e.g. " " -> "%20".
 escape_path <- function(string, encode_sep) {
+  safe <- ""
   if(!encode_sep){
-    base_url_encode <- paste0("/", base_url_encode)
+    safe <- "/"
   }
-  path <- paws_url_encoder(string, paste0("[^", base_url_encode, "]"))
+  path <- paws_url_encoder(string, safe)
   return(path)
 }
 
