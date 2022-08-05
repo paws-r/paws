@@ -1,6 +1,8 @@
 #' @include struct.R
 NULL
 
+#' @importFrom curl curl_unescape
+
 # A Url object stores a parse URL.
 Url <- struct(
   scheme = "",
@@ -109,7 +111,6 @@ query_escape <- function(string) {
 # Escape strings so they can be safely included in a URL.
 escape <- function(string, mode){
   # base characters that won't be encoded
-  base_url_encode <- "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._~-"
   if (mode == "encodeHost" || mode == "encodeZone") {
     # host and zone characters that won't be encoded
     host_zone_pattern = "][!$&'()*+,;=:<>\""
@@ -140,71 +141,49 @@ escape <- function(string, mode){
     escape_string <- paws_url_encoder(string, paste0("[^", base_url_encode, "]"))
 
     # replace whitespace encoding from %20 to +
-    return(gsub("%20", "+", escape_string, fixed =T))
+    return(gsub("%20", "+", escape_string, fixed = TRUE))
   }
   if (mode == "encodeFragment") {
     return(paws_url_encoder(string, paste0("[^", pattern, "]")))
   }
-  return(utils::URLencode(string, reserved = TRUE))
+  return(paws_url_encoder(string, paste0("[^", base_url_encode, "]")))
+}
+
+base_url_encode <- "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._~-"
+
+is.ascii <- function(string){
+  return(string == iconv(string, "latin1", "ASCII", sub=""))
 }
 
 # Escape characters given a pattern
 paws_url_encoder <- function(string, pattern){
   vapply(string, function(string){
     # split string out into individual characters
-    chars <- strsplit(string, "")[[1L]]
+    chars <- strsplit(string, "", perl = TRUE)[[1L]]
     # find characters that match pattern
-    found <- grep(pattern, chars)
+    found <- grep(pattern, chars, perl = TRUE)
     if (length(found)) {
-      # encode found characters only
-      chars[found] <- toupper(paste0("%", charToRaw(string)[found]))
+      # check if string is ascii
+      if(is.ascii(string)){
+        # encode found characters only
+        chars[found] <- toupper(paste0("%", charToRaw(string)[found]))
+      } else {
+        # group encoded part of non-ascii character:
+        # e.g. "界" -> "%E7%95%8C"
+        chars[found] <- vapply(chars[found], function(char) {
+            toupper(paste0("%", charToRaw(char), collapse = ""))
+          }, character(1))
+      }
     }
     # rebuild string with encoded characters
     paste(chars, collapse = "")
   }, character(1), USE.NAMES = FALSE)
 }
 
-# decode encoded url strings
-paws_url_decoder <- function(URL) {
-  vapply(URL, function(url){
-    # split string into separate characters
-    chars <- strsplit(url, "")[[1]]
-
-    # locate % position
-    found <- grep("%", chars, fixed = TRUE)
-
-    if (length(found)) {
-      start <- found + 1
-      end <- found + 2
-
-      # get raw vector of encoded parts (character form)
-      # for example: "%20" -> "20"
-      encoded <- vapply(seq_along(start), function(i) {
-          paste0(chars[start[i]:end[i]], collapse = "")
-        }, FUN.VALUE = character(1)
-      )
-      # remove encoded parts from chars
-      rm <- c(start, end)
-
-      # update character % position
-      found <- grep("%", chars[-rm], fixed = TRUE)
-
-      # convert split url to raw
-      char_raw <- charToRaw(paste(chars[-rm], collapse=""))
-
-      # replace character % with decoded parts
-      char_raw[found] <- as.raw(as.hexmode(encoded))
-
-      return(rawToChar(char_raw))
-    }
-    return(url)
-  }, character(1),  USE.NAMES = FALSE)
-}
-
 # Un-escape a string.
 # TODO: Complete.
 unescape <- function(string) {
-  return(paws_url_decoder(string))
+  return(curl_unescape(string))
 }
 
 # The inverse of query_escape: convert the encoded string back to the original,
