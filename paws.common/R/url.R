@@ -110,6 +110,7 @@ query_escape <- function(string) {
 
 # Escape strings so they can be safely included in a URL.
 escape <- function(string, mode){
+  # Ensure anything going to paws_url_encoder is a string
   string <- as.character(string)
   # base characters that won't be encoded
   if (mode == "encodeHost" || mode == "encodeZone") {

@@ -53,7 +53,9 @@ std::string internal_url_encode(std::string url, std::string safe){
   return output;
 }
 
-// Escape characters given a pattern
+// Escape characters for use in URLs.
+// param urls A character vector to be encoded
+// param safe A characters of extra that should not be encoded
 //' @useDynLib paws.common _paws_common_paws_url_encoder
 //' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
