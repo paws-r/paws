@@ -6,3 +6,5 @@
 .vscode
 .DS_Store
 cache
+*.o
+*.so
