@@ -31,16 +31,24 @@ std::string to_hex(char x){
 
 std::string internal_url_encode(std::string url, std::string safe){
 
-  //Note the unreserved characters, create an output string
-  std::string unreserved_characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ._~-";
-  unreserved_characters.append(safe);
-  std::string output = "";
+  //Base unreserved characters
+  std::string unreserved_chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ._~-";
+  //Add any extra characters
+  unreserved_chars.append(safe);
 
+  //create unreserved characters map..
+  std::unordered_set<char> unreserved_chars_map;
+  for(int i=0; i < (signed) unreserved_chars.length(); i++){
+    unreserved_chars_map.insert(unreserved_chars[i]);
+  }
+
+  //create an output string
+  std::string output = "";
   //For each character..
   for(int i=0; i < (signed) url.length(); i++){
 
     //If it's in the list of reserved ones, just pass it through
-    if (unreserved_characters.find_first_of(url[i]) != std::string::npos){
+    if (unreserved_chars_map.find(url[i]) != unreserved_chars_map.end()) {
       output.append(&url[i], 1);
       //Otherwise, append in an encoded form.
     } else {
