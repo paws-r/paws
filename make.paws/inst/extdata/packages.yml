@@ -1,18 +1,13 @@
 ---
 - name: compute.p1
   services:
-    - batch
     - ec2
-    - ec2instanceconnect
-    - ecr
-    - ecs
-    - eks
-    - elasticbeanstalk
-    - lambda
     - lightsail
-    - serverlessapplicationrepository
   title: "'Amazon Web Services' Compute Services"
   description: >-
+    This is the backend package for 'paws.compute'. Please use 'paws.compute' to
+    access 'Amazon Web Services' compute services.
+  category_description: >-
     Interface to 'Amazon Web Services' compute services, including
     'Elastic Compute Cloud' ('EC2'), 'Lambda' functions-as-a-service,
     containers, batch processing, and more <https://aws.amazon.com/>.
@@ -20,23 +15,32 @@
 - name: compute.p2
   services:
     - apprunner
+    - batch
     - braket
     - computeoptimizer
+    - ec2instanceconnect
+    - ecr
     - ecrpublic
+    - ecs
+    - eks
+    - elasticbeanstalk
     - elasticinference
     - emrcontainers
     - emrserverless
     - imagebuilder
+    - lambda
     - proton
+    - serverlessapplicationrepository
   title: "'Amazon Web Services' Compute Services"
   description: >-
-    Interface to 'Amazon Web Services' compute services, including
-    'Elastic Compute Cloud' ('EC2'), 'Lambda' functions-as-a-service,
-    containers, batch processing, and more <https://aws.amazon.com/>.
+    This is the backend package for 'paws.compute'. Please use 'paws.compute' to
+    access 'Amazon Web Services' compute services.
+  category_description: ""
 
 - name: storage
   services:
     - backup
+    - backupstorage
     - dlm
     - ebs
     - efs
@@ -67,6 +71,9 @@
     - simpledb
   title: "'Amazon Web Services' Database Services"
   description: >-
+    This is the backend package for 'paws.database'. Please use 'paws.database' to
+    access 'Amazon Web Services' database services.
+  category_description: >-
     Interface to 'Amazon Web Services' database services, including 'Relational
     Database Service' ('RDS'), 'DynamoDB' 'NoSQL' database, and more
     <https://aws.amazon.com/>.
@@ -84,9 +91,9 @@
     - timestreamwrite
   title: "'Amazon Web Services' Database Services"
   description: >-
-    Interface to 'Amazon Web Services' database services, including 'Relational
-    Database Service' ('RDS'), 'DynamoDB' 'NoSQL' database, and more
-    <https://aws.amazon.com/>.
+    This is the backend package for 'paws.database'. Please use 'paws.database' to
+    access 'Amazon Web Services' database services.
+  category_description: ""
 
 - name: migration
   services:
@@ -194,30 +201,22 @@
 
 - name: management.p1
   services:
-    - applicationautoscaling
-    - applicationinsights
     - autoscaling
-    - autoscalingplans
     - cloudformation
-    - cloudtrail
-    - cloudwatch
     - cloudwatchevents
     - cloudwatchlogs
     - configservice
-    - health
     - licensemanager
     - opsworks
-    - opsworkscm
     - organizations
-    - pi
-    - resourcegroups
-    - resourcegroupstaggingapi
     - servicecatalog
-    - servicequotas
     - ssm
-    - support
   title: "'Amazon Web Services' Management & Governance Services"
   description: >-
+    This is the backend package for 'paws.management'. Please use
+    'paws.management' to access 'Amazon Web Services' management and
+    governance services.
+  category_description:  >-
     Interface to 'Amazon Web Services' management and governance services,
     including 'CloudWatch' application and infrastructure monitoring, 'Auto
     Scaling' for automatically scaling resources, and more
@@ -225,24 +224,37 @@
 
 - name: management.p2
   services:
+    - applicationautoscaling
     - applicationcostprofiler
+    - applicationinsights
     - appregistry
     - auditmanager
+    - autoscalingplans
+    - cloudtrail
+    - cloudwatch
     - cloudwatchevidently
     - cloudwatchrum
     - finspace
+    - health
+    - licensemanagerusersubscriptions
     - managedgrafana
+    - opsworkscm
+    - pi
     - prometheusservice
     - resiliencehub
+    - resourcegroups
+    - resourcegroupstaggingapi
+    - servicequotas
     - ssmcontacts
     - ssmincidents
+    - support
     - synthetics
   title: "'Amazon Web Services' Management & Governance Services"
   description: >-
-    Interface to 'Amazon Web Services' management and governance services,
-    including 'CloudWatch' application and infrastructure monitoring, 'Auto
-    Scaling' for automatically scaling resources, and more
-    <https://aws.amazon.com/>.
+    This is the backend package for 'paws.management'. Please use
+    'paws.management' to access 'Amazon Web Services' management and
+    governance services.
+  category_description: ""
 
 - name: media.services
   services:
@@ -284,6 +296,10 @@
     - voiceid
   title: "'Amazon Web Services' Machine Learning Services"
   description: >-
+    This is the backend package for 'paws.machine.learning'. Please use
+    'paws.machine.learning' to access 'Amazon Web Services' machine learning
+    services.
+  category_description: >-
     Interface to 'Amazon Web Services' machine learning services, including
     'SageMaker' managed machine learning service, natural language processing,
     speech recognition, translation, and more
@@ -305,70 +321,73 @@
     - voiceid
   title: "'Amazon Web Services' Machine Learning Services"
   description: >-
-    Interface to 'Amazon Web Services' machine learning services, including
-    'SageMaker' managed machine learning service, natural language processing,
-    speech recognition, translation, and more
-    <https://aws.amazon.com/machine-learning/>.
+    This is the backend package for 'paws.machine.learning'. Please use
+    'paws.machine.learning' to access 'Amazon Web Services' machine learning
+    services.
+  category_description: ""
 
-- name: analytics
+- name: analytics.p1
   services:
     - athena
-    - cloudsearch
-    - cloudsearchdomain
-    - datapipeline
     - elasticsearchservice
     - emr
-    - firehose
     - glue
     - gluedatabrew
-    - healthlake
-    - ivs
     - kafka
-    - kafkaconnect
     - kendra
-    - kinesis
-    - kinesisanalytics
     - kinesisanalyticsv2
-    - kinesisvideo
-    - kinesisvideoarchivedmedia
-    - kinesisvideomedia
-    - kinesisvideosignalingchannels
     - mturk
     - opensearchservice
     - quicksight
   title: "'Amazon Web Services' Analytics Services"
   description: >-
+    This is the backend package for 'paws.analytics'. Please use
+    'paws.analytics' to access 'Amazon Web Services' 'analytics'
+    services.
+  category_description: >-
     Interface to 'Amazon Web Services' 'analytics' services, including 'Elastic
     MapReduce' 'Hadoop' and 'Spark' big data service, 'Elasticsearch'
     search engine, and more <https://aws.amazon.com/>.
 
+- name: analytics.p2
+  services:
+    - cloudsearch
+    - cloudsearchdomain
+    - datapipeline
+    - firehose
+    - healthlake
+    - ivs
+    - kafkaconnect
+    - kinesis
+    - kinesisanalytics
+    - kinesisvideo
+    - kinesisvideoarchivedmedia
+    - kinesisvideomedia
+    - kinesisvideosignalingchannels
+  title: "'Amazon Web Services' Analytics Services"
+  description: >-
+    This is the backend package for 'paws.analytics'. Please use
+    'paws.analytics' to access 'Amazon Web Services' 'analytics'
+    services.
+  category_description: ""
+
 - name: security.identity.p1
   services:
-    - acm
-    - acmpca
     - clouddirectory
-    - cloudhsm
-    - cloudhsmv2
-    - cognitoidentity
     - cognitoidentityprovider
-    - cognitosync
     - directoryservice
-    - fms
     - guardduty
     - iam
-    - inspector
     - kms
-    - macie
-    - ram
-    - secretsmanager
     - securityhub
-    - shield
-    - sts
-    - sso
     - waf
     - wafregional
   title: "'Amazon Web Services' Security, Identity, & Compliance Services"
   description: >-
+    This is the backend package for 'paws.security.identity'. Please use
+    'paws.security.identity to access 'Amazon Web Services' security, identity,
+    and compliance services.
+  category_description: >-
     Interface to 'Amazon Web Services' security, identity, and compliance
     services, including the 'Identity & Access Management' ('IAM') service for
     managing access to services and resources, and more
@@ -378,20 +397,34 @@
   services:
     - accessanalyzer
     - account
+    - acm
+    - acmpca
+    - cloudhsm
+    - cloudhsmv2
+    - cognitoidentity
+    - cognitosync
     - detective
+    - fms
     - iamrolesanywhere
     - identitystore
+    - inspector
     - inspector2
+    - macie
     - macie2
+    - ram
+    - secretsmanager
+    - shield
+    - sso
     - ssoadmin
     - ssooidc
+    - sts
     - wafv2
   title: "'Amazon Web Services' Security, Identity, & Compliance Services"
   description: >-
-    Interface to 'Amazon Web Services' security, identity, and compliance
-    services, including the 'Identity & Access Management' ('IAM') service for
-    managing access to services and resources, and more
-    <https://aws.amazon.com/>.
+    This is the backend package for 'paws.security.identity'. Please use
+    'paws.security.identity to access 'Amazon Web Services' security, identity,
+    and compliance services.
+  category_description: ""
 
 - name: mobile
   services:
@@ -405,6 +438,7 @@
     - honeycode
     - mobile
     - mobileanalytics
+    - private5g
   title: "'Amazon Web Services' Mobile Services"
   description: >-
     Interface to 'Amazon Web Services' mobile services, including the 'Amplify'
