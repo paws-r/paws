@@ -18,16 +18,18 @@ make_cran <- function(sdk_dir, out_dir, categories = NULL, only_cran = FALSE) {
   # Identify sub-categories
   found <- find_sub_categories(categories)
 
-  # Group categories
-  grp_sub_cats <- group_categories(categories[found])
+  if (any(found)){
+    # Group categories
+    grp_sub_cats <- group_categories(categories[found])
 
-  # Build categories from sub-categories
-  for(cat in names(grp_sub_cats)){
-    make_category_collection(sdk_dir, out_dir, grp_sub_cats[[cat]], cat)
+    # Build categories from sub-categories
+    for(cat in names(grp_sub_cats)){
+      make_category_collection(sdk_dir, out_dir, grp_sub_cats[[cat]], cat)
+    }
+
+    # rebuild categories from sub-categories for paws
+    categories <- make_category_from_sub_category(categories)
   }
-
-  # rebuild categories from sub-categories for paws
-  categories <- make_category_from_sub_category(categories)
   make_collection(sdk_dir, out_dir, categories, only_cran)
 }
 

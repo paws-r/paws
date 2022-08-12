@@ -3,7 +3,7 @@ NULL
 
 #' @import data.table
 
-#' Helper function to list all aws services and operations from awds js sdk
+#' @title Helper function to list all aws services and operations from awds js sdk
 #'
 #' @param in_dir Directory containing aws js sdk.
 #'
@@ -22,7 +22,7 @@ list_aws_services <- function(in_dir = "../vendor/aws-sdk-js"){
   return(do.call(rbind, aws_service_ops))
 }
 
-#' Helper function to count all operations by service and category
+#' @title Helper function to count all operations by service and category
 #'
 #' @param in_dir Directory containing aws js sdk.
 #'
@@ -36,9 +36,9 @@ category_service_ops_count <- function(in_dir = "../vendor/aws-sdk-js"){
    paws_cat_service_ops <- merge(paws_cat, aws_service_ops, by = "services", all.y = T)
    setcolorder(paws_cat_service_ops, "name")
    names(paws_cat_service_ops) <- c("category", "services", "operations")
-   paws_cat_service_ops_count <- paws_cat_service_ops[, .(
+   paws_cat_service_ops_count <- paws_cat_service_ops[, list(
      total_operations = .N
-   ), by = c("category", "services")][, .(
+   ), by = c("category", "services")][, list(
      services = get("services"),
      total_services = uniqueN(get("services")),
      total_operations = get("total_operations"),
