@@ -30,7 +30,7 @@ Imports:
     yaml,
     digest,
     waldo,
-    utils
+    stats
 Suggests: 
     covr,
     formatR,
