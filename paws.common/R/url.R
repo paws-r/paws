@@ -135,10 +135,8 @@ escape <- function(string, mode){
     return(paws_url_encoder(string, pattern))
   }
   if (mode == "encodeQueryComponent") {
-    escape_string <- paws_url_encoder(string)
-
-    # replace whitespace encoding from %20 to +
-    return(gsub("%20", "+", escape_string, fixed = TRUE))
+    # escape string using base_url_encode
+    return(paws_url_encoder(string))
   }
   if (mode == "encodeFragment") {
     return(paws_url_encoder(string, path_pattern))
