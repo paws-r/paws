@@ -122,6 +122,7 @@ test_that("make_cran with sub categories", {
       name = "bar.p1",
       title = "Bar",
       description = "Bar.",
+      category_description = "Category Bar.",
       services = list(
         "foo"
       )
@@ -130,6 +131,7 @@ test_that("make_cran with sub categories", {
       name = "bar.p2",
       title = "Bar",
       description = "Bar.",
+      category_description = "",
       services = list(
         "foo"
       )
