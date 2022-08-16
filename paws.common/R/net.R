@@ -55,7 +55,7 @@ HttpResponse <- struct(
 # @param close Whether to immediately close the connection, or else reuse connections.
 # @param timeout How long to wait for an initial response.
 # @param output Control where the response body is written
-new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = NULL, output=NULL) {
+new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = NULL, output = NULL) {
   if (method == "") {
     method <- "GET"
   }
@@ -112,9 +112,9 @@ issue <- function(http_request) {
 
   # utilize httr to write to disk
   output <- NULL
-  if(!is.null(http_request$output))
+  if(!is.null(http_request$output)) {
     output <- httr::write_disk(http_request$output)
-
+  }
   r <- httr::VERB(
     method,
     url = url,
@@ -127,7 +127,10 @@ issue <- function(http_request) {
     status_code = httr::status_code(r),
     header = httr::headers(r),
     content_length = as.integer(httr::headers(r)$`content-length`),
-    body = (if(is.null(http_request$output)) httr::content(r, as = "raw") else raw()) # prevent reading in data when output is not null
+    # Prevent reading in data when output is set
+    body = (
+      if(is.null(http_request$output)) httr::content(r, as = "raw") else raw()
+    )
   )
 
   # Decode gzipped response bodies that are not automatically decompressed
