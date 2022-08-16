@@ -51,3 +51,18 @@ test_that("don't decompress the body when already decompressed", {
   expect_error(body <- jsonlite::fromJSON(rawToChar(resp$body)), NA)
   expect_equal(body$gzipped, TRUE)
 })
+
+test_that("write content to disk", {
+  tmp <- tempfile()
+  req <- HttpRequest(
+    method = "GET",
+    url = parse_url("https://httpbin.org/json"),
+    dest = tmp
+  )
+  resp <- issue(req)
+  expect_equal(resp$status_code, 200)
+  expect_true(file.exists(tmp))
+  expect_error(body <- jsonlite::fromJSON(tmp), NA)
+  expect_equal(body$slideshow$title, "Sample Slide Show")
+  unlink(tmp)
+})
