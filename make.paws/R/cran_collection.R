@@ -86,13 +86,13 @@ make_category_from_sub_category <- function(categories){
   for (cat in cats){
     cat_meta[[cat]]$name <- cat
     cat_meta[[cat]]$services <- unlist(sapply(
-      sub_categories[[cat]], function(sub_cat) sub_cat$services
+      grp_sub_cats[[cat]], function(sub_cat) sub_cat$services
     ))
     cat_meta[[cat]]$title <- unique(unlist(sapply(
-      sub_categories[[cat]], function(sub_cat) sub_cat$title
+      grp_sub_cats[[cat]], function(sub_cat) sub_cat$title
     )))
     cat_meta[[cat]]$description <- paste0(
-      lapply(sub_categories[[cat]], function(sub_cat) {
+      lapply(grp_sub_cats[[cat]], function(sub_cat) {
         sub_cat$category_description
       }), collapse = ""
     )
