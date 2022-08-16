@@ -9,6 +9,12 @@ costandusagereportservice(config = list())
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
+\value{
+A client for the service. You can call the service's operations using
+syntax like \code{svc$operation(...)}, where \code{svc} is the name you've assigned
+to the client. The available operations are listed in the
+Operations section.
+}
 \description{
 The AWS Cost and Usage Report API enables you to programmatically
 create, query, and delete AWS Cost and Usage report definitions.

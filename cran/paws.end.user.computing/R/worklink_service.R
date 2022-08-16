@@ -82,6 +82,12 @@ NULL
 #'  \link[=worklink_update_identity_provider_configuration]{update_identity_provider_configuration} \tab Updates the identity provider configuration for the fleet
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname worklink
 #' @export
 worklink <- function(config = list()) {

@@ -72,6 +72,12 @@ NULL
 #'  \link[=synthetics_update_canary]{update_canary} \tab Use this operation to change the settings of a canary that has already been created
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname synthetics
 #' @export
 synthetics <- function(config = list()) {

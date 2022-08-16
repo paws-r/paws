@@ -83,6 +83,12 @@ NULL
 #'  \link[=gluedatabrew_update_schedule]{update_schedule} \tab Modifies the definition of an existing AWS Glue DataBrew schedule in the current AWS account
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname gluedatabrew
 #' @export
 gluedatabrew <- function(config = list()) {

@@ -81,6 +81,12 @@ NULL
 #'  \link[=cloudtrail_update_trail]{update_trail} \tab Updates the settings that specify delivery of log files
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cloudtrail
 #' @export
 cloudtrail <- function(config = list()) {
@@ -99,7 +105,7 @@ cloudtrail <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "cloudtrail.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudtrail.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloudtrail.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudtrail.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CloudTrail",
   api_version = "2013-11-01",
-  signing_name = NULL,
+  signing_name = "cloudtrail",
   json_version = "1.1",
   target_prefix = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101"
 )

@@ -202,7 +202,7 @@ private data in the AAC format (\href{https://www.iso.org/standard/43345.html}{A
 Kinesis Video Streams HLS sessions contain fragments in the fragmented
 MPEG-4 form (also called fMP4 or CMAF) or the MPEG-2 form (also called
 TS chunks, which the HLS specification also supports). For more
-information about HLS fragment types, see the \href{https://tools.ietf.org/html/draft-pantos-http-live-streaming-23}{HLS specification}.
+information about HLS fragment types, see the \href{https://datatracker.ietf.org/doc/html/draft-pantos-http-live-streaming-23}{HLS specification}.
 
 The following procedure shows how to use HLS with Kinesis Video Streams:
 \enumerate{

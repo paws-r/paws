@@ -213,9 +213,9 @@ in your AWS account, including their relationships to one another. Use
 this API to obtain a snapshot of the configuration of IAM permissions
 (users, groups, roles, and policies) in your account.
 
-Policies returned by this API are URL-encoded compliant with \href{https://tools.ietf.org/html/rfc3986}{RFC 3986}. You can use a URL decoding
-method to convert the policy back to plain JSON text. For example, if
-you use Java, you can use the \code{decode} method of the
+Policies returned by this API are URL-encoded compliant with \href{https://datatracker.ietf.org/doc/html/rfc3986}{RFC 3986}. You can use a URL
+decoding method to convert the policy back to plain JSON text. For
+example, if you use Java, you can use the \code{decode} method of the
 \code{java.net.URLDecoder} utility class in the Java SDK. Other languages and
 SDKs provide similar functionality.
 

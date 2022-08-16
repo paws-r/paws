@@ -78,6 +78,12 @@ NULL
 #'  \link[=fms_untag_resource]{untag_resource} \tab Removes one or more tags from an AWS resource
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname fms
 #' @export
 fms <- function(config = list()) {
@@ -96,7 +102,7 @@ fms <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "fms.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "fms.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "fms.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "fms.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "FMS",
   api_version = "2018-01-01",
-  signing_name = NULL,
+  signing_name = "fms",
   json_version = "1.1",
   target_prefix = "AWSFMS_20180101"
 )

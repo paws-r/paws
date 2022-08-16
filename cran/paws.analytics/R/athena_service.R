@@ -88,6 +88,12 @@ NULL
 #'  \link[=athena_update_work_group]{update_work_group} \tab Updates the workgroup with the specified name
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname athena
 #' @export
 athena <- function(config = list()) {
@@ -106,7 +112,7 @@ athena <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "athena.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "athena.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "athena.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "athena.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Athena",
   api_version = "2017-05-18",
-  signing_name = NULL,
+  signing_name = "athena",
   json_version = "1.1",
   target_prefix = "AmazonAthena"
 )

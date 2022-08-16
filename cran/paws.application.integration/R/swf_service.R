@@ -93,6 +93,12 @@ NULL
 #'  \link[=swf_untag_resource]{untag_resource} \tab Remove a tag from a Amazon SWF domain
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname swf
 #' @export
 swf <- function(config = list()) {
@@ -111,7 +117,7 @@ swf <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "swf.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "swf.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "swf.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "swf.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SWF",
   api_version = "2012-01-25",
-  signing_name = NULL,
+  signing_name = "swf",
   json_version = "1.0",
   target_prefix = "SimpleWorkflowService"
 )

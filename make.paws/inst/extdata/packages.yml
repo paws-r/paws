@@ -239,6 +239,7 @@
     - securityhub
     - shield
     - sts
+    - sso
     - waf
     - wafregional
   title: "'Amazon Web Services' Security, Identity, & Compliance Services"

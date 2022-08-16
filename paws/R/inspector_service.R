@@ -91,6 +91,12 @@ NULL
 #'  \link[=inspector_update_assessment_target]{update_assessment_target} \tab Updates the assessment target that is specified by the ARN of the assessment target
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname inspector
 #' @export
 inspector <- function(config = list()) {
@@ -109,7 +115,7 @@ inspector <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "inspector.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "inspector.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "inspector.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "inspector.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Inspector",
   api_version = "2016-02-16",
-  signing_name = NULL,
+  signing_name = "inspector",
   json_version = "1.1",
   target_prefix = "InspectorService"
 )

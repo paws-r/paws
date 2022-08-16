@@ -128,6 +128,12 @@ NULL
 #'  \link[=support_resolve_case]{resolve_case} \tab Resolves a support case
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname support
 #' @export
 support <- function(config = list()) {
@@ -146,7 +152,7 @@ support <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "support.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "support.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "support.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "support.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Support",
   api_version = "2013-04-15",
-  signing_name = NULL,
+  signing_name = "support",
   json_version = "1.1",
   target_prefix = "AWSSupport_20130415"
 )

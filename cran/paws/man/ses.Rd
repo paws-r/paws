@@ -9,6 +9,12 @@ ses(config = list())
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
+\value{
+A client for the service. You can call the service's operations using
+syntax like \code{svc$operation(...)}, where \code{svc} is the name you've assigned
+to the client. The available operations are listed in the
+Operations section.
+}
 \description{
 This document contains reference information for the \href{https://aws.amazon.com/ses/}{Amazon Simple Email Service} (Amazon SES) API, version
 2010-12-01. This document is best used in conjunction with the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html}{Amazon SES Developer Guide}.

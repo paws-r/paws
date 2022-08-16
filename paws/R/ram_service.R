@@ -73,6 +73,12 @@ NULL
 #'  \link[=ram_update_resource_share]{update_resource_share} \tab Updates the specified resource share that you own
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname ram
 #' @export
 ram <- function(config = list()) {
@@ -91,7 +97,7 @@ ram <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "ram.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ram.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ram.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ram.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "RAM",
   api_version = "2018-01-04",
-  signing_name = NULL,
+  signing_name = "ram",
   json_version = "1.1",
   target_prefix = ""
 )

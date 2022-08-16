@@ -85,6 +85,12 @@ NULL
 #'  \link[=costexplorer_update_cost_category_definition]{update_cost_category_definition} \tab Updates an existing Cost Category
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname costexplorer
 #' @export
 costexplorer <- function(config = list()) {

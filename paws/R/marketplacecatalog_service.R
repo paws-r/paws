@@ -54,6 +54,12 @@ NULL
 #'  \link[=marketplacecatalog_start_change_set]{start_change_set} \tab This operation allows you to request changes for your entities
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname marketplacecatalog
 #' @export
 marketplacecatalog <- function(config = list()) {

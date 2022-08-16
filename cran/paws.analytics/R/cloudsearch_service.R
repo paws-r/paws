@@ -79,6 +79,12 @@ NULL
 #'  \link[=cloudsearch_update_service_access_policies]{update_service_access_policies} \tab Configures the access rules that control access to the domain's document and search endpoints
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cloudsearch
 #' @export
 cloudsearch <- function(config = list()) {
@@ -97,7 +103,7 @@ cloudsearch <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "cloudsearch.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudsearch.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloudsearch.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudsearch.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CloudSearch",
   api_version = "2013-01-01",
-  signing_name = NULL,
+  signing_name = "cloudsearch",
   json_version = "",
   target_prefix = ""
 )

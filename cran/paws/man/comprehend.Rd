@@ -9,6 +9,12 @@ comprehend(config = list())
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
+\value{
+A client for the service. You can call the service's operations using
+syntax like \code{svc$operation(...)}, where \code{svc} is the name you've assigned
+to the client. The available operations are listed in the
+Operations section.
+}
 \description{
 Amazon Comprehend is an AWS service for gaining insight into the content
 of documents. Use these actions to determine the topics contained in

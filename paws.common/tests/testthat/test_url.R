@@ -9,3 +9,11 @@ test_that("parsing and building URLs", {
   expected <- input
   expect_equal(actual, expected)
 })
+
+test_that("parse and build query strings", {
+  # One parameter with a value, one without a value.
+  input <- "bar=baz&foo="
+  actual <- build_query_string(parse_query_string(input))
+  expected <- input
+  expect_equal(actual, expected)
+})

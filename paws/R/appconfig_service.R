@@ -49,7 +49,7 @@ NULL
 #'     system.
 #' 
 #' This reference is intended to be used with the [AWS AppConfig User
-#' Guide](https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html).
+#' Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig.html).
 #'
 #' @param
 #' config
@@ -117,6 +117,12 @@ NULL
 #'  \link[=appconfig_update_environment]{update_environment} \tab Updates an environment\cr
 #'  \link[=appconfig_validate_configuration]{validate_configuration} \tab Uses the validators in a configuration profile to validate a configuration
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname appconfig
 #' @export

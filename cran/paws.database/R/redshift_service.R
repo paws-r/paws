@@ -160,6 +160,12 @@ NULL
 #'  \link[=redshift_rotate_encryption_key]{rotate_encryption_key} \tab Rotates the encryption keys for a cluster
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname redshift
 #' @export
 redshift <- function(config = list()) {
@@ -178,7 +184,7 @@ redshift <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "redshift.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "redshift.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "redshift.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "redshift.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Redshift",
   api_version = "2012-12-01",
-  signing_name = NULL,
+  signing_name = "redshift",
   json_version = "",
   target_prefix = ""
 )

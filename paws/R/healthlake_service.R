@@ -51,6 +51,12 @@ NULL
 #'  \link[=healthlake_start_fhir_import_job]{start_fhir_import_job} \tab Begins a FHIR Import job
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname healthlake
 #' @export
 healthlake <- function(config = list()) {

@@ -137,3 +137,37 @@ test_that("presign", {
   expect_equal(q[["X-Amz-Date"]], "19700101T000000Z")
   expect_equal(q[["X-Amz-Target"]], "prefix.Operation")
 })
+
+anonymous_test_creds <- Credentials(
+  anonymous = TRUE,
+  provider = list(
+    function() {
+      list(
+        access_key_id = "",
+        secret_access_key = "",
+        session_token = "",
+        provider_name = ""
+      )
+    }
+  )
+)
+
+test_that("Test anonymous credentials", {
+  metadata <- list(
+    endpoints = list("*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)),
+    service_name = "s3"
+  )
+  client <- new_service(metadata, new_handlers("restxml", "s3"), Config())
+  client$config$credentials <- anonymous_test_creds
+  client$client_info$signing_region <- "us-east-1"
+
+  op <- new_operation("ListBuckets", "GET", "/", list())
+  params <- list()
+  data <- tag_add(list(Buckets = list()), list(type = "structure"))
+  req <- new_request(client, op, params, data)
+  res <- v4_sign_request_handler(req)
+
+  expect_equal(res$http_request$header[["Authorization"]], "")
+  expect_equal(res$http_request$header[["X-Amz-Date"]], "")
+  expect_equal(res$http_request$header[["X-Amz-Content-Sha256"]], "")
+})

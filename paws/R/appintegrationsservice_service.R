@@ -59,6 +59,12 @@ NULL
 #'  \link[=appintegrationsservice_update_event_integration]{update_event_integration} \tab The Amazon AppIntegrations APIs are in preview release and are subject to change
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname appintegrationsservice
 #' @export
 appintegrationsservice <- function(config = list()) {

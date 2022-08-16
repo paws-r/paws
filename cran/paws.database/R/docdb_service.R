@@ -83,6 +83,12 @@ NULL
 #'  \link[=docdb_stop_db_cluster]{stop_db_cluster} \tab Stops the running cluster that is specified by DBClusterIdentifier
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname docdb
 #' @export
 docdb <- function(config = list()) {

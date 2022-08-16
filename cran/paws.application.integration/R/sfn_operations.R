@@ -31,7 +31,7 @@ NULL
 #' @param name &#91;required&#93; The name of the activity to create. This name must be unique for your
 #' AWS account and region for 90 days. For more information, see [Limits
 #' Related to State Machine
-#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
+#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions)
 #' in the *AWS Step Functions Developer Guide*.
 #' 
 #' A name must *not* contain:
@@ -1394,7 +1394,7 @@ sfn_send_task_success <- function(taskToken, output) {
 #' @param name The name of the execution. This name must be unique for your AWS
 #' account, region, and state machine for 90 days. For more information,
 #' see [Limits Related to State Machine
-#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
+#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions)
 #' in the *AWS Step Functions Developer Guide*.
 #' 
 #' A name must *not* contain:

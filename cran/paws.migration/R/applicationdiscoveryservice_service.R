@@ -156,6 +156,12 @@ NULL
 #'  \link[=applicationdiscoveryservice_update_application]{update_application} \tab Updates metadata about an application
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname applicationdiscoveryservice
 #' @export
 applicationdiscoveryservice <- function(config = list()) {
@@ -174,7 +180,7 @@ applicationdiscoveryservice <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "discovery.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "discovery.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "discovery.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "discovery.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Application Discovery Service",
   api_version = "2015-11-01",
-  signing_name = NULL,
+  signing_name = "discovery",
   json_version = "1.1",
   target_prefix = "AWSPoseidonService_V2015_11_01"
 )

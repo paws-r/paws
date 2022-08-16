@@ -50,6 +50,12 @@ NULL
 #'  \link[=ec2instanceconnect_send_ssh_public_key]{send_ssh_public_key} \tab Pushes an SSH public key to a particular OS user on a given EC2 instance for 60 seconds
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname ec2instanceconnect
 #' @export
 ec2instanceconnect <- function(config = list()) {
@@ -68,7 +74,7 @@ ec2instanceconnect <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "ec2-instance-connect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ec2-instance-connect.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ec2-instance-connect.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ec2-instance-connect.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "EC2 Instance Connect",
   api_version = "2018-04-02",
-  signing_name = NULL,
+  signing_name = "ec2-instance-connect",
   json_version = "1.1",
   target_prefix = "AWSEC2InstanceConnectService"
 )

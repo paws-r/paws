@@ -103,6 +103,12 @@ NULL
 #'  \link[=rekognition_stop_stream_processor]{stop_stream_processor} \tab Stops a running stream processor that was created by CreateStreamProcessor
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname rekognition
 #' @export
 rekognition <- function(config = list()) {
@@ -121,7 +127,7 @@ rekognition <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "rekognition.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rekognition.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "rekognition.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rekognition.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Rekognition",
   api_version = "2016-06-27",
-  signing_name = NULL,
+  signing_name = "rekognition",
   json_version = "1.1",
   target_prefix = "RekognitionService"
 )

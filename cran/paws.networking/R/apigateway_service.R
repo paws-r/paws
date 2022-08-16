@@ -165,6 +165,12 @@ NULL
 #'  \link[=apigateway_update_vpc_link]{update_vpc_link} \tab Updates an existing VpcLink of a specified identifier
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname apigateway
 #' @export
 apigateway <- function(config = list()) {
@@ -183,7 +189,7 @@ apigateway <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "apigateway.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "apigateway.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "apigateway.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "apigateway.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "API Gateway",
   api_version = "2015-07-09",
-  signing_name = NULL,
+  signing_name = "apigateway",
   json_version = "",
   target_prefix = ""
 )

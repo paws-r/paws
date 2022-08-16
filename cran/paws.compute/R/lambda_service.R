@@ -112,6 +112,12 @@ NULL
 #'  \link[=lambda_update_function_event_invoke_config]{update_function_event_invoke_config} \tab Updates the configuration for asynchronous invocation for a function, version, or alias
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname lambda
 #' @export
 lambda <- function(config = list()) {
@@ -130,7 +136,7 @@ lambda <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "lambda.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lambda.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "lambda.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "lambda.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Lambda",
   api_version = "2015-03-31",
-  signing_name = NULL,
+  signing_name = "lambda",
   json_version = "",
   target_prefix = ""
 )

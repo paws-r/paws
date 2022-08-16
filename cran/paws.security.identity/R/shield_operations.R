@@ -275,9 +275,8 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' 
 #' You can add protection to only a single resource with each
 #' CreateProtection request. If you want to add protection to multiple
-#' resources at once, use the [AWS WAF
-#' console](https://console.aws.amazon.com/waf/home). For more information
-#' see [Getting Started with AWS Shield
+#' resources at once, use the AWS WAF console. For more information see
+#' [Getting Started with AWS Shield
 #' Advanced](https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html)
 #' and [Add AWS Shield Advanced Protection to more AWS
 #' Resources](https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html).

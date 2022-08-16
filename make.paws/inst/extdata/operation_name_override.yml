@@ -1,0 +1,3 @@
+---
+- name: UploadPartCopy
+  override: CopyPart

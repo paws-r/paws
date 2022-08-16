@@ -69,6 +69,12 @@ NULL
 #'  \link[=kinesisanalytics_update_application]{update_application} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname kinesisanalytics
 #' @export
 kinesisanalytics <- function(config = list()) {
@@ -87,7 +93,7 @@ kinesisanalytics <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "kinesisanalytics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesisanalytics.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "kinesisanalytics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesisanalytics.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Kinesis Analytics",
   api_version = "2015-08-14",
-  signing_name = NULL,
+  signing_name = "kinesisanalytics",
   json_version = "1.1",
   target_prefix = "KinesisAnalytics_20150814"
 )

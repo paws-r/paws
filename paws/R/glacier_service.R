@@ -112,6 +112,12 @@ NULL
 #'  \link[=glacier_upload_multipart_part]{upload_multipart_part} \tab This operation uploads a part of an archive
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname glacier
 #' @export
 glacier <- function(config = list()) {
@@ -130,7 +136,7 @@ glacier <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "glacier.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "glacier.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "glacier.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "glacier.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Glacier",
   api_version = "2012-06-01",
-  signing_name = NULL,
+  signing_name = "glacier",
   json_version = "",
   target_prefix = ""
 )

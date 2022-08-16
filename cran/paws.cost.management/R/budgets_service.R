@@ -107,6 +107,12 @@ NULL
 #'  \link[=budgets_update_subscriber]{update_subscriber} \tab Updates a subscriber
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname budgets
 #' @export
 budgets <- function(config = list()) {
@@ -125,7 +131,7 @@ budgets <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "https://budgets.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "budgets.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "budgets.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "budgets.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Budgets",
   api_version = "2016-10-20",
-  signing_name = NULL,
+  signing_name = "budgets",
   json_version = "1.1",
   target_prefix = "AWSBudgetServiceGateway"
 )

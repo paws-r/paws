@@ -229,6 +229,12 @@ NULL
 #'  \link[=codepipeline_update_pipeline]{update_pipeline} \tab Updates a specified pipeline with edits or changes to its structure
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname codepipeline
 #' @export
 codepipeline <- function(config = list()) {
@@ -247,7 +253,7 @@ codepipeline <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "codepipeline.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codepipeline.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codepipeline.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codepipeline.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CodePipeline",
   api_version = "2015-07-09",
-  signing_name = NULL,
+  signing_name = "codepipeline",
   json_version = "1.1",
   target_prefix = "CodePipeline_20150709"
 )

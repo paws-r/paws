@@ -74,6 +74,12 @@ NULL
 #'  \link[=cloudhsm_remove_tags_from_resource]{remove_tags_from_resource} \tab This is documentation for AWS CloudHSM Classic
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cloudhsm
 #' @export
 cloudhsm <- function(config = list()) {
@@ -92,7 +98,7 @@ cloudhsm <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "cloudhsm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudhsm.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloudhsm.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudhsm.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CloudHSM",
   api_version = "2014-05-30",
-  signing_name = NULL,
+  signing_name = "cloudhsm",
   json_version = "1.1",
   target_prefix = "CloudHsmFrontendService"
 )

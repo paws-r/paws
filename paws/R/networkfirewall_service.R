@@ -36,7 +36,7 @@ NULL
 #' Connect. Network Firewall uses rules that are compatible with Suricata,
 #' a free, open source intrusion detection system (IDS) engine. For
 #' information about Suricata, see the [Suricata
-#' website](https://suricata-ids.org/).
+#' website](https://suricata.io/).
 #' 
 #' You can use Network Firewall to monitor and protect your VPC traffic in
 #' a number of ways. The following are just a few examples:
@@ -146,6 +146,12 @@ NULL
 #'  \link[=networkfirewall_update_rule_group]{update_rule_group} \tab Updates the rule settings for the specified rule group\cr
 #'  \link[=networkfirewall_update_subnet_change_protection]{update_subnet_change_protection} \tab Update subnet change protection
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname networkfirewall
 #' @export

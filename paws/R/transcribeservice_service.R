@@ -68,6 +68,12 @@ NULL
 #'  \link[=transcribeservice_update_vocabulary_filter]{update_vocabulary_filter} \tab Updates a vocabulary filter with a new list of filtered words
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname transcribeservice
 #' @export
 transcribeservice <- function(config = list()) {

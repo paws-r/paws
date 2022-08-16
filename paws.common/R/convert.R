@@ -24,11 +24,7 @@ convert_blob <- function(blob) {
 # Convert a "truthy" R value to a string.
 # e.g. TRUE -> "true".
 convert_boolean <- function(boolean) {
-  if (boolean) {
-    return("true")
-  } else {
-    return("false")
-  }
+  return(tolower(boolean))
 }
 
 # Convert an R datetime to a string.

@@ -82,6 +82,12 @@ NULL
 #'  \link[=licensemanager_update_service_settings]{update_service_settings} \tab Updates License Manager settings for the current Region
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname licensemanager
 #' @export
 licensemanager <- function(config = list()) {
@@ -100,7 +106,7 @@ licensemanager <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "license-manager.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "license-manager.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "license-manager.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "license-manager.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "License Manager",
   api_version = "2018-08-01",
-  signing_name = NULL,
+  signing_name = "license-manager",
   json_version = "1.1",
   target_prefix = "AWSLicenseManager"
 )

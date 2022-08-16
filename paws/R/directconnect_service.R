@@ -106,6 +106,12 @@ NULL
 #'  \link[=directconnect_update_virtual_interface_attributes]{update_virtual_interface_attributes} \tab Updates the specified attributes of the specified virtual private interface
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname directconnect
 #' @export
 directconnect <- function(config = list()) {
@@ -124,7 +130,7 @@ directconnect <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "directconnect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "directconnect.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "directconnect.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "directconnect.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Direct Connect",
   api_version = "2012-10-25",
-  signing_name = NULL,
+  signing_name = "directconnect",
   json_version = "1.1",
   target_prefix = "OvertureService"
 )

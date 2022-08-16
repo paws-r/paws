@@ -70,6 +70,12 @@ NULL
 #'  \link[=kendra_update_thesaurus]{update_thesaurus} \tab Updates a thesaurus file associated with an index
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname kendra
 #' @export
 kendra <- function(config = list()) {

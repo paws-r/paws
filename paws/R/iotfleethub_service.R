@@ -53,6 +53,12 @@ NULL
 #'  \link[=iotfleethub_update_application]{update_application} \tab Updates information about a Fleet Hub for a AWS IoT Device Management web application
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname iotfleethub
 #' @export
 iotfleethub <- function(config = list()) {

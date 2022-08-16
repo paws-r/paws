@@ -120,6 +120,12 @@ NULL
 #'  \link[=guardduty_update_threat_intel_set]{update_threat_intel_set} \tab Updates the ThreatIntelSet specified by the ThreatIntelSet ID
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname guardduty
 #' @export
 guardduty <- function(config = list()) {

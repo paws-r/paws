@@ -62,7 +62,7 @@ rotation process. You can attach a staging label to only one version of
 a secret at a time. If a staging label to be added is already attached
 to another version, then it is moved--removed from the other version
 first and then attached to this one. For more information about staging
-labels, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label}{Staging Labels}
+labels, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_staging-label}{Staging Labels}
 in the \emph{AWS Secrets Manager User Guide}.
 
 The staging labels that you specify in the \code{VersionStage} parameter are

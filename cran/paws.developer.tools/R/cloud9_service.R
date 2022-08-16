@@ -107,6 +107,12 @@ NULL
 #'  \link[=cloud9_update_environment_membership]{update_environment_membership} \tab Changes the settings of an existing environment member for an AWS Cloud9 development environment
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cloud9
 #' @export
 cloud9 <- function(config = list()) {
@@ -125,7 +131,7 @@ cloud9 <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "cloud9.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloud9.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloud9.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloud9.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Cloud9",
   api_version = "2017-09-23",
-  signing_name = NULL,
+  signing_name = "cloud9",
   json_version = "1.1",
   target_prefix = "AWSCloud9WorkspaceManagementService"
 )

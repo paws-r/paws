@@ -71,6 +71,12 @@ NULL
 #'  \link[=kinesis_update_shard_count]{update_shard_count} \tab Updates the shard count of the specified stream to the specified number of shards
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname kinesis
 #' @export
 kinesis <- function(config = list()) {
@@ -89,7 +95,7 @@ kinesis <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "kinesis.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesis.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "kinesis.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesis.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Kinesis",
   api_version = "2013-12-02",
-  signing_name = NULL,
+  signing_name = "kinesis",
   json_version = "1.1",
   target_prefix = "Kinesis_20131202"
 )

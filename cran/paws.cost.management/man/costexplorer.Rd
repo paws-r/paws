@@ -9,6 +9,12 @@ costexplorer(config = list())
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
+\value{
+A client for the service. You can call the service's operations using
+syntax like \code{svc$operation(...)}, where \code{svc} is the name you've assigned
+to the client. The available operations are listed in the
+Operations section.
+}
 \description{
 The Cost Explorer API enables you to programmatically query your cost
 and usage data. You can query for aggregated data such as total monthly

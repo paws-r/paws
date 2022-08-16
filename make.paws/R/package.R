@@ -29,7 +29,6 @@ write_description_category <- function(path, package, title, description,
     License = "Apache License (>= 2.0)",
     URL = "https://github.com/paws-r/paws",
     Encoding = "UTF-8",
-    LazyData = "true",
     Roxygen = 'list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))'
   )
   for (key in names(contents)) {

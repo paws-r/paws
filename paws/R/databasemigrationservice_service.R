@@ -116,6 +116,12 @@ NULL
 #'  \link[=databasemigrationservice_test_connection]{test_connection} \tab Tests the connection between the replication instance and the endpoint
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname databasemigrationservice
 #' @export
 databasemigrationservice <- function(config = list()) {
@@ -134,7 +140,7 @@ databasemigrationservice <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "dms.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dms.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "dms.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "dms.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Database Migration Service",
   api_version = "2016-01-01",
-  signing_name = NULL,
+  signing_name = "dms",
   json_version = "1.1",
   target_prefix = "AmazonDMSv20160101"
 )

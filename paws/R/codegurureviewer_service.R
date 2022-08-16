@@ -72,6 +72,12 @@ NULL
 #'  \link[=codegurureviewer_untag_resource]{untag_resource} \tab Removes a tag from an associated repository
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname codegurureviewer
 #' @export
 codegurureviewer <- function(config = list()) {

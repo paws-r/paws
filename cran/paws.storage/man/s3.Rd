@@ -9,6 +9,12 @@ s3(config = list())
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
+\value{
+A client for the service. You can call the service's operations using
+syntax like \code{svc$operation(...)}, where \code{svc} is the name you've assigned
+to the client. The available operations are listed in the
+Operations section.
+}
 \description{
 Amazon Simple Storage Service
 }
@@ -55,6 +61,7 @@ Amazon Simple Storage Service
 \link[=s3_delete_objects]{delete_objects} \tab This operation enables you to delete multiple objects from a bucket using a single HTTP request\cr
 \link[=s3_delete_object_tagging]{delete_object_tagging} \tab Removes the entire tag set from the specified object\cr
 \link[=s3_delete_public_access_block]{delete_public_access_block} \tab Removes the PublicAccessBlock configuration for an Amazon S3 bucket\cr
+\link[=s3_download_file]{download_file} \tab Download a file from S3 and store it at a specified file location\cr
 \link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration} \tab This implementation of the GET operation uses the accelerate subresource to return the Transfer Acceleration state of a bucket, which is either Enabled or Suspended\cr
 \link[=s3_get_bucket_acl]{get_bucket_acl} \tab This implementation of the GET operation uses the acl subresource to return the access control list (ACL) of a bucket\cr
 \link[=s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration} \tab This implementation of the GET operation returns an analytics configuration (identified by the analytics configuration ID) from the bucket\cr

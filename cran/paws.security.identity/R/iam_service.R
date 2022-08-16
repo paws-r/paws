@@ -192,6 +192,12 @@ NULL
 #'  \link[=iam_upload_ssh_public_key]{upload_ssh_public_key} \tab Uploads an SSH public key and associates it with the specified IAM user
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname iam
 #' @export
 iam <- function(config = list()) {
@@ -210,7 +216,7 @@ iam <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "https://iam.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "iam.cn-north-1.amazonaws.com.cn", global = TRUE), "us-gov-*" = list(endpoint = "iam.us-gov.amazonaws.com", global = TRUE), "us-iso-*" = list(endpoint = "iam.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "iam.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "IAM",
   api_version = "2010-05-08",
-  signing_name = NULL,
+  signing_name = "iam",
   json_version = "",
   target_prefix = ""
 )

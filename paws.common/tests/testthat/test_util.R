@@ -21,6 +21,19 @@ test_that("is_empty", {
   expect_equal(is_empty(list(list(list(),list(1)))), FALSE)
 })
 
+test_that("is_empty_xml", {
+  expect_equal(is_empty_xml(NA_character_), TRUE)
+  expect_equal(is_empty_xml(character(0)), TRUE)
+  expect_equal(is_empty(list()), TRUE)
+  expect_equal(is_empty(list(list())), TRUE)
+  expect_equal(is_empty(list(list(list(),list()))), TRUE)
+
+  expect_equal(is_empty_xml("foo"), FALSE)
+  expect_equal(is_empty_xml(""), FALSE)
+  expect_equal(is_empty_xml(list(1)), FALSE)
+  expect_equal(is_empty_xml(list(list(list(),list("")))), FALSE)
+})
+
 test_that("call_with_args", {
   foo <- function(a){a}
   args <- list(a = 1, b = 2)

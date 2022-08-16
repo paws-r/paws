@@ -80,6 +80,12 @@ NULL
 #'  \link[=efs_update_file_system]{update_file_system} \tab Updates the throughput mode or the amount of provisioned throughput of an existing file system
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname efs
 #' @export
 efs <- function(config = list()) {
@@ -98,7 +104,7 @@ efs <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "elasticfilesystem.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticfilesystem.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elasticfilesystem.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticfilesystem.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "EFS",
   api_version = "2015-02-01",
-  signing_name = NULL,
+  signing_name = "elasticfilesystem",
   json_version = "",
   target_prefix = ""
 )

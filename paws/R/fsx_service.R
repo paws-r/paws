@@ -66,6 +66,12 @@ NULL
 #'  \link[=fsx_update_file_system]{update_file_system} \tab Use this operation to update the configuration of an existing Amazon FSx file system
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname fsx
 #' @export
 fsx <- function(config = list()) {

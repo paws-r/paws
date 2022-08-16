@@ -104,6 +104,12 @@ NULL
 #'  \link[=sqs_untag_queue]{untag_queue} \tab Remove cost allocation tags from the specified Amazon SQS queue
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname sqs
 #' @export
 sqs <- function(config = list()) {
@@ -122,7 +128,7 @@ sqs <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "sqs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sqs.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sqs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sqs.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SQS",
   api_version = "2012-11-05",
-  signing_name = NULL,
+  signing_name = "sqs",
   json_version = "",
   target_prefix = ""
 )

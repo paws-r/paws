@@ -57,6 +57,12 @@ NULL
 #'  \link[=dlm_update_lifecycle_policy]{update_lifecycle_policy} \tab Updates the specified lifecycle policy
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname dlm
 #' @export
 dlm <- function(config = list()) {

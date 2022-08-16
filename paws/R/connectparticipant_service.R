@@ -56,6 +56,12 @@ NULL
 #'  \link[=connectparticipant_start_attachment_upload]{start_attachment_upload} \tab Provides a pre-signed Amazon S3 URL in response for uploading the file directly to S3
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname connectparticipant
 #' @export
 connectparticipant <- function(config = list()) {

@@ -64,6 +64,12 @@ NULL
 #'  \link[=servicequotas_untag_resource]{untag_resource} \tab Removes tags from the specified applied quota
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname servicequotas
 #' @export
 servicequotas <- function(config = list()) {
@@ -82,7 +88,7 @@ servicequotas <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "servicequotas.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicequotas.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "servicequotas.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "servicequotas.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Service Quotas",
   api_version = "2019-06-24",
-  signing_name = NULL,
+  signing_name = "servicequotas",
   json_version = "1.1",
   target_prefix = "ServiceQuotasV20190624"
 )

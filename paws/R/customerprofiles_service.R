@@ -83,6 +83,12 @@ NULL
 #'  \link[=customerprofiles_update_profile]{update_profile} \tab Updates the properties of a profile
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname customerprofiles
 #' @export
 customerprofiles <- function(config = list()) {

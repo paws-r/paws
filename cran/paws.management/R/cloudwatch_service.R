@@ -86,6 +86,12 @@ NULL
 #'  \link[=cloudwatch_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cloudwatch
 #' @export
 cloudwatch <- function(config = list()) {
@@ -104,7 +110,7 @@ cloudwatch <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "monitoring.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "monitoring.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "monitoring.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "monitoring.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CloudWatch",
   api_version = "2010-08-01",
-  signing_name = NULL,
+  signing_name = "monitoring",
   json_version = "",
   target_prefix = ""
 )

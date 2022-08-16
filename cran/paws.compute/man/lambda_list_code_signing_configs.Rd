@@ -35,8 +35,8 @@ A list with the following syntax:\preformatted{list(
 }
 }
 \description{
-Returns a list of \href{https://docs.aws.amazon.com/lambda/latest/dg/}{code signing configurations}. A
-request returns up to 10,000 configurations per call. You can use the
+Returns a list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html}{code signing configurations}.
+A request returns up to 10,000 configurations per call. You can use the
 \code{MaxItems} parameter to return fewer configurations per call.
 }
 \section{Request syntax}{

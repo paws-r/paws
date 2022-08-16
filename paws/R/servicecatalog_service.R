@@ -132,6 +132,12 @@ NULL
 #'  \link[=servicecatalog_update_tag_option]{update_tag_option} \tab Updates the specified TagOption
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname servicecatalog
 #' @export
 servicecatalog <- function(config = list()) {
@@ -150,7 +156,7 @@ servicecatalog <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "servicecatalog.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicecatalog.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "servicecatalog.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "servicecatalog.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Service Catalog",
   api_version = "2015-12-10",
-  signing_name = NULL,
+  signing_name = "servicecatalog",
   json_version = "1.1",
   target_prefix = "AWS242ServiceCatalogService"
 )

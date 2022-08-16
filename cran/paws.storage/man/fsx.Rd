@@ -9,6 +9,12 @@ fsx(config = list())
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
+\value{
+A client for the service. You can call the service's operations using
+syntax like \code{svc$operation(...)}, where \code{svc} is the name you've assigned
+to the client. The available operations are listed in the
+Operations section.
+}
 \description{
 Amazon FSx is a fully managed service that makes it easy for storage and
 application administrators to launch and use shared file storage.

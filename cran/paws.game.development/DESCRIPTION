@@ -1,18 +1,12 @@
 Package: paws.game.development
-Title: Amazon Web Services Game Development Services
-Version: 0.1.11
-Authors@R: 
-    c(person(given = "David",
-             family = "Kretch",
-             role = c("aut", "cre"),
-             email = "david.kretch@gmail.com"),
-      person(given = "Adam",
-             family = "Banker",
-             role = "aut",
-             email = "adam.banker39@gmail.com"),
-      person(given = "Amazon.com, Inc.",
-             role = "cph"))
-Description: Interface to Amazon Web Services game development services,
+Title: 'Amazon Web Services' Game Development Services
+Version: 0.1.12
+Authors@R: c(
+    person("David", "Kretch", , "david.kretch@gmail.com", role = c("aut", "cre")),
+    person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
+    person("Amazon.com, Inc.", role = "cph")
+  )
+Description: Interface to 'Amazon Web Services' game development services,
     including 'GameLift' game server hosting
     <https://aws.amazon.com/gametech/>.
 License: Apache License (>= 2.0)
@@ -23,7 +17,6 @@ Imports:
 Suggests: 
     testthat
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.1.1
 Collate: 

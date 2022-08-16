@@ -70,6 +70,12 @@ NULL
 #'  \link[=groundstation_update_mission_profile]{update_mission_profile} \tab Updates a mission profile
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname groundstation
 #' @export
 groundstation <- function(config = list()) {

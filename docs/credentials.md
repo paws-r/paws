@@ -9,6 +9,7 @@
   - [Assume a role with credentials from the environment or an instance/container role](#assume-a-role-with-credentials-from-the-environment-or-an-instancecontainer-role)
   - [Assume a role with credentials from another profile](#assume-a-role-with-credentials-from-another-profile)
   - [Use multifactor authentication when assuming a role](#use-multifactor-authentication-when-assuming-a-role)
+  - [Use AWS Single Sign-On (SSO)](#use-aws-single-sign-on-sso)
 - [Set region](#set-region)
   - [Set region for all services with an environment variable](#set-region-for-all-services-with-an-environment-variable)
   - [Get region from the AWS config file](#get-region-from-the-aws-config-file)
@@ -88,7 +89,7 @@ environment variable `AWS_SHARED_CREDENTIALS_FILE`.
 
 ## Set credentials for an individual service
 
-You can set credentials for an individual service by specifying them as 
+You can set credentials for an individual service by specifying them as
 arguments when you create the service object. These take precedence over
 credentials set using any other method.
 
@@ -140,7 +141,7 @@ use the credentials from the attached role.
 
 ---
 
-    
+
 ## Get credentials from a command line process
 
 You can get credentials from a command line process by specifying the process
@@ -156,7 +157,7 @@ like the following:
       "Version": 1,
       "AccessKeyId": "your AWS access key",
       "SecretAccessKey": "your AWS secret access key",
-      "SessionToken": "your session token", 
+      "SessionToken": "your session token",
       "Expiration": "ISO8601 expiration time"
     }
 
@@ -211,7 +212,7 @@ the name of the other profile in `source_profile`.
     source_profile=my-other-profile
 
 Paws will look in both the AWS shared credentials file and the AWS config file
-for the source profile. The source profile can use any method to provide 
+for the source profile. The source profile can use any method to provide
 credentials.
 
 If you put these settings in a config profile other than `default`, you will
@@ -248,6 +249,45 @@ specify another location using environment variable `AWS_CONFIG_FILE`.
 ---
 
 
+## Use AWS Single Sign-On (SSO)
+
+NOTE: Currently, you must have the AWS CLI installed to use AWS SSO with Paws.
+
+To use AWS SSO to provide credentials for accessing AWS, you will need to 
+specify the SSO settings to use in the AWS config file, log in to SSO 
+using the AWS CLI, then tell Paws to use the profile.
+
+1. Specify the SSO settings to use in the AWS config file in `~/.aws/config`, 
+   e.g.
+
+    ```ini
+    [profile my-dev-profile]
+    sso_start_url = https://my-sso-portal.awsapps.com/start
+    sso_region = us-east-1
+    sso_account_id = 123456789011
+    sso_role_name = readOnly
+    region = us-west-2
+    output = json
+    ```
+
+2. Log in to SSO using the AWS CLI.
+
+    ```
+    aws sso login --profile my-dev-profile
+    ```
+
+3. Tell Paws to use the SSO profile. For alternate ways of specifying your
+   profile, see the [set profile section](#set-profile). 
+
+    ```r
+    Sys.setenv(AWS_PROFILE = "my-dev-profile")
+    ```
+
+See also [AWS's documentation about using the AWS CLI with SSO](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html#sso-using-profile).
+
+---
+
+
 # Set region
 
 To use AWS, you must also set your AWS region. See below for common scenarios.
@@ -259,7 +299,8 @@ For a reference to all available options, [see the reference section](#reference
 ## Set region for all services with an environment variable
 
 You can set the region for all services using an environment variable. Paws
-will look for region in both OS or R environment variables.
+will look for region in both OS or R environment variables using either
+`AWS_REGION` or `AWS_DEFAULT_REGION`.
 
 You can use R to set region with the following command:
 
@@ -267,6 +308,11 @@ You can use R to set region with the following command:
 Sys.setenv(
     AWS_REGION = "us-east-2"
 )
+# or
+Sys.setenv(
+    AWS_DEFAULT_REGION = "us-east-2"
+)
+
 ```
 
 ---
@@ -368,7 +414,7 @@ them in this order:
 
 1.  [In settings provided to an individual service](#service-settings)
 2.  [In environment variables](#environment-variables)
-3.  In the [AWS shared credentials file](#shared-credentials-file) and 
+3.  In the [AWS shared credentials file](#shared-credentials-file) and
     [AWS config file](#config-file)
 4.  In an EC2 instance or container IAM role
 
@@ -383,7 +429,7 @@ setting in a config file.
 
 Paws supports the following settings provided as arguments to a service:
 
-* `access_key_id` - Specifies the AWS access key used as part of the 
+* `access_key_id` - Specifies the AWS access key used as part of the
   credentials to authenticate the request.
 
 * `secret_access_key` - Specifies the AWS secret key used as part of the
@@ -402,7 +448,7 @@ Paws supports the following settings provided as arguments to a service:
 
 * `region` - Specifies the AWS region to send the request to.
 
-They must be provided to the service in the following structure. It is 
+They must be provided to the service in the following structure. It is
 allowable to specify only some of the settings, e.g. only `region`.
 
 ``` r
@@ -429,32 +475,32 @@ svc <- paws::svc(
 
 Paws supports the following settings in environment variables.
 
-* `AWS_ACCESS_KEY_ID` - Specifies the AWS access key used as part of the 
+* `AWS_ACCESS_KEY_ID` - Specifies the AWS access key used as part of the
   credentials to authenticate the request.
-  
+
 * `AWS_CONFIG_FILE` - Specifies the location of the file used to store
   configuration profiles. The default path is `~/.aws/config`.
-  
+
 * `AWS_CREDENTIAL_EXPIRATION` - The expiration time of the credentials
   contained in the environment variables `AWS_ACCESS_KEY_ID`,
   `AWS_SECRET_ACCESS_KEY`, and `AWS_SESSION_TOKEN`. The expiration time must
   be specified in ISO 8601 format, e.g. `"2021-02-19T04:42:29Z"`.
-  
+
 * `AWS_EC2_METADATA_DISABLED` - Disables the use of the Amazon EC2 instance
   metadata service (IMDS) when set to `"true"` (case insensitive) or `"1"`.
-  
+
 * `AWS_PROFILE` - Specifies the name of the profile with the credentials and
   options to use.
-  
-* `AWS_REGION` - Specifies the AWS region to send the request to.
-  
+
+* `AWS_REGION`/`AWS_DEFAULT_REGION` - Specifies the AWS region to send the request to.
+
 * `AWS_SECRET_ACCESS_KEY` - Specifies the AWS secret key used as part of the
   credentials to authenticate the request.
 
 * `AWS_SESSION_TOKEN` - Specifies the session token value that is required if
   you are using temporary security credentials that you retrieved directly
   from AWS STS operations.
-  
+
 * `AWS_SHARED_CREDENTIALS_FILES` - Specifies the location of the file used to
   store access keys. The default path is `~/.aws/credentials`.
 
@@ -469,7 +515,7 @@ variable `AWS_SHARED_CREDENTIALS_FILE`.
 
 Paws supports the following settings in the AWS shared credentials file.
 
-* `aws_access_key_id` - Specifies the AWS access key used as part of the 
+* `aws_access_key_id` - Specifies the AWS access key used as part of the
   credentials to authenticate the request.
 
 * `aws_secret_access_key` - Specifies the AWS secret key used as part of the
@@ -485,7 +531,7 @@ specify another location using environment variable `AWS_CONFIG_FILE`.
 
 Paws supports the following settings in the AWS config file.
 
-* `credential_process` - Specifies an external command to be run to generate 
+* `credential_process` - Specifies an external command to be run to generate
   or retrieve authentication credentials. The command must return the
   credentials in a specific format. For more information about how to use this
   setting, see [Sourcing credentials with an external process](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html).
@@ -506,22 +552,22 @@ Paws supports the following settings in the AWS config file.
     * `EcsContainer` – Specifies that the SDK is to use the IAM role attached
       to the ECS container as source credentials.
 
-* `mfa_serial` - The identification number of an MFA device to use when 
+* `mfa_serial` - The identification number of an MFA device to use when
   assuming a role. This is mandatory only if the trust policy of the role being
   assumed includes a condition that requires MFA authentication. The value can
   be either a serial number for a hardware device (such as GAHT12345678) or an
   Amazon Resource Name (ARN) for a virtual MFA device (such as
   `arn:aws:iam::123456789012:mfa/user`).
 
-* `region` - Specifies the AWS Region to send requests to for commands 
+* `region` - Specifies the AWS Region to send requests to for commands
   requested using this profile.
 
-* `role_arn` - Specifies the Amazon Resource Name (ARN) of an IAM role that you 
+* `role_arn` - Specifies the Amazon Resource Name (ARN) of an IAM role that you
   want to use to run SDK commands. You must also specify one of the
   following parameters to identify the credentials that have permission to
   assume this role: `source_profile`, `credential_source`.
 
-* `source_profile` - Specifies a named profile with long-term credentials that 
+* `source_profile` - Specifies a named profile with long-term credentials that
   the SDK can use to assume a role that you specified with the `role_arn`
   parameter. You cannot specify both `source_profile` and `credential_source`
   in the same profile.

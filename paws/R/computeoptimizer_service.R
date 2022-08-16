@@ -66,6 +66,12 @@ NULL
 #'  \link[=computeoptimizer_update_enrollment_status]{update_enrollment_status} \tab Updates the enrollment (opt in) status of an account to the AWS Compute Optimizer service
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname computeoptimizer
 #' @export
 computeoptimizer <- function(config = list()) {

@@ -80,6 +80,12 @@ NULL
 #'  \link[=mturk_update_qualification_type]{update_qualification_type} \tab The UpdateQualificationType operation modifies the attributes of an existing Qualification type, which is represented by a QualificationType data structure
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname mturk
 #' @export
 mturk <- function(config = list()) {
@@ -98,7 +104,7 @@ mturk <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "mturk-requester.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mturk-requester.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "mturk-requester.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "mturk-requester.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "MTurk",
   api_version = "2017-01-17",
-  signing_name = NULL,
+  signing_name = "mturk-requester",
   json_version = "1.1",
   target_prefix = "MTurkRequesterServiceV20170117"
 )

@@ -139,6 +139,12 @@ NULL
 #'  \link[=greengrass_update_thing_runtime_configuration]{update_thing_runtime_configuration} \tab Updates the runtime configuration of a thing
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname greengrass
 #' @export
 greengrass <- function(config = list()) {

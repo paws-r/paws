@@ -4118,7 +4118,7 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' configure a NAT Gateway in your VPC.
 #' 
 #' For more information, see [Notebook Instances Are Internet-Enabled by
-#' Default](https://docs.aws.amazon.com/sagemaker/latest/dg/#appendix-notebook-and-internet-access).
+#' Default](https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-interface-endpoint.html#appendix-notebook-and-internet-access).
 #' You can set the value of this parameter to `Disabled` only if you set a
 #' value for the `SubnetId` parameter.
 #' @param VolumeSizeInGB The size, in GB, of the ML storage volume to attach to the notebook

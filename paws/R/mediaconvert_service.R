@@ -66,6 +66,12 @@ NULL
 #'  \link[=mediaconvert_update_queue]{update_queue} \tab Modify one of your existing queues
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname mediaconvert
 #' @export
 mediaconvert <- function(config = list()) {

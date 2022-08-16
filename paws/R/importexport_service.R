@@ -53,6 +53,12 @@ NULL
 #'  \link[=importexport_update_job]{update_job} \tab You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname importexport
 #' @export
 importexport <- function(config = list()) {
@@ -71,7 +77,7 @@ importexport <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "importexport.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "importexport.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "importexport.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "importexport.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "ImportExport",
   api_version = "2010-06-01",
-  signing_name = NULL,
+  signing_name = "importexport",
   json_version = "",
   target_prefix = ""
 )

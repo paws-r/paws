@@ -63,6 +63,12 @@ NULL
 #'  \link[=migrationhubconfig_get_home_region]{get_home_region} \tab Returns the calling account’s home region, if configured
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname migrationhubconfig
 #' @export
 migrationhubconfig <- function(config = list()) {

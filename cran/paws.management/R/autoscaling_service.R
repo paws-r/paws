@@ -113,6 +113,12 @@ NULL
 #'  \link[=autoscaling_update_auto_scaling_group]{update_auto_scaling_group} \tab We strongly recommend that all Auto Scaling groups use launch templates to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname autoscaling
 #' @export
 autoscaling <- function(config = list()) {
@@ -131,7 +137,7 @@ autoscaling <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "autoscaling.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "autoscaling.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "autoscaling.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "autoscaling.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Auto Scaling",
   api_version = "2011-01-01",
-  signing_name = NULL,
+  signing_name = "autoscaling",
   json_version = "",
   target_prefix = ""
 )

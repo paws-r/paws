@@ -113,6 +113,12 @@ NULL
 #'  \link[=apigatewayv2_update_vpc_link]{update_vpc_link} \tab Updates a VPC link
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname apigatewayv2
 #' @export
 apigatewayv2 <- function(config = list()) {

@@ -1,17 +1,11 @@
 Package: paws
 Title: Amazon Web Services Software Development Kit
-Version: 0.1.11
-Authors@R: 
-    c(person(given = "David",
-             family = "Kretch",
-             role = c("aut", "cre"),
-             email = "david.kretch@gmail.com"),
-      person(given = "Adam",
-             family = "Banker",
-             role = "aut",
-             email = "adam.banker39@gmail.com"),
-      person(given = "Amazon.com, Inc.",
-             role = "cph"))
+Version: 0.1.12
+Authors@R: c(
+    person("David", "Kretch", , "david.kretch@gmail.com", role = c("aut", "cre")),
+    person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
+    person("Amazon.com, Inc.", role = "cph")
+  )
 Description: Interface to Amazon Web Services <https://aws.amazon.com>,
     including storage, database, and compute services, such as 'Simple
     Storage Service' ('S3'), 'DynamoDB' 'NoSQL' database, and 'Lambda'
@@ -20,20 +14,21 @@ License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
-    paws.compute (>= 0.1.11),
-    paws.storage (>= 0.1.11),
-    paws.database (>= 0.1.11),
-    paws.networking (>= 0.1.11),
-    paws.management (>= 0.1.11),
-    paws.machine.learning (>= 0.1.11),
-    paws.analytics (>= 0.1.11),
-    paws.security.identity (>= 0.1.11),
-    paws.application.integration (>= 0.1.11),
-    paws.cost.management (>= 0.1.11),
-    paws.customer.engagement (>= 0.1.11)
+    paws.analytics (>= 0.1.12),
+    paws.application.integration (>= 0.1.12),
+    paws.compute (>= 0.1.12),
+    paws.cost.management (>= 0.1.12),
+    paws.customer.engagement (>= 0.1.12),
+    paws.database (>= 0.1.12),
+    paws.developer.tools (>= 0.1.12),
+    paws.end.user.computing (>= 0.1.12),
+    paws.machine.learning (>= 0.1.12),
+    paws.management (>= 0.1.12),
+    paws.networking (>= 0.1.12),
+    paws.security.identity (>= 0.1.12),
+    paws.storage (>= 0.1.12)
 Suggests: 
     testthat
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.1.1

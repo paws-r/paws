@@ -78,6 +78,12 @@ NULL
 #'  \link[=batch_update_job_queue]{update_job_queue} \tab Updates a job queue
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname batch
 #' @export
 batch <- function(config = list()) {
@@ -96,7 +102,7 @@ batch <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "batch.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "batch.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "batch.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "batch.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Batch",
   api_version = "2016-08-10",
-  signing_name = NULL,
+  signing_name = "batch",
   json_version = "1.1",
   target_prefix = ""
 )

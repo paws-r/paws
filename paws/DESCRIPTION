@@ -1,6 +1,6 @@
 Package: paws
 Title: Amazon Web Services Software Development Kit
-Version: 0.1.11
+Version: 0.1.12
 Authors@R: c(
     person(given = "David", family = "Kretch", role = c("aut", "cre"), email = "david.kretch@gmail.com"),
     person(given = "Adam", family = "Banker", role = "aut", email = "adam.banker39@gmail.com"),
@@ -17,7 +17,6 @@ Imports:
 Suggests: 
     testthat
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.1.1
 Collate: 
@@ -647,6 +646,7 @@ Collate:
     's3_service.R'
     's3_interfaces.R'
     's3_operations.R'
+    's3_custom.R'
     's3control_service.R'
     's3control_interfaces.R'
     's3control_operations.R'

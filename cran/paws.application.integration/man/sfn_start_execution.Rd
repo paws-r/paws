@@ -11,7 +11,7 @@ sfn_start_execution(stateMachineArn, name, input, traceHeader)
 
 \item{name}{The name of the execution. This name must be unique for your AWS
 account, region, and state machine for 90 days. For more information,
-see \href{https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
+see \href{https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
 in the \emph{AWS Step Functions Developer Guide}.
 
 A name must \emph{not} contain:

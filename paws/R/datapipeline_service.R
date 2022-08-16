@@ -82,6 +82,12 @@ NULL
 #'  \link[=datapipeline_validate_pipeline_definition]{validate_pipeline_definition} \tab Validates the specified pipeline definition to ensure that it is well formed and can be run without error
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname datapipeline
 #' @export
 datapipeline <- function(config = list()) {
@@ -100,7 +106,7 @@ datapipeline <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "datapipeline.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "datapipeline.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "datapipeline.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "datapipeline.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Data Pipeline",
   api_version = "2012-10-29",
-  signing_name = NULL,
+  signing_name = "datapipeline",
   json_version = "1.1",
   target_prefix = "DataPipeline"
 )

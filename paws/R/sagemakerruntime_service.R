@@ -42,6 +42,12 @@ NULL
 #'  \link[=sagemakerruntime_invoke_endpoint]{invoke_endpoint} \tab After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname sagemakerruntime
 #' @export
 sagemakerruntime <- function(config = list()) {

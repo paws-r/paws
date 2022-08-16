@@ -22,12 +22,19 @@ NULL
 get_config <- function() {
   calling_env <- parent.frame(2)
   call <- sys.call(-1)[[1]]
+  # Ensure we correctly identify the service object (e.g. `svc`) when the
+  # operation is called through `do.call`, e.g. `do.call(svc$operation, args)`.
+  if (is.function(call)) {
+    call <- sys.call(-2)[[2]]
+  }
   if (is.name(call)) {
     return(Config())
   }
   object <- eval(call[[2]], envir = calling_env)
   config <- object$.internal$config
-  if (is.null(config)) return(Config())
+  if (is.null(config)) {
+    return(Config())
+  }
   return(config)
 }
 
@@ -77,7 +84,6 @@ get_config <- function() {
 #'     endpoint = "https://foo.com"
 #'   )
 #' )
-#'
 #' @export
 set_config <- function(svc, cfgs = list()) {
   shape <- tag_annotate(Config())
@@ -104,30 +110,42 @@ get_aws_path <- function() {
 
 get_config_file_path <- function() {
   path <- get_env("AWS_CONFIG_FILE")
-  if (path != "" && file.exists(path)) return(path)
+  if (path != "" && file.exists(path)) {
+    return(path)
+  }
 
   path <- file.path(get_aws_path(), "config")
-  if (file.exists(path)) return(path)
+  if (file.exists(path)) {
+    return(path)
+  }
 
   return(NULL)
 }
 
 get_credentials_file_path <- function() {
   path <- get_env("AWS_SHARED_CREDENTIALS_FILE")
-  if (path != "" && file.exists(path)) return(path)
+  if (path != "" && file.exists(path)) {
+    return(path)
+  }
 
   path <- file.path(get_aws_path(), "credentials")
-  if (file.exists(path)) return(path)
+  if (file.exists(path)) {
+    return(path)
+  }
 
   return(NULL)
 }
 
 get_env <- function(variable) {
   value <- Sys.getenv(variable)
-  if (value != "") return(value)
+  if (value != "") {
+    return(value)
+  }
 
   value <- get_os_env(variable)
-  if (value != "") return(value)
+  if (value != "") {
+    return(value)
+  }
 
   return("")
 }
@@ -135,7 +153,6 @@ get_env <- function(variable) {
 # Get the value of an OS environment variable.
 # NOTE: Does not work on Windows.
 get_os_env <- function(var) {
-
   if (.Platform$OS.type == "unix") {
     value <- system(sprintf("echo $%s", var), intern = T)
   } else {
@@ -147,8 +164,9 @@ get_os_env <- function(var) {
 
 # Get the AWS profile to use. If none, return "default".
 get_profile_name <- function(profile = "") {
-
-  if (!is.null(profile) && profile != "") return(profile)
+  if (!is.null(profile) && profile != "") {
+    return(profile)
+  }
 
   profile <- get_env("AWS_PROFILE")
 
@@ -165,16 +183,21 @@ get_instance_metadata <- function(query_path = "") {
     return(NULL)
   }
 
-  metadata_url <- file.path("http://169.254.169.254/latest/meta-data",
-                           query_path)
+  metadata_url <- file.path(
+    "http://169.254.169.254/latest/meta-data",
+    query_path
+  )
   metadata_request <-
     new_http_request("GET", metadata_url, timeout = 1)
 
-  metadata_response <- tryCatch({
-    issue(metadata_request)
-  }, error = function (e){
-    NULL
-  })
+  metadata_response <- tryCatch(
+    {
+      issue(metadata_request)
+    },
+    error = function(e) {
+      NULL
+    }
+  )
 
   if (is.null(metadata_response) || metadata_response$status_code != 200) {
     return(NULL)
@@ -187,16 +210,19 @@ get_instance_metadata <- function(query_path = "") {
 # For profiles other than default, the profile name is prefaced by "profile".
 # See https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
 check_config_file_region <- function(profile = "") {
-
   config_path <- get_config_file_path()
-  if (is.null(config_path)) return(NULL)
+  if (is.null(config_path)) {
+    return(NULL)
+  }
 
   profile <- get_profile_name(profile)
   if (profile != "default") profile <- paste("profile", profile)
 
   config_values <- read_ini(config_path)
 
-  if (is.null(config_values[[profile]])) return(NULL)
+  if (is.null(config_values[[profile]])) {
+    return(NULL)
+  }
 
   region <- config_values[[profile]]$region
 
@@ -205,9 +231,16 @@ check_config_file_region <- function(profile = "") {
 
 # Get the AWS region.
 get_region <- function(profile = "") {
-
   region <- get_env("AWS_REGION")
-  if (region != "") return(region)
+  if (region != "") {
+    return(region)
+  }
+
+  # Check if default region is specified
+  region <- get_env("AWS_DEFAULT_REGION")
+  if (region != "") {
+    return(region)
+  }
 
   region <- check_config_file_region(profile)
 

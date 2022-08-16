@@ -70,6 +70,12 @@ NULL
 #'  \link[=route53domains_view_billing]{view_billing} \tab Returns all the domain-related billing records for the current AWS account for a specified period
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname route53domains
 #' @export
 route53domains <- function(config = list()) {
@@ -88,7 +94,7 @@ route53domains <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "route53domains.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "route53domains.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "route53domains.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "route53domains.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Route 53 Domains",
   api_version = "2014-05-15",
-  signing_name = NULL,
+  signing_name = "route53domains",
   json_version = "1.1",
   target_prefix = "Route53Domains_v20140515"
 )

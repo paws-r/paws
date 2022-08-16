@@ -51,8 +51,8 @@ A list with the following syntax:\preformatted{list(
 \description{
 Lists current S3 Batch Operations jobs and jobs that have ended within
 the last 30 days for the AWS account making the request. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html}{S3 Batch Operations}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{S3 Batch Operations} in
+the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Related actions include:
 \itemize{

@@ -198,6 +198,12 @@ NULL
 #'  \link[=glue_update_workflow]{update_workflow} \tab Updates an existing workflow
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname glue
 #' @export
 glue <- function(config = list()) {
@@ -216,7 +222,7 @@ glue <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "glue.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "glue.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "glue.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "glue.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Glue",
   api_version = "2017-03-31",
-  signing_name = NULL,
+  signing_name = "glue",
   json_version = "1.1",
   target_prefix = "AWSGlue"
 )

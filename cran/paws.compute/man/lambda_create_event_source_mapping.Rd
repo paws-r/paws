@@ -158,7 +158,7 @@ For details about each event source type, see the following topics.
 \item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html}{Using AWS Lambda with Amazon SQS}
 \item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html}{Using AWS Lambda with Amazon MQ}
 \item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html}{Using AWS Lambda with Amazon MSK}
-\item \href{https://docs.aws.amazon.com/lambda/latest/dg/kafka-smaa.html}{Using AWS Lambda with Self-Managed Apache Kafka}
+\item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-kafka.html}{Using AWS Lambda with Self-Managed Apache Kafka}
 }
 
 The following error handling options are only available for stream

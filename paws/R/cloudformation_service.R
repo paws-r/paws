@@ -116,6 +116,12 @@ NULL
 #'  \link[=cloudformation_validate_template]{validate_template} \tab Validates a specified template
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname cloudformation
 #' @export
 cloudformation <- function(config = list()) {
@@ -134,7 +140,7 @@ cloudformation <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "cloudformation.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudformation.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloudformation.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudformation.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CloudFormation",
   api_version = "2010-05-15",
-  signing_name = NULL,
+  signing_name = "cloudformation",
   json_version = "",
   target_prefix = ""
 )

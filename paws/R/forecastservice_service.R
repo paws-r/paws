@@ -74,6 +74,12 @@ NULL
 #'  \link[=forecastservice_update_dataset_group]{update_dataset_group} \tab Replaces the datasets in a dataset group with the specified datasets
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname forecastservice
 #' @export
 forecastservice <- function(config = list()) {

@@ -22,8 +22,8 @@ A list with the following syntax:\preformatted{list(
 }
 \description{
 Updates an existing S3 Batch Operations job's priority. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html}{S3 Batch Operations}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{S3 Batch Operations} in
+the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Related actions include:
 \itemize{

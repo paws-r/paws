@@ -50,8 +50,8 @@ A list with the following syntax:\preformatted{list(
 \description{
 S3 Batch Operations performs large-scale Batch Operations on Amazon S3
 objects. Batch Operations can run a single operation or action on lists
-of Amazon S3 objects that you specify. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html}{S3 Batch Operations}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+of Amazon S3 objects that you specify. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{S3 Batch Operations} in
+the \emph{Amazon Simple Storage Service Developer Guide}.
 
 This operation creates an S3 Batch Operations job.
 

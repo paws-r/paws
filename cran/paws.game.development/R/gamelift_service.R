@@ -174,6 +174,12 @@ NULL
 #'  \link[=gamelift_validate_matchmaking_rule_set]{validate_matchmaking_rule_set} \tab Validates the syntax of a matchmaking rule or rule set
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname gamelift
 #' @export
 gamelift <- function(config = list()) {
@@ -192,7 +198,7 @@ gamelift <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "gamelift.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "gamelift.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "gamelift.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "gamelift.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "GameLift",
   api_version = "2015-10-01",
-  signing_name = NULL,
+  signing_name = "gamelift",
   json_version = "1.1",
   target_prefix = "GameLift"
 )

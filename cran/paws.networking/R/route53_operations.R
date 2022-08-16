@@ -5653,13 +5653,13 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' checks, see the following documents:
 #' 
 #' -   [RFC 5735, Special Use IPv4
-#'     Addresses](https://tools.ietf.org/html/rfc5735)
+#'     Addresses](https://datatracker.ietf.org/doc/html/rfc5735)
 #' 
 #' -   [RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
-#'     Space](https://tools.ietf.org/html/rfc6598)
+#'     Space](https://datatracker.ietf.org/doc/html/rfc6598)
 #' 
 #' -   [RFC 5156, Special-Use IPv6
-#'     Addresses](https://tools.ietf.org/html/rfc5156)
+#'     Addresses](https://datatracker.ietf.org/doc/html/rfc5156)
 #' @param Port The port on the endpoint that you want Amazon Route 53 to perform health
 #' checks on.
 #' 

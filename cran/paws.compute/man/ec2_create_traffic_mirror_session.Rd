@@ -33,9 +33,9 @@ matching filter is the one that mirrors the packets.
 Valid values are 1-32766.}
 
 \item{VirtualNetworkId}{The VXLAN ID for the Traffic Mirror session. For more information about
-the VXLAN protocol, see \href{https://tools.ietf.org/html/rfc7348}{RFC 7348}.
-If you do not specify a \code{VirtualNetworkId}, an account-wide unique id is
-chosen at random.}
+the VXLAN protocol, see \href{https://datatracker.ietf.org/doc/html/rfc7348}{RFC 7348}. If you do not
+specify a \code{VirtualNetworkId}, an account-wide unique id is chosen at
+random.}
 
 \item{Description}{The description of the Traffic Mirror session.}
 

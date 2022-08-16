@@ -1895,7 +1895,7 @@ eventbridge_put_partner_events <- function(Entries) {
 #' organization must specify a `RoleArn` with proper permissions when they
 #' use `PutTarget` to add your account's event bus as a target. For more
 #' information, see [Sending and Receiving Events Between AWS
-#' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html)
+#' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
 #' The permission policy on the default event bus cannot exceed 10 KB in
@@ -2054,7 +2054,7 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
 #' @param ScheduleExpression The scheduling expression. For example, "cron(0 20 * * ? *)" or
 #' "rate(5 minutes)".
 #' @param EventPattern The event pattern. For more information, see [Events and Event
-#' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
+#' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html)
 #' in the *Amazon EventBridge User Guide*.
 #' @param State Indicates whether the rule is enabled or disabled.
 #' @param Description A description of the rule.
@@ -2174,7 +2174,7 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' relies on IAM roles that you specify in the `RoleARN` argument in
 #' [`put_targets`][eventbridge_put_targets]. For more information, see
 #' [Authentication and Access
-#' Control](https://docs.aws.amazon.com/eventbridge/latest/userguide/auth-and-access-control-eventbridge.html)
+#' Control](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-iam.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
 #' If another AWS account is in the same region and has granted you
@@ -2197,7 +2197,7 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' instead of directly by the account ID, then you must specify a `RoleArn`
 #' with proper permissions in the `Target` structure. For more information,
 #' see [Sending and Receiving Events Between AWS
-#' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html)
+#' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
 #' For more information about enabling cross-account events, see
@@ -2664,7 +2664,7 @@ eventbridge_tag_resource <- function(ResourceARN, Tags) {
 #' eventbridge_test_event_pattern(EventPattern, Event)
 #'
 #' @param EventPattern &#91;required&#93; The event pattern. For more information, see [Events and Event
-#' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
+#' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html)
 #' in the *Amazon EventBridge User Guide*.
 #' @param Event &#91;required&#93; The event, in JSON format, to test against the event pattern.
 #'

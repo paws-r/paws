@@ -96,7 +96,7 @@ xml_build_structure <- function(params) {
 
     parsed <- xml_build(child)
 
-    if (!is_empty(parsed)) {
+    if (!is_empty_xml(parsed)) {
       location_name <- tag_get(child, "locationName")
       if (location_name == "") location_name <- name
 
@@ -159,6 +159,13 @@ xml_build_scalar <- function(params) {
 # Unmarshal `data` provided as a list into the shape in `interface`.
 xml_unmarshal <- function(data, interface, result_name = NULL) {
   if (is.null(data)) return(interface)
+
+  # help to parse xml:
+  # https://github.com/paws-r/paws/issues/501
+  if (!is.null(result_name) && result_name %in% names(data)) {
+    return(xml_parse(data, interface))
+  }
+
   root <- data[[1]]
   if (!is.null(result_name) && result_name %in% names(root)) {
     root <- root[[result_name]]

@@ -43,6 +43,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
+          sudo apt-get install -y libharfbuzz-dev libfribidi-dev
 
       - name: List dependencies
         run: |
@@ -76,7 +77,9 @@ jobs:
         run: |
           remotes::install_local('paws.common', force = TRUE)
           remotes::install_local('make.paws', force = TRUE)
-          remotes::install_local('cran/paws', force = TRUE)
+          for (package in rev(list.dirs("cran", recursive = FALSE))) {
+            remotes::install_local(package, force = TRUE)
+          }
         shell: Rscript {0}
 
       - name: Check

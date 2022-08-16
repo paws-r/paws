@@ -57,6 +57,12 @@ NULL
 #'  \link[=lexruntimeservice_put_session]{put_session} \tab Creates a new session or modifies an existing session with an Amazon Lex bot
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname lexruntimeservice
 #' @export
 lexruntimeservice <- function(config = list()) {

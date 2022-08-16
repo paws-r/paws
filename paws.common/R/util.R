@@ -42,6 +42,44 @@ is_empty.default <- function(x) {
   return(is.na(x))
 }
 
+#' Check whether an object is empty for xml builds
+#'
+#' Check whether an object is empty, e.g. has no sub-elements, is NA
+#'
+#' @param x An object.
+#'
+#' @examples
+#' is_empty_xml(NA) # TRUE
+#' is_empty_xml(list()) # TRUE
+#' is_empty_xml(list(list())) # TRUE
+#'
+#' is_empty_xml(1) # FALSE
+#' is_empty_xml("") # FALSE
+#' is_empty_xml(list(1)) # FALSE
+#' is_empty_xml(list(list(1))) # FALSE
+#'
+#' @export
+is_empty_xml <- function(x) {
+  if (is.null(x) || length(x) == 0) return(TRUE)
+  UseMethod("is_empty_xml")
+}
+
+#' @export
+is_empty_xml.character <- function(x) {
+  return(is.na(x))
+}
+
+#' @export
+is_empty_xml.raw <- is_empty.raw
+
+#' @export
+is_empty_xml.list <- function(x) {
+  return(all(sapply(x, is_empty_xml)))
+}
+
+#' @export
+is_empty_xml.default <- is_empty.default
+
 # Call a function `f` with arguments taken from elements in `data`, including
 # only those data elements that correspond to parameters.
 # For example:

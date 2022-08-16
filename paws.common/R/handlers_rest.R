@@ -1,3 +1,5 @@
+#' @include url.R
+
 # Build a request for the REST protocol.
 rest_build <- function(request) {
   if (params_filled(request)) {
@@ -196,7 +198,7 @@ rest_unmarshal_header <- function(value, type) {
     jsonvalue = json_to_list,
     long = as.numeric,
     string = as.character,
-    timestamp = function(x) as_timestamp(x, format = "rfc1123"),
+    timestamp = function(x) as_timestamp(x, format = "rfc822"),
     as.character
   )
   result <- convert(value)
@@ -227,10 +229,10 @@ clean_path <- function(url) {
 
 # Return a string with special characters escaped, e.g. " " -> "%20".
 escape_path <- function(string, encode_sep) {
-  path <- utils::URLencode(string, TRUE)
-  if (!encode_sep) {
-    path <- gsub("%2F", "/", path)
+  if(!encode_sep){
+    base_url_encode <- paste0("/", base_url_encode)
   }
+  path <- paws_url_encoder(string, paste0("[^", base_url_encode, "]"))
   return(path)
 }
 

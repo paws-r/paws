@@ -14,7 +14,7 @@ borrow consumption configuration.}
 \item{Entitlements}{[required] License entitlements. Partial checkouts are not supported.}
 
 \item{DigitalSignatureMethod}{[required] Digital signature method. The possible value is JSON Web Signature (JWS)
-algorithm PS384. For more information, see \href{https://tools.ietf.org/html/rfc7518#section-3.5}{RFC 7518 Digital Signature with RSASSA-PSS}.}
+algorithm PS384. For more information, see \href{https://datatracker.ietf.org/doc/html/rfc7518#section-3.5}{RFC 7518 Digital Signature with RSASSA-PSS}.}
 
 \item{NodeId}{Node ID.}
 

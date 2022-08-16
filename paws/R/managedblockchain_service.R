@@ -78,6 +78,12 @@ NULL
 #'  \link[=managedblockchain_vote_on_proposal]{vote_on_proposal} \tab Casts a vote for a specified ProposalId on behalf of a member
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname managedblockchain
 #' @export
 managedblockchain <- function(config = list()) {

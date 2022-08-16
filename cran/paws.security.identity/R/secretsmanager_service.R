@@ -46,8 +46,8 @@ NULL
 #' We welcome your feedback. Send your comments to
 #' <awssecretsmanager-feedback@@amazon.com>, or post your feedback and
 #' questions in the [AWS Secrets Manager Discussion
-#' Forum](https://forums.aws.amazon.com:443/forum.jspa?forumID=296). For
-#' more information about the AWS Discussion Forums, see [Forums
+#' Forum](https://forums.aws.amazon.com/forum.jspa?forumID=296). For more
+#' information about the AWS Discussion Forums, see [Forums
 #' Help](https://forums.aws.amazon.com:443/help.jspa).
 #' 
 #' **How examples are presented**
@@ -132,6 +132,12 @@ NULL
 #'  \link[=secretsmanager_update_secret_version_stage]{update_secret_version_stage} \tab Modifies the staging labels attached to a version of a secret\cr
 #'  \link[=secretsmanager_validate_resource_policy]{validate_resource_policy} \tab Validates the JSON text of the resource-based policy document attached to the specified secret
 #' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
 #'
 #' @rdname secretsmanager
 #' @export

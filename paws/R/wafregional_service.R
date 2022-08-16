@@ -148,6 +148,12 @@ NULL
 #'  \link[=wafregional_update_xss_match_set]{update_xss_match_set} \tab This is AWS WAF Classic documentation
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname wafregional
 #' @export
 wafregional <- function(config = list()) {
@@ -166,7 +172,7 @@ wafregional <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "waf-regional.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "waf-regional.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "waf-regional.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "waf-regional.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "WAF Regional",
   api_version = "2016-11-28",
-  signing_name = NULL,
+  signing_name = "waf-regional",
   json_version = "1.1",
   target_prefix = "AWSWAF_Regional_20161128"
 )

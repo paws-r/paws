@@ -1,3 +1,37 @@
+# paws.common 0.4.0
+
+* Fix `xml_build` to allow empty characters from operations.
+* Fix operations response for XML objects with elements at root.
+* Improve performance of `escape` with new helper function 
+  `paws_url_encoder` (1000x improvement).
+* Improve performance of decoding URL's with new helper function
+  `paws_url_decoder` (780x improvement).
+* Support anonymous credentials.
+
+# paws.common 0.3.17
+
+* Fix operations that take empty arguments, e.g. `s3$get_bucket_website`.
+
+# paws.common 0.3.16
+
+* Fix single sign on (SSO) authentication on Windows.
+
+# paws.common 0.3.15
+
+* Provide the ability to use credentials obtained from AWS SSO login, i.e. 
+  `aws sso login --profile my-profile`.
+* Fix timestamps in the S3 API, e.g. `LastModified` from `get_object`.
+
+# paws.common 0.3.14
+
+* Skip tests for `issue` network request function to avoid CRAN check errors.
+
+# paws.common 0.3.13
+
+* Support `AWS_DEFAULT_REGION` in addition to `AWS_REGION`.
+* Support calling SDK operations within `do.call`, including any user-supplied
+  configuration to the service, e.g. a custom endpoint.
+
 # paws.common 0.3.12
 
 * Support S3 access points in all S3 operations that accept a bucket argument.

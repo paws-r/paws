@@ -144,6 +144,12 @@ NULL
 #'  \link[=alexaforbusiness_update_skill_group]{update_skill_group} \tab Updates skill group details by skill group ARN
 #' }
 #'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
 #' @rdname alexaforbusiness
 #' @export
 alexaforbusiness <- function(config = list()) {
@@ -162,7 +168,7 @@ alexaforbusiness <- function(config = list()) {
   endpoints = list("*" = list(endpoint = "a4b.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "a4b.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "a4b.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "a4b.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Alexa For Business",
   api_version = "2017-11-09",
-  signing_name = NULL,
+  signing_name = "a4b",
   json_version = "1.1",
   target_prefix = "AlexaForBusiness"
 )
