@@ -126,4 +126,5 @@ s3_download_file <- function(Bucket, Key, Filename, IfMatch = NULL, IfModifiedSi
   response <- send_request(request)
   return(list())
 }
+
 .s3$operations$download_file <- s3_download_file

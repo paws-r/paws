@@ -4,7 +4,7 @@
 \alias{new_request}
 \title{Return an API request object}
 \usage{
-new_request(client, operation, params, data, output = NULL)
+new_request(client, operation, params, data, dest = NULL)
 }
 \arguments{
 \item{client}{A service client, e.g. from \code{new_service}.}
@@ -15,7 +15,7 @@ new_request(client, operation, params, data, output = NULL)
 
 \item{data}{An empty output object.}
 
-\item{output}{Control where the response body is written}
+\item{dest}{Control where the response body is written}
 }
 \description{
 Return an API request object with everything needed to make a request.

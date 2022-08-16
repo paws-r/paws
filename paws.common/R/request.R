@@ -83,7 +83,7 @@ Request <- struct(
 #' @param operation An operation, e.g. from `new_operation`.
 #' @param params A populated input object.
 #' @param data An empty output object.
-#' @param output Control where the response body is written
+#' @param dest Control where the response body is written
 #'
 #' @family API request functions
 #'
@@ -102,7 +102,7 @@ Request <- struct(
 #' }
 #'
 #' @export
-new_request <- function(client, operation, params, data, output=NULL) {
+new_request <- function(client, operation, params, data, dest = NULL) {
 
   method <- operation$http_method
   if (is.null(method)) {
@@ -115,7 +115,7 @@ new_request <- function(client, operation, params, data, output=NULL) {
     body = NULL,
     close = client$config$close_connection,
     timeout = client$config$timeout,
-    output = output
+    dest = dest
   )
 
   http_req$url <- parse_url(

@@ -57,7 +57,7 @@ test_that("write content to disk", {
   req <- HttpRequest(
     method = "GET",
     url = parse_url("https://httpbin.org/json"),
-    output = tmp
+    dest = tmp
   )
   resp <- issue(req)
   expect_equal(resp$status_code, 200)

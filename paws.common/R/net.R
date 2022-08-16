@@ -26,7 +26,7 @@ HttpRequest <- struct(
   timeout = NULL,
   response = NULL,
   ctx = list(),
-  output = NULL
+  dest = NULL
 )
 
 # Construct an HTTP response object.
@@ -54,8 +54,8 @@ HttpResponse <- struct(
 # @param body The body to send in the request, in bytes.
 # @param close Whether to immediately close the connection, or else reuse connections.
 # @param timeout How long to wait for an initial response.
-# @param output Control where the response body is written
-new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = NULL, output = NULL) {
+# @param dest Control where the response body is written
+new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = NULL, dest = NULL) {
   if (method == "") {
     method <- "GET"
   }
@@ -74,7 +74,7 @@ new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = 
     host = u$host,
     close = close,
     timeout = timeout,
-    output = output
+    dest = dest
   )
   return(req)
 }
@@ -111,14 +111,14 @@ issue <- function(http_request) {
   }
 
   # utilize httr to write to disk
-  output <- NULL
-  if(!is.null(http_request$output)) {
-    output <- httr::write_disk(http_request$output)
+  dest <- NULL
+  if(!is.null(http_request$dest)) {
+    dest <- httr::write_disk(http_request$dest)
   }
   r <- httr::VERB(
     method,
     url = url,
-    config = c(httr::add_headers(.headers=headers), output),
+    config = c(httr::add_headers(.headers=headers), dest),
     body = body,
     timeout
   )
@@ -129,7 +129,7 @@ issue <- function(http_request) {
     content_length = as.integer(httr::headers(r)$`content-length`),
     # Prevent reading in data when output is set
     body = (
-      if(is.null(http_request$output)) httr::content(r, as = "raw") else raw()
+      if(is.null(http_request$dest)) httr::content(r, as = "raw") else raw()
     )
   )
 
