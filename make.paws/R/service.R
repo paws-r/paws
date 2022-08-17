@@ -118,10 +118,20 @@ service_syntax <- function(api) {
             secret_access_key = "string",
             session_token = "string"
           ),
-          profile = "string"
+          profile = "string",
+          anonymous = "logical"
         ),
         endpoint = "string",
-        region = "string"
+        region = "string",
+        disable_ssl = "logical",
+        close_connection = "logical",
+        timeout = "numeric",
+        s3_force_path_style = "logical",
+        s3_disable_100_continue = "logical",
+        s3_use_accelerate = "logical",
+        s3_disable_content_md5_validation = "logical",
+        ec2_metadata_disable_timeout_override = "logical",
+        use_dual_stack = "logical"
       )
     )
     ```',
