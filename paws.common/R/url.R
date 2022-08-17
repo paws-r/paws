@@ -138,10 +138,7 @@ escape <- function(string, mode){
   }
   if (mode == "encodeQueryComponent") {
     # escape string using base_url_encode
-    escape_string <- paws_url_encoder(string, paste0("[^", base_url_encode, "]"))
-
-    # replace whitespace encoding from %20 to +
-    return(gsub("%20", "+", escape_string, fixed = TRUE))
+    return(paws_url_encoder(string, paste0("[^", base_url_encode, "]")))
   }
   if (mode == "encodeFragment") {
     return(paws_url_encoder(string, paste0("[^", pattern, "]")))
