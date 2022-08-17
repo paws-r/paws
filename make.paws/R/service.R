@@ -100,6 +100,55 @@ service_params <- function() {
   param <- "config"
   param <- comment(paste(param, collapse = "\n"), "#'")
   desc <- "Optional configuration of credentials, endpoint, and/or region."
+  cred <- list(
+    access_key_id = "AWS access key ID",
+    secret_access_key = "AWS secret access key",
+    session_token = "AWS temporary session token"
+  )
+
+  credentials <- list(
+    creds = cred,
+    profile = paste(
+      "The name of a profile to use. If not given, then the default profile",
+      "is used."
+    ),
+    anonymous = "Set anonymous credentials."
+  )
+
+  config <- list(
+    credentials = credentials,
+    endpoint = "The complete URL to use for the constructed client.",
+    region = "The AWS Region used in instantiating the client.",
+    disable_ssl = "Whether or not to use SSL. By default, SSL is used.",
+    close_connection = "Immediately close all HTTP connections.",
+    timeout = paste(
+      "The time in seconds till a timeout exception is thrown when attempting",
+      "to make a connection. The default is 60 seconds."
+    ),
+    s3_force_path_style = paste(
+      "Set this to `true` to force the request to use path-style addressing,",
+      "i.e., `http://s3.amazonaws.com/BUCKET/KEY`."
+    ),
+    s3_disable_100_continue = paste(
+      "Set this to `true` to disable the SDK adding the `Expect: 100-Continue`",
+      "header to PUT requests over 2MB of content."
+    ),
+    s3_use_accelerate = paste(
+      "Set this to `true` to enable S3 Accelerate feature. For all operations",
+      "compatible with S3 Accelerate will use the accelerate endpoint for",
+      "requests."
+    ),
+    s3_disable_content_md5_validation = paste(
+      "Set this to `TRUE` to disable the S3 service client from automatically",
+      "adding the ContentMD5 to S3 Object Put and Upload API calls."
+    ),
+    ec2_metadata_disable_timeout_override = paste(
+      "Set this to `TRUE` to disable the EC2Metadata client from overriding",
+      "the default http.Client's Timeout."
+    ),
+    use_dual_stack = "Setting to `TRUE` enables dualstack endpoint resolution."
+  )
+  desc <- c(desc, comment_itemize_list(config))
   desc <- comment(paste(desc, collapse = "\n"), "#'")
   paste("@param", param, desc, sep = "\n")
 }
