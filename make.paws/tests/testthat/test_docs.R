@@ -581,6 +581,11 @@ test_that("convert", {
   text <- "<p><code>{foo</code>}</p>"
   expected <- "`\\{foo`\\}"
   expect_equal(convert(text), expected)
+
+  # Unicode line terminator is not allowed in LaTeX.
+  text <- "<p>foo\U2028</p>"
+  expected <- "foo"
+  expect_equal(convert(text), expected)
 })
 
 test_that("check links", {
