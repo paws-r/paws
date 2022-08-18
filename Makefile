@@ -51,8 +51,8 @@ build-full: codegen
 	@Rscript -e "library(make.paws); make_sdk('${IN_DIR}', '${OUT_DIR}', '${CACHE_DIR}')"
 
 build-cran: codegen
-	@echo "build CRAN packages"
-	@Rscript -e "library(make.paws); make_cran('${OUT_DIR}', '${CRAN_DIR}')"
+	@chmod +x ./build_cran.sh
+	@./build_cran.sh $(OUT_DIR) $(CRAN_DIR)
 
 check:
 	@echo "run R CMD check on packages"

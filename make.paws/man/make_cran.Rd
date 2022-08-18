@@ -4,7 +4,7 @@
 \alias{make_cran}
 \title{Make packages for CRAN}
 \usage{
-make_cran(sdk_dir, out_dir, categories = NULL)
+make_cran(sdk_dir, out_dir, categories = NULL, only_cran = FALSE)
 }
 \arguments{
 \item{sdk_dir}{Directory containing the output of \code{make_sdk}.}
@@ -12,6 +12,8 @@ make_cran(sdk_dir, out_dir, categories = NULL)
 \item{out_dir}{Directory to write the packages to.}
 
 \item{categories}{An optional list of categories to use.}
+
+\item{only_cran}{Use paws packages on cran or use paws dev packages.}
 }
 \description{
 Make packages for CRAN

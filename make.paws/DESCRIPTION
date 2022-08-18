@@ -16,6 +16,7 @@ Imports:
     cachem,
     desc,
     devtools,
+    data.table,
     glue,
     httr,
     jsonlite,
@@ -28,7 +29,8 @@ Imports:
     xml2,
     yaml,
     digest,
-    waldo
+    waldo,
+    stats
 Suggests: 
     covr,
     formatR,
@@ -57,3 +59,4 @@ Collate:
     'tests.R'
     'text.R'
     'utils.R'
+    'aws_services.R'

@@ -116,6 +116,46 @@ test_that("make_cran", {
   expect_true(file.exists(file.path(path_cran, "paws.bar")))
 })
 
+test_that("make_cran with sub categories", {
+  categories <- list(
+    list(
+      name = "bar.p1",
+      title = "Bar",
+      description = "Bar.",
+      category_description = "Category Bar.",
+      services = list(
+        "foo"
+      )
+    ),
+    list(
+      name = "bar.p2",
+      title = "Bar",
+      description = "Bar.",
+      category_description = "",
+      services = list(
+        "foo"
+      )
+    )
+  )
+  path_cran <- file.path(path, "cran")
+  dir.create(path_cran, showWarnings = FALSE)
+  # empty cran folder
+  file.remove(list.files(path_cran, full.names = T,recursive = T))
+
+  expect_error(make_cran(path_out, path_cran, categories), NA)
+  expect_true(file.exists(file.path(path_cran, "paws")))
+  expect_true(file.exists(file.path(path_cran, "paws.bar")))
+  expect_true(file.exists(file.path(path_cran, "paws.bar.p1")))
+  expect_true(file.exists(file.path(path_cran, "paws.bar.p2")))
+
+  # Should continue to work a second time.
+  expect_error(make_cran(path_out, path_cran, categories), NA)
+  expect_true(file.exists(file.path(path_cran, "paws")))
+  expect_true(file.exists(file.path(path_cran, "paws.bar")))
+  expect_true(file.exists(file.path(path_cran, "paws.bar.p1")))
+  expect_true(file.exists(file.path(path_cran, "paws.bar.p2")))
+})
+
 test_that("list_apis", {
   temp <- tempdir()
 
