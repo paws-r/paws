@@ -100,23 +100,15 @@ service_params <- function() {
   param <- "config"
   param <- comment(paste(param, collapse = "\n"), "#'")
   desc <- "Optional configuration of credentials, endpoint, and/or region."
-  cred <- list(
+  config <- list(
     access_key_id = "AWS access key ID",
     secret_access_key = "AWS secret access key",
-    session_token = "AWS temporary session token"
-  )
-
-  credentials <- list(
-    creds = cred,
+    session_token = "AWS temporary session token",
     profile = paste(
       "The name of a profile to use. If not given, then the default profile",
       "is used."
     ),
-    anonymous = "Set anonymous credentials."
-  )
-
-  config <- list(
-    credentials = credentials,
+    anonymous = "Set anonymous credentials.",
     endpoint = "The complete URL to use for the constructed client.",
     region = "The AWS Region used in instantiating the client.",
     disable_ssl = "Whether or not to use SSL. By default, SSL is used.",
@@ -130,11 +122,11 @@ service_params <- function() {
       "i.e., `http://s3.amazonaws.com/BUCKET/KEY`."
     ),
     s3_disable_100_continue = paste(
-      "Set this to `true` to disable the SDK adding the `Expect: 100-Continue`",
+      "Set this to `TRUE` to disable the SDK adding the `Expect: 100-Continue`",
       "header to PUT requests over 2MB of content."
     ),
     s3_use_accelerate = paste(
-      "Set this to `true` to enable S3 Accelerate feature. For all operations",
+      "Set this to `TRUE` to enable S3 Accelerate feature. For all operations",
       "compatible with S3 Accelerate will use the accelerate endpoint for",
       "requests."
     ),
@@ -148,7 +140,7 @@ service_params <- function() {
     ),
     use_dual_stack = "Setting to `TRUE` enables dualstack endpoint resolution."
   )
-  desc <- c(desc, comment_itemize_list(config))
+  desc <- c(desc, comment_list_itemize(config))
   desc <- comment(paste(desc, collapse = "\n"), "#'")
   paste("@param", param, desc, sep = "\n")
 }
