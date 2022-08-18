@@ -111,7 +111,6 @@ service_params <- function() {
     anonymous = "Set anonymous credentials.",
     endpoint = "The complete URL to use for the constructed client.",
     region = "The AWS Region used in instantiating the client.",
-    disable_ssl = "Whether or not to use SSL. By default, SSL is used.",
     close_connection = "Immediately close all HTTP connections.",
     timeout = paste(
       "The time in seconds till a timeout exception is thrown when attempting",
@@ -120,25 +119,7 @@ service_params <- function() {
     s3_force_path_style = paste(
       "Set this to `true` to force the request to use path-style addressing,",
       "i.e., `http://s3.amazonaws.com/BUCKET/KEY`."
-    ),
-    s3_disable_100_continue = paste(
-      "Set this to `TRUE` to disable the SDK adding the `Expect: 100-Continue`",
-      "header to PUT requests over 2MB of content."
-    ),
-    s3_use_accelerate = paste(
-      "Set this to `TRUE` to enable S3 Accelerate feature. For all operations",
-      "compatible with S3 Accelerate will use the accelerate endpoint for",
-      "requests."
-    ),
-    s3_disable_content_md5_validation = paste(
-      "Set this to `TRUE` to disable the S3 service client from automatically",
-      "adding the ContentMD5 to S3 Object Put and Upload API calls."
-    ),
-    ec2_metadata_disable_timeout_override = paste(
-      "Set this to `TRUE` to disable the EC2Metadata client from overriding",
-      "the default http.Client's Timeout."
-    ),
-    use_dual_stack = "Setting to `TRUE` enables dualstack endpoint resolution."
+    )
   )
   desc <- c(desc, comment_list_itemize(config))
   desc <- comment(paste(desc, collapse = "\n"), "#'")
@@ -164,15 +145,9 @@ service_syntax <- function(api) {
         ),
         endpoint = "string",
         region = "string",
-        disable_ssl = "logical",
         close_connection = "logical",
         timeout = "numeric",
-        s3_force_path_style = "logical",
-        s3_disable_100_continue = "logical",
-        s3_use_accelerate = "logical",
-        s3_disable_content_md5_validation = "logical",
-        ec2_metadata_disable_timeout_override = "logical",
-        use_dual_stack = "logical"
+        s3_force_path_style = "logical"
       )
     )
     ```',
