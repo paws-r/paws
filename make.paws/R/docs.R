@@ -221,6 +221,26 @@ comment <- function(s, char = "#") {
   return(result)
 }
 
+comment_bold <- function(x){
+  sprintf("\\strong{%s}", x)
+}
+
+# create roxygen2 list from list
+comment_list_item <- function(items = list()){
+  items <- sprintf(
+    "\\item{%s:} {%s}", comment_bold(names(items)), items
+  )
+  return(items)
+}
+
+comment_list_itemize <- function(items){
+  return(paste(
+    "\\itemize{", paste(comment_list_item(items), collapse = "\n"), "}",
+    sep = "\n"
+    )
+  )
+}
+
 #' Convert documentation to Markdown.
 #'
 #' The conversion pipeline goes

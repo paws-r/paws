@@ -100,6 +100,28 @@ service_params <- function() {
   param <- "config"
   param <- comment(paste(param, collapse = "\n"), "#'")
   desc <- "Optional configuration of credentials, endpoint, and/or region."
+  config <- list(
+    access_key_id = "AWS access key ID",
+    secret_access_key = "AWS secret access key",
+    session_token = "AWS temporary session token",
+    profile = paste(
+      "The name of a profile to use. If not given, then the default profile",
+      "is used."
+    ),
+    anonymous = "Set anonymous credentials.",
+    endpoint = "The complete URL to use for the constructed client.",
+    region = "The AWS Region used in instantiating the client.",
+    close_connection = "Immediately close all HTTP connections.",
+    timeout = paste(
+      "The time in seconds till a timeout exception is thrown when attempting",
+      "to make a connection. The default is 60 seconds."
+    ),
+    s3_force_path_style = paste(
+      "Set this to `true` to force the request to use path-style addressing,",
+      "i.e., `http://s3.amazonaws.com/BUCKET/KEY`."
+    )
+  )
+  desc <- c(desc, comment_list_itemize(config))
   desc <- comment(paste(desc, collapse = "\n"), "#'")
   paste("@param", param, desc, sep = "\n")
 }
@@ -118,10 +140,14 @@ service_syntax <- function(api) {
             secret_access_key = "string",
             session_token = "string"
           ),
-          profile = "string"
+          profile = "string",
+          anonymous = "logical"
         ),
         endpoint = "string",
-        region = "string"
+        region = "string",
+        close_connection = "logical",
+        timeout = "numeric",
+        s3_force_path_style = "logical"
       )
     )
     ```',

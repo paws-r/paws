@@ -689,3 +689,9 @@ test_that("escape_unmatched", {
   expect_equal(escape_unmatched_pairs("{foo", pairs), "\\{foo")
   expect_equal(escape_unmatched_pairs("{{foo}", pairs), "\\{\\{foo\\}")
 })
+
+test_that("comment_list_itemize", {
+  config <- list(foo = "bar")
+  expect <- "\\itemize{\n\\item{\\strong{foo}:} {bar}\n}"
+  expect_equal(comment_list_itemize(config), expect)
+})
