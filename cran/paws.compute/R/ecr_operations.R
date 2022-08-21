@@ -1289,22 +1289,22 @@ ecr_get_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #' assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository.
 #' @param imageIds The list of imageIDs to be included.
-#' @param nextToken The `nextToken` value returned from a previous paginated 
+#' @param nextToken The `nextToken` value returned from a previous paginated
 #' `GetLifecyclePolicyPreviewRequest` request where `maxResults` was used
-#' and the  results exceeded the value of that parameter. Pagination
-#' continues from the end of the  previous results that returned the
-#' `nextToken` value. This value is  `null` when there are no more results
+#' and the results exceeded the value of that parameter. Pagination
+#' continues from the end of the previous results that returned the
+#' `nextToken` value. This value is `null` when there are no more results
 #' to return. This option cannot be used when you specify images with
 #' `imageIds`.
 #' @param maxResults The maximum number of repository results returned by
-#' `GetLifecyclePolicyPreviewRequest` in  paginated output. When this
-#' parameter is used, `GetLifecyclePolicyPreviewRequest` only returns 
-#' `maxResults` results in a single page along with a `nextToken`  response
+#' `GetLifecyclePolicyPreviewRequest` in paginated output. When this
+#' parameter is used, `GetLifecyclePolicyPreviewRequest` only returns
+#' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
-#' sending  another `GetLifecyclePolicyPreviewRequest` request with the
-#' returned `nextToken`  value. This value can be between 1 and 1000. If
-#' this  parameter is not used, then `GetLifecyclePolicyPreviewRequest`
-#' returns up to  100 results and a `nextToken` value, if  applicable. This
+#' sending another `GetLifecyclePolicyPreviewRequest` request with the
+#' returned `nextToken` value. This value can be between 1 and 1000. If
+#' this parameter is not used, then `GetLifecyclePolicyPreviewRequest`
+#' returns up to 100 results and a `nextToken` value, if applicable. This
 #' option cannot be used when you specify images with `imageIds`.
 #' @param filter An optional parameter that filters results based on image tag status and
 #' all tags, if tagged.
@@ -1902,7 +1902,7 @@ ecr_put_image_tag_mutability <- function(registryId = NULL, repositoryName, imag
 #'   lifecyclePolicyText)
 #'
 #' @param registryId The AWS account ID associated with the registry that contains the
-#' repository. If you do  not specify a registry, the default registry is
+#' repository. If you do not specify a registry, the default registry is
 #' assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to receive the policy.
 #' @param lifecyclePolicyText &#91;required&#93; The JSON repository policy text to apply to the repository.
