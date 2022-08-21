@@ -326,7 +326,7 @@ Password constraints:
 \item Must be only printable ASCII characters.
 \item Must be at least 16 characters and no more than 128 characters in
 length.
-\item The only permitted printable special characters are !, &, \#, $, ^,
+\item The only permitted printable special characters are !, &, #, $, ^,
 <, >, and -. Other printable special characters cannot be used
 in the AUTH token.
 }

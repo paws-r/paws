@@ -25,7 +25,7 @@ https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
 
 \item{HostInstanceType}{The host instance type of the broker to upgrade to. For a list of
 supported instance types, see
-https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html\#broker-instance-types}
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types}
 
 \item{LdapServerMetadata}{The metadata of the LDAP server used to authenticate and authorize
 connections to the broker.}
