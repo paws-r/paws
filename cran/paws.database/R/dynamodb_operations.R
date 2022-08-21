@@ -203,7 +203,7 @@ dynamodb_batch_execute_statement <- function(Statements) {
 #'     -   To prevent special characters in an attribute name from being
 #'         misinterpreted in an expression.
 #' 
-#'     Use the **\#** character in an expression to dereference an
+#'     Use the **#** character in an expression to dereference an
 #'     attribute name. For example, consider the following attribute name:
 #' 
 #'     -   `Percentile`
@@ -1778,7 +1778,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' -   To prevent special characters in an attribute name from being
 #'     misinterpreted in an expression.
 #' 
-#' Use the **\#** character in an expression to dereference an attribute
+#' Use the **#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
 #' -   `Percentile`
@@ -3941,7 +3941,7 @@ dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, 
 #' -   To prevent special characters in an attribute name from being
 #'     misinterpreted in an expression.
 #' 
-#' Use the **\#** character in an expression to dereference an attribute
+#' Use the **#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
 #' -   `Percentile`
@@ -4669,7 +4669,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' -   To prevent special characters in an attribute name from being
 #'     misinterpreted in an expression.
 #' 
-#' Use the **\#** character in an expression to dereference an attribute
+#' Use the **#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
 #' -   `Percentile`
@@ -5242,7 +5242,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' -   To prevent special characters in an attribute name from being
 #'     misinterpreted in an expression.
 #' 
-#' Use the **\#** character in an expression to dereference an attribute
+#' Use the **#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
 #' -   `Percentile`
@@ -6311,7 +6311,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' -   To prevent special characters in an attribute name from being
 #'     misinterpreted in an expression.
 #' 
-#' Use the **\#** character in an expression to dereference an attribute
+#' Use the **#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
 #' -   `Percentile`
@@ -7954,7 +7954,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' -   To prevent special characters in an attribute name from being
 #'     misinterpreted in an expression.
 #' 
-#' Use the **\#** character in an expression to dereference an attribute
+#' Use the **#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
 #' -   `Percentile`

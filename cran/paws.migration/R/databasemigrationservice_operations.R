@@ -1478,7 +1478,7 @@ databasemigrationservice_create_replication_subnet_group <- function(Replication
 #' Date Example: --cdc-start-position “2018-03-08T12:12:12”
 #' 
 #' Checkpoint Example: --cdc-start-position
-#' "checkpoint:V1\#27\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\#0\#0\#*\#0\#93"
+#' "checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93"
 #' 
 #' LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
 #' 
@@ -5945,7 +5945,7 @@ databasemigrationservice_modify_replication_subnet_group <- function(Replication
 #' Date Example: --cdc-start-position “2018-03-08T12:12:12”
 #' 
 #' Checkpoint Example: --cdc-start-position
-#' "checkpoint:V1\#27\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\#0\#0\#*\#0\#93"
+#' "checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93"
 #' 
 #' LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
 #' 
@@ -6487,7 +6487,7 @@ databasemigrationservice_remove_tags_from_resource <- function(ResourceArn, TagK
 #' Date Example: --cdc-start-position “2018-03-08T12:12:12”
 #' 
 #' Checkpoint Example: --cdc-start-position
-#' "checkpoint:V1\#27\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\#0\#0\#*\#0\#93"
+#' "checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93"
 #' 
 #' LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
 #' 

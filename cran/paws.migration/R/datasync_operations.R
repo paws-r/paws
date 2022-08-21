@@ -542,7 +542,7 @@ datasync_create_location_object_storage <- function(ServerHostname, ServerPort =
 #' Creates an endpoint for an Amazon S3 bucket.
 #' 
 #' For more information, see
-#' https://docs.aws.amazon.com/datasync/latest/userguide/create-locations-cli.html\#create-location-s3-cli
+#' https://docs.aws.amazon.com/datasync/latest/userguide/create-locations-cli.html#create-location-s3-cli
 #' in the *AWS DataSync User Guide*.
 #'
 #' @usage

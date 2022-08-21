@@ -5644,7 +5644,7 @@ ec2_create_internet_gateway <- function(TagSpecifications = NULL, DryRun = NULL)
 #' @description
 #' Creates a 2048-bit RSA key pair with the specified name. Amazon EC2
 #' stores the public key and displays the private key for you to save to a
-#' file. The private key is returned as an unencrypted PEM encoded PKCS\#1
+#' file. The private key is returned as an unencrypted PEM encoded PKCS#1
 #' private key. If a key with the specified name already exists, Amazon EC2
 #' returns an error.
 #' 
@@ -7937,7 +7937,7 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 #' Constraints for EC2-Classic: ASCII characters
 #' 
 #' Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-#' ._-:/()\#,@@\[\]+=&;\{\}!$*
+#' ._-:/()#,@@\[\]+=&;\{\}!$*
 #' @param GroupName &#91;required&#93; The name of the security group.
 #' 
 #' Constraints: Up to 255 characters in length. Cannot start with `sg-`.
@@ -7945,7 +7945,7 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 #' Constraints for EC2-Classic: ASCII characters
 #' 
 #' Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-#' ._-:/()\#,@@\[\]+=&;\{\}!$*
+#' ._-:/()#,@@\[\]+=&;\{\}!$*
 #' @param VpcId \[EC2-VPC\] The ID of the VPC. Required for EC2-VPC.
 #' @param TagSpecifications The tags to assign to the security group.
 #' @param DryRun Checks whether you have the required permissions for the action, without

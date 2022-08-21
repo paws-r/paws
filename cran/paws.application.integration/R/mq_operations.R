@@ -1306,7 +1306,7 @@ mq_reboot_broker <- function(BrokerId) {
 #' https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 #' @param HostInstanceType The host instance type of the broker to upgrade to. For a list of
 #' supported instance types, see
-#' https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html\#broker-instance-types
+#' https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
 #' @param LdapServerMetadata The metadata of the LDAP server used to authenticate and authorize
 #' connections to the broker.
 #' @param Logs Enables Amazon CloudWatch logging for brokers.

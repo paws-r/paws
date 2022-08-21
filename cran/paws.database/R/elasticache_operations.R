@@ -907,7 +907,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' -   Must be at least 16 characters and no more than 128 characters in
 #'     length.
 #' 
-#' -   The only permitted printable special characters are !, &, \#, $, ^,
+#' -   The only permitted printable special characters are !, &, #, $, ^,
 #'     &lt;, &gt;, and -. Other printable special characters cannot be used
 #'     in the AUTH token.
 #' 
@@ -1742,7 +1742,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' -   Must be at least 16 characters and no more than 128 characters in
 #'     length.
 #' 
-#' -   The only permitted printable special characters are !, &, \#, $, ^,
+#' -   The only permitted printable special characters are !, &, #, $, ^,
 #'     &lt;, &gt;, and -. Other printable special characters cannot be used
 #'     in the AUTH token.
 #' 

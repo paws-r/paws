@@ -1174,7 +1174,7 @@ iot_create_custom_metric <- function(metricName, displayName = NULL, metricType,
 #' @param type &#91;required&#93; Specifies the type of dimension. Supported types: `TOPIC_FILTER.`
 #' @param stringValues &#91;required&#93; Specifies the value or list of values for the dimension. For
 #' `TOPIC_FILTER` dimensions, this is a pattern used to match the MQTT
-#' topic (for example, "admin/\#").
+#' topic (for example, "admin/#").
 #' @param tags Metadata that can be used to manage the dimension.
 #' @param clientRequestToken &#91;required&#93; Each dimension must have a unique client request token. If you try to
 #' create a new dimension with the same token as a dimension that already
@@ -13927,7 +13927,7 @@ iot_update_custom_metric <- function(metricName, displayName) {
 #' the type and value to make it easy to remember what it does.
 #' @param stringValues &#91;required&#93; Specifies the value or list of values for the dimension. For
 #' `TOPIC_FILTER` dimensions, this is a pattern used to match the MQTT
-#' topic (for example, "admin/\#").
+#' topic (for example, "admin/#").
 #'
 #' @return
 #' A list with the following syntax:
