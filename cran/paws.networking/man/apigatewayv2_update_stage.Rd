@@ -33,7 +33,7 @@ characters.}
 
 \item{StageVariables}{A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
-[A-Za-z0-9-._~:/?\#&=,]+.}
+[A-Za-z0-9-._~:/?#&=,]+.}
 }
 \value{
 A list with the following syntax:\preformatted{list(

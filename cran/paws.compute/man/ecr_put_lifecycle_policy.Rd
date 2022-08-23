@@ -9,7 +9,7 @@ ecr_put_lifecycle_policy(registryId, repositoryName,
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry that contains the
-repository. If you do  not specify a registry, the default registry is
+repository. If you do not specify a registry, the default registry is
 assumed.}
 
 \item{repositoryName}{[required] The name of the repository to receive the policy.}
