@@ -1,6 +1,6 @@
 ## Test environments
 
-* local Windows install, R 4.1.0
+* local macOS install, R 4.2.1
 * R-hub (devel and release)
 * win-devel
 
