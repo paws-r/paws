@@ -1,9 +1,10 @@
 Package: paws.security.identity
 Title: 'Amazon Web Services' Security, Identity, & Compliance Services
-Version: 0.1.12
+Version: 0.1.13
 Authors@R: c(
-    person("David", "Kretch", , "david.kretch@gmail.com", role = c("aut", "cre")),
+    person("David", "Kretch", , "david.kretch@gmail.com", role = c("aut")),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
+    person("Dyfan", "Jones", email = "dyfan.r.jones@gmail.com", role = "cre"),
     person("Amazon.com, Inc.", role = "cph")
   )
 Description: Interface to 'Amazon Web Services' security, identity, and
