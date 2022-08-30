@@ -11,7 +11,7 @@
 paws_check <- function(in_dir = "../cran", path, keep_notes = FALSE){
   checks <- list()
 
-  for (package in list.dirs("../cran", recursive = FALSE)) {
+  for (package in list.dirs(in_dir, recursive = FALSE)) {
     checks[[basename(package)]] <- devtools::check(package, cran = TRUE)
   }
 
