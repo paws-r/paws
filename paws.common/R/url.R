@@ -63,6 +63,11 @@ build_query_string <- function(params){
   # Remove empty elements from params
   params_filter <- Filter(Negate(query_empty), params)
 
+  # Exit function if params_filter is empty to prevent Warning message:
+  # In is.na(x) : is.na() applied to non-(list or vector) of type 'NULL'
+  # in older versions of R
+  if (length(params_filter) == 0) return("")
+
   # convert query elements and escape them
   params_filter <- lapply(
     params_filter, function(element) {query_escape(query_convert(element))}
