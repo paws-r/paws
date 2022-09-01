@@ -9,11 +9,15 @@
 #' @return A list of any warnings, errors and notes within paws sdk.
 #' @export
 paws_check <- function(in_dir = "../cran", path, keep_notes = FALSE){
+  temp_file <- tempfile()
+  on.exit(unlink(temp_file))
   checks <- list()
 
+  sink(temp_file)
   for (package in list.dirs(in_dir, recursive = FALSE)) {
     checks[[basename(package)]] <- devtools::check(package, cran = TRUE)
   }
+  sink()
 
   results <- list()
   for (package in names(checks)) {
