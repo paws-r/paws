@@ -23,7 +23,9 @@ when the SDK retrieves credentials later on, it will save them in the
 service object. This means that credentials don't need to be fetched on each
 operation, only if and when the saved credentials expire.
 
-The optional configuration settings can include the following:\preformatted{list(
+The optional configuration settings can include the following:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{list(
   credentials = list(
     creds = list(
       access_key_id = "string",
@@ -35,7 +37,7 @@ The optional configuration settings can include the following:\preformatted{list
   endpoint = "string",
   region = "string"
 )
-}
+}\if{html}{\out{</div>}}
 }
 \examples{
 # Create a config object with custom credentials and endpoint.
