@@ -1,7 +1,7 @@
 Package: make.paws
 Type: Package
 Title: Generate Paws AWS SDKs for R
-Version: 0.2.3.9000
+Version: 0.3.0
 Authors@R: c(
     person("David", "Kretch", email = "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),
@@ -40,7 +40,7 @@ Remotes:
     r-lib/cachem
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd"))
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Collate: 
     'cache.R'
     'docs.R'
@@ -60,3 +60,4 @@ Collate:
     'text.R'
     'utils.R'
     'aws_services.R'
+    'sdk_helper.R'
