@@ -1,3 +1,10 @@
+# paws.common 0.5.0
+
+* Fix `build_query_string` by exiting safely when parameter is empty.
+* Fix " " encoding (#519).
+* Migrate url encoder to `cpp`, and dependency `Rcpp`.
+* Support direct write to disk without sending data to R.
+
 # paws.common 0.4.0
 
 * Fix `xml_build` to allow empty characters from operations.
