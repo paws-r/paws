@@ -2,7 +2,7 @@
 - name: compute.p1
   services:
     - ec2
-    - lightsail
+    - lambda
   title: "'Amazon Web Services' Compute Services"
   description: >-
     This is the backend package for 'paws.compute'. Please use 'paws.compute' to
@@ -28,7 +28,7 @@
     - emrcontainers
     - emrserverless
     - imagebuilder
-    - lambda
+    - lightsail
     - proton
     - serverlessapplicationrepository
   title: "'Amazon Web Services' Compute Services"
@@ -120,7 +120,7 @@
     file and database migration to 'Amazon Web Services'
     <https://aws.amazon.com/>.
 
-- name: networking
+- name: networking.p1
   services:
     - apigateway
     - apigatewaymanagementapi
@@ -131,6 +131,17 @@
     - directconnect
     - elb
     - elbv2
+  title: "'Amazon Web Services' Networking & Content Delivery Services"
+  description: >-
+    This is the backend package for 'paws.networking'. Please use 'paws.networking' to
+    access 'Amazon Web Services' networking and content delivery services.
+  category_description: >-
+    Interface to 'Amazon Web Services' networking and content delivery services,
+    including 'Route 53' Domain Name System service, 'CloudFront' content
+    delivery, load balancing, and more <https://aws.amazon.com/>.
+
+- name: networking.p2
+  services:
     - globalaccelerator
     - networkfirewall
     - networkmanager
@@ -143,9 +154,9 @@
     - servicediscovery
   title: "'Amazon Web Services' Networking & Content Delivery Services"
   description: >-
-    Interface to 'Amazon Web Services' networking and content delivery services,
-    including 'Route 53' Domain Name System service, 'CloudFront' content
-    delivery, load balancing, and more <https://aws.amazon.com/>.
+    This is the backend package for 'paws.networking'. Please use 'paws.networking' to
+    access 'Amazon Web Services' networking and content delivery services.
+  category_description: ""
 
 - name: developer.tools
   services:
@@ -205,7 +216,6 @@
     - cloudformation
     - cloudwatchevents
     - cloudwatchlogs
-    - configservice
     - licensemanager
     - opsworks
     - organizations
@@ -230,6 +240,7 @@
     - appregistry
     - auditmanager
     - autoscalingplans
+    - configservice
     - cloudtrail
     - cloudwatch
     - cloudwatchevidently
@@ -282,7 +293,6 @@
     - comprehendmedical
     - lexmodelbuildingservice
     - lexruntimeservice
-    - machinelearning
     - personalize
     - personalizeevents
     - personalizeruntime
@@ -293,7 +303,6 @@
     - textract
     - transcribeservice
     - translate
-    - voiceid
   title: "'Amazon Web Services' Machine Learning Services"
   description: >-
     This is the backend package for 'paws.machine.learning'. Please use
@@ -315,6 +324,7 @@
     - lexruntimev2
     - lookoutequipment
     - lookoutmetrics
+    - machinelearning
     - panorama
     - sagemakeredgemanager
     - sagemakerfeaturestoreruntime
@@ -338,7 +348,6 @@
     - kinesisanalyticsv2
     - mturk
     - opensearchservice
-    - quicksight
   title: "'Amazon Web Services' Analytics Services"
   description: >-
     This is the backend package for 'paws.analytics'. Please use
@@ -360,10 +369,8 @@
     - kafkaconnect
     - kinesis
     - kinesisanalytics
-    - kinesisvideo
-    - kinesisvideoarchivedmedia
-    - kinesisvideomedia
     - kinesisvideosignalingchannels
+    - quicksight
   title: "'Amazon Web Services' Analytics Services"
   description: >-
     This is the backend package for 'paws.analytics'. Please use
@@ -530,7 +537,6 @@
     - nimblestudio
     - workdocs
     - worklink
-    - workmail
     - workmailmessageflow
     - workspaces
     - workspacesweb
