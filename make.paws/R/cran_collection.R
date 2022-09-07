@@ -19,8 +19,10 @@ make_cran <- function(sdk_dir, out_dir, categories = NULL, only_cran = FALSE) {
   found <- find_sub_categories(categories)
 
   if (any(found)){
+    sub_cats <- categories[found]
+
     # Group categories
-    grp_sub_cats <- group_categories(categories[found])
+    grp_sub_cats <- group_categories(sub_cats)
 
     # Build categories from sub-categories
     for(cat in names(grp_sub_cats)){
@@ -29,8 +31,10 @@ make_cran <- function(sdk_dir, out_dir, categories = NULL, only_cran = FALSE) {
 
     # rebuild categories from sub-categories for paws
     categories <- make_category_from_sub_category(categories)
+    make_collection(sdk_dir, out_dir, categories, sub_cats, only_cran)
+  } else {
+    make_collection(sdk_dir, out_dir, categories, list(), only_cran)
   }
-  make_collection(sdk_dir, out_dir, categories, only_cran)
 }
 
 # Make the categories from collection of sub-categories
@@ -52,7 +56,7 @@ make_category_collection <- function(sdk_dir, out_dir, categories, package) {
   # Create packages that contain services
   active <- vapply(categories, function(cat) {
     !is.null(cat$services)
-    }, FUN.VALUE = logical(1)
+  }, FUN.VALUE = logical(1)
   )
   categories <- categories[active]
   write_source_collection(sdk_dir, package_dir, categories)
@@ -63,8 +67,8 @@ make_category_collection <- function(sdk_dir, out_dir, categories, package) {
 # Identify sub-categories
 find_sub_categories <- function(categories){
   return(vapply(categories, function(cat) {
-      !is.null(cat$category_description)
-    }, logical(1))
+    !is.null(cat$category_description)
+  }, logical(1))
   )
 }
 
@@ -101,7 +105,7 @@ make_category_from_sub_category <- function(categories){
 }
 
 # Make the package which collects all the category packages.
-make_collection <- function(sdk_dir, out_dir, categories, only_cran) {
+make_collection <- function(sdk_dir, out_dir, categories, sub_categories, only_cran) {
   package <- "paws"
   version <- get_version(sdk_dir)
   package_dir <- file.path(out_dir, package)
@@ -120,13 +124,17 @@ make_collection <- function(sdk_dir, out_dir, categories, only_cran) {
   } else {
     # Create packages that contain services
     active <- vapply(categories,
-      function(cat) {!is.null(cat$services)}, FUN.VALUE = logical(1)
+                     function(cat) {!is.null(cat$services)}, FUN.VALUE = logical(1)
     )
     categories <- categories[active]
   }
   write_source_collection(sdk_dir, package_dir, categories)
   write_documentation(package_dir)
-  write_imports_collection(package_dir, version, get_category_packages(categories))
+  write_imports_collection(
+    package_dir,
+    version,
+    get_category_packages(c(sub_categories, categories))
+  )
 }
 
 # Write the R source files for the collection package, which import and
