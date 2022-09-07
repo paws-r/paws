@@ -9,7 +9,7 @@
 #' @param keep_notes Include note
 #' @return A list of any warnings, errors and notes within paws sdk.
 #' @export
-paws_check <- function(in_dir = "../cran", path, keep_notes = FALSE){
+paws_check_local <- function(in_dir = "../cran", path, keep_notes = FALSE){
   temp_file <- tempfile()
   on.exit(unlink(temp_file))
   checks <- list()
@@ -38,7 +38,7 @@ paws_check <- function(in_dir = "../cran", path, keep_notes = FALSE){
     })
   ]
 
-  if (!missing(path) & is.character(path)){
+  if (!missing(path)) {
     yaml::write_yaml(packages_not_ok, path)
   }
   return(packages_not_ok)
@@ -46,14 +46,93 @@ paws_check <- function(in_dir = "../cran", path, keep_notes = FALSE){
 
 #' @title Check paws urls
 #' @param in_dir Directory containing paws sdk packages.
+#' @param path Path to output paws sdk check results.
 #' @param pkg_list list of packages urls to check, check all packages by default
 #' @export
-paws_check_url <- function(in_dir = "../cran", pkg_list = list()){
+paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()){
   pkgs <- list.dirs(in_dir, recursive = FALSE)
   if(any(nzchar(pkg_list))) pkgs <- pkgs[basename(pkgs) %in% pkg_list]
-  for (pkg in pkgs){
-    urlchecker::url_check(pkg)
+  results <- setNames(
+    lapply(pkgs, urlchecker::url_check),
+    basename(pkgs)
+  )
+  if (!missing(path)) {
+    yaml::write_yaml(results, path)
   }
+  return(results)
+}
+
+#' @title Check paws using rhub
+#' @param in_dir Directory containing paws sdk packages.
+#' @param pkg_list list of packages check through rhub, check all packages by default
+#' @name paws_check_rhub
+#' @export
+paws_check_rhub_sub_cat <- function(in_dir = "../cran", pkg_list = list()){
+  pkgs <- list.dirs(in_dir, recursive = FALSE)
+  pkgs <- list_sub_cat_pkgs(pkgs)
+  if (length(pkgs) > 0) {
+    if(any(nzchar(pkg_list))) pkgs <- pkgs[basename(pkgs) %in% pkg_list]
+    for (pkg in pkgs){
+      devtools::check_rhub(pkg)
+    }
+  } else {
+    warning("No sub-categories released.")
+  }
+}
+
+#' @name paws_check_rhub
+#' @export
+paws_check_rhub_cat <- function(in_dir = "../cran", pkg_list = list()){
+  pkgs <- list.dirs(in_dir, recursive = FALSE)
+  pkgs <- list_cat_pkgs(pkgs)
+  if( any(nzchar(pkg_list))) pkgs <- pkgs[basename(pkgs) %in% pkg_list]
+  for (pkg in pkgs){
+    devtools::check_rhub(pkg)
+  }
+}
+
+#' @rdname paws_check_rhub
+#' @export
+paws_check_rhub <- function(in_dir = "../cran"){
+  paws_check_rhub_sub_cat(in_dir)
+  paws_check_rhub_cat(in_dir)
+  pkg <- file.path(in_dir, "paws")
+  devtools::check_rhub(pkg)
+}
+
+#' @rdname paws_check_rhub
+#' @export
+paws_check_win_devel_sub_cat <- function(in_dir = "../cran", pkg_list = list()){
+  pkgs <- list.dirs(in_dir, recursive = FALSE)
+  pkgs <- list_sub_cat_pkgs(pkgs)
+  if (length(pkgs) > 0) {
+    if(any(nzchar(pkg_list))) pkgs <- pkgs[basename(pkgs) %in% pkg_list]
+    for (pkg in pkgs){
+      devtools::check_win_devel(pkg)
+    }
+  } else {
+    warning("No sub-categories released.")
+  }
+}
+
+#' @rdname paws_check_rhub
+#' @export
+paws_check_win_devel_cat <- function(in_dir = "../cran", pkg_list = list()){
+  pkgs <- list.dirs(in_dir, recursive = FALSE)
+  pkgs <- list_cat_pkgs(pkgs)
+  if( any(nzchar(pkg_list))) pkgs <- pkgs[basename(pkgs) %in% pkg_list]
+  for (pkg in pkgs){
+    devtools::check_win_devel(pkg)
+  }
+}
+
+#' @rdname paws_check_rhub
+#' @export
+paws_check_win_devel <- function(in_dir = "../cran"){
+  paws_check_win_devel_sub_cat(in_dir)
+  paws_check_win_devel_cat(in_dir)
+  pkg <- file.path(in_dir, "paws")
+  devtools::check_win_devel(pkg)
 }
 
 #' @title Method to uninstall paws sdk
@@ -84,7 +163,7 @@ paws_install <- function(in_dir = "../cran", force = FALSE){
 #' @param pkg_list list of packages to release, release all packages by default
 #' @name paws_release
 #' @export
-paws_release_sub_category <- function(in_dir = "../cran", pkg_list = ""){
+paws_release_sub_cat <- function(in_dir = "../cran", pkg_list = ""){
   pkgs <- list.dirs(in_dir, recursive = FALSE)
   pkgs <- list_sub_cat_pkgs(pkgs)
   if (length(pkgs) > 0) {
@@ -99,7 +178,7 @@ paws_release_sub_category <- function(in_dir = "../cran", pkg_list = ""){
 
 #' @rdname paws_release
 #' @export
-paws_release_category <- function(in_dir = "../cran", pkg_list = ""){
+paws_release_cat <- function(in_dir = "../cran", pkg_list = ""){
   pkgs <- list.dirs(in_dir, recursive = FALSE)
   pkgs <- list_cat_pkgs(pkgs)
   if( any(nzchar(pkg_list))) pkgs <- pkgs[basename(pkgs) %in% pkg_list]
@@ -111,8 +190,8 @@ paws_release_category <- function(in_dir = "../cran", pkg_list = ""){
 #' @rdname paws_release
 #' @export
 paws_release <- function(in_dir = "../cran"){
-  paws_release_sub_category(in_dir)
-  paws_release_category(in_dir)
+  paws_release_sub_cat(in_dir)
+  paws_release_cat(in_dir)
   pkg <- file.path(in_dir, "paws")
   devtools:::release(pkg)
 }
