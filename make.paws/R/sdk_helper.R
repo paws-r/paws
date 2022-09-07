@@ -1,6 +1,7 @@
 #' @import data.table
 #' @importFrom yaml write_yaml
 #' @importFrom devtools release
+#' @importFrom urlchecker url_check
 
 #' @title Check paws sdk
 #' @param in_dir Directory containing paws sdk packages.
@@ -12,7 +13,6 @@ paws_check <- function(in_dir = "../cran", path, keep_notes = FALSE){
   temp_file <- tempfile()
   on.exit(unlink(temp_file))
   checks <- list()
-
   sink(temp_file)
   for (package in list.dirs(in_dir, recursive = FALSE)) {
     checks[[basename(package)]] <- devtools::check(package, cran = TRUE)
@@ -44,12 +44,39 @@ paws_check <- function(in_dir = "../cran", path, keep_notes = FALSE){
   return(packages_not_ok)
 }
 
+#' @title Check paws urls
+#' @param in_dir Directory containing paws sdk packages.
+#' @param pkg_list list of packages urls to check, check all packages by default
+#' @export
+paws_check_url <- function(in_dir = "../cran", pkg_list = list()){
+  pkgs <- list.dirs(in_dir, recursive = FALSE)
+  if(any(nzchar(pkg_list))) pkgs <- pkgs[basename(pkgs) %in% pkg_list]
+  for (pkg in pkgs){
+    urlchecker::url_check(pkg)
+  }
+}
+
 #' @title Method to uninstall paws sdk
 #' @export
 paws_uninstall <- function(){
   pkg <- as.data.table(installed.packages())
   pkg <- pkg[grepl("^paws.", Package)]$Package
   remove.packages(pkg)
+  remove.packages("paws")
+}
+
+#' @title Method to install paws sdk
+#' @param in_dir Directory containing paws sdk packages.
+#' @param force Force installation, even if the state has not changed since the previous install.
+#' @export
+paws_install <- function(in_dir = "../cran", force = FALSE){
+  pkgs <- list.dirs(in_dir, recursive = FALSE)
+  pkgs_sub_cat <- list_sub_cat_pkgs(pkgs)
+  pkgs_cat <- list_cat_pkgs(pkgs)
+  devtools::install_local(file.path(in_dir, "..", "paws.common"), force = force)
+  install_local_pkg_list(pkgs_sub_cat, force = force)
+  install_local_pkg_list(pkgs_cat, force = force)
+  install_local_pkg_list(file.path(in_dir, "paws"), force = force)
 }
 
 #' @title Method to release paws sdk to cran
@@ -59,9 +86,9 @@ paws_uninstall <- function(){
 #' @export
 paws_release_sub_category <- function(in_dir = "../cran", pkg_list = ""){
   pkgs <- list.dirs(in_dir, recursive = FALSE)
-  pkgs <- pkgs[grepl(".p[0-9]+$", pkgs)]
+  pkgs <- list_sub_cat_pkgs(pkgs)
   if (length(pkgs) > 0) {
-    if( any(nzchar(pkg_list))) pkgs <- pkgs[basename(pkgs) %in% pkg_list]
+    if(any(nzchar(pkg_list))) pkgs <- pkgs[basename(pkgs) %in% pkg_list]
     for (pkg in pkgs){
       devtools::release(pkg)
     }
@@ -74,7 +101,7 @@ paws_release_sub_category <- function(in_dir = "../cran", pkg_list = ""){
 #' @export
 paws_release_category <- function(in_dir = "../cran", pkg_list = ""){
   pkgs <- list.dirs(in_dir, recursive = FALSE)
-  pkgs <- pkgs_cat(pkgs)
+  pkgs <- list_cat_pkgs(pkgs)
   if( any(nzchar(pkg_list))) pkgs <- pkgs[basename(pkgs) %in% pkg_list]
   for (pkg in pkgs){
     devtools::release(pkg)
@@ -90,8 +117,18 @@ paws_release <- function(in_dir = "../cran"){
   devtools:::release(pkg)
 }
 
-pkgs_cat <- function(pkgs){
+list_cat_pkgs <- function(pkgs){
   pkgs <- pkgs[grepl("paws[.].*$", pkgs)]
   pkgs <- pkgs[!grepl(".p[0-9]+$", pkgs)]
   return(pkgs[!grepl("paws.common", pkgs)])
+}
+
+list_sub_cat_pkgs <- function(pkgs){
+  return(pkgs[grepl(".p[0-9]+$", pkgs)])
+}
+
+install_local_pkg_list <- function(pkgs, force){
+  for (pkg in pkgs){
+    devtools::install_local(pkg, force = force)
+  }
 }
