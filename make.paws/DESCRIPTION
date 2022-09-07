@@ -30,6 +30,7 @@ Imports:
     yaml,
     digest,
     waldo,
+    urlchecker,
     stats
 Suggests: 
     covr,
