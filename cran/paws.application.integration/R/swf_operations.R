@@ -3156,7 +3156,7 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' 
 #' For more information about setting task priority, see [Setting Task
 #' Priority](https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
-#' in the *in the *Amazon SWF Developer Guide*.*.
+#' in the in the *Amazon SWF Developer Guide*.
 #' @param defaultTaskScheduleToStartTimeout If set, specifies the default maximum duration that a task of this
 #' activity type can wait before being assigned to a worker. This default
 #' can be overridden when scheduling an activity task using the
