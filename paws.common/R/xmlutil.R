@@ -87,14 +87,15 @@ xml_build <- function(params) {
 
 xml_build_structure <- function(params) {
   result <- list()
+  parsed_result <- list()
   for (name in names(params)) {
     child <- params[[name]]
-
     if (tag_get(child, "locationName") == "") {
       child <- tag_add(child, list(locationName = name))
     }
 
     parsed <- xml_build(child)
+    parsed_result[[name]] <- parsed
 
     if (!is_empty_xml(parsed)) {
       location_name <- tag_get(child, "locationName")
@@ -104,11 +105,12 @@ xml_build_structure <- function(params) {
 
       if (flattened) {
         result <- c(result, parsed)
-      } else{
+      } else {
         result[[location_name]] <- parsed
       }
     }
   }
+  if (all(sapply(parsed_result, is_empty_logical))) return(NULL)
   return(result)
 }
 
