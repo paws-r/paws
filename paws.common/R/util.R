@@ -60,7 +60,7 @@ is_empty.default <- function(x) {
 #'
 #' @export
 is_empty_xml <- function(x) {
-  if (is.null(x) || is_empty_logical(x)) return(TRUE)
+  if (is.null(x) || is_empty_logical(x) || is_empty_character(x)) return(TRUE)
   UseMethod("is_empty_xml")
 }
 
@@ -85,6 +85,10 @@ is_empty_xml.default <- is_empty.default
 
 is_empty_logical <- function(x) {
   length(x) == 0 & is.logical(x)
+}
+
+is_empty_character <- function(x) {
+  length(x) == 0 & is.character(x)
 }
 
 # Call a function `f` with arguments taken from elements in `data`, including
