@@ -110,6 +110,7 @@ xml_build_structure <- function(params) {
       }
     }
   }
+  # Check cache list for default elements
   if (all(sapply(parsed_result, is_empty_logical))) return(NULL)
   return(result)
 }
