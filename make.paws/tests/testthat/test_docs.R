@@ -586,6 +586,11 @@ test_that("convert", {
   text <- "<p>foo\U2028</p>"
   expected <- "foo"
   expect_equal(convert(text), expected)
+
+  # Nested <i> are not allowed by CRAN.
+  text <- "<i>foo <i>bar</i></i>"
+  expected <- "*foo bar*"
+  expect_equal(convert(text), expected)
 })
 
 test_that("check links", {
