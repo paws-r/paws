@@ -64,7 +64,7 @@ Java's \code{Integer.MIN_VALUE} (-2147483648) to \code{Integer.MAX_VALUE}
 (2147483647). Higher numbers indicate higher priority.
 
 For more information about setting task priority, see \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html}{Setting Task Priority}
-in the \emph{in the \emph{Amazon SWF Developer Guide}.}.}
+in the in the \emph{Amazon SWF Developer Guide}.}
 
 \item{defaultTaskScheduleToStartTimeout}{If set, specifies the default maximum duration that a task of this
 activity type can wait before being assigned to a worker. This default
