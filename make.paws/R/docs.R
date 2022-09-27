@@ -300,6 +300,7 @@ clean_html_node <- function(node, links = c()) {
     code = clean_html_code(node, links),
     dt = clean_html_dt(node),
     dd = clean_html_dd(node),
+    i = clean_html_i(node),
     text = clean_html_text(node)
   )
   for (child in xml2::xml_contents(node)) {
@@ -401,6 +402,21 @@ clean_html_dt <- function(node) {
 # Replace definition list nodes with paragraph nodes.
 clean_html_dd <- function(node) {
   xml2::xml_name(node) <- "p"
+}
+
+# Remove all nested <i> nodes, by changing them to nodes with no formatting.
+# CRAN does not allow nested <i> in R documentation.
+# We arbitrarily remove all the inner <i> nodes because it's easier.
+clean_html_i <- function(node) {
+  remove_html_i <- function(x) {
+    xml2::xml_name(x) <- "span" # Use node type that gets no formatting.
+    for (child in xml2::xml_contents(x)) {
+      remove_html_i(child)
+    }
+  }
+  for (child in xml2::xml_contents(node)) {
+    remove_html_i(child)
+  }
 }
 
 clean_html_text <- function(node) {
