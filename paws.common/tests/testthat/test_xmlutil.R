@@ -22,3 +22,29 @@ test_that("add XML namespace", {
   expect_equivalent(result$Foo$Bar[[1]]$Baz$Qux, 123)
   expect_equivalent(result$Foo$Bar[[1]]$Baz$Quux, 456)
 })
+
+test_that("check xml build", {
+  params <- structure(list(
+      foo = structure(logical(0), tags = list(type = "string")),
+      bar = structure(list())
+    ),
+    tags = list(type = "structure")
+  )
+  actual <- xml_build(params)
+  expect_equal(actual, list(bar = list()))
+})
+
+test_that("check nested xml build", {
+  params_nested <-   structure(list(
+      nested = structure(list(
+        foo = structure(logical(0), tags = list(type = "string")),
+        bar = structure(list())
+        ),
+        tags = list(type = "structure")
+      )
+    ),
+    tags = list(type = "structure")
+  )
+  actual <- xml_build(params_nested)
+  expect_equal(actual, list(nested = list(bar = list())))
+})

@@ -60,7 +60,7 @@ is_empty.default <- function(x) {
 #'
 #' @export
 is_empty_xml <- function(x) {
-  if (is.null(x) || length(x) == 0) return(TRUE)
+  if (is.null(x) || is_empty_logical(x) || is_empty_character(x)) return(TRUE)
   UseMethod("is_empty_xml")
 }
 
@@ -74,11 +74,22 @@ is_empty_xml.raw <- is_empty.raw
 
 #' @export
 is_empty_xml.list <- function(x) {
+  # keep empty lists when parsed from parameters
+  # issue: https://github.com/paws-r/paws/issues/537
+  if(length(x) == 0) return (FALSE)
   return(all(sapply(x, is_empty_xml)))
 }
 
 #' @export
 is_empty_xml.default <- is_empty.default
+
+is_empty_logical <- function(x) {
+  length(x) == 0 & is.logical(x)
+}
+
+is_empty_character <- function(x) {
+  length(x) == 0 & is.character(x)
+}
 
 # Call a function `f` with arguments taken from elements in `data`, including
 # only those data elements that correspond to parameters.
