@@ -1,3 +1,7 @@
+# paws.common 0.5.1
+
+* Fix `xml_build` to allow empty lists from operations.
+
 # paws.common 0.5.0
 
 * Fix `build_query_string` by exiting safely when parameter is empty.
