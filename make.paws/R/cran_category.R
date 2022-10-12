@@ -2,14 +2,14 @@
 NULL
 
 # Make all category-level packages.
-make_categories <- function(sdk_dir, out_dir, categories) {
+make_categories <- function(sdk_dir, out_dir, categories, service_names) {
   for (category in categories) {
-    make_category(category, sdk_dir, out_dir)
+    make_category(category, service_names, sdk_dir, out_dir)
   }
 }
 
 # Make a package for the given AWS service category (e.g. compute, storage).
-make_category <- function(category, sdk_dir, out_dir) {
+make_category <- function(category, service_names, sdk_dir, out_dir) {
   name <- get_category_package_name(category)
   services <- category$services
   title <- category$title
@@ -28,7 +28,7 @@ make_category <- function(category, sdk_dir, out_dir) {
   write_description_category(package_dir, name, title, description,
                              version, imports)
   for (service in services) {
-    copy_files(service, from = sdk_dir, to = package_dir)
+    copy_files(service_names[[service]], from = sdk_dir, to = package_dir)
   }
   write_documentation(package_dir)
 }
@@ -57,13 +57,17 @@ get_category_packages <- function(categories) {
 
 # Copy all files for the API given in name.
 copy_files <- function(name, from, to) {
+  if (length(name) == 0) return()
   resources <- list(
-    list(dir = "man", pattern = "^%s_"),
     list(dir = "R", pattern = "^%s_"),
     list(dir = "tests/testthat", pattern = "^test_%s.R$")
   )
   for (r in resources) {
     copy <- list.files(file.path(from, r$dir), pattern = sprintf(r$pattern, name), full.names = TRUE)
+    if (length(copy) == 0) {
+      warning(sprintf("No %s files found for %s\n", r$dir, name))
+      next
+    }
     file.copy(copy, file.path(to, r$dir))
   }
 }

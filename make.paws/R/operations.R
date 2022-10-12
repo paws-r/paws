@@ -13,8 +13,13 @@ operation_file_template <- template(
 )
 
 # Make all API operations.
-make_operations <- function(api) {
-  operations <- lapply(api$operations, make_operation, api = api)
+make_operations <- function(api, doc_maker) {
+  operations <- lapply(
+    api$operations,
+    make_operation,
+    api = api,
+    doc_maker = doc_maker
+  )
   render(
     operation_file_template,
     service = package_name(api),
@@ -46,10 +51,10 @@ operation_template <- template(
 )
 
 # Make an operation, both function and documentation.
-make_operation <- function(operation, api) {
+make_operation <- function(operation, api, doc_maker) {
   render(
     operation_template,
-    docs = make_docs(operation, api),
+    docs = doc_maker(operation, api),
     service = package_name(api),
     operation_name = operation_name_override(operation$name),
     function_name = get_operation_name(operation),

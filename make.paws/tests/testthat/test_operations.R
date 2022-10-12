@@ -44,7 +44,7 @@ test_that("make_operation", {
       Output3 = list(type = "integer")
     )
   )
-  a <- make_operation(operation, api)
+  a <- make_operation(operation, api, make_docs_long)
   a <- gsub(" +\n", "\n", a)
 
   e <- gsub("\n {4}", "\n",

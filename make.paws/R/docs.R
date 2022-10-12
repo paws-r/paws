@@ -2,7 +2,7 @@
 NULL
 
 # Make an operation's Roxygen documentation.
-make_docs <- function(operation, api) {
+make_docs_long <- function(operation, api) {
   title <- make_doc_title(operation)
   description <- make_doc_desc(operation, api)
   usage <- make_doc_usage(operation, api)
@@ -26,6 +26,25 @@ make_docs <- function(operation, api) {
   return(as.character(docs))
 }
 
+# Make a short version of the documentation for CRAN.
+make_docs_short <- function(operation, api) {
+  title <- make_doc_title(operation)
+  description <- make_doc_desc_short(operation, api)
+  link_to_web_docs <- make_doc_link_to_web_docs(operation, api)
+  params <- make_doc_params(operation, api)
+  rdname <- make_doc_rdname(operation, api)
+  docs <- glue::glue_collapse(
+    c(title,
+      description,
+      link_to_web_docs,
+      params,
+      "#' @keywords internal",
+      rdname),
+    sep = "\n#'\n"
+  )
+  return(as.character(docs))
+}
+
 # Make the documentation title.
 make_doc_title <- function(operation) {
   title <- get_operation_title(operation)
@@ -41,6 +60,27 @@ make_doc_desc <- function(operation, api) {
   description <- glue::glue_collapse(description, sep = "\n")
   description <- paste("#' @description", description, sep = "\n")
   return(as.character(description))
+}
+
+# Make a short description of the operation with only the first paragraph.
+make_doc_desc_short <- function(operation, api) {
+  docs <- convert(operation$documentation, package_name(api), links = get_links(api))
+  if (length(docs) == 1 && docs == "") docs <- get_operation_title(operation)
+  else docs <- first_paragraph(docs)
+  description <- glue::glue("#' {docs}")
+  description <- glue::glue_collapse(description, sep = "\n")
+  description <- paste("#' @description", description, sep = "\n")
+  return(as.character(description))
+}
+
+# Make a link to the web documentation.
+make_doc_link_to_web_docs <- function(operation, api) {
+  service <- package_name(api)
+  operation <- get_operation_name(operation)
+  url <- sprintf("https://paws-r.github.io/docs/%s/%s.html", service, operation)
+  result <- sprintf("See [%s](%s) for full documentation.", url, url)
+  result <- comment(result, "#'")
+  return(result)
 }
 
 # Make the usage section.
@@ -196,6 +236,15 @@ make_doc_rdname <- function(operation, api) {
 }
 
 #-------------------------------------------------------------------------------
+
+# Get the first paragraph from a block of text.
+first_paragraph <- function(x) {
+  blank_line <- which(x == "")
+  first_paragraph <- ifelse(length(blank_line) >= 1, blank_line[1] - 1, length(x))
+  paragraph <- paste(x[1:first_paragraph], collapse = " ")
+  paragraph <- gsub(" +", " ", paragraph)
+  return(paragraph)
+}
 
 # Get the first sentence from a block of text.
 first_sentence <- function(x) {
@@ -516,10 +565,7 @@ list_to_string <- function(x, quote = TRUE) {
 # Returns the title of an operation (the first sentence of its description).
 get_operation_title <- function(operation) {
   docs <- html_to_text(operation$documentation)
-  blank_line <- which(docs == "")
-  first_paragraph <- ifelse(length(blank_line) >= 1, blank_line[1] - 1, length(docs))
-  paragraph <- paste(docs[1:first_paragraph], collapse = " ")
-  paragraph <- gsub(" +", " ", paragraph)
+  paragraph <- first_paragraph(docs)
   title <- first_sentence(paragraph)
   title <- mask(title, c("[" = "&#91;", "]" = "&#93;"))
   if (length(title) == 0 || title == "") {
