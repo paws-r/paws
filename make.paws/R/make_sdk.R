@@ -1,23 +1,45 @@
 #' Make the AWS SDK R package
 #'
-#' @param in_dir Directory containing API files.
-#' @param out_dir Directory of the R package.
+#' @param in_dir Directory containing AWS API input files.
+#' @param out_sdk_dir Directory to write the R packages to.
+#' @param out_doc_dir Directory to write the documentation to.
+#' @param only_cran Whether to write only the R packages already on CRAN.
 #' @param cache_dir Directory to store cached artifacts. Providing a non-`NULL`
 #'   value will greatly speed up subsequent runs that use the same value.
 #'
 #' @export
-make_sdk <- function(in_dir = "./vendor/aws-sdk-js", out_dir = "./paws",
+make_sdk <- function(in_dir = "./vendor/aws-sdk-js", out_sdk_dir = "./cran", out_doc_dir = "./docs", only_cran = TRUE,
   cache_dir = "./cache") {
 
+  # Get the category-level packages that the SDK is separated into.
+  # The SDK is separated into categories to fit in CRAN's package size limit.
+  categories <- get_categories()
+  if (only_cran) {
+    cran <- row.names(utils::available.packages(repos = "https://cran.rstudio.com"))
+    categories <- categories[sapply(categories, get_category_package_name) %in% cran]
+  }
+  apis_to_use <- unlist(sapply(categories, function(x) x$services))
+
+  temp_dir <- tempdir()
+
+  # Generate the code and documentation.
   with_cache_dir(cache_dir, {
-    clear_dir(out_dir)
-    write_skeleton(out_dir)
+    clear_dir(temp_dir)
+    write_skeleton(temp_dir)
     for (api in list_apis(file.path(in_dir, "apis"))) {
+      if (!(api %in% apis_to_use)) {
+        next
+      }
       cat(paste0(api, "\n"))
-      write_sdk_for_api(api, in_dir, out_dir)
+      result <- make_sdk_for_api(api, in_dir)
+      write(result$code, temp_dir)
+      write(result$tests, temp_dir)
+      write(result$docs, doc_dir)
     }
-    return(invisible(TRUE))
   })
+
+  make_categories(temp_dir, out_dir, categories)
+  make_collection(temp_dir, out_dir, categories)
 }
 
 # Clear out files from the output directory.

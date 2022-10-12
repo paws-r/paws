@@ -101,7 +101,7 @@ make_category_from_sub_category <- function(categories){
 }
 
 # Make the package which collects all the category packages.
-make_collection <- function(sdk_dir, out_dir, categories, only_cran) {
+make_collection <- function(sdk_dir, out_dir, categories) {
   package <- "paws"
   version <- get_version(sdk_dir)
   package_dir <- file.path(out_dir, package)
@@ -114,16 +114,6 @@ make_collection <- function(sdk_dir, out_dir, categories, only_cran) {
     version = version,
     imports = c()
   )
-  if (only_cran) {
-    cran <- row.names(utils::available.packages(repos = "https://cran.rstudio.com"))
-    categories <- categories[sapply(categories, get_category_package_name) %in% cran]
-  } else {
-    # Create packages that contain services
-    active <- vapply(categories,
-      function(cat) {!is.null(cat$services)}, FUN.VALUE = logical(1)
-    )
-    categories <- categories[active]
-  }
   write_source_collection(sdk_dir, package_dir, categories)
   write_documentation(package_dir)
   write_imports_collection(package_dir, version, get_category_packages(categories))
