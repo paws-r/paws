@@ -38,7 +38,7 @@
 #' # reset to default config
 #' paws_config_log()
 #' @export
-paws_config_log <- function(level = 1L,
+paws_config_log <- function(level = 2L,
                             file = "",
                             timestamp_fmt = "%Y-%m-%d %H:%M:%OS3"){
   stopifnot(
@@ -49,6 +49,7 @@ paws_config_log <- function(level = 1L,
   # create directory if doesn't exist
   if (grepl("/", file))
     dir.create(dirname(file), showWarnings = FALSE, recursive = TRUE)
+
   log_config <- list(
     paws.log_level = level,
     paws.logfile = file,
@@ -59,34 +60,10 @@ paws_config_log <- function(level = 1L,
 
 # default log
 paws_logging_opt <- list(
-  paws.log_level = 1L,
+  paws.log_level = 2L,
   paws.logfile = "",
   paws.log_timestamp_fmt = "%Y-%m-%d %H:%M:%OS3"
 )
-
-from_env <- list(
-  PAWS_LOG_LEVEL = as.integer,
-  PAWS_LOGFILE = function(f) if (nzchar(f)) "" else f
-)
-
-# called in .onLoad
-init_logging <- function() {
-  log_opt_name <- names(paws_logging_opt)
-  r_options <-lapply(log_opt_name, getOption)
-  names(r_options) <- log_opt_name
-  paws_logging_opt <-modifyList(
-    paws_logging_opt, Filter(Negate(is.null), r_options)
-  )
-  env_options <- lapply(
-    gsub('.', '_', toupper(log_opt_name), fixed = TRUE),
-    Sys.getenv, unset = NA
-  )
-  names(env_options) <- c(log_opt_name)
-  paws_logging_opt <-modifyList(
-    paws_logging_opt, Filter(Negate(is.na), env_options)
-  )
-  do.call(options, paws_logging_opt)
-}
 
 log_debug <- function(...) {
   if (isTRUE(getOption('paws.log_level') >= 4L)) {
@@ -115,34 +92,28 @@ log_error <- function(...) {
 log_msg <- function(lvl, msg) {
   log_file <- getOption("paws.logfile")
   now <- strftime(Sys.time(), "%Y-%m-%d %H:%M:%OS3")
-  cat(sprintf('%s [%s]: %s\n', log_color(lvl), now, msg), file = log_file)
+  cat(sprintf('%s [%s]: %s\n', log_color(lvl), now, msg), file = log_file, append = T)
 }
 
 log_color <- function(lvl) {
   color <- switch(lvl,
     DEBUG = style_debug,
-    INFO = function(...) paste(...),
-    WARNING = style_warning,
+    INFO = style_info,
+    WARNING = style_warn,
     ERROR = style_error,
     stop('unknown level: ', lvl)
   )
   color(lvl)
 }
 
-# basic logging colors
-style_error   <- function(str) {
-  sprintf("\033[38;5;167m%s\033[39m", str)
-}
-style_warning <- function(str) {
-  sprintf("\033[38;5;221m%s\033[39m", str)
-}
-style_debug  <- function(str) {
-  sprintf("\033[38;5;244m%s\033[39m", str)
-}
-
 # paws https verbose wrapper
 with_paws_verbose <- function(expr, ...){
-  httr::with_config(paws_verbose(...), expr)
+  # skip if log level <= 2L
+  if (isTRUE(getOption('paws.log_level') >= 3L)) {
+    httr::with_config(paws_verbose(...), expr)
+  } else {
+    expr
+  }
 }
 
 # modified httr::verbose to align with paws logging system

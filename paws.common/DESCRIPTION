@@ -29,6 +29,7 @@ Imports:
     xml2
 Suggests:
     covr,
+    crayon,
     rstudioapi,
     testthat
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
