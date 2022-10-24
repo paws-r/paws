@@ -5,7 +5,7 @@
 \title{paws logging system}
 \usage{
 paws_config_log(
-  level = 1L,
+  level = 2L,
   file = "",
   timestamp_fmt = "\%Y-\%m-\%d \%H:\%M:\%OS3"
 )
@@ -30,7 +30,9 @@ Users are able to change logging levels without calling \code{paws.common} by
 the use of \code{options} e.g. \code{options(paws.log_level = 2L)}.
 \itemize{
 \item{paws.log_level} {integer: The minimum log level that should be tracked}
-\item{paws.logfile} {character: path for logs to populate, default output logs to console.}
+\item{paws.log_file} {
+character: path for logs to populate, default output logs to console.
+}
 \item{paws.log_timestamp_fmt} {character: see \code{\link[=format.POSIXct]{format.POSIXct()}}}
 }
 }
