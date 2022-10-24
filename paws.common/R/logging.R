@@ -6,6 +6,7 @@
 # Levels: 4 = DEBUG, 3 = INFO/MSG, 2 = WARNING, 1 = ERROR
 
 #' @importFrom httr config with_config
+#' @importFrom utils modifyList
 
 #' @title paws logging system
 #' @description Ability to configure paws logging system, through the use of paws
@@ -161,7 +162,7 @@ init_log_config <- function(){
   # check R options for log settings
   r_options <-lapply(log_opt_name, getOption)
   names(r_options) <- log_opt_name
-  paws_logging_opt <- modifyList(
+  paws_logging_opt <- utils::modifyList(
     paws_logging_opt, Filter(Negate(is.null), r_options)
   )
 
@@ -171,7 +172,7 @@ init_log_config <- function(){
     Sys.getenv, unset = NA
   )
   names(env_options) <- c(log_opt_name)
-  paws_logging_opt <- modifyList(
+  paws_logging_opt <- utils::modifyList(
     paws_logging_opt, Filter(Negate(is.na), env_options)
   )
   # ensure log level is an integer
