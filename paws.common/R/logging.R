@@ -44,9 +44,9 @@ paws_config_log <- function(level = 2L,
                             file = "",
                             timestamp_fmt = "%Y-%m-%d %H:%M:%OS3"){
   stopifnot(
-    "`log_level` must be integer" = is.integer(level),
-    "`logfile` must be character" = is.character(file),
-    "`log_timestamp_fmt` must be character" = is.character(timestamp_fmt)
+    "`level` must be integer" = is.integer(level),
+    "`file` must be character" = is.character(file),
+    "`timestamp_fmt` must be character" = is.character(timestamp_fmt)
   )
   # create directory if doesn't exist
   if (grepl("/", file))
@@ -54,7 +54,7 @@ paws_config_log <- function(level = 2L,
 
   log_config <- list(
     paws.log_level = level,
-    paws.logfile = file,
+    paws.log_file = file,
     paws.log_timestamp_fmt = timestamp_fmt
   )
   do.call(options, log_config)
