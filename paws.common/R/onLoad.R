@@ -21,6 +21,8 @@
   paws_logging_opt <-modifyList(
     paws_logging_opt, Filter(Negate(is.na), env_options)
   )
+  # ensure log level is an integer
+  paws_logging_opt$paws.log_level = is.integer(paws_logging_opt$paws.log_level)
 
   # set up log colors
   if (requireNamespace("crayon", quietly = TRUE) && crayon::has_color()){
