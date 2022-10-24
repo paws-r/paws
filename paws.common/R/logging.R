@@ -14,7 +14,9 @@
 #' the use of \code{options} e.g. \code{options(paws.log_level = 2L)}.
 #' \itemize{
 #'    \item{paws.log_level} {integer: The minimum log level that should be tracked}
-#'    \item{paws.logfile} {character: path for logs to populate, default output logs to console.}
+#'    \item{paws.log_file} {
+#'        character: path for logs to populate, default output logs to console.
+#'    }
 #'    \item{paws.log_timestamp_fmt} {character: see [format.POSIXct()]}
 #' }
 #' @param level integer to determine the level logging threshold.
@@ -58,10 +60,10 @@ paws_config_log <- function(level = 2L,
   do.call(options, log_config)
 }
 
-# default log
+# default log settings
 paws_logging_opt <- list(
   paws.log_level = 2L,
-  paws.logfile = "",
+  paws.log_file = "",
   paws.log_timestamp_fmt = "%Y-%m-%d %H:%M:%OS3"
 )
 
@@ -90,9 +92,13 @@ log_error <- function(...) {
 }
 
 log_msg <- function(lvl, msg) {
-  log_file <- getOption("paws.logfile")
+  log_file <- getOption("paws.log_file")
   now <- strftime(Sys.time(), "%Y-%m-%d %H:%M:%OS3")
-  cat(sprintf('%s [%s]: %s\n', log_color(lvl), now, msg), file = log_file, append = T)
+  cat(
+    sprintf('%s [%s]: %s\n', log_color(lvl), now, msg),
+    file = log_file,
+    append = TRUE
+  )
 }
 
 log_color <- function(lvl) {
