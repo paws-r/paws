@@ -115,12 +115,14 @@ issue <- function(http_request) {
   if(!is.null(http_request$dest)) {
     dest <- httr::write_disk(http_request$dest)
   }
-  r <- httr::VERB(
-    method,
-    url = url,
-    config = c(httr::add_headers(.headers=headers), dest),
-    body = body,
-    timeout
+  r <- with_paws_verbose(
+    httr::VERB(
+      method,
+      url = url,
+      config = c(httr::add_headers(.headers=headers), dest),
+      body = body,
+      timeout
+    )
   )
 
   response <- HttpResponse(
