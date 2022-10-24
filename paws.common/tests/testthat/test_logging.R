@@ -53,7 +53,7 @@ test_that("check http paws logging ", {
   options("paws.log_level" = 3L)
   options("paws.log_file" = temp_file)
 
-  resp <- paws.common:::with_paws_verbose(
+  resp <- with_paws_verbose(
     httr::GET("http://google.com/")
   )
 
@@ -67,7 +67,7 @@ test_that("check if http paws log are being tracked", {
   options("paws.log_level" = 3L)
   options("paws.log_file" = temp_file)
 
-  resp <- paws.common:::with_paws_verbose(
+  resp <- with_paws_verbose(
     httr::GET("http://google.com/")
   )
   actual <- readLines(temp_file)
@@ -80,7 +80,7 @@ test_that("check if http logs aren't being tracked", {
   options("paws.log_level" = 2L)
   options("paws.log_file" = temp_file)
 
-  resp <- paws.common:::with_paws_verbose(
+  resp <- with_paws_verbose(
     httr::GET("http://google.com/")
   )
   expect_false(file.exists(temp_file))
@@ -110,3 +110,98 @@ test_that("check reset log config", {
   expect_equal(log_file, "")
   expect_equal(log_timestamp_fmt, "%Y-%m-%d %H:%M:%OS3")
 })
+
+test_that("ensure init_log_config doesn't modified already set log config", {
+  paws_config_log(
+    level = 3L,
+    file = "made-up",
+    timestamp_fmt = "%Y-%m-%d %H:%M"
+  )
+
+  init_log_config()
+
+  log_level <- getOption("paws.log_level")
+  log_file <- getOption("paws.log_file")
+  log_timestamp_fmt <- getOption("paws.log_timestamp_fmt")
+
+  expect_equal(log_level, 3L)
+  expect_equal(log_file, "made-up")
+  expect_equal(log_timestamp_fmt, "%Y-%m-%d %H:%M")
+})
+
+test_that("update log config from environmental variables", {
+  Sys.setenv("PAWS_LOG_LEVEL" = 4L)
+  Sys.setenv("PAWS_LOG_TIMESTAMP_FMT" = "made-up")
+  Sys.setenv("PAWS_LOG_FILE" = "dummy-file")
+
+  init_log_config()
+
+  log_level <- getOption("paws.log_level")
+  log_file <- getOption("paws.log_file")
+  log_timestamp_fmt <- getOption("paws.log_timestamp_fmt")
+
+  expect_equal(log_level, 4L)
+  expect_equal(log_file, "dummy-file")
+  expect_equal(log_timestamp_fmt, "made-up")
+  lapply(
+    c("PAWS_LOG_LEVEL", "PAWS_LOG_TIMESTAMP_FMT", "PAWS_LOG_FILE"), Sys.unsetenv
+  )
+})
+
+test_that("check log messages", {
+  temp_file = tempfile()
+  # ERROR Logging level
+  options("paws.log_level" = 1L)
+  options("paws.log_file" = temp_file)
+  log_debug("foo")
+  log_info("foo")
+  log_warn("foo")
+  log_error("foo")
+
+  result <- readLines(temp_file)
+  expect_true(grepl("^.*ERROR.*: foo", result))
+  unlink(temp_file)
+
+  # WARN Logging level
+  options("paws.log_level" = 2L)
+  options("paws.log_file" = temp_file)
+  log_debug("foo")
+  log_info("foo")
+  log_warn("foo")
+  log_error("foo")
+
+  result <- readLines(temp_file)
+  expect_true(grepl("^.*WARN.*: foo", result[[1]]))
+  expect_true(grepl("^.*ERROR.*: foo", result[[2]]))
+  unlink(temp_file)
+
+  # INFO Logging level
+  options("paws.log_level" = 3L)
+  options("paws.log_file" = temp_file)
+  log_debug("foo")
+  log_info("foo")
+  log_warn("foo")
+  log_error("foo")
+
+  result <- readLines(temp_file)
+  expect_true(grepl("^.*INFO.*: foo", result[[1]]))
+  expect_true(grepl("^.*WARN.*: foo", result[[2]]))
+  expect_true(grepl("^.*ERROR.*: foo", result[[3]]))
+  unlink(temp_file)
+
+  # DEBUG Logging level
+  options("paws.log_level" = 4L)
+  options("paws.log_file" = temp_file)
+  log_debug("foo")
+  log_info("foo")
+  log_warn("foo")
+  log_error("foo")
+
+  result <- readLines(temp_file)
+  expect_true(grepl("^.*DEBUG.*: foo", result[[1]]))
+  expect_true(grepl("^.*INFO.*: foo", result[[2]]))
+  expect_true(grepl("^.*WARN.*: foo", result[[3]]))
+  expect_true(grepl("^.*ERROR.*: foo", result[[4]]))
+  unlink(temp_file)
+})
+
