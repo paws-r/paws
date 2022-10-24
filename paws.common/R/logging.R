@@ -141,7 +141,6 @@ paws_verbose <- function(data_out = TRUE, data_in = FALSE, ssl = FALSE) {
 
 prefix_info <- function(prefix, x, blank_line = FALSE) {
   x <- readBin(x, character())
-
   lines <- unlist(strsplit(x, "\n", fixed = TRUE, useBytes = TRUE))
   out <- paste0(prefix, lines, collapse = "\n")
   log_info(out)
@@ -150,7 +149,6 @@ prefix_info <- function(prefix, x, blank_line = FALSE) {
 
 prefix_debug <- function(prefix, x) {
   x <- readBin(x, character())
-
   lines <- unlist(strsplit(x, "\n", fixed = TRUE, useBytes = TRUE))
   out <- paste0(prefix, lines, collapse = "\n")
   log_debug(out)
