@@ -28,15 +28,15 @@ test_that("check updating paws log config", {
 test_that("check updating paws log config with wrong parameter types", {
   expect_error(
     paws_config_log(level = "3"),
-    "`level` must be integer"
+    ".*level.*"
   )
   expect_error(
     paws_config_log(file = 1),
-    "`file` must be character"
+    ".*file.*"
   )
   expect_error(
     paws_config_log(timestamp_fmt = 1),
-    "`timestamp_fmt` must be character"
+    ".*timestamp_fmt.*"
   )
 })
 
