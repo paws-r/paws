@@ -117,7 +117,7 @@ log_color <- function(lvl) {
 with_paws_verbose <- function(expr, ...){
   # skip if log level <= 2L
   if (isTRUE(getOption('paws.log_level') >= 3L)) {
-    httr::with_config(paws_verbose(...), expr)
+    with_config(paws_verbose(...), expr)
   } else {
     expr
   }
@@ -137,7 +137,7 @@ paws_verbose <- function(data_out = TRUE, data_in = FALSE, ssl = FALSE) {
            sslDataOut = if (ssl && data_out) prefix_info("*> ", msg, TRUE)
     )
   }
-  httr::config(debugfunction = Debug, verbose = TRUE)
+  config(debugfunction = Debug, verbose = TRUE)
 }
 
 prefix_info <- function(prefix, x, blank_line = FALSE) {
@@ -162,7 +162,7 @@ init_log_config <- function(){
   # check R options for log settings
   r_options <-lapply(log_opt_name, getOption)
   names(r_options) <- log_opt_name
-  paws_logging_opt <- utils::modifyList(
+  paws_logging_opt <- modifyList(
     paws_logging_opt, Filter(Negate(is.null), r_options)
   )
 
@@ -172,7 +172,7 @@ init_log_config <- function(){
     Sys.getenv, unset = NA
   )
   names(env_options) <- c(log_opt_name)
-  paws_logging_opt <- utils::modifyList(
+  paws_logging_opt <- modifyList(
     paws_logging_opt, Filter(Negate(is.na), env_options)
   )
   # ensure log level is an integer
