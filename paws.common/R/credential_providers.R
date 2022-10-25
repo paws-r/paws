@@ -308,6 +308,7 @@ get_container_credentials <- function() {
     return(NULL)
   }
 
+  print("test this")
   metadata_url <- file.path("http://169.254.170.2", credentials_uri)
   metadata_request <-
     new_http_request("GET", metadata_url, timeout = 1)
