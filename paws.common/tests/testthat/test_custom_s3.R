@@ -84,6 +84,43 @@ test_that("content_md5 works with an empty body", {
   expect_equivalent(actual, expected)
 })
 
+test_that("content_md5 leave existing Content-MD5 alone", {
+  hash <- digest::digest(raw(0), serialize = FALSE, raw = TRUE)
+  expect_hash <- base64enc::base64encode(hash)
+
+  request <- list(
+    "operation" = list(
+      "name" = "PutObject"
+    ),
+    "http_request" = list(
+      "header" = list(
+        "Content-MD5" = expect_hash
+      )
+    ),
+    body = raw(1)
+  )
+
+  actual = content_md5(request)
+  expect_equal(actual$http_request$header$`Content-MD5`, expect_hash)
+})
+
+test_that("content_md5 create new Content-Md5", {
+  body = raw(1)
+  hash <- digest::digest(body, serialize = FALSE, raw = TRUE)
+  expect_hash <- base64enc::base64encode(hash)
+
+  request <- list(
+    "operation" = list(
+      "name" = "PutObject"
+    ),
+    body = body
+  )
+
+  actual = content_md5(request)
+  expect_equal(actual$http_request$header$`Content-Md5`, expect_hash)
+})
+
+
 test_that("s3_unmarshal_get_bucket_location", {
 
   op <- Operation(name = "GetBucketLocation")
