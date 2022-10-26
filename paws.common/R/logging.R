@@ -12,7 +12,7 @@
 #' @description Ability to configure paws logging system, through the use of paws
 #' helper function \code{`paws_config_log`} or `R:base` \code{options} function.
 #' Users are able to change logging levels without calling \code{paws.common} by
-#' the use of \code{options} e.g. \code{options(paws.log_level = 2L)}.
+#' the use of \code{options} e.g. \code{options("paws.log_level" = 2L)}.
 #' \itemize{
 #'    \item{paws.log_level} {integer: The minimum log level that should be tracked}
 #'    \item{paws.log_file} {
