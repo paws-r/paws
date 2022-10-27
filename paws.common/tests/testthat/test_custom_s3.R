@@ -100,12 +100,12 @@ test_that("content_md5 leave existing Content-MD5 alone", {
     body = raw(1)
   )
 
-  actual = content_md5(request)
+  actual <- content_md5(request)
   expect_equal(actual$http_request$header$`Content-MD5`, expect_hash)
 })
 
 test_that("content_md5 create new Content-Md5", {
-  body = raw(1)
+  body <- raw(1)
   hash <- digest::digest(body, serialize = FALSE, raw = TRUE)
   expect_hash <- base64enc::base64encode(hash)
 
@@ -116,7 +116,7 @@ test_that("content_md5 create new Content-Md5", {
     body = body
   )
 
-  actual = content_md5(request)
+  actual <- content_md5(request)
   expect_equal(actual$http_request$header$`Content-Md5`, expect_hash)
 })
 
