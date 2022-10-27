@@ -48,20 +48,6 @@ test_that("check if file created in none existing directory", {
   unlink(temp_file)
 })
 
-test_that("check http paws logging ", {
-  temp_file <- tempfile()
-  options("paws.log_level" = 3L)
-  options("paws.log_file" = temp_file)
-
-  resp <- with_paws_verbose(
-    httr::GET("http://google.com/")
-  )
-
-  actual <- readLines(temp_file)
-  expect_true(any(grepl("INFO", actual)))
-  unlink(temp_file)
-})
-
 test_that("check if http paws log are being tracked", {
   temp_file <- tempfile()
   options("paws.log_level" = 3L)
