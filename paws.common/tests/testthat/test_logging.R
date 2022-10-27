@@ -12,7 +12,7 @@ test_that("check default logging settings", {
 })
 
 test_that("check updating paws log config", {
-  temp_file = tempfile()
+  temp_file <- tempfile()
   paws_config_log(level = 3L, file = temp_file, timestamp_fmt = "%Y-%m-%d %H:%M")
 
   log_level <- getOption("paws.log_level")
@@ -41,15 +41,15 @@ test_that("check updating paws log config with wrong parameter types", {
 })
 
 test_that("check if file created in none existing directory", {
-  temp_dir = tempfile()
-  temp_file = file.path(temp_dir, "demo.log")
+  temp_dir <- tempfile()
+  temp_file <- file.path(temp_dir, "demo.log")
   paws_config_log(file = temp_file)
   expect_true(dir.exists(temp_dir))
   unlink(temp_file)
 })
 
 test_that("check http paws logging ", {
-  temp_file = tempfile()
+  temp_file <- tempfile()
   options("paws.log_level" = 3L)
   options("paws.log_file" = temp_file)
 
@@ -63,7 +63,7 @@ test_that("check http paws logging ", {
 })
 
 test_that("check if http paws log are being tracked", {
-  temp_file = tempfile()
+  temp_file <- tempfile()
   options("paws.log_level" = 3L)
   options("paws.log_file" = temp_file)
 
@@ -76,7 +76,7 @@ test_that("check if http paws log are being tracked", {
 })
 
 test_that("check if http logs aren't being tracked", {
-  temp_file = tempfile()
+  temp_file <- tempfile()
   options("paws.log_level" = 2L)
   options("paws.log_file" = temp_file)
 
@@ -149,7 +149,7 @@ test_that("update log config from environmental variables", {
 })
 
 test_that("check log messages", {
-  temp_file = tempfile()
+  temp_file <- tempfile()
   # ERROR Logging level
   options("paws.log_level" = 1L)
   options("paws.log_file" = temp_file)
