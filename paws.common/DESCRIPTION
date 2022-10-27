@@ -1,7 +1,7 @@
 Package: paws.common
 Type: Package
 Title: Paws Low-Level Amazon Web Services API
-Version: 0.5.1
+Version: 0.5.1.9000
 Authors@R: c(
         person("David", "Kretch", email = "david.kretch@gmail.com", role = "aut"),
         person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),
@@ -29,6 +29,7 @@ Imports:
     xml2
 Suggests:
     covr,
+    crayon,
     rstudioapi,
     testthat
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
@@ -66,6 +67,8 @@ Collate:
     'handlers_restxml.R'
     'idempotency.R'
     'jsonutil.R'
+    'logging.R'
+    'onLoad.R'
     'populate.R'
     'populateutil.R'
     'tags.R'

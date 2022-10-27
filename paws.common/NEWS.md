@@ -1,3 +1,8 @@
+# paws.common 0.5.1.9000
+
+* Fix Content-Md5 being modified by user
+* Add logging system to help with debugging paws issues
+
 # paws.common 0.5.1
 
 * Fix `xml_build` to allow empty lists from operations.
