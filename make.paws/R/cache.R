@@ -135,7 +135,6 @@ maybe_spot_check <- function(cache_result, value_expr, key_label) {
         )
       )
       cat(file = stderr(), "\n")
-      stop("Stopping due to cache spot-check failure")
     }
   }
 }

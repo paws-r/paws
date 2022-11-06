@@ -53,10 +53,8 @@ test_that("spot checking detects changing results", {
 
     # This will fail spot checking because it re-uses the same
     # key as slow_operation()
-    expect_error(
-      expect_warning(
-        cached_expr("key1", { 2 }),
-        "spot-check"),
+    expect_warning(
+      cached_expr("key1", { 2 }),
       "spot-check")
 
     # This won't fail spot checking because the level is 0

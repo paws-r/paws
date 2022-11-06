@@ -5,6 +5,7 @@ read_api <- function(api_name, path) {
 
   version <- get_latest_api_version(api_name, api_path)
   files <- get_api_files(version, api_path)
+  if (length(version) == 0 || length(files) == 0) stop("Invalid API")
 
   api <- jsonlite::read_json(files$normal)
   api <- fix_operation_names(api)
