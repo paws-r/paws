@@ -182,14 +182,41 @@ get_instance_metadata <- function(query_path = "") {
   if (trimws(tolower(get_env("AWS_EC2_METADATA_DISABLED"))) %in% c("true", "1")) {
     return(NULL)
   }
+  # Get token timeout for IMDSv2 tokens
+  tokentimeout=trimws(tolower(get_env("PAWS_EC2_IMDSV2_TOKEN_TIMEOUT")))
+  if (is.na(as.numeric(tokentimeout))) {
+        tokentimeout="30"
+  }
+  token <-  "" # Token to be used in case of more secure IMDSv2 authentication
+  #try IMDSv2  (more information): https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html
+   metadata_token_url <-  file.path(
+    "http://169.254.169.254/latest/api/token"
+  )
+ metadata_token_request <-
+    new_http_request("PUT", metadata_token_url, timeout = 1, header=c("X-aws-ec2-metadata-token-ttl-seconds"= tokentimeout))
 
+  metadata_token_response <- tryCatch(
+    {
+      issue(metadata_token_request)
+    },
+    error = function(e) {
+      NULL
+    }
+  )
+  if (!((is.null(metadata_token_response) && metadata_token_response$status_code != 200))) {
+      token=rawToChar(metadata_token_response["body"])
+  }
   metadata_url <- file.path(
     "http://169.254.169.254/latest/meta-data",
     query_path
   )
+  if (!(token=="")) {
+  metadata_request <-
+    new_http_request("GET", metadata_url, timeout = 1, header=c("X-aws-ec2-metadata-token"= token))
+  } else { # use IMDSv1 in case IMDSv2 is not available - not recommended - very insecure
   metadata_request <-
     new_http_request("GET", metadata_url, timeout = 1)
-
+  }
   metadata_response <- tryCatch(
     {
       issue(metadata_request)
