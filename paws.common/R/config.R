@@ -183,7 +183,7 @@ get_instance_metadata <- function(query_path = "") {
     return(NULL)
   }
   # Get token timeout for IMDSv2 tokens
-  tokentimeout=trimws(tolower(get_env("PAWS_EC2_IMDSV2_TOKEN_TIMEOUT")))
+  tokentimeout=trimws(tolower(get_env("PAWS_EC2_IMDSV2_TOKEN_TIMEOUT_SECONDS")))
   if (is.na(as.numeric(tokentimeout))) {
         tokentimeout="30"
   }
