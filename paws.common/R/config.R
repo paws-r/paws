@@ -193,7 +193,12 @@ get_instance_metadata <- function(query_path = "") {
     "http://169.254.169.254/latest/api/token"
   )
  metadata_token_request <-
-    new_http_request("PUT", metadata_token_url, timeout = 1, header=c("X-aws-ec2-metadata-token-ttl-seconds"= tokentimeout))
+    new_http_request(
+        "PUT", 
+        metadata_token_url, 
+        timeout = 1, 
+        header=c("X-aws-ec2-metadata-token-ttl-seconds"= tokentimeout)
+    )
 
   metadata_token_response <- tryCatch(
     {
@@ -203,16 +208,21 @@ get_instance_metadata <- function(query_path = "") {
       NULL
     }
   )
-  if (!((is.null(metadata_token_response) && metadata_token_response$status_code != 200))) {
+  if (!(is.null(metadata_token_response) && metadata_token_response$status_code != 200)) {
       token=rawToChar(metadata_token_response["body"])
   }
   metadata_url <- file.path(
     "http://169.254.169.254/latest/meta-data",
     query_path
   )
-  if (!(token=="")) {
+  if (token!="") {
   metadata_request <-
-    new_http_request("GET", metadata_url, timeout = 1, header=c("X-aws-ec2-metadata-token"= token))
+    new_http_request(
+        "GET", 
+        metadata_url, 
+        timeout = 1, 
+        header=c("X-aws-ec2-metadata-token"= token)
+    )
   } else { # use IMDSv1 in case IMDSv2 is not available - not recommended - very insecure
   metadata_request <-
     new_http_request("GET", metadata_url, timeout = 1)
