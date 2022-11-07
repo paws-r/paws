@@ -208,8 +208,10 @@ get_instance_metadata <- function(query_path = "") {
       NULL
     }
   )
-  if (!(is.null(metadata_token_response) && metadata_token_response$status_code != 200)) {
-      token=rawToChar(metadata_token_response["body"])
+  if (!(is.null(metadata_token_response)) && metadata_token_response$status_code == 200) {
+      if (length(metadata_token_response["body"])>0) {
+          token=rawToChar(metadata_token_response["body"])
+      } 
   }
   metadata_url <- file.path(
     "http://169.254.169.254/latest/meta-data",
